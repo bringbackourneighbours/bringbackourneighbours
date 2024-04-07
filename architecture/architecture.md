@@ -56,3 +56,191 @@ The order of this list also reflects a certain priority in whos needs we should 
 We need to comply with laws - mainly in regard to privacy.
 
 The whole thing shouldn't cost anything. We are able to spend a few euros a month on hosting and can also raise funds for small translations. But that's it.
+
+## Solution Strategy
+
+Implementation should happen in a Javascript-ish way, as this it the skill the programmers bring and prefer.
+
+Gerne KEIN JSX, sehr gerne Typescript.
+Ich würde außer dem gegen Scss voten egal.
+
+### PDF -generation
+Pdfs per print
+Die pdfs macht man am besten nach dem deployment per z.b. puppeteer. Das Frontend stellt dafür die Inhalte bereit und dann wird per headless chrome gedruckt und als PDF auf der richtige Route hochgeladen
+Dabei könnte der "normale" Inhalt mit Print media query gestyled werde oder... Vielleicht ist es praktikabel eine extra "hidden" Seite dafür zu haben, das macht das debuggin einfacher. Zumal es auf dem Prinz auch eigene inhaltr gibt (z.b. visdp und Logo und so was)
+Im Anschluss an den Print könnte man noch mit ghostscript o.ä. noch ein bisschen post processing machen: Komprimierung und ggbf auch zusammen Mergen von allen flyern je Sprache+Layouts für den Massendruck.
+
+### Shortlinks
+
+Shortlink per API Route
+Aktuell sind die shortlinks per Hand mit YOURLS eingestellt, nun wäre es sinnvoll das auch  in die Daten der Inhalte mit rein zu ziehen, damit daraus auch immer die qrcodes generiert werden können.
+Generell könnten man im Druck auch qr codes dafür anbieten.
+Es gibt dabei 3 Typen:
+Für unser Material auf das verwiesen wird innerhalb unseres Materials (z.b. flyer werden im Koffer verlinkt) — das sind dann die Metadaten den Material auf das gezeigt wird
+Für die links die von außen (per qr code) auf unser Material zeigen .— das sind dann die Metadaten den Material auf das gezeigt wird
+Externes Material das wir nur verlinken. — as müssen wir dann extra Pflegen als eigenen datentyp.
+
+
+### Content-Management
+
+M.e gibt es 2 zentrale Fragen:
+1. Wo lebt der content? Im Git oder in einem "echten" CMS mit Datenbank?
+   Hier wäre die Konsequenz, das es für nicht-devs quasi unmöglich wird inhalte einzustellen wen wir git nehmen. Ist die Frage ob das schlimm ist.
+
+2. Wollen wir die Inhalten Modular gestalten, also Flyer und Koffer aus "Bausteinen" zusammensetzen, oder erhöht das nur die Komplexität und bringt am Ende wenig?
+
+Ich habe diese 2 Frage mal in 5 Varianten versucht etwas zu verschriftlichen – nur um das jeweils auch mal richtig zu durchdenken.
+
+#### Variante A) "Markdown, plain und simple"
+Wir nutzen eins der SSG Framework so plain wie möglich:
+Die Texte liegen einfach Flyer für Flyer, Koffer für koffer als Markdown mit ein kleinwenig Metadaten als content da. Doppelter Text ist auch doppelt eingepflegt,
+
+I18n über folder/filename für die inhalte und genauso aut für das interface. (z.B.  src/content/flyers/deportation/en.md)
+Die Shortlink müssen ebenso über die Metadaten und ggf einen eigene collection abgebildet werden als API-Routes.
+PDF wird postbuild "gedruckt" und dann hochgeladen
+
+Konsequenzen:
+alles wird nur zur buildtime erstellt
+einpflegen von inhalten nur durch dev-team möglich (könnten man aber lernen) ist aber sehr einfach
+preview benötigt dev-env
+inhalte sind open source verfügbar
+ggbf doppelter text.
+metadaten zwischen texten sind nicht automatisdh konsitent: ALLES wir übersetzt über die (sprachen dupliziert
+Gefahr das die sprachen auseinander laufen, weil keinen enge Kohäsion
+quite straight forward
+
+#### Variante B) "Markdown aber mit nesting"
+Wir nutzen eins der SSG Framework, und müssen die inhalte aber erst zusammen tüdeln.
+Die Texte liegen als markdown + metadaten im git und werden für die Darstellung einmal neu zusammen gesetzt.
+I18n über folder/filename für die inhalte und genauso aut für das interface. (z.B. src/content/flyers/deportation/base.yaml + src/content/blocks/deportation-intro/en.md)
+Die Shortlink müssen ebenso über die Metadaten und ggf einen eigene collection abgebildet werden als API-Routes.
+PDF wird postbuild "gedruckt" und dann hochgeladen
+
+out of the box geht das nur mit Astro (aber auch da nicht easy). ließen sich aber sicher auch per hand implementieren...
+
+Konsequenzen:
+alles wird nur zur buildtime erstellt
+einpflegen von inhalten nur durch dev-team möglich und auch nicht trivial, weil referenzen passen müssen
+preview benötigt dev-env
+inhalte sind open source verfügbar
+kein doppelter text.
+metadaten zwischen texten sind automatisch konsitent: Es wir nur übersetzt was übersetzt werden muss
+nicht ganz so easy, kann nan durcheinander kommen
+
+#### Variante C) "GIT-CMS aber mit nesting"
+wie B) aber wir haben fertiges tooling... aber gibt es das überhaupt? Ja!
+Hier liegen die texte als markdown im gut können aber per admin ui editiert werden.
+Nicht alle tools unterstützten das nesting.
+
+mit tinacms und object, list=true müsste das gehen
+
+Konsequenzen:
+alles wird nur zur buildtime erstellt
+einpflegen von inhalten nur durch dev-team möglich
+preview benötigt dev-env
+inhalte sind open source verfügbar
+kein doppelter text.
+metadaten zwischen texten sind automatisdh konsitent: Es wir nur übersetzt was übersetzt werden muss
+dank admin ein bisschen einfacher aber trotzdem  nur für devs
+
+
+#### Variante D) "CMS aber plain"
+Wir nutzen eins der SSG Framework und fetchen den content einfach je page.
+Die Texte liegen einfach Flyer für Flyer,Koffer für koffer im CMS mit ein kleinwenig Metadaten als content da. Doppelter Text ist auch doppelt eingepflegt,
+
+I18n über die inhalte in CMS und lokales lookup für das interface.
+Die Shortlink müssen ebenso über die Metadaten und ggf einen eigene collection abgebildet werden als API-Routes.
+PDF wird postbuild "gedruckt" und dann hochgeladen.
+
+Konsequenzen:
+alles wird nur zur buildtime erstellt. SSR ginge aber auch
+einpflegen von inhalten durch alle im team möglich. sehr einfach
+preview geh ganz okay im cms oder über extra SSR-route
+inhalte sind nicht open source verfügbar
+doppelter text und viel zu updaten
+metadaten zwischen texten sind automatisdh konsitent: Es wir nur übersetzt was übersetzt werden muss
+quite straight forward aber viele teile
+
+
+#### Variante E) "CMS aber mit nesting"
+Wir nutzen eins der SSG Framework und fetchen den content je page ggbf müssen wir aber noch ein paar child resourcen dazu holen.
+Die Textblöcke liegen als markdown + metadaten im cms und werden vor dort zur darstellung über referencen neu zusammen gesetzt.
+I18n über folder/filename für die inhalte in CMS und lokales lookup für das interface.
+Die Shortlink müssen ebenso über die Metadaten und ggf einen eigene collection abgebildet werden als API-Routes.
+PDF wird postbuild "gedruckt" und dann hochgeladen.
+
+Konsequenzen:
+alles wird nur zur buildtime erstellt. SSR ginge aber auch
+einpflegen von inhalten durch alle im team möglich. etwas komplexer vielleicht einfach
+preview geh ganz okay im cms oder über extra SSR-route
+inhalte sind nicht open source verfügbar.
+kein doppelter text.
+metadaten zwischen texten sind automatisch konsitent: Es wir nur übersetzt was übersetzt werden muss
+danke admin ein bisschen einfacher aber trotzdem ein komplexe bedienung.
+
+
+#### Conclusion
+
+=> Es wird keinen extern im Admin geben, des wegen können wir auch nur mit git arbeiten, wenn wir das wirklich wollen... übersetzer*innen
+
+=> Wir wollen mind 2 Module:
+Adressen/kontakt daten (nicht übersetzt) (beinhaltet eventuell auch Shortlinks)
+Shortlinks auf externen inhalt
+Die Texte der 3 Koffer sind zu 95% identisch innerhalb derselben Sprache
+Die an einigen stellen wird im Koffer auf die Flyer verwiesen: hier wollen wir eigentlich den kompletten Fyler also infokasten einbetten....>> Ruth und Christina integrieren Flyer in Notfallkoffer
+
+### Considered Tools/Frameworks
+
+#### Headlee CMS
+
+Astro Collections
+MD + complex Schema
+https://docs.astro.build/en/guides/content-collections/
+
+Keystatic: 0.8k
+MD + semi complex schema + github mode + local Admin
+https://keystatic.com/docs/content-components#example
+
+tinacms 10.9k
+GIT + Redis/mongo content in git. has viry fancy schema
+https://github.com/tinacms/tinacms
+
+Decap CMS 17.5k
+public git based Admin + complex Schema
+https://decapcms.org/docs/install-decap-cms/
+
+apostrophecms 4.2k
+full cms + on page editting
+node+mongo
+
+Keystone 8.8k
+full cms
+node + SQL
+https://keystonejs.com/docs/getting-started
+
+Payload 18.4k
+full cms
+express + mongo
+https://payloadcms.com/docs/getting-started/what-is-payload
+
+strapi 59.4k
+full cms
+node +sql
+läuft nicht gut in monorepo
+https://strapi.io/for-developers
+
+### SSG or SSR friendly Frontend-Frameworks
+
+Damit bieten sich an:
+- Astro
+  - astro is dead simple
+  - Astro ist bei vielen CMS als Integration zumindest mit gedacht
+- SvelteKit
+  - sveltekit ist besonders funky
+  - sveltekit has no content handling at all
+- Analog
+  - analog hat den besten nx support
+  - analog ist natürlich für die angular leute sehr trivial
+  - Analog has minimal content support.. no relations https://analogjs.org/docs/features/routing/content#using-the-content-files-list
+- gatsby has some minor concept like this https://www.gatsbyjs.com/docs/reference/routing/file-system-route-api/#syntax-collection-routes
+
