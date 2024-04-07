@@ -2,6 +2,7 @@
 
 This document describes the initial specification for the new web-project.
 
+
 ## Introduction and Goals
 
 The project is called "Bring Back Our Neighbors". We had protested "back then" against the illegal deportation of the 9-member family I. from Pirna (June-August 2021). And finally, after a successful campaign, the family was brought back... and we had won the "Saxon Promotion Prize for Democracy 2021" and also received some donations.
@@ -21,7 +22,7 @@ The design should also be simple, clear and above all mobile-friendly and work w
 We have to focus mainly on 4 groups of people, who's needs will influence the way we set up this project:
 - Affected: People using the content and who are themselves in danger of a deportation and want to inform themselves
 - Editors: Volunteers, who create and update and translate the content
-- Programmers: Volunteers who design and implement the software/systems that will provide the content
+- Developers Volunteers who design and implement the software/systems that will provide the content
 - Supporters: People who do counselling or political organising and try to inform Affected
 People with the help of the content.
 
@@ -32,20 +33,21 @@ The order of this list also reflects a certain priority in whos needs we should 
   - works well without good network/wifi
   - content can be saved/work offline
 - Internationalisation
-  - works in every language we can provide
+  - the content and the interface needs to be available in all languages
   - simple interface and navigation
-  - it's possible to refer to not yet translated content
-  - the content and the interface needs to be available in
+  - it's possible to refer to not yet translated content as a fallback
+  - detecting the users browsers language should work
+  - it's easy to switch the language while staying with the same content
 - Availability
   - the content can be found easily via search engines
   - older – outdated links and their qrs can still be followed and will lead to the newest version
   - content can be easily shared with others
+  - on the page its possible to search for all content in all languages.
 - Timeliness and Maintainability
   - it's clear when some content was created/updated
   - new content can be made available easily, per language within days
   - certain data might change more often – addresses for example need to updated more often
   - No duplicated content needs to be managed
-  - only editors and programmers need to be able to make changes
   - editors and especially translators need to be able to work on the content easily
   - for the programmers it needs to be at least not painful to implement
 
