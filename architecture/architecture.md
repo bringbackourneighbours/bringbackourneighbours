@@ -1,7 +1,31 @@
 # Architecture
 
-This document describes the initial specification for the new web-project.
+This document describes the initial specification for the new web-project. It documents the architectural decisions and how the where made.
 
+<!-- TOC -->
+* [Architecture](#architecture)
+  * [Introduction and Goals](#introduction-and-goals)
+  * [Requirements Overview](#requirements-overview)
+    * [Expected Users](#expected-users)
+    * [Quality Goals](#quality-goals)
+    * [Architecture Constraints](#architecture-constraints)
+  * [Solution Strategy](#solution-strategy)
+    * [SPA vs MPA and the question of javascript](#spa-vs-mpa-and-the-question-of-javascript)
+    * [Content-Management](#content-management)
+      * [Variante A) "Markdown, plain und simple"](#variante-a-markdown-plain-und-simple)
+      * [Variante B) "Markdown aber mit nesting"](#variante-b-markdown-aber-mit-nesting)
+      * [Variante C) "GIT-CMS aber mit nesting"](#variante-c-git-cms-aber-mit-nesting)
+      * [Variante D) "CMS aber plain"](#variante-d-cms-aber-plain)
+      * [Variante E) "CMS aber mit nesting"](#variante-e-cms-aber-mit-nesting)
+    * [PDF-Generation](#pdf-generation)
+    * [Shortlinks](#shortlinks)
+    * [Search](#search)
+    * [Considered Tools/Frameworks](#considered-toolsframeworks)
+      * [Headlees CMS](#headlees-cms)
+      * [SSG or SSR friendly Frontend-Frameworks](#ssg-or-ssr-friendly-frontend-frameworks)
+  * [Building Block View](#building-block-view)
+  * [Deployment](#deployment)
+<!-- TOC -->
 
 ## Introduction and Goals
 
@@ -17,8 +41,9 @@ I think it would make sense instead to compile the content of the flyers and eme
 
 The design should also be simple, clear and above all mobile-friendly and work well with all languages.
 
-### Requirements Overview
+## Requirements Overview
 
+### Expected Users
 We have to focus mainly on 4 groups of people, who's needs will influence the way we set up this project:
 - Affected: People using the content and who are themselves in danger of a deportation and want to inform themselves
 - Editors: Volunteers, who create and update and translate the content
@@ -28,8 +53,10 @@ People with the help of the content.
 
 The order of this list also reflects a certain priority in whos needs we should not be compromising. The Editors and Programmers are part of the project team.
 
+### Quality Goals
+
 - Accessibility:
-  - Mobile first
+  - Mobile first, we expect especially lower end devices
   - works well without good network/wifi
   - content can be saved/work offline
 - Internationalisation
@@ -43,13 +70,18 @@ The order of this list also reflects a certain priority in whos needs we should 
   - older – outdated links and their qrs can still be followed and will lead to the newest version
   - content can be easily shared with others
   - on the page its possible to search for all content in all languages.
-- Timeliness and Maintainability
+- Timeliness and ease of Content Creation
   - it's clear when some content was created/updated
   - new content can be made available easily, per language within days
   - certain data might change more often – addresses for example need to updated more often
   - No duplicated content needs to be managed
   - editors and especially translators need to be able to work on the content easily
-  - for the programmers it needs to be at least not painful to implement
+- Maintainability
+  - for the programmers it needs to be at least not painful to implement as we do this in our free time
+  - Design(styling) needs to be a losly coupled to allow working in parallel
+  - the technology needs to be easily maintanable from a security/dependecy-perspective. After initial development,there wont be a big team to share the work
+  - the project might be take up by others in the future, so easy of getting started should be low.
+  - Does not use, obscure/rare technology that need lots of learning upfront
 
 ### Architecture Constraints
 
@@ -59,35 +91,25 @@ The whole thing shouldn't cost anything. We are able to spend a few euros a mont
 
 ## Solution Strategy
 
-Implementation should happen in a Javascript-ish way, as this it the skill the programmers bring and prefer.
+Implementation should happen in a Javascript-ish way, as this it the skill the programmers bring and prefer. All in all we should prefer the simpler and mori maintainable options, as the team is not fixed.
 
-Gerne KEIN JSX, sehr gerne Typescript.
-Ich würde außer dem gegen Scss voten egal.
+### SPA vs MPA and the question of javascript
 
-### PDF -generation
-Pdfs per print
-Die pdfs macht man am besten nach dem deployment per z.b. puppeteer. Das Frontend stellt dafür die Inhalte bereit und dann wird per headless chrome gedruckt und als PDF auf der richtige Route hochgeladen
-Dabei könnte der "normale" Inhalt mit Print media query gestyled werde oder... Vielleicht ist es praktikabel eine extra "hidden" Seite dafür zu haben, das macht das debuggin einfacher. Zumal es auf dem Prinz auch eigene inhaltr gibt (z.b. visdp und Logo und so was)
-Im Anschluss an den Print könnte man noch mit ghostscript o.ä. noch ein bisschen post processing machen: Komprimierung und ggbf auch zusammen Mergen von allen flyern je Sprache+Layouts für den Massendruck.
+We could use an SinglePageAppilcation – one html is loaded and everything is js – or we could use a MultiPage-Application, where on each navigation the browser will fetch an new HTML document.
 
-### Shortlinks
+If we want to accommodate lower end device we have to minimise the footprint of the page. We definitely want to have some sort Server-Side-Rendering.
+Booting bigger chunks to javascript is out of the question, but still a little js wont hurt.
+Comparing static html with some sort of hydration, in experiments yielded that the difference is of a magnitude. Still the difference in perceived performance is not that big.
 
-Shortlink per API Route
-Aktuell sind die shortlinks per Hand mit YOURLS eingestellt, nun wäre es sinnvoll das auch  in die Daten der Inhalte mit rein zu ziehen, damit daraus auch immer die qrcodes generiert werden können.
-Generell könnten man im Druck auch qr codes dafür anbieten.
-Es gibt dabei 3 Typen:
-Für unser Material auf das verwiesen wird innerhalb unseres Materials (z.b. flyer werden im Koffer verlinkt) — das sind dann die Metadaten den Material auf das gezeigt wird
-Für die links die von außen (per qr code) auf unser Material zeigen .— das sind dann die Metadaten den Material auf das gezeigt wird
-Externes Material das wir nur verlinken. — as müssen wir dann extra Pflegen als eigenen datentyp.
-
+=> Both would work but MPA is favored
 
 ### Content-Management
 
 M.e gibt es 2 zentrale Fragen:
 1. Wo lebt der content? Im Git oder in einem "echten" CMS mit Datenbank?
-   Hier wäre die Konsequenz, das es für nicht-devs quasi unmöglich wird inhalte einzustellen wen wir git nehmen. Ist die Frage ob das schlimm ist.
+   Hier wäre die Konsequenz, das es für nicht-devs quasi unmöglich wird inhalte einzustellen, wenn wir git nehmen. Ist die Frage, ob das schlimm ist.
 
-2. Wollen wir die Inhalten Modular gestalten, also Flyer und Koffer aus "Bausteinen" zusammensetzen, oder erhöht das nur die Komplexität und bringt am Ende wenig?
+2. Wollen wir die Inhalte modular gestalten, also Flyer und Koffer aus "Bausteinen" zusammensetzen, oder erhöht das nur die Komplexität und bringt am Ende wenig?
 
 Ich habe diese 2 Frage mal in 5 Varianten versucht etwas zu verschriftlichen – nur um das jeweils auch mal richtig zu durchdenken.
 
@@ -100,14 +122,14 @@ Die Shortlink müssen ebenso über die Metadaten und ggf einen eigene collection
 PDF wird postbuild "gedruckt" und dann hochgeladen
 
 Konsequenzen:
-alles wird nur zur buildtime erstellt
-einpflegen von inhalten nur durch dev-team möglich (könnten man aber lernen) ist aber sehr einfach
-preview benötigt dev-env
-inhalte sind open source verfügbar
-ggbf doppelter text.
-metadaten zwischen texten sind nicht automatisdh konsitent: ALLES wir übersetzt über die (sprachen dupliziert
-Gefahr das die sprachen auseinander laufen, weil keinen enge Kohäsion
-quite straight forward
+* alles wird nur zur buildtime erstellt
+* einpflegen von inhalten nur durch dev-team möglich (könnten man aber lernen) ist aber sehr einfach
+* preview benötigt dev-env
+* inhalte sind open source verfügbar
+* ggbf doppelter text.
+* metadaten zwischen texten sind nicht automatisdh konsitent: ALLES wir übersetzt über die (sprachen dupliziert
+* Gefahr das die sprachen auseinander laufen, weil keinen enge Kohäsion
+* quite straight forward
 
 #### Variante B) "Markdown aber mit nesting"
 Wir nutzen eins der SSG Framework, und müssen die inhalte aber erst zusammen tüdeln.
@@ -119,13 +141,13 @@ PDF wird postbuild "gedruckt" und dann hochgeladen
 out of the box geht das nur mit Astro (aber auch da nicht easy). ließen sich aber sicher auch per hand implementieren...
 
 Konsequenzen:
-alles wird nur zur buildtime erstellt
-einpflegen von inhalten nur durch dev-team möglich und auch nicht trivial, weil referenzen passen müssen
-preview benötigt dev-env
-inhalte sind open source verfügbar
-kein doppelter text.
-metadaten zwischen texten sind automatisch konsitent: Es wir nur übersetzt was übersetzt werden muss
-nicht ganz so easy, kann nan durcheinander kommen
+* alles wird nur zur buildtime erstellt
+* einpflegen von inhalten nur durch dev-team möglich und auch nicht trivial, weil referenzen passen müssen
+* preview benötigt dev-env
+* inhalte sind open source verfügbar
+* kein doppelter text.
+* metadaten zwischen texten sind automatisch konsitent: Es wir nur übersetzt was übersetzt werden muss
+* nicht ganz so easy, kann nan durcheinander kommen
 
 #### Variante C) "GIT-CMS aber mit nesting"
 wie B) aber wir haben fertiges tooling... aber gibt es das überhaupt? Ja!
@@ -135,14 +157,16 @@ Nicht alle tools unterstützten das nesting.
 mit tinacms und object, list=true müsste das gehen
 
 Konsequenzen:
-alles wird nur zur buildtime erstellt
-einpflegen von inhalten nur durch dev-team möglich
-preview benötigt dev-env
-inhalte sind open source verfügbar
-kein doppelter text.
-metadaten zwischen texten sind automatisdh konsitent: Es wir nur übersetzt was übersetzt werden muss
-dank admin ein bisschen einfacher aber trotzdem  nur für devs
-
+* alles wird nur zur buildtime erstellt
+* einpflegen von inhalten nur durch dev-team möglich
+* preview benötigt dev-env
+* inhalte sind open source verfügbar
+* kein doppelter text.
+* metadaten zwischen texten sind automatisch konsitent: Es wir nur übersetzt was übersetzt werden muss
+* dank admin ein bisschen einfacher aber trotzdem nur für devs
+* geringe zusätzliche komplexität, weil mehr bewegliche Teile
+* geringe erhöhter Wartungsaufwand für das CMS
+* 
 
 #### Variante D) "CMS aber plain"
 Wir nutzen eins der SSG Framework und fetchen den content einfach je page.
@@ -153,14 +177,15 @@ Die Shortlink müssen ebenso über die Metadaten und ggf einen eigene collection
 PDF wird postbuild "gedruckt" und dann hochgeladen.
 
 Konsequenzen:
-alles wird nur zur buildtime erstellt. SSR ginge aber auch
-einpflegen von inhalten durch alle im team möglich. sehr einfach
-preview geh ganz okay im cms oder über extra SSR-route
-inhalte sind nicht open source verfügbar
-doppelter text und viel zu updaten
-metadaten zwischen texten sind automatisdh konsitent: Es wir nur übersetzt was übersetzt werden muss
-quite straight forward aber viele teile
-
+* alles wird nur zur buildtime erstellt. SSR ginge aber auch.
+* einpflegen von inhalten durch alle im team möglich. sehr einfach
+* preview geh ganz okay im cms oder über extra SSR-route
+* inhalte sind nicht open source verfügbar
+* doppelter text und viel zu updaten
+* metadaten zwischen texten sind automatisdh konsitent: Es wir nur übersetzt was übersetzt werden muss
+* quite straight forward aber viele teile
+* zusätzliche Komplexität, weil mehr bewegliche Teile
+* erhöhter Wartungsaufwand für CMS
 
 #### Variante E) "CMS aber mit nesting"
 Wir nutzen eins der SSG Framework und fetchen den content je page ggbf müssen wir aber noch ein paar child resourcen dazu holen.
@@ -170,28 +195,58 @@ Die Shortlink müssen ebenso über die Metadaten und ggf einen eigene collection
 PDF wird postbuild "gedruckt" und dann hochgeladen.
 
 Konsequenzen:
-alles wird nur zur buildtime erstellt. SSR ginge aber auch
-einpflegen von inhalten durch alle im team möglich. etwas komplexer vielleicht einfach
-preview geh ganz okay im cms oder über extra SSR-route
-inhalte sind nicht open source verfügbar.
-kein doppelter text.
-metadaten zwischen texten sind automatisch konsitent: Es wir nur übersetzt was übersetzt werden muss
-danke admin ein bisschen einfacher aber trotzdem ein komplexe bedienung.
+* alles wird nur zur buildtime erstellt. SSR ginge aber auch
+* einpflegen von inhalten durch alle im team möglich. etwas komplexer vielleicht einfach
+* preview geh ganz okay im cms oder über extra SSR-route
+* inhalte sind nicht open source verfügbar.
+* kein doppelter text.
+* metadaten zwischen texten sind automatisch konsitent: Es wir nur übersetzt was übersetzt werden muss
+* danke admin ein bisschen einfacher aber trotzdem ein komplexe bedienung.
+* zusätzliche Komplexität, weil mehr bewegliche Teile
+* erhöhter Wartungsaufwand für CMS
 
+=> Übersetzer*innen wer nicht selbst die Inhalte bearbeiten. Es wird also keine "Extern" im Admin geben, sondern nur das Kern-team würde dort etwas ändern. Deswegen können wir auch nur mit git arbeiten, wenn wir das wirklich wollen...
 
-#### Conclusion
+=> Wir wollen mind 2 Block-Module:
+Die Texte der 3 Koffer sind zu 95% identisch innerhalb derselben Sprache. Das muss wieder verwendbar sein. Auf in einige Flyers kommen Blöcke wieder vor.
+Die an einigen stellen wird im Koffer auf die Flyer verwiesen: hier wollen wir eigentlich den kompletten Flyer als infokasten einbetten....>> Ruth und Christina integrieren Flyer in Notfallkoffer.
+Damit brauchen wir hier sehr simple module.
 
-=> Es wird keinen extern im Admin geben, des wegen können wir auch nur mit git arbeiten, wenn wir das wirklich wollen... übersetzer*innen
+=> Außerdem brauchen wir noch 2 Typen an "Inline-Modulen"
+- Adressen/kontaktdaten (werden nicht übersetzt) (beinhaltet eventuell auch Shortlinks)
+- Shortlinks auf externen Inhalt
+Beide müssen in den die oben genannten Blöcken im Inhalt frei (=inline) platziert werden können.
 
-=> Wir wollen mind 2 Module:
-Adressen/kontakt daten (nicht übersetzt) (beinhaltet eventuell auch Shortlinks)
-Shortlinks auf externen inhalt
-Die Texte der 3 Koffer sind zu 95% identisch innerhalb derselben Sprache
-Die an einigen stellen wird im Koffer auf die Flyer verwiesen: hier wollen wir eigentlich den kompletten Fyler also infokasten einbetten....>> Ruth und Christina integrieren Flyer in Notfallkoffer
+### PDF-Generation
+Die Pdfs werden am besten "per print" generiert.
+Dar macht man am besten nach dem deployment per z.b. puppeteer. Das Frontend stellt dafür die Inhalte bereit und dann wird per headless chrome gedruckt und als PDF auf der richtige Route hochgeladen. ggf geht das aber auch mit einer HTML-zu-PDF-Lib.
+Dabei könnte der "normale" Inhalt mit Print media query gestyled werde oder... Vielleicht ist es praktikabel eine extra "hidden" Seite dafür zu haben, das macht das debugging einfacher. Zumal es auf dem Print auch eigene inhalte gibt (z.b. visdp und Logo und so was)
+Im Anschluss an den Print könnte man noch mit ghostscript o.ä. noch ein bisschen post processing machen: Komprimierung und ggbf auch zusammen Mergen von allen flyern je Sprache+Layouts für den Massendruck.
+
+### Shortlinks
+
+Shortlink per API Route
+Aktuell sind die shortlinks per Hand mit YOURLS eingestellt, nun wäre es sinnvoll das auch in die Daten der Inhalte mit rein zu ziehen, damit daraus auch immer die qrcodes generiert werden können. Generell könnten man im Druck auch qr codes dafür anbieten.
+Es gibt dabei 3 Typen:
+Für unser Material auf das verwiesen wird innerhalb unseres Materials (z.b. flyer werden im Koffer verlinkt) — das sind dann die Metadaten den Material auf das gezeigt wird
+Für die links die von außen (per qr code) auf unser Material zeigen .— das sind dann die Metadaten den Material auf das gezeigt wird
+Externes Material das wir nur verlinken. — das müssen wir dann extra Pflegen als eigenen datentyp.
+
+=> Es muss also ein "server-prozess" für die Redirect laufen. (z.B. Express) 
+
+### Search
+  
+Wir wollen unser Inhalte durchsuchbar machen. Dafür gibt es 2 Varianten, beide sind ähnlich komplex aber erprobt.
+- Suche über die Daten: es wird per query auf den Daten gesucht und damit "errechnet" wo der match dann auftauchen würde
+- Suche über externen index ggf crawling der eignen Seite.
+
+Suche wird vermutlich client-side JS erfordern – zumindest um die suchen auszulösen.
+
+Payload erlaubt das erstellen von eigenem index per plugin. astro geht mit fuse.js
 
 ### Considered Tools/Frameworks
 
-#### Headlee CMS
+#### Headlees CMS
 
 Astro Collections
 MD + complex Schema
@@ -229,18 +284,74 @@ node +sql
 läuft nicht gut in monorepo
 https://strapi.io/for-developers
 
-### SSG or SSR friendly Frontend-Frameworks
+=> Both Strapi and payload work. Payload feel more easy.
+Only payload supports inline blocks (via lexical) out of the box.
+
+#### SSG or SSR friendly Frontend-Frameworks
+
+Gerne KEIN JSX, sehr gerne Typescript.
+Ich würde außer dem gegen Scss voten.
 
 Damit bieten sich an:
 - Astro
-  - astro is dead simple
-  - Astro ist bei vielen CMS als Integration zumindest mit gedacht
+  - astro is dead simple. not so much fun.
+  - Astro ist bei vielen CMS als Integration zumindest mit gedacht: content focused
+  - unterstützt MPA und SSR
+  - kann componente der andere frameworks einbetten.
+    - loading angular from astro will cost 10kb for astro clientsice and 30kb for angular common + the code for the component
 - SvelteKit
   - sveltekit ist besonders funky
-  - sveltekit has no content handling at all
+  - sveltekit has no content handling. but there are popular libs for svx/mdx
+  - nur SPA mit SSR/SSG
 - Analog
   - analog hat den besten nx support
   - analog ist natürlich für die angular leute sehr trivial
   - Analog has minimal content support.. no relations https://analogjs.org/docs/features/routing/content#using-the-content-files-list
+  - nur SPA mit SSR/SSG
 - gatsby has some minor concept like this https://www.gatsbyjs.com/docs/reference/routing/file-system-route-api/#syntax-collection-routes
+
+=> Astro gewinnt hier durch die MPA Möglichkeit. Ansonsten ist es aber eine Frage der persönlichen präferenz. Die unterschiede sind dann doch sehr marginal.
+Wir brauchen so oder so ein ganz klein wenig client side js (min für die Suche). Für "App-feeling" lohnt sich Analog. Für content focused Astro. Svelte ist dann eher wie analog.
+
+### Testing
+
+Wir brauchen vermutlich keine wirklichen Unittests. Es wäre aber ratsam eine minimalen automatisierte "smoketest" zu haben, damit versehentliche deployments verhindert werden können.
+
+Das wäre vielleicht was für playwright.
+
+## Technical Solution
+
+[//]: # (TODO: add more details)
+
+
+We use a single Repository with Astro and do everything as MPA.
+
+Content is managed as MDX-collections.
+
+Astro-Pages retrieve the content and forward ot to reuseable components.
+
+Components will be written in Astro until it's no fun anymore. then we can introduce an additional framework.
+
+We allow for astro island only when necessary and try to solve the requirement with css first. client-side should not be loaded on load but after the visible (search in native dialog).
+
+
+## Deployment
+
+[//]: # (TODO: add more details)
+
+Code in single git-repo in github.
+
+Domains:
+- bringbackourneighbours.de
+- bbonlink.de
+
+Artifacts:
+- static html and js + assets files that need to the served
+- some server-side-(node)-app that will do http redirect
+- pdf files as static assets that need to the served
+
+CI to test, build, deploy, generate pdfs deploy pdf assets?
+
+Hosting ?? should we stay with uberspace?
+
 
