@@ -318,3 +318,39 @@ Wir brauchen so oder so ein ganz klein wenig client side js (min für die Suche)
 Wir brauchen vermutlich keine wirklichen Unittests. Es wäre aber ratsam eine minimalen automatisierte "smoketest" zu haben, damit versehentliche deployments verhindert werden können.
 
 Das wäre vielleicht was für playwright.
+
+## Technical Solution
+
+[//]: # (TODO: add more details)
+
+
+We use a single Repository with Astro and do everything as MPA.
+
+Content is managed as MDX-collections.
+
+Astro-Pages retrieve the content and forward ot to reuseable components.
+
+Components will be written in Astro until it's no fun anymore. then we can introduce an additional framework.
+
+We allow for astro island only when necessary and try to solve the requirement with css first. client-side should not be loaded on load but after the visible (search in native dialog).
+
+## Deployment
+
+[//]: # (TODO: add more details)
+
+Code in single git-repo in github.
+
+Domains:
+- bringbackourneighbours.de
+- bbonlink.de
+
+Artifacts:
+- static html and js + assets files that need to the served
+- some server-side-(node)-app that will do http redirect
+- pdf files as static assets that need to the served
+
+CI to test, build, deploy, generate pdfs deploy pdf assets?
+
+Hosting ?? should we stay with uberspace?
+
+
