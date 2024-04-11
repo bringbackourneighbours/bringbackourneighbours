@@ -321,18 +321,109 @@ Das wäre vielleicht was für playwright.
 
 ## Technical Solution
 
-[//]: # (TODO: add more details)
+We use a single Repository with Astro and do everything as MPA. We allow for astro's javascript island only when necessary and try to solve the requirement with css first. client-side should not be loaded on load but after the visible (search in native dialog).
+
+### Features
+
+#### Design
+
+Astro-Pages retrieve the content and forward it to reuseable UI-Components. Components will be written in Astro until it's no fun anymore. then we can introduce an additional framework.
+
+We make use auf component based styling, for easier decoupling of styling and layout. To ensure a nice an coherent look we use an "theme"-wrapper component: This means a component that will set a fixed set of css-variables for us to re-use in all UI-Components.
+
+For a nicer navigational feeling we can use the Astro [ViewTransition](https://docs.astro.build/en/guides/view-transitions/) and [Prefetch](https://docs.astro.build/en/guides/prefetch/).
+
+#### Content
+
+Content is managed as MDX-collections within the project as checked in files with git.
+
+We will create "wrapper"-content-types for the main content (flyers and kits) and "fill" them with the reuseable content, that also needs to be translated.
+We therefore only need to tranrlate the "leafs". See https://github.com/bringbackourneighbours/bbon-poc-astro-content/blob/main/src/content/flyers/entscheidung.md?plain=1#L3 as an example.
 
 
-We use a single Repository with Astro and do everything as MPA.
+#### Search
 
-Content is managed as MDX-collections.
+For Searching we could follow https://blog.otterlord.dev/posts/astro-search/ or https://github.com/johnny-mh/blog2/tree/main/packages/astro-fuse 
 
-Astro-Pages retrieve the content and forward ot to reuseable components.
+#### interface translation
 
-Components will be written in Astro until it's no fun anymore. then we can introduce an additional framework.
+We not only have to translate the content but also the interface: https://docs.astro.build/en/recipes/i18n/#translate-ui-strings
 
-We allow for astro island only when necessary and try to solve the requirement with css first. client-side should not be loaded on load but after the visible (search in native dialog).
+#### QR-Codes
+
+TBD
+#### PDFs
+
+TBD
+
+### Technology
+
+- node + npm (LTS)
+- astro + typescript
+- CSS (no post/Scss)
+- ESLint: with ota-meshi/eslint-plugin-astro
+- Stylelint: with ota-meshi/stylelint-config-html
+- Prettier with: withastro/prettier-plugin-astro
+
+### Project-Structure
+This is just a draft. Pleas keep updated.
+```
+bringbackourneighbours/
+├─ docs/
+|  ├─ architecture/
+│  ├─ design/
+├─ node_modules/
+├─ public/
+│  ├─ favicon.svg
+│  ├─ robots.txt
+├─ src/
+│  ├─ content/
+│  |  ├─ pages/
+│  |  |  ├─ de/
+│  |  |  |  ├─ about.md
+│  |  |  |  ├─ imprint.md
+│  |  |  ├─ en/
+│  |  |  |  ├─ about.md
+│  |  |  |  ├─ imprint.md
+│  |  ├─ flyers/
+│  |  ├─ kits/
+│  |  ├─ blockes/
+│  |  ├─ shortlinks/
+│  |  ├─ adresses/
+│  |  ├─ config.ts 
+│  ├─ pages/
+│  |  ├─ api/bbonlink/
+│  |  |  ├─ # this endpoint will do redircts
+│  |  |  ├─ [reference].ts
+│  |  ├─ # here we set up the pages:
+│  |  ├─ flyer/
+│  |  ├─ kit/
+│  |  ├─ about/
+│  |  ├─ imprint/
+│  |  ├─ pdf/
+│  |  |  ├─ flyer/
+│  |  |  ├─ kit/
+│  |  ├─ index.astro
+│  ├─ layouts/
+│  |  ├─ # reuseable layout for the pages
+│  ├─ components/
+│  |  ├─ # reuseable UI-component in a flat structure
+│  |  ├─ SocialLink.astro
+│  |  ├─ WizardCard.astro
+│  |  ├─ Header.astro
+│  |  ├─ ShortLink.astro
+│  ├─ theme/
+│  |  ├─ # theming components (use with in the layout) +  global styles if needed
+│  ├─ util/
+│  |  ├─ # all sorts of helper like wi retrieving content or i18n
+├─ .gitignore
+├─ astro.config.mjs
+├─ package-lock.json
+├─ package.json
+├─ tsconfig.json
+├─ README.md
+```
+
 
 ## Deployment
 
