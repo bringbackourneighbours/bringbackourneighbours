@@ -12,7 +12,8 @@
   },
   "dependencies": {
     "@astrojs/check": "^0.5.10",
-    "astro": "^4.6.0"
+    "astro": "^4.6.0",
+    "typescript": "^5.4.5"
   },
   "devDependencies": {
     "@eslint/js": "^9.0.0",
@@ -29,7 +30,6 @@
     "stylelint": "^16.3.1",
     "stylelint-config-html": "^1.1.0",
     "stylelint-config-standard": "^36.0.0",
-    "typescript": "^5.4.5",
     "typescript-eslint": "^7.6.0"
   }
 }
