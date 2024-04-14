@@ -1,7 +1,7 @@
 ---
 import { getRelativeLocaleUrl } from 'astro:i18n';
 
-const contactURL = getRelativeLocaleUrl('de', 'contact');
+const contactURL = getRelativeLocaleUrl('en', 'contact');
 ---
 
 <html lang="en">
@@ -23,7 +23,9 @@ const contactURL = getRelativeLocaleUrl('de', 'contact');
     <title>Astro</title>
   </head>
   <body>
-    <h1>BBON</h1>
+    <h1>BBON-EN</h1>
     <a href={contactURL}>contact</a>
+    <a href="/de">de</a>
+    <a href="/en">en</a>
   </body>
 </html>

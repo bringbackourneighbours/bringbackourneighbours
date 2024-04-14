@@ -21,7 +21,7 @@ All commands are run from the root of the project, from a terminal:
 
 See: https://github.com/bringbackourneighbours/docs/tree/main/architecture
 
-Inside of your Astro project, you'll see the following folders and files:
+Inside your Astro project, you'll see the following folders and files:
 
 ```text
 /
