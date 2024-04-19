@@ -364,9 +364,12 @@ For a nicer navigational feeling we can use the Astro [ViewTransition](https://d
 #### Content
 
 Content is managed as MDX-collections within the project as checked in files with git.
+The content will be placed under `src/content`. See also [Project-Structure]
+(#project-structure)
 
 We will create "wrapper"-content-types for the main content (flyers and kits) and "fill" them with the reuseable content, that also needs to be translated.
-We therefore only need to tranrlate the "leafs". See https://github.com/bringbackourneighbours/bbon-poc-astro-content/blob/main/src/content/flyers/entscheidung.md?plain=1#L3 as an example.
+We therefore only need to translate the "leafs".
+See Proof of Concept: https://github.com/bringbackourneighbours/bbon-poc-astro-content/blob/main/src/content/flyers/entscheidung.md?plain=1#L3 as an example.
 
 #### Search
 
