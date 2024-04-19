@@ -1,7 +1,7 @@
 ---
-import { getRelativeLocaleUrl } from 'astro:i18n';
+import { getCollection } from 'astro:content';
 
-const contactURL = getRelativeLocaleUrl('de', 'contact');
+const allPages = await getCollection('pages');
 ---
 
 <html lang="en">
@@ -24,6 +24,18 @@ const contactURL = getRelativeLocaleUrl('de', 'contact');
   </head>
   <body>
     <h1>BBON</h1>
-    <a href={contactURL}>contact</a>
+    <ul>
+      {
+        allPages.map((page) => (
+          <li>
+            <a
+              href={`${page.data.lang}/page/${page.data.identifier}/${page.data.seo}`}
+            >
+              {page.data.title}
+            </a>
+          </li>
+        ))
+      }
+    </ul>
   </body>
 </html>
