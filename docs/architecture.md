@@ -338,7 +338,7 @@ Damit bieten sich an:
   - nur SPA mit SSR/SSG
 - gatsby has some minor concept like this https://www.gatsbyjs.com/docs/reference/routing/file-system-route-api/#syntax-collection-routes
 
-=> Astro gewinnt hier durch die MPA Möglichkeit. Ansonsten ist es aber eine Frage der persönlichen präferenz. Die unterschiede sind dann doch sehr marginal.
+=> Astro gewinnt hier durch die MPA Möglichkeit. Ansonsten ist es aber eine Frage der persönlichen präferenz. Die Unterschiede sind dann doch sehr marginal.
 Wir brauchen so oder so ein ganz klein wenig client side js (min für die Suche). Für "App-feeling" lohnt sich Analog. Für content focused Astro. Svelte ist dann eher wie analog.
 
 ### Testing
@@ -364,8 +364,7 @@ For a nicer navigational feeling we can use the Astro [ViewTransition](https://d
 #### Content
 
 Content is managed as MDX-collections within the project as checked in files with git.
-The content will be placed under `src/content`. See also [Project-Structure]
-(#project-structure)
+The content will be placed under `src/content`. See also [Project-Structure](#project-structure)
 
 We will create "wrapper"-content-types for the main content (flyers and kits) and "fill" them with the reuseable content, that also needs to be translated.
 We therefore only need to translate the "leafs".
@@ -373,7 +372,7 @@ See Proof of Concept: https://github.com/bringbackourneighbours/bbon-poc-astro-c
 
 #### Search
 
-For Searching we could follow https://blog.otterlord.dev/posts/astro-search/ or https://github.com/johnny-mh/blog2/tree/main/packages/astro-fuse
+For Searching, we could follow https://blog.otterlord.dev/posts/astro-search/ or https://github.com/johnny-mh/blog2/tree/main/packages/astro-fuse
 
 #### interface translation
 
