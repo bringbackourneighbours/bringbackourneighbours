@@ -3,29 +3,40 @@
 This document describes the initial specification for the new web-project. It documents the architectural decisions and how the where made.
 
 <!-- TOC -->
-* [Architecture](#architecture)
-  * [Introduction and Goals](#introduction-and-goals)
-  * [Requirements Overview](#requirements-overview)
-    * [Expected Users](#expected-users)
-    * [Quality Goals](#quality-goals)
-    * [Architecture Constraints](#architecture-constraints)
-  * [Solution Strategy](#solution-strategy)
-    * [SPA vs MPA and the question of javascript](#spa-vs-mpa-and-the-question-of-javascript)
-    * [Content-Management](#content-management)
-      * [Variante A) "Markdown, plain und simple"](#variante-a-markdown-plain-und-simple)
-      * [Variante B) "Markdown aber mit nesting"](#variante-b-markdown-aber-mit-nesting)
-      * [Variante C) "GIT-CMS aber mit nesting"](#variante-c-git-cms-aber-mit-nesting)
-      * [Variante D) "CMS aber plain"](#variante-d-cms-aber-plain)
-      * [Variante E) "CMS aber mit nesting"](#variante-e-cms-aber-mit-nesting)
-    * [PDF-Generation](#pdf-generation)
-    * [Shortlinks](#shortlinks)
-    * [Search](#search)
-    * [Considered Tools/Frameworks](#considered-toolsframeworks)
-      * [Headlees CMS](#headlees-cms)
-      * [SSG or SSR friendly Frontend-Frameworks](#ssg-or-ssr-friendly-frontend-frameworks)
-  * [Building Block View](#building-block-view)
-  * [Deployment](#deployment)
-<!-- TOC -->
+
+- [Architecture](#architecture)
+  - [Introduction and Goals](#introduction-and-goals)
+  - [Requirements Overview](#requirements-overview)
+    - [Expected Users](#expected-users)
+    - [Quality Goals](#quality-goals)
+    - [Architecture Constraints](#architecture-constraints)
+  - [Solution Strategy](#solution-strategy)
+    - [SPA vs MPA and the question of javascript](#spa-vs-mpa-and-the-question-of-javascript)
+    - [Content-Management](#content-management)
+      - [Variante A) "Markdown, plain und simple"](#variante-a-markdown-plain-und-simple)
+      - [Variante B) "Markdown aber mit nesting"](#variante-b-markdown-aber-mit-nesting)
+      - [Variante C) "GIT-CMS aber mit nesting"](#variante-c-git-cms-aber-mit-nesting)
+      - [Variante D) "CMS aber plain"](#variante-d-cms-aber-plain)
+      - [Variante E) "CMS aber mit nesting"](#variante-e-cms-aber-mit-nesting)
+    - [PDF-Generation](#pdf-generation)
+    - [Shortlinks](#shortlinks)
+    - [Search](#search)
+    - [Considered Tools/Frameworks](#considered-toolsframeworks)
+      - [Headlees CMS](#headlees-cms)
+      - [SSG or SSR friendly Frontend-Frameworks](#ssg-or-ssr-friendly-frontend-frameworks)
+    - [Testing](#testing)
+  - [Technical Solution](#technical-solution)
+    - [Features](#features)
+      - [Design](#design)
+      - [Content](#content)
+      - [Search](#search-1)
+      - [interface translation](#interface-translation)
+      - [QR-Codes](#qr-codes)
+      - [PDFs](#pdfs)
+    - [Technology](#technology)
+    - [Project-Structure](#project-structure)
+  - [Deployment](#deployment)
+  <!-- TOC -->
 
 ## Introduction and Goals
 
@@ -35,7 +46,7 @@ We used the money to develop extensive multilingual information for refugees. Th
 
 So far, we have produced 9 flyers (1 more in progress) in 6 languages (German, English, French, Georgian, Arabic, Urdu + further translations planned/in progress) and 3 emergency kits against deportations. Flyers are short texts and an emergency kit is a collection of various longer texts and lists with advice centers and addresses as well as templates for letters to authorities. Within the material there are many cross-references and links - also via QR codes.
 
-Until now, all the materials were first created individually (in Office) and then translated and then created into PDFs with Canva/InDesign/Office and then placed on the website. For the cross-references, there is also a shortlink, e.g. https://bbonlink.de/flyer-de-dublin . With the shortlinks we also refer to material from others, sometimes differently for each language. And as you can see now: (9 flyers + 3 suitcases) * 6 languages + the links = well over 100 places where information is available that now needs to be updated for the first time.... and that is just too much for us.
+Until now, all the materials were first created individually (in Office) and then translated and then created into PDFs with Canva/InDesign/Office and then placed on the website. For the cross-references, there is also a shortlink, e.g. https://bbonlink.de/flyer-de-dublin . With the shortlinks we also refer to material from others, sometimes differently for each language. And as you can see now: (9 flyers + 3 suitcases) \* 6 languages + the links = well over 100 places where information is available that now needs to be updated for the first time.... and that is just too much for us.
 
 I think it would make sense instead to compile the content of the flyers and emergency kits from dynamic blocks with their references and then generate the PDFs fully automatically from ready-made templates so that each piece of information only has to be maintained once and is then immediately available live.
 
@@ -44,12 +55,14 @@ The design should also be simple, clear and above all mobile-friendly and work w
 ## Requirements Overview
 
 ### Expected Users
+
 We have to focus mainly on 4 groups of people, who's needs will influence the way we set up this project:
+
 - Affected: People using the content and who are themselves in danger of a deportation and want to inform themselves
 - Editors: Volunteers, who create and update and translate the content
 - Developers Volunteers who design and implement the software/systems that will provide the content
 - Supporters: People who do counselling or political organising and try to inform Affected
-People with the help of the content.
+  People with the help of the content.
 
 The order of this list also reflects a certain priority in whos needs we should not be compromising. The Editors and Programmers are part of the project team.
 
@@ -106,6 +119,7 @@ Comparing static html with some sort of hydration, in experiments yielded that t
 ### Content-Management
 
 M.e gibt es 2 zentrale Fragen:
+
 1. Wo lebt der content? Im Git oder in einem "echten" CMS mit Datenbank?
    Hier wäre die Konsequenz, das es für nicht-devs quasi unmöglich wird inhalte einzustellen, wenn wir git nehmen. Ist die Frage, ob das schlimm ist.
 
@@ -114,24 +128,27 @@ M.e gibt es 2 zentrale Fragen:
 Ich habe diese 2 Frage mal in 5 Varianten versucht etwas zu verschriftlichen – nur um das jeweils auch mal richtig zu durchdenken.
 
 #### Variante A) "Markdown, plain und simple"
+
 Wir nutzen eins der SSG Framework so plain wie möglich:
 Die Texte liegen einfach Flyer für Flyer, Koffer für koffer als Markdown mit ein kleinwenig Metadaten als content da. Doppelter Text ist auch doppelt eingepflegt,
 
-I18n über folder/filename für die inhalte und genauso aut für das interface. (z.B.  src/content/flyers/deportation/en.md)
+I18n über folder/filename für die inhalte und genauso aut für das interface. (z.B. src/content/flyers/deportation/en.md)
 Die Shortlink müssen ebenso über die Metadaten und ggf einen eigene collection abgebildet werden als API-Routes.
 PDF wird postbuild "gedruckt" und dann hochgeladen
 
 Konsequenzen:
-* alles wird nur zur buildtime erstellt
-* einpflegen von inhalten nur durch dev-team möglich (könnten man aber lernen) ist aber sehr einfach
-* preview benötigt dev-env
-* inhalte sind open source verfügbar
-* ggbf doppelter text.
-* metadaten zwischen texten sind nicht automatisdh konsitent: ALLES wir übersetzt über die (sprachen dupliziert
-* Gefahr das die sprachen auseinander laufen, weil keinen enge Kohäsion
-* quite straight forward
+
+- alles wird nur zur buildtime erstellt
+- einpflegen von inhalten nur durch dev-team möglich (könnten man aber lernen) ist aber sehr einfach
+- preview benötigt dev-env
+- inhalte sind open source verfügbar
+- ggbf doppelter text.
+- metadaten zwischen texten sind nicht automatisdh konsitent: ALLES wir übersetzt über die (sprachen dupliziert
+- Gefahr das die sprachen auseinander laufen, weil keinen enge Kohäsion
+- quite straight forward
 
 #### Variante B) "Markdown aber mit nesting"
+
 Wir nutzen eins der SSG Framework, und müssen die inhalte aber erst zusammen tüdeln.
 Die Texte liegen als markdown + metadaten im git und werden für die Darstellung einmal neu zusammen gesetzt.
 I18n über folder/filename für die inhalte und genauso aut für das interface. (z.B. src/content/flyers/deportation/base.yaml + src/content/blocks/deportation-intro/en.md)
@@ -141,15 +158,17 @@ PDF wird postbuild "gedruckt" und dann hochgeladen
 out of the box geht das nur mit Astro (aber auch da nicht easy). ließen sich aber sicher auch per hand implementieren...
 
 Konsequenzen:
-* alles wird nur zur buildtime erstellt
-* einpflegen von inhalten nur durch dev-team möglich und auch nicht trivial, weil referenzen passen müssen
-* preview benötigt dev-env
-* inhalte sind open source verfügbar
-* kein doppelter text.
-* metadaten zwischen texten sind automatisch konsitent: Es wir nur übersetzt was übersetzt werden muss
-* nicht ganz so easy, kann nan durcheinander kommen
+
+- alles wird nur zur buildtime erstellt
+- einpflegen von inhalten nur durch dev-team möglich und auch nicht trivial, weil referenzen passen müssen
+- preview benötigt dev-env
+- inhalte sind open source verfügbar
+- kein doppelter text.
+- metadaten zwischen texten sind automatisch konsitent: Es wir nur übersetzt was übersetzt werden muss
+- nicht ganz so easy, kann nan durcheinander kommen
 
 #### Variante C) "GIT-CMS aber mit nesting"
+
 wie B) aber wir haben fertiges tooling... aber gibt es das überhaupt? Ja!
 Hier liegen die texte als markdown im gut können aber per admin ui editiert werden.
 Nicht alle tools unterstützten das nesting.
@@ -157,18 +176,20 @@ Nicht alle tools unterstützten das nesting.
 mit tinacms und object, list=true müsste das gehen
 
 Konsequenzen:
-* alles wird nur zur buildtime erstellt
-* einpflegen von inhalten nur durch dev-team möglich
-* preview benötigt dev-env
-* inhalte sind open source verfügbar
-* kein doppelter text.
-* metadaten zwischen texten sind automatisch konsitent: Es wir nur übersetzt was übersetzt werden muss
-* dank admin ein bisschen einfacher aber trotzdem nur für devs
-* geringe zusätzliche komplexität, weil mehr bewegliche Teile
-* geringe erhöhter Wartungsaufwand für das CMS
-* 
+
+- alles wird nur zur buildtime erstellt
+- einpflegen von inhalten nur durch dev-team möglich
+- preview benötigt dev-env
+- inhalte sind open source verfügbar
+- kein doppelter text.
+- metadaten zwischen texten sind automatisch konsitent: Es wir nur übersetzt was übersetzt werden muss
+- dank admin ein bisschen einfacher aber trotzdem nur für devs
+- geringe zusätzliche komplexität, weil mehr bewegliche Teile
+- geringe erhöhter Wartungsaufwand für das CMS
+-
 
 #### Variante D) "CMS aber plain"
+
 Wir nutzen eins der SSG Framework und fetchen den content einfach je page.
 Die Texte liegen einfach Flyer für Flyer,Koffer für koffer im CMS mit ein kleinwenig Metadaten als content da. Doppelter Text ist auch doppelt eingepflegt,
 
@@ -177,17 +198,19 @@ Die Shortlink müssen ebenso über die Metadaten und ggf einen eigene collection
 PDF wird postbuild "gedruckt" und dann hochgeladen.
 
 Konsequenzen:
-* alles wird nur zur buildtime erstellt. SSR ginge aber auch.
-* einpflegen von inhalten durch alle im team möglich. sehr einfach
-* preview geh ganz okay im cms oder über extra SSR-route
-* inhalte sind nicht open source verfügbar
-* doppelter text und viel zu updaten
-* metadaten zwischen texten sind automatisdh konsitent: Es wir nur übersetzt was übersetzt werden muss
-* quite straight forward aber viele teile
-* zusätzliche Komplexität, weil mehr bewegliche Teile
-* erhöhter Wartungsaufwand für CMS
+
+- alles wird nur zur buildtime erstellt. SSR ginge aber auch.
+- einpflegen von inhalten durch alle im team möglich. sehr einfach
+- preview geh ganz okay im cms oder über extra SSR-route
+- inhalte sind nicht open source verfügbar
+- doppelter text und viel zu updaten
+- metadaten zwischen texten sind automatisdh konsitent: Es wir nur übersetzt was übersetzt werden muss
+- quite straight forward aber viele teile
+- zusätzliche Komplexität, weil mehr bewegliche Teile
+- erhöhter Wartungsaufwand für CMS
 
 #### Variante E) "CMS aber mit nesting"
+
 Wir nutzen eins der SSG Framework und fetchen den content je page ggbf müssen wir aber noch ein paar child resourcen dazu holen.
 Die Textblöcke liegen als markdown + metadaten im cms und werden vor dort zur darstellung über referencen neu zusammen gesetzt.
 I18n über folder/filename für die inhalte in CMS und lokales lookup für das interface.
@@ -195,17 +218,18 @@ Die Shortlink müssen ebenso über die Metadaten und ggf einen eigene collection
 PDF wird postbuild "gedruckt" und dann hochgeladen.
 
 Konsequenzen:
-* alles wird nur zur buildtime erstellt. SSR ginge aber auch
-* einpflegen von inhalten durch alle im team möglich. etwas komplexer vielleicht einfach
-* preview geh ganz okay im cms oder über extra SSR-route
-* inhalte sind nicht open source verfügbar.
-* kein doppelter text.
-* metadaten zwischen texten sind automatisch konsitent: Es wir nur übersetzt was übersetzt werden muss
-* danke admin ein bisschen einfacher aber trotzdem ein komplexe bedienung.
-* zusätzliche Komplexität, weil mehr bewegliche Teile
-* erhöhter Wartungsaufwand für CMS
 
-=> Übersetzer*innen wer nicht selbst die Inhalte bearbeiten. Es wird also keine "Extern" im Admin geben, sondern nur das Kern-team würde dort etwas ändern. Deswegen können wir auch nur mit git arbeiten, wenn wir das wirklich wollen...
+- alles wird nur zur buildtime erstellt. SSR ginge aber auch
+- einpflegen von inhalten durch alle im team möglich. etwas komplexer vielleicht einfach
+- preview geh ganz okay im cms oder über extra SSR-route
+- inhalte sind nicht open source verfügbar.
+- kein doppelter text.
+- metadaten zwischen texten sind automatisch konsitent: Es wir nur übersetzt was übersetzt werden muss
+- danke admin ein bisschen einfacher aber trotzdem ein komplexe bedienung.
+- zusätzliche Komplexität, weil mehr bewegliche Teile
+- erhöhter Wartungsaufwand für CMS
+
+=> Übersetzer\*innen wer nicht selbst die Inhalte bearbeiten. Es wird also keine "Extern" im Admin geben, sondern nur das Kern-team würde dort etwas ändern. Deswegen können wir auch nur mit git arbeiten, wenn wir das wirklich wollen...
 
 => Wir wollen mind 2 Block-Module:
 Die Texte der 3 Koffer sind zu 95% identisch innerhalb derselben Sprache. Das muss wieder verwendbar sein. Auf in einige Flyers kommen Blöcke wieder vor.
@@ -213,11 +237,13 @@ Die an einigen stellen wird im Koffer auf die Flyer verwiesen: hier wollen wir e
 Damit brauchen wir hier sehr simple module.
 
 => Außerdem brauchen wir noch 2 Typen an "Inline-Modulen"
+
 - Adressen/kontaktdaten (werden nicht übersetzt) (beinhaltet eventuell auch Shortlinks)
 - Shortlinks auf externen Inhalt
-Beide müssen in den die oben genannten Blöcken im Inhalt frei (=inline) platziert werden können.
+  Beide müssen in den die oben genannten Blöcken im Inhalt frei (=inline) platziert werden können.
 
 ### PDF-Generation
+
 Die Pdfs werden am besten "per print" generiert.
 Dar macht man am besten nach dem deployment per z.b. puppeteer. Das Frontend stellt dafür die Inhalte bereit und dann wird per headless chrome gedruckt und als PDF auf der richtige Route hochgeladen. ggf geht das aber auch mit einer HTML-zu-PDF-Lib.
 Dabei könnte der "normale" Inhalt mit Print media query gestyled werde oder... Vielleicht ist es praktikabel eine extra "hidden" Seite dafür zu haben, das macht das debugging einfacher. Zumal es auf dem Print auch eigene inhalte gibt (z.b. visdp und Logo und so was)
@@ -232,11 +258,12 @@ Für unser Material auf das verwiesen wird innerhalb unseres Materials (z.b. fly
 Für die links die von außen (per qr code) auf unser Material zeigen .— das sind dann die Metadaten den Material auf das gezeigt wird
 Externes Material das wir nur verlinken. — das müssen wir dann extra Pflegen als eigenen datentyp.
 
-=> Es muss also ein "server-prozess" für die Redirect laufen. (z.B. Express) 
+=> Es muss also ein "server-prozess" für die Redirect laufen. (z.B. Express)
 
 ### Search
-  
+
 Wir wollen unser Inhalte durchsuchbar machen. Dafür gibt es 2 Varianten, beide sind ähnlich komplex aber erprobt.
+
 - Suche über die Daten: es wird per query auf den Daten gesucht und damit "errechnet" wo der match dann auftauchen würde
 - Suche über externen index ggf crawling der eignen Seite.
 
@@ -293,6 +320,7 @@ Gerne KEIN JSX, sehr gerne Typescript.
 Ich würde außer dem gegen Scss voten.
 
 Damit bieten sich an:
+
 - Astro
   - astro is dead simple. not so much fun.
   - Astro ist bei vielen CMS als Integration zumindest mit gedacht: content focused
@@ -340,10 +368,9 @@ Content is managed as MDX-collections within the project as checked in files wit
 We will create "wrapper"-content-types for the main content (flyers and kits) and "fill" them with the reuseable content, that also needs to be translated.
 We therefore only need to tranrlate the "leafs". See https://github.com/bringbackourneighbours/bbon-poc-astro-content/blob/main/src/content/flyers/entscheidung.md?plain=1#L3 as an example.
 
-
 #### Search
 
-For Searching we could follow https://blog.otterlord.dev/posts/astro-search/ or https://github.com/johnny-mh/blog2/tree/main/packages/astro-fuse 
+For Searching we could follow https://blog.otterlord.dev/posts/astro-search/ or https://github.com/johnny-mh/blog2/tree/main/packages/astro-fuse
 
 #### interface translation
 
@@ -352,6 +379,7 @@ We not only have to translate the content but also the interface: https://docs.a
 #### QR-Codes
 
 TBD
+
 #### PDFs
 
 TBD
@@ -366,7 +394,9 @@ TBD
 - Prettier with: withastro/prettier-plugin-astro
 
 ### Project-Structure
+
 This is just a draft. Pleas keep updated.
+
 ```
 bringbackourneighbours/
 ├─ docs/
@@ -390,7 +420,7 @@ bringbackourneighbours/
 │  |  ├─ blockes/
 │  |  ├─ shortlinks/
 │  |  ├─ adresses/
-│  |  ├─ config.ts 
+│  |  ├─ config.ts
 │  ├─ pages/
 │  |  ├─ api/bbonlink/
 │  |  |  ├─ # this endpoint will do redircts
@@ -424,18 +454,19 @@ bringbackourneighbours/
 ├─ README.md
 ```
 
-
 ## Deployment
 
-[//]: # (TODO: add more details)
+[//]: # 'TODO: add more details'
 
 Code in single git-repo in github.
 
 Domains:
+
 - bringbackourneighbours.de
 - bbonlink.de
 
 Artifacts:
+
 - static html and js + assets files that need to the served
 - some server-side-(node)-app that will do http redirect
 - pdf files as static assets that need to the served
@@ -443,5 +474,3 @@ Artifacts:
 CI to test, build, deploy, generate pdfs deploy pdf assets?
 
 Hosting ?? should we stay with uberspace?
-
-
