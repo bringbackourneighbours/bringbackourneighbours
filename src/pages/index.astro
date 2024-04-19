@@ -32,6 +32,10 @@ const allPages = await getCollection('pages');
               href={`${page.data.lang}/page/${page.data.identifier}/${page.data.seo}`}
             >
               {page.data.title}
+            </a>{' '}
+            or
+            <a href={`${page.data.lang}/page/${page.data.identifier}`}>
+              {page.data.identifier}
             </a>
           </li>
         ))

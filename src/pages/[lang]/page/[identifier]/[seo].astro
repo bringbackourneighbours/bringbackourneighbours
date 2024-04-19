@@ -1,0 +1,35 @@
+---
+import { getCollection, type CollectionEntry } from 'astro:content';
+
+export async function getStaticPaths() {
+  const pageEntries = await getCollection('pages');
+  return pageEntries.map((entry: CollectionEntry<'pages'>) => {
+    console.log(entry);
+
+    return {
+      params: {
+        lang: entry.data.lang,
+        identifier: entry.data.identifier,
+        seo: entry.data.seo,
+      },
+      props: { entry },
+    };
+  });
+}
+
+// we lose the type here... not sure why
+const { entry } = Astro.props;
+
+if (entry.data?.fallback) {
+  // this could be a middleware
+  return Astro.redirect(
+    `/${entry.data?.fallback}/page/${entry.data.identifier}`,
+    301,
+  );
+}
+
+const { Content } = await entry.render();
+---
+
+<h1>{entry.data.title}</h1>
+<Content />
