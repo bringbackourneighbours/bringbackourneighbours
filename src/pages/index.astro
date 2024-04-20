@@ -2,6 +2,7 @@
 import { getCollection } from 'astro:content';
 
 const allPages = await getCollection('pages');
+const allFlyers = await getCollection('flyers');
 ---
 
 <html lang="en">
@@ -23,23 +24,48 @@ const allPages = await getCollection('pages');
     <title>Astro</title>
   </head>
   <body>
-    <h1>BBON</h1>
-    <ul>
-      {
-        allPages.map((page) => (
-          <li>
-            <a
-              href={`${page.data.lang}/page/${page.data.identifier}/${page.data.seo}`}
-            >
-              {page.data.title}
-            </a>{' '}
-            or
-            <a href={`${page.data.lang}/page/${page.data.identifier}`}>
-              {page.data.identifier}
-            </a>
-          </li>
-        ))
-      }
-    </ul>
+    <h1>BBON WIP</h1>
+    <section>
+      <h2>Pages</h2>
+      <ul>
+        {
+          allPages.map((page) => (
+            <li>
+              {page.data.lang}:
+              <a
+                href={`${page.data.lang}/page/${page.data.identifier}/${page.data.seo}`}
+              >
+                {page.data.title}
+              </a>
+              or
+              <a href={`${page.data.lang}/page/${page.data.identifier}`}>
+                {page.data.identifier}
+              </a>
+            </li>
+          ))
+        }
+      </ul>
+    </section>
+    <section>
+      <h2>Flyers</h2>
+      <ul>
+        {
+          allFlyers.map((flyer) => (
+            <li>
+              {flyer.data.lang}:
+              <a
+                href={`${flyer.data.lang}/flyer/${flyer.data.identifier}/${flyer.data.seo}`}
+              >
+                {flyer.data.title}
+              </a>
+              or
+              <a href={`${flyer.data.lang}/flyer/${flyer.data.identifier}`}>
+                {flyer.data.identifier}
+              </a>
+            </li>
+          ))
+        }
+      </ul>
+    </section>
   </body>
 </html>

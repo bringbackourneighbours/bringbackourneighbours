@@ -1,0 +1,62 @@
+---
+import { getCollection, type CollectionEntry } from 'astro:content';
+
+export async function getStaticPaths() {
+  const flyerEntries = await getCollection('flyers');
+  return flyerEntries.map((entry: CollectionEntry<'flyers'>) => {
+    return {
+      params: {
+        lang: entry.data.lang,
+        identifier: entry.data.identifier,
+        seo: entry.data.seo,
+      },
+      props: { entry },
+    };
+  });
+}
+
+// we lose the type here... not sure why
+const { entry } = Astro.props;
+
+if (entry.data?.fallback) {
+  // this could be a middleware
+  return Astro.redirect(
+    `/${entry.data?.fallback}/flyer/${entry.data.identifier}`,
+    301,
+  );
+}
+
+const { Content } = await entry.render();
+---
+
+<html lang={entry.data.lang}>
+  <head>
+    <meta charset="utf-8" />
+    <link
+      rel="icon"
+      type="image/svg+xml"
+      href="/favicon.svg"
+    />
+    <meta
+      name="viewport"
+      content="width=device-width"
+    />
+    <meta
+      name="generator"
+      content={Astro.generator}
+    />
+    <title>{entry.data.title}</title>
+  </head>
+  <body>
+    <hgroup>
+      <h1>{entry.data.title}</h1>
+      <p>{entry.data.lang} – {entry.data.germanTitle}</p>
+      <p>
+        Stand: <time datetime={entry.data.lastChecked}
+          >{entry.data.lastChecked}</time
+        >
+      </p>
+    </hgroup>
+    <Content />
+  </body>
+</html>

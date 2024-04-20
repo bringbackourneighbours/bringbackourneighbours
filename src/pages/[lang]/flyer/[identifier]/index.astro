@@ -1,0 +1,23 @@
+---
+import { getCollection, type CollectionEntry } from 'astro:content';
+
+export async function getStaticPaths() {
+  const flyerEntries = await getCollection('flyers');
+  return flyerEntries.map((entry: CollectionEntry<'flyers'>) => {
+    return {
+      params: {
+        lang: entry.data.lang,
+        identifier: entry.data.identifier,
+      },
+      props: { entry },
+    };
+  });
+}
+
+const { entry }: { entry: CollectionEntry<'flyers'> } = Astro.props;
+
+// this could be a middleware
+return Astro.redirect(
+  `/${entry.data?.lang}/flyer/${entry.data.identifier}/${entry.data.seo}`,
+);
+---
