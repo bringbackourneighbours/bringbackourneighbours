@@ -29,14 +29,14 @@ const translations = (await getCollection('flyers'))
   .map((flyer) => {
     return {
       lang: flyer.data.lang,
-      slug: `/${flyer.data.lang}/flyer/${flyer.data.identifier}/${flyer.data.seo}`,
+      url: `${Astro.site}/${flyer.data.lang}/flyer/${flyer.data.identifier}/${flyer.data.seo}`,
     };
   });
 
 if (entry.data?.fallback) {
   // this could be a middleware
   return Astro.redirect(
-    `/${entry.data?.fallback}/flyer/${entry.data.identifier}`,
+    `${Astro.site}/${entry.data?.fallback}/flyer/${entry.data.identifier}`,
     301,
   );
 }
@@ -47,7 +47,7 @@ const { Content } = await entry.render();
 <BaseLayout
   lang={entry.data.lang}
   title={entry.data.title}
-  canonicalSlug={`/${entry.data.lang}/flyer/${entry.data.identifier}/${entry.data.seo}`}
+  canonicalSlug={`${Astro.site}/${entry.data.lang}/flyer/${entry.data.identifier}/${entry.data.seo}`}
   translationSlugs={translations}
 >
   <hgroup>

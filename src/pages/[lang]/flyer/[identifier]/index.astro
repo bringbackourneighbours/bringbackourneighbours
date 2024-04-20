@@ -18,6 +18,6 @@ const { entry }: { entry: CollectionEntry<'flyers'> } = Astro.props;
 
 // this could be a middleware
 return Astro.redirect(
-  `/${entry.data?.lang}/flyer/${entry.data.identifier}/${entry.data.seo}`,
+  `${Astro.site}/${entry.data?.lang}/flyer/${entry.data.identifier}/${entry.data.seo}`,
 );
 ---

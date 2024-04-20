@@ -1,5 +1,6 @@
 ---
 import { getCollection, type CollectionEntry } from 'astro:content';
+import BaseLayout from '../../../../layouts/BaseLayout.astro';
 
 export async function getStaticPaths() {
   const pageEntries = await getCollection('pages');
@@ -20,10 +21,24 @@ export async function getStaticPaths() {
 // we lose the type here... not sure why
 const { entry } = Astro.props;
 
+const translations = (await getCollection('pages'))
+  .filter((page) => {
+    return (
+      page.data.identifier === entry.data.identifier &&
+      page.data.lang !== entry.data.lang
+    );
+  })
+  .map((page) => {
+    return {
+      lang: page.data.lang,
+      url: `${Astro.site}/${page.data.lang}/page/${page.data.identifier}/${page.data.seo}`,
+    };
+  });
+
 if (entry.data?.fallback) {
   // this could be a middleware
   return Astro.redirect(
-    `/${entry.data?.fallback}/page/${entry.data.identifier}`,
+    `${Astro.site}/${entry.data?.fallback}/page/${entry.data.identifier}`,
     301,
   );
 }
@@ -31,5 +46,12 @@ if (entry.data?.fallback) {
 const { Content } = await entry.render();
 ---
 
-<h1>{entry.data.title}</h1>
-<Content />
+<BaseLayout
+  lang={entry.data.lang}
+  title={entry.data.title}
+  canonicalSlug={`${Astro.site}/${entry.data.lang}/flyer/${entry.data.identifier}/${entry.data.seo}`}
+  translationSlugs={translations}
+>
+  <h1>{entry.data.title}</h1>
+  <Content />
+</BaseLayout>
