@@ -1,5 +1,6 @@
 ---
 import { getCollection, type CollectionEntry } from 'astro:content';
+import BaseLayout from '../../../../layouts/BaseLayout.astro';
 
 export async function getStaticPaths() {
   const flyerEntries = await getCollection('flyers');
@@ -18,6 +19,20 @@ export async function getStaticPaths() {
 // we lose the type here... not sure why
 const { entry } = Astro.props;
 
+const translations = (await getCollection('flyers'))
+  .filter((flyer) => {
+    return (
+      flyer.data.identifier === entry.data.identifier &&
+      flyer.data.lang !== entry.data.lang
+    );
+  })
+  .map((flyer) => {
+    return {
+      lang: flyer.data.lang,
+      slug: `/${flyer.data.lang}/flyer/${flyer.data.identifier}/${flyer.data.seo}`,
+    };
+  });
+
 if (entry.data?.fallback) {
   // this could be a middleware
   return Astro.redirect(
@@ -29,34 +44,20 @@ if (entry.data?.fallback) {
 const { Content } = await entry.render();
 ---
 
-<html lang={entry.data.lang}>
-  <head>
-    <meta charset="utf-8" />
-    <link
-      rel="icon"
-      type="image/svg+xml"
-      href="/favicon.svg"
-    />
-    <meta
-      name="viewport"
-      content="width=device-width"
-    />
-    <meta
-      name="generator"
-      content={Astro.generator}
-    />
-    <title>{entry.data.title}</title>
-  </head>
-  <body>
-    <hgroup>
-      <h1>{entry.data.title}</h1>
-      <p>{entry.data.lang} – {entry.data.germanTitle}</p>
-      <p>
-        Stand: <time datetime={entry.data.lastChecked}
-          >{entry.data.lastChecked}</time
-        >
-      </p>
-    </hgroup>
-    <Content />
-  </body>
-</html>
+<BaseLayout
+  lang={entry.data.lang}
+  title={entry.data.title}
+  canonicalSlug={`/${entry.data.lang}/flyer/${entry.data.identifier}/${entry.data.seo}`}
+  translationSlugs={translations}
+>
+  <hgroup>
+    <h1>{entry.data.title}</h1>
+    <p>{entry.data.lang} – {entry.data.germanTitle}</p>
+    <p>
+      Stand: <time datetime={entry.data.lastChecked}
+        >{entry.data.lastChecked}</time
+      >
+    </p>
+  </hgroup>
+  <Content />
+</BaseLayout>
