@@ -1,11 +1,15 @@
 import { z, defineCollection } from 'astro:content';
 
-const i18nUrlSchema = {
-  title: z.string(),
+const translatableSchema = {
   identifier: z.string(),
   lang: z.string(),
-  seo: z.string(),
   fallback: z.string().optional(),
+};
+
+const i18nUrlSchema = {
+  ...translatableSchema,
+  title: z.string(),
+  seo: z.string(),
 };
 
 const pagesCollection = defineCollection({
@@ -24,7 +28,15 @@ const flyersCollection = defineCollection({
   }),
 });
 
+const blocksCollection = defineCollection({
+  type: 'content',
+  schema: z.object({
+    ...translatableSchema,
+  }),
+});
+
 export const collections = {
   pages: pagesCollection,
   flyers: flyersCollection,
+  blocks: blocksCollection,
 };

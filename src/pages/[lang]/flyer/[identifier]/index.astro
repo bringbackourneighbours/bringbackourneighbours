@@ -1,6 +1,10 @@
 ---
 import { getCollection, type CollectionEntry } from 'astro:content';
 
+interface Props {
+  entry: CollectionEntry<'flyers'>;
+}
+
 export async function getStaticPaths() {
   const flyerEntries = await getCollection('flyers');
   return flyerEntries.map((entry: CollectionEntry<'flyers'>) => {
@@ -14,7 +18,7 @@ export async function getStaticPaths() {
   });
 }
 
-const { entry }: { entry: CollectionEntry<'flyers'> } = Astro.props;
+const { entry } = Astro.props;
 
 // this could be a middleware
 return Astro.redirect(
