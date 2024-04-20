@@ -1,0 +1,80 @@
+---
+identifier: detention
+title: Abschiebehaft
+germanTitle: Abschiebehaft
+lang: de
+seo: abschiebehaft
+lastChecked: 2023-12-01
+---
+
+## Was ist Abschiebehaft
+
+Wenn die Ausländerbehörde dich abschieben will, kann sich dich dafür in Haft nehmen.
+
+Für eine Abschiebung kann man wenige Tage oder bis zu 3 Monate in Haft genommen werden.
+
+Diese Abschiebehaft ist in Dresden.
+
+Auch ohne eine Straftat begangen zu haben, kann man eingesperrt werden.
+
+Die Polizei kann dich zuhause oder bei einem Behörden-Termin abholen.
+
+Dann wirst du ins Gericht für eine Anhörung gebracht.
+
+Es ist wichtig, dass Anwält\*innen oder eine Vertrauensperson bei der Anhörung dabei sind. Du musst das zu Beginn der
+Anhörung fordern.
+
+In der Abschiebehaft hast du da Recht auf eine Beratung von Anwält\*innen und die Abschiebehaftkontaktgruppe in Dresden.
+
+Du kannst mit dem Sozialdienst sprechen und beide Beratungen beantragen.
+
+Weitere Infos und Kontakt: abschiebehaftkontaktgruppe.de
+
+## Wie groß ist das Risiko?
+
+Wenn du eine einfache Duldung hast, kannst du abgeschoben werden und davor auch in Abschiebehaft kommen.
+
+Auch wenn du schon viele Jahre hier bist oder einen Antrag auf Aufenthalt gestellt hast, kann die Ausländerbehörde dich
+abschieben und vorher in Haft nehmen.
+
+Die Gefahr ist groß,
+
+- wenn schon einmal Abschiebungen gescheitert sind, weil du nicht zuhause warst oder Termine bei der Ausländerbehörde
+  verpasst hast.
+- Wenn du in mehreren EU-Ländern einen Asylantrag gestellt hast
+- Wenn du dich gegen eine Abschiebung gewehrt hast
+- wenn die Ausländerbehörde weiß, dass du einen falschen Pass oder einen falschen Namen angegeben hast
+- wenn du weggezogen bist und dich einige Monate nicht bei der Ausländerbehörde oder dem Sozialamt gemeldet hast.
+- wenn du ein Mann bist: Zur Zeit (2022) werden in Sachsen keine Frauen und Kinder inhaftiert.
+- Wenn du Straftaten begangen hast – auch, wenn das keine Voraussetzung ist für Abschiebehaft.
+
+## Was kannst du tun?
+
+Wenn du Angst vor Abschiebung und Abschiebehaft hast, suche eine Beratung auf:
+
+Sachsen: bbonlink.de/sfr
+
+Zusätzlich in Dresden:
+
+rlc-dresden.de
+auslaenderrat.de/beratungsstelle
+Zusätzlich in Leipzig:
+
+rlcl.de
+infobusleipzig.org/kontakt
+Trage den Namen und die Kontaktdaten deiner Anwältin oder deines Anwalts und einer Person, der du vertraust, immer bei
+dir!
+
+Wenn du verhaftet wirst, bestehe darauf, dass sie informiert werden und zur Anhörung vor Gericht kommen.
+
+# Die Anhörung vor dem Gericht
+
+Du wirst von der Polizei ins Gericht gebracht für eine Anhörung. Bei der Anhörung geht es nicht um deine Asylgründe! Es
+geht darum, ob das Gericht glaubt, dass du dich vor einer Abschiebung verstecken wirst. Versichere dem Gericht, dass du
+bereit bist, dich regelmäßig zu melden und dass du nicht vor einer Abschiebung weglaufen willst. Wenn du dann nicht in
+Haft genommen wirst, gehe dringend zu einer Beratungsstelle oder zu Anwält\*innen.
+
+# In der Abschiebehaftanstalt…
+
+- wirst du von einem Arzt untersucht, ob du gesund genug bist für eine Inhaftierung und die Abschiebung. Falls du krank bist und Medikamente brauchst, erzähle das dem Arzt.
+- Du kannst einen Anwalt oder eine Anwältin, die Abschiebehaft-Kontaktgruppe, eine Psychologin oder einen Seelsorger treffen. Spricht dazu mit dem Sozialdienst oder einem Beamten.
