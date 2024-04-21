@@ -30,7 +30,10 @@ This document describes the initial specification for the new web-project. It do
       - [Design](#design)
       - [Content](#content)
       - [Search](#search-1)
-      - [interface translation](#interface-translation)
+      - [Translation i18n](#translation-i18n)
+        - [URL Translation](#url-translation)
+        - [Content Translation](#content-translation)
+        - [Interface Translation](#interface-translation)
       - [QR-Codes](#qr-codes)
       - [PDFs](#pdfs)
     - [Technology](#technology)
@@ -374,7 +377,54 @@ See Proof of Concept: https://github.com/bringbackourneighbours/bbon-poc-astro-c
 
 For Searching, we could follow https://blog.otterlord.dev/posts/astro-search/ or https://github.com/johnny-mh/blog2/tree/main/packages/astro-fuse
 
-#### interface translation
+#### Translation i18n
+
+We reference languages by their [IETF language tag](https://en.wikipedia.org/wiki/IETF_language_tag)
+Which is equal to ISO 639-1 for most languages.
+
+##### URL Translation
+
+We want to make use of Multi-lingual SEO and therofore follow the google
+recommendations: https://developers.google.com/search/docs/specialty/international
+
+Following from what google says:
+
+- we need a .de domain as we target an audience in germany
+- we should not automatically redirect between languages, as this confuses everyone (including crawler)
+- we need make the language of a page clear
+  - use the html head for it
+  - http header
+  - use the sitemap.xml for links to other versions
+  - use `<link rel="alternate" hreflang="lang_code" href="url_of_page" />` to link to other all languages
+- we need to annotate each link in which language it will lead.
+- url can and should contain the target language even if IDN encoding is necessary
+
+We use following structure for the webpages:
+
+bringbackourneighbours.de/`[languageCode]`/`[contentType]`/`[unifiedIdentifier]`/`[SEO friendly slug]` => canonical
+
+bringbackourneighbours.de/`[languageCode]`/`[contentType]`/`[unifiedIdentifier]` => redirects to canonical
+
+- languageCode = IETF BCP 47 language tag:
+  - `ar`
+  - `de`
+  - `en`
+  - `fr`
+  - `ur`
+  - add more language as the get implemented
+- contentType:
+  - `page` => a static page like "about us"
+  - `flyer`
+  - `kit` => the "koffer"
+- unifiedIdentifier:
+  - english one word : `deportation` | `detention` or `affected` |
+    `professional`
+
+##### Content Translation
+
+TBD
+
+##### Interface Translation
 
 We not only have to translate the content but also the interface: https://docs.astro.build/en/recipes/i18n/#translate-ui-strings
 
