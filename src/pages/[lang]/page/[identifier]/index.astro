@@ -1,0 +1,25 @@
+---
+import { getCollection, type CollectionEntry } from 'astro:content';
+
+export async function getStaticPaths() {
+  const pageEntries = await getCollection('pages');
+  return pageEntries.map((entry: CollectionEntry<'pages'>) => {
+    console.log(entry);
+
+    return {
+      params: {
+        lang: entry.data.lang,
+        identifier: entry.data.identifier,
+      },
+      props: { entry },
+    };
+  });
+}
+
+const { entry }: { entry: CollectionEntry<'pages'> } = Astro.props;
+
+// this could be a middleware
+return Astro.redirect(
+  `/${entry.data?.lang}/page/${entry.data.identifier}/${entry.data.seo}`,
+);
+---

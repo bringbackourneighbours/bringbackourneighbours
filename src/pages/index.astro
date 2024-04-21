@@ -1,5 +1,7 @@
 ---
-const test = 'test';
+import { getCollection } from 'astro:content';
+
+const allPages = await getCollection('pages');
 ---
 
 <html lang="en">
@@ -21,6 +23,23 @@ const test = 'test';
     <title>Astro</title>
   </head>
   <body>
-    <h1>Astro {test}</h1>
+    <h1>BBON</h1>
+    <ul>
+      {
+        allPages.map((page) => (
+          <li>
+            <a
+              href={`${page.data.lang}/page/${page.data.identifier}/${page.data.seo}`}
+            >
+              {page.data.title}
+            </a>{' '}
+            or
+            <a href={`${page.data.lang}/page/${page.data.identifier}`}>
+              {page.data.identifier}
+            </a>
+          </li>
+        ))
+      }
+    </ul>
   </body>
 </html>
