@@ -11,4 +11,4 @@ lastChecked: 2023-12-01
   - auslaenderrat.de/beratungsstelle
 - Zusätzlich in Leipzig:
   - rlcl.de
-  - infobusleipzig.org/kontakt
+  - [infobusleipzig.org/kontakt](https://infobusleipzig.org/kontakt)

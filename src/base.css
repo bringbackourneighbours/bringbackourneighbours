@@ -1,0 +1,13 @@
+:root {
+    --color-primary: #0b3e9c;
+    --color-secondary: #e82b09;
+    --color-background: #fff;
+    --color-background-alt: #f5efe1;
+}
+
+body {
+    font-family: 'FiraGO', sans-serif;
+    background: var(--color-background-alt);
+    margin: 0;
+}
+

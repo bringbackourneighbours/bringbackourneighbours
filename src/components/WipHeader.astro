@@ -4,55 +4,64 @@ import { getCollection } from 'astro:content';
 const allPages = await getCollection('pages');
 const allFlyers = await getCollection('flyers');
 ---
-
-<h1>BBON WIP</h1>
-<nav>
-  <h2>Pages</h2>
-  <ul>
-    {
-      allPages.map((page) => (
-        <li>
-          {page.data.lang}:
-          <a
-            href={`${Astro.site}${page.data.lang}/page/${page.data.identifier}/${page.data.seo}`}
-            hreflang={page.data.lang}
-          >
-            {page.data.title}
-          </a>
-          or
-          <a
-            href={`${Astro.site}${page.data.lang}/page/${page.data.identifier}`}
-            hreflang={page.data.lang}
-          >
-            {page.data.identifier}
-          </a>
-        </li>
-      ))
-    }
-  </ul>
-  <section>
-    <h2>Flyers</h2>
+<style>
+  header { 
+    background-color: var(--color-secondary); 
+  }
+  * { 
+    color: var(--color-background);
+  }
+</style>
+<header>
+<h1>Bring Back Our Neighbours</h1>
+  <nav>
+    <h2>Pages</h2>
     <ul>
       {
-        allFlyers.map((flyer) => (
+        allPages.map((page) => (
           <li>
-            {flyer.data.lang}:
+            {page.data.lang}:
             <a
-              href={`${Astro.site}${flyer.data.lang}/flyer/${flyer.data.identifier}/${flyer.data.seo}`}
-              hreflang={flyer.data.lang}
+              href={`${Astro.site}${page.data.lang}/page/${page.data.identifier}/${page.data.seo}`}
+              hreflang={page.data.lang}
             >
-              {flyer.data.title}
+              {page.data.title}
             </a>
             or
             <a
-              href={`${Astro.site}${flyer.data.lang}/flyer/${flyer.data.identifier}`}
-              hreflang={flyer.data.lang}
+              href={`${Astro.site}${page.data.lang}/page/${page.data.identifier}`}
+              hreflang={page.data.lang}
             >
-              {flyer.data.identifier}
+              {page.data.identifier}
             </a>
           </li>
         ))
       }
     </ul>
-  </section>
-</nav>
+    <section>
+      <h2>Flyers</h2>
+      <ul>
+        {
+          allFlyers.map((flyer) => (
+            <li>
+              {flyer.data.lang}:
+              <a
+                href={`${Astro.site}${flyer.data.lang}/flyer/${flyer.data.identifier}/${flyer.data.seo}`}
+                hreflang={flyer.data.lang}
+              >
+                {flyer.data.title}
+              </a>
+              or
+              <a
+                href={`${Astro.site}${flyer.data.lang}/flyer/${flyer.data.identifier}`}
+                hreflang={flyer.data.lang}
+              >
+                {flyer.data.identifier}
+              </a>
+            </li>
+          ))
+        }
+      </ul>
+    </section>
+  </nav>
+</header>
