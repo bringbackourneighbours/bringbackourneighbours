@@ -1,0 +1,52 @@
+---
+import WipHeader from '../components/WipHeader.astro';
+interface Props {
+  title: string;
+  lang: string;
+  canonicalSlug: string;
+  translationSlugs: Array<{
+    lang: string;
+    url: string;
+  }>;
+}
+
+const { title, lang, canonicalSlug, translationSlugs } = Astro.props;
+---
+
+<html lang={lang}>
+  <head>
+    <meta charset="utf-8" />
+    <link
+      rel="icon"
+      type="image/svg+xml"
+      href="/favicon.svg"
+    />
+    <link
+      rel="canonical"
+      hreflang={lang}
+      href={canonicalSlug}
+    />
+    {
+      translationSlugs?.map((translation) => (
+        <link
+          rel="alternate"
+          hreflang={translation.lang}
+          href={translation.url}
+        />
+      ))
+    }
+    <meta
+      name="viewport"
+      content="width=device-width"
+    />
+    <meta
+      name="generator"
+      content={Astro.generator}
+    />
+    <title>{title}</title>
+  </head>
+  <body>
+    <WipHeader />
+    <slot />
+  </body>
+</html>

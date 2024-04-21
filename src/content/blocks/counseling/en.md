@@ -1,0 +1,14 @@
+---
+identifier: counseling
+lang: en
+lastChecked: 2023-12-01
+---
+
+- Saxony:
+  - bbonlink.de/sfr
+- Additionally in Dresden:
+  - rlc-dresden.de
+  - auslaenderrat.de/beratungsstelle
+- Additionally in Leipzig:
+  - rlcl.de
+  - infobusleipzig.org/kontakt

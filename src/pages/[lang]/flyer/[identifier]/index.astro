@@ -1,9 +1,13 @@
 ---
 import { getCollection, type CollectionEntry } from 'astro:content';
 
+interface Props {
+  entry: CollectionEntry<'flyers'>;
+}
+
 export async function getStaticPaths() {
-  const pageEntries = await getCollection('pages');
-  return pageEntries.map((entry: CollectionEntry<'pages'>) => {
+  const flyerEntries = await getCollection('flyers');
+  return flyerEntries.map((entry: CollectionEntry<'flyers'>) => {
     return {
       params: {
         lang: entry.data.lang,
@@ -14,10 +18,10 @@ export async function getStaticPaths() {
   });
 }
 
-const { entry }: { entry: CollectionEntry<'pages'> } = Astro.props;
+const { entry } = Astro.props;
 
 // this could be a middleware
 return Astro.redirect(
-  `${Astro.site}/${entry.data?.lang}/page/${entry.data.identifier}/${entry.data.seo}`,
+  `${Astro.site}/${entry.data?.lang}/flyer/${entry.data.identifier}/${entry.data.seo}`,
 );
 ---

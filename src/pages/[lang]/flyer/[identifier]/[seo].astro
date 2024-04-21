@@ -3,10 +3,8 @@ import { getCollection, type CollectionEntry } from 'astro:content';
 import BaseLayout from '../../../../layouts/BaseLayout.astro';
 
 export async function getStaticPaths() {
-  const pageEntries = await getCollection('pages');
-  return pageEntries.map((entry: CollectionEntry<'pages'>) => {
-    console.log(entry);
-
+  const flyerEntries = await getCollection('flyers');
+  return flyerEntries.map((entry: CollectionEntry<'flyers'>) => {
     return {
       params: {
         lang: entry.data.lang,
@@ -21,24 +19,24 @@ export async function getStaticPaths() {
 // we lose the type here... not sure why
 const { entry } = Astro.props;
 
-const translations = (await getCollection('pages'))
-  .filter((page) => {
+const translations = (await getCollection('flyers'))
+  .filter((flyer) => {
     return (
-      page.data.identifier === entry.data.identifier &&
-      page.data.lang !== entry.data.lang
+      flyer.data.identifier === entry.data.identifier &&
+      flyer.data.lang !== entry.data.lang
     );
   })
-  .map((page) => {
+  .map((flyer) => {
     return {
-      lang: page.data.lang,
-      url: `${Astro.site}/${page.data.lang}/page/${page.data.identifier}/${page.data.seo}`,
+      lang: flyer.data.lang,
+      url: `${Astro.site}/${flyer.data.lang}/flyer/${flyer.data.identifier}/${flyer.data.seo}`,
     };
   });
 
 if (entry.data?.fallback) {
   // this could be a middleware
   return Astro.redirect(
-    `${Astro.site}/${entry.data?.fallback}/page/${entry.data.identifier}`,
+    `${Astro.site}/${entry.data?.fallback}/flyer/${entry.data.identifier}`,
     301,
   );
 }
@@ -52,6 +50,14 @@ const { Content } = await entry.render();
   canonicalSlug={`${Astro.site}/${entry.data.lang}/flyer/${entry.data.identifier}/${entry.data.seo}`}
   translationSlugs={translations}
 >
-  <h1>{entry.data.title}</h1>
+  <hgroup>
+    <h1>{entry.data.title}</h1>
+    <p>{entry.data.lang} – {entry.data.germanTitle}</p>
+    <p>
+      Stand: <time datetime={entry.data.lastChecked}
+        >{entry.data.lastChecked}</time
+      >
+    </p>
+  </hgroup>
   <Content />
 </BaseLayout>
