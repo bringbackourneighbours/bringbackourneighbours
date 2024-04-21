@@ -1,0 +1,30 @@
+---
+
+---
+
+<style>
+  .default {
+    --color-primary: blue;
+    --color-secondary: coral;
+    --color-surface: beige;
+    --color-error: red;
+    --brighten-factor: 0.2;
+  }
+
+  .theme {
+    --color-surface-bright: hsl(
+      from var(--color-surface) h s calc(l + var(--brighten-factor))
+    );
+    --color-on-primary: var(--color-surface);
+    --color-on-secondary: var(--color-surface-bright);
+  }
+</style>
+<style is:global>
+  * {
+    color: var(--color-primary);
+    background-color: var(--color-surface);
+  }
+</style>
+<body class="theme default">
+  <slot />
+</body>
