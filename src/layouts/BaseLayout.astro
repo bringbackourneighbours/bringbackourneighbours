@@ -10,8 +10,9 @@ interface Props {
   }>;
 }
 
-import 'milligram';
-import '@fontsource/firago';
+import '@fontsource/firago/400.css';
+import '@fontsource/firago/500.css';
+import '@fontsource/firago/600.css';
 import '../base.css';
 
 const { title, lang, canonicalSlug, translationSlugs } = Astro.props;
@@ -51,6 +52,8 @@ const { title, lang, canonicalSlug, translationSlugs } = Astro.props;
   </head>
   <body>
     <WipHeader />
-    <slot />
+    <main>
+      <slot />
+    </main>
   </body>
 </html>

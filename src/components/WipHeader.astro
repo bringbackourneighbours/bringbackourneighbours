@@ -7,13 +7,16 @@ const allFlyers = await getCollection('flyers');
 <style>
   header { 
     background-color: var(--color-secondary); 
+    color: var(--color-surface)
   }
-  * { 
-    color: var(--color-background);
+  a, a:hover, a:visited, a:active {
+    color: var(--color-surface);
+    text-decoration: none;
+    border-bottom: 0;
   }
 </style>
 <header>
-<h1>Bring Back Our Neighbours</h1>
+  <h1>Bring Back Our Neighbours</h1>
   <nav>
     <h2>Pages</h2>
     <ul>
