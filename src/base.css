@@ -4,13 +4,14 @@
 */
 :root {
     --color-primary: #0b3e9c;
-    --color-primary2: #0b3e9c;
+    --color-primary2: #10306a;
     --color-secondary: #e82b09;
     --color-secondary2: #e82b09;
     --color-surface: #fff;
     --color-surface-alt: #fff;
     --color-anim-alt: #f5f0ed;
-    --color-anim-alt-trans: #e9eff7c2;
+    --color-anim-alt-trans: #54f868e6;
+    --color-anim-alt-trans2: #53f689;
     --color-dark: #000;
     --space: 1.62;
     --vspace: calc(var(--space) * 1rem);
@@ -216,8 +217,11 @@ hgroup {
     main {
         padding: 1rem;
     }
+    header {
+        gap: 0.1em;
+    }
     header h1 {
-        font-size: 1.3em!important;
+        font-size: 1.4em!important;
     }
 }
 
