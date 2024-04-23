@@ -9,25 +9,32 @@ import close_icon from "/public/icons/ion--close.svg?raw";
 ---
 <style>
   header { 
-    background-color: var(--color-secondary); 
-    color: var(--color-surface);
+    background-color: var(--color-anim-alt-trans); 
+    color: var(--color-primary2);
     display: flex;
     gap: 1em;
-    background: linear-gradient(135deg, #e93b1d 0%, var(--color-secondary) 50%, #e93b1d 100%);
+    /* background: linear-gradient(135deg, #e93b1d 0%, var(--color-secondary) 50%, #e93b1d 100%); */
     box-shadow: 16px 19px 40px -31px rgba(0,0,0,0.40);
+    justify-content: space-between;
+    position: sticky;
+    top: 0; 
+    padding: 1.5rem; 
+    box-shadow: 0px 7px 0px 0px var(--color-primary2),22px 31px 20px -31px rgba(0,0,0,0.60);
   }
   a, a:hover, a:visited, a:active {
-    color: var(--color-surface);
+    color: var(--color-primary2);
     text-decoration: none;
     border-bottom: 0;
   }
-  .logo {
+  .logo,.menuIcon {
     width: 2em;
-    color: white;
+    height: 2em;
+    color: var(--color-primary2);
   }
-  .menu-icon {
-    width: 2em;
-    color: white;
+
+  .logo svg, .menuIcon svg {
+    width: 100%;
+    height: 100%;
   }
 
   /* main_nav should be a modal fullscreen */
@@ -63,7 +70,7 @@ import close_icon from "/public/icons/ion--close.svg?raw";
   </div>
   <!-- TODO: Put language sentive link here -->
   <a href="/">
-    <h1 class="h2">Bring Back Our Neighbours</h1>
+    <h1 class="h3">Bring Back Our Neighbours</h1>
   </a>
   <div class="menuIcon" onclick="document.getElementById('mainNav').classList.toggle('hidden');">
     <Fragment set:html={menu_icon} />

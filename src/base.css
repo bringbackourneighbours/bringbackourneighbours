@@ -4,9 +4,13 @@
 */
 :root {
     --color-primary: #0b3e9c;
+    --color-primary2: #0b3e9c;
     --color-secondary: #e82b09;
+    --color-secondary2: #e82b09;
     --color-surface: #fff;
-    --color-surface-alt: #f5efe1;
+    --color-surface-alt: #fff;
+    --color-anim-alt: #f5f0ed;
+    --color-anim-alt-trans: #e9eff7c2;
     --color-dark: #000;
     --space: 1.62;
     --vspace: calc(var(--space) * 1rem);
@@ -17,7 +21,7 @@
 }
 
 html {
-    font-size: 16px;
+    font-size: 18px;
 }
 
 body {
@@ -34,8 +38,8 @@ p {
 }
 
 h1, h2, h3, .h1, .h2, .h3 {
-    font-weight: 300;
-    letter-spacing: -.1rem;
+    font-weight: 500;
+    letter-spacing: -.02rem;
 }
 
 h1 {
@@ -65,15 +69,12 @@ h4, h5, h6 {
 
 .h2, h2 {
     font-size: 1.7917em; 
-    font-weight: lighter; 
+    font-weight: 500; 
     word-break: break-word;
 }
 
 .h3, h3 {
     font-size: 1.5em;
-    font-weight: normal;
-    text-transform: uppercase;
-    letter-spacing: .1em;
 }
 
 blockquote {
@@ -168,14 +169,28 @@ dl dl, dl ol, dl ul, ol dl, ol ol, ol ul, ul dl, ul ol, ul ul {
 *  TODO: Move to components if applicable. 
 */
 
+
+.logo,.menuIcon {
+    width: 2em;
+    height: 2em;
+    color: var(--color-primary2);
+  }
+
+  .logo svg, .menuIcon svg {
+    width: 100%;
+    height: 100%;
+  }
+
 main, header {
     padding: 3rem;
 }
 
+
 main {
     max-width: calc(25 * var(--vspace));
-    color: var(--color-dark);
+    color: var(--color-primary);
     margin: 0 auto;
+    padding-top: 1rem;
 }
 
 
@@ -192,6 +207,19 @@ hgroup {
     display: none;
 }
 
+
+/* Make padding of main smaller on small screens */
+@media (max-width: 600px) {
+    html {
+        font-size: 13px;
+    }
+    main {
+        padding: 1rem;
+    }
+    header h1 {
+        font-size: 1.3em!important;
+    }
+}
 
 
 ul.semantic-list  {

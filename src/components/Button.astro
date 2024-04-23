@@ -24,7 +24,20 @@ const classes = direction === 'rtl'? 'rtl h2' : 'h2';
     letter-spacing: normal;
     /* Add a very subtle background gradient between surface color and light grey an surface color*/
     background: linear-gradient(135deg, hsl(0 04% 91% / 1) 0%, var(--color-surface) 50%, hsl(0 04% 91% / 1) 100%);
+    background: linear-gradient(110deg, var(--color-anim-alt),var(--color-anim-alt) 45%, #fff 50% ,var(--color-anim-alt) 55%,var(--color-anim-alt));
+    background-size: 600%;
+    animation: anime 2s linear infinite;
   }
+
+  @keyframes anime {
+  0% {
+    background-position: 100% 50%;
+  }
+  100% {
+    background-position: 0% 50%;
+  }
+}
+
 
   /* Turn background color lighter on hover, with short transition time */
   a:hover {
