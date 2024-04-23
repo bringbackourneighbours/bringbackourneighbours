@@ -155,6 +155,13 @@ dl dl, dl ol, dl ul, ol dl, ol ol, ol ul, ul dl, ul ol, ul ul {
     margin: 1.5rem 0 1.5rem 3rem;
 }
 
+.hidden {
+    display: none!important;
+}
+
+.rtl {
+    direction: rtl;
+}
 
 /* 
 *  SPECIFIC STYLES
@@ -170,7 +177,6 @@ main {
     color: var(--color-dark);
     margin: 0 auto;
 }
-
 
 
 main hgroup .meta {

@@ -3,21 +3,76 @@ import { getCollection } from 'astro:content';
 
 const allPages = await getCollection('pages');
 const allFlyers = await getCollection('flyers');
+import logo from "/public/icons/logo.svg?raw"; 
+import menu_icon from "/public/icons/ion--menu.svg?raw"; 
+import close_icon from "/public/icons/ion--close.svg?raw";
 ---
 <style>
   header { 
     background-color: var(--color-secondary); 
-    color: var(--color-surface)
+    color: var(--color-surface);
+    display: flex;
+    gap: 1em;
+    background: linear-gradient(135deg, #e93b1d 0%, var(--color-secondary) 50%, #e93b1d 100%);
+    box-shadow: 16px 19px 40px -31px rgba(0,0,0,0.40);
   }
   a, a:hover, a:visited, a:active {
     color: var(--color-surface);
     text-decoration: none;
     border-bottom: 0;
   }
+  .logo {
+    width: 2em;
+    color: white;
+  }
+  .menu-icon {
+    width: 2em;
+    color: white;
+  }
+
+  /* main_nav should be a modal fullscreen */
+  #mainNav {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: var(--color-surface);
+    color: var(--color-secondary);
+    z-index: 100;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    
+  }
+  #mainNav a,   #mainNav a:hover,   #mainNav a:visited,   #mainNav a:active {
+    color: var(--color-secondary);
+    text-decoration: none;
+    border-bottom: 0;
+  }
+
+  h1, h2 {
+    margin: 0;
+  }
+  
 </style>
 <header>
-  <h1>Bring Back Our Neighbours</h1>
-  <nav>
+  <div class="logo">
+    <Fragment set:html={logo} />
+  </div>
+  <!-- TODO: Put language sentive link here -->
+  <a href="/">
+    <h1 class="h2">Bring Back Our Neighbours</h1>
+  </a>
+  <div class="menuIcon" onclick="document.getElementById('mainNav').classList.toggle('hidden');">
+    <Fragment set:html={menu_icon} />
+  </div>
+
+  <nav id="mainNav" class="hidden">
+    <div class="closeIcon" onclick="document.getElementById('mainNav').classList.toggle('hidden');">
+      <Fragment set:html={close_icon} />
+    </div>
     <h2>Pages</h2>
     <ul>
       {
