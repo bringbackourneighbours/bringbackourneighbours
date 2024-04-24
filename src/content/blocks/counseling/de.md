@@ -5,10 +5,10 @@ lastChecked: 2023-12-01
 ---
 
 - Sachsen:
-  - bbonlink.de/sfr
+  - [bbonlink.de/sfr](bbonlink.de/sfr)
 - Zusätzlich in Dresden:
-  - rlc-dresden.de
-  - auslaenderrat.de/beratungsstelle
+  - [rlc-dresden.de](https://rlc-dresden.de)
+  - [auslaenderrat.de/beratungsstelle](https://auslaenderrat.de/beratungsstelle)
 - Zusätzlich in Leipzig:
-  - rlcl.de
-  - infobusleipzig.org/kontakt
+  - [rlcl.de](https://rlcl.de)
+  - [infobusleipzig.org/kontakt](https://infobusleipzig.org/kontakt)

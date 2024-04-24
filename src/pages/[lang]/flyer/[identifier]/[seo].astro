@@ -52,12 +52,15 @@ const { Content } = await entry.render();
 >
   <hgroup>
     <h1>{entry.data.title}</h1>
-    <p>{entry.data.lang} – {entry.data.germanTitle}</p>
-    <p>
-      Stand: <time datetime={entry.data.lastChecked}
-        >{entry.data.lastChecked}</time
-      >
-    </p>
+    <ul class="meta semantic-list">
+      <li>{entry.data.lang} – {entry.data.germanTitle}</li>
+      <li>
+        <!-- FIXME: Use proper locales for date, drop timezone output -->
+        Stand: <time datetime={entry.data.lastChecked.toLocaleString()}
+          >{entry.data.lastChecked}</time
+        >
+      </li>
+    </ul>
   </hgroup>
   <Content />
 </BaseLayout>

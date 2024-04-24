@@ -1,8 +1,29 @@
 ---
 import BaseLayout from '../layouts/BaseLayout.astro';
+import Button from '../components/Button.astro';
 ---
 
 <BaseLayout
   lang="de"
-  title="BBON"
-/>
+  title="Bring Back Our Neighbours"
+>
+  <!-- TODO: Titel irgendwo ausm Markdown ziehen -->
+  <Button href="/de/flyer/detention/abschiebehaft">
+    Vous ou quelqu’un d’autre risquez d’être expulsé ?
+  </Button>
+  <Button direction="rtl">
+    هل أنت مهدد بالترحيل؟
+  </Button>
+  <Button direction="rtl">
+    کیا آپ کو نکالنے کا خطرہ ہے؟
+  </Button>
+  <Button href="/de/flyer/detention/abschiebehaft">
+    Bist du oder wer anders von einer Abschiebung bedroht?
+  </Button>
+  <Button>
+    გაძევება გემუქრებათ?
+  </Button>
+  <Button>
+  Are you or somebody else threatened by deportation?
+  </Button>
+</BaseLayout>
