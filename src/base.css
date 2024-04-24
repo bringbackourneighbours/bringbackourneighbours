@@ -4,14 +4,14 @@
 */
 :root {
     --color-primary: #0b3e9c;
-    --color-primary2: #10306a;
+    --color-primary2: #0d2b5f;
     --color-secondary: #e82b09;
     --color-secondary2: #e82b09;
     --color-surface: #fff;
     --color-surface-alt: #fff;
     --color-anim-alt: #f5f0ed;
     --color-anim-alt-trans: #54f868e6;
-    --color-anim-alt-trans2: #53f689;
+    --color-anim-alt-trans2: #83ea8ee6;
     --color-dark: #000;
     --space: 1.62;
     --vspace: calc(var(--space) * 1rem);
@@ -163,14 +163,20 @@ dl dl, dl ol, dl ul, ol dl, ol ol, ol ul, ul dl, ul ol, ul ul {
 
 .rtl {
     direction: rtl;
+    font-size: 2;
+    font-weight: 500;
+}
+
+/* TODO: Add remaining adjustements */
+.h2.rtl {
+    font-size: 1.9em;
+    font-weight: 600;
 }
 
 /* 
 *  SPECIFIC STYLES
 *  TODO: Move to components if applicable. 
 */
-
-
 .logo,.menuIcon {
     width: 2em;
     height: 2em;
@@ -215,7 +221,12 @@ hgroup {
         font-size: 13px;
     }
     main {
-        padding: 1rem;
+        padding: 2.5rem;
+    }
+    /* TODO: Tweak font sizes properly */
+    main {
+        font-size: 17px;
+        font-weight: 500;
     }
     header {
         gap: 0.1em;
