@@ -193,6 +193,10 @@ dl dl, dl ol, dl ul, ol dl, ol ol, ol ul, ul dl, ul ol, ul ul {
     height: 100%;
 }
 
+.menuIcon {
+    margin-top: 1px;
+}
+
 main, header {
     padding: 3rem;
 }
@@ -203,6 +207,10 @@ main {
     color: var(--color-primary);
     margin: 0 auto;
     padding-top: 1rem;
+}
+
+main > hgroup + *, main > *:first-child {
+    margin-top: 0!important;
 }
 
 .wide main {
@@ -230,7 +238,7 @@ hgroup {
         font-size: 13px;
     }
     main {
-        padding: 2.5rem;
+        padding: 3.5rem 2.5rem 1rem 2.5rem;
     }
     /* TODO: Tweak font sizes properly */
     main {
