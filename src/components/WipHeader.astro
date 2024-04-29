@@ -6,12 +6,15 @@ const allFlyers = await getCollection('flyers');
 import logo from "/public/icons/logo.svg?raw"; 
 import menu_icon from "/public/icons/ion--menu.svg?raw"; 
 import close_icon from "/public/icons/ion--close.svg?raw";
+import AnimatedCloseButton from './AnimatedCloseButton.astro';
 ---
 <style>
+
+
   header { 
-    background-color: var(--color-anim-alt-trans); 
-    background: linear-gradient(10deg, var(--color-anim-alt-trans), var(--color-anim-alt-trans2), var(--color-anim-alt-trans));
-    color: var(--color-primary2);
+    background-color: var(--color-secondary-2); 
+    background: linear-gradient(10deg, var(--color-secondary-2), var(--color-secondary-3), var(--color-secondary-2));
+    color: var(--color-surface-1);
     display: flex;
     gap: 1em;
     /* background: linear-gradient(135deg, #e93b1d 0%, var(--color-secondary) 50%, #e93b1d 100%); */
@@ -21,19 +24,20 @@ import close_icon from "/public/icons/ion--close.svg?raw";
     top: 0; 
     padding: 1.5rem; 
     box-shadow:
-    0px 7px 0px 0px var(--color-primary2),
+    0px 8px 0px 0px var(--color-secondary-1),
     inset 1px 0px 9px rgba(0,0,0,0.3),
-    2px 0px 14px 10px rgba(0,0,0,0.3)
+    2px 0px 14px 10px rgba(0,0,0,0.3);
+    backdrop-filter: blur(3px);
   }
   a, a:hover, a:visited, a:active {
-    color: var(--color-primary2);
+    color: var(--color-surface-0);
     text-decoration: none;
     border-bottom: 0;
   }
   .logo,.menuIcon {
     width: 2em;
     height: 2em;
-    color: var(--color-primary2);
+    color: var(--color-surface-0);
   }
 
   .logo svg, .menuIcon svg {
@@ -46,9 +50,9 @@ import close_icon from "/public/icons/ion--close.svg?raw";
     position: fixed;
     top: 0;
     left: 0;
-    width: 100%;
-    height: 100%;
-    background-color: var(--color-surface);
+    width: 100vw;
+    height: 100vh;
+    background-color: var(--color-surface-0);
     color: var(--color-secondary);
     z-index: 100;
     display: flex;
@@ -72,12 +76,13 @@ import close_icon from "/public/icons/ion--close.svg?raw";
         gap: 0.1em;
     }
     header h1 {
-        font-size: 1.4em!important;
+        font-size: 1.5em!important;
     }
   }
   
 </style>
 <header>
+  <!-- <AnimatedCloseButton/> -->
   <div class="logo">
     <Fragment set:html={logo} />
   </div>
@@ -90,6 +95,7 @@ import close_icon from "/public/icons/ion--close.svg?raw";
   </div>
 
   <nav id="mainNav" class="hidden">
+    
     <div class="closeIcon" onclick="document.getElementById('mainNav').classList.toggle('hidden');">
       <Fragment set:html={close_icon} />
     </div>

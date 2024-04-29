@@ -3,8 +3,9 @@ import WipHeader from '../components/WipHeader.astro';
 interface Props {
   title: string;
   lang: string;
-  canonicalSlug: string;
-  translationSlugs: Array<{
+  canonicalSlug?: string;
+  classes?: string;
+  translationSlugs?: Array<{
     lang: string;
     url: string;
   }>;
@@ -19,7 +20,7 @@ import '@fontsource/firago/500-italic.css';
 import '@fontsource/firago/600-italic.css';
 import '../base.css';
 
-const { title, lang, canonicalSlug, translationSlugs } = Astro.props;
+const { title, lang, canonicalSlug, translationSlugs, classes } = Astro.props;
 ---
 
 <html lang={lang}>
@@ -54,7 +55,7 @@ const { title, lang, canonicalSlug, translationSlugs } = Astro.props;
     />
     <title>{title}</title>
   </head>
-  <body>
+  <body class={classes}>
     <WipHeader />
     <main>
       <slot />
