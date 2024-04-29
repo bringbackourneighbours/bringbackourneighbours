@@ -1,5 +1,6 @@
 ---
-import ThemeLayout from '../layouts/ThemeLayout.astro';
+import BaseLayout from '../layouts/BaseLayout.astro';
+import ThemeLayout from '../layouts/BaseLayout.astro';
 ---
 
 <html lang="en">
@@ -20,7 +21,7 @@ import ThemeLayout from '../layouts/ThemeLayout.astro';
     />
     <title>Showcase</title>
   </head>
-  <ThemeLayout>
+  <BaseLayout>
     <h1 class="">heading 1</h1>
     <h2 class="themed">heading 2</h2>
     <h3 class="themed">heading 3</h3>
@@ -28,7 +29,7 @@ import ThemeLayout from '../layouts/ThemeLayout.astro';
     <h5 class="themed">heading 5</h5>
     <h6 class="themed">heading 6</h6>
     <p>random text</p>
-  </ThemeLayout>
+  </BaseLayout>
 
 
 </html>
