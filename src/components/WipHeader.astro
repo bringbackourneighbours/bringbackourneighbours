@@ -6,7 +6,6 @@ const allFlyers = await getCollection('flyers');
 import logo from '/public/icons/logo.svg?raw';
 import menu_icon from '/public/icons/ion--menu.svg?raw';
 import close_icon from '/public/icons/ion--close.svg?raw';
-import AnimatedCloseButton from './AnimatedCloseButton.astro';
 ---
 
 <style>
@@ -101,7 +100,6 @@ import AnimatedCloseButton from './AnimatedCloseButton.astro';
   }
 </style>
 <header>
-  <!-- <AnimatedCloseButton/> -->
   <div class="logo">
     <Fragment set:html={logo} />
   </div>
