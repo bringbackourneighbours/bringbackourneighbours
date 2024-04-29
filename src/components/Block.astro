@@ -13,8 +13,12 @@ const blockEntries = await getCollection('blocks', (block) => {
 console.log(identifier, lang);
 const { Content } = await blockEntries[0].render();
 ---
+
 <style>
-  a, a:active, a:visited, a:hover {
+  a,
+  a:active,
+  a:visited,
+  a:hover {
     color: var(--color-primary);
     border-bottom: 2px dashed var(--color-primary);
   }

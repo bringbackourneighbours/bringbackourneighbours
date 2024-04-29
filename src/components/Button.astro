@@ -1,48 +1,60 @@
 ---
 const { href, direction } = Astro.props;
-const classes = direction === 'rtl'? 'bigButton rtl h2' : 'bigButton h2';
+const classes = direction === 'rtl' ? 'bigButton rtl h2' : 'bigButton h2';
 ---
+
 <style>
-
-
-  a, a:active, a:visited, a:hover {
+  a,
+  a:active,
+  a:visited,
+  a:hover {
     color: var(--color-primary);
     text-decoration: none;
   }
 
   a {
     cursor: pointer;
-    display:block;
+    display: block;
     padding: 0.5em;
     margin: 1em 0;
     border: 4px solid var(--color-primary);
     border-radius: 5px;
     background: var(--color-surface);
-    box-shadow: var(--shadow-0) 7px 0px 0px var(--color-primary), 
-    16px 19px 40px -31px rgba(0,0,0,0.40),
-    inset 1px 0px 9px rgba(0,0,0,0.15);
+    box-shadow:
+      var(--shadow-0) 7px 0px 0px var(--color-primary),
+      16px 19px 40px -31px rgba(0, 0, 0, 0.4),
+      inset 1px 0px 9px rgba(0, 0, 0, 0.15);
     /* Optically center the box, since the shadow is not part of the box-size  */
-    margin: 1em calc( 0.5 * var(--shadow-0) ) 1em calc( -0.5 * var(--shadow-0) );
+    margin: 1em calc(0.5 * var(--shadow-0)) 1em calc(-0.5 * var(--shadow-0));
     font-weight: 500;
     letter-spacing: normal;
     /* Add a very subtle background gradient between surface color and light grey an surface color*/
-    background: linear-gradient(135deg, var(--color-surface2) 0%, var(--color-surface) 50%, var(--color-surface2) 100%);
-    background: linear-gradient(110deg, var(--color-surface-3),var(--color-surface-3) 45%, #fff 50% ,var(--color-surface-3) 55%,var(--color-surface-3));
+    background: linear-gradient(
+      135deg,
+      var(--color-surface2) 0%,
+      var(--color-surface) 50%,
+      var(--color-surface2) 100%
+    );
+    background: linear-gradient(
+      110deg,
+      var(--color-surface-3),
+      var(--color-surface-3) 45%,
+      #fff 50%,
+      var(--color-surface-3) 55%,
+      var(--color-surface-3)
+    );
     background-size: 600%;
     animation: anime 2s linear infinite;
   }
 
   @keyframes anime {
-  0% {
-    background-position: 100% 50%;
+    0% {
+      background-position: 100% 50%;
+    }
+    100% {
+      background-position: 0% 50%;
+    }
   }
-  100% {
-    background-position: 0% 50%;
-  }
-
-
-}
-
 
   /* Turn background color lighter on hover, with short transition time */
   a:hover {
@@ -51,6 +63,9 @@ const classes = direction === 'rtl'? 'bigButton rtl h2' : 'bigButton h2';
   }
 </style>
 <!-- Merge class attribute with "h2" -->
-  <a href={href} class={classes}>
+<a
+  href={href}
+  class={classes}
+>
   <slot />
 </a>
