@@ -3,16 +3,17 @@ const { onclick } = Astro.props;
 ---
 
 <style>
-  .menuIcon {
+  .menu-icon {
     fill: none;
-    margin-top: 0px;
+    margin-top: 0;
     stroke: var(--color-surface);
     stroke-width: 10;
     stroke-linecap: round;
     stroke-linejoin: round;
     z-index: 200;
   }
-  .menuIcon.invert {
+
+  .menu-icon.invert {
     stroke: var(--color-secondary);
   }
 </style>
@@ -20,7 +21,7 @@ const { onclick } = Astro.props;
   width="32"
   height="32"
   viewBox="0 0 100 100"
-  class="menuIcon"
+  class="menu-icon"
   onclick={onclick}
 >
   <path class="path1">
@@ -54,7 +55,7 @@ const { onclick } = Astro.props;
 <script>
   let isExpanded = false;
 
-  const icon = document.querySelector('.menuIcon');
+  const icon = document.querySelector('.menu-icon');
   const animate1 = document.querySelector('.animate1');
   const animate2 = document.querySelector('.animate2');
   const animate3 = document.querySelector('.animate3');
