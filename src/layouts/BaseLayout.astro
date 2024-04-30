@@ -1,5 +1,5 @@
 ---
-import WipHeader from '../components/WipHeader.astro';
+import Header from '../components/Header.astro';
 interface Props {
   title: string;
   lang: string;
@@ -56,7 +56,7 @@ const { title, lang, canonicalSlug, translationSlugs, classes } = Astro.props;
     <title>{title}</title>
   </head>
   <body class={classes}>
-    <WipHeader />
+    <Header />
     <main>
       <slot />
     </main>
