@@ -4,7 +4,7 @@ import mdx from "@astrojs/mdx";
 
 const isDev = import.meta.env.DEV;
 
-const siteUrl = isDev? 'http://localhost:4321' : 'https://bringbackourneighbours.github.io';
+const siteUrl = isDev? 'http://localhost:4321/' : 'https://bringbackourneighbours.github.io/bringbackourneighbours/';
 const basePath = isDev? '/' : '/bringbackourneighbours';
 
 // https://astro.build/config
