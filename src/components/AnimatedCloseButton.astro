@@ -1,22 +1,27 @@
 ---
-
+const { onclick } = Astro.props;
 ---
 
 <style>
-  .icon {
+  .menuIcon {
     fill: none;
     margin-top: 0px;
-    stroke: #000;
-    stroke-width: 12;
-    stroke-linecap: square;
+    stroke: var(--color-surface);
+    stroke-width: 10;
+    stroke-linecap: round;
     stroke-linejoin: round;
+    z-index: 200;
+  }
+  .menuIcon.invert {
+    stroke: var(--color-secondary);
   }
 </style>
 <svg
   width="32"
   height="32"
   viewBox="0 0 100 100"
-  class="icon"
+  class="menuIcon"
+  onclick={onclick}
 >
   <path class="path1">
     <animate
@@ -49,8 +54,7 @@
 <script>
   let isExpanded = false;
 
-  const icon = document.querySelector('.icon');
-  const main_nav = document.querySelector('#mainNav');
+  const icon = document.querySelector('.menuIcon');
   const animate1 = document.querySelector('.animate1');
   const animate2 = document.querySelector('.animate2');
   const animate3 = document.querySelector('.animate3');
@@ -87,17 +91,15 @@
   }
 
   function handleClick() {
-    isExpanded = main_nav?.getAttribute('aria-expanded') === 'true';
+    isExpanded = icon?.getAttribute('aria-expanded') === 'true';
 
     toggleAnimation(values1, animate1 as SVGAnimationElement);
     toggleAnimation(values2, animate2 as SVGAnimationElement);
     toggleAnimation(values3, animate3 as SVGAnimationElement);
 
-    main_nav?.setAttribute('aria-expanded', `${!isExpanded}`);
-    main_nav?.setAttribute(
-      'aria-label',
-      !isExpanded ? 'Close Menu' : 'Open Menu',
-    );
+    icon?.classList.toggle('invert', !isExpanded);
+    icon?.setAttribute('aria-expanded', `${!isExpanded}`);
+    icon?.setAttribute('aria-label', !isExpanded ? 'Close Menu' : 'Open Menu');
   }
 
   function initPath(clazz: string, descriptor: string) {

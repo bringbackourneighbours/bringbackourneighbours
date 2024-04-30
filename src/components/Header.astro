@@ -4,8 +4,7 @@ import { getCollection } from 'astro:content';
 const allPages = await getCollection('pages');
 const allFlyers = await getCollection('flyers');
 import logo from '/public/icons/logo.svg?raw';
-import menu_icon from '/public/icons/ion--menu.svg?raw';
-import close_icon from '/public/icons/ion--close.svg?raw';
+import AnimatedCloseButton from './AnimatedCloseButton.astro';
 ---
 
 <style>
@@ -63,8 +62,10 @@ import close_icon from '/public/icons/ion--close.svg?raw';
     z-index: 100;
     display: flex;
     flex-direction: column;
-    align-items: center;
+    align-items: start;
     justify-content: center;
+    box-sizing: border-box;
+    padding: 4rem;
   }
   #mainNav a,
   #mainNav a:hover,
@@ -75,8 +76,8 @@ import close_icon from '/public/icons/ion--close.svg?raw';
     border-bottom: 0;
   }
 
-  h1,
-  h2 {
+  a h1,
+  a h2 {
     margin: 0;
   }
 
@@ -97,25 +98,16 @@ import close_icon from '/public/icons/ion--close.svg?raw';
   <a href={`${Astro.site}`}>
     <h1 class="h3">Bring Back Our Neighbours</h1>
   </a>
-  <div
-    class="menuIcon"
+  <AnimatedCloseButton
     onclick="document.getElementById('mainNav').classList.toggle('hidden');"
-  >
-    <Fragment set:html={menu_icon} />
-  </div>
+  />
 
   <nav
     id="mainNav"
     class="hidden"
   >
-    <div
-      class="closeIcon"
-      onclick="document.getElementById('mainNav').classList.toggle('hidden');"
-    >
-      <Fragment set:html={close_icon} />
-    </div>
     <h2>Pages</h2>
-    <ul>
+    <ul class="semantic-list">
       {
         allPages.map((page) => (
           <li>
@@ -139,7 +131,7 @@ import close_icon from '/public/icons/ion--close.svg?raw';
     </ul>
     <section>
       <h2>Flyers</h2>
-      <ul>
+      <ul class="semantic-list">
         {
           allFlyers.map((flyer) => (
             <li>

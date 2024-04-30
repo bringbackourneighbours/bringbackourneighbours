@@ -237,6 +237,10 @@ header {
 
 main {
   max-width: calc(25 * var(--vspace));
+}
+
+main,
+#mainNav {
   color: var(--color-primary);
   margin: 0 auto;
   padding-top: 1rem;
@@ -269,7 +273,8 @@ hgroup {
   html {
     font-size: 13px;
   }
-  main {
+  main,
+  #mainNav {
     padding: 3.5rem 2.5rem 1rem 2.5rem;
   }
   /* TODO: Tweak font sizes properly */
