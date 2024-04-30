@@ -2,14 +2,14 @@
 *  GENERAL STYLES
 */
 :root {
-  --color-primary-0: #0b3e9c;
+  --color-primary-0: lch(28.229% 58.73 285.304);
   --color-primary: var(--color-primary-0);
-  --color-secondary-1: color-mix(in srgb, var(--color-primary-0) 55%, black);
-  --color-secondary-0: #e82b09;
+  --color-secondary-1: color-mix(in lch, var(--color-primary-0) 55%, black);
+  --color-secondary-0: lch(55% 90.4 42);
   --color-secondary: var(--color-secondary-0);
-  --color-secondary-1: color-mix(in srgb, var(--color-secondary-0) 55%, black);
-  --color-secondary-2: #de4523d9;
-  --color-secondary-3: #d33815ef;
+  --color-secondary-1: color-mix(in lch, var(--color-secondary-0) 58%, black);
+  --color-secondary-2: var(--color-secondary-0);
+  --color-secondary-3: color-mix(in srgb, var(--color-secondary-0) 90%, white);
   --color-surface-0: #fff;
   --color-surface: var(--color-surface-0);
   --color-surface-1: color-mix(in srgb, var(--color-surface-0) 95%, #2d2827);

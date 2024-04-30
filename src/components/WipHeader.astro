@@ -10,9 +10,8 @@ import close_icon from '/public/icons/ion--close.svg?raw';
 
 <style>
   header {
-    background-color: var(--color-secondary-2);
     background: linear-gradient(
-      10deg,
+      1deg,
       var(--color-secondary-2),
       var(--color-secondary-3),
       var(--color-secondary-2)
@@ -30,7 +29,7 @@ import close_icon from '/public/icons/ion--close.svg?raw';
       0px 8px 0px 0px var(--color-secondary-1),
       inset 1px 0px 9px rgba(0, 0, 0, 0.3),
       2px 0px 14px 10px rgba(0, 0, 0, 0.3);
-    backdrop-filter: blur(3px);
+    
   }
   a,
   a:hover,
@@ -82,14 +81,6 @@ import close_icon from '/public/icons/ion--close.svg?raw';
     margin: 0;
   }
 
-  h1 {
-    color: #ffffffee;
-    text-shadow:
-      0px 0px 1px #fff,
-      0 0 0 #000000dd,
-      0px 0px 0px #fff;
-  }
-
   @media (max-width: 600px) {
     header {
       gap: 0.1em;
@@ -104,7 +95,7 @@ import close_icon from '/public/icons/ion--close.svg?raw';
     <Fragment set:html={logo} />
   </div>
   <!-- TODO: Put language sentive link here -->
-  <a href="/">
+  <a href={`${Astro.site}`}>
     <h1 class="h3">Bring Back Our Neighbours</h1>
   </a>
   <div
