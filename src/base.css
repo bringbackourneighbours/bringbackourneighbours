@@ -2,10 +2,10 @@
 *  GENERAL STYLES
 */
 :root {
-  --color-primary-0: lch(28.229% 58.73 285.304);
+  --color-primary-0: lch(28.229% 58.73 285.304deg);
   --color-primary: var(--color-primary-0);
-  --color-secondary-1: color-mix(in lch, var(--color-primary-0) 55%, black);
-  --color-secondary-0: lch(55% 90.4 42);
+  --color-primary-1: color-mix(in lch, var(--color-primary-0) 55%, black);
+  --color-secondary-0: lch(55% 90.4 42deg);
   --color-secondary: var(--color-secondary-0);
   --color-secondary-1: color-mix(in lch, var(--color-secondary-0) 58%, black);
   --color-secondary-2: var(--color-secondary-0);
@@ -31,8 +31,7 @@ html {
 
 body {
   font-size: 1.1667em;
-  margin: 0 auto;
-  font-family: 'FiraGO', sans-serif;
+  font-family: FiraGO, sans-serif;
   background: var(--color-surface-0);
   margin: 0;
 }
@@ -117,22 +116,20 @@ h5 {
 h6 {
   font-size: 1.1667em;
   font-weight: normal;
-  font-style: italic;
-  font-family: 'le-monde-livre-classic-byol', serif !important;
-  letter-spacing: 0px !important;
+  letter-spacing: 0 !important;
 }
 
-.caption_ts {
+.caption {
   font-size: 1.0417em;
   font-weight: normal;
   font-style: italic;
 }
 
-.endnote_ts {
+.endnote {
   font-size: 1.0417em;
 }
 
-.footnote_ts {
+.footnote {
   margin: var(--vspace-0) 0 var(--vspace-2) 0;
   font-size: 0.9792em;
   border-top: 1px solid #ccc;
@@ -214,19 +211,19 @@ ul ul {
 *  TODO: Move to components if applicable. 
 */
 .logo,
-.menuIcon {
+.menu-icon {
   width: 2em;
   height: 2em;
   color: var(--color-surface-0);
 }
 
 .logo svg,
-.menuIcon svg {
+.menu-icon svg {
   width: 100%;
   height: 100%;
 }
 
-.menuIcon {
+.menu-icon {
   margin-top: 1px;
 }
 
@@ -240,7 +237,7 @@ main {
 }
 
 main,
-#mainNav {
+#main-nav {
   color: var(--color-primary);
   margin: 0 auto;
   padding-top: 1rem;
@@ -269,39 +266,45 @@ hgroup {
 }
 
 /* Make padding of main smaller on small screens */
-@media (max-width: 600px) {
+@media (width <= 600px) {
   html {
     font-size: 13px;
   }
+
   main,
-  #mainNav {
-    padding: 3.5rem 2.5rem 1rem 2.5rem;
+  #main-nav {
+    padding: 3.5rem 2.5rem 1rem;
   }
+
   /* TODO: Tweak font sizes properly */
   main {
     font-size: 17px;
     font-weight: 500;
   }
+
   header {
     gap: 0.1em;
   }
+
   header h1 {
     font-size: 1.4em !important;
   }
 }
 
-@media (min-width: 1000px) {
+@media (width >= 1000px) {
   main {
     display: flex;
     flex-wrap: wrap;
     gap: calc(1.5 * var(--vspace));
     padding-top: 3em;
-    .bigButton {
+
+    .big-button {
       width: 40%;
       margin-top: 0 !important;
       margin-bottom: 0 !important;
     }
   }
+
   .wide main {
     max-width: calc(40 * var(--vspace));
   }

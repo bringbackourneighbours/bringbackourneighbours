@@ -18,17 +18,18 @@ import AnimatedCloseButton from './AnimatedCloseButton.astro';
     color: var(--color-surface-1);
     display: flex;
     gap: 1em;
+
     /* background: linear-gradient(135deg, #e93b1d 0%, var(--color-secondary) 50%, #e93b1d 100%); */
-    box-shadow: 16px 19px 40px -31px rgba(0, 0, 0, 0.4);
     justify-content: space-between;
     position: sticky;
     top: 0;
     padding: 1.5rem;
     box-shadow:
-      0px 8px 0px 0px var(--color-secondary-1),
-      inset 1px 0px 9px rgba(0, 0, 0, 0.3),
-      2px 0px 14px 10px rgba(0, 0, 0, 0.3);
+      0 8px 0 0 var(--color-secondary-1),
+      inset 1px 0 9px rgb(0 0 0 / 30%),
+      2px 0 14px 10px rgb(0 0 0 / 30%);
   }
+
   a,
   a:hover,
   a:visited,
@@ -37,21 +38,22 @@ import AnimatedCloseButton from './AnimatedCloseButton.astro';
     text-decoration: none;
     border-bottom: 0;
   }
+
   .logo,
-  .menuIcon {
+  .menu-icon {
     width: 2em;
     height: 2em;
     color: var(--color-surface-0);
   }
 
   .logo svg,
-  .menuIcon svg {
+  .menu-icon svg {
     width: 100%;
     height: 100%;
   }
 
   /* main_nav should be a modal fullscreen */
-  #mainNav {
+  #main-nav {
     position: fixed;
     top: 0;
     left: 0;
@@ -67,10 +69,11 @@ import AnimatedCloseButton from './AnimatedCloseButton.astro';
     box-sizing: border-box;
     padding: 4rem;
   }
-  #mainNav a,
-  #mainNav a:hover,
-  #mainNav a:visited,
-  #mainNav a:active {
+
+  #main-nav a,
+  #main-nav a:hover,
+  #main-nav a:visited,
+  #main-nav a:active {
     color: var(--color-secondary);
     text-decoration: none;
     border-bottom: 0;
@@ -81,10 +84,11 @@ import AnimatedCloseButton from './AnimatedCloseButton.astro';
     margin: 0;
   }
 
-  @media (max-width: 600px) {
+  @media (width <= 600px) {
     header {
       gap: 0.1em;
     }
+
     header h1 {
       font-size: 1.5em !important;
     }
@@ -99,11 +103,11 @@ import AnimatedCloseButton from './AnimatedCloseButton.astro';
     <h1 class="h3">Bring Back Our Neighbours</h1>
   </a>
   <AnimatedCloseButton
-    onclick="document.getElementById('mainNav').classList.toggle('hidden');"
+    onclick="document.getElementById('main-nav').classList.toggle('hidden');"
   />
 
   <nav
-    id="mainNav"
+    id="main-nav"
     class="hidden"
   >
     <h2>Pages</h2>
