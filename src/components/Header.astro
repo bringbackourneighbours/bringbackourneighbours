@@ -9,12 +9,14 @@ import AnimatedCloseButton from './AnimatedCloseButton.astro';
 
 <style>
   header {
-    background: linear-gradient(
+    background: var(--color-secondary-2);
+
+    /* background: linear-gradient(
       1deg,
       var(--color-secondary-2),
       var(--color-secondary-3),
       var(--color-secondary-2)
-    );
+    ); */
     color: var(--color-surface-1);
     display: flex;
     gap: 1em;
@@ -26,8 +28,7 @@ import AnimatedCloseButton from './AnimatedCloseButton.astro';
     padding: 1.5rem;
     box-shadow:
       0 8px 0 0 var(--color-secondary-1),
-      inset 1px 0 9px rgb(0 0 0 / 30%),
-      2px 0 14px 10px rgb(0 0 0 / 30%);
+      /* inset 1px 0 9px rgb(0 0 0 / 30%), */ 2px 0 14px 10px rgb(0 0 0 / 30%);
   }
 
   a,
