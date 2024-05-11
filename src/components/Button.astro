@@ -1,6 +1,8 @@
 ---
 const { href, direction } = Astro.props;
 const classes = direction === 'rtl' ? 'big-button rtl h2' : 'big-button h2';
+
+// TODO: actually this is a link and not a button... maybe rename
 ---
 
 <style>
@@ -47,7 +49,7 @@ const classes = direction === 'rtl' ? 'big-button rtl h2' : 'big-button h2';
     }
 
     100% {
-      background-position: 0% 50%;
+      background-position: 0 50%;
     }
   }
 
@@ -55,7 +57,21 @@ const classes = direction === 'rtl' ? 'big-button rtl h2' : 'big-button h2';
   a:hover {
     background: #fff;
     transition: background 0.15s ease-in-out;
+
+    /* just a proposal */
+    transform: rotate(1deg);
   }
+
+  a:active {
+    color: var(--color-secondary);
+    border-color: var(--color-secondary);
+    box-shadow:
+      var(--shadow-0) 7px 0 0 var(--color-secondary),
+      16px 19px 40px -31px rgb(0 0 0 / 40%),
+      inset 1px 0 9px rgb(0 0 0 / 15%);
+  }
+
+  /* TODO: focus state is not visible... */
 </style>
 <!-- Merge class attribute with "h2" -->
 <a
