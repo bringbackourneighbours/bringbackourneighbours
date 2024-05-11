@@ -426,7 +426,9 @@ TBD
 
 ##### Interface Translation
 
-We not only have to translate the content but also the interface: https://docs.astro.build/en/recipes/i18n/#translate-ui-strings
+We not only have to translate the content but also the interface.
+Loosely following https://docs.astro.build/en/recipes/i18n/#translate-ui-strings
+We provide a function `uesUiTranslation()` that reads from a json-data-collection.
 
 #### QR-Codes
 
