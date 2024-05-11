@@ -1,0 +1,6 @@
+{
+  "fallback": "de",
+  "wizard": {
+    "isThereDangerQuestion": "გაძევება გემუქრებათ?"
+  }
+}

@@ -1,22 +1,28 @@
 ---
 import BaseLayout from '../layouts/BaseLayout.astro';
 import Button from '../components/Button.astro';
+import { useUiTranslation } from '../util/use-ui-translation';
 ---
 
 <BaseLayout
   lang="de"
-  title="Bring Back Our Neighbours"
+  title=`${await useUiTranslation('meta.title', 'de')} | ${await useUiTranslation('meta.subtitle', 'de')}`
   classes="wide"
 >
   <!-- TODO: Titel irgendwo ausm Markdown ziehen -->
   <Button href=`${Astro.site}de/flyer/detention/abschiebehaft`>
-    Vous ou quelqu’un d’autre risquez d’être expulsé ?
+    {useUiTranslation('wizard.isThereDangerQuestion', 'fr')}
   </Button>
-  <Button direction="rtl"> هل أنت مهدد بالترحيل؟ </Button>
-  <Button direction="rtl"> کیا آپ کو نکالنے کا خطرہ ہے؟ </Button>
+  <Button direction="rtl">
+    {useUiTranslation('wizard.isThereDangerQuestion', 'ar')}
+  </Button>
+  <Button direction="rtl">
+    {useUiTranslation('wizard.isThereDangerQuestion', 'ur')}
+  </Button>
   <Button href=`${Astro.site}de/flyer/detention/abschiebehaft`>
-    Bist du oder wer anders von einer Abschiebung bedroht?
+    {useUiTranslation('wizard.isThereDangerQuestion', 'de')}
   </Button>
-  <Button> გაძევება გემუქრებათ? </Button>
-  <Button> Are you or somebody else threatened by deportation? </Button>
+  <Button> {useUiTranslation('wizard.isThereDangerQuestion', 'ka')} </Button>
+  <Button> {useUiTranslation('wizard.isThereDangerQuestion', 'en')} </Button>
+  <Button> {useUiTranslation('wizard.isThereDangerQuestion', 'es')} </Button>
 </BaseLayout>
