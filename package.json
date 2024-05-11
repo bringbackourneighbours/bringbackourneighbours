@@ -11,10 +11,10 @@
     "prepare": "husky"
   },
   "dependencies": {
-    "@astrojs/check": "^0.5.10",
-    "@astrojs/mdx": "^2.3.1",
+    "@astrojs/check": "^0.6.0",
+    "@astrojs/mdx": "^3.0.0",
     "@fontsource/firago": "^5.0.11",
-    "astro": "^4.7.1",
+    "astro": "^4.8.2",
     "typescript": "^5.4.5"
   },
   "devDependencies": {
