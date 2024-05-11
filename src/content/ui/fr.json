@@ -1,0 +1,6 @@
+{
+  "fallback": "en",
+  "wizard": {
+    "isThereDangerQuestion": "Vous ou quelqu’un d’autre risquez d’être expulsé?"
+  }
+}

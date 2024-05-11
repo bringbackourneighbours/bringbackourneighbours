@@ -3,5 +3,8 @@
   "meta": {
     "title": "Bring Back Our Neighbours",
     "subtitle": "Gemeinsam solidarisch gegen die sächsische Abschiebepolitik"
+  },
+  "wizard": {
+    "isThereDangerQuestion": "Bist du oder wer anders von einer Abschiebung bedroht?"
   }
 }

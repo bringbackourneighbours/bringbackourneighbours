@@ -2,6 +2,9 @@
   "fallback": "en",
   "meta": {
     "title": "Bring Back Our Neighbours",
-    "subtitle": "Against the Saxonian deportation policy\n\n"
+    "subtitle": "Against the Saxonian deportation policy"
+  },
+  "wizard": {
+    "isThereDangerQuestion": "Are you or anyone else at risk of deportation?"
   }
 }

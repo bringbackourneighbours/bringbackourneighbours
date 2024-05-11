@@ -1,3 +1,6 @@
 {
-  "fallback": "de"
+  "fallback": "de",
+  "wizard": {
+    "isThereDangerQuestion": "¿Está usted o alguien más en riesgo de deportación?"
+  }
 }

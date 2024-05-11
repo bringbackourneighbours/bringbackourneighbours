@@ -411,6 +411,7 @@ bringbackourneighbours.de/`[languageCode]`/`[contentType]`/`[unifiedIdentifier]`
   - `en`
   - `fr`
   - `ur`
+  - `ka`
   - add more language as the get implemented
 - contentType:
   - `page` => a static page like "about us"

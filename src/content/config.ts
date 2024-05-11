@@ -45,6 +45,11 @@ const uiCollection = defineCollection({
         subtitle: z.string(),
       })
       .optional(),
+    wizard: z
+      .object({
+        isThereDangerQuestion: z.string(),
+      })
+      .optional(),
   }),
 });
 
