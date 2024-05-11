@@ -1,5 +1,6 @@
 ---
 import BaseLayout from '../layouts/BaseLayout.astro';
+import { useUiTranslation } from '../util/use-ui-translation';
 ---
 
 <html lang="en">
@@ -24,6 +25,26 @@ import BaseLayout from '../layouts/BaseLayout.astro';
     title="Design Showcase"
     lang="en"
   >
+    <h1>UI translation</h1>
+    <p>
+      useUiTranslation('meta.subtitle', 'de') == {
+        useUiTranslation('meta.subtitle', 'de')
+      }
+    </p>
+    <p>
+      useUiTranslation('meta.subtitle', 'en') == {
+        useUiTranslation('meta.subtitle', 'en')
+      }
+    </p>
+    <p>
+      useUiTranslation('meta.subtitle', 'es') == {
+        useUiTranslation('meta.subtitle', 'es')
+      }
+    </p>
+    <p>
+      useUiTranslation('FOOFOO', 'en') == {useUiTranslation('FOOFOO', 'en')}
+    </p>
+
     <h1 class="">heading 1</h1>
     <h2 class="themed">heading 2</h2>
     <h3 class="themed">heading 3</h3>

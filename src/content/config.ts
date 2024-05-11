@@ -35,8 +35,22 @@ const blocksCollection = defineCollection({
   }),
 });
 
+const uiCollection = defineCollection({
+  type: 'data',
+  schema: z.object({
+    fallback: z.string(),
+    meta: z
+      .object({
+        title: z.string(),
+        subtitle: z.string(),
+      })
+      .optional(),
+  }),
+});
+
 export const collections = {
   pages: pagesCollection,
   flyers: flyersCollection,
   blocks: blocksCollection,
+  ui: uiCollection,
 };
