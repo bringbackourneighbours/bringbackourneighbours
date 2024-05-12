@@ -100,7 +100,7 @@ const { onclick } = Astro.props;
 
     icon?.classList.toggle('invert', !isExpanded);
     icon?.setAttribute('aria-expanded', `${!isExpanded}`);
-    icon?.setAttribute('aria-label', !isExpanded ? 'Close Menu' : 'Open Menu');
+    icon?.setAttribute('aria-label', !isExpanded ? 'Close Menu' : 'Open Menu'); // TODO: translate
   }
 
   function initPath(clazz: string, descriptor: string) {
