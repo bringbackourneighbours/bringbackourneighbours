@@ -109,7 +109,7 @@ import AnimatedCloseButton from './AnimatedCloseButton.astro';
   <div class="logo">
     <Fragment set:html={logo} />
   </div>
-  <!-- TODO: Put language sentive link here -->
+  <!-- TODO: Put language sensitive link here -->
   <a href={`${Astro.site}`}>
     <h1 class="h3">Bring Back Our Neighbours</h1>
   </a>
@@ -123,6 +123,7 @@ import AnimatedCloseButton from './AnimatedCloseButton.astro';
   >
     <h2>Pages</h2>
     <ul class="semantic-list">
+      <li><a href={`${Astro.site}/showcase`}>SHOWCASE</a></li>
       {
         allPages.map((page) => (
           <li>
