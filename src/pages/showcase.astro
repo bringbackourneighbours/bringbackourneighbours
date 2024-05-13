@@ -46,14 +46,19 @@ import { useUiTranslation } from '../util/use-ui-translation';
     </p>
 
     <h1>ShortLinks</h1>
-    <p>This might not work on staging (yet)</p>
-
+    <p>Without node running, astro will use meta-redirects.</p>
+    <p>
+      For now we can only use the raw links... later we want to reference the
+      content independent of the language.
+      <pre>
+      &#60;BbonLink link="asylnet_interview"/&#62;
+      </pre>
+    </p>
     <ul>
-      <li><a href={`${Astro.site}/link/aaa`}>link/aaa</a></li>
-      <li><a href={`${Astro.site}/link/bbb`}>link/bbb</a></li>
-      <li><a href={`${Astro.site}/link/ccc`}>link/ccc</a></li>
+      <li><a href={`${Astro.site}/link/asyldt`}>link/asyldt</a></li>
+      <li><a href={`${Astro.site}/link/asyleng`}>link/asyleng</a></li>
+      <li><a href={`${Astro.site}/link/fooo`}>link/fooo</a></li>
     </ul>
-
     <h1 class="">heading 1</h1>
     <h2 class="themed">heading 2</h2>
     <h3 class="themed">heading 3</h3>
