@@ -12,10 +12,10 @@ const i18nUrlSchema = {
   seo: z.string(),
 };
 
-const pagesCollection = defineCollection({
+const blocksCollection = defineCollection({
   type: 'content',
   schema: z.object({
-    ...i18nUrlSchema,
+    ...translatableSchema,
   }),
 });
 
@@ -28,10 +28,23 @@ const flyersCollection = defineCollection({
   }),
 });
 
-const blocksCollection = defineCollection({
+const linksCollection = defineCollection({
+  type: 'data',
+  schema: z.record(
+    z.string(),
+    z.object({
+      slug: z.string(),
+      url: z.string(),
+      title: z.string(),
+      type: z.string(),
+    }),
+  ),
+});
+
+const pagesCollection = defineCollection({
   type: 'content',
   schema: z.object({
-    ...translatableSchema,
+    ...i18nUrlSchema,
   }),
 });
 
@@ -54,8 +67,9 @@ const uiCollection = defineCollection({
 });
 
 export const collections = {
-  pages: pagesCollection,
-  flyers: flyersCollection,
   blocks: blocksCollection,
+  flyers: flyersCollection,
+  links: linksCollection,
+  pages: pagesCollection,
   ui: uiCollection,
 };

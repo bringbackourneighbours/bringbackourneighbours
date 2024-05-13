@@ -1,20 +1,39 @@
 import type { APIRoute } from 'astro';
+import { getCollection } from 'astro:content';
 
-// export const prerender = false;
-export function getStaticPaths() {
-  return [{ params: { slug: 'aaa' } }, { params: { slug: 'bbb' } }];
+const getFlatLinksEntries = async () => {
+  const linkEntries = await getCollection('links');
+  return linkEntries.reduce(
+    (accumulator, currentValue) => {
+      return [...accumulator, ...Object.values(currentValue.data).flat()];
+    },
+    [] as {
+      slug: string;
+      title: string;
+      url: string;
+      type: string;
+    }[],
+  );
+};
+
+export async function getStaticPaths() {
+  const entries = await getFlatLinksEntries();
+  return entries.map((params) => ({
+    params,
+  }));
 }
 
-export const GET: APIRoute = ({ params, redirect }) => {
-  const { slug } = params;
-  const link = `http://www.bbonlink.de/${slug}`; // TODO: just an example
+export const GET: APIRoute = async ({ params, redirect }) => {
+  const entries = await getFlatLinksEntries();
 
-  if (!link) {
+  const target = entries.find((entry) => entry.slug === params.slug);
+
+  if (!target) {
     return new Response(null, {
       status: 404,
       statusText: 'Not found',
     });
   }
 
-  return redirect(link, 307);
+  return redirect(target.url, 307);
 };
