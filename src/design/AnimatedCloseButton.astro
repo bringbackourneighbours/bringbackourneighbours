@@ -1,4 +1,8 @@
 ---
+interface Props {
+  onclick: () => void;
+}
+
 const { onclick } = Astro.props;
 ---
 
@@ -17,6 +21,7 @@ const { onclick } = Astro.props;
     stroke: var(--color-secondary);
   }
 </style>
+
 <svg
   width="32"
   height="32"
@@ -91,7 +96,7 @@ const { onclick } = Astro.props;
     animate.beginElement();
   }
 
-  function handleClick() {
+  async function handleClick() {
     isExpanded = icon?.getAttribute('aria-expanded') === 'true';
 
     toggleAnimation(values1, animate1 as SVGAnimationElement);
@@ -100,7 +105,10 @@ const { onclick } = Astro.props;
 
     icon?.classList.toggle('invert', !isExpanded);
     icon?.setAttribute('aria-expanded', `${!isExpanded}`);
-    icon?.setAttribute('aria-label', !isExpanded ? 'Close Menu' : 'Open Menu'); // TODO: translate
+    icon?.setAttribute('aria-label', !isExpanded ? 'Close Menu' : 'Open Menu');
+    // TODO: translate
+    // beware: this code runs client side... so the translatin via contentCollection is not trivial
+    // see: https://docs.astro.build/en/guides/client-side-scripts/#pass-frontmatter-variables-to-scripts
   }
 
   function initPath(clazz: string, descriptor: string) {
