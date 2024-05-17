@@ -3,8 +3,8 @@ import { getCollection } from 'astro:content';
 
 const allPages = await getCollection('pages');
 const allFlyers = await getCollection('flyers');
-import logo from '/public/icons/logo.svg?raw';
 import AnimatedCloseButton from '../design/AnimatedCloseButton.astro';
+import Logo from '../design/Logo.astro';
 ---
 
 <style>
@@ -29,29 +29,6 @@ import AnimatedCloseButton from '../design/AnimatedCloseButton.astro';
     color: var(--color-surface-0);
     text-decoration: none;
     border-bottom: 0;
-  }
-
-  .logo,
-  .menu-icon {
-    width: 1.5em;
-    height: 1.5em;
-    color: var(--color-surface-0);
-  }
-
-  .menu-icon {
-    width: 1.5em;
-    height: 1.5em;
-    color: var(--color-surface-0);
-  }
-
-  .logo {
-    padding-top: 3px;
-  }
-
-  .logo svg,
-  .menu-icon svg {
-    width: 100%;
-    height: 100%;
   }
 
   /* main_nav should be a modal fullscreen */
@@ -97,9 +74,7 @@ import AnimatedCloseButton from '../design/AnimatedCloseButton.astro';
   }
 </style>
 <header>
-  <div class="logo">
-    <Fragment set:html={logo} />
-  </div>
+  <Logo />
   <!-- TODO: Put language sensitive link here -->
   <a href={`${Astro.site}`}>
     <h1 class="h3">Bring Back Our Neighbours</h1>
