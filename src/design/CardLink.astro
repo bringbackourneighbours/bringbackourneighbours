@@ -1,6 +1,6 @@
 ---
 interface Props {
-  href?: string;
+  href: string;
   direction?: 'rtl' | 'ltr';
   lang?: string;
 }
@@ -71,7 +71,7 @@ const { href, direction = 'ltr', lang = 'de' } = Astro.props;
   /* TODO: focus state is not visible... */
 
   a.invalid {
-    /* 
+    /*
      we have not implemented all the links yet, so we want to avoid confusion
      when there is no href we mark this card s invalid
      */
