@@ -1,0 +1,19 @@
+---
+import type { CollectionEntry } from 'astro:content';
+import Link from '../design/Link.astro';
+
+/**
+ * Renders a CollectionEntry's markdown to Html... while using our custom components for it
+ *
+ * BEWARE: this only works for `mdx`
+ */
+interface Props {
+  render: CollectionEntry<unknown>;
+}
+
+const { entry } = Astro.props;
+
+const { Content, components } = await entry.render();
+---
+
+<Content components={{ ...components, a: Link }} />

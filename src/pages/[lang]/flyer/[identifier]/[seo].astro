@@ -1,30 +1,29 @@
 ---
 import { getCollection, type CollectionEntry } from 'astro:content';
 import BaseLayout from '../../../../layouts/BaseLayout.astro';
+import MarkdownEntry from '../../../../design/MarkdownEntry.astro';
 
 export async function getStaticPaths() {
-  const flyerEntries = await getCollection('flyers');
-  return flyerEntries.map((entry: CollectionEntry<'flyers'>) => {
-    return {
-      params: {
-        lang: entry.data.lang,
-        identifier: entry.data.identifier,
-        seo: entry.data.seo,
-      },
-      props: { entry },
-    };
-  });
+  return (await getCollection('flyers')).map(
+    (entry: CollectionEntry<'flyers'>) => {
+      return {
+        params: {
+          lang: entry.data.lang,
+          identifier: entry.data.identifier,
+          seo: entry.data.seo,
+        },
+      };
+    },
+  );
 }
 
-// we lose the type here... not sure why
-const { entry } = Astro.props;
+const { lang, identifier } = Astro.params;
 
-const translations = (await getCollection('flyers'))
+const allFlyers = await getCollection('flyers');
+
+const alternativeTranslations = allFlyers
   .filter((flyer) => {
-    return (
-      flyer.data.identifier === entry.data.identifier &&
-      flyer.data.lang !== entry.data.lang
-    );
+    return flyer.data.identifier === identifier && flyer.data.lang !== lang;
   })
   .map((flyer) => {
     return {
@@ -32,6 +31,9 @@ const translations = (await getCollection('flyers'))
       url: `${Astro.site}/${flyer.data.lang}/flyer/${flyer.data.identifier}/${flyer.data.seo}`,
     };
   });
+const entry: CollectionEntry<'flyers'> = allFlyers.find(
+  (flyer) => flyer.data.identifier === identifier && flyer.data.lang === lang,
+)!;
 
 if (entry.data?.fallback) {
   // this could be a middleware
@@ -40,27 +42,27 @@ if (entry.data?.fallback) {
     301,
   );
 }
-
-const { Content } = await entry.render();
 ---
 
 <BaseLayout
   lang={entry.data.lang}
   title={entry.data.title}
   canonicalSlug={`${Astro.site}/${entry.data.lang}/flyer/${entry.data.identifier}/${entry.data.seo}`}
-  translationSlugs={translations}
+  translationSlugs={alternativeTranslations}
 >
   <hgroup>
     <h1>{entry.data.title}</h1>
+    <!-- FIXME: Element ul is not allowed here -->
     <ul class="meta semantic-list">
       <li>{entry.data.lang} – {entry.data.germanTitle}</li>
       <li>
         <!-- FIXME: Use proper locales for date, drop timezone output -->
-        Stand: <time datetime={entry.data.lastChecked.toLocaleString()}
+        Stand:
+        <time datetime={entry.data.lastChecked.toLocaleString()}
           >{entry.data.lastChecked}</time
         >
       </li>
     </ul>
   </hgroup>
-  <Content />
+  <MarkdownEntry entry={entry} />
 </BaseLayout>

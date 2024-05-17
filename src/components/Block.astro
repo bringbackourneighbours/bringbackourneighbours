@@ -1,5 +1,7 @@
 ---
 import { getCollection } from 'astro:content';
+import MarkdownEntry from '../design/MarkdownEntry.astro';
+
 interface Props {
   identifier: string;
   lang: string;
@@ -10,8 +12,6 @@ const { identifier, lang } = Astro.props;
 const blockEntries = await getCollection('blocks', (block) => {
   return block.slug === `${identifier}/${lang}`;
 });
-console.log(identifier, lang);
-const { Content } = await blockEntries[0].render();
 ---
 
 <style>
@@ -23,4 +23,4 @@ const { Content } = await blockEntries[0].render();
     border-bottom: 2px dashed var(--color-primary);
   }
 </style>
-<Content />
+<MarkdownEntry entry={blockEntries[0]} />
