@@ -1,6 +1,9 @@
 ---
 interface Props {
-  onclick: () => void;
+  /**
+   * this is a script that will run clientside...
+   */
+  onclick: string;
 }
 
 const { onclick } = Astro.props;
