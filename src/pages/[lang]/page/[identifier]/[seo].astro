@@ -1,6 +1,7 @@
 ---
 import { getCollection, type CollectionEntry } from 'astro:content';
 import BaseLayout from '../../../../layouts/BaseLayout.astro';
+import MarkdownEntry from '../../../../design/MarkdownEntry.astro';
 
 export async function getStaticPaths() {
   const pageEntries = await getCollection('pages');
@@ -40,8 +41,6 @@ if (entry.data?.fallback) {
     301,
   );
 }
-
-const { Content } = await entry.render();
 ---
 
 <BaseLayout
@@ -51,5 +50,5 @@ const { Content } = await entry.render();
   translationSlugs={translations}
 >
   <h1>{entry.data.title}</h1>
-  <Content />
+  <MarkdownEntry entry={entry} />
 </BaseLayout>
