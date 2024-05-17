@@ -9,8 +9,28 @@ const { href, lang = 'de' } = Astro.props;
 
 <style>
   a {
-    /* FIXME: just for debugging */
-    color: chartreuse;
+    color: var(--color-primary);
+    border-color: var(--color-primary);
+    border-style: dashed;
+    border-width: 0 0 var(--border-0) 0;
+    text-decoration: none;
+    padding-inline: calc(var(--border-0) * 2);
+  }
+
+  a:hover,
+  a:focus {
+    padding-inline: var(--border-0);
+    border-width: var(--border-0);
+  }
+
+  a:active {
+    color: var(--color-secondary);
+    border-color: var(--color-secondary);
+  }
+
+  a:visited {
+    color: var(--color-primary-2);
+    border-color: var(--color-primary-2);
   }
 </style>
 <a

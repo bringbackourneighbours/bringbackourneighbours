@@ -1,10 +1,11 @@
 /* 
-*  GENERAL STYLES
+* GENERAL STYLES
 */
 :root {
   --color-primary-0: lch(28.229% 58.73 285.304deg);
   --color-primary: var(--color-primary-0);
   --color-primary-1: color-mix(in lch, var(--color-primary-0) 55%, black);
+  --color-primary-2: color-mix(in lch, var(--color-primary-0) 70%, white);
   --color-secondary-0: lch(55% 90.4 42deg);
   --color-secondary: var(--color-secondary-0);
   --color-secondary-1: color-mix(in lch, var(--color-secondary-0) 58%, black);
@@ -23,6 +24,7 @@
   --vspace-2: calc(1.5 * var(--space) * 1rem);
   --vspace-3: calc(0.5 * var(--space) * 1rem);
   --shadow-0: 10px;
+  --border-0: 2px;
 }
 
 html {
@@ -144,15 +146,6 @@ sup {
   font-weight: normal;
 }
 
-a,
-a:active,
-a:visited,
-a:hover {
-  color: var(--color-primary);
-  border-bottom: 2px dashed var(--color-primary);
-  text-decoration: none;
-}
-
 dl,
 ol,
 ul {
@@ -196,7 +189,7 @@ ul ul {
 
 .rtl {
   direction: rtl;
-  font-size: 2;
+  font-size: 2em;
   font-weight: 500;
 }
 
@@ -300,12 +293,6 @@ hgroup {
     flex-wrap: wrap;
     gap: calc(1.5 * var(--vspace));
     padding-top: 3em;
-
-    .big-button {
-      width: 40%;
-      margin-top: 0 !important;
-      margin-bottom: 0 !important;
-    }
   }
 
   .wide main {

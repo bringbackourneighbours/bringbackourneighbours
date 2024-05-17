@@ -1,6 +1,6 @@
 ---
 import BaseLayout from '../layouts/BaseLayout.astro';
-import Button from '../components/Button.astro';
+import CardLink from '../design/CardLink.astro';
 import { useUiTranslation } from '../util/use-ui-translation';
 ---
 
@@ -9,20 +9,31 @@ import { useUiTranslation } from '../util/use-ui-translation';
   title=`${await useUiTranslation('meta.title', 'de')} | ${await useUiTranslation('meta.subtitle', 'de')}`
   classes="wide"
 >
-  <!-- TODO: Titel irgendwo ausm Markdown ziehen -->
-  <Button href=`${Astro.site}de/flyer/detention/abschiebehaft`>
+  <CardLink>
     {useUiTranslation('wizard.isThereDangerQuestion', 'fr')}
-  </Button>
-  <Button direction="rtl">
+  </CardLink>
+  <CardLink direction="rtl">
     {useUiTranslation('wizard.isThereDangerQuestion', 'ar')}
-  </Button>
-  <Button direction="rtl">
+  </CardLink>
+  <CardLink direction="rtl">
     {useUiTranslation('wizard.isThereDangerQuestion', 'ur')}
-  </Button>
-  <Button href=`${Astro.site}de/flyer/detention/abschiebehaft`>
+  </CardLink>
+  <CardLink
+    href=`${Astro.site}de/flyer/detention/abschiebehaft`
+    lang="de"
+  >
     {useUiTranslation('wizard.isThereDangerQuestion', 'de')}
-  </Button>
-  <Button> {useUiTranslation('wizard.isThereDangerQuestion', 'ka')} </Button>
-  <Button> {useUiTranslation('wizard.isThereDangerQuestion', 'en')} </Button>
-  <Button> {useUiTranslation('wizard.isThereDangerQuestion', 'es')} </Button>
+  </CardLink>
+  <CardLink>
+    {useUiTranslation('wizard.isThereDangerQuestion', 'ka')}
+  </CardLink>
+  <CardLink
+    href=`${Astro.site}en/flyer/detention`
+    lang="en"
+  >
+    {useUiTranslation('wizard.isThereDangerQuestion', 'en')}
+  </CardLink>
+  <CardLink>
+    {useUiTranslation('wizard.isThereDangerQuestion', 'es')}
+  </CardLink>
 </BaseLayout>
