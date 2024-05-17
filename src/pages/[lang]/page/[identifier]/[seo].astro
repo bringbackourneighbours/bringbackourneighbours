@@ -1,7 +1,7 @@
 ---
 import { getCollection, type CollectionEntry } from 'astro:content';
-import BaseLayout from '../../../../layouts/BaseLayout.astro';
 import MarkdownEntry from '../../../../design/MarkdownEntry.astro';
+import ContentLayout from '../../../../layouts/ContentLayout.astro';
 
 export async function getStaticPaths() {
   const pageEntries = await getCollection('pages');
@@ -43,7 +43,7 @@ if (entry.data?.fallback) {
 }
 ---
 
-<BaseLayout
+<ContentLayout
   lang={entry.data.lang}
   title={entry.data.title}
   canonicalSlug={`${Astro.site}/${entry.data.lang}/flyer/${entry.data.identifier}/${entry.data.seo}`}
@@ -51,4 +51,4 @@ if (entry.data?.fallback) {
 >
   <h1>{entry.data.title}</h1>
   <MarkdownEntry rendered={entry.render()} />
-</BaseLayout>
+</ContentLayout>

@@ -1,0 +1,23 @@
+---
+import BaseLayout from './BaseLayout.astro';
+interface Props {
+  title: string;
+  lang: string;
+  canonicalSlug?: string;
+  translationSlugs?: Array<{
+    lang: string;
+    url: string;
+  }>;
+}
+
+const { title, lang, canonicalSlug, translationSlugs } = Astro.props;
+---
+
+<BaseLayout
+  title={title}
+  lang={lang}
+  canonicalSlug={canonicalSlug}
+  translationSlugs={translationSlugs}
+>
+  <slot />
+</BaseLayout>
