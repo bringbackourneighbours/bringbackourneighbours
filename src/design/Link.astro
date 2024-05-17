@@ -1,0 +1,21 @@
+---
+interface Props {
+  href: string;
+  lang?: string;
+}
+
+const { href, lang = 'de' } = Astro.props;
+---
+
+<style>
+  a {
+    /* FIXME: just for debugging */
+    color: chartreuse;
+  }
+</style>
+<a
+  href={href}
+  hreflang={lang}
+>
+  <slot>{href}</slot>
+</a>
