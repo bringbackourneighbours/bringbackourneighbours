@@ -1,0 +1,21 @@
+---
+import logo from '../assets/logo.svg?raw';
+---
+
+<style>
+  .logo {
+    width: 1.5em;
+    height: 1.5em;
+    color: var(--color-surface-0);
+    padding-top: 3px;
+  }
+
+  .logo svg {
+    width: 100%;
+    height: 100%;
+  }
+</style>
+
+<div class="logo">
+  <Fragment set:html={logo} />
+</div>
