@@ -1,14 +1,14 @@
 ---
-import BaseLayout from '../layouts/BaseLayout.astro';
 import CardLink from '../design/CardLink.astro';
 import { useUiTranslation } from '../util/use-ui-translation';
 import { getCanonicalUrlToFlyer } from '../util/get-canonical-url-to-flyer';
 import { Languages, RTL_LANGUAGES } from '../util/languages.enum';
+import OverviewLayout from '../layouts/OverviewLayout.astro';
 
 const allLanguages = Object.values(Languages); // FIXME: my IDE is not resolving this... why?
 ---
 
-<BaseLayout
+<OverviewLayout
   lang="de"
   title=`${await useUiTranslation('meta.title', 'de')} | ${await useUiTranslation('meta.subtitle', 'de')}`
   classes="wide"
@@ -27,4 +27,4 @@ const allLanguages = Object.values(Languages); // FIXME: my IDE is not resolving
       </CardLink>
     ))
   }
-</BaseLayout>
+</OverviewLayout>

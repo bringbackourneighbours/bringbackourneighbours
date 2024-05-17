@@ -1,7 +1,7 @@
 ---
 import { getEntry, getCollection, type CollectionEntry } from 'astro:content';
-import BaseLayout from '../../../../layouts/BaseLayout.astro';
 import MarkdownEntry from '../../../../design/MarkdownEntry.astro';
+import ContentLayout from '../../../../layouts/ContentLayout.astro';
 import { getCanonicalUrlToFlyer } from '../../../../util/get-canonical-url-to-flyer';
 
 export async function getStaticPaths() {
@@ -78,7 +78,7 @@ if (entry.data?.fallback) {
 }
 ---
 
-<BaseLayout
+<ContentLayout
   lang={entry.data.lang}
   title={entry.data.title}
   canonicalSlug={await getCanonicalUrlToFlyer(
@@ -105,4 +105,4 @@ if (entry.data?.fallback) {
     </ul>
   </hgroup>
   <MarkdownEntry rendered={entry.render()} />
-</BaseLayout>
+</ContentLayout>
