@@ -1,5 +1,6 @@
 ---
 import BaseLayout from '../layouts/BaseLayout.astro';
+import Link from '../design/Link.astro';
 import { useUiTranslation } from '../util/use-ui-translation';
 ---
 
@@ -50,14 +51,19 @@ import { useUiTranslation } from '../util/use-ui-translation';
     <p>
       For now we can only use the raw links... later we want to reference the
       content independent of the language.
-      <pre>
-      &#60;BbonLink link="asylnet_interview"/&#62;
-      </pre>
     </p>
+    Usage:
+    <pre>&#60;BbonLink link="asylnet_interview"/&#62;</pre>
     <ul>
-      <li><a href={`${Astro.site}/link/asyldt`}>link/asyldt</a></li>
-      <li><a href={`${Astro.site}/link/asyleng`}>link/asyleng</a></li>
-      <li><a href={`${Astro.site}/link/fooo`}>link/fooo</a></li>
+      <li>
+        <Link href={`${Astro.site}/link/asyldt`}>link/asyldt</Link>
+      </li>
+      <li>
+        <Link href={`${Astro.site}/link/asyleng`}>link/asyleng</Link>
+      </li>
+      <li>
+        <Link href={`${Astro.site}/link/fooo`}>link/fooo</Link>
+      </li>
     </ul>
     <h1 class="">heading 1</h1>
     <h2 class="themed">heading 2</h2>
