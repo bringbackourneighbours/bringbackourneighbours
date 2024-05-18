@@ -23,4 +23,4 @@ const blockEntries = await getCollection('blocks', (block) => {
     border-bottom: 2px dashed var(--color-primary);
   }
 </style>
-<MarkdownEntry entry={blockEntries[0]} />
+<MarkdownEntry rendered={blockEntries[0].render()} />

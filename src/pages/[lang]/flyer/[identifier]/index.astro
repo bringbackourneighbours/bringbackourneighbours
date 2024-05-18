@@ -18,10 +18,7 @@ export async function getStaticPaths() {
   });
 }
 
-const { entry } = Astro.props;
-
-// this could be a middleware
 return Astro.redirect(
-  `${Astro.site}/${entry.data?.lang}/flyer/${entry.data.identifier}/${entry.data.seo}`,
+  `${Astro.site}/${Astro.props.entry.data.lang}/flyer/${Astro.props.entry.data.identifier}/${Astro.props.entry.data.seo}`,
 );
 ---
