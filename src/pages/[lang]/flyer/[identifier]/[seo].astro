@@ -31,12 +31,12 @@ const alternativeTranslations = allFlyers
       url: `${Astro.site}/${flyer.data.lang}/flyer/${flyer.data.identifier}/${flyer.data.seo}`,
     };
   });
+
 const entry: CollectionEntry<'flyers'> = allFlyers.find(
   (flyer) => flyer.data.identifier === identifier && flyer.data.lang === lang,
 )!;
 
 if (entry.data?.fallback) {
-  // this could be a middleware
   return Astro.redirect(
     `${Astro.site}/${entry.data?.fallback}/flyer/${entry.data.identifier}`,
     301,
@@ -64,5 +64,5 @@ if (entry.data?.fallback) {
       </li>
     </ul>
   </hgroup>
-  <MarkdownEntry entry={entry} />
+  <MarkdownEntry rendered={entry.render()} />
 </BaseLayout>

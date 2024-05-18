@@ -1,5 +1,5 @@
 ---
-import type { CollectionEntry } from 'astro:content';
+import type { Render } from 'astro:content';
 import Link from '../design/Link.astro';
 
 /**
@@ -8,12 +8,12 @@ import Link from '../design/Link.astro';
  * BEWARE: this only works for `mdx`
  */
 interface Props {
-  render: CollectionEntry<unknown>;
+  rendered: Render['.mdx'];
 }
 
-const { entry } = Astro.props;
+const { rendered } = Astro.props;
 
-const { Content, components } = await entry.render();
+const { Content } = await rendered;
 ---
 
-<Content components={{ ...components, a: Link }} />
+<Content components={{ a: Link }} />

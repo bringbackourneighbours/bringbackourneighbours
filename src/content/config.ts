@@ -22,9 +22,9 @@ const blocksCollection = defineCollection({
 const flyersCollection = defineCollection({
   type: 'content',
   schema: z.object({
-    ...i18nUrlSchema,
     germanTitle: z.string(),
     lastChecked: z.date(),
+    ...i18nUrlSchema,
   }),
 });
 

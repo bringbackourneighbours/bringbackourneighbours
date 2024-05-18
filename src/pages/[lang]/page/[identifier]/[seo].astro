@@ -50,5 +50,5 @@ if (entry.data?.fallback) {
   translationSlugs={translations}
 >
   <h1>{entry.data.title}</h1>
-  <MarkdownEntry entry={entry} />
+  <MarkdownEntry rendered={entry.render()} />
 </BaseLayout>
