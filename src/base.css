@@ -237,11 +237,6 @@ main hgroup h1 {
   margin-bottom: var(--vspace-3);
 }
 
-hgroup {
-  /* TODO: Design this later */
-  display: none;
-}
-
 /* Make padding of main smaller on small screens */
 @media (width <= 600px) {
   html {
