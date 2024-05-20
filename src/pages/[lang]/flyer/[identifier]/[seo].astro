@@ -1,7 +1,8 @@
 ---
-import { getCollection, type CollectionEntry } from 'astro:content';
+import { getEntry, getCollection, type CollectionEntry } from 'astro:content';
 import BaseLayout from '../../../../layouts/BaseLayout.astro';
 import MarkdownEntry from '../../../../design/MarkdownEntry.astro';
+import { getCanonicalUrlToFlyer } from '../../../../util/get-canonical-url-to-flyer';
 
 export async function getStaticPaths() {
   return (await getCollection('flyers')).map(
@@ -19,27 +20,54 @@ export async function getStaticPaths() {
 
 const { lang, identifier } = Astro.params;
 
-const allFlyers = await getCollection('flyers');
+const getFlyersAlternativeTranslations = async (
+  lang: string,
+  identifier: string,
+): Promise<
+  {
+    lang: string;
+    url: string;
+  }[]
+> => {
+  const allFlyers = await getCollection('flyers');
+  return await Promise.all(
+    allFlyers
+      .filter((flyer: CollectionEntry<'flyers'>) => {
+        return flyer.data.identifier === identifier && flyer.data.lang !== lang;
+      })
+      .map(async (flyer: CollectionEntry<'flyers'>) => {
+        return {
+          lang: flyer.data.lang,
+          url: await getCanonicalUrlToFlyer(
+            flyer.data.lang,
+            flyer.data.identifier,
+          ),
+        };
+      }),
+  );
+};
 
-const alternativeTranslations = allFlyers
-  .filter((flyer) => {
-    return flyer.data.identifier === identifier && flyer.data.lang !== lang;
-  })
-  .map((flyer) => {
-    return {
-      lang: flyer.data.lang,
-      url: `${Astro.site}/${flyer.data.lang}/flyer/${flyer.data.identifier}/${flyer.data.seo}`,
-    };
+const entry: CollectionEntry<'flyers'> | undefined = await getEntry(
+  'flyers',
+  `${identifier}/${lang}`,
+);
+
+if (!entry) {
+  return new Response(null, {
+    status: 404,
+    statusText: 'Not found', // Translate
   });
-
-const entry: CollectionEntry<'flyers'> = allFlyers.find(
-  (flyer) => flyer.data.identifier === identifier && flyer.data.lang === lang,
-)!;
+}
 
 if (entry.data?.fallback) {
+  const fallbackUrl = await getCanonicalUrlToFlyer(
+    entry.data.fallback,
+    entry.data.identifier,
+  );
+
   return Astro.redirect(
-    `${Astro.site}/${entry.data?.fallback}/flyer/${entry.data.identifier}`,
-    301,
+    fallbackUrl,
+    302, // this in only temporary as we are waiting for translation
   );
 }
 ---
@@ -47,8 +75,14 @@ if (entry.data?.fallback) {
 <BaseLayout
   lang={entry.data.lang}
   title={entry.data.title}
-  canonicalSlug={`${Astro.site}/${entry.data.lang}/flyer/${entry.data.identifier}/${entry.data.seo}`}
-  translationSlugs={alternativeTranslations}
+  canonicalSlug={await getCanonicalUrlToFlyer(
+    entry.data.lang,
+    entry.data.identifier,
+  )}
+  translationSlugs={await getFlyersAlternativeTranslations(
+    entry.data.lang,
+    entry.data.identifier,
+  )}
 >
   <hgroup>
     <h1>{entry.data.title}</h1>

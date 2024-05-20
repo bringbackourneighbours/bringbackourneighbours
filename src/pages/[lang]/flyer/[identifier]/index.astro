@@ -1,5 +1,6 @@
 ---
 import { getCollection, type CollectionEntry } from 'astro:content';
+import { getCanonicalUrlToFlyer } from '../../../../util/get-canonical-url-to-flyer';
 
 interface Props {
   entry: CollectionEntry<'flyers'>;
@@ -18,7 +19,10 @@ export async function getStaticPaths() {
   });
 }
 
-return Astro.redirect(
-  `${Astro.site}/${Astro.props.entry.data.lang}/flyer/${Astro.props.entry.data.identifier}/${Astro.props.entry.data.seo}`,
+const url = await getCanonicalUrlToFlyer(
+  Astro.props.entry.data.lang,
+  Astro.props.entry.data.identifier,
 );
+
+return Astro.redirect(url);
 ---
