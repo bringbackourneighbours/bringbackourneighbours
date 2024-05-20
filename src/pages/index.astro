@@ -2,6 +2,10 @@
 import BaseLayout from '../layouts/BaseLayout.astro';
 import CardLink from '../design/CardLink.astro';
 import { useUiTranslation } from '../util/use-ui-translation';
+import { getCanonicalUrlToFlyer } from '../util/get-canonical-url-to-flyer';
+import { Languages, RTL_LANGUAGES } from '../util/languages.enum';
+
+const allLanguages = Object.values(Languages); // FIXME: my IDE is not resolving this... why?
 ---
 
 <BaseLayout
@@ -9,35 +13,15 @@ import { useUiTranslation } from '../util/use-ui-translation';
   title=`${await useUiTranslation('meta.title', 'de')} | ${await useUiTranslation('meta.subtitle', 'de')}`
   classes="wide"
 >
-  <CardLink>
-    {useUiTranslation('wizard.isThereDangerQuestion', 'fr')}
-  </CardLink>
-  <CardLink
-    direction="rtl"
-    href=`${Astro.site}ar/flyer/detention/فترةالحجز%20في%20انتظار%20الترحيل`
-    lang="ar"
-  >
-    {useUiTranslation('wizard.isThereDangerQuestion', 'ar')}
-  </CardLink>
-  <CardLink direction="rtl">
-    {useUiTranslation('wizard.isThereDangerQuestion', 'ur')}
-  </CardLink>
-  <CardLink
-    href=`${Astro.site}de/flyer/detention/abschiebehaft`
-    lang="de"
-  >
-    {useUiTranslation('wizard.isThereDangerQuestion', 'de')}
-  </CardLink>
-  <CardLink>
-    {useUiTranslation('wizard.isThereDangerQuestion', 'ka')}
-  </CardLink>
-  <CardLink
-    href=`${Astro.site}en/flyer/detention`
-    lang="en"
-  >
-    {useUiTranslation('wizard.isThereDangerQuestion', 'en')}
-  </CardLink>
-  <CardLink>
-    {useUiTranslation('wizard.isThereDangerQuestion', 'es')}
-  </CardLink>
+  {
+    allLanguages.map(async (lang) => (
+      <CardLink
+        direction={RTL_LANGUAGES.includes(lang) ? 'rtl' : 'ltr'}
+        href={await getCanonicalUrlToFlyer(lang, 'detention')}
+        lang={lang}
+      >
+        {await useUiTranslation('wizard.isThereDangerQuestion', lang)}
+      </CardLink>
+    ))
+  }
 </BaseLayout>
