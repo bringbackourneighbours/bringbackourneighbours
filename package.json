@@ -15,7 +15,7 @@
     "@astrojs/mdx": "^3.0.0",
     "@fontsource/firago": "^5.0.11",
     "@types/jsonpath": "^0.2.4",
-    "astro": "^4.8.2",
+    "astro": "^4.8.6",
     "jsonpath": "^1.1.1",
     "typescript": "^5.4.5"
   },
