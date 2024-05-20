@@ -117,7 +117,7 @@ import { getCanonicalUrlToFlyer } from '../util/get-canonical-url-to-flyer';
                   (await getCanonicalUrlToFlyer(
                     flyer.data.lang,
                     flyer.data.identifier,
-                  )) | '' // FIXME: we would break astro/jsx-a11y/anchor-is-valid
+                  )) || '' // FIXME: we would break astro/jsx-a11y/anchor-is-valid
                 }
               >
                 {flyer.data.title}

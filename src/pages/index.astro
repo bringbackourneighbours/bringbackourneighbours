@@ -20,7 +20,8 @@ const allLanguages = Object.values(Languages); // FIXME: my IDE is not resolving
         href={await getCanonicalUrlToFlyer(lang, 'detention')}
         lang={lang}
       >
-        {await useUiTranslation('wizard.isThereDangerQuestion', lang)}
+        <!--When using await here it will break... but why?-->
+        {useUiTranslation('wizard.isThereDangerQuestion', lang)}
       </CardLink>
     ))
   }
