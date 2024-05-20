@@ -5,6 +5,7 @@ const allPages = await getCollection('pages');
 const allFlyers = await getCollection('flyers');
 import AnimatedCloseButton from '../design/AnimatedCloseButton.astro';
 import Logo from '../design/Logo.astro';
+import { getCanonicalUrlToFlyer } from '../util/get-canonical-url-to-flyer';
 ---
 
 <style>
@@ -100,13 +101,6 @@ import Logo from '../design/Logo.astro';
             >
               {page.data.title}
             </a>
-            or
-            <a
-              href={`${Astro.site}${page.data.lang}/page/${page.data.identifier}`}
-              hreflang={page.data.lang}
-            >
-              {page.data.identifier}
-            </a>
           </li>
         ))
       }
@@ -115,21 +109,18 @@ import Logo from '../design/Logo.astro';
       <h2>Flyers</h2>
       <ul class="semantic-list">
         {
-          allFlyers.map((flyer) => (
+          allFlyers.map(async (flyer) => (
             <li>
               {flyer.data.lang}:
               <a
-                href={`${Astro.site}${flyer.data.lang}/flyer/${flyer.data.identifier}/${flyer.data.seo}`}
-                hreflang={flyer.data.lang}
+                href={
+                  (await getCanonicalUrlToFlyer(
+                    flyer.data.lang,
+                    flyer.data.identifier,
+                  )) | '' // FIXME: we would break astro/jsx-a11y/anchor-is-valid
+                }
               >
                 {flyer.data.title}
-              </a>
-              or
-              <a
-                href={`${Astro.site}${flyer.data.lang}/flyer/${flyer.data.identifier}`}
-                hreflang={flyer.data.lang}
-              >
-                {flyer.data.identifier}
               </a>
             </li>
           ))

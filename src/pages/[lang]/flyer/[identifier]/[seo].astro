@@ -30,7 +30,7 @@ const getFlyersAlternativeTranslations = async (
   }[]
 > => {
   const allFlyers = await getCollection('flyers');
-  return await Promise.all(
+  const allWithUrls = await Promise.all(
     allFlyers
       .filter((flyer: CollectionEntry<'flyers'>) => {
         return flyer.data.identifier === identifier && flyer.data.lang !== lang;
@@ -45,6 +45,12 @@ const getFlyersAlternativeTranslations = async (
         };
       }),
   );
+  return allWithUrls.filter((translation) => {
+    return translation.url !== undefined;
+  }) as {
+    lang: string;
+    url: string;
+  }[];
 };
 
 const entry: CollectionEntry<'flyers'> | undefined = await getEntry(

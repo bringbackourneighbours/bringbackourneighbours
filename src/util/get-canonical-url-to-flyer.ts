@@ -4,10 +4,12 @@ import { getEntry } from 'astro:content';
 export const getCanonicalUrlToFlyer = async (
   lang: string,
   identifier: string,
-): Promise<string> => {
+): Promise<string | undefined> => {
   const flyer = await getEntry('flyers', `${identifier}/${lang}`);
 
-  return getAbsoluteUrl(
-    `${lang}/flyer/${identifier}/${flyer?.data.seo ? encodeURIComponent(flyer.data.seo) : ''}`,
-  );
+  return flyer
+    ? getAbsoluteUrl(
+        `${lang}/flyer/${identifier}/${flyer?.data.seo ? encodeURIComponent(flyer.data.seo) : ''}`,
+      )
+    : undefined;
 };
