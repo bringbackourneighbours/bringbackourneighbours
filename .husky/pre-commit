@@ -1,1 +1,2 @@
+npx astro check
 npx lint-staged
