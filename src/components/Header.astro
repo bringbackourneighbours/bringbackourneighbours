@@ -5,6 +5,7 @@ const allPages = await getCollection('pages');
 const allFlyers = await getCollection('flyers');
 import AnimatedCloseButton from '../design/AnimatedCloseButton.astro';
 import Logo from '../design/Logo.astro';
+import Link from '../design/Link.astro';
 import { getCanonicalUrlToFlyer } from '../util/get-canonical-url-to-flyer';
 ---
 
@@ -112,16 +113,17 @@ import { getCanonicalUrlToFlyer } from '../util/get-canonical-url-to-flyer';
           allFlyers.map(async (flyer) => (
             <li>
               {flyer.data.lang}:
-              <a
+              <Link
+                lang={flyer.data.lang}
                 href={
                   (await getCanonicalUrlToFlyer(
                     flyer.data.lang,
                     flyer.data.identifier,
-                  )) || '' // FIXME: we would break astro/jsx-a11y/anchor-is-valid
+                  )) ?? ''
                 }
               >
                 {flyer.data.title}
-              </a>
+              </Link>
             </li>
           ))
         }
