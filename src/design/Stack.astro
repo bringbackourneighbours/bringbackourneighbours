@@ -1,0 +1,29 @@
+---
+
+---
+
+<style>
+  .stack {
+    display: flex;
+    flex-wrap: wrap;
+    gap: calc(1.5 * var(--vspace));
+    justify-content: center;
+    padding-top: 3rem;
+
+    * {
+      /* TODO: gap + 2 row + padding */
+      width: 40%;
+    }
+
+    @media screen and (width <= 768px) {
+      padding-top: 1rem;
+
+      * {
+        width: 100%;
+      }
+    }
+  }
+</style>
+<div class="stack">
+  <slot />
+</div>

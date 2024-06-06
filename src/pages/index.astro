@@ -1,9 +1,9 @@
 ---
+import OverviewLayout from '../layouts/OverviewLayout.astro';
 import CardLink from '../design/CardLink.astro';
 import { useUiTranslation } from '../util/use-ui-translation';
 import { getCanonicalUrlToFlyer } from '../util/get-canonical-url-to-flyer';
 import { Languages, RTL_LANGUAGES } from '../util/languages.enum';
-import OverviewLayout from '../layouts/OverviewLayout.astro';
 
 const allLanguages = Object.values(Languages); // FIXME: my IDE is not resolving this... why?
 ---
@@ -11,20 +11,21 @@ const allLanguages = Object.values(Languages); // FIXME: my IDE is not resolving
 <OverviewLayout
   lang="de"
   title=`${await useUiTranslation('meta.title', 'de')} | ${await useUiTranslation('meta.subtitle', 'de')}`
-  classes="wide"
 >
-  {
-    allLanguages.map(async (lang) => (
-      <CardLink
-        direction={RTL_LANGUAGES.includes(lang) ? 'rtl' : 'ltr'}
-        href={await getCanonicalUrlToFlyer(lang, 'detention')}
-        lang={lang}
-      >
-        {
-          //FIXME: When using await here it will break... but why?
-          useUiTranslation('wizard.isThereDangerQuestion', lang)
-        }
-      </CardLink>
-    ))
-  }
+  <Stack>
+    {
+      allLanguages.map(async (lang) => (
+        <CardLink
+          href={await getCanonicalUrlToFlyer(lang, 'detention')}
+          lang={lang}
+        >
+          {
+            //FIXME: When using await here it will break... but why?
+
+            useUiTranslation('wizard.isThereDangerQuestion', lang)
+          }
+        </CardLink>
+      ))
+    }
+  </Stack>
 </OverviewLayout>

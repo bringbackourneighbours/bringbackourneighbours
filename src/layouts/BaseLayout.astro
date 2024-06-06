@@ -19,8 +19,15 @@ import '@fontsource/firago/400-italic.css';
 import '@fontsource/firago/500-italic.css';
 import '@fontsource/firago/600-italic.css';
 import '../base.css';
+import { getLanguageDirection } from '../util/get-language-direction';
 
-const { title, lang, canonicalSlug, translationSlugs, classes } = Astro.props;
+const {
+  title,
+  lang,
+  canonicalSlug,
+  translationSlugs,
+  classes = '',
+} = Astro.props;
 ---
 
 <html lang={lang}>
@@ -58,8 +65,14 @@ const { title, lang, canonicalSlug, translationSlugs, classes } = Astro.props;
       content="lch(55% 90.4 42deg)"
     />
     <title>{title}</title>
+
+    <style>
+      main {
+        padding: 0 var(--vspace);
+      }
+    </style>
   </head>
-  <body class={classes}>
+  <body class={`${getLanguageDirection(lang)} ${classes}`}>
     <Header />
     <main>
       <slot />

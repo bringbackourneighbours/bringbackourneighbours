@@ -36,9 +36,11 @@ body {
   font-family: FiraGO, sans-serif;
   background: var(--color-surface-0);
   margin: 0;
+  color: var(--color-primary);
 }
 
 p {
+  /* TODO: that's to much fo r copy */
   margin: var(--vspace) 0;
   line-height: var(--vspace);
 }
@@ -183,50 +185,30 @@ ul ul {
   margin: 1.5rem 0 1.5rem 3rem;
 }
 
+/**
+* Utility
+*/
+
 .hidden {
   display: none !important;
 }
 
+.ltr {
+  direction: ltr;
+}
+
 .rtl {
   direction: rtl;
-  font-size: 2em;
-  font-weight: 500;
 }
 
-/* TODO: Add remaining adjustments */
-.h2.rtl {
-  font-size: 1.9em;
-  font-weight: 600;
-}
-
-/* 
+/*
 *  SPECIFIC STYLES
-*  TODO: Move to components if applicable. 
+*  TODO: Move to components if applicable.
 */
-
-main,
-header {
-  padding: 3rem;
-}
-
-main {
-  max-width: calc(25 * var(--vspace));
-}
-
-main,
-#main-nav {
-  color: var(--color-primary);
-  margin: 0 auto;
-  padding-top: 1rem;
-}
 
 main > hgroup + *,
 main > *:first-child {
   margin-top: 0 !important;
-}
-
-.wide main {
-  max-width: calc(30 * var(--vspace));
 }
 
 main hgroup .meta {
@@ -240,39 +222,8 @@ main hgroup h1 {
 /* Make padding of main smaller on small screens */
 @media (width <= 600px) {
   html {
+    /* TODO: not sure if thats a good idea... */
     font-size: 13px;
-  }
-
-  main,
-  #main-nav {
-    padding: 3.5rem 2.5rem 1rem;
-  }
-
-  /* TODO: Tweak font sizes properly */
-  main {
-    font-size: 17px;
-    font-weight: 500;
-  }
-
-  header {
-    gap: 0.1em;
-  }
-
-  header h1 {
-    font-size: 1.4em !important;
-  }
-}
-
-@media (width >= 1000px) {
-  main {
-    display: flex;
-    flex-wrap: wrap;
-    gap: calc(1.5 * var(--vspace));
-    padding-top: 3em;
-  }
-
-  .wide main {
-    max-width: calc(40 * var(--vspace));
   }
 }
 
