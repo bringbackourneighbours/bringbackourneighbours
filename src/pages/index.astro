@@ -3,7 +3,8 @@ import OverviewLayout from '../layouts/OverviewLayout.astro';
 import CardLink from '../design/CardLink.astro';
 import { useUiTranslation } from '../util/use-ui-translation';
 import { getCanonicalUrlToFlyer } from '../util/get-canonical-url-to-flyer';
-import { Languages, RTL_LANGUAGES } from '../util/languages.enum';
+import { Languages } from '../util/languages.enum';
+import Stack from '../design/Stack.astro';
 
 const allLanguages = Object.values(Languages); // FIXME: my IDE is not resolving this... why?
 ---
