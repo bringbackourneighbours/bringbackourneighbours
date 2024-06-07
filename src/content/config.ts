@@ -12,6 +12,23 @@ const i18nUrlSchema = {
   seo: z.string(),
 };
 
+const addressesCollection = defineCollection({
+  type: 'data',
+  schema: z.object({
+    identifier: z.string(),
+    name: z.string(),
+    additional: z.string().optional(),
+    streetLine: z.string().optional(),
+    zip: z.string().optional(),
+    city: z.string().optional(),
+    phone: z.string().optional(),
+    mail: z.string().optional(),
+    url: z.string().optional(),
+    lastChecked: z.date(),
+    translatedNotes: z.record(z.string(), z.string()).optional(),
+  }),
+});
+
 const blocksCollection = defineCollection({
   type: 'content',
   schema: z.object({
@@ -67,6 +84,7 @@ const uiCollection = defineCollection({
 });
 
 export const collections = {
+  addresses: addressesCollection,
   blocks: blocksCollection,
   flyers: flyersCollection,
   links: linksCollection,

@@ -2,6 +2,7 @@
 import Link from '../design/Link.astro';
 import { useUiTranslation } from '../util/use-ui-translation';
 import OverviewLayout from '../layouts/OverviewLayout.astro';
+import Address from '../components/Address.astro';
 ---
 
 <html lang="en">
@@ -26,7 +27,20 @@ import OverviewLayout from '../layouts/OverviewLayout.astro';
     title="Design Showcase"
     lang="en"
   >
-    <h1>UI translation</h1>
+    <h1>Showcase</h1>
+    This page is for testing new feature... it will be removed when we are going
+    live
+
+    <h2>Addresses</h2>
+    <Address
+      identifier="chronik_le"
+      lang="de"
+    />
+    <Address
+      identifier="chronik_le"
+      lang="en"
+    />
+    <h2>UI translation</h2>
     <p>
       useUiTranslation('meta.subtitle', 'de') == {
         useUiTranslation('meta.subtitle', 'de')
@@ -46,7 +60,7 @@ import OverviewLayout from '../layouts/OverviewLayout.astro';
       useUiTranslation('FOOFOO', 'en') == {useUiTranslation('FOOFOO', 'en')}
     </p>
 
-    <h1>ShortLinks</h1>
+    <h2>ShortLinks</h2>
     <p>
       we resolve calls to ${Astro.site}/link/[slug] to the links in the content
     </p>

@@ -12,15 +12,15 @@ const { href, lang = 'de' } = Astro.props;
     color: var(--color-primary);
     border-color: var(--color-primary);
     border-style: dashed;
-    border-width: 0 0 var(--border-0) 0;
+    border-width: 0 0 var(--size-border) 0;
     text-decoration: none;
-    padding-inline: calc(var(--border-0) * 2);
+    padding-inline: calc(var(--size-border) * 2);
   }
 
   a:hover,
   a:focus {
-    padding-inline: var(--border-0);
-    border-width: var(--border-0);
+    padding-inline: var(--size-border);
+    border-width: var(--size-border);
   }
 
   a:active {
@@ -37,5 +37,6 @@ const { href, lang = 'de' } = Astro.props;
   href={href}
   hreflang={lang}
 >
+  {/* TODO: we could strip the protocol here  */}
   <slot>{href}</slot>
 </a>

@@ -8,7 +8,11 @@
   --color-primary-2: color-mix(in lch, var(--color-primary-0) 70%, white);
   --color-secondary-0: lch(55% 90.4 42deg);
   --color-secondary: var(--color-secondary-0);
-  --color-secondary-1: color-mix(in lch, var(--color-secondary-0) 58%, black);
+  --color-secondary-dark: color-mix(
+    in lch,
+    var(--color-secondary-0) 58%,
+    black
+  );
   --color-secondary-2: var(--color-secondary-0);
   --color-secondary-3: color-mix(in srgb, var(--color-secondary-0) 90%, white);
   --color-surface-0: #fff;
@@ -24,7 +28,7 @@
   --vspace-2: calc(1.5 * var(--space) * 1rem);
   --vspace-3: calc(0.5 * var(--space) * 1rem);
   --shadow-0: 10px;
-  --border-0: 2px;
+  --size-border: 2px;
 }
 
 html {
