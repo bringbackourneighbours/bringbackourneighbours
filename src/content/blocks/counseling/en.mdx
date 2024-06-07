@@ -3,10 +3,16 @@ identifier: counseling
 lang: en
 lastChecked: 2023-12-01
 ---
+
+import Address from '../../../components/Address.astro';
+
 - Saxony:
   - bbonlink.de/sfr
 - Additionally in Dresden:
-  - [rlc-dresden.de](rlc-dresden.de)
+  - <Address
+      identifier="rlc_dresden"
+      lang="en"
+    />
   - auslaenderrat.de/beratungsstelle
 - Additionally in Leipzig:
   - rlcl.de
