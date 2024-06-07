@@ -12,6 +12,15 @@ const i18nUrlSchema = {
   seo: z.string(),
 };
 
+/**
+ * for flyer and kits
+ */
+const standaloneContentSchema = z.object({
+  germanTitle: z.string(),
+  lastChecked: z.date(),
+  ...i18nUrlSchema,
+});
+
 const addressesCollection = defineCollection({
   type: 'data',
   schema: z.object({
@@ -38,11 +47,12 @@ const blocksCollection = defineCollection({
 
 const flyersCollection = defineCollection({
   type: 'content',
-  schema: z.object({
-    germanTitle: z.string(),
-    lastChecked: z.date(),
-    ...i18nUrlSchema,
-  }),
+  schema: standaloneContentSchema,
+});
+
+const kitsCollection = defineCollection({
+  type: 'content',
+  schema: standaloneContentSchema,
 });
 
 const linksCollection = defineCollection({
@@ -88,6 +98,7 @@ export const collections = {
   blocks: blocksCollection,
   flyers: flyersCollection,
   links: linksCollection,
+  kits: kitsCollection,
   pages: pagesCollection,
   ui: uiCollection,
 };
