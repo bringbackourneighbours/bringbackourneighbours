@@ -1,0 +1,86 @@
+---
+import { getEntry } from 'astro:content';
+import Link from '../design/Link.astro';
+
+interface Props {
+  identifier: string;
+  lang: string;
+}
+
+const { identifier, lang } = Astro.props;
+
+const address = await getEntry('addresses', identifier);
+---
+
+<style>
+  address {
+    /**
+    TODO consider those styles as placeholders
+     */
+    border: var(--size-border) dotted var(--color-secondary-dark);
+    margin: var(--vspace-3);
+    padding: var(--vspace-3);
+    width: fit-content;
+  }
+</style>
+
+<address>
+  <strong>{address?.data.name}</strong><br />
+  {
+    address?.data.additional && (
+      <>
+        {address?.data.additional}
+        <br />
+      </>
+    )
+  }
+  {
+    address?.data.streetLine && (
+      <>
+        {address?.data.streetLine}
+        <br />
+      </>
+    )
+  }
+  {
+    (address?.data.zip || address?.data.city) && (
+      <>
+        {`${address?.data.zip} ${address?.data.city}`}
+        <br />
+      </>
+    )
+  }
+  {
+    address?.data.phone && (
+      <>
+        {address?.data.phone}
+        <br />
+      </>
+    )
+  }
+
+  {
+    address?.data.mail && (
+      <>
+        <Link href={`mailto:${address?.data.mail}`}>{address?.data.mail}</Link>
+        <br />
+      </>
+    )
+  }
+  {
+    address?.data.url && (
+      <>
+        <Link href={address?.data.url} />
+        <br />
+      </>
+    )
+  }
+  {
+    address?.data.translatedNotes?.[lang] && (
+      <>
+        {address?.data.translatedNotes?.[lang]}
+        <br />
+      </>
+    )
+  }
+</address>
