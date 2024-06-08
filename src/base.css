@@ -2,25 +2,19 @@
 * GENERAL STYLES
 */
 :root {
-  --color-primary-0: lch(28.229% 58.73 285.304deg);
-  --color-primary: var(--color-primary-0);
-  --color-primary-1: color-mix(in lch, var(--color-primary-0) 55%, black);
-  --color-primary-2: color-mix(in lch, var(--color-primary-0) 70%, white);
-  --color-secondary-0: lch(55% 90.4 42deg);
-  --color-secondary: var(--color-secondary-0);
-  --color-secondary-dark: color-mix(
-    in lch,
-    var(--color-secondary-0) 58%,
-    black
+  --color-primary: lch(28.229% 58.73 285.304deg);
+  --color-primary-dark: color-mix(in lch, var(--color-primary) 55%, black);
+  --color-primary-bright: color-mix(in lch, var(--color-primary) 70%, white);
+  --color-secondary: lch(55% 90.4 42deg);
+  --color-secondary-dark: color-mix(in lch, var(--color-secondary) 58%, black);
+  --color-secondary-bright: color-mix(
+    in srgb,
+    var(--color-secondary) 90%,
+    white
   );
-  --color-secondary-2: var(--color-secondary-0);
-  --color-secondary-3: color-mix(in srgb, var(--color-secondary-0) 90%, white);
-  --color-surface-0: #fff;
-  --color-surface: var(--color-surface-0);
-  --color-surface-1: color-mix(in srgb, var(--color-surface-0) 95%, #2d2827);
-  --color-surface-2: color-mix(in srgb, var(--color-surface-0) 90%, #2d2827);
-  --color-surface-3: #ededf5d4;
-  --color-dark: black;
+  --color-surface: #fff;
+  --color-surface-dark: #ededf5d4;
+  --color-text: black;
   --space: 1.62;
   --vspace: calc(var(--space) * 1rem);
   --vspace-0: calc(3 * var(--space) * 1rem);
@@ -38,7 +32,7 @@ html {
 body {
   font-size: 1.1667em;
   font-family: FiraGO, sans-serif;
-  background: var(--color-surface-0);
+  background: var(--color-surface);
   margin: 0;
   color: var(--color-primary);
 }
