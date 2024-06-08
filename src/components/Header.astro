@@ -3,10 +3,14 @@ import { getCollection } from 'astro:content';
 
 const allPages = await getCollection('pages');
 const allFlyers = await getCollection('flyers');
+const allKits = await getCollection('kits');
 import AnimatedCloseButton from '../design/AnimatedCloseButton.astro';
 import Logo from '../design/Logo.astro';
 import Link from '../design/Link.astro';
-import { getCanonicalUrlToFlyer } from '../util/get-canonical-url-to-flyer';
+import {
+  getCanonicalUrlToFlyer,
+  getCanonicalUrlToKit,
+} from '../util/get-canonical-url';
 ---
 
 <style>
@@ -106,6 +110,29 @@ import { getCanonicalUrlToFlyer } from '../util/get-canonical-url-to-flyer';
         ))
       }
     </ul>
+    <section>
+      <h2>Kits</h2>
+      <ul class="semantic-list">
+        {
+          allKits.map(async (kit) => (
+            <li>
+              {kit.data.lang}:
+              <Link
+                lang={kit.data.lang}
+                href={
+                  (await getCanonicalUrlToKit(
+                    kit.data.lang,
+                    kit.data.identifier,
+                  )) ?? ''
+                }
+              >
+                {kit.data.title}
+              </Link>
+            </li>
+          ))
+        }
+      </ul>
+    </section>
     <section>
       <h2>Flyers</h2>
       <ul class="semantic-list">

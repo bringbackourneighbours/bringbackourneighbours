@@ -1,0 +1,20 @@
+---
+import { type CollectionEntry } from 'astro:content';
+import { getCanonicalUrlToKit } from '../../../../util/get-canonical-url';
+import { getStaticPathsForKits } from '../../../../util/get-static-paths';
+
+interface Props {
+  entry: CollectionEntry<'kits'>;
+}
+
+export async function getStaticPaths() {
+  return getStaticPathsForKits();
+}
+
+const url = await getCanonicalUrlToKit(
+  Astro.props.entry.data.lang,
+  Astro.props.entry.data.identifier,
+);
+
+return Astro.redirect(url);
+---

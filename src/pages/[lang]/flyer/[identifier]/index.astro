@@ -1,22 +1,14 @@
 ---
-import { getCollection, type CollectionEntry } from 'astro:content';
-import { getCanonicalUrlToFlyer } from '../../../../util/get-canonical-url-to-flyer';
+import { type CollectionEntry } from 'astro:content';
+import { getCanonicalUrlToFlyer } from '../../../../util/get-canonical-url';
+import { getStaticPathsForFlyers } from '../../../../util/get-static-paths';
 
 interface Props {
   entry: CollectionEntry<'flyers'>;
 }
 
 export async function getStaticPaths() {
-  const flyerEntries = await getCollection('flyers');
-  return flyerEntries.map((entry: CollectionEntry<'flyers'>) => {
-    return {
-      params: {
-        lang: entry.data.lang,
-        identifier: entry.data.identifier,
-      },
-      props: { entry },
-    };
-  });
+  return getStaticPathsForFlyers();
 }
 
 const url = await getCanonicalUrlToFlyer(
