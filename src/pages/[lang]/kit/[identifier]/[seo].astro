@@ -2,22 +2,22 @@
 import { type CollectionEntry } from 'astro:content';
 import MarkdownEntry from '../../../../design/MarkdownEntry.astro';
 import ContentLayout from '../../../../layouts/ContentLayout.astro';
-import { getCanonicalUrlToFlyer } from '../../../../util/get-canonical-url';
-import { getStaticPathsForFlyers } from '../../../../util/get-static-paths';
-import { getTranslationsUrlsForFlyer } from '../../../../util/get-translations-url';
-import { redirectNotTranslatedForFlyer } from '../../../../util/redirect-not-found-or-not-translated';
+import { getCanonicalUrlToKit } from '../../../../util/get-canonical-url';
+import { getStaticPathsForKits } from '../../../../util/get-static-paths';
+import { getTranslationsUrlsForKit } from '../../../../util/get-translations-url';
+import { redirectNotTranslatedForKit } from '../../../../util/redirect-not-found-or-not-translated';
 
 interface Props {
-  entry: CollectionEntry<'flyers'>;
+  entry: CollectionEntry<'kits'>;
 }
 
 export async function getStaticPaths() {
-  return getStaticPathsForFlyers();
+  return getStaticPathsForKits();
 }
 
 const { entry } = Astro.props;
 
-const redirectResponse = await redirectNotTranslatedForFlyer(entry);
+const redirectResponse = await redirectNotTranslatedForKit(entry);
 if (redirectResponse) {
   return Astro.redirect(redirectResponse.url, redirectResponse.status);
 }
@@ -26,11 +26,11 @@ if (redirectResponse) {
 <ContentLayout
   lang={entry.data.lang}
   title={entry.data.title}
-  canonicalSlug={await getCanonicalUrlToFlyer(
+  canonicalSlug={await getCanonicalUrlToKit(
     entry.data.lang,
     entry.data.identifier,
   )}
-  translationSlugs={await getTranslationsUrlsForFlyer(
+  translationSlugs={await getTranslationsUrlsForKit(
     entry.data.lang,
     entry.data.identifier,
   )}
