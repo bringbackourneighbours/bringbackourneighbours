@@ -1,5 +1,8 @@
 ---
-import BaseLayout from './BaseLayout.astro';
+import BaseHtml from './BaseHtml.astro';
+import BaseHead from './BaseHead.astro';
+import { getLanguageDirection } from '../util/get-language-direction';
+import Header from '../components/Header.astro';
 interface Props {
   title: string;
   lang: string;
@@ -13,12 +16,30 @@ interface Props {
 const { title, lang, canonicalSlug, translationSlugs } = Astro.props;
 ---
 
-<BaseLayout
-  title={title}
-  lang={lang}
-  canonicalSlug={canonicalSlug}
-  translationSlugs={translationSlugs}
-  classes="wide"
->
-  <slot />
-</BaseLayout>
+<style>
+  .content-wrapper {
+    display: flex;
+    justify-content: center;
+
+    main {
+      padding: var(--vspace);
+    }
+  }
+</style>
+
+<BaseHtml lang={lang}>
+  <BaseHead
+    title={title}
+    lang={lang}
+    canonicalSlug={canonicalSlug}
+    translationSlugs={translationSlugs}
+  />
+  <body class={`${getLanguageDirection(lang)}`}>
+    <Header />
+    <div class="content-wrapper">
+      <main>
+        <slot />
+      </main>
+    </div>
+  </body>
+</BaseHtml>
