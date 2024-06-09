@@ -23,6 +23,7 @@
   --vspace-3: calc(0.5 * var(--space) * 1rem);
   --shadow-0: 10px;
   --size-border: 2px;
+  --size-max-text-span: 100ch;
 }
 
 html {
@@ -197,32 +198,6 @@ ul ul {
 
 .rtl {
   direction: rtl;
-}
-
-/*
-*  SPECIFIC STYLES
-*  TODO: Move to components if applicable.
-*/
-
-main > hgroup + *,
-main > *:first-child {
-  margin-top: 0 !important;
-}
-
-main hgroup .meta {
-  font-size: smaller;
-}
-
-main hgroup h1 {
-  margin-bottom: var(--vspace-3);
-}
-
-/* Make padding of main smaller on small screens */
-@media (width <= 600px) {
-  html {
-    /* TODO: not sure if thats a good idea... */
-    font-size: 13px;
-  }
 }
 
 ul.semantic-list {

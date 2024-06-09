@@ -27,7 +27,7 @@ const { href, lang = 'de' } = Astro.props;
     margin: 0 calc(0.5 * var(--shadow-0)) calc(0.5 * var(--shadow-0)) 0;
     font-weight: 500;
     letter-spacing: normal;
-    max-width: 30ch;
+    max-width: calc(var(--size-max-text-span) / 2);
 
     /* Add a very subtle background gradient between surface color and light grey an surface color */
     background: linear-gradient(
