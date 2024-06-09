@@ -69,6 +69,7 @@ import Address from '../components/Address.astro';
       For now we can only use the raw links... later we want to reference the
       content independent of the language.
     </p>
+    This works for external resources in the content-collection `links`...
     <ul>
       <li>
         <Link href={`${Astro.site}/link/asyldt`}>link/asyldt</Link>
@@ -78,6 +79,29 @@ import Address from '../components/Address.astro';
       </li>
       <li>
         <Link href={`${Astro.site}/link/fooo`}>link/fooo</Link>
+      </li>
+    </ul>
+    <p>... but also for the flyers and kits</p>
+    <ul>
+      <li>
+        <Link href={`${Astro.site}/link/flyer-de-detention`}
+          >link/flyer-de-detention</Link
+        >
+      </li>
+      <li>
+        <Link href={`${Astro.site}/link/flyer-en-detention`}
+          >link/flyer-en-detention</Link
+        >
+      </li>
+      <li>
+        <Link href={`${Astro.site}/link/kit-de-affected`}
+          >link/kit-de-affected</Link
+        >
+      </li>
+      <li>
+        <Link href={`${Astro.site}/link/kit-ar-affected`}
+          >link/kit-ar-affected</Link
+        >
       </li>
     </ul>
 
