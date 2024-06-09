@@ -9,7 +9,11 @@ interface Props {
 
 const { identifier, lang } = Astro.props;
 
-const address = await getEntry('addresses', identifier);
+// FIXME: this seems needless... but without the type is not working. no idea why
+const getAddress = async (identifier: string) =>
+  await getEntry('addresses', identifier);
+
+const address = await getAddress(identifier);
 ---
 
 <style>
