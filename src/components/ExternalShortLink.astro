@@ -1,0 +1,30 @@
+---
+import { getEntry } from 'astro:content';
+import Link from '../design/Link.astro';
+
+interface Props {
+  identifier: string;
+  lang: string;
+}
+
+const { identifier, lang } = Astro.props;
+
+// FIXME: this seems needless... but without the type is not working. no idea why
+const getLink = async (identifier: string) =>
+  await getEntry('links', identifier);
+
+const link = await getLink(identifier);
+---
+
+{
+  link ? (
+    <Link
+      href={link.data[lang].url}
+      lang={lang}
+    >
+      {link.data[lang].type}: {link.data[lang].title}
+    </Link>
+  ) : (
+    <em>LINK NOT FOUND</em>
+  )
+}

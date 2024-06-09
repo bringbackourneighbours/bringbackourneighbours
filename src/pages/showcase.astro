@@ -3,6 +3,7 @@ import Link from '../design/Link.astro';
 import { useUiTranslation } from '../util/use-ui-translation';
 import OverviewLayout from '../layouts/OverviewLayout.astro';
 import Address from '../components/Address.astro';
+import ExternalShortLink from '../components/ExternalShortLink.astro';
 ---
 
 <html lang="en">
@@ -72,10 +73,16 @@ import Address from '../components/Address.astro';
     This works for external resources in the content-collection `links`...
     <ul>
       <li>
-        <Link href={`${Astro.site}/link/asyldt`}>link/asyldt</Link>
+        <Link href={`${Astro.site}/link/asyldt`}>link/asyldt</Link> or <ExternalShortLink
+          identifier="asylnet_interview"
+          lang="de"
+        />
       </li>
       <li>
-        <Link href={`${Astro.site}/link/asyleng`}>link/asyleng</Link>
+        <Link href={`${Astro.site}/link/asyleng`}>link/asyleng</Link> or <ExternalShortLink
+          identifier="asylnet_interview"
+          lang="en"
+        />
       </li>
       <li>
         <Link href={`${Astro.site}/link/fooo`}>link/fooo</Link>
