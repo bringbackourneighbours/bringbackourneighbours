@@ -1,0 +1,16 @@
+---
+import BaseHtml from './BaseHtml.astro';
+import BaseBody from './BaseBody.astro';
+
+const { lang, title } = Astro.props;
+---
+
+<BaseHtml lang={lang}>
+  <head>
+    <meta charset="utf-8" />
+    <title>{title}</title>
+  </head>
+  <BaseBody>
+    <slot />
+  </BaseBody>
+</BaseHtml>
