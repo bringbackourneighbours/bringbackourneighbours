@@ -1,0 +1,37 @@
+---
+
+---
+
+<style>
+  @page :first {
+    margin: 0;
+    size: a5 portrait;
+  }
+
+  @page {
+    margin: 1cm;
+    size: a5 portrait;
+  }
+
+  .page {
+    break-inside: avoid;
+
+    /**
+    .allow-break-inside {
+      break-inside: auto;
+    }
+
+    .break-after {
+      page-break-after: always;
+    }
+
+    .break-before {
+      page-break-before: always;
+    }
+    */
+  }
+</style>
+
+<div class="page">
+  <slot />
+</div>

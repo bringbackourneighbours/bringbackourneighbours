@@ -5,6 +5,7 @@ import { getStaticPathsForFlyers } from '../../util/get-static-paths';
 import PrintLayout from '../../layouts/PrintLayout.astro';
 import MarkdownEntry from '../../design/MarkdownEntry.astro';
 import Logo from '../../design/Logo.astro';
+import PrinterPage from '../../design/PrinterPage.astro';
 
 interface Props {
   entry: CollectionEntry<'flyers'>;
@@ -18,28 +19,31 @@ const { entry } = Astro.props;
 ---
 
 <PrintLayout lang={entry.data.lang}>
-  <hgroup>
-    <p>{entry.data.lang}</p>
-    <p>{entry.data.germanTitle}</p>
-    <h1>{entry.data.title}</h1>
-    <p>
-      <!-- FIXME: Use proper locales for date, drop timezone output -->
-      Stand:
-      <time datetime={entry.data.lastChecked.toLocaleString()}
-        >{entry.data.lastChecked}</time
-      >
-    </p>
-  </hgroup>
+  <PrinterPage>
+    <hgroup>
+      <p>{entry.data.lang}</p>
+      <p>{entry.data.germanTitle}</p>
+      <h1>{entry.data.title}</h1>
+      <p>
+        <!-- FIXME: Use proper locales for date, drop timezone output -->
+        Stand:
+        <time datetime={entry.data.lastChecked.toLocaleString()}
+          >{entry.data.lastChecked}</time
+        >
+      </p>
+    </hgroup>
 
-  <strong>Bring Back Our Neighbours</strong>
-  <Logo />
-  <p>Gemeinsam solidarisch gegen die sächsische Abschiebepolitik</p>
+    <strong>Bring Back Our Neighbours</strong>
+    <Logo />
+    <p>Gemeinsam solidarisch gegen die sächsische Abschiebepolitik</p>
+  </PrinterPage>
+  <PrinterPage>
+    <MarkdownEntry rendered={entry.render()} />
 
-  <MarkdownEntry rendered={entry.render()} />
-
-  <p>bringbackourneighbours.de</p>
-  <p>Impressum</p>
-  <p>Kontaktgruppe Asyl und Abschiebehaft e.V.</p>
-  <p>Heinrich-Zille-Str. 6</p>
-  <p>01219 Dresden</p>
+    <p>bringbackourneighbours.de</p>
+    <p>Impressum</p>
+    <p>Kontaktgruppe Asyl und Abschiebehaft e.V.</p>
+    <p>Heinrich-Zille-Str. 6</p>
+    <p>01219 Dresden</p>
+  </PrinterPage>
 </PrintLayout>
