@@ -1,9 +1,11 @@
 import puppeteer from 'puppeteer';
 import fs from 'fs';
 
-export const printPage = async (distPath: string): Promise<Buffer> => {
+export const printHtmlToBuffer = async (distPath: string): Promise<Buffer> => {
   const browser = await puppeteer.launch();
   const page = await browser.newPage();
+
+  await page.goto('https://example.com');
 
   const contentHtml = fs.readFileSync(distPath, 'utf8');
   await page.setContent(contentHtml, { waitUntil: 'domcontentloaded' });
