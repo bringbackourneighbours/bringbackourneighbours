@@ -118,13 +118,26 @@ import ExternalShortLink from '../components/ExternalShortLink.astro';
     generate the pages. You can preview the output by visiting
     <ul>
       <li>
-        <Link href={`${Astro.site}/print/flyer-de-detention`}
-          >link/flyer-de-detention</Link
+        <Link href={`${Astro.site}/internal-print/flyer-de-detention`}
+          >internal-print/flyer-de-detention</Link
         >
       </li>
       <li>
-        <Link href={`${Astro.site}/print/flyer-en-detention`}
-          >link/flyer-en-detention</Link
+        <Link href={`${Astro.site}/internal-print/flyer-en-detention`}
+          >internal-print/flyer-en-detention</Link
+        >
+      </li>
+    </ul>
+    and see the result:
+    <ul>
+      <li>
+        <Link href={`${Astro.site}/print/flyer-de-detention.pdf`}
+          >print/flyer-de-detention.pdf</Link
+        >
+      </li>
+      <li>
+        <Link href={`${Astro.site}/print/flyer-en-detention.pdf`}
+          >print/flyer-en-detention.pdf</Link
         >
       </li>
     </ul>
