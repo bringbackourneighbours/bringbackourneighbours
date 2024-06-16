@@ -1,5 +1,9 @@
 ---
-
+interface Props {
+  breakBefore?: boolean;
+  breakAfter?: boolean;
+}
+const { breakBefore = false, breakAfter = false } = Astro.props;
 ---
 
 <style>
@@ -16,22 +20,18 @@
   .page {
     break-inside: avoid;
 
-    /**
-    .allow-break-inside {
-      break-inside: auto;
-    }
-
-    .break-after {
+    &.-break-after {
       page-break-after: always;
     }
 
-    .break-before {
+    &.-break-before {
       page-break-before: always;
     }
-    */
   }
 </style>
 
-<div class="page">
+<div
+  class={`page${breakBefore ? ' -breakBefore' : ''}${breakAfter ? ' -break-after' : ''}`}
+>
   <slot />
 </div>
