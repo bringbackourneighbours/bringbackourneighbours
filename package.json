@@ -8,8 +8,7 @@
     "build": "astro check && astro build",
     "preview": "astro preview",
     "astro": "astro",
-    "prepare": "husky",
-    "print": "tsx ./scripts/print.ts"
+    "prepare": "husky"
   },
   "dependencies": {
     "@astrojs/check": "^0.7.0",
@@ -19,7 +18,6 @@
     "astro": "^4.10.1",
     "jsonpath": "^1.1.1",
     "puppeteer": "^22.11.0",
-    "tsx": "^4.15.5",
     "typescript": "^5.4.5"
   },
   "devDependencies": {
