@@ -1,9 +1,10 @@
 import { type CollectionEntry, getCollection } from 'astro:content';
 
-interface StandaloneContentProps<T extends 'kits' | 'flyers'> {
+export interface StandaloneContentProps<T extends 'kits' | 'flyers'> {
   params: {
     lang: string;
     identifier: string;
+    seo: string;
   };
   props: {
     entry: CollectionEntry<T>;
