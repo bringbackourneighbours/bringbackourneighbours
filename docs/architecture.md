@@ -437,7 +437,21 @@ TBD
 
 #### PDFs
 
-TBD
+PDF fof the fyler and kits content are generated with the help of puppeteer. The process is a bit hachy but works
+
+Currently, we provide a page that just renders static html for the flyers and kits. This html is styles to lok good when printed.
+
+For those the build will produce static html and put it in the `dist/`-folder.
+
+Now, with in the same build process an endpoint-page `endpoint.pdf.ts` will provide a GET endpoint that return the pdf as body... but is also statically rendered, and therefor just produce a pdf file.
+
+to actually create the pdf the endpoints code will read the static html we just generate (work because the build is in order of the alphabet) and boot up a puppeteer and load the static html as content.
+
+With their approach we cannot load the linked stylesheet in the html document. To fix this we visit the production page just quickly and then load the static html. This means that changes in the global css will only be effective after being deployed one additionally time.
+
+Alternatively we could use a astro (or vite) integration, but this produces the same result, while making the debugging more difficult.
+
+In the future, we might add some postprocessing of the pdfs (via ghostscript or similar) to produce files that can be printed easier.
 
 ### Technology
 
