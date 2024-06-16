@@ -2,7 +2,7 @@ import {
   getStaticPathsForFlyers,
   type StandaloneContentProps,
 } from '../../util/get-static-paths.ts';
-import { printPage } from '../../util/print-page.ts';
+import { printHtmlToBuffer } from '../../util/print-html-to-buffer.ts';
 
 export async function getStaticPaths() {
   return getStaticPathsForFlyers();
@@ -13,7 +13,7 @@ export async function getStaticPaths() {
 // alternativ would be to move this to an astro integration
 export async function GET(flyer: StandaloneContentProps<'flyers'>) {
   return new Response(
-    await printPage(
+    await printHtmlToBuffer(
       `dist/internal-print/flyer-${flyer.params.lang}-${flyer.params.identifier}/index.html`,
     ),
     {
