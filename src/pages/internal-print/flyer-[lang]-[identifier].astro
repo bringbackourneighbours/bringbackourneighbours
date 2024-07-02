@@ -6,6 +6,7 @@ import PrintLayout from '../../layouts/PrintLayout.astro';
 import MarkdownEntry from '../../design/MarkdownEntry.astro';
 import Logo from '../../design/Logo.astro';
 import PrinterPage from '../../design/PrinterPage.astro';
+import Timestamp from '../../design/Timestamp.astro';
 import { useUiTranslation } from '../../util/use-ui-translation';
 
 interface Props {
@@ -28,12 +29,6 @@ const { entry } = Astro.props;
       <p>{entry.data.lang}</p>
       <p>{entry.data.germanTitle}</p>
       <h1>{entry.data.title}</h1>
-      <p>
-        {useUiTranslation('meta.updated', entry.data.lang)}
-        <time datetime={entry.data.lastChecked.toISOString()}
-          >{entry.data.lastChecked.toLocaleDateString(entry.data.lang)}</time
-        >
-      </p>
     </hgroup>
 
     <strong>Bring Back Our Neighbours</strong>
@@ -51,6 +46,9 @@ const { entry } = Astro.props;
       Kontaktgruppe Asyl und Abschiebehaft e.V.<br />
       Heinrich-Zille-Str. 6<br />
       01219 Dresden
+    </p>
+    <p>
+      <Timestamp entry={entry} />
     </p>
   </PrinterPage>
 </PrintLayout>

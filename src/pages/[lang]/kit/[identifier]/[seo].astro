@@ -6,6 +6,7 @@ import { getCanonicalUrlToKit } from '../../../../util/get-canonical-url';
 import { getStaticPathsForKits } from '../../../../util/get-static-paths';
 import { getTranslationsUrlsForKit } from '../../../../util/get-translations-url';
 import { redirectNotTranslatedForKit } from '../../../../util/redirect-not-found-or-not-translated';
+import Timestamp from '../../../../design/Timestamp.astro';
 
 interface Props {
   entry: CollectionEntry<'kits'>;
@@ -41,11 +42,7 @@ if (redirectResponse) {
     <ul class="meta semantic-list">
       <li>{entry.data.lang} – {entry.data.germanTitle}</li>
       <li>
-        <!-- FIXME: Use proper locales for date, drop timezone output -->
-        Stand:
-        <time datetime={entry.data.lastChecked.toLocaleString()}
-          >{entry.data.lastChecked}</time
-        >
+        <Timestamp entry={entry} />
       </li>
     </ul>
   </hgroup>

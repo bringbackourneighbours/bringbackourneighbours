@@ -1,0 +1,10 @@
+---
+import { useUiTranslation } from '../util/use-ui-translation';
+
+const { entry } = Astro.props;
+---
+
+{useUiTranslation('meta.updated', entry.data.lang)}
+<time datetime={entry.data.lastChecked.toISOString()}
+  >{entry.data.lastChecked.toLocaleDateString(entry.data.lang)}</time
+>
