@@ -6,6 +6,7 @@ import PrintLayout from '../../layouts/PrintLayout.astro';
 import MarkdownEntry from '../../design/MarkdownEntry.astro';
 import Logo from '../../design/Logo.astro';
 import PrinterPage from '../../design/PrinterPage.astro';
+import Timestamp from '../../design/Timestamp.astro';
 
 interface Props {
   entry: CollectionEntry<'kits'>;
@@ -28,11 +29,7 @@ const { entry } = Astro.props;
       <p>{entry.data.germanTitle}</p>
       <h1>{entry.data.title}</h1>
       <p>
-        <!-- FIXME: Use proper locales for date, drop timezone output -->
-        Stand:
-        <time datetime={entry.data.lastChecked.toLocaleString()}
-          >{entry.data.lastChecked}</time
-        >
+        <Timestamp entry={entry} />
       </p>
     </hgroup>
 
