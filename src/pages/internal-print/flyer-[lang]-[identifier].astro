@@ -27,13 +27,15 @@ const { entry } = Astro.props;
 >
   <PrinterPage>
     <hgroup>
-      <p>{entry.data.lang}</p>
-      <p>{entry.data.germanTitle}</p>
+      {entry.data.lang != 'de' && <h6>{entry.data.germanTitle}</h6>}
       <h1>{entry.data.title}</h1>
     </hgroup>
+    <aside>{entry.data.lang}</aside>
+    <footer>
+      <Logo />
+      <strong>Bring Back Our Neighbours</strong>
+    </footer>
 
-    <strong>Bring Back Our Neighbours</strong>
-    <Logo />
     <p>{useUiTranslation('meta.subtitle', entry.data.lang)}</p>
   </PrinterPage>
   <PrinterPage breakBefore={true}>

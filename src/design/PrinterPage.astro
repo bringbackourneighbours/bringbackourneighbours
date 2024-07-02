@@ -7,11 +7,6 @@ const { breakBefore = false, breakAfter = false } = Astro.props;
 ---
 
 <style>
-  @page :first {
-    margin: 0;
-    size: a5 portrait;
-  }
-
   @page {
     margin: 1cm;
     size: a5 portrait;
@@ -27,6 +22,11 @@ const { breakBefore = false, breakAfter = false } = Astro.props;
     &.-break-before {
       page-break-before: always;
     }
+  }
+
+  footer {
+    margin-top: 10em;
+    color: red !important;
   }
 </style>
 
