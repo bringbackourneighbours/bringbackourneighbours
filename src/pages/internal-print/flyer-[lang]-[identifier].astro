@@ -7,6 +7,7 @@ import MarkdownEntry from '../../design/MarkdownEntry.astro';
 import Logo from '../../design/Logo.astro';
 import PrinterPage from '../../design/PrinterPage.astro';
 import Timestamp from '../../design/Timestamp.astro';
+import Impress from '../../design/Impress.astro';
 import { useUiTranslation } from '../../util/use-ui-translation';
 
 interface Props {
@@ -41,11 +42,7 @@ const { entry } = Astro.props;
     <p>bringbackourneighbours.de</p>
 
     <p>
-      <strong>{useUiTranslation('meta.impress', entry.data.lang)}</strong>
-      <br />
-      Kontaktgruppe Asyl und Abschiebehaft e.V.<br />
-      Heinrich-Zille-Str. 6<br />
-      01219 Dresden
+      <Impress lang={entry.data.lang} />
     </p>
     <p>
       <Timestamp entry={entry} />

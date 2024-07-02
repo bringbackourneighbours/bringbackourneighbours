@@ -7,6 +7,7 @@ import MarkdownEntry from '../../design/MarkdownEntry.astro';
 import Logo from '../../design/Logo.astro';
 import PrinterPage from '../../design/PrinterPage.astro';
 import Timestamp from '../../design/Timestamp.astro';
+import Impress from '../../design/Impress.astro';
 
 interface Props {
   entry: CollectionEntry<'kits'>;
@@ -39,10 +40,7 @@ const { entry } = Astro.props;
   </PrinterPage>
   <PrinterPage breakBefore={true}>
     <p>bringbackourneighbours.de</p>
-    <p>Impressum</p>
-    <p>Kontaktgruppe Asyl und Abschiebehaft e.V.</p>
-    <p>Heinrich-Zille-Str. 6</p>
-    <p>01219 Dresden</p>
+    <Impress lang={entry.data.lang} />
   </PrinterPage>
   <PrinterPage breakBefore={true}>
     <MarkdownEntry rendered={entry.render()} />
