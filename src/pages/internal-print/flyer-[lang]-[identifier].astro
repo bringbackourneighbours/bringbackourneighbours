@@ -6,6 +6,7 @@ import PrintLayout from '../../layouts/PrintLayout.astro';
 import MarkdownEntry from '../../design/MarkdownEntry.astro';
 import Logo from '../../design/Logo.astro';
 import PrinterPage from '../../design/PrinterPage.astro';
+import { useUiTranslation } from '../../util/use-ui-translation';
 
 interface Props {
   entry: CollectionEntry<'flyers'>;
@@ -28,25 +29,28 @@ const { entry } = Astro.props;
       <p>{entry.data.germanTitle}</p>
       <h1>{entry.data.title}</h1>
       <p>
-        <!-- FIXME: Use proper locales for date, drop timezone output -->
-        Stand:
-        <time datetime={entry.data.lastChecked.toLocaleString()}
-          >{entry.data.lastChecked}</time
+        {useUiTranslation('meta.updated', entry.data.lang)}
+        <time datetime={entry.data.lastChecked.toISOString()}
+          >{entry.data.lastChecked.toLocaleDateString(entry.data.lang)}</time
         >
       </p>
     </hgroup>
 
     <strong>Bring Back Our Neighbours</strong>
     <Logo />
-    <p>Gemeinsam solidarisch gegen die sächsische Abschiebepolitik</p>
+    <p>{useUiTranslation('meta.subtitle', entry.data.lang)}</p>
   </PrinterPage>
   <PrinterPage breakBefore={true}>
     <MarkdownEntry rendered={entry.render()} />
 
     <p>bringbackourneighbours.de</p>
-    <p>Impressum</p>
-    <p>Kontaktgruppe Asyl und Abschiebehaft e.V.</p>
-    <p>Heinrich-Zille-Str. 6</p>
-    <p>01219 Dresden</p>
+
+    <p>
+      <strong>{useUiTranslation('meta.impress', entry.data.lang)}</strong>
+      <br />
+      Kontaktgruppe Asyl und Abschiebehaft e.V.<br />
+      Heinrich-Zille-Str. 6<br />
+      01219 Dresden
+    </p>
   </PrinterPage>
 </PrintLayout>

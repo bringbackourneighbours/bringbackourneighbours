@@ -6,6 +6,7 @@ import { getCanonicalUrlToFlyer } from '../../../../util/get-canonical-url';
 import { getStaticPathsForFlyers } from '../../../../util/get-static-paths';
 import { getTranslationsUrlsForFlyer } from '../../../../util/get-translations-url';
 import { redirectNotTranslatedForFlyer } from '../../../../util/redirect-not-found-or-not-translated';
+import { useUiTranslation } from '../../../../util/use-ui-translation';
 
 interface Props {
   entry: CollectionEntry<'flyers'>;
@@ -39,12 +40,10 @@ if (redirectResponse) {
     <h1>{entry.data.title}</h1>
     <!-- FIXME: Element ul is not allowed here -->
     <ul class="meta semantic-list">
-      <li>{entry.data.lang} – {entry.data.germanTitle}</li>
       <li>
-        <!-- FIXME: Use proper locales for date, drop timezone output -->
-        Stand:
-        <time datetime={entry.data.lastChecked.toLocaleString()}
-          >{entry.data.lastChecked}</time
+        {useUiTranslation('meta.updated', entry.data.lang)}
+        <time datetime={entry.data.lastChecked.toISOString()}
+          >{entry.data.lastChecked.toLocaleDateString(entry.data.lang)}</time
         >
       </li>
     </ul>

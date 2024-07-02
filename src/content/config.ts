@@ -83,6 +83,8 @@ const uiCollection = defineCollection({
       .object({
         title: z.string(),
         subtitle: z.string(),
+        updated: z.string(),
+        impress: z.string(),
       })
       .optional(),
     wizard: z
