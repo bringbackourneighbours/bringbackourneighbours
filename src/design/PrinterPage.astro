@@ -8,6 +8,7 @@ const { breakBefore = false, breakAfter = false } = Astro.props;
 
 <style>
   @page {
+    /* TODO: Take real margins from PDF */
     margin: 1cm;
     size: a5 portrait;
   }
@@ -22,11 +23,11 @@ const { breakBefore = false, breakAfter = false } = Astro.props;
     &.-break-before {
       page-break-before: always;
     }
-  }
 
-  footer {
-    margin-top: 10em;
-    color: red !important;
+    footer {
+      /* FIXME Use position relative and bottom:0 to position this */
+      margin-top: 10em;
+    }
   }
 </style>
 
