@@ -1,5 +1,6 @@
 ---
 import logo from '../assets/logo.svg?raw';
+const { size="1.5em" } = Astro.props;
 ---
 
 <style>
@@ -9,6 +10,7 @@ import logo from '../assets/logo.svg?raw';
     color: var(--color-surface-0);
     padding-top: 3px;
     display: inline-block;
+    flex-shrink: 0;
   }
 
   .logo svg {
@@ -17,6 +19,6 @@ import logo from '../assets/logo.svg?raw';
   }
 </style>
 
-<div class="logo">
+<div class="logo" style={`width:${size}; height: ${size}`} >
   <Fragment set:html={logo} />
 </div>

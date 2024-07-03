@@ -19,28 +19,83 @@ export async function getStaticPaths() {
 }
 
 const { entry } = Astro.props;
----
 
+
+---
+<style>
+  
+  footer {
+    display: flex;
+    h3 {
+      display: inline-block;
+      font-variant: small-caps;
+      margin: 0;
+    } 
+
+    p {
+      margin-top: 1mm;
+      display: inline-block;
+    }
+
+    .container {
+      padding-left: 0.5cm;
+      width: 9.5cm;
+    }
+
+  }
+
+  aside {
+    color: white;
+    background: var(--color-primary);
+    position: absolute;
+    left: 0cm;
+    display: block;
+    font-variant: small-caps;
+    padding: 0.5em;
+    font-size: 1.2em;
+    font-weight: 700;
+  }
+
+  hgroup {
+    margin-top: 20vh;
+    font-size: 18px;
+    
+    h1 {
+      line-height: 1em;
+    }
+  }
+
+</style>
+<script>
+
+
+</script>
 <PrintLayout
   lang={entry.data.lang}
   title={'PDF ' + entry.data.title + ' | BringBackOurNeighbours'}
 >
   <PrinterPage>
+    <aside>{entry.data.lang}</aside>
     <hgroup>
       {entry.data.lang != 'de' && <h6>{entry.data.germanTitle}</h6>}
       <h1>{entry.data.title}</h1>
     </hgroup>
-    <aside>{entry.data.lang}</aside>
+    
     <footer>
-      <Logo />
-      <strong>Bring Back Our Neighbours</strong>
+      <Logo size="11mm" />
+      <div class="container">
+        <h3 id="title">Bring Back Our Neighbours</h3>
+        <p id="subtitle">{useUiTranslation('meta.subtitle', entry.data.lang)}</p>
+      </div>
     </footer>
 
-    <p>{useUiTranslation('meta.subtitle', entry.data.lang)}</p>
+    
   </PrinterPage>
   <PrinterPage breakBefore={true}>
+    <div>
     <MarkdownEntry rendered={entry.render()} />
-
+  </div>
+    <div class="endFooter">
     <p>bringbackourneighbours.de</p>
 
     <p>
@@ -49,5 +104,38 @@ const { entry } = Astro.props;
     <p>
       <Timestamp entry={entry} />
     </p>
+    </div>
   </PrinterPage>
 </PrintLayout>
+
+<script>
+
+var fitText = function (el: HTMLElement, factor: number) {
+
+  var fit = function (el: HTMLElement) {
+
+    var resizer = function () {
+      var par = el.parentElement!!.getBoundingClientRect().width * 0.95
+      var own = el.getBoundingClientRect().width
+      el.style.fontSize = (par / own) / factor + 'cm';
+
+      console.log("NEW")
+    };
+
+    // Call once to set.
+    resizer();
+
+    // Bind events
+    window.addEventListener('resize', resizer, false);
+    window.addEventListener('orientationchange', resizer, false);
+  };
+
+
+  fit(el);
+
+  // return set of elements
+  return el;
+};
+  fitText( document.getElementById("subtitle")!!, 3.05);
+  fitText( document.getElementById("title")!!, 2.05);
+</script>

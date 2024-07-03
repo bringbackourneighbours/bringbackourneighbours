@@ -5,12 +5,20 @@ interface Props {
 }
 const { breakBefore = false, breakAfter = false } = Astro.props;
 ---
-
 <style>
   @page {
-    /* TODO: Take real margins from PDF */
-    margin: 1cm;
+    margin: 20mm 16mm;
     size: a5 portrait;
+  }
+
+  @page:first {
+    /* Make space for footer */
+    margin-bottom: 10mm;
+  }
+
+  html {
+    /* Good base size for printing */
+    font-size: 8pt;
   }
 
   .page {
@@ -25,9 +33,10 @@ const { breakBefore = false, breakAfter = false } = Astro.props;
     }
 
     footer {
-      /* FIXME Use position relative and bottom:0 to position this */
-      margin-top: 10em;
+      position: absolute;
+      bottom: 0;
     }
+    
   }
 </style>
 
