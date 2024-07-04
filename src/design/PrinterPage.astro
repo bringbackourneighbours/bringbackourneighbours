@@ -5,13 +5,14 @@ interface Props {
 }
 const { breakBefore = false, breakAfter = false } = Astro.props;
 ---
+
 <style>
   @page {
     margin: 20mm 16mm;
     size: a5 portrait;
   }
 
-  @page:first {
+  @page :first {
     /* Make space for footer */
     margin-bottom: 10mm;
   }
@@ -36,7 +37,6 @@ const { breakBefore = false, breakAfter = false } = Astro.props;
       position: absolute;
       bottom: 0;
     }
-    
   }
 </style>
 
