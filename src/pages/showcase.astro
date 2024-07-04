@@ -73,40 +73,40 @@ import ExternalShortLink from '../components/ExternalShortLink.astro';
     This works for external resources in the content-collection `links`...
     <ul>
       <li>
-        <Link href={`${Astro.site}/link/asyldt`}>link/asyldt</Link> or <ExternalShortLink
+        <Link href={`${Astro.site}link/asyldt`}>link/asyldt</Link> or <ExternalShortLink
           identifier="asylnet_interview"
           lang="de"
         />
       </li>
       <li>
-        <Link href={`${Astro.site}/link/asyleng`}>link/asyleng</Link> or <ExternalShortLink
+        <Link href={`${Astro.site}link/asyleng`}>link/asyleng</Link> or <ExternalShortLink
           identifier="asylnet_interview"
           lang="en"
         />
       </li>
       <li>
-        <Link href={`${Astro.site}/link/fooo`}>link/fooo</Link>
+        <Link href={`${Astro.site}link/fooo`}>link/fooo</Link>
       </li>
     </ul>
     <p>... but also for the flyers and kits</p>
     <ul>
       <li>
-        <Link href={`${Astro.site}/link/flyer-de-detention`}
+        <Link href={`${Astro.site}link/flyer-de-detention`}
           >link/flyer-de-detention</Link
         >
       </li>
       <li>
-        <Link href={`${Astro.site}/link/flyer-en-detention`}
+        <Link href={`${Astro.site}link/flyer-en-detention`}
           >link/flyer-en-detention</Link
         >
       </li>
       <li>
-        <Link href={`${Astro.site}/link/kit-de-affected`}
+        <Link href={`${Astro.site}link/kit-de-affected`}
           >link/kit-de-affected</Link
         >
       </li>
       <li>
-        <Link href={`${Astro.site}/link/kit-ar-affected`}
+        <Link href={`${Astro.site}link/kit-ar-affected`}
           >link/kit-ar-affected</Link
         >
       </li>
@@ -118,32 +118,37 @@ import ExternalShortLink from '../components/ExternalShortLink.astro';
     generate the pages. You can preview the output by visiting
     <ul>
       <li>
-        <Link href={`${Astro.site}/internal-print/flyer-de-detention`}
+        <Link href={`${Astro.site}internal-print/flyer-de-detention`}
           >internal-print/flyer-de-detention</Link
         >
       </li>
       <li>
-        <Link href={`${Astro.site}/internal-print/flyer-en-detention`}
+        <Link href={`${Astro.site}internal-print/flyer-en-detention`}
           >internal-print/flyer-en-detention</Link
         >
+      </li>
+      <li>
+        <Link href={`${Astro.site}internal-print/flyer-ar-detention`}
+          />
+        
       </li>
     </ul>
     and see the result:
     <ul>
       <li>
-        <Link href={`${Astro.site}/print/flyer-de-detention.pdf`}
+        <Link href={`${Astro.site}print/flyer-de-detention.pdf`}
           >print/flyer-de-detention.pdf</Link
         >
       </li>
       <li>
-        <Link href={`${Astro.site}/print/flyer-en-detention.pdf`}
+        <Link href={`${Astro.site}print/flyer-en-detention.pdf`}
           >print/flyer-en-detention.pdf</Link
         >
       </li>
     </ul>
 
     On the page hit [CTRL + P] so preview the print dialog of your browser....
-    beware that wfe apply some more magic to this.
+    beware that we apply some more magic to this.
 
     <h1 class="">heading 1</h1>
     <h2 class="themed">heading 2</h2>
