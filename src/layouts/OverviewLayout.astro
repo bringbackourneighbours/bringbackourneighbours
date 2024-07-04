@@ -35,7 +35,7 @@ const { title, lang, canonicalSlug, translationSlugs } = Astro.props;
     canonicalSlug={canonicalSlug}
     translationSlugs={translationSlugs}
   />
-  <BaseBody>
+  <BaseBody lang={lang}> 
     <Header />
     <div class="content-wrapper">
       <main>

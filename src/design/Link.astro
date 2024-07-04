@@ -5,7 +5,14 @@ interface Props {
 }
 
 const { href, lang = 'de' } = Astro.props;
-const pretty = href.replace('mailto:', '');
+
+// FIXME Only replace from beginning of string
+const pretty_print = href.replace('mailto:', '');
+const pretty_screen = 
+href.replace('mailto:', '')
+.replace(Astro.site, '')
+.replace('https://', '')
+.replace('http://', '')
 ---
 
 <style>
@@ -49,10 +56,9 @@ const pretty = href.replace('mailto:', '');
 <a
   href={href}
   hreflang={lang}
-  data-prettyhref={pretty}
+  data-prettyhref={pretty_print}
 >
   <span>
-    {/* TODO: we could strip the protocol here  */}
-    <slot>{href}</slot>
+    <slot>{pretty_screen}</slot>
   </span>
 </a>
