@@ -4,6 +4,6 @@ import { getLanguageDirection } from '../util/get-language-direction';
 const { lang } = Astro.props;
 ---
 
-<body data-test={lang} class={`${getLanguageDirection(lang)}`}>
+<body class={`${getLanguageDirection(lang)}`}>
   <slot />
 </body>
