@@ -77,7 +77,7 @@ const address = await getAddress(identifier);
     )
   }
   {
-    address?.data.translatedNotes?.[lang] && (
+    !Astro.locals.isPrint && address?.data.translatedNotes?.[lang] && (
       <>
         {address?.data.translatedNotes?.[lang]}
         <br />
