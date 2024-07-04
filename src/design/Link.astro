@@ -5,29 +5,54 @@ interface Props {
 }
 
 const { href, lang = 'de' } = Astro.props;
+const pretty = href.replace('mailto:', '');
 ---
 
 <style>
   a {
     color: var(--color-primary);
     text-decoration: underline;
-    padding-inline: calc(var(--size-border) * 2);
   }
 
   a:active {
     color: var(--color-secondary);
-    border-color: var(--color-secondary);
   }
 
   a:visited {
     color: var(--color-primary-bright);
-    border-color: var(--color-primary-bright);
+  }
+
+  @media print {
+    a {
+      text-decoration: none;
+    }
+
+    a:active {
+      color: var(--color-primary);
+    }
+
+    a:visited {
+      color: var(--color-primary);
+    }
+
+    /* The following two line replace the pretty name of the link with
+    its href in print */
+    a span {
+      display: none;
+    }
+
+    a::after {
+      content: attr(data-prettyhref);
+    }
   }
 </style>
 <a
   href={href}
   hreflang={lang}
+  data-prettyhref={pretty}
 >
-  {/* TODO: we could strip the protocol here  */}
-  <slot>{href}</slot>
+  <span>
+    {/* TODO: we could strip the protocol here  */}
+    <slot>{href}</slot>
+  </span>
 </a>

@@ -46,10 +46,11 @@ const address = await getAddress(identifier);
       </>
     )
   }
+  {address?.data.zip && <>{address?.data.zip}</>}
+  {address?.data.city && <>{address?.data.city}</>}
   {
     (address?.data.zip || address?.data.city) && (
       <>
-        {`${address?.data.zip} ${address?.data.city}`}
         <br />
       </>
     )

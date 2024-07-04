@@ -1,6 +1,6 @@
 identifier: rlc_dresden
 name: Refugee Law Clinic Dresden
-city: Dresden
+# No address here, because address is variable
 phone: "WhatsApp: +49 351 463-39500"
 mail:  rlc@tu-dresden.de
 url: https://rlc-dresden.de
