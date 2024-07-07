@@ -1,7 +1,7 @@
 import { getAbsoluteUrl } from './get-absolute-url.ts';
 import { getEntry } from 'astro:content';
 
-async function getCanonicalUrl<T extends 'kits' | 'flyers'>(
+async function getCanonicalUrl<T extends 'kits' | 'flyers' | 'pages'>(
   collection: T,
   collectionSlug: string,
   lang: string,
@@ -28,4 +28,11 @@ export const getCanonicalUrlToKit = async (
   identifier: string,
 ): Promise<string | undefined> => {
   return getCanonicalUrl('kits', 'kit', lang, identifier);
+};
+
+export const getCanonicalUrlToPage = async (
+  lang: string,
+  identifier: string,
+): Promise<string | undefined> => {
+  return getCanonicalUrl('pages', 'page', lang, identifier);
 };

@@ -85,11 +85,14 @@ const uiCollection = defineCollection({
         subtitle: z.string(),
         updated: z.string(),
         impress: z.string(),
+        moreInfo: z.string(),
       })
       .optional(),
     wizard: z
       .object({
         isThereDangerQuestion: z.string(),
+        areYouInDangerQuestion: z.string(),
+        someoneElseInDangerQuestion: z.string(),
       })
       .optional(),
   }),

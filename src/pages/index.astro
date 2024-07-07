@@ -2,7 +2,10 @@
 import OverviewLayout from '../layouts/OverviewLayout.astro';
 import CardLink from '../design/CardLink.astro';
 import { useUiTranslation } from '../util/use-ui-translation';
-import { getCanonicalUrlToFlyer } from '../util/get-canonical-url';
+import {
+  getCanonicalUrlToFlyer,
+  getCanonicalUrlToKit,
+} from '../util/get-canonical-url';
 import { Languages } from '../util/languages.enum';
 import Stack from '../design/Stack.astro';
 
@@ -17,13 +20,36 @@ const allLanguages = Object.values(Languages); // FIXME: my IDE is not resolving
     {
       allLanguages.map(async (lang) => (
         <CardLink
-          href={await getCanonicalUrlToFlyer(lang, 'detention')}
+          href={`${Astro.site}${lang}`}
           lang={lang}
         >
-          {
-            //FIXME: When using await here it will break... but why?
-            useUiTranslation('wizard.isThereDangerQuestion', lang)
-          }
+          {useUiTranslation('wizard.isThereDangerQuestion', lang)}
+        </CardLink>
+      ))
+    }
+  </Stack>
+
+  <h2>{useUiTranslation('meta.moreInfo', 'de')}:</h2>
+
+  <Stack>
+    {
+      getCanonicalUrlToFlyer('de', 'detention').then((href) => (
+        <CardLink
+          lang="de"
+          href={href}
+        >
+          Alle unsere Flyer
+        </CardLink>
+      ))
+    }
+
+    {
+      getCanonicalUrlToKit('de', 'affected').then((href) => (
+        <CardLink
+          lang="de"
+          href={href}
+        >
+          Alle unsere Notfallkoffer
         </CardLink>
       ))
     }

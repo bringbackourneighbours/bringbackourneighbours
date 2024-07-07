@@ -1,0 +1,88 @@
+---
+import { Languages } from '../../util/languages.enum';
+import { useUiTranslation } from '../../util/use-ui-translation';
+import OverviewLayout from '../../layouts/OverviewLayout.astro';
+import Stack from '../../design/Stack.astro';
+import CardLink from '../../design/CardLink.astro';
+import {
+  getCanonicalUrlToKit,
+  getCanonicalUrlToPage,
+} from '../../util/get-canonical-url';
+
+interface Props {
+  lang: string;
+}
+
+export async function getStaticPaths() {
+  return Object.values(Languages).map((lang) => {
+    return {
+      params: { lang },
+      props: { lang },
+    };
+  });
+}
+
+const { lang } = Astro.props;
+---
+
+<OverviewLayout
+  lang={lang}
+  title=`${await useUiTranslation('meta.title', lang)} | ${await useUiTranslation('meta.subtitle', 'lang')}`
+>
+  <Stack>
+    {
+      getCanonicalUrlToKit(lang, 'affected').then((href) => (
+        <CardLink
+          lang={lang}
+          href={href}
+        >
+          {useUiTranslation('wizard.areYouInDangerQuestion', lang)}
+        </CardLink>
+      ))
+    }
+    {
+      getCanonicalUrlToKit(lang, 'support').then((href) => (
+        <CardLink
+          lang={lang}
+          href={href}
+        >
+          {useUiTranslation('wizard.someoneElseInDangerQuestion', lang)}
+        </CardLink>
+      ))
+    }
+  </Stack>
+
+  <h2>{useUiTranslation('meta.moreInfo', lang)}:</h2>
+
+  <Stack>
+    <CardLink lang={lang}>
+      {lang} Flyer
+    </CardLink>
+    {
+      getCanonicalUrlToPage(lang, 'contacts').then((href) => (
+        <CardLink
+          lang={lang}
+          href={href}
+        >
+          {lang} Kontakte
+        </CardLink>
+      ))
+    }
+    {
+      getCanonicalUrlToKit(lang, 'professional').then((href) => (
+        <CardLink
+          lang={lang}
+          href={href}
+        >
+          {lang} Fachkräfte
+        </CardLink>
+      ))
+    }
+    <CardLink lang={lang}>
+      {lang} Vorlagen
+    </CardLink>
+    <CardLink lang={lang}>
+      {lang} Tipps für Öffentlichkeitsarbeit
+    </CardLink>
+  </Stack>
+</OverviewLayout>
