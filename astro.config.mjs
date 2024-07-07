@@ -1,5 +1,6 @@
 import { defineConfig } from 'astro/config';
 import mdx from '@astrojs/mdx';
+import printPdfs from "./src/integrations/print-pdfs";
 const isDev = import.meta.env.DEV;
 const siteUrl = isDev
   ? 'http://localhost:4321/'
@@ -10,5 +11,8 @@ const basePath = isDev ? '/' : '/bringbackourneighbours';
 export default defineConfig({
   site: siteUrl,
   base: basePath,
-  integrations: [mdx()],
+  integrations: [
+    mdx(),
+    printPdfs(),
+  ],
 });
