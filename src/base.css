@@ -24,7 +24,7 @@
   --vspace-4: calc(0.25 * var(--space) * 1rem);
   --shadow-0: 10px;
   --size-border: 2px;
-  --size-max-text-span: calc( 34 * var(--space) * 1rem);
+  --size-max-text-span: calc(34 * var(--space) * 1rem);
 }
 
 html {

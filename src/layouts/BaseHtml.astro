@@ -17,6 +17,11 @@ import '../base.css';
 const { lang } = Astro.props;
 ---
 
-<html lang={lang} dir={`${getLanguageDirection(lang)}`}>
+<html
+  lang={lang}
+  dir={`${getLanguageDirection(lang)}`}
+>
   <slot />
+
+
 </html>
