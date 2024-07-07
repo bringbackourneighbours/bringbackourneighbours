@@ -4,6 +4,7 @@ import { useUiTranslation } from '../util/use-ui-translation';
 import OverviewLayout from '../layouts/OverviewLayout.astro';
 import Address from '../components/Address.astro';
 import ExternalShortLink from '../components/ExternalShortLink.astro';
+import QrImage from '../components/QrImage.astro';
 ---
 
 <html lang="en">
@@ -31,6 +32,12 @@ import ExternalShortLink from '../components/ExternalShortLink.astro';
     <h1>Showcase</h1>
     This page is for testing new feature... it will be removed when we are going
     live
+
+    <h2>QrCodes</h2>
+
+    <QrImage
+      url="https://www.npmjs.com/package/qrcode#todataurltext-options-cberror-url-1"
+    />
 
     <h2>Addresses</h2>
     <Address
