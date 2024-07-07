@@ -1,6 +1,8 @@
 {
   "fallback": "de",
   "wizard": {
-    "isThereDangerQuestion": "¿Está usted o alguien más en riesgo de deportación?"
+    "isThereDangerQuestion": "¿Está usted u otra persona en riesgo de deportación?",
+    "areYouInDangerQuestion": "¿Estás tú mismo en riesgo de deportación?",
+    "someoneElseInDangerQuestion": "¿Te gustaría apoyar a una persona que está en riesgo de deportación?"
   }
 }

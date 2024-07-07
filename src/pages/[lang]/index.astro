@@ -4,6 +4,10 @@ import { useUiTranslation } from '../../util/use-ui-translation';
 import OverviewLayout from '../../layouts/OverviewLayout.astro';
 import Stack from '../../design/Stack.astro';
 import CardLink from '../../design/CardLink.astro';
+import {
+  getCanonicalUrlToKit,
+  getCanonicalUrlToPage,
+} from '../../util/get-canonical-url';
 
 interface Props {
   lang: string;
@@ -26,30 +30,58 @@ const { lang } = Astro.props;
   title=`${await useUiTranslation('meta.title', lang)} | ${await useUiTranslation('meta.subtitle', 'lang')}`
 >
   <Stack>
-    <CardLink>
-      {lang} Ich bin betroffen
-    </CardLink>
-    <CardLink>
-      {lang} jmd. anderes
-    </CardLink>
+    {
+      getCanonicalUrlToKit(lang, 'affected').then((href) => (
+        <CardLink
+          lang={lang}
+          href={href}
+        >
+          {useUiTranslation('wizard.areYouInDangerQuestion', lang)}
+        </CardLink>
+      ))
+    }
+    {
+      getCanonicalUrlToKit(lang, 'support').then((href) => (
+        <CardLink
+          lang={lang}
+          href={href}
+        >
+          {useUiTranslation('wizard.someoneElseInDangerQuestion', lang)}
+        </CardLink>
+      ))
+    }
   </Stack>
 
-  <h2>Weitere Infos:</h2>
+  <h2>{useUiTranslation('meta.moreInfo', lang)}:</h2>
 
   <Stack>
-    <CardLink>
+    <CardLink lang={lang}>
       {lang} Flyer
     </CardLink>
-    <CardLink>
-      {lang} Kontakte
-    </CardLink>
-    <CardLink>
-      {lang} Fachkräfte
-    </CardLink>
-    <CardLink>
+    {
+      getCanonicalUrlToPage(lang, 'contacts').then((href) => (
+        <CardLink
+          lang={lang}
+          href={href}
+        >
+          {lang} Kontakte
+        </CardLink>
+      ))
+    }
+    {
+      getCanonicalUrlToKit(lang, 'professional').then((href) => (
+        <CardLink
+          lang={lang}
+          href={href}
+        >
+          {lang} Fachkräfte
+        </CardLink>
+      ))
+    }
+    <CardLink lang={lang}>
       {lang} Vorlagen
     </CardLink>
-    <CardLink>
+    <CardLink lang={lang}>
       {lang} Tipps für Öffentlichkeitsarbeit
     </CardLink>
   </Stack>

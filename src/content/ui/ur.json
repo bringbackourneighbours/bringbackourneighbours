@@ -1,6 +1,8 @@
 {
   "fallback": "en",
   "wizard": {
-    "isThereDangerQuestion": "کیا آپ کو نکالنے کا خطرہ ہے؟"
+    "isThereDangerQuestion": "کیا آپ کو نکالنے کا خطرہ ہے؟",
+    "areYouInDangerQuestion": "کیا آپ کو خود ملک بدری کی دھمکی دی گئی ہے؟",
+    "someoneElseInDangerQuestion": "کیا آپ کسی ایسے شخص کی حمایت کرنا چاہتے ہیں جسے ملک بدری کا خطرہ ہے؟"
   }
 }

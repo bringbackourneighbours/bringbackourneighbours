@@ -4,9 +4,12 @@
     "title": "Bring Back Our Neighbours",
     "subtitle": "Against the Saxonian deportation policy",
     "updated": "Last updated: ",
-    "impress": "Impress"
+    "impress": "Impress",
+    "moreInfo": "More Information"
   },
   "wizard": {
-    "isThereDangerQuestion": "Are you or anyone else at risk of deportation?"
+    "isThereDangerQuestion": "Are you or someone else at risk of deportation?",
+    "areYouInDangerQuestion": "Are you yourself at risk of deportation?",
+    "someoneElseInDangerQuestion": "Would you like to support a person who is at risk of deportation?"
   }
 }

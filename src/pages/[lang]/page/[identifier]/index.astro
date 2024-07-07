@@ -1,9 +1,11 @@
 ---
+import { getCanonicalUrlToPage } from '../../../../util/get-canonical-url';
 import { getCollection, type CollectionEntry } from 'astro:content';
 
 export async function getStaticPaths() {
   const pageEntries = await getCollection('pages');
   return pageEntries.map((entry: CollectionEntry<'pages'>) => {
+    console.log(entry.data);
     return {
       params: {
         lang: entry.data.lang,
@@ -14,7 +16,10 @@ export async function getStaticPaths() {
   });
 }
 
-return Astro.redirect(
-  `${Astro.site}/${Astro.params.lang}/page/${Astro.params.identifier}/${Astro.params.seo}`,
+const url = await getCanonicalUrlToPage(
+  Astro.params.lang,
+  Astro.params.identifier,
 );
+
+return Astro.redirect(url);
 ---

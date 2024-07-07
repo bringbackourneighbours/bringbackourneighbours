@@ -1,6 +1,8 @@
 {
   "fallback": "de",
   "wizard": {
-    "isThereDangerQuestion": "გაძევება გემუქრებათ?"
+    "isThereDangerQuestion": "გაძევება გემუქრებათ?",
+    "areYouInDangerQuestion": "თვითონ გემუქრებიან დეპორტაცია?",
+    "someoneElseInDangerQuestion": "გსურთ მხარი დაუჭიროთ ადამიანს, რომელსაც დეპორტაცია ემუქრება?"
   }
 }

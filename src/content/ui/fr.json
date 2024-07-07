@@ -1,6 +1,8 @@
 {
   "fallback": "en",
   "wizard": {
-    "isThereDangerQuestion": "Vous ou quelqu’un d’autre risquez d’être expulsé?"
+    "isThereDangerQuestion": "Est-ce que toi ou quelqu'un d'autre est menacé d'expulsion?",
+    "areYouInDangerQuestion": "Tu es toi-même menacé d'expulsion?",
+    "someoneElseInDangerQuestion": "Tu veux soutenir une personne menacée d'expulsion?"
   }
 }
