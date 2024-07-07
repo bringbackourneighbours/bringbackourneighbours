@@ -7,13 +7,13 @@ interface Props {
 const { href, lang = 'de' } = Astro.props;
 
 // FIXME Only replace from beginning of string
-const site = Astro.site!!.toString()
+const site = Astro.site!.toString();
 const pretty_print = href.replace('mailto:', '');
-const pretty_screen = 
-href.replace('mailto:', '')
-.replace(site, '')
-.replace('https://', '')
-.replace('http://', '')
+const pretty_screen = href
+  .replace('mailto:', '')
+  .replace(site, '')
+  .replace('https://', '')
+  .replace('http://', '');
 ---
 
 <style>
