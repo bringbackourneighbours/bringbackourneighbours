@@ -13,6 +13,6 @@ export default defineConfig({
   base: basePath,
   integrations: [
     mdx(),
-    printPdfs(),
+    // printPdfs(),
   ],
 });
