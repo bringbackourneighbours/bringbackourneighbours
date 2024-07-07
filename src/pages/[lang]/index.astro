@@ -1,0 +1,56 @@
+---
+import { Languages } from '../../util/languages.enum';
+import { useUiTranslation } from '../../util/use-ui-translation';
+import OverviewLayout from '../../layouts/OverviewLayout.astro';
+import Stack from '../../design/Stack.astro';
+import CardLink from '../../design/CardLink.astro';
+
+interface Props {
+  lang: string;
+}
+
+export async function getStaticPaths() {
+  return Object.values(Languages).map((lang) => {
+    return {
+      params: { lang },
+      props: { lang },
+    };
+  });
+}
+
+const { lang } = Astro.props;
+---
+
+<OverviewLayout
+  lang={lang}
+  title=`${await useUiTranslation('meta.title', lang)} | ${await useUiTranslation('meta.subtitle', 'lang')}`
+>
+  <Stack>
+    <CardLink>
+      {lang} Ich bin betroffen
+    </CardLink>
+    <CardLink>
+      {lang} jmd. anderes
+    </CardLink>
+  </Stack>
+
+  <h2>Weitere Infos:</h2>
+
+  <Stack>
+    <CardLink>
+      {lang} Flyer
+    </CardLink>
+    <CardLink>
+      {lang} Kontakte
+    </CardLink>
+    <CardLink>
+      {lang} Fachkräfte
+    </CardLink>
+    <CardLink>
+      {lang} Vorlagen
+    </CardLink>
+    <CardLink>
+      {lang} Tipps für Öffentlichkeitsarbeit
+    </CardLink>
+  </Stack>
+</OverviewLayout>
