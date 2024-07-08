@@ -1,0 +1,67 @@
+---
+import { useUiTranslation } from '../util/use-ui-translation';
+import {
+  getCanonicalUrlToKit,
+  getCanonicalUrlToPage,
+} from '../util/get-canonical-url';
+import Stack from '../design/Stack.astro';
+import CardLink from '../design/CardLink.astro';
+interface Props {
+  lang: string;
+  showFlyers?: boolean;
+  showKits?: boolean;
+}
+
+const { lang, showFlyers, showKits } = Astro.props;
+---
+
+<h2>{useUiTranslation('meta.moreInfo', lang)}:</h2>
+
+<Stack>
+  {
+    showFlyers && (
+      <CardLink
+        lang={lang}
+        href={`${Astro.site}${lang}/flyer`}
+      >
+        {useUiTranslation('meta.allFlyers', lang)}
+      </CardLink>
+    )
+  }
+  {
+    showKits && (
+      <CardLink
+        lang={lang}
+        href={`${Astro.site}${lang}/kit`}
+      >
+        {useUiTranslation('meta.allKits', lang)}
+      </CardLink>
+    )
+  }
+  {
+    getCanonicalUrlToPage(lang, 'contacts').then((href) => (
+      <CardLink
+        lang={lang}
+        href={href}
+      >
+        {useUiTranslation('meta.contacts', lang)}
+      </CardLink>
+    ))
+  }
+  {
+    getCanonicalUrlToKit(lang, 'professional').then((href) => (
+      <CardLink
+        lang={lang}
+        href={href}
+      >
+        {useUiTranslation('meta.kitProfessionals', lang)}
+      </CardLink>
+    ))
+  }
+  <CardLink lang={lang}>
+    {useUiTranslation('meta.formBlanks', lang)}
+  </CardLink>
+  <CardLink lang={lang}>
+    {useUiTranslation('meta.publicAwareness', lang)}
+  </CardLink>
+</Stack>

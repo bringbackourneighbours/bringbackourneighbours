@@ -1,11 +1,11 @@
 ---
-import { getStaticPathsForKits } from '../../../util/get-static-paths';
+import { getStaticPathsForFlyers } from '../../../util/get-static-paths';
 import { Languages } from '../../../util/languages.enum';
 import { useUiTranslation } from '../../../util/use-ui-translation';
 import OverviewLayout from '../../../layouts/OverviewLayout.astro';
 import Stack from '../../../design/Stack.astro';
 import CardLink from '../../../design/CardLink.astro';
-import { getCanonicalUrlToKit } from '../../../util/get-canonical-url';
+import { getCanonicalUrlToFlyer } from '../../../util/get-canonical-url';
 import MoreInfoStack from '../../../components/MoreInfoStack.astro';
 
 interface Props {
@@ -23,27 +23,27 @@ export async function getStaticPaths() {
 
 const { lang } = Astro.props;
 
-const allKits = await getStaticPathsForKits();
+const allFlyers = await getStaticPathsForFlyers();
 ---
 
 <OverviewLayout
   lang={lang}
   title=`${await useUiTranslation('meta.title', lang)} | ${await useUiTranslation('meta.subtitle', 'lang')}`
 >
-  <h2>{useUiTranslation('meta.allKits', lang)}:</h2>
+  <h2>{useUiTranslation('meta.allFlyers', lang)}:</h2>
   <Stack>
     {
-      allKits
-        .filter((kit) => kit.params.lang === lang)
-        .map(async (kit) => (
+      allFlyers
+        .filter((flyer) => flyer.params.lang === lang)
+        .map(async (flyer) => (
           <CardLink
             lang={lang}
-            href={await getCanonicalUrlToKit(
+            href={await getCanonicalUrlToFlyer(
               lang,
-              kit.props.entry.data.identifier,
+              flyer.props.entry.data.identifier,
             )}
           >
-            {kit.props.entry.data.title}
+            {flyer.props.entry.data.title}
           </CardLink>
         ))
     }
@@ -51,6 +51,6 @@ const allKits = await getStaticPathsForKits();
 
   <MoreInfoStack
     lang={lang}
-    showFlyers={true}
+    showKits={true}
   />
 </OverviewLayout>

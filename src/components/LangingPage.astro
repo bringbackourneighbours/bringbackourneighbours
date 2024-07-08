@@ -4,6 +4,7 @@ import CardLink from '../design/CardLink.astro';
 import { useUiTranslation } from '../util/use-ui-translation';
 import { Languages } from '../util/languages.enum';
 import Stack from '../design/Stack.astro';
+import MoreInfoStack from './MoreInfoStack.astro';
 
 interface Props {
   lang: string;
@@ -31,20 +32,9 @@ const allLanguages = Object.values(Languages); // FIXME: my IDE is not resolving
     }
   </Stack>
 
-  <h2>{useUiTranslation('meta.moreInfo', lang)}:</h2>
-
-  <Stack>
-    <CardLink
-      lang={lang}
-      href={`${Astro.site}${lang}/flyer`}
-    >
-      {useUiTranslation('meta.allFlyers', lang)}
-    </CardLink>
-    <CardLink
-      lang={lang}
-      href={`${Astro.site}${lang}/kit`}
-    >
-      {useUiTranslation('meta.allKits', lang)}
-    </CardLink>
-  </Stack>
+  <MoreInfoStack
+    lang={lang}
+    showKits={true}
+    showFlyers={true}
+  />
 </OverviewLayout>

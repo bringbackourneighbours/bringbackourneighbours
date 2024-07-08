@@ -4,10 +4,8 @@ import { useUiTranslation } from '../../util/use-ui-translation';
 import OverviewLayout from '../../layouts/OverviewLayout.astro';
 import Stack from '../../design/Stack.astro';
 import CardLink from '../../design/CardLink.astro';
-import {
-  getCanonicalUrlToKit,
-  getCanonicalUrlToPage,
-} from '../../util/get-canonical-url';
+import { getCanonicalUrlToKit } from '../../util/get-canonical-url';
+import MoreInfoStack from '../../components/MoreInfoStack.astro';
 
 interface Props {
   lang: string;
@@ -52,40 +50,8 @@ const { lang } = Astro.props;
     }
   </Stack>
 
-  <h2>{useUiTranslation('meta.moreInfo', lang)}:</h2>
-
-  <Stack>
-    <CardLink
-      lang={lang}
-      href={`${Astro.site}${lang}/flyer`}
-    >
-      {useUiTranslation('meta.allFlyers', lang)}
-    </CardLink>
-    {
-      getCanonicalUrlToPage(lang, 'contacts').then((href) => (
-        <CardLink
-          lang={lang}
-          href={href}
-        >
-          {useUiTranslation('meta.contacts', lang)}
-        </CardLink>
-      ))
-    }
-    {
-      getCanonicalUrlToKit(lang, 'professional').then((href) => (
-        <CardLink
-          lang={lang}
-          href={href}
-        >
-          {useUiTranslation('meta.kitProfessionals', lang)}
-        </CardLink>
-      ))
-    }
-    <CardLink lang={lang}>
-      {useUiTranslation('meta.formBlanks', lang)}
-    </CardLink>
-    <CardLink lang={lang}>
-      {useUiTranslation('meta.publicAwareness', lang)}
-    </CardLink>
-  </Stack>
+  <MoreInfoStack
+    lang={lang}
+    showFlyers={true}
+  />
 </OverviewLayout>
