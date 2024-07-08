@@ -67,7 +67,7 @@ const { lang } = Astro.props;
           lang={lang}
           href={href}
         >
-          {lang} Kontakte
+          {useUiTranslation('meta.contacts', lang)}
         </CardLink>
       ))
     }
@@ -77,15 +77,15 @@ const { lang } = Astro.props;
           lang={lang}
           href={href}
         >
-          {lang} Fachkräfte
+          {useUiTranslation('meta.kitProfessionals', lang)}
         </CardLink>
       ))
     }
     <CardLink lang={lang}>
-      {lang} Vorlagen
+      {useUiTranslation('meta.formBlanks', lang)}
     </CardLink>
     <CardLink lang={lang}>
-      {lang} Tipps für Öffentlichkeitsarbeit
+      {useUiTranslation('meta.publicAwareness', lang)}
     </CardLink>
   </Stack>
 </OverviewLayout>
