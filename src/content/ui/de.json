@@ -1,12 +1,18 @@
 {
-  "fallback": "en",
   "meta": {
     "title": "Bring Back Our Neighbours",
     "subtitle": "Gemeinsam solidarisch gegen die sächsische Abschiebepolitik",
     "updated": "Zuletzt aktualisiert: ",
     "impress": "Impressum",
-    "moreInfo": "Weitere Informationen"
+    "moreInfo": "Weitere Informationen",
+    "allFlyers": "Alle unsere Flyer",
+    "allKits": "Alle unsere Notfallkoffer",
+    "contacts": "Kontakte zu Verantwortlichen & Unterstützer*innen",
+    "publicity": "Tipps für Öffentlichkeitsarbeit",
+    "forms": "Vorlagen und Formulare zum Ausdrucken",
+    "kitProfessionals": "Notfallkoffer gegen Abschiebung für Fachkräfte der Sozialen Arbeit"
   },
+
   "wizard": {
     "isThereDangerQuestion": "Bist du oder wer anders von einer Abschiebung bedroht?",
     "areYouInDangerQuestion": "Du bist selber von einer Abschiebung bedroht?",

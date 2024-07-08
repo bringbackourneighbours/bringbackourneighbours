@@ -1,0 +1,40 @@
+---
+import OverviewLayout from '../layouts/OverviewLayout.astro';
+import CardLink from '../design/CardLink.astro';
+import { useUiTranslation } from '../util/use-ui-translation';
+import { Languages } from '../util/languages.enum';
+import Stack from '../design/Stack.astro';
+import MoreInfoStack from './MoreInfoStack.astro';
+
+interface Props {
+  lang: string;
+}
+
+const { lang } = Astro.props;
+
+const allLanguages = Object.values(Languages); // FIXME: my IDE is not resolving this... why?
+---
+
+<OverviewLayout
+  lang={lang}
+  title=`${await useUiTranslation('meta.title', lang)} | ${await useUiTranslation('meta.subtitle', lang)}`
+>
+  <Stack>
+    {
+      allLanguages.map(async (langs) => (
+        <CardLink
+          href={`${Astro.site}${langs}/wizard`}
+          lang={langs}
+        >
+          {useUiTranslation('wizard.isThereDangerQuestion', langs)}
+        </CardLink>
+      ))
+    }
+  </Stack>
+
+  <MoreInfoStack
+    lang={lang}
+    showKits={true}
+    showFlyers={true}
+  />
+</OverviewLayout>

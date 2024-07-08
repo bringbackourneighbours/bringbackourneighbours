@@ -26,7 +26,12 @@ export const useUiTranslation = async (
     ? jp.query(foundTranslation?.data, key)[0]
     : undefined;
 
-  if (withFallback && foundTranslation?.data && foundValue === undefined) {
+  if (
+    withFallback &&
+    foundTranslation?.data &&
+    foundValue === undefined &&
+    foundTranslation?.data?.fallback
+  ) {
     return await useUiTranslation(key, foundTranslation?.data.fallback, false);
   }
 

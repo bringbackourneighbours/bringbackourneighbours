@@ -78,7 +78,7 @@ const pagesCollection = defineCollection({
 const uiCollection = defineCollection({
   type: 'data',
   schema: z.object({
-    fallback: z.string(),
+    fallback: z.string().optional(),
     meta: z
       .object({
         title: z.string(),
@@ -86,6 +86,12 @@ const uiCollection = defineCollection({
         updated: z.string(),
         impress: z.string(),
         moreInfo: z.string(),
+        allFlyers: z.string(),
+        allKits: z.string(),
+        contacts: z.string(),
+        publicity: z.string(),
+        forms: z.string(),
+        kitProfessionals: z.string(),
       })
       .optional(),
     wizard: z
