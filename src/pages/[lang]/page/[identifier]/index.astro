@@ -5,7 +5,6 @@ import { getCollection, type CollectionEntry } from 'astro:content';
 export async function getStaticPaths() {
   const pageEntries = await getCollection('pages');
   return pageEntries.map((entry: CollectionEntry<'pages'>) => {
-    console.log(entry.data);
     return {
       params: {
         lang: entry.data.lang,
