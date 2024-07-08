@@ -89,8 +89,8 @@ const uiCollection = defineCollection({
         allFlyers: z.string(),
         allKits: z.string(),
         contacts: z.string(),
-        publicAwareness: z.string(),
-        formBlanks: z.string(),
+        publicity: z.string(),
+        forms: z.string(),
         kitProfessionals: z.string(),
       })
       .optional(),

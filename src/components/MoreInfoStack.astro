@@ -58,10 +58,25 @@ const { lang, showFlyers, showKits } = Astro.props;
       </CardLink>
     ))
   }
-  <CardLink lang={lang}>
-    {useUiTranslation('meta.formBlanks', lang)}
-  </CardLink>
-  <CardLink lang={lang}>
-    {useUiTranslation('meta.publicAwareness', lang)}
-  </CardLink>
+  {
+    getCanonicalUrlToPage(lang, 'forms').then((href) => (
+      <CardLink
+        lang={lang}
+        href={href}
+      >
+        {useUiTranslation('meta.forms', lang)}
+      </CardLink>
+    ))
+  }
+
+  {
+    getCanonicalUrlToPage(lang, 'publicity').then((href) => (
+      <CardLink
+        lang={lang}
+        href={href}
+      >
+        {useUiTranslation('meta.publicity', lang)}
+      </CardLink>
+    ))
+  }
 </Stack>
