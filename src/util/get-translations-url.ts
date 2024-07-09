@@ -2,9 +2,12 @@ import { type CollectionEntry, getCollection } from 'astro:content';
 import {
   getCanonicalUrlToFlyer,
   getCanonicalUrlToKit,
+  getCanonicalUrlToPage,
 } from './get-canonical-url.ts';
 
-export async function getTranslationsUrls<T extends 'kits' | 'flyers'>(
+export async function getTranslationsUrls<
+  T extends 'kits' | 'flyers' | 'pages',
+>(
   collection: T,
   lang: string,
   identifier: string,
@@ -66,4 +69,16 @@ export const getTranslationsUrlsForKit = async (
   }[]
 > => {
   return getTranslationsUrls('kits', lang, identifier, getCanonicalUrlToKit);
+};
+
+export const getTranslationsUrlsForPages = async (
+  lang: string,
+  identifier: string,
+): Promise<
+  {
+    lang: string;
+    url: string;
+  }[]
+> => {
+  return getTranslationsUrls('pages', lang, identifier, getCanonicalUrlToPage);
 };

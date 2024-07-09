@@ -2,9 +2,10 @@ import type { CollectionEntry } from 'astro:content';
 import {
   getCanonicalUrlToFlyer,
   getCanonicalUrlToKit,
+  getCanonicalUrlToPage,
 } from './get-canonical-url.ts';
 
-async function redirectNotTranslated<T extends 'kits' | 'flyers'>(
+async function redirectNotTranslated<T extends 'kits' | 'flyers' | 'pages'>(
   collection: T,
   getCanonicalUrlFn: (
     lang: string,
@@ -35,3 +36,7 @@ export const redirectNotTranslatedForFlyer = async (
 export const redirectNotTranslatedForKit = async (
   entry?: CollectionEntry<'kits'>,
 ) => redirectNotTranslated('kits', getCanonicalUrlToKit, entry);
+
+export const redirectNotTranslatedForPage = async (
+  entry?: CollectionEntry<'pages'>,
+) => redirectNotTranslated('pages', getCanonicalUrlToPage, entry);
