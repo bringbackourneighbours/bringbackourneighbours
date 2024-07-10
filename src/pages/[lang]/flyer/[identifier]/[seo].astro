@@ -7,6 +7,7 @@ import { getStaticPathsForFlyers } from '../../../../util/get-static-paths';
 import { getTranslationsUrlsForFlyer } from '../../../../util/get-translations-url';
 import { redirectNotTranslatedForFlyer } from '../../../../util/redirect-not-found-or-not-translated';
 import Timestamp from '../../../../design/Timestamp.astro';
+import LanguageSwitcher from '../../../../design/LanguageSwitcher.astro';
 
 interface Props {
   entry: CollectionEntry<'flyers'>;
@@ -22,6 +23,11 @@ const redirectResponse = await redirectNotTranslatedForFlyer(entry);
 if (redirectResponse) {
   return Astro.redirect(redirectResponse.url, redirectResponse.status);
 }
+
+const translationSlugs = await getTranslationsUrlsForFlyer(
+  entry.data.lang,
+  entry.data.identifier,
+);
 ---
 
 <ContentLayout
@@ -31,11 +37,12 @@ if (redirectResponse) {
     entry.data.lang,
     entry.data.identifier,
   )}
-  translationSlugs={await getTranslationsUrlsForFlyer(
-    entry.data.lang,
-    entry.data.identifier,
-  )}
+  translationSlugs={translationSlugs}
 >
+  <LanguageSwitcher
+    lang={entry.data.lang}
+    translationSlugs={translationSlugs}
+  />
   <hgroup>
     <h1>{entry.data.title}</h1>
     <!-- FIXME: Element ul is not allowed here -->

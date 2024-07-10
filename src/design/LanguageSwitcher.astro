@@ -1,0 +1,29 @@
+---
+import Link from './Link.astro';
+interface Props {
+  lang: string;
+  translationSlugs?: Array<{
+    lang: string;
+    url: string;
+  }>;
+}
+
+const { lang, translationSlugs } = Astro.props;
+---
+
+<nav>
+  {lang}
+  {
+    translationSlugs?.map((translation) => (
+      <>
+        <span> | </span>
+        <Link
+          lang={translation.lang}
+          href={translation.url}
+        >
+          {translation.lang}
+        </Link>
+      </>
+    ))
+  }
+</nav>

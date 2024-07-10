@@ -7,6 +7,8 @@ import Stack from '../../../design/Stack.astro';
 import CardLink from '../../../design/CardLink.astro';
 import { getCanonicalUrlToKit } from '../../../util/get-canonical-url';
 import MoreInfoStack from '../../../components/MoreInfoStack.astro';
+import { getTranslationsUrlsForPath } from '../../../util/get-translations-url';
+import LanguageSwitcher from '../../../design/LanguageSwitcher.astro';
 
 interface Props {
   lang: string;
@@ -24,12 +26,19 @@ export async function getStaticPaths() {
 const { lang } = Astro.props;
 
 const allKits = await getStaticPathsForKits();
+
+const translationSlugs = await getTranslationsUrlsForPath(lang, 'kit');
 ---
 
 <OverviewLayout
   lang={lang}
   title=`${await useUiTranslation('meta.title', lang)} | ${await useUiTranslation('meta.subtitle', 'lang')}`
+  translationSlugs={translationSlugs}
 >
+  <LanguageSwitcher
+    lang={lang}
+    translationSlugs={translationSlugs}
+  />
   <h2>{useUiTranslation('meta.allKits', lang)}:</h2>
   <Stack>
     {

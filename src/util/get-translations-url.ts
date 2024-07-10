@@ -4,6 +4,8 @@ import {
   getCanonicalUrlToKit,
   getCanonicalUrlToPage,
 } from './get-canonical-url.ts';
+import { Languages } from './languages.enum.ts';
+import { getAbsoluteUrl } from './get-absolute-url.ts';
 
 export async function getTranslationsUrls<
   T extends 'kits' | 'flyers' | 'pages',
@@ -81,4 +83,25 @@ export const getTranslationsUrlsForPages = async (
   }[]
 > => {
   return getTranslationsUrls('pages', lang, identifier, getCanonicalUrlToPage);
+};
+
+export const getTranslationsUrlsForPath = (
+  lang: string,
+  path: string,
+): Promise<
+  {
+    lang: string;
+    url: string;
+  }[]
+> => {
+  const allLanguages = Object.values(Languages);
+
+  return Promise.resolve(
+    allLanguages
+      .filter((possibleLang) => possibleLang !== lang)
+      .map((lang) => ({
+        lang,
+        url: getAbsoluteUrl(`${lang}/${path}`),
+      })),
+  );
 };
