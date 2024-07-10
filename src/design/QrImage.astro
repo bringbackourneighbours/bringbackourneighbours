@@ -7,8 +7,6 @@ interface Props {
 
 const { url } = Astro.props;
 
-console.log('URL:', url);
-
 // TODO: types are not working... astro why you allways like this!
 const qrCodeImage = await toDataURL(url, {
   color: {
@@ -16,7 +14,6 @@ const qrCodeImage = await toDataURL(url, {
     light: '#ffff00',
   },
 });
-console.log('qrCodeImage:', qrCodeImage);
 ---
 
 <img

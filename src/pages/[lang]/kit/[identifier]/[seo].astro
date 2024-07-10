@@ -7,6 +7,7 @@ import { getStaticPathsForKits } from '../../../../util/get-static-paths';
 import { getTranslationsUrlsForKit } from '../../../../util/get-translations-url';
 import { redirectNotTranslatedForKit } from '../../../../util/redirect-not-found-or-not-translated';
 import Timestamp from '../../../../design/Timestamp.astro';
+import LanguageSwitcher from '../../../../design/LanguageSwitcher.astro';
 
 interface Props {
   entry: CollectionEntry<'kits'>;
@@ -22,6 +23,11 @@ const redirectResponse = await redirectNotTranslatedForKit(entry);
 if (redirectResponse) {
   return Astro.redirect(redirectResponse.url, redirectResponse.status);
 }
+
+const translationSlugs = await getTranslationsUrlsForKit(
+  entry.data.lang,
+  entry.data.identifier,
+);
 ---
 
 <ContentLayout
@@ -31,11 +37,12 @@ if (redirectResponse) {
     entry.data.lang,
     entry.data.identifier,
   )}
-  translationSlugs={await getTranslationsUrlsForKit(
-    entry.data.lang,
-    entry.data.identifier,
-  )}
+  translationSlugs={translationSlugs}
 >
+  <LanguageSwitcher
+    lang={entry.data.lang}
+    translationSlugs={translationSlugs}
+  />
   <hgroup>
     <h1>{entry.data.title}</h1>
     <!-- FIXME: Element ul is not allowed here -->

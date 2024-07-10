@@ -5,6 +5,8 @@ import { useUiTranslation } from '../util/use-ui-translation';
 import { Languages } from '../util/languages.enum';
 import Stack from '../design/Stack.astro';
 import MoreInfoStack from './MoreInfoStack.astro';
+import LanguageSwitcher from '../design/LanguageSwitcher.astro';
+import { getTranslationsUrlsForPath } from '../util/get-translations-url';
 
 interface Props {
   lang: string;
@@ -13,12 +15,19 @@ interface Props {
 const { lang } = Astro.props;
 
 const allLanguages = Object.values(Languages); // FIXME: my IDE is not resolving this... why?
+
+const translationSlugs = await getTranslationsUrlsForPath(lang, '');
 ---
 
 <OverviewLayout
   lang={lang}
   title=`${await useUiTranslation('meta.title', lang)} | ${await useUiTranslation('meta.subtitle', lang)}`
+  translationSlugs={translationSlugs}
 >
+  <LanguageSwitcher
+    lang={lang}
+    translationSlugs={translationSlugs}
+  />
   <Stack>
     {
       allLanguages.map(async (langs) => (

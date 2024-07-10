@@ -5,6 +5,7 @@ import MarkdownEntry from '../../../../design/MarkdownEntry.astro';
 import ContentLayout from '../../../../layouts/ContentLayout.astro';
 import { getTranslationsUrlsForPages } from '../../../../util/get-translations-url';
 import { getCanonicalUrlToPage } from '../../../../util/get-canonical-url';
+import LanguageSwitcher from '../../../../design/LanguageSwitcher.astro';
 
 export async function getStaticPaths() {
   const pageEntries = await getCollection('pages');
@@ -27,6 +28,11 @@ const redirectResponse = await redirectNotTranslatedForPage(entry);
 if (redirectResponse) {
   return Astro.redirect(redirectResponse.url, redirectResponse.status);
 }
+
+const translationSlugs = await getTranslationsUrlsForPages(
+  entry.data.lang,
+  entry.data.identifier,
+);
 ---
 
 <ContentLayout
@@ -36,11 +42,12 @@ if (redirectResponse) {
     entry.data.lang,
     entry.data.identifier,
   )}
-  translationSlugs={await getTranslationsUrlsForPages(
-    entry.data.lang,
-    entry.data.identifier,
-  )}
+  translationSlugs={translationSlugs}
 >
+  <LanguageSwitcher
+    lang={entry.data.lang}
+    translationSlugs={translationSlugs}
+  />
   <h1>{entry.data.title}</h1>
   <!--FIXME: and more meta data here-->
   <MarkdownEntry rendered={entry.render()} />
