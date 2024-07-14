@@ -3,13 +3,14 @@ import BaseHtml from './BaseHtml.astro';
 import BaseHead from './BaseHead.astro';
 import Header from '../components/Header.astro';
 import BaseBody from './BaseBody.astro';
+import { type LanguagesValue } from '../util/languages.enum';
 
 interface Props {
   title: string;
-  lang: string;
+  lang: LanguagesValue;
   canonicalSlug?: string;
   translationSlugs?: Array<{
-    lang: string;
+    lang: LanguagesValue;
     url: string;
   }>;
 }

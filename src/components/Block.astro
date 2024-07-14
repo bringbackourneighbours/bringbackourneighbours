@@ -1,13 +1,14 @@
 ---
+import { DEFAULT_LANG, type LanguagesValue } from '../util/languages.enum';
 import { getCollection } from 'astro:content';
 import MarkdownEntry from '../design/MarkdownEntry.astro';
 
 interface Props {
   identifier: string;
-  lang: string;
+  lang: LanguagesValue;
 }
 
-const { identifier, lang } = Astro.props;
+const { identifier, lang = DEFAULT_LANG } = Astro.props;
 
 const blockEntries = await getCollection('blocks', (block) => {
   return block.slug === `${identifier}/${lang}`;

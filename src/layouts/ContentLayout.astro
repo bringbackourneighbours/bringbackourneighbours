@@ -3,17 +3,24 @@ import BaseHtml from './BaseHtml.astro';
 import BaseHead from './BaseHead.astro';
 import Header from '../components/Header.astro';
 import BaseBody from './BaseBody.astro';
+import { DEFAULT_LANG, type LanguagesValue } from '../util/languages.enum';
+
 interface Props {
   title: string;
-  lang: string;
+  lang: LanguagesValue;
   canonicalSlug?: string;
   translationSlugs?: Array<{
-    lang: string;
+    lang: LanguagesValue;
     url: string;
   }>;
 }
 
-const { title, lang, canonicalSlug, translationSlugs } = Astro.props;
+const {
+  title,
+  lang = DEFAULT_LANG,
+  canonicalSlug,
+  translationSlugs,
+} = Astro.props;
 ---
 
 <style>

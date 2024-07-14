@@ -82,7 +82,7 @@ const pagesCollection = defineCollection({
 const uiCollection = defineCollection({
   type: 'data',
   schema: z.object({
-    fallback: z.string().optional(),
+    fallback: SupportedLanguages.optional(),
     meta: z
       .object({
         title: z.string(),

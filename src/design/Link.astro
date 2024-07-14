@@ -1,10 +1,12 @@
 ---
+import { DEFAULT_LANG, type LanguagesValue } from '../util/languages.enum';
+
 interface Props {
   href: string;
-  lang?: string;
+  lang?: LanguagesValue;
 }
 
-const { href, lang = 'de' } = Astro.props;
+const { href, lang = DEFAULT_LANG } = Astro.props;
 
 // FIXME Only replace from beginning of string
 const site = Astro.site!.toString();

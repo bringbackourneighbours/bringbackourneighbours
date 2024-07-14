@@ -8,7 +8,11 @@ export enum Languages {
   URDU = 'ur',
 }
 
+export type LanguagesValue = `${Languages}`;
+
 export const RTL_LANGUAGES: Languages[] = [
   Languages.ARABIC,
   Languages.URDU,
 ] as const;
+
+export const DEFAULT_LANG: LanguagesValue = Languages.GERMAN;

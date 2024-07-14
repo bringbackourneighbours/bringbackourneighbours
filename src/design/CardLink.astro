@@ -1,12 +1,13 @@
 ---
+import { DEFAULT_LANG, type LanguagesValue } from '../util/languages.enum';
 import { getLanguageDirection } from '../util/get-language-direction';
 interface Props {
   href?: string;
   direction?: 'rtl' | 'ltr';
-  lang?: string;
+  lang?: LanguagesValue;
 }
 
-const { href, lang = 'de' } = Astro.props;
+const { href, lang = DEFAULT_LANG } = Astro.props;
 ---
 
 <style>

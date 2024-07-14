@@ -1,5 +1,10 @@
 ---
+import { type LanguagesValue } from '../util/languages.enum';
 import { getLanguageDirection } from '../util/get-language-direction';
+
+interface Props {
+  lang: LanguagesValue;
+}
 
 const { lang } = Astro.props;
 ---

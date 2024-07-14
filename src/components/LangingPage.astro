@@ -1,4 +1,5 @@
 ---
+import { type LanguagesValue, DEFAULT_LANG } from '../util/languages.enum';
 import OverviewLayout from '../layouts/OverviewLayout.astro';
 import CardLink from '../design/CardLink.astro';
 import { useUiTranslation } from '../util/use-ui-translation';
@@ -9,10 +10,10 @@ import LanguageSwitcher from '../design/LanguageSwitcher.astro';
 import { getTranslationsUrlsForPath } from '../util/get-translations-url';
 
 interface Props {
-  lang: string;
+  lang: LanguagesValue;
 }
 
-const { lang } = Astro.props;
+const { lang = DEFAULT_LANG } = Astro.props;
 
 const allLanguages = Object.values(Languages); // FIXME: my IDE is not resolving this... why?
 

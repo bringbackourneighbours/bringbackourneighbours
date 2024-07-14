@@ -1,5 +1,9 @@
 ---
-import { Languages } from '../../util/languages.enum';
+import {
+  DEFAULT_LANG,
+  Languages,
+  type LanguagesValue,
+} from '../../util/languages.enum';
 import { useUiTranslation } from '../../util/use-ui-translation';
 import OverviewLayout from '../../layouts/OverviewLayout.astro';
 import Stack from '../../design/Stack.astro';
@@ -10,7 +14,7 @@ import { getTranslationsUrlsForPath } from '../../util/get-translations-url';
 import LanguageSwitcher from '../../design/LanguageSwitcher.astro';
 
 interface Props {
-  lang: string;
+  lang: LanguagesValue;
 }
 
 export async function getStaticPaths() {
@@ -22,14 +26,14 @@ export async function getStaticPaths() {
   });
 }
 
-const { lang } = Astro.props;
+const { lang = DEFAULT_LANG } = Astro.props;
 
 const translationSlugs = await getTranslationsUrlsForPath(lang, 'wizard');
 ---
 
 <OverviewLayout
   lang={lang}
-  title=`${await useUiTranslation('meta.title', lang)} | ${await useUiTranslation('meta.subtitle', 'lang')}`
+  title=`${await useUiTranslation('meta.title', lang)} | ${await useUiTranslation('meta.subtitle', lang)}`
   translationSlugs={translationSlugs}
 >
   <LanguageSwitcher

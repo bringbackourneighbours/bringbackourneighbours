@@ -1,10 +1,12 @@
 ---
+import { type LanguagesValue } from '../util/languages.enum';
+
 interface Props {
   title: string;
-  lang: string;
+  lang: LanguagesValue;
   canonicalSlug?: string;
   translationSlugs?: Array<{
-    lang: string;
+    lang: LanguagesValue;
     url: string;
   }>;
 }
