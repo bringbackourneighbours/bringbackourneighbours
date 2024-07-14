@@ -10,9 +10,9 @@ import {
 
 export interface LinkData {
   slug: string;
-  title: string;
+  title?: string;
   url?: string;
-  type: string;
+  type?: string;
 }
 
 export const getFlatLinksEntries = async (): Promise<LinkData[]> => {
@@ -26,7 +26,12 @@ export const getFlatLinksEntries = async (): Promise<LinkData[]> => {
 const getAllExternalLinksEntries = async (): Promise<LinkData[]> => {
   const linkEntries: CollectionEntry<'links'>[] = await getCollection('links');
   return linkEntries.reduce((accumulator, currentValue) => {
-    return [...accumulator, ...Object.values(currentValue.data).flat()];
+    return [
+      ...accumulator,
+      ...(Object.values(currentValue.data)
+        .filter((value) => value.slug && value.url)
+        .flat() as LinkData[]),
+    ];
   }, [] as LinkData[]);
 };
 

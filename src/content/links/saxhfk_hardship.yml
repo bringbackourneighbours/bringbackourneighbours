@@ -1,0 +1,10 @@
+all:
+  slug: hfk
+  url: https://sab.landtag.sachsen.de/download/SAB/SAB-HfK_11sprachig_3-2023_web.pdf
+  type: WEB
+en:
+  title: 'Saxon commission on hardship cases'
+de:
+  title: 'Sächsische Härtefallkommission'
+fr:
+  title: 'Commission saxonne pour les cas de rigueur'
