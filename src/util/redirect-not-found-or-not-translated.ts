@@ -4,11 +4,12 @@ import {
   getCanonicalUrlToKit,
   getCanonicalUrlToPage,
 } from './get-canonical-url.ts';
+import type { LanguagesValue } from './languages.enum.ts';
 
 async function redirectNotTranslated<T extends 'kits' | 'flyers' | 'pages'>(
   collection: T,
   getCanonicalUrlFn: (
-    lang: string,
+    lang: LanguagesValue,
     identifier: string,
   ) => Promise<string | undefined>,
   entry?: CollectionEntry<T>,

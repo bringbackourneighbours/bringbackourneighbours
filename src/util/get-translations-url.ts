@@ -4,22 +4,22 @@ import {
   getCanonicalUrlToKit,
   getCanonicalUrlToPage,
 } from './get-canonical-url.ts';
-import { Languages } from './languages.enum.ts';
+import { Languages, type LanguagesValue } from './languages.enum.ts';
 import { getAbsoluteUrl } from './get-absolute-url.ts';
 
 export async function getTranslationsUrls<
   T extends 'kits' | 'flyers' | 'pages',
 >(
   collection: T,
-  lang: string,
+  lang: LanguagesValue,
   identifier: string,
   getCanonicalUrlFn: (
-    lang: string,
+    lang: LanguagesValue,
     identifier: string,
   ) => Promise<string | undefined>,
 ): Promise<
   {
-    lang: string;
+    lang: LanguagesValue;
     url: string;
   }[]
 > {
@@ -39,17 +39,17 @@ export async function getTranslationsUrls<
   return allWithUrls.filter((translation) => {
     return translation.url !== undefined;
   }) as {
-    lang: string;
+    lang: LanguagesValue;
     url: string;
   }[];
 }
 
 export const getTranslationsUrlsForFlyer = async (
-  lang: string,
+  lang: LanguagesValue,
   identifier: string,
 ): Promise<
   {
-    lang: string;
+    lang: LanguagesValue;
     url: string;
   }[]
 > => {
@@ -62,11 +62,11 @@ export const getTranslationsUrlsForFlyer = async (
 };
 
 export const getTranslationsUrlsForKit = async (
-  lang: string,
+  lang: LanguagesValue,
   identifier: string,
 ): Promise<
   {
-    lang: string;
+    lang: LanguagesValue;
     url: string;
   }[]
 > => {
@@ -74,11 +74,11 @@ export const getTranslationsUrlsForKit = async (
 };
 
 export const getTranslationsUrlsForPages = async (
-  lang: string,
+  lang: LanguagesValue,
   identifier: string,
 ): Promise<
   {
-    lang: string;
+    lang: LanguagesValue;
     url: string;
   }[]
 > => {
@@ -86,11 +86,11 @@ export const getTranslationsUrlsForPages = async (
 };
 
 export const getTranslationsUrlsForPath = (
-  lang: string,
+  lang: LanguagesValue,
   path: string,
 ): Promise<
   {
-    lang: string;
+    lang: LanguagesValue;
     url: string;
   }[]
 > => {

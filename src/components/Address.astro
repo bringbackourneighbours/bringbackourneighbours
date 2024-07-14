@@ -1,13 +1,14 @@
 ---
+import { DEFAULT_LANG, type LanguagesValue } from '../util/languages.enum';
 import { getEntry } from 'astro:content';
 import Link from '../design/Link.astro';
 
 interface Props {
   identifier: string;
-  lang: string;
+  lang?: LanguagesValue;
 }
 
-const { identifier, lang } = Astro.props;
+const { identifier, lang = DEFAULT_LANG } = Astro.props;
 
 // FIXME: this seems needless... but without the type is not working. no idea why
 const getAddress = async (identifier: string) =>

@@ -1,10 +1,10 @@
 ---
-import { Languages } from '../../util/languages.enum';
+import { Languages, type LanguagesValue } from '../../util/languages.enum';
 
 import LangingPage from '../../components/LangingPage.astro';
 
 interface Props {
-  lang: string;
+  lang: LanguagesValue;
 }
 
 export async function getStaticPaths() {

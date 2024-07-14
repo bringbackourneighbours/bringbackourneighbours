@@ -1,8 +1,9 @@
 import { type CollectionEntry, getCollection } from 'astro:content';
+import type { LanguagesValue } from './languages.enum.ts';
 
 export interface StandaloneContentProps<T extends 'kits' | 'flyers'> {
   params: {
-    lang: string;
+    lang: LanguagesValue;
     identifier: string;
     seo: string;
   };

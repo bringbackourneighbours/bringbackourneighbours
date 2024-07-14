@@ -1,4 +1,5 @@
 ---
+import { type LanguagesValue } from '../util/languages.enum';
 import { useUiTranslation } from '../util/use-ui-translation';
 import {
   getCanonicalUrlToKit,
@@ -7,7 +8,7 @@ import {
 import Stack from '../design/Stack.astro';
 import CardLink from '../design/CardLink.astro';
 interface Props {
-  lang: string;
+  lang: LanguagesValue;
   showFlyers?: boolean;
   showKits?: boolean;
 }

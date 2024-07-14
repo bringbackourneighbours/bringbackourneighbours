@@ -5,6 +5,7 @@ import OverviewLayout from '../layouts/OverviewLayout.astro';
 import Address from '../components/Address.astro';
 import ExternalShortLink from '../components/ExternalShortLink.astro';
 import QrImage from '../design/QrImage.astro';
+import { DEFAULT_LANG, Languages } from '../util/languages.enum';
 ---
 
 <html lang="en">
@@ -27,7 +28,7 @@ import QrImage from '../design/QrImage.astro';
   </head>
   <OverviewLayout
     title="Design Showcase"
-    lang="en"
+    lang={Languages.ENGLISH}
   >
     <h1>Showcase</h1>
     This page is for testing new feature... it will be removed when we are going
@@ -46,7 +47,7 @@ import QrImage from '../design/QrImage.astro';
     />
     <Address
       identifier="chronik_le"
-      lang="en"
+      lang={Languages.ENGLISH}
     />
     <h2>UI translation</h2>
     <p>
@@ -83,11 +84,11 @@ import QrImage from '../design/QrImage.astro';
         <Link href={`${Astro.site}link/hfk`} /> or
         <ExternalShortLink
           identifier="saxhfk_hardship"
-          lang="de"
+          lang={DEFAULT_LANG}
         />
         <ExternalShortLink
           identifier="saxhfk_hardship"
-          lang="en"
+          lang={Languages.ENGLISH}
         />
       </li>
       <li>
@@ -99,7 +100,7 @@ import QrImage from '../design/QrImage.astro';
       <li>
         <Link href={`${Astro.site}link/asyleng`} /> or <ExternalShortLink
           identifier="asylnet_interview"
-          lang="en"
+          lang={Languages.ENGLISH}
         />
       </li>
       <li>
