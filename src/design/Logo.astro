@@ -1,27 +1,15 @@
 ---
 import logo from '../assets/logo.svg?raw';
+import Icon from './Icon.astro';
+
+interface Props {
+  size?: string;
+}
+
 const { size = '1.5em' } = Astro.props;
 ---
 
-<style>
-  .logo {
-    width: 1.5em;
-    height: 1.5em;
-    color: var(--color-surface-0);
-    padding-top: 3px;
-    display: inline-block;
-    flex-shrink: 0;
-  }
-
-  .logo svg {
-    width: 100%;
-    height: 100%;
-  }
-</style>
-
-<div
-  class="logo"
-  style={`width:${size}; height: ${size}`}
->
-  <Fragment set:html={logo} />
-</div>
+<Icon
+  html={logo}
+  size={size}
+/>

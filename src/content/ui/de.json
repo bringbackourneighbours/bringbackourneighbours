@@ -12,7 +12,15 @@
     "forms": "Vorlagen und Formulare zum Ausdrucken",
     "kitProfessionals": "Notfallkoffer gegen Abschiebung für Fachkräfte der Sozialen Arbeit"
   },
-
+  "languages": {
+    "de": "Deutsch",
+    "ar": "Arabisch",
+    "en": "Englisch",
+    "fr": "Französisch",
+    "ka": "Georgisch",
+    "es": "Spanisch",
+    "ur": "Urdu"
+  },
   "wizard": {
     "isThereDangerQuestion": "Bist du oder wer anders von einer Abschiebung bedroht?",
     "areYouInDangerQuestion": "Du bist selber von einer Abschiebung bedroht?",

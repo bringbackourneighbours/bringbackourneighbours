@@ -1,0 +1,28 @@
+---
+interface Props {
+  size?: string;
+  html: string;
+}
+
+const { size = '1.5em', html } = Astro.props;
+console.log(html);
+---
+
+<style>
+  .icon {
+    width: 1.5em;
+    height: 1.5em;
+    color: var(--color-surface);
+    padding-top: 3px;
+    display: inline-block;
+    flex-shrink: 0;
+    fill: var(--color-surface);
+  }
+</style>
+
+<div
+  class="icon"
+  style={`width:${size}; height: ${size}`}
+>
+  <Fragment set:html={html} />
+</div>
