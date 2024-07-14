@@ -1,9 +1,13 @@
 import { z, defineCollection } from 'astro:content';
+import { Languages } from '../util/languages.enum.ts';
+
+const SupportedLanguages = z.nativeEnum(Languages);
+type SupportedLanguages = z.infer<typeof SupportedLanguages>;
 
 const translatableSchema = {
   identifier: z.string(),
-  lang: z.string(),
-  fallback: z.string().optional(),
+  lang: SupportedLanguages,
+  fallback: SupportedLanguages.optional(),
 };
 
 const i18nUrlSchema = {
@@ -58,12 +62,12 @@ const kitsCollection = defineCollection({
 const linksCollection = defineCollection({
   type: 'data',
   schema: z.record(
-    z.string(),
+    SupportedLanguages.or(z.literal('all')),
     z.object({
-      slug: z.string(),
-      url: z.string(),
-      title: z.string(),
-      type: z.string(),
+      slug: z.string().optional(),
+      url: z.string().optional(),
+      title: z.string().optional(),
+      type: z.string().optional(),
     }),
   ),
 });

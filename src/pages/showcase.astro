@@ -80,6 +80,17 @@ import QrImage from '../design/QrImage.astro';
     This works for external resources in the content-collection `links`...
     <ul>
       <li>
+        <Link href={`${Astro.site}link/hfk`} /> or
+        <ExternalShortLink
+          identifier="saxhfk_hardship"
+          lang="de"
+        />
+        <ExternalShortLink
+          identifier="saxhfk_hardship"
+          lang="en"
+        />
+      </li>
+      <li>
         <Link href={`${Astro.site}link/asyldt`} /> or <ExternalShortLink
           identifier="asylnet_interview"
           lang="de"

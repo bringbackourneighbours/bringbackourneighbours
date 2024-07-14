@@ -14,7 +14,9 @@ export async function getStaticPaths() {
 }
 
 const entries = await getFlatLinksEntries();
-const target = entries.find((entry) => entry.slug === Astro.props.slug);
+const target = entries.find((entry) => {
+  return entry.slug === Astro.props.slug;
+});
 
 return Astro.redirect(target.url, 307);
 ---
