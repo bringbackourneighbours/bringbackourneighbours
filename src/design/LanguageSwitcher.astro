@@ -24,7 +24,8 @@ const { lang, translationSlugs } = Astro.props;
     border-radius: calc(var(--shadow-0) * 0.5);
     border: calc(var(--size-border) * 2) solid var(--color-secondary-dark);
     position: fixed;
-    bottom: var(--vspace);
+    inset-inline-start: var(--vspace);
+    inset-block-end: var(--vspace);
     gap: var(--vspace);
     padding: var(--vspace-4);
     box-shadow: calc(0.5 * var(--shadow-0)) calc(0.5 * var(--shadow-0)) 0 0
@@ -92,7 +93,7 @@ const { lang, translationSlugs } = Astro.props;
   let expanded = false;
 
   const languageSwitcher = document.getElementById('language-switcher');
-  const languageSwitcherToogle = document.getElementById(
+  const languageSwitcherToggle = document.getElementById(
     'language-switcher-toggle',
   );
 
@@ -111,6 +112,6 @@ const { lang, translationSlugs } = Astro.props;
     }
   };
 
-  languageSwitcherToogle.addEventListener('click', toggle);
+  languageSwitcherToggle.addEventListener('click', toggle);
   setClasses();
 </script>
