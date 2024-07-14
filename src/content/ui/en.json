@@ -13,6 +13,15 @@
     "forms": "Templates and forms to print out",
     "kitProfessionals": "Emergency kit against deportation for social work professionals"
   },
+  "languages": {
+    "de": "German",
+    "ar": "Arabic",
+    "en": "English",
+    "fr": "French",
+    "ka": "Georgian",
+    "es": "Spanish",
+    "ur": "Urdu"
+  },
   "wizard": {
     "isThereDangerQuestion": "Are you or someone else at risk of deportation?",
     "areYouInDangerQuestion": "Are you yourself at risk of deportation?",

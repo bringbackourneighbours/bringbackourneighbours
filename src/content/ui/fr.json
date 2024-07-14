@@ -4,5 +4,14 @@
     "isThereDangerQuestion": "Est-ce que toi ou quelqu'un d'autre est menacé d'expulsion?",
     "areYouInDangerQuestion": "Tu es toi-même menacé d'expulsion?",
     "someoneElseInDangerQuestion": "Tu veux soutenir une personne menacée d'expulsion?"
+  },
+  "languages": {
+    "de": "Allemand",
+    "ar": "Arabe",
+    "en": "anglais",
+    "fr": "français",
+    "ka": "géorgien",
+    "es": "espagnol",
+    "ur": "ourdou"
   }
 }

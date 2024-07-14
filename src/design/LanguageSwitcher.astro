@@ -1,5 +1,9 @@
 ---
 import Link from './Link.astro';
+import Icon from './Icon.astro';
+import languageIcon from '../assets/icons/ion--language.svg?raw';
+import { useUiTranslation } from '../util/use-ui-translation';
+
 interface Props {
   lang: string;
   translationSlugs?: Array<{
@@ -11,19 +15,102 @@ interface Props {
 const { lang, translationSlugs } = Astro.props;
 ---
 
-<nav>
-  {lang}
-  {
-    translationSlugs?.map((translation) => (
-      <>
-        <span> | </span>
+<style>
+  .language-switcher {
+    display: flex;
+    background-color: var(--color-secondary);
+    color: var(--color-surface);
+    width: fit-content;
+    border-radius: calc(var(--shadow-0) * 0.5);
+    border: calc(var(--size-border) * 2) solid var(--color-secondary-dark);
+    position: fixed;
+    bottom: var(--vspace);
+    gap: var(--vspace);
+    padding: var(--vspace-4);
+    box-shadow: calc(0.5 * var(--shadow-0)) calc(0.5 * var(--shadow-0)) 0 0
+      var(--color-secondary-dark);
+
+    .language-switcher-toggle {
+      background-color: var(--color-secondary);
+      color: var(--color-surface);
+      border: none;
+      display: flex;
+      gap: var(--vspace);
+      align-items: center;
+      font-size: 1rem;
+      margin: 0;
+      padding: var(--vspace-4);
+    }
+
+    .language-switcher-alternatives {
+      font-size: 1rem;
+      padding: var(--vspace-4);
+      display: flex;
+      gap: var(--vspace);
+      align-items: center;
+
+      --color-primary: var(--color-surface);
+      --color-primary-bright: var(--color-surface);
+    }
+
+    &.-collapsed {
+      .language-switcher-alternatives {
+        display: none;
+      }
+    }
+  }
+</style>
+
+<nav
+  class="language-switcher"
+  id="language-switcher"
+>
+  <button
+    id="language-switcher-toggle"
+    class="language-switcher-toggle"
+  >
+    <Icon html={languageIcon} />
+    {useUiTranslation(`languages.${lang}`, lang)}
+  </button>
+
+  <div class="language-switcher-alternatives">
+    {
+      translationSlugs?.map((translation) => (
         <Link
           lang={translation.lang}
           href={translation.url}
         >
-          {translation.lang}
+          {useUiTranslation(`languages.${translation.lang}`, translation.lang)}{' '}
+          ({useUiTranslation(`languages.${translation.lang}`, lang)})
         </Link>
-      </>
-    ))
-  }
+      ))
+    }
+  </div>
 </nav>
+
+<script is:inline>
+  let expanded = false;
+
+  const languageSwitcher = document.getElementById('language-switcher');
+  const languageSwitcherToogle = document.getElementById(
+    'language-switcher-toggle',
+  );
+
+  const toggle = () => {
+    expanded = !expanded;
+    setClasses();
+  };
+
+  const setClasses = () => {
+    if (expanded) {
+      languageSwitcher.classList.add('-expanded');
+      languageSwitcher.classList.remove('-collapsed');
+    } else {
+      languageSwitcher.classList.remove('-expanded');
+      languageSwitcher.classList.add('-collapsed');
+    }
+  };
+
+  languageSwitcherToogle.addEventListener('click', toggle);
+  setClasses();
+</script>

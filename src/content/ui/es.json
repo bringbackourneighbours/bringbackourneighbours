@@ -4,5 +4,14 @@
     "isThereDangerQuestion": "¿Está usted u otra persona en riesgo de deportación?",
     "areYouInDangerQuestion": "¿Estás tú mismo en riesgo de deportación?",
     "someoneElseInDangerQuestion": "¿Te gustaría apoyar a una persona que está en riesgo de deportación?"
+  },
+  "languages": {
+    "de": "alemán",
+    "ar": "Árabe",
+    "en": "Inglés",
+    "fr": "Francés",
+    "ka": "Georgiano",
+    "es": "español",
+    "ur": "Urdu"
   }
 }

@@ -94,6 +94,15 @@ const uiCollection = defineCollection({
         kitProfessionals: z.string(),
       })
       .optional(),
+    languages: z.object({
+      de: z.string(),
+      en: z.string(),
+      ar: z.string(),
+      fr: z.string(),
+      ka: z.string(),
+      es: z.string(),
+      ur: z.string(),
+    }),
     wizard: z
       .object({
         isThereDangerQuestion: z.string(),
