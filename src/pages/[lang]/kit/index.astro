@@ -1,6 +1,9 @@
 ---
 import { getStaticPathsForKits } from '../../../util/get-static-paths';
-import { Languages, type LanguagesValue } from '../../../util/languages.enum';
+import {
+  SupportedLanguages,
+  type LanguagesValue,
+} from '../../../util/languages';
 import { useUiTranslation } from '../../../util/use-ui-translation';
 import OverviewLayout from '../../../layouts/OverviewLayout.astro';
 import Stack from '../../../design/Stack.astro';
@@ -15,7 +18,7 @@ interface Props {
 }
 
 export async function getStaticPaths() {
-  return Object.values(Languages).map((lang) => {
+  return Object.values(SupportedLanguages).map((lang) => {
     return {
       params: { lang },
       props: { lang },

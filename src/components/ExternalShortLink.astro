@@ -1,7 +1,12 @@
 ---
 import { getEntry } from 'astro:content';
 import Link from '../design/Link.astro';
-import { DEFAULT_LANG, type LanguagesValue } from '../util/languages.enum';
+import {
+  DEFAULT_LANG,
+  type LanguagesValue,
+  SupportedLanguages,
+  UnSupportedLanguages,
+} from '../util/languages';
 
 interface Props {
   identifier: string;
@@ -20,6 +25,10 @@ let localizedLinkData = {
   ...link?.data['all'],
   ...link?.data[lang],
 };
+
+const alternativeLanguages = [...SupportedLanguages, ...UnSupportedLanguages]
+  .filter((l) => l.valueOf() !== lang)
+  .filter((l) => link?.data[l]);
 ---
 
 {
@@ -31,6 +40,21 @@ let localizedLinkData = {
       {localizedLinkData.type}: {localizedLinkData.title}
     </Link>
   ) : (
-    <em>LINK NOT FOUND</em>
+    <>
+      <p>
+        <em>LINK NOT FOUND.</em>
+      </p>
+      <p>Alternatives:</p>
+      <ul>
+        {alternativeLanguages.map((l) => (
+          <li>
+            <Astro.self
+              identifier={identifier}
+              lang={l}
+            />
+          </li>
+        ))}
+      </ul>
+    </>
   )
 }

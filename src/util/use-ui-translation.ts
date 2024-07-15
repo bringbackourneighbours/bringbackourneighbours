@@ -1,6 +1,6 @@
 import { getEntry } from 'astro:content';
 import jp from 'jsonpath';
-import type { LanguagesValue } from './languages.enum.ts';
+import { Languages, type LanguagesValue } from './languages.ts';
 
 /**
  * translates the `key` to the `language` based on the `ui`-Collection.
@@ -18,7 +18,7 @@ import type { LanguagesValue } from './languages.enum.ts';
  */
 export const useUiTranslation = async (
   key: string,
-  language: LanguagesValue,
+  language: LanguagesValue | Languages,
   withFallback = true,
 ): Promise<string> => {
   const foundTranslation = await getEntry('ui', language);

@@ -1,0 +1,37 @@
+all:
+  type: WEB
+en:
+  slug: stay
+  url: https://handbookgermany.de/en/bleiberecht
+  title: 'Residence Permits for Individuals with "Duldung"'
+de:
+  slug: bleiben
+  url: https://handbookgermany.de/de/bleiberecht
+  title: 'Bleiberecht für Menschen mit Duldung'
+fr:
+  url: https://handbookgermany.de/fr/bleiberecht
+  title: 'Droit de séjour en faveur des personnes tolérées'
+ar:
+  slug: bleiben
+  url: https://handbookgermany.de/ar/bleiberecht
+  title: 'حق الإقامة للأفراد الذين لديهم "Duldung"'
+fa:
+  slug: ماندن
+  url: https://handbookgermany.de/fa/bleiberecht
+  title: 'اقامت برای افرادی که با دولدونگ در آلمان زندگی میکنند'
+tr:
+  slug: kalmak
+  url: https://handbookgermany.de/tr/bleiberecht
+  title: 'Duldung Sahipleri İçin Kalma Hakkı'
+ps:
+  slug: پاتې
+  url: https://handbookgermany.de/ps/bleiberecht
+  title: 'ډولډونګ څه ډول په قبولۍ بدلولای شو؟'
+ru:
+  slug: оставаться
+  url: https://handbookgermany.de/ru/bleiberecht
+  title: 'Разрешение на пребывание для людей с отсрочкой депортации'
+uk:
+  slug: залишаються
+  url: https://handbookgermany.de/uk/bleiberecht
+  title: 'Дозвіл на перебування для людей з відтермінуванням депортації (Bleiberecht für Geduldete)'
