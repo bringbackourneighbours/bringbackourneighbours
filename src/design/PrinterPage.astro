@@ -8,7 +8,7 @@ const { breakBefore = false, breakAfter = false } = Astro.props;
 
 <style>
   @page {
-    margin: 20mm 16mm;
+    margin: 10mm;
     size: a5 portrait;
   }
 
@@ -26,6 +26,9 @@ const { breakBefore = false, breakAfter = false } = Astro.props;
 
   .page {
     break-inside: avoid;
+
+    /* this is for the logo: it needs to be primary */
+    --color-surface: var(--color-primary);
 
     &.-break-after {
       page-break-after: always;
