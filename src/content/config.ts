@@ -1,13 +1,10 @@
 import { z, defineCollection } from 'astro:content';
-import { Languages } from '../util/languages.enum.ts';
-
-const SupportedLanguages = z.nativeEnum(Languages);
-type SupportedLanguages = z.infer<typeof SupportedLanguages>;
+import { SupportedLanguages, UnSupportedLanguages } from '../util/languages.ts';
 
 const translatableSchema = {
   identifier: z.string(),
-  lang: SupportedLanguages,
-  fallback: SupportedLanguages.optional(),
+  lang: z.enum(SupportedLanguages),
+  fallback: z.enum(SupportedLanguages).optional(),
 };
 
 const i18nUrlSchema = {
@@ -62,12 +59,15 @@ const kitsCollection = defineCollection({
 const linksCollection = defineCollection({
   type: 'data',
   schema: z.record(
-    SupportedLanguages.or(z.literal('all')),
+    z
+      .enum(SupportedLanguages)
+      .or(z.enum(UnSupportedLanguages))
+      .or(z.literal('all')),
     z.object({
       slug: z.string().optional(),
       url: z.string().optional(),
       title: z.string().optional(),
-      type: z.string().optional(),
+      type: z.string().optional(), // TODO: PDF,WEB as literal
     }),
   ),
 });
@@ -82,7 +82,7 @@ const pagesCollection = defineCollection({
 const uiCollection = defineCollection({
   type: 'data',
   schema: z.object({
-    fallback: SupportedLanguages.optional(),
+    fallback: z.enum(SupportedLanguages).optional(),
     meta: z
       .object({
         title: z.string(),
@@ -99,12 +99,13 @@ const uiCollection = defineCollection({
       })
       .optional(),
     languages: z.object({
+      ar: z.string(),
       de: z.string(),
       en: z.string(),
-      ar: z.string(),
+      es: z.string(),
+      fa: z.string(),
       fr: z.string(),
       ka: z.string(),
-      es: z.string(),
       ur: z.string(),
     }),
     wizard: z

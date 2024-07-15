@@ -4,7 +4,7 @@ import {
   getCanonicalUrlToKit,
   getCanonicalUrlToPage,
 } from './get-canonical-url.ts';
-import { Languages, type LanguagesValue } from './languages.enum.ts';
+import { SupportedLanguages, type LanguagesValue } from './languages.ts';
 import { getAbsoluteUrl } from './get-absolute-url.ts';
 
 export async function getTranslationsUrls<
@@ -94,7 +94,7 @@ export const getTranslationsUrlsForPath = (
     url: string;
   }[]
 > => {
-  const allLanguages = Object.values(Languages);
+  const allLanguages = Object.values(SupportedLanguages);
 
   return Promise.resolve(
     allLanguages

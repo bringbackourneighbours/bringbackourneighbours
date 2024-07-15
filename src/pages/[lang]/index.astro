@@ -1,5 +1,5 @@
 ---
-import { Languages, type LanguagesValue } from '../../util/languages.enum';
+import { SupportedLanguages, type LanguagesValue } from '../../util/languages';
 
 import LangingPage from '../../components/LangingPage.astro';
 
@@ -8,7 +8,7 @@ interface Props {
 }
 
 export async function getStaticPaths() {
-  return Object.values(Languages).map((lang) => {
+  return Object.values(SupportedLanguages).map((lang) => {
     return {
       params: { lang },
       props: { lang },

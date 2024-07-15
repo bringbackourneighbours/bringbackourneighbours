@@ -5,7 +5,7 @@ import OverviewLayout from '../layouts/OverviewLayout.astro';
 import Address from '../components/Address.astro';
 import ExternalShortLink from '../components/ExternalShortLink.astro';
 import QrImage from '../design/QrImage.astro';
-import { DEFAULT_LANG, Languages } from '../util/languages.enum';
+import { DEFAULT_LANG, Languages } from '../util/languages';
 ---
 
 <html lang="en">
@@ -52,21 +52,23 @@ import { DEFAULT_LANG, Languages } from '../util/languages.enum';
     <h2>UI translation</h2>
     <p>
       useUiTranslation('meta.subtitle', 'de') == {
-        useUiTranslation('meta.subtitle', 'de')
+        useUiTranslation('meta.subtitle', Languages.GERMAN)
       }
     </p>
     <p>
       useUiTranslation('meta.subtitle', 'en') == {
-        useUiTranslation('meta.subtitle', 'en')
+        useUiTranslation('meta.subtitle', Languages.ENGLISH)
       }
     </p>
     <p>
       useUiTranslation('meta.subtitle', 'es') == {
-        useUiTranslation('meta.subtitle', 'es')
+        useUiTranslation('meta.subtitle', Languages.SPANISH)
       }
     </p>
     <p>
-      useUiTranslation('FOOFOO', 'en') == {useUiTranslation('FOOFOO', 'en')}
+      useUiTranslation('FOOFOO', 'en') == {
+        useUiTranslation('FOOFOO', Languages.ENGLISH)
+      }
     </p>
 
     <h2>ShortLinks</h2>
