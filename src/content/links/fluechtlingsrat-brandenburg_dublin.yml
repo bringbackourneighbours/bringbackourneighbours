@@ -1,0 +1,14 @@
+all:
+  slug: dublin
+  url: https://www.fluechtlingsrat-brandenburg.de/wp-content/uploads/2020/03/20191216_Dublin-Regelung_alle-Sprachen.pdf
+  type: PDF
+de:
+  title: Dublin-Verfahren - was nun?
+en:
+  title: 'The dublin proceedings - what now'
+ar:
+  title: 'إجراء دبلن - ماذا الآن'
+fr:
+  title: 'Réglement de dublin - que faire'
+ka:
+  title: 'დუბლინის პროცედურა - რა უნდა გააკეთოს'
