@@ -1,5 +1,5 @@
 ---
-import { DEFAULT_LANG, type LanguagesValue } from '../util/languages';
+import { type LanguagesValue } from '../util/languages';
 import { getCollection } from 'astro:content';
 import MarkdownEntry from '../design/MarkdownEntry.astro';
 
@@ -8,7 +8,7 @@ interface Props {
   lang: LanguagesValue;
 }
 
-const { identifier, lang = DEFAULT_LANG } = Astro.props;
+const { identifier, lang = Astro.locals.lang } = Astro.props;
 
 const blockEntries = await getCollection('blocks', (block) => {
   return block.slug === `${identifier}/${lang}`;
