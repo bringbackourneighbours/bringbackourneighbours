@@ -1,12 +1,12 @@
 ---
-import { DEFAULT_LANG, type LanguagesValue } from '../util/languages';
+import { type LanguagesValue } from '../util/languages';
 import { useUiTranslation } from '../util/use-ui-translation';
 
 interface Props {
   lang?: LanguagesValue;
 }
 
-const { lang = DEFAULT_LANG } = Astro.props;
+const { lang = Astro.locals.lang } = Astro.props;
 ---
 
 <strong>{useUiTranslation('meta.impress', lang)}</strong>
