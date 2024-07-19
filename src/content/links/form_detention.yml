@@ -3,4 +3,6 @@ all:
   url: /de/page/forms/Vorlagen%20zum%20Ausdrucken
   type: WEB
 de:
-  title: 'Link zu Druckvorlage Abschiebehaft'
+  title: Link zu Druckvorlage Abschiebehaft
+en:
+  title: Link to print template for deportation custody
