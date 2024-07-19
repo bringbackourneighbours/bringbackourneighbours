@@ -1,0 +1,31 @@
+---
+import { getFlatLinksEntries } from '../util/get-flat-links-entries';
+import Link from '../design/Link.astro';
+import { type LanguagesValue } from '../util/languages';
+
+interface Props {
+  identifier: string;
+  lang?: LanguagesValue;
+}
+
+const { identifier, lang = Astro.locals.lang } = Astro.props;
+
+const link = (await getFlatLinksEntries()).find((entry) => {
+  return entry?.identifier === identifier && entry?.lang === lang;
+});
+---
+
+{
+  link?.url ? (
+    <Link
+      href={link.url}
+      lang={lang}
+    >
+      {link.type}: {link.title}
+    </Link>
+  ) : (
+    <p>
+      <em>LINK NOT FOUND.</em>
+    </p>
+  )
+}
