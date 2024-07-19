@@ -88,7 +88,7 @@ const uiCollection = defineCollection({
         title: z.string(),
         subtitle: z.string(),
         updated: z.string(),
-        impress: z.string(),
+        imprint: z.string(),
         moreInfo: z.string(),
         allFlyers: z.string(),
         allKits: z.string(),
