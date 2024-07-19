@@ -7,7 +7,9 @@ export enum Languages {
   GERMAN = 'de',
   PASHTO = 'ps',
   RUSSIAN = 'ru',
+  SERBIAN = 'sr',
   SPANISH = 'es',
+  TIGRINYA = 'ti',
   TURKISH = 'tr',
   UKRAINIAN = 'uk',
   URDU = 'ur',
@@ -27,6 +29,8 @@ export const UnSupportedLanguages = [
   Languages.FARSI,
   Languages.PASHTO,
   Languages.RUSSIAN,
+  Languages.SERBIAN,
+  Languages.TIGRINYA,
   Languages.TURKISH,
   Languages.UKRAINIAN,
 ] as const;
