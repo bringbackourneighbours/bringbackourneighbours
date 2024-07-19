@@ -13,6 +13,8 @@ export interface LinkData {
   title?: string;
   url?: string;
   type?: string;
+  identifier?: string;
+  lang?: string;
 }
 
 export const getFlatLinksEntries = async (): Promise<LinkData[]> => {
@@ -40,10 +42,12 @@ const getAllFlyerLinksEntries = async (): Promise<LinkData[]> => {
     (await getStaticPathsForFlyers()).map(async (flyer) => {
       const data = flyer.props.entry.data;
       return {
+        identifier: data.identifier,
         slug: `flyer-${data.lang}-${data.identifier}`,
         title: data.title,
         type: 'FLYER',
         url: await getCanonicalUrlToFlyer(data.lang, data.identifier),
+        lang: data.lang,
       };
     }),
   );
@@ -54,10 +58,12 @@ const getAllKitLinksEntries = async (): Promise<LinkData[]> => {
     (await getStaticPathsForKits()).map(async (kit) => {
       const data = kit.props.entry.data;
       return {
+        identifier: data.identifier,
         slug: `kit-${data.lang}-${data.identifier}`,
         title: data.title,
         type: 'KIT',
         url: await getCanonicalUrlToKit(data.lang, data.identifier),
+        lang: data.lang,
       };
     }),
   );

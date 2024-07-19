@@ -2,7 +2,7 @@ import { getAbsoluteUrl } from './get-absolute-url.ts';
 import { getEntry } from 'astro:content';
 import type { LanguagesValue } from './languages.ts';
 
-async function getCanonicalUrl<T extends 'kits' | 'flyers' | 'pages'>(
+export async function getCanonicalUrl<T extends 'kits' | 'flyers' | 'pages'>(
   collection: T,
   collectionSlug: string,
   lang: LanguagesValue,
