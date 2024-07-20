@@ -14,7 +14,7 @@ export async function getStaticPaths() {
 export async function GET(flyer: StandaloneContentProps<'kits'>) {
   return new Response(
     await printHtmlToBuffer(
-      `dist/internal-print/kit-${flyer.params.lang}-${flyer.params.identifier}/index.html`,
+      `internal-print/kit-${flyer.params.lang}-${flyer.params.identifier}`,
     ),
     {
       status: 200,
