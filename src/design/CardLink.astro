@@ -1,83 +1,35 @@
 ---
 import { type LanguagesValue } from '../util/languages';
-import { getLanguageDirection } from '../util/get-language-direction';
+
+import Card from './Card.astro';
 interface Props {
   href?: string;
   direction?: 'rtl' | 'ltr';
   lang?: LanguagesValue;
+  variant?: 'primary' | 'secondary';
+  size?: 'p' | 'h2' | 'h3' | 'h4';
 }
 
-const { href, lang = Astro.locals.lang } = Astro.props;
+const {
+  href,
+  lang = Astro.locals.lang,
+  variant = 'primary',
+  size,
+} = Astro.props;
 ---
 
 <style>
   a {
-    color: var(--color-primary);
     text-decoration: none;
     cursor: pointer;
-    display: block;
-    padding: var(--vspace-3);
-    border: calc(var(--size-border) * 2) solid var(--color-primary);
-    border-radius: calc(var(--shadow-0) * 0.5);
-    box-shadow:
-      var(--shadow-0) 7px 0 0 var(--color-primary),
-      16px 19px 40px -31px rgb(0 0 0 / 40%),
-      inset 1px 0 9px rgb(0 0 0 / 15%);
-
-    /* Optically center the box, since the shadow is not part of the box-size  */
-    margin: 0 calc(0.5 * var(--shadow-0)) calc(0.5 * var(--shadow-0)) 0;
-    font-weight: 500;
-    letter-spacing: normal;
-    max-width: calc(var(--size-max-text-span) / 2);
-
-    /* Add a very subtle background gradient between surface color and light grey an surface color */
-    background: linear-gradient(
-      110deg,
-      var(--color-surface-dark),
-      var(--color-surface-dark) 45%,
-      #fff 50%,
-      var(--color-surface-dark) 55%,
-      var(--color-surface-dark)
-    );
-    background-size: 600%;
-    animation: anime 2s linear infinite;
+    color: currentcolor;
   }
-
-  @keyframes anime {
-    0% {
-      background-position: 100% 50%;
-    }
-
-    100% {
-      background-position: 0 50%;
-    }
-  }
-
-  a:active {
-    color: var(--color-secondary);
-    border-color: var(--color-secondary);
-    box-shadow:
-      var(--shadow-0) 7px 0 0 var(--color-secondary),
-      16px 19px 40px -31px rgb(0 0 0 / 40%),
-      inset 1px 0 9px rgb(0 0 0 / 15%);
-  }
-
-  /* Turn background color lighter on hover, with short transition time */
-  a:hover:not(.invalid) {
-    background: #fff;
-    transition: background 0.15s ease-in-out;
-
-    /* just a proposal */
-    transform: rotate(1deg);
-  }
-
-  /* TODO: focus state is not visible... */
 
   a.invalid {
     /*
-     we have not implemented all the links yet, so we want to avoid confusion
-     when there is no href we mark this card s invalid
-     */
+    we have not implemented all the links yet, so we want to avoid confusion
+    when there is no href we mark this card s invalid
+    */
     color: currentcolor;
     cursor: not-allowed;
   }
@@ -87,7 +39,13 @@ const { href, lang = Astro.locals.lang } = Astro.props;
 <a
   href={href}
   hreflang={lang}
-  class={`big-button ${getLanguageDirection(lang)} h2 ${!href?.length ? 'invalid' : ''}`}
 >
-  <slot />
+  <Card
+    variant={variant}
+    lang={lang}
+    size={size}
+    invalid={!href?.length}
+  >
+    <slot />
+  </Card>
 </a>
