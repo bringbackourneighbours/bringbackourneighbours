@@ -44,7 +44,8 @@ body.rtl {
   font-size: 1.3333em;
 }
 
-p {
+p,
+.p {
   margin: var(--vspace-3) 0;
   line-height: var(--vspace);
 }
@@ -107,17 +108,17 @@ blockquote {
   margin: var(--vspace-2) var(--vspace-2);
 }
 
-.subheading2,
+.h4,
 h4 {
   font-size: 1.3333em;
 }
 
-.subheading3,
+.h5,
 h5 {
   font-size: 1.25em;
 }
 
-.subheading4,
+.h6,
 h6 {
   font-size: 1.1667em;
   letter-spacing: 0;

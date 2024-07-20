@@ -1,13 +1,13 @@
 ---
-import { type LanguagesValue } from '../util/languages';
-import OverviewLayout from '../layouts/OverviewLayout.astro';
 import CardLink from '../design/CardLink.astro';
-import { useUiTranslation } from '../util/use-ui-translation';
-import { SupportedLanguages } from '../util/languages';
-import Stack from '../design/Stack.astro';
-import MoreInfoStack from './MoreInfoStack.astro';
 import LanguageSwitcher from '../design/LanguageSwitcher.astro';
+import MoreInfoStack from './MoreInfoStack.astro';
+import OverviewLayout from '../layouts/OverviewLayout.astro';
+import Stack from '../design/Stack.astro';
+import { SupportedLanguages } from '../util/languages';
 import { getTranslationsUrlsForPath } from '../util/get-translations-url';
+import { type LanguagesValue } from '../util/languages';
+import { useUiTranslation } from '../util/use-ui-translation';
 
 interface Props {
   lang: LanguagesValue;

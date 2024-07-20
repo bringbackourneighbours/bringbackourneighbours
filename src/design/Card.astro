@@ -1,0 +1,102 @@
+---
+import { getLanguageDirection } from '../util/get-language-direction';
+import { type LanguagesValue } from '../util/languages';
+
+interface Props {
+  lang?: LanguagesValue;
+  size?: 'p' | 'h2' | 'h3' | 'h4';
+  variant?: 'primary' | 'secondary';
+  invalid?: boolean;
+}
+
+const {
+  lang = Astro.locals.lang,
+  variant = 'primary',
+  invalid = false,
+  size = 'h2',
+} = Astro.props;
+---
+
+<style>
+  .-primary {
+    --card-link-color-main-dark: var(--color-primary);
+    --card-link-color-active: var(--color-secondary);
+    --card-link-color-font: var(--color-primary);
+    --card-link-color-surface-fx: var(--color-surface);
+    --card-link-color-surface: var(--color-surface-dark);
+  }
+
+  .-secondary {
+    --card-link-color-main-dark: var(--color-secondary-dark);
+    --card-link-color-active: var(--color-primary);
+    --card-link-color-font: var(--color-surface);
+    --card-link-color-surface-fx: var(--color-secondary-bright);
+    --card-link-color-surface: var(--color-secondary);
+  }
+
+  .card {
+    height: calc(100% - 3 * var(--vspace-3));
+    color: var(--card-link-color-font);
+    display: block;
+    padding: var(--vspace-3);
+    border: calc(var(--size-border) * 2) solid var(--card-link-color-main-dark);
+    border-radius: calc(var(--shadow-0) * 0.5);
+    box-shadow:
+      var(--shadow-0) 7px 0 0 var(--card-link-color-main-dark),
+      16px 19px 40px -31px rgb(0 0 0 / 40%),
+      inset 1px 0 9px rgb(0 0 0 / 15%);
+
+    /* Optically center the box, since the shadow is not part of the box-size  */
+    margin: 0 calc(0.5 * var(--shadow-0)) calc(0.5 * var(--shadow-0)) 0;
+    font-weight: 500;
+    letter-spacing: normal;
+
+    /* Add a very subtle background gradient between surface color and light grey an surface color */
+    background: linear-gradient(
+      110deg,
+      var(--card-link-color-surface),
+      var(--card-link-color-surface) 45%,
+      var(--card-link-color-surface-fx) 50%,
+      var(--card-link-color-surface) 55%,
+      var(--card-link-color-surface)
+    );
+    background-size: 600%;
+
+    &.-invalid {
+      cursor: not-allowed;
+    }
+
+    &:not(.-invalid) {
+      animation: anime 2s linear infinite;
+
+      &:hover {
+        background: var(--card-link-color-surface-fx);
+        transform: rotate(1deg);
+      }
+
+      &:active {
+        color: var(--card-link-color-active);
+        border-color: var(--card-link-color-active);
+        box-shadow:
+          var(--shadow-0) 7px 0 0 var(--card-link-color-active),
+          16px 19px 40px -31px rgb(0 0 0 / 40%),
+          inset 1px 0 9px rgb(0 0 0 / 15%);
+      }
+    }
+  }
+
+  @keyframes anime {
+    0% {
+      background-position: 100% 50%;
+    }
+
+    100% {
+      background-position: 0 50%;
+    }
+  }
+</style>
+<div
+  class={`card ${getLanguageDirection(lang)} ${size} ${variant === 'primary' ? '-primary' : '-secondary'} ${invalid ? '-invalid' : ''}`}
+>
+  <slot />
+</div>

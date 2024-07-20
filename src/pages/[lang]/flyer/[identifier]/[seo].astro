@@ -1,13 +1,16 @@
 ---
-import { type CollectionEntry } from 'astro:content';
-import MarkdownEntry from '../../../../design/MarkdownEntry.astro';
+import Card from '../../../../design/Card.astro';
+import CardLink from '../../../../design/CardLink.astro';
 import ContentLayout from '../../../../layouts/ContentLayout.astro';
+import LanguageSwitcher from '../../../../design/LanguageSwitcher.astro';
+import MarkdownEntry from '../../../../design/MarkdownEntry.astro';
+import Timestamp from '../../../../design/Timestamp.astro';
+import { Languages } from '../../../../util/languages';
 import { getCanonicalUrlToFlyer } from '../../../../util/get-canonical-url';
 import { getStaticPathsForFlyers } from '../../../../util/get-static-paths';
 import { getTranslationsUrlsForFlyer } from '../../../../util/get-translations-url';
 import { redirectNotTranslatedForFlyer } from '../../../../util/redirect-not-found-or-not-translated';
-import Timestamp from '../../../../design/Timestamp.astro';
-import LanguageSwitcher from '../../../../design/LanguageSwitcher.astro';
+import { type CollectionEntry } from 'astro:content';
 
 interface Props {
   entry: CollectionEntry<'flyers'>;
@@ -28,7 +31,25 @@ const translationSlugs = await getTranslationsUrlsForFlyer(
   entry.data.lang,
   entry.data.identifier,
 );
+
+const printUrl = `${Astro.site}print/flyer-${entry.data.lang}-${entry.data.identifier}.pdf`;
 ---
+
+<style>
+  .german-title {
+    display: block;
+    margin-block-end: calc(-1 * var(--vspace-1) + var(--vspace-3));
+  }
+
+  .header-meta {
+    display: flex;
+    justify-content: flex-start;
+    gap: var(--vspace);
+    align-items: baseline;
+    flex-wrap: wrap;
+    margin-block-end: var(--vspace-1);
+  }
+</style>
 
 <ContentLayout
   lang={entry.data.lang}
@@ -44,13 +65,34 @@ const translationSlugs = await getTranslationsUrlsForFlyer(
     translationSlugs={translationSlugs}
   />
   <hgroup>
+    {
+      entry.data.lang !== `${Languages.GERMAN}` && (
+        <span class="german-title">{entry.data.germanTitle}</span>
+      )
+    }
     <h1>{entry.data.title}</h1>
-    <!-- FIXME: Element ul is not allowed here -->
-    <ul class="meta semantic-list">
-      <li>
-        <Timestamp entry={entry} />
-      </li>
-    </ul>
+    <p>
+      <Timestamp entry={entry} />
+    </p>
   </hgroup>
+
+  <div class="header-meta">
+    <Card
+      invalid={true}
+      size="p"
+      >Share</Card
+    >
+    <Card
+      invalid={true}
+      size="p"
+      >Text kopieren</Card
+    >
+    <CardLink
+      size="p"
+      href={printUrl}
+      >Download als PDF</CardLink
+    >
+  </div>
+
   <MarkdownEntry rendered={entry.render()} />
 </ContentLayout>
