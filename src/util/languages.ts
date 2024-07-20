@@ -40,6 +40,8 @@ export type LanguagesValue = `${Languages}`;
 export const RTL_LANGUAGES: Languages[] = [
   Languages.ARABIC,
   Languages.URDU,
+  Languages.FARSI,
+  Languages.PASHTO,
 ] as const;
 
 export const DEFAULT_LANG: LanguagesValue = Languages.GERMAN;
