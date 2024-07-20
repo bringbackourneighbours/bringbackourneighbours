@@ -21,7 +21,7 @@ const { lang = Astro.locals.lang, translationSlugs } = Astro.props;
     display: flex;
     background-color: var(--color-secondary);
     color: var(--color-surface);
-    width: fit-content;
+    max-width: calc(100vw - 3 * var(--vspace));
     border-radius: calc(var(--shadow-0) * 0.5);
     border: calc(var(--size-border) * 2) solid var(--color-secondary-dark);
     position: fixed;
@@ -31,25 +31,27 @@ const { lang = Astro.locals.lang, translationSlugs } = Astro.props;
     padding: var(--vspace-4);
     box-shadow: calc(0.5 * var(--shadow-0)) calc(0.5 * var(--shadow-0)) 0 0
       var(--color-secondary-dark);
+    align-items: flex-end;
 
     .language-switcher-toggle {
-      background-color: var(--color-secondary);
-      color: var(--color-surface);
-      border: none;
-      display: flex;
-      gap: var(--vspace);
       align-items: center;
+      background-color: var(--color-secondary);
+      border: none;
+      color: var(--color-surface);
+      display: flex;
       font-size: 1rem;
+      gap: var(--vspace);
       margin: 0;
       padding: var(--vspace-4);
     }
 
     .language-switcher-alternatives {
-      font-size: 1rem;
-      padding: var(--vspace-4);
-      display: flex;
-      gap: var(--vspace);
       align-items: center;
+      display: flex;
+      flex-wrap: wrap;
+      font-size: 1rem;
+      gap: var(--vspace);
+      padding: var(--vspace-4);
 
       --color-primary: var(--color-surface);
       --color-primary-bright: var(--color-surface);
