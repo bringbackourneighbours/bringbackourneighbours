@@ -82,8 +82,8 @@ const { lang = Astro.locals.lang, translationSlugs } = Astro.props;
           lang={translation.lang}
           href={translation.url}
         >
-          {useUiTranslation(`languages.${translation.lang}`, translation.lang)}{' '}
-          ({useUiTranslation(`languages.${translation.lang}`, lang)})
+          {useUiTranslation(`languages.${translation.lang}`, translation.lang)}(
+          {useUiTranslation(`languages.${translation.lang}`, lang)})
         </Link>
       ))
     }

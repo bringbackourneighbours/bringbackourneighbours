@@ -7,12 +7,13 @@ interface Props {
 
 const { url } = Astro.props;
 
-// TODO: types are not working... astro why you allways like this!
+// TODO: types are not working... astro why you always like this!
 const qrCodeImage = await toDataURL(url, {
   color: {
-    dark: '#0000ff', // FIXME: use matching colors
-    light: '#ffff00',
+    dark: '#0b3e9c', // FIXME: use matching colors
+    light: '#fff',
   },
+  margin: 0,
 });
 ---
 

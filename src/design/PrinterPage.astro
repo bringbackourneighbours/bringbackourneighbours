@@ -46,7 +46,7 @@ const { breakBefore = false, breakAfter = false } = Astro.props;
 </style>
 
 <div
-  class={`page${breakBefore ? ' -breakBefore' : ''}${breakAfter ? ' -break-after' : ''}`}
+  class={`page${breakBefore ? ' -break-before' : ''}${breakAfter ? ' -break-after' : ''}`}
 >
   <slot />
 </div>

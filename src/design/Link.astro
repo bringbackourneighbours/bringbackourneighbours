@@ -10,7 +10,10 @@ const { href, lang = Astro.locals.lang } = Astro.props;
 
 // FIXME Only replace from beginning of string
 const site = Astro.site!.toString();
-const pretty_print = href.replace('mailto:', '');
+const pretty_print = href
+  .replace('mailto:', '')
+  .replace('https://', '')
+  .replace('http://', '');
 const pretty_screen = href
   .replace('mailto:', '')
   .replace(site, '')
@@ -35,6 +38,7 @@ const pretty_screen = href
   @media print {
     a {
       text-decoration: none;
+      font-weight: bold;
     }
 
     a:active {
@@ -44,24 +48,19 @@ const pretty_screen = href
     a:visited {
       color: var(--color-primary);
     }
-
-    /* The following two line replace the pretty name of the link with
-    its href in print */
-    a span {
-      display: none;
-    }
-
-    a::after {
-      content: attr(data-prettyhref);
-    }
   }
 </style>
 <a
   href={href}
   hreflang={lang}
-  data-prettyhref={pretty_print}
 >
-  <span>
-    <slot>{pretty_screen}</slot>
-  </span>
+  <slot />
+  {
+    !Astro.slots.has('default') &&
+      (Astro.locals.isPrint ? (
+        <span> {pretty_print} </span>
+      ) : (
+        <span> {pretty_screen} </span>
+      ))
+  }
 </a>
