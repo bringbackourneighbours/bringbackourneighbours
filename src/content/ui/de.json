@@ -20,8 +20,10 @@
     "fa": "Farsi",
     "ka": "Georgisch",
     "es": "Spanisch",
-    "ur": "Urdu"
+    "ur": "Urdu",
+    "findTranslation": "Deutsche Übersetzung"
   },
+
   "wizard": {
     "isThereDangerQuestion": "Bist du oder wer anders von einer Abschiebung bedroht?",
     "areYouInDangerQuestion": "Du bist selber von einer Abschiebung bedroht?",

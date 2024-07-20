@@ -1,13 +1,18 @@
 ---
 import { type CollectionEntry } from 'astro:content';
 
-import { getStaticPathsForFlyers } from '../../util/get-static-paths';
-import PrintLayout from '../../layouts/PrintLayout.astro';
-import MarkdownEntry from '../../design/MarkdownEntry.astro';
-import Logo from '../../design/Logo.astro';
-import PrinterPage from '../../design/PrinterPage.astro';
-import Timestamp from '../../design/Timestamp.astro';
 import Imprint from '../../design/Imprint.astro';
+import Link from '../../design/Link.astro';
+import Logo from '../../design/Logo.astro';
+import MarkdownEntry from '../../design/MarkdownEntry.astro';
+import PrintLayout from '../../layouts/PrintLayout.astro';
+import PrinterPage from '../../design/PrinterPage.astro';
+import QrImage from '../../design/QrImage.astro';
+import Timestamp from '../../design/Timestamp.astro';
+import { Languages } from '../../util/languages';
+import { getCanonicalUrlToFlyer } from '../../util/get-canonical-url';
+import { getStaticPathsForFlyers } from '../../util/get-static-paths';
+import { getTranslationsUrlsForFlyer } from '../../util/get-translations-url';
 import { useUiTranslation } from '../../util/use-ui-translation';
 
 interface Props {
@@ -19,80 +24,140 @@ export async function getStaticPaths() {
 }
 
 const { entry } = Astro.props;
+
+const translationSlugs = await getTranslationsUrlsForFlyer(
+  entry.data.lang,
+  entry.data.identifier,
+);
+
+// FIXME: this should be the SHORTURL and not the canonical
+const canonicalUrl =
+  (await getCanonicalUrlToFlyer(entry.data.lang, entry.data.identifier)) || '';
 ---
 
 <style>
-  footer {
-    display: flex;
-    gap: 0.5cm;
-
-    h3 {
-      display: inline-block;
+  .cover-page {
+    aside {
+      color: white;
+      background: var(--color-primary);
+      position: absolute;
+      inset-inline-start: 0;
+      inset-block-start: 0;
+      display: block;
       font-variant: small-caps;
-      margin: 0;
+      padding: 0.5em;
+      font-size: 1.2em;
+      font-weight: 700;
     }
 
-    p {
-      margin-top: 1mm;
-      display: inline-block;
+    hgroup {
+      margin-top: 20vh;
+      font-size: 18px;
+
+      h1 {
+        line-height: 1em;
+      }
     }
 
-    .container {
-      width: 9.5cm;
+    footer {
+      display: flex;
+      gap: 0.5cm;
+
+      h3 {
+        display: inline-block;
+        font-variant: small-caps;
+        margin: 0;
+      }
+
+      p {
+        margin-block-start: 1mm;
+        display: inline-block;
+      }
+
+      .container {
+        width: 9.5cm;
+      }
     }
   }
 
-  aside {
-    color: white;
-    background: var(--color-primary);
+  .end-footer {
     position: absolute;
-    left: 0;
-    top: 0;
-    display: block;
-    font-variant: small-caps;
-    padding: 0.5em;
-    font-size: 1.2em;
-    font-weight: 700;
-  }
 
-  hgroup {
-    margin-top: 20vh;
-    font-size: 18px;
+    /*
+    every flyer has 4 pages, so the footer needs to be somewhere on the bottom of page 4...
+    calc would need to consider the page margins */
+    inset-block-start: 69cm;
 
-    h1 {
-      line-height: 1em;
+    .find-translation {
+      display: flex;
+      align-items: center;
+      gap: var(--vspace);
+
+      ul {
+        margin: 0;
+      }
     }
   }
 </style>
-<script></script>
 <PrintLayout
   lang={entry.data.lang}
   title={'PDF ' + entry.data.title + ' | BringBackOurNeighbours'}
 >
   <PrinterPage>
-    <aside>{entry.data.lang}</aside>
-    <hgroup>
-      {entry.data.lang != 'de' && <h6>{entry.data.germanTitle}</h6>}
-      <h1>{entry.data.title}</h1>
-    </hgroup>
-
-    <footer>
-      <Logo size="11mm" />
-      <div class="container">
-        <h3 id="title">Bring Back Our Neighbours</h3>
-        <p id="subtitle">
-          {useUiTranslation('meta.subtitle', entry.data.lang)}
-        </p>
-      </div>
-    </footer>
+    <div class="cover-page">
+      <aside>
+        {useUiTranslation(`languages.${entry.data.lang}`, entry.data.lang)}
+        {
+          entry.data.lang != 'de' && (
+            <span>
+              |
+              {useUiTranslation(
+                `languages.${entry.data.lang}`,
+                Languages.GERMAN,
+              )}
+            </span>
+          )
+        }
+      </aside>
+      <hgroup>
+        {entry.data.lang != 'de' && <h6>{entry.data.germanTitle}</h6>}
+        <h1>{entry.data.title}</h1>
+      </hgroup>
+      <footer>
+        <Logo size="11mm" />
+        <div class="container">
+          <h3 id="title">Bring Back Our Neighbours</h3>
+          <p id="subtitle">
+            {useUiTranslation('meta.subtitle', entry.data.lang)}
+          </p>
+        </div>
+      </footer>
+    </div>
   </PrinterPage>
   <PrinterPage breakBefore={true}>
-    <div>
-      <MarkdownEntry rendered={entry.render()} />
-    </div>
-    <div class="endFooter">
-      <p>bringbackourneighbours.de</p>
+    <MarkdownEntry rendered={entry.render()} />
 
+    <div class="end-footer">
+      <div class="find-translation">
+        <QrImage url={canonicalUrl} />
+        <ul>
+          {
+            translationSlugs.map(async (translationSlug) => (
+              <li>
+                <Link href={translationSlug.url}>
+                  {useUiTranslation(
+                    `languages.findTranslation`,
+                    translationSlug.lang,
+                  )}
+                </Link>
+              </li>
+            ))
+          }
+        </ul>
+      </div>
+      <p>
+        <Link href={canonicalUrl} />
+      </p>
       <p>
         <Imprint lang={entry.data.lang} />
       </p>
@@ -101,32 +166,30 @@ const { entry } = Astro.props;
       </p>
     </div>
   </PrinterPage>
-</PrintLayout>
 
-<script>
-  const fitText = function (el: HTMLElement, factor: number) {
-    const fit = function (el: HTMLElement) {
-      const resizer = function () {
-        const par = el.parentElement!.getBoundingClientRect().width * 0.95;
-        const own = el.getBoundingClientRect().width;
-        el.style.fontSize = par / own / factor + 'cm';
+  <script>
+    const fitText = function (el: HTMLElement, factor: number) {
+      const fit = function (el: HTMLElement) {
+        const resizer = function () {
+          const par = el.parentElement!.getBoundingClientRect().width * 0.95;
+          const own = el.getBoundingClientRect().width;
+          el.style.fontSize = par / own / factor + 'cm';
+        };
 
-        console.log('NEW');
+        // Call once to set.
+        resizer();
+
+        // Bind events
+        window.addEventListener('resize', resizer, false);
+        window.addEventListener('orientationchange', resizer, false);
       };
 
-      // Call once to set.
-      resizer();
+      fit(el);
 
-      // Bind events
-      window.addEventListener('resize', resizer, false);
-      window.addEventListener('orientationchange', resizer, false);
+      // return set of elements
+      return el;
     };
-
-    fit(el);
-
-    // return set of elements
-    return el;
-  };
-  fitText(document.getElementById('subtitle')!, 3.05);
-  fitText(document.getElementById('title')!, 2.05);
-</script>
+    fitText(document.getElementById('subtitle')!, 3.05);
+    fitText(document.getElementById('title')!, 2.05);
+  </script>
+</PrintLayout>

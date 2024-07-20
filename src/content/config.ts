@@ -107,6 +107,7 @@ const uiCollection = defineCollection({
       fr: z.string(),
       ka: z.string(),
       ur: z.string(),
+      findTranslation: z.string().optional(),
     }),
     wizard: z
       .object({

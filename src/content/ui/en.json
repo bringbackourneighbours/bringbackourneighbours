@@ -21,7 +21,8 @@
     "fr": "French",
     "ka": "Georgian",
     "es": "Spanish",
-    "ur": "Urdu"
+    "ur": "Urdu",
+    "findTranslation": "Translation to English"
   },
   "wizard": {
     "isThereDangerQuestion": "Are you or someone else at risk of deportation?",
