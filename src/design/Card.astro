@@ -7,6 +7,7 @@ interface Props {
   size?: 'p' | 'h2' | 'h3' | 'h4';
   variant?: 'primary' | 'secondary';
   invalid?: boolean;
+  smaller?: boolean;
 }
 
 const {
@@ -14,13 +15,14 @@ const {
   variant = 'primary',
   invalid = false,
   size = 'h2',
+  smaller = false,
 } = Astro.props;
 ---
 
 <style>
   .-primary {
     --card-link-color-main-dark: var(--color-primary);
-    --card-link-color-active: var(--color-secondary);
+    --card-link-color-active: var(--color-primary-dark);
     --card-link-color-font: var(--color-primary);
     --card-link-color-surface-fx: var(--color-surface);
     --card-link-color-surface: var(--color-surface-dark);
@@ -28,7 +30,7 @@ const {
 
   .-secondary {
     --card-link-color-main-dark: var(--color-secondary-dark);
-    --card-link-color-active: var(--color-primary);
+    --card-link-color-active: var(--color-secondary-dark);
     --card-link-color-font: var(--color-surface);
     --card-link-color-surface-fx: var(--color-secondary-bright);
     --card-link-color-surface: var(--color-secondary);
@@ -42,9 +44,7 @@ const {
     border: calc(var(--size-border) * 2) solid var(--card-link-color-main-dark);
     border-radius: calc(var(--shadow-0) * 0.5);
     box-shadow:
-      var(--shadow-0) 7px 0 0 var(--card-link-color-main-dark),
-      16px 19px 40px -31px rgb(0 0 0 / 40%),
-      inset 1px 0 9px rgb(0 0 0 / 15%);
+      var(--shadow-0) calc(var(--shadow-0) * 0.8) 0 0 var(--card-link-color-main-dark);
 
     /* Optically center the box, since the shadow is not part of the box-size  */
     margin: 0 calc(0.5 * var(--shadow-0)) calc(0.5 * var(--shadow-0)) 0;
@@ -66,12 +66,23 @@ const {
       cursor: not-allowed;
     }
 
+    &.-smaller {
+      box-shadow:
+      calc(var(--shadow-0) * 0.42) calc(var(--shadow-0) * 0.35) 0 0 var(--card-link-color-main-dark);
+      padding: calc(var(--vspace-3) * 0.8) var(--vspace-3);
+    }
+
     &:not(.-invalid) {
       animation: anime 2s linear infinite;
 
       &:hover {
         background: var(--card-link-color-surface-fx);
-        transform: rotate(1deg);
+        transform: rotate(0.35deg);
+      }
+
+      &.-smaller:hover {
+        background: var(--card-link-color-surface-fx);
+        transform: rotate(0.2deg);
       }
 
       &:active {
@@ -82,7 +93,23 @@ const {
           16px 19px 40px -31px rgb(0 0 0 / 40%),
           inset 1px 0 9px rgb(0 0 0 / 15%);
       }
+
+      &.-secondary:active {
+        color: var(--card-link-color-font);
+        border-color: var(--card-link-color-active);
+        background: var(--card-link-color-surface);
+      }
+
+      &.-smaller:active {
+        box-shadow:
+          calc(var(--shadow-0) * 0.4) calc(var(--shadow-0) * 0.1) 0 0 var(--card-link-color-active);
+      }
+
+
+
     }
+
+
   }
 
   @keyframes anime {
@@ -96,7 +123,7 @@ const {
   }
 </style>
 <div
-  class={`card ${getLanguageDirection(lang)} ${size} ${variant === 'primary' ? '-primary' : '-secondary'} ${invalid ? '-invalid' : ''}`}
+  class={`card ${getLanguageDirection(lang)} ${size} ${variant === 'primary' ? '-primary' : '-secondary'} ${invalid ? '-invalid' : ''} ${smaller ? '-smaller' : ''}`}
 >
   <slot />
 </div>

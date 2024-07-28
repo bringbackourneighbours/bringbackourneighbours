@@ -33,6 +33,7 @@ const { lang = Astro.locals.lang, translationSlugs } = Astro.props;
     .language-switcher-toggle {
       border: none;
       background: none;
+      font-family: inherit;
 
       .language-switcher-toggle-content {
         align-items: flex-end;
@@ -70,8 +71,9 @@ const { lang = Astro.locals.lang, translationSlugs } = Astro.props;
     class="language-switcher-toggle"
   >
     <Card
-      size="p"
+      size="h3"
       variant="secondary"
+      smaller
     >
       <div class="language-switcher-toggle-content">
         <div class="language-switcher-toggle-label">

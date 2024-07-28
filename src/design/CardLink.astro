@@ -8,6 +8,7 @@ interface Props {
   lang?: LanguagesValue;
   variant?: 'primary' | 'secondary';
   size?: 'p' | 'h2' | 'h3' | 'h4';
+  smaller?: boolean;
 }
 
 const {
@@ -15,6 +16,7 @@ const {
   lang = Astro.locals.lang,
   variant = 'primary',
   size,
+  smaller = false,
 } = Astro.props;
 ---
 
@@ -45,6 +47,7 @@ const {
     lang={lang}
     size={size}
     invalid={!href?.length}
+    smaller={smaller}
   >
     <slot />
   </Card>

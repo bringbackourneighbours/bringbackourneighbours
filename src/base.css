@@ -3,7 +3,7 @@
 */
 :root {
   --color-primary: lch(28.229% 58.73 285.304deg);
-  --color-primary-dark: color-mix(in lch, var(--color-primary) 55%, black);
+  --color-primary-dark: color-mix(in lch, var(--color-primary) 80%, black);
   --color-primary-bright: color-mix(in lch, var(--color-primary) 70%, white);
   --color-secondary: lch(55% 90.4 42deg);
   --color-secondary-dark: color-mix(in lch, var(--color-secondary) 58%, black);
