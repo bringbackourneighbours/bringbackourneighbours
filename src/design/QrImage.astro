@@ -3,9 +3,10 @@ import { toDataURL } from 'qrcode';
 
 interface Props {
   url: string;
+  size?: string;
 }
 
-const { url } = Astro.props;
+const { url, size } = Astro.props;
 
 // TODO: types are not working... astro why you always like this!
 const qrCodeImage = await toDataURL(url, {
@@ -19,5 +20,7 @@ const qrCodeImage = await toDataURL(url, {
 
 <img
   src={qrCodeImage}
+  width={size}
+  height={size}
   alt="QR Code"
 />

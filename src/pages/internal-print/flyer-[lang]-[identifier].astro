@@ -164,25 +164,22 @@ const canonicalUrl =
 
     <div class="end-footer">
       <div class="find-translation">
-        <QrImage url={canonicalUrl} />
-        <ul>
-          {
-            translationSlugs.map(async (translationSlug) => (
-              <li>
-                <Link href={translationSlug.url}>
-                  {useUiTranslation(
-                    `languages.findTranslation`,
-                    translationSlug.lang,
-                  )}
-                </Link>
-              </li>
-            ))
-          }
-        </ul>
+        <QrImage
+          size="120"
+          url={canonicalUrl}
+        />
+
+        {
+          translationSlugs.map(async (translationSlug) => (
+            <Link href={translationSlug.url}>
+              {useUiTranslation(
+                `languages.findTranslation`,
+                translationSlug.lang,
+              )}
+            </Link>
+          ))
+        }
       </div>
-      <p>
-        <Link href={canonicalUrl} />
-      </p>
       <p>
         <Imprint lang={entry.data.lang} />
       </p>
