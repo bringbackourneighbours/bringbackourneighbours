@@ -43,8 +43,8 @@ const {
     padding: var(--vspace-3);
     border: calc(var(--size-border) * 2) solid var(--card-link-color-main-dark);
     border-radius: calc(var(--shadow-0) * 0.5);
-    box-shadow:
-      var(--shadow-0) calc(var(--shadow-0) * 0.8) 0 0 var(--card-link-color-main-dark);
+    box-shadow: var(--shadow-0) calc(var(--shadow-0) * 0.8) 0 0
+      var(--card-link-color-main-dark);
 
     /* Optically center the box, since the shadow is not part of the box-size  */
     margin: 0 calc(0.5 * var(--shadow-0)) calc(0.5 * var(--shadow-0)) 0;
@@ -67,8 +67,8 @@ const {
     }
 
     &.-smaller {
-      box-shadow:
-      calc(var(--shadow-0) * 0.42) calc(var(--shadow-0) * 0.35) 0 0 var(--card-link-color-main-dark);
+      box-shadow: calc(var(--shadow-0) * 0.42) calc(var(--shadow-0) * 0.35) 0 0
+        var(--card-link-color-main-dark);
       padding: calc(var(--vspace-3) * 0.8) var(--vspace-3);
     }
 
@@ -101,15 +101,10 @@ const {
       }
 
       &.-smaller:active {
-        box-shadow:
-          calc(var(--shadow-0) * 0.4) calc(var(--shadow-0) * 0.1) 0 0 var(--card-link-color-active);
+        box-shadow: calc(var(--shadow-0) * 0.4) calc(var(--shadow-0) * 0.1) 0 0
+          var(--card-link-color-active);
       }
-
-
-
     }
-
-
   }
 
   @keyframes anime {

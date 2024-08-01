@@ -61,6 +61,7 @@ const canonicalUrl =
 
     footer {
       display: flex;
+      align-items: center;
       gap: 0.5cm;
 
       h3 {
@@ -75,9 +76,17 @@ const canonicalUrl =
       }
 
       .container {
-        width: 9.5cm;
+        width: 11cm;
+      }
+
+      #subtitle {
+        margin: 1mm 0 0;
       }
     }
+  }
+
+  h3#title {
+    margin: 4mm 1mm 2.5mm 0;
   }
 
   .end-footer {
@@ -124,11 +133,26 @@ const canonicalUrl =
         <h1>{entry.data.title}</h1>
       </hgroup>
       <footer>
-        <Logo size="11mm" />
+        <Logo size="12mm" />
         <div class="container">
-          <h3 id="title">Bring Back Our Neighbours</h3>
-          <p id="subtitle">
-            {useUiTranslation('meta.subtitle', entry.data.lang)}
+          <h3
+            id="title"
+            class="text-fit"
+          >
+            <span><span>Bring Back Our Neighbours</span></span>
+            <span aria-hidden="true">Bring Back Our Neighbours</span>
+          </h3>
+          <p
+            id="subtitle"
+            class="text-fit"
+          >
+            <span
+              ><span>{useUiTranslation('meta.subtitle', entry.data.lang)}</span
+              ></span
+            >
+            <span aria-hidden="true"
+              >{useUiTranslation('meta.subtitle', entry.data.lang)}</span
+            >
           </p>
         </div>
       </footer>
@@ -166,30 +190,4 @@ const canonicalUrl =
       </p>
     </div>
   </PrinterPage>
-
-  <script>
-    const fitText = function (el: HTMLElement, factor: number) {
-      const fit = function (el: HTMLElement) {
-        const resizer = function () {
-          const par = el.parentElement!.getBoundingClientRect().width * 0.95;
-          const own = el.getBoundingClientRect().width;
-          el.style.fontSize = par / own / factor + 'cm';
-        };
-
-        // Call once to set.
-        resizer();
-
-        // Bind events
-        window.addEventListener('resize', resizer, false);
-        window.addEventListener('orientationchange', resizer, false);
-      };
-
-      fit(el);
-
-      // return set of elements
-      return el;
-    };
-    fitText(document.getElementById('subtitle')!, 3.05);
-    fitText(document.getElementById('title')!, 2.05);
-  </script>
 </PrintLayout>

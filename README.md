@@ -20,6 +20,12 @@ All commands are run from the root of the project, from a terminal:
 | `npm run astro ...`       | Run CLI commands like `astro add`, `astro check` |
 | `npm run astro -- --help` | Get help using the Astro CLI                     |
 
+## Linters and Formatters
+
+| `npx stylelint --fix src/*.css **/*.astro` | Automatically fix CSS and Astro file styling issues |
+| `npx prettier --write "**/*.astro" "**/*.ts" "**/*.css" "**/*.md"` | Format Astro, TypeScript, CSS, and Markdown files |
+| `npx eslint . --ignore-pattern ".astro/**" --ignore-pattern "src/env.d.ts"` | Run ESLint on all files, ignoring .astro files and src/env.d.ts |
+
 ## Project Structure
 
 See: https://github.com/bringbackourneighbours/docs/tree/main/architecture
