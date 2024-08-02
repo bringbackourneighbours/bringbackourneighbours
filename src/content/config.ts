@@ -26,15 +26,24 @@ const addressesCollection = defineCollection({
   type: 'data',
   schema: z.object({
     identifier: z.string(),
+    lastChecked: z.date(),
     name: z.string(),
-    additional: z.string().optional(),
+    // location
     streetLine: z.string().optional(),
+    additional: z.string().optional(),
     zip: z.string().optional(),
     city: z.string().optional(),
-    phone: z.string().optional(),
+    // contact
     mail: z.string().optional(),
+    phone: z.string().optional(),
+    // web
+    facebook: z.string().optional(),
+    instagram: z.string().optional(),
+    telegram: z.string().optional(),
+    twitter: z.string().optional(),
     url: z.string().optional(),
-    lastChecked: z.date(),
+    bbon: z.string().optional(), // identifier for bbon link
+    // notes
     translatedNotes: z.record(z.string(), z.string()).optional(),
   }),
 });

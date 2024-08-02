@@ -1,0 +1,21 @@
+identifier: test
+lastChecked: 2024-07-17
+name: Name
+
+additional: c/o Namelos e.V.
+streetLine: Am Ende 123
+zip: "12345"
+city: Dresden
+
+mail: mail@hallo.de
+phone: "+4917333444555"
+
+url: example.com
+facebook: facebook
+instagram: instagram
+telegram: telegram
+twitter: twitter
+bbon: saxhfk_hardship
+
+translatedNotes:
+  de: "Nur ein Beispiel"
