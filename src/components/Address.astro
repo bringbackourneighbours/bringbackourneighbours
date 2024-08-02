@@ -2,13 +2,27 @@
 import { type LanguagesValue } from '../util/languages';
 import { getEntry } from 'astro:content';
 import Link from '../design/Link.astro';
+import ExternalShortLink from './ExternalShortLink.astro';
 
 interface Props {
   identifier: string;
   lang?: LanguagesValue;
+  showLocation?: boolean;
+  showContact?: boolean;
+  showWeb?: boolean;
+  showBbon?: boolean;
+  showNotes?: boolean;
 }
 
-const { identifier, lang = Astro.locals.lang } = Astro.props;
+const {
+  identifier,
+  lang = Astro.locals.lang,
+  showLocation = !Astro.locals.isPrint,
+  showContact = !Astro.locals.isPrint,
+  showWeb = true,
+  showBbon = Astro.locals.isPrint,
+  showNotes = !Astro.locals.isPrint,
+} = Astro.props;
 
 // FIXME: this seems needless... but without the type is not working. no idea why
 const getAddress = async (identifier: string) =>
@@ -28,57 +42,116 @@ const address = await getAddress(identifier);
 <address>
   <strong>{address?.data.name}</strong><br />
   {
-    address?.data.additional && (
+    showLocation && (
       <>
-        {address?.data.additional}
-        <br />
+        {address?.data.additional && (
+          <>
+            {address?.data.additional}
+            <br />
+          </>
+        )}
+        {address?.data.streetLine && (
+          <>
+            {address?.data.streetLine}
+            <br />
+          </>
+        )}
+        {address?.data.zip && <>{address?.data.zip + ' '}</>}
+        {address?.data.city && <>{address?.data.city}</>}
+        {(address?.data.zip || address?.data.city) && (
+          <>
+            <br />
+          </>
+        )}
+      </>
+    )
+  }
+
+  {
+    showContact && (
+      <>
+        {address?.data.phone && (
+          <>
+            {address?.data.phone}
+            <br />
+          </>
+        )}
+
+        {address?.data.mail && (
+          <>
+            <Link href={`mailto:${address?.data.mail}`}>
+              {address?.data.mail}
+            </Link>
+            <br />
+          </>
+        )}
+      </>
+    )
+  }
+
+  {
+    showWeb && (
+      <>
+        {address?.data.url && (
+          <>
+            <Link href={address?.data.url} />
+            <br />
+          </>
+        )}
+
+        {address?.data.facebook && (
+          <>
+            Facebook:
+            <Link href={`https://www.facebook.com/${address?.data.facebook}`}>
+              @{address?.data.facebook}
+            </Link>
+            <br />
+          </>
+        )}
+        {address?.data.instagram && (
+          <>
+            Instagram:
+            <Link href={`https://instagram.com/${address?.data.instagram}`}>
+              @{address?.data.instagram}
+            </Link>
+            <br />
+          </>
+        )}
+        {address?.data.telegram && (
+          <>
+            Telegram:
+            <Link href={`https://t.me/${address?.data.telegram}`}>
+              @{address?.data.telegram}
+            </Link>
+            <br />
+          </>
+        )}
       </>
     )
   }
   {
-    address?.data.streetLine && (
+    address?.data.twitter && (
       <>
-        {address?.data.streetLine}
-        <br />
-      </>
-    )
-  }
-  {address?.data.zip && <>{address?.data.zip}</>}
-  {address?.data.city && <>{address?.data.city}</>}
-  {
-    (address?.data.zip || address?.data.city) && (
-      <>
-        <br />
-      </>
-    )
-  }
-  {
-    address?.data.phone && (
-      <>
-        {address?.data.phone}
+        twitter/X:
+        <Link href={`https://twitter.com/${address?.data.twitter}`}>
+          @{address?.data.twitter}
+        </Link>
         <br />
       </>
     )
   }
 
   {
-    address?.data.mail && (
+    showBbon && address?.data.bbon && (
       <>
-        <Link href={`mailto:${address?.data.mail}`}>{address?.data.mail}</Link>
+        <ExternalShortLink identifier={address.data.bbon} />
         <br />
       </>
     )
   }
+
   {
-    address?.data.url && (
-      <>
-        <Link href={address?.data.url} />
-        <br />
-      </>
-    )
-  }
-  {
-    !Astro.locals.isPrint && address?.data.translatedNotes?.[lang] && (
+    showNotes && address?.data.translatedNotes?.[lang] && (
       <>
         {address?.data.translatedNotes?.[lang]}
         <br />
