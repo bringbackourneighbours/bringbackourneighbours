@@ -26,6 +26,11 @@ const { title, lang, canonicalSlug, translationSlugs } = Astro.props;
     main {
       padding: var(--vspace);
       overflow: auto;
+
+      /*
+      padding g so the language switcher has enough room
+       */
+      padding-block-end: calc(var(--vspace) + 2 * var(--vspace-3) + 1.5em);
     }
   }
 </style>
@@ -38,7 +43,7 @@ const { title, lang, canonicalSlug, translationSlugs } = Astro.props;
     translationSlugs={translationSlugs}
   />
   <BaseBody lang={lang}>
-    <Header />
+    <Header lang={lang} />
     <div class="content-wrapper">
       <main>
         <slot />

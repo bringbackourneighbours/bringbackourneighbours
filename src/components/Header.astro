@@ -1,16 +1,25 @@
 ---
-import { getCollection } from 'astro:content';
-
-const allPages = await getCollection('pages');
-const allFlyers = await getCollection('flyers');
-const allKits = await getCollection('kits');
+import { getStaticPathsForKits } from '../util/get-static-paths';
+import { getStaticPathsForFlyers } from '../util/get-static-paths';
 import AnimatedCloseButton from '../design/AnimatedCloseButton.astro';
-import Logo from '../design/Logo.astro';
 import Link from '../design/Link.astro';
+import Logo from '../design/Logo.astro';
+import type { LanguagesValue } from '../util/languages';
 import {
   getCanonicalUrlToFlyer,
   getCanonicalUrlToKit,
+  getCanonicalUrlToPage,
 } from '../util/get-canonical-url';
+import { useUiTranslation } from '../util/use-ui-translation';
+
+interface Props {
+  lang: LanguagesValue;
+}
+
+const { lang = Astro.locals.lang } = Astro.props;
+
+const allFlyers = await getStaticPathsForFlyers();
+const allKits = await getStaticPathsForKits();
 ---
 
 <style>
@@ -39,6 +48,7 @@ import {
 
   /* main_nav should be a modal fullscreen */
   #main-nav {
+    display: block;
     position: fixed;
     top: 0;
     left: 0;
@@ -47,13 +57,16 @@ import {
     background-color: var(--color-surface);
     color: var(--color-secondary);
     z-index: 100;
-    display: flex;
-    flex-direction: column;
-    align-items: start;
-    justify-content: center;
     box-sizing: border-box;
     padding: 4rem;
     overflow: auto;
+  }
+
+  .nav-content {
+    /*
+    padding g so the language switcher has enough room
+     */
+    padding-block-end: calc(var(--vspace) + 2 * var(--vspace-3) + 1.5em);
   }
 
   #main-nav a,
@@ -82,8 +95,8 @@ import {
 </style>
 <header>
   <Logo />
-  <!-- TODO: Put language sensitive link here -->
   <a href={`${Astro.site}`}>
+    <!--this could use the text to with like in the pdf-->
     <h1 class="h3">Bring Back Our Neighbours</h1>
   </a>
   <AnimatedCloseButton
@@ -94,68 +107,118 @@ import {
     id="main-nav"
     class="hidden"
   >
-    <h2>Pages</h2>
-    <ul class="semantic-list">
-      <li><a href={`${Astro.site}showcase`}>SHOWCASE</a></li>
-      {
-        allPages.map((page) => (
-          <li>
-            {page.data.lang}:
-            <a
-              href={`${Astro.site}${page.data.lang}/page/${page.data.identifier}/${page.data.seo}`}
-              hreflang={page.data.lang}
-            >
-              {page.data.title}
-            </a>
-          </li>
-        ))
-      }
-    </ul>
-    <section>
-      <h2>Kits</h2>
+    <div class="nav-content">
       <ul class="semantic-list">
-        {
-          allKits.map(async (kit) => (
-            <li>
-              {kit.data.lang}:
+        <li>
+          <Link
+            lang={lang}
+            href={`${Astro.site}${lang}/flyer`}
+          >
+            {useUiTranslation('meta.allFlyers', lang)}
+          </Link>
+
+          <ul class="semantic-list">
+            {
+              allFlyers
+                .filter((flyer) => flyer.params.lang === lang)
+                .map(async (flyer) => (
+                  <li>
+                    <Link
+                      lang={lang}
+                      href={
+                        (await getCanonicalUrlToFlyer(
+                          lang,
+                          flyer.props.entry.data.identifier,
+                        )) || ''
+                      }
+                    >
+                      {flyer.props.entry.data.title}
+                    </Link>
+                  </li>
+                ))
+            }
+          </ul>
+        </li>
+        <li>
+          <Link
+            lang={lang}
+            href={`${Astro.site}${lang}/kit`}
+          >
+            {useUiTranslation('meta.allKits', lang)}
+          </Link>
+
+          <ul class="semantic-list">
+            {
+              allKits
+                .filter((kit) => kit.params.lang === lang)
+                .map(async (kit) => (
+                  <li>
+                    <Link
+                      lang={lang}
+                      href={
+                        (await getCanonicalUrlToKit(
+                          lang,
+                          kit.props.entry.data.identifier,
+                        )) || ''
+                      }
+                    >
+                      {kit.props.entry.data.title}
+                    </Link>
+                  </li>
+                ))
+            }
+          </ul>
+        </li>
+
+        <li>
+          {
+            getCanonicalUrlToPage(lang, 'contacts').then((href) => (
               <Link
-                lang={kit.data.lang}
-                href={
-                  (await getCanonicalUrlToKit(
-                    kit.data.lang,
-                    kit.data.identifier,
-                  )) ?? ''
-                }
+                lang={lang}
+                href={href || ''}
               >
-                {kit.data.title}
+                {useUiTranslation('meta.contacts', lang)}
               </Link>
-            </li>
-          ))
-        }
-      </ul>
-    </section>
-    <section>
-      <h2>Flyers</h2>
-      <ul class="semantic-list">
-        {
-          allFlyers.map(async (flyer) => (
-            <li>
-              {flyer.data.lang}:
+            ))
+          }
+        </li>
+        <li>
+          {
+            getCanonicalUrlToPage(lang, 'forms').then((href) => (
               <Link
-                lang={flyer.data.lang}
-                href={
-                  (await getCanonicalUrlToFlyer(
-                    flyer.data.lang,
-                    flyer.data.identifier,
-                  )) ?? ''
-                }
+                lang={lang}
+                href={href || ''}
               >
-                {flyer.data.title}
+                {useUiTranslation('meta.forms', lang)}
               </Link>
-            </li>
-          ))
-        }
+            ))
+          }
+        </li>
+        <li>
+          {
+            getCanonicalUrlToPage(lang, 'publicity').then((href) => (
+              <Link
+                lang={lang}
+                href={href || ''}
+              >
+                {useUiTranslation('meta.publicity', lang)}
+              </Link>
+            ))
+          }
+        </li>
+        <li>
+          {
+            getCanonicalUrlToPage(lang, 'imprint').then((href) => (
+              <Link
+                lang={lang}
+                href={href || ''}
+              >
+                {useUiTranslation('meta.imprint', lang)}
+              </Link>
+            ))
+          }
+        </li>
       </ul>
-    </section>
+    </div>
   </nav>
 </header>

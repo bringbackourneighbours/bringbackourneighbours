@@ -33,6 +33,11 @@ const {
       background-color: var(--color-surface);
       padding: var(--vspace);
       overflow: auto;
+
+      /*
+      padding g so the language switcher has enough room
+       */
+      padding-block-end: calc(var(--vspace) + 2 * var(--vspace-3) + 3.5em);
     }
   }
 </style>
@@ -45,7 +50,7 @@ const {
     translationSlugs={translationSlugs}
   />
   <BaseBody lang={lang}>
-    <Header />
+    <Header lang={lang} />
     <div class="content-wrapper">
       <main>
         <slot />
