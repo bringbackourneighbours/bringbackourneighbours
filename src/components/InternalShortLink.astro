@@ -2,6 +2,7 @@
 import { getFlatLinksEntries } from '../util/get-flat-links-entries';
 import Link from '../design/Link.astro';
 import { type LanguagesValue } from '../util/languages';
+import { linkUrl } from '../../astro.config.mjs';
 
 interface Props {
   identifier: string;
@@ -21,7 +22,11 @@ const link = (await getFlatLinksEntries()).find((entry) => {
       href={link.url}
       lang={lang}
     >
-      {link.type}: {link.title}
+      {!Astro.locals.isPrint ? (
+        <>{`${link.type}: ${link.title}`}</>
+      ) : (
+        <>{`${linkUrl}/${link.slug}`}</>
+      )}
     </Link>
   ) : (
     <p>
