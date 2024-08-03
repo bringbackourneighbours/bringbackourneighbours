@@ -6,6 +6,10 @@ const siteUrl = isDev
   : 'https://bringbackourneighbours.github.io/bringbackourneighbours/';
 const basePath = isDev ? '' : '/bringbackourneighbours';
 
+export const linkUrl = isDev
+  ? 'http://localhost:4321/link'
+  : 'https://bringbackourneighbours.github.io/bringbackourneighbours/link';
+
 // https://astro.build/config
 export default defineConfig({
   site: siteUrl,

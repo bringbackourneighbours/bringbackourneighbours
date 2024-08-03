@@ -6,6 +6,7 @@ import {
   SupportedLanguages,
   UnSupportedLanguages,
 } from '../util/languages';
+import { linkUrl } from '../../astro.config.mjs';
 
 interface Props {
   identifier: string;
@@ -36,7 +37,11 @@ const alternativeLanguages = [...SupportedLanguages, ...UnSupportedLanguages]
       href={localizedLinkData.url}
       lang={lang}
     >
-      {localizedLinkData.type}: {localizedLinkData.title}
+      {!Astro.locals.isPrint ? (
+        <>{`${localizedLinkData.type}: ${localizedLinkData.title}`}</>
+      ) : (
+        <>{`${linkUrl}/${localizedLinkData.slug}`}</>
+      )}
     </Link>
   ) : (
     <>
