@@ -6,7 +6,8 @@ import {
   getCanonicalUrlToPage,
 } from '../util/get-canonical-url';
 import Stack from '../design/Stack.astro';
-import CardLink from '../design/CardLink.astro';
+import Link from '../design/Link.astro';
+import { getLanguageDirection } from '../util/get-language-direction';
 interface Props {
   lang: LanguagesValue;
   showFlyers?: boolean;
@@ -16,68 +17,98 @@ interface Props {
 const { lang, showFlyers, showKits } = Astro.props;
 ---
 
+<style>
+  h2 {
+    text-align: center;
+  }
+
+  h3 {
+    margin: 0;
+  }
+</style>
+
 <h2>{useUiTranslation('meta.moreInfo', lang)}:</h2>
 
 <Stack>
   {
     showFlyers && (
-      <CardLink
-        lang={lang}
-        href={`${Astro.site}${lang}/flyer`}
-      >
-        {useUiTranslation('meta.allFlyers', lang)}
-      </CardLink>
+      <>
+        <Link
+          lang={lang}
+          href={`${Astro.site}${lang}/flyer`}
+        >
+          <h3>
+            {useUiTranslation('meta.allFlyers', lang)}
+            {getLanguageDirection(lang) === 'ltr' ? '→' : '←'}
+          </h3>
+        </Link>
+      </>
     )
   }
   {
     showKits && (
-      <CardLink
+      <Link
         lang={lang}
         href={`${Astro.site}${lang}/kit`}
       >
-        {useUiTranslation('meta.allKits', lang)}
-      </CardLink>
+        <h3>
+          {useUiTranslation('meta.allKits', lang)}
+          {getLanguageDirection(lang) === 'ltr' ? '→' : '←'}
+        </h3>
+      </Link>
     )
   }
   {
     getCanonicalUrlToPage(lang, 'contacts').then((href) => (
-      <CardLink
+      <Link
         lang={lang}
-        href={href}
+        href={href!}
       >
-        {useUiTranslation('meta.contacts', lang)}
-      </CardLink>
+        <h3>
+          {useUiTranslation('meta.contacts', lang)}
+          {getLanguageDirection(lang) === 'ltr' ? '→' : '←'}
+        </h3>
+      </Link>
     ))
   }
   {
     getCanonicalUrlToKit(lang, 'professional').then((href) => (
-      <CardLink
+      <Link
         lang={lang}
-        href={href}
+        href={href!}
       >
-        {useUiTranslation('meta.kitProfessionals', lang)}
-      </CardLink>
+        <h3>
+          {useUiTranslation('meta.kitProfessionals', lang)}
+          {getLanguageDirection(lang) === 'ltr' ? '→' : '←'}
+        </h3>
+      </Link>
     ))
   }
   {
     getCanonicalUrlToPage(lang, 'forms').then((href) => (
-      <CardLink
+      <Link
         lang={lang}
-        href={href}
+        href={href!}
       >
-        {useUiTranslation('meta.forms', lang)}
-      </CardLink>
+        <h3>
+          {useUiTranslation('meta.forms', lang)}
+          {getLanguageDirection(lang) === 'ltr' ? '→' : '←'}
+        </h3>
+      </Link>
     ))
   }
 
   {
     getCanonicalUrlToPage(lang, 'publicity').then((href) => (
-      <CardLink
+      <Link
         lang={lang}
-        href={href}
+        href={href!}
       >
-        {useUiTranslation('meta.publicity', lang)}
-      </CardLink>
+        <h3>
+          {useUiTranslation('meta.publicity', lang)}
+          {getLanguageDirection(lang) === 'ltr' ? '→' : '←'}
+        </h3>
+      </Link>
     ))
   }
 </Stack>
