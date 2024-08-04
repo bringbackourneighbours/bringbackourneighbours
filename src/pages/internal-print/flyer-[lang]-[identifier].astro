@@ -98,13 +98,16 @@ const canonicalUrl =
     calc would need to consider the page margins */
     inset-block-start: 69cm;
 
-    .find-translation {
+    .qr-link {
       display: flex;
       align-items: center;
       gap: var(--vspace);
 
-      ul {
-        margin: 0;
+      .find-translation {
+        display: flex;
+        align-items: center;
+        gap: var(--vspace);
+        flex-direction: column;
       }
     }
   }
@@ -163,23 +166,27 @@ const canonicalUrl =
     <MarkdownEntry rendered={entry.render()} />
 
     <div class="end-footer">
-      <div class="find-translation">
+      <div class="qr-link">
         <QrImage
           size="120"
           url={canonicalUrl}
         />
-
-        {
-          translationSlugs.map(async (translationSlug) => (
-            <Link href={translationSlug.url}>
-              {useUiTranslation(
-                `languages.findTranslation`,
-                translationSlug.lang,
-              )}
-            </Link>
-          ))
-        }
+        <div class="find-translation">
+          {
+            translationSlugs.map((translationSlug) => (
+              <Link href={translationSlug.url}>
+                {useUiTranslation(
+                  `languages.findTranslation`,
+                  translationSlug.lang,
+                )}
+              </Link>
+            ))
+          }
+        </div>
       </div>
+      <p>
+        <Link href={`${Astro.site}`} />
+      </p>
       <p>
         <Imprint lang={entry.data.lang} />
       </p>
