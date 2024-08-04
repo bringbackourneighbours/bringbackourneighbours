@@ -164,35 +164,34 @@ const canonicalUrl =
   </PrinterPage>
   <PrinterPage breakBefore={true}>
     <MarkdownEntry rendered={entry.render()} />
-
-    <div class="end-footer">
-      <div class="qr-link">
-        <QrImage
-          size="120"
-          url={canonicalUrl}
-        />
-        <div class="find-translation">
-          {
-            translationSlugs.map((translationSlug) => (
-              <Link href={translationSlug.url}>
-                {useUiTranslation(
-                  `languages.findTranslation`,
-                  translationSlug.lang,
-                )}
-              </Link>
-            ))
-          }
-        </div>
-      </div>
-      <p>
-        <Link href={`${Astro.site}`} />
-      </p>
-      <p>
-        <Imprint lang={entry.data.lang} />
-      </p>
-      <p>
-        <Timestamp entry={entry} />
-      </p>
-    </div>
   </PrinterPage>
+  [ <div class="end-footer">
+    <div class="qr-link">
+      <QrImage
+        size="120"
+        url={canonicalUrl}
+      />
+      <div class="find-translation">
+        {
+          translationSlugs.map((translationSlug) => (
+            <Link href={translationSlug.url}>
+              {useUiTranslation(
+                `languages.findTranslation`,
+                translationSlug.lang,
+              )}
+            </Link>
+          ))
+        }
+      </div>
+    </div>
+    <p class="ltr">
+      <Link href={`${Astro.site}`} />
+    </p>
+    <p>
+      <Imprint lang={entry.data.lang} />
+    </p>
+    <p>
+      <Timestamp entry={entry} />
+    </p>
+  </div>]
 </PrintLayout>
