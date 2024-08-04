@@ -62,7 +62,7 @@ const { lang, showFlyers, showKits } = Astro.props;
     getCanonicalUrlToPage(lang, 'contacts').then((href) => (
       <Link
         lang={lang}
-        href={href!}
+        href={href}
       >
         <h3>
           {useUiTranslation('meta.contacts', lang)}
@@ -75,7 +75,7 @@ const { lang, showFlyers, showKits } = Astro.props;
     getCanonicalUrlToKit(lang, 'professional').then((href) => (
       <Link
         lang={lang}
-        href={href!}
+        href={href}
       >
         <h3>
           {useUiTranslation('meta.kitProfessionals', lang)}
@@ -88,7 +88,7 @@ const { lang, showFlyers, showKits } = Astro.props;
     getCanonicalUrlToPage(lang, 'forms').then((href) => (
       <Link
         lang={lang}
-        href={href!}
+        href={href}
       >
         <h3>
           {useUiTranslation('meta.forms', lang)}
@@ -102,7 +102,7 @@ const { lang, showFlyers, showKits } = Astro.props;
     getCanonicalUrlToPage(lang, 'publicity').then((href) => (
       <Link
         lang={lang}
-        href={href!}
+        href={href}
       >
         <h3>
           {useUiTranslation('meta.publicity', lang)}
