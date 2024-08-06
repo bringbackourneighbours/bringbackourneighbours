@@ -11,6 +11,7 @@ import { getStaticPathsForFlyers } from '../../../../util/get-static-paths';
 import { getTranslationsUrlsForFlyer } from '../../../../util/get-translations-url';
 import { redirectNotTranslatedForFlyer } from '../../../../util/redirect-not-found-or-not-translated';
 import { type CollectionEntry } from 'astro:content';
+import ShareButton from '../../../../design/ShareButton.astro';
 
 interface Props {
   entry: CollectionEntry<'flyers'>;
@@ -33,6 +34,10 @@ const translationSlugs = await getTranslationsUrlsForFlyer(
 );
 
 const printUrl = `${Astro.site}print/flyer-${entry.data.lang}-${entry.data.identifier}.pdf`;
+const canonicalUrl = await getCanonicalUrlToFlyer(
+  entry.data.lang,
+  entry.data.identifier,
+);
 ---
 
 <style>
@@ -54,10 +59,7 @@ const printUrl = `${Astro.site}print/flyer-${entry.data.lang}-${entry.data.ident
 <ContentLayout
   lang={entry.data.lang}
   title={entry.data.title}
-  canonicalSlug={await getCanonicalUrlToFlyer(
-    entry.data.lang,
-    entry.data.identifier,
-  )}
+  canonicalSlug={canonicalUrl}
   translationSlugs={translationSlugs}
 >
   <LanguageSwitcher
@@ -77,12 +79,11 @@ const printUrl = `${Astro.site}print/flyer-${entry.data.lang}-${entry.data.ident
   </hgroup>
 
   <div class="header-meta">
-    <Card
-      invalid={true}
-      size="p"
-      smaller
-      >Share</Card
-    >
+    <ShareButton
+      title={entry.data.title}
+      url={canonicalUrl}
+    />
+
     <Card
       invalid={true}
       size="p"

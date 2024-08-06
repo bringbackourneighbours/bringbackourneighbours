@@ -105,6 +105,7 @@ const uiCollection = defineCollection({
         publicity: z.string(),
         forms: z.string(),
         kitProfessionals: z.string(),
+        share: z.string(),
       })
       .optional(),
     languages: z.object({
