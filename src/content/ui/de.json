@@ -10,7 +10,8 @@
     "contacts": "Kontakte zu Verantwortlichen & Unterstützer*innen",
     "publicity": "Tipps für Öffentlichkeitsarbeit",
     "forms": "Vorlagen und Formulare zum Ausdrucken",
-    "kitProfessionals": "Notfallkoffer gegen Abschiebung für Fachkräfte der Sozialen Arbeit"
+    "kitProfessionals": "Notfallkoffer gegen Abschiebung für Fachkräfte der Sozialen Arbeit",
+    "share": "Teilen"
   },
   "languages": {
     "de": "Deutsch",
@@ -23,7 +24,6 @@
     "ur": "Urdu",
     "findTranslation": "Deutsche Übersetzung"
   },
-
   "wizard": {
     "isThereDangerQuestion": "Bist du oder wer anders von einer Abschiebung bedroht?",
     "areYouInDangerQuestion": "Du bist selber von einer Abschiebung bedroht?",

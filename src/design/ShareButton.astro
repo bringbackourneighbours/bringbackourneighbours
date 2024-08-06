@@ -1,0 +1,56 @@
+---
+import Card from './Card.astro';
+import type { LanguagesValue } from '../util/languages';
+import { useUiTranslation } from '../util/use-ui-translation';
+
+interface Props {
+  lang?: LanguagesValue;
+  title?: string;
+  url?: string;
+}
+
+const { lang = Astro.locals.lang, url = Astro.site } = Astro.props;
+
+const title = Astro.props.title || (await useUiTranslation('meta.title', lang));
+---
+
+<style>
+  button {
+    all: unset;
+  }
+
+  .share-button {
+    background: none;
+    border: none;
+    padding: 0;
+  }
+</style>
+
+<button
+  data-title={title}
+  data-url={url}
+  class="share-button"
+>
+  <Card
+    size="p"
+    smaller
+    >{useUiTranslation('meta.share', lang)}</Card
+  >
+</button>
+<script>
+  const shareButton: HTMLElement = document.querySelector('.share-button')!;
+
+  shareButton?.addEventListener('click', () => {
+    if (navigator.share) {
+      navigator
+        .share({
+          title: shareButton.dataset.title,
+          url: shareButton.dataset.url,
+        })
+        .then(() => {})
+        .catch(console.error);
+    } else {
+      alert(`Sharing it not working:\n ${shareButton.dataset.url}`);
+    }
+  });
+</script>
