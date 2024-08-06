@@ -165,7 +165,7 @@ const canonicalUrl =
   <PrinterPage breakBefore={true}>
     <MarkdownEntry rendered={entry.render()} />
   </PrinterPage>
-  [ <div class="end-footer">
+  <div class="end-footer">
     <div class="qr-link">
       <QrImage
         size="120"
@@ -193,5 +193,5 @@ const canonicalUrl =
     <p>
       <Timestamp entry={entry} />
     </p>
-  </div>]
+  </div>
 </PrintLayout>
