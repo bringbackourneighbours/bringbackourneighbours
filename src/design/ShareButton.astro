@@ -6,12 +6,16 @@ import { useUiTranslation } from '../util/use-ui-translation';
 interface Props {
   lang?: LanguagesValue;
   title?: string;
+  text?: string;
   url?: string;
 }
 
 const { lang = Astro.locals.lang, url = Astro.site } = Astro.props;
 
 const title = Astro.props.title || (await useUiTranslation('meta.title', lang));
+const text =
+  Astro.props.text ||
+  (await useUiTranslation('meta.infosAgainstDeportation', lang));
 ---
 
 <style>
@@ -19,17 +23,40 @@ const title = Astro.props.title || (await useUiTranslation('meta.title', lang));
     all: unset;
   }
 
-  .share-button {
+  #share-button {
     background: none;
     border: none;
     padding: 0;
+  }
+
+  #clipboard-popover {
+    border: calc(var(--size-border) * 2) solid var(--color-secondary);
+    border-radius: calc(var(--shadow-0) * 0.5);
+    padding: var(--vspace-3);
+    background-color: var(--color-surface-dark);
+    color: var(--color-secondary-dark);
+    animation: fadein 0.5s;
+    inset-block-start: 80vh;
+  }
+
+  @keyframes fadein {
+    from {
+      inset-block-start: 100vh;
+      opacity: 0;
+    }
+
+    to {
+      inset-block-start: 80vh;
+      opacity: 1;
+    }
   }
 </style>
 
 <button
   data-title={title}
+  data-text={text}
   data-url={url}
-  class="share-button"
+  id="share-button"
 >
   <Card
     size="p"
@@ -37,20 +64,35 @@ const title = Astro.props.title || (await useUiTranslation('meta.title', lang));
     >{useUiTranslation('meta.share', lang)}</Card
   >
 </button>
-<script>
-  const shareButton: HTMLElement = document.querySelector('.share-button')!;
 
-  shareButton?.addEventListener('click', () => {
-    if (navigator.share) {
+<div
+  popover
+  id="clipboard-popover"
+>
+  <div id="clipboard-popover-content">
+    {useUiTranslation('meta.sharedToClipboard', lang)}
+  </div>
+</div>
+<script>
+  const shareButton: HTMLElement = document.querySelector('#share-button')!;
+  const clipboardPopover: HTMLElement =
+    document.querySelector('#clipboard-popover')!;
+
+  shareButton?.addEventListener('click', async () => {
+    if (navigator.share && shareButton?.dataset?.url) {
       navigator
         .share({
           title: shareButton.dataset.title,
+          text: shareButton.dataset.text,
           url: shareButton.dataset.url,
         })
         .then(() => {})
         .catch(console.error);
     } else {
-      alert(`Sharing it not working:\n ${shareButton.dataset.url}`);
+      await navigator.clipboard.writeText(
+        `${shareButton.dataset.text}:\n ${shareButton.dataset.title} \n ${shareButton.dataset.url} `,
+      );
+      clipboardPopover.showPopover();
     }
   });
 </script>
