@@ -96,7 +96,7 @@ const canonicalUrl =
     /*
     every flyer has 4 pages, so the footer needs to be somewhere on the bottom of page 4...
     calc would need to consider the page margins */
-    inset-block-start: 69cm;
+    inset-block-start: 79cm;
 
     .qr-link {
       display: flex;
@@ -184,6 +184,9 @@ const canonicalUrl =
         }
       </div>
     </div>
+    <p>
+      {useUiTranslation(`meta.infosAgainstDeportation`, entry.data.lang)}
+    </p>
     <p class="ltr">
       <Link href={`${Astro.site}`} />
     </p>
