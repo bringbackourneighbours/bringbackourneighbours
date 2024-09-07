@@ -33,9 +33,14 @@ const translationSlugs = await getTranslationsUrlsForFlyer(
 // FIXME: this should be the SHORTURL and not the canonical
 const canonicalUrl =
   (await getCanonicalUrlToFlyer(entry.data.lang, entry.data.identifier)) || '';
+
+const isDev = import.meta.env.DEV;
+
+// FIXME: for some unknown reason in build and in dev this is needs to differ
+const footerposition = isDev ? '460mm' : '560mm';
 ---
 
-<style>
+<style define:vars={{ footerposition }}>
   @page {
     margin: 5mm;
     size: 105mm 148mm;
@@ -98,7 +103,7 @@ const canonicalUrl =
 
           .title {
             font-variant: small-caps;
-            font-size: 16pt; /* with the flex-grow we need to have a good base line  */
+            font-size: 16pt; /* with the flex-grow we need to have a good baseline  */
             margin: 0;
           }
 
@@ -118,7 +123,7 @@ const canonicalUrl =
     every flyer has 4 pages, so the footer needs to be somewhere on the bottom of page 4...
     calc would need to consider the page margins */
     inset-block-start: 0;
-    margin-block-start: 460mm;
+    margin-block-start: var(--footerposition);
 
     .qr-link {
       display: flex;
