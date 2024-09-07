@@ -36,6 +36,26 @@ const canonicalUrl =
 ---
 
 <style>
+  @page {
+    margin: 10mm;
+    size: 105mm 148mm;
+  }
+
+  html {
+    /* Good base size for printing */
+    font-size: 10pt;
+  }
+
+  .h2,
+  h2 {
+    font-size: 1.5em;
+  }
+
+  .h3,
+  h3 {
+    font-size: 1em;
+  }
+
   .cover-page {
     aside {
       color: white;
@@ -60,6 +80,13 @@ const canonicalUrl =
     }
 
     footer {
+      position: absolute;
+      inset-block-start: 0;
+      margin-block-start: 160mm;
+
+      /* this is for the logo: it needs to be primary */
+      --color-surface: var(--color-primary);
+
       display: flex;
       align-items: center;
       gap: 0.5cm;
@@ -96,7 +123,8 @@ const canonicalUrl =
     /*
     every flyer has 4 pages, so the footer needs to be somewhere on the bottom of page 4...
     calc would need to consider the page margins */
-    inset-block-start: 79cm;
+    inset-block-start: 0;
+    margin-block-start: 670mm;
 
     .qr-link {
       display: flex;
