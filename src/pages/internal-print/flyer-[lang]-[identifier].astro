@@ -71,7 +71,7 @@ const canonicalUrl =
     }
 
     hgroup {
-      margin-top: 20vh;
+      margin-block-start: 20vh;
       font-size: 18px;
 
       h1 {
@@ -91,30 +91,21 @@ const canonicalUrl =
       align-items: center;
       gap: 0.5cm;
 
-      h3 {
-        display: inline-block;
-        font-variant: small-caps;
-        margin: 0;
-      }
+      .title {
+        width: 100mm;
 
-      p {
-        margin-block-start: 1mm;
-        display: inline-block;
-      }
+        h2 {
+          font-variant: small-caps;
+          margin: 0;
+        }
 
-      .container {
-        width: 11cm;
-        margin-bottom: 1mm;
-      }
-
-      #subtitle {
-        margin: 1mm 0 0;
+        p {
+          display: inline-block;
+          margin-block-start: 1mm;
+          margin: 0;
+        }
       }
     }
-  }
-
-  h3#title {
-    margin: 4mm 1mm 2.5mm 0;
   }
 
   .end-footer {
@@ -166,18 +157,12 @@ const canonicalUrl =
       </hgroup>
       <footer>
         <Logo size="12mm" />
-        <div class="container">
-          <h3
-            id="title"
-            class="text-fit"
-          >
+        <div class="title">
+          <h2 class="text-fit">
             <span><span>Bring Back Our Neighbours</span></span>
             <span aria-hidden="true">Bring Back Our Neighbours</span>
-          </h3>
-          <p
-            id="subtitle"
-            class="text-fit"
-          >
+          </h2>
+          <p class="text-fit">
             <span
               ><span>{useUiTranslation('meta.subtitle', entry.data.lang)}</span
               ></span
