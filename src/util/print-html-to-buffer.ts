@@ -17,11 +17,13 @@ export const printHtmlToBuffer = async (
     // so we visit the production page once and then the css is already loaded
     // alternatively we could intercept the request for the styles... do it works for now.
     await page.goto(AstroConfig.site!, {
-      waitUntil: 'domcontentloaded',
+      waitUntil: ['domcontentloaded', 'networkidle0'],
     });
 
     const contentHtml = fs.readFileSync(`dist/${pagePath}/index.html`, 'utf8');
-    await page.setContent(contentHtml, { waitUntil: 'domcontentloaded' });
+    await page.setContent(contentHtml, {
+      waitUntil: ['domcontentloaded', 'networkidle0'],
+    });
   }
 
   const pdfBuffer = await page.pdf({
