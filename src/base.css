@@ -39,11 +39,6 @@ body {
   color: var(--color-primary);
 }
 
-/* RTL scripts like Arabic tend to look visually smaller */
-body.rtl {
-  font-size: 1.3333em;
-}
-
 p,
 .p {
   margin: var(--vspace-3) 0;
