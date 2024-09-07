@@ -2,7 +2,9 @@ import puppeteer from 'puppeteer';
 import fs from 'fs';
 import AstroConfig from '../../astro.config.mjs';
 
-export const printHtmlToBuffer = async (pagePath: string): Promise<Buffer> => {
+export const printHtmlToBuffer = async (
+  pagePath: string,
+): Promise<Uint8Array> => {
   const isDev = import.meta.env.DEV;
   const browser = await puppeteer.launch();
   const page = await browser.newPage();
