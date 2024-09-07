@@ -37,7 +37,7 @@ const canonicalUrl =
 
 <style>
   @page {
-    margin: 10mm;
+    margin: 5mm;
     size: 105mm 148mm;
   }
 
@@ -81,28 +81,31 @@ const canonicalUrl =
 
     footer {
       position: absolute;
-      inset-block-start: 0;
-      margin-block-start: 160mm;
+      inset-block-end: 0;
+      width: calc(105mm - 2 * 5mm);
 
       /* this is for the logo: it needs to be primary */
       --color-surface: var(--color-primary);
 
-      display: flex;
-      align-items: center;
-      gap: 0.5cm;
+      .logo-line {
+        display: flex;
+        align-items: stretch;
+        gap: 2mm;
 
-      .title {
-        width: 100mm;
+        .titles {
+          flex-grow: 1;
+          margin-block-start: 2mm;
 
-        h2 {
-          font-variant: small-caps;
-          margin: 0;
-        }
+          .title {
+            font-variant: small-caps;
+            font-size: 16pt; /* with the flex-grow we need to have a good base line  */
+            margin: 0;
+          }
 
-        p {
-          display: inline-block;
-          margin-block-start: 1mm;
-          margin: 0;
+          .sub-title {
+            margin-block-start: 2mm;
+            font-size: 2px; /* the text-fit will only make it grow  */
+          }
         }
       }
     }
@@ -156,21 +159,24 @@ const canonicalUrl =
         <h1>{entry.data.title}</h1>
       </hgroup>
       <footer>
-        <Logo size="12mm" />
-        <div class="title">
-          <h2 class="text-fit">
-            <span><span>Bring Back Our Neighbours</span></span>
-            <span aria-hidden="true">Bring Back Our Neighbours</span>
-          </h2>
-          <p class="text-fit">
-            <span
-              ><span>{useUiTranslation('meta.subtitle', entry.data.lang)}</span
-              ></span
-            >
-            <span aria-hidden="true"
-              >{useUiTranslation('meta.subtitle', entry.data.lang)}</span
-            >
-          </p>
+        <div class="logo-line">
+          <Logo size="12mm" />
+          <div class="titles">
+            <h2 class="title text-fit">
+              <span><span>Bring Back Our Neighbours</span></span>
+              <span aria-hidden="true">Bring Back Our Neighbours</span>
+            </h2>
+            <p class="sub-title text-fit">
+              <span
+                ><span
+                  >{useUiTranslation('meta.subtitle', entry.data.lang)}</span
+                ></span
+              >
+              <span aria-hidden="true"
+                >{useUiTranslation('meta.subtitle', entry.data.lang)}</span
+              >
+            </p>
+          </div>
         </div>
       </footer>
     </div>
