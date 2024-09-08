@@ -1,0 +1,36 @@
+---
+import { type LanguagesValue } from '../util/languages';
+import { getCollection } from 'astro:content';
+import Accordion from '../design/Accordion.astro';
+import InternalShortLink from './InternalShortLink.astro';
+
+interface Props {
+  identifier: string;
+  lang: LanguagesValue;
+}
+
+const { identifier, lang = Astro.locals.lang } = Astro.props;
+
+const blockEntries = await getCollection('flyers', (block) => {
+  return block.slug === `${identifier}/${lang}`;
+});
+---
+
+<style>
+  .meta-section {
+    border-block-start: calc(var(--size-border) * 2) solid var(--color-primary);
+    margin: 0 calc(-1 * var(--vspace));
+    padding: var(--vspace);
+    padding-block-end: 0;
+  }
+</style>
+
+<Accordion title={`Weitere Informationen zu ${blockEntries[0].data.title}`}>
+  <slot />
+  <div class="meta-section">
+    Diesen Abschnitt findest du auch einzeln im <InternalShortLink
+      identifier={identifier}
+    />
+    <!--TODO: add header-meta-->
+  </div>
+</Accordion>

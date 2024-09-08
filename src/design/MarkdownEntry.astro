@@ -2,6 +2,12 @@
 import type { Render } from 'astro:content';
 import Link from '../design/Link.astro';
 
+import Block from '../components/Block.astro';
+import FlyerBlock from '../components/FlyerBlock.astro';
+import FlyerBox from '../components/FlyerBox.astro';
+import Address from '../components/Address.astro';
+import ExternalShortLink from '../components/ExternalShortLink.astro';
+
 /**
  * Renders a CollectionEntry's markdown to Html... while using our custom components for it
  *
@@ -14,6 +20,19 @@ interface Props {
 const { rendered } = Astro.props;
 
 const { Content } = await rendered;
+
+// FIXME: there is na open Astro issue:
+// we need to include all the custom components we use in mdx there so their css and scripts will be hoisted
+// https://github.com/withastro/astro/issues/7761#issuecomment-2265685058
 ---
 
-<Content components={{ a: Link }} />
+<Content
+  components={{
+    a: Link,
+    Block,
+    FlyerBlock,
+    FlyerBox,
+    Address,
+    ExternalShortLink,
+  }}
+/>
