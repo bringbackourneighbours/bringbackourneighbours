@@ -19,7 +19,8 @@ const blockEntries = await getCollection('flyers', (block) => {
 <style>
   .meta-section {
     border-block-start: calc(var(--size-border) * 2) solid var(--color-primary);
-    margin: 0 calc(-1 * var(--vspace));
+    margin-inline: calc(-1 * var(--vspace));
+    margin-block-start: var(--vspace);
     padding: var(--vspace);
     padding-block-end: 0;
   }
