@@ -3,7 +3,9 @@ import type { CollectionEntry } from 'astro:content';
 import type { StandaloneCollections } from '../util/get-static-paths';
 
 import CardLink from '../design/CardLink.astro';
+import CopyButton from '../design/CopyButton.astro';
 import LanguageChip from '../design/LanguageChip.astro';
+import MarkdownEntry from '../design/MarkdownEntry.astro';
 import ShareButton from '../design/ShareButton.astro';
 import Timestamp from '../design/Timestamp.astro';
 
@@ -78,6 +80,11 @@ const canonicalUrl = await getCanonicalUrlFn(
     title={entry.data.title}
     url={canonicalUrl}
   />
+  <CopyButton>
+    <h1>{entry.data.title}</h1>
+    <MarkdownEntry rendered={entry.render()} />
+  </CopyButton>
+
   {
     collection != 'pages' && (
       <CardLink

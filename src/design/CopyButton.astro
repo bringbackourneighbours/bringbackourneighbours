@@ -1,0 +1,87 @@
+---
+import type { LanguagesValue } from '../util/languages';
+
+import Card from './Card.astro';
+
+import { useUiTranslation } from '../util/use-ui-translation';
+
+interface Props {
+  lang?: LanguagesValue;
+}
+
+const { lang = Astro.locals.lang } = Astro.props;
+---
+
+<style>
+  button {
+    all: unset;
+  }
+
+  #share-button {
+    background: none;
+    border: none;
+    padding: 0;
+  }
+
+  #copy-popover {
+    border: calc(var(--size-border) * 2) solid var(--color-secondary);
+    border-radius: calc(var(--shadow-0) * 0.5);
+    padding: var(--vspace-3);
+    background-color: var(--color-surface-dark);
+    color: var(--color-secondary-dark);
+    animation: fadein 0.5s;
+    inset-block-start: 80vh;
+  }
+
+  @keyframes fadein {
+    from {
+      inset-block-start: 100vh;
+      opacity: 0;
+    }
+
+    to {
+      inset-block-start: 80vh;
+      opacity: 1;
+    }
+  }
+</style>
+
+<template
+  open
+  id="copy-content"
+>
+  <slot />
+</template>
+
+<button id="copy-button">
+  <Card
+    size="p"
+    smaller
+    >{useUiTranslation('meta.copy', lang)}</Card
+  >
+</button>
+
+<div
+  popover
+  id="copy-popover"
+>
+  <div id="copy-popover-content">
+    {useUiTranslation('meta.copiedContentToClipboard', lang)}
+  </div>
+</div>
+<script>
+  const copyButton: HTMLButtonElement = document.querySelector('#copy-button')!;
+  const copyPopover: HTMLElement = document.querySelector('#copy-popover')!;
+  const copyContent: HTMLTemplateElement =
+    document.querySelector('#copy-content')!;
+
+  copyButton?.addEventListener('click', async () => {
+    const html = new Blob([copyContent.innerHTML], { type: 'text/html' });
+    const text = new Blob([copyContent.content.textContent ?? ''], {
+      type: 'text/plain',
+    });
+    const data = new ClipboardItem({ 'text/html': html, 'text/plain': text });
+    await navigator.clipboard.write([data]);
+    copyPopover.showPopover();
+  });
+</script>
