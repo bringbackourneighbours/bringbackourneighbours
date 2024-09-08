@@ -26,7 +26,7 @@ const blockEntries = await getCollection('flyers', (block) => {
   }
 </style>
 
-<Accordion title={`Weitere Informationen zu ${blockEntries[0].data.title}`}>
+<Accordion title={`Weitere Informationen zu: "${blockEntries[0].data.title}"`}>
   <slot />
   <div class="meta-section">
     Diesen Abschnitt findest du auch einzeln im <InternalShortLink
