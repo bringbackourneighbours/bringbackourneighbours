@@ -9,7 +9,8 @@ import PrintLayout from '../../layouts/PrintLayout.astro';
 import PrinterPage from '../../design/PrinterPage.astro';
 import QrImage from '../../design/QrImage.astro';
 import Timestamp from '../../design/Timestamp.astro';
-import { Languages } from '../../util/languages';
+import LanguageChip from '../../design/LanguageChip.astro';
+
 import { getCanonicalUrlToFlyer } from '../../util/get-canonical-url';
 import { getStaticPathsForFlyers } from '../../util/get-static-paths';
 import { getTranslationsUrlsForFlyer } from '../../util/get-translations-url';
@@ -146,18 +147,10 @@ const footerposition = isDev ? '460mm' : '560mm';
   <PrinterPage>
     <div class="cover-page">
       <aside>
-        {useUiTranslation(`languages.${entry.data.lang}`, entry.data.lang)}
-        {
-          entry.data.lang != 'de' && (
-            <span>
-              |
-              {useUiTranslation(
-                `languages.${entry.data.lang}`,
-                Languages.GERMAN,
-              )}
-            </span>
-          )
-        }
+        <LanguageChip
+          lang={entry.data.lang}
+          currentLang="de"
+        />
       </aside>
       <hgroup>
         {entry.data.lang != 'de' && <h6>{entry.data.germanTitle}</h6>}

@@ -1,0 +1,21 @@
+---
+import type { LanguagesValue } from '../util/languages';
+
+import { useUiTranslation } from '../util/use-ui-translation';
+
+interface Props {
+  lang: LanguagesValue;
+  currentLang?: LanguagesValue;
+}
+
+const { lang, currentLang = Astro.locals.lang } = Astro.props;
+---
+
+<span>
+  {useUiTranslation(`languages.${lang}`, lang)}
+  {
+    currentLang != lang && (
+      <span> | {useUiTranslation(`languages.${lang}`, currentLang)}</span>
+    )
+  }
+</span>

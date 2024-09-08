@@ -48,59 +48,49 @@ p,
 h1,
 h2,
 h3,
-.h1,
-.h2,
-.h3 {
-  font-weight: 500;
-  letter-spacing: -0.02rem;
-}
-
-h1 {
-  margin: var(--vspace-1) 0 var(--vspace-1) 0;
-  line-height: calc(2.4167 / var(--space) * var(--vspace));
-}
-
-h2 {
-  margin: var(--vspace-2) 0 var(--vspace-3) 0;
-  line-height: 1em;
-}
-
-h3 {
-  margin: var(--vspace-1) 0 var(--vspace-3) 0;
-  line-height: 1em;
-}
-
 h4,
 h5,
-h6 {
+h6,
+.h1,
+.h2,
+.h3,
+.h4,
+.h5,
+.h6 {
+  font-weight: 500;
+  letter-spacing: -0.02rem;
+  word-break: break-word;
+}
+
+h2,
+h3,
+h4,
+h5,
+h6,
+.h2,
+.h3,
+.h4,
+.h5,
+.h6 {
   margin: var(--vspace-2) 0 var(--vspace-3) 0;
   line-height: var(--vspace);
-  font-weight: 500;
 }
 
 .h1,
 h1 {
   font-size: 2.4167em;
-  word-break: break-word;
+  margin: var(--vspace-1) 0 var(--vspace-3) 0;
+  line-height: calc(2.4167 / var(--space) * var(--vspace));
 }
 
 .h2,
 h2 {
   font-size: 1.7917em;
-  font-weight: 500;
-  word-break: break-word;
 }
 
 .h3,
 h3 {
   font-size: 1.5em;
-}
-
-blockquote {
-  font-size: 1.1667em;
-  font-style: italic;
-  line-height: calc(1.1667 * var(--vspace));
-  margin: var(--vspace-2) var(--vspace-2);
 }
 
 .h4,
@@ -115,8 +105,15 @@ h5 {
 
 .h6,
 h6 {
-  font-size: 1.1667em;
+  font-size: 1em;
   letter-spacing: 0;
+}
+
+blockquote {
+  font-size: 1.1667em;
+  font-style: italic;
+  line-height: calc(1.1667 * var(--vspace));
+  margin: var(--vspace-2) var(--vspace-2);
 }
 
 /* TODO: Move to printAstro */
