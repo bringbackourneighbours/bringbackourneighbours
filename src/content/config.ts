@@ -83,9 +83,7 @@ const linksCollection = defineCollection({
 
 const pagesCollection = defineCollection({
   type: 'content',
-  schema: z.object({
-    ...i18nUrlSchema,
-  }),
+  schema: standaloneContentSchema,
 });
 
 const uiCollection = defineCollection({

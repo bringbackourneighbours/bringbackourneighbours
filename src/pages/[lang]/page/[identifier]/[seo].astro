@@ -1,13 +1,16 @@
 ---
 import type { CollectionEntry } from 'astro:content';
-import { getStaticPathsForPages } from '../../../../util/get-static-paths';
-import { redirectNotTranslatedForPage } from '../../../../util/redirect-not-found-or-not-translated';
-import MarkdownEntry from '../../../../design/MarkdownEntry.astro';
+
+import ContentHeading from '../../../../components/ContentHeading.astro';
 import ContentLayout from '../../../../layouts/ContentLayout.astro';
-import { getTranslationsUrlsForPages } from '../../../../util/get-translations-url';
-import { getCanonicalUrlToPage } from '../../../../util/get-canonical-url';
 import LanguageSwitcher from '../../../../design/LanguageSwitcher.astro';
+import MarkdownEntry from '../../../../design/MarkdownEntry.astro';
 import TableOfContents from '../../../../design/TableOfContents.astro';
+
+import { getCanonicalUrlToPage } from '../../../../util/get-canonical-url';
+import { getStaticPathsForPages } from '../../../../util/get-static-paths';
+import { getTranslationsUrlsForPages } from '../../../../util/get-translations-url';
+import { redirectNotTranslatedForPage } from '../../../../util/redirect-not-found-or-not-translated';
 
 interface Props {
   entry: CollectionEntry<'pages'>;
@@ -44,8 +47,10 @@ const translationSlugs = await getTranslationsUrlsForPages(
     lang={entry.data.lang}
     translationSlugs={translationSlugs}
   />
-  <h1>{entry.data.title}</h1>
-  <!--FIXME: and more meta data here-->
+  <ContentHeading
+    entry={entry}
+    collection="pages"
+  />
   <TableOfContents rendered={entry.render()} />
   <MarkdownEntry rendered={entry.render()} />
 </ContentLayout>
