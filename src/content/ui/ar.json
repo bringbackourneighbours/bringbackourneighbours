@@ -13,6 +13,8 @@
     "material": "طباعة صفحة المجموعة",
     "share": "مشاركة",
     "sharedLinkToClipboard": "تم نسخ الرابط إلى الحافظة",
+    "copy": "نسخ النص",
+    "copiedContentToClipboard": "المحتوى المنسوخ إلى الحافظة",
     "infosAgainstDeportation": "هنا يمكنك العثور على مزيد من المعلومات حول ما يمكنك القيام به لمنع الترحيل"
   },
   "wizard": {
