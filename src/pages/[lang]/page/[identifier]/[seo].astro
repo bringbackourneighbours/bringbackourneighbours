@@ -6,6 +6,7 @@ import ContentLayout from '../../../../layouts/ContentLayout.astro';
 import { getTranslationsUrlsForPages } from '../../../../util/get-translations-url';
 import { getCanonicalUrlToPage } from '../../../../util/get-canonical-url';
 import LanguageSwitcher from '../../../../design/LanguageSwitcher.astro';
+import TableOfContents from '../../../../design/TableOfContents.astro';
 
 export async function getStaticPaths() {
   const pageEntries = await getCollection('pages');
@@ -50,5 +51,6 @@ const translationSlugs = await getTranslationsUrlsForPages(
   />
   <h1>{entry.data.title}</h1>
   <!--FIXME: and more meta data here-->
+  <TableOfContents rendered={entry.render()} />
   <MarkdownEntry rendered={entry.render()} />
 </ContentLayout>

@@ -1,0 +1,24 @@
+---
+import { type NestedMarkdownHeading } from '../util/table-of-contents';
+import Link from './Link.astro';
+
+interface Props {
+  heading: NestedMarkdownHeading;
+}
+const { heading } = Astro.props;
+---
+
+<li>
+  <Link href={'#' + heading.slug}>
+    {heading.text}
+  </Link>
+  {
+    heading.subheadings.length > 0 && (
+      <ul>
+        {heading.subheadings.map((subheading) => (
+          <Astro.self heading={subheading} />
+        ))}
+      </ul>
+    )
+  }
+</li>

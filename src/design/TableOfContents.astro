@@ -1,0 +1,20 @@
+---
+import { type Render } from 'astro:content';
+import TableOfContentsHeading from './TableOfContentsHeading.astro';
+import { buildToc } from '../util/table-of-contents';
+
+interface Props {
+  rendered: Render['.mdx'];
+}
+
+const { rendered } = Astro.props;
+
+const { headings } = await rendered;
+const toc = buildToc(headings);
+---
+
+<nav class="toc">
+  <ul>
+    {toc.map((heading) => <TableOfContentsHeading heading={heading} />)}
+  </ul>
+</nav>
