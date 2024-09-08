@@ -78,34 +78,38 @@ h6,
 
 .h1,
 h1 {
-  font-size: 2.4167em;
+  font-size: 2.4167rem;
   margin: var(--vspace-1) 0 var(--vspace-3) 0;
-  line-height: calc(2.4167 / var(--space) * var(--vspace));
+  line-height: 2.4167rem;
 }
 
 .h2,
 h2 {
-  font-size: 1.7917em;
+  font-size: 1.7917rem;
+  line-height: 1.7917rem;
 }
 
 .h3,
 h3 {
-  font-size: 1.5em;
+  font-size: 1.5rem;
+  line-height: 1.5rem;
 }
 
 .h4,
 h4 {
-  font-size: 1.3333em;
+  font-size: 1.3333rem;
+  line-height: 1.3333rem;
 }
 
 .h5,
 h5 {
-  font-size: 1.25em;
+  font-size: 1.25rem;
+  line-height: 1.25rem;
 }
 
 .h6,
 h6 {
-  font-size: 1em;
+  font-size: 1rem;
   letter-spacing: 0;
 }
 
