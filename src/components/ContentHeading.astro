@@ -2,19 +2,17 @@
 import type { CollectionEntry } from 'astro:content';
 import type { StandaloneCollections } from '../util/get-static-paths';
 
-import Card from '../design/Card.astro';
 import CardLink from '../design/CardLink.astro';
+import LanguageChip from '../design/LanguageChip.astro';
 import ShareButton from '../design/ShareButton.astro';
 import Timestamp from '../design/Timestamp.astro';
 
 import { Languages } from '../util/languages';
-
 import {
   getCanonicalUrlToFlyer,
   getCanonicalUrlToKit,
   getCanonicalUrlToPage,
 } from '../util/get-canonical-url';
-import LanguageChip from '../design/LanguageChip.astro';
 
 interface Props<T extends StandaloneCollections> {
   collection: T;
@@ -80,13 +78,6 @@ const canonicalUrl = await getCanonicalUrlFn(
     title={entry.data.title}
     url={canonicalUrl}
   />
-
-  <Card
-    invalid={true}
-    size="p"
-    smaller
-    >Text kopieren</Card
-  >
   {
     collection != 'pages' && (
       <CardLink

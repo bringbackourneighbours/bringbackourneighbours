@@ -10,7 +10,7 @@ import { type LanguagesValue } from '../util/languages';
 import { useUiTranslation } from '../util/use-ui-translation';
 
 interface Props {
-  lang: LanguagesValue;
+  lang?: LanguagesValue;
 }
 
 const { lang = Astro.locals.lang } = Astro.props;
