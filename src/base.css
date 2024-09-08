@@ -192,7 +192,7 @@ ol ul,
 ul dl,
 ul ol,
 ul ul {
-  margin: 1.5rem 0 1.5rem 3rem;
+  margin: var(--vspace-4);
 }
 
 /**
@@ -209,15 +209,6 @@ ul ul {
 
 .rtl {
   direction: rtl;
-}
-
-ul.semantic-list {
-  list-style: none;
-}
-
-ul.semantic-list li {
-  margin-bottom: 0;
-  margin-left: 0;
 }
 
 /* Fit To Width Utilities for pdf flyers
