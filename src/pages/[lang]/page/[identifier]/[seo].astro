@@ -1,6 +1,7 @@
 ---
+import type { CollectionEntry } from 'astro:content';
+import { getStaticPathsForPages } from '../../../../util/get-static-paths';
 import { redirectNotTranslatedForPage } from '../../../../util/redirect-not-found-or-not-translated';
-import { getCollection, type CollectionEntry } from 'astro:content';
 import MarkdownEntry from '../../../../design/MarkdownEntry.astro';
 import ContentLayout from '../../../../layouts/ContentLayout.astro';
 import { getTranslationsUrlsForPages } from '../../../../util/get-translations-url';
@@ -8,18 +9,12 @@ import { getCanonicalUrlToPage } from '../../../../util/get-canonical-url';
 import LanguageSwitcher from '../../../../design/LanguageSwitcher.astro';
 import TableOfContents from '../../../../design/TableOfContents.astro';
 
+interface Props {
+  entry: CollectionEntry<'pages'>;
+}
+
 export async function getStaticPaths() {
-  const pageEntries = await getCollection('pages');
-  return pageEntries.map((entry: CollectionEntry<'pages'>) => {
-    return {
-      params: {
-        lang: entry.data.lang,
-        identifier: entry.data.identifier,
-        seo: entry.data.seo,
-      },
-      props: { entry },
-    };
-  });
+  return getStaticPathsForPages();
 }
 
 const { entry } = Astro.props;

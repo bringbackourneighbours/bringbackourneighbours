@@ -2,10 +2,12 @@ import { getCollection, type CollectionEntry } from 'astro:content';
 import {
   getStaticPathsForFlyers,
   getStaticPathsForKits,
+  getStaticPathsForPages,
 } from './get-static-paths.ts';
 import {
   getCanonicalUrlToFlyer,
   getCanonicalUrlToKit,
+  getCanonicalUrlToPage,
 } from './get-canonical-url.ts';
 
 export interface LinkData {
@@ -22,6 +24,7 @@ export const getFlatLinksEntries = async (): Promise<LinkData[]> => {
     ...(await getAllExternalLinksEntries()),
     ...(await getAllFlyerLinksEntries()),
     ...(await getAllKitLinksEntries()),
+    ...(await getAllPageLinksEntries()),
   ];
 };
 
@@ -63,6 +66,22 @@ const getAllKitLinksEntries = async (): Promise<LinkData[]> => {
         title: data.title,
         type: 'KIT',
         url: await getCanonicalUrlToKit(data.lang, data.identifier),
+        lang: data.lang,
+      };
+    }),
+  );
+};
+
+const getAllPageLinksEntries = async (): Promise<LinkData[]> => {
+  return Promise.all(
+    (await getStaticPathsForPages()).map(async (kit) => {
+      const data = kit.props.entry.data;
+      return {
+        identifier: data.identifier,
+        slug: `page-${data.lang}-${data.identifier}`,
+        title: data.title,
+        type: 'PAGE',
+        url: await getCanonicalUrlToPage(data.lang, data.identifier),
         lang: data.lang,
       };
     }),
