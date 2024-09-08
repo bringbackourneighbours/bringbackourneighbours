@@ -44,7 +44,7 @@ const { title, open = Astro.locals.isPrint } = Astro.props;
     <h3>
       {title}
     </h3>
-    <Icon html={chevronDown} />
+    {!Astro.locals.isPrint && <Icon html={chevronDown} />}
   </summary>
   <article>
     <slot />
