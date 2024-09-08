@@ -2,13 +2,18 @@
 import type { CollectionEntry } from 'astro:content';
 import type { StandaloneCollections } from '../util/get-static-paths';
 
-import { Languages } from '../util/languages';
-import ShareButton from '../design/ShareButton.astro';
 import Card from '../design/Card.astro';
-import Timestamp from '../design/Timestamp.astro';
 import CardLink from '../design/CardLink.astro';
+import ShareButton from '../design/ShareButton.astro';
+import Timestamp from '../design/Timestamp.astro';
 
-import { getCanonicalUrlToFlyer } from '../util/get-canonical-url';
+import { Languages } from '../util/languages';
+
+import {
+  getCanonicalUrlToFlyer,
+  getCanonicalUrlToKit,
+  getCanonicalUrlToPage,
+} from '../util/get-canonical-url';
 import LanguageChip from '../design/LanguageChip.astro';
 
 interface Props<T extends StandaloneCollections> {
@@ -19,8 +24,19 @@ interface Props<T extends StandaloneCollections> {
 const { entry, collection } = Astro.props;
 
 // TODO: this might be depending on collection
-const printUrl = `${Astro.site}print/flyer-${entry.data.lang}-${entry.data.identifier}.pdf`;
-const canonicalUrl = await getCanonicalUrlToFlyer(
+
+const printUrl = `${Astro.site}print/${collection.slice(0, -1)}-${entry.data.lang}-${entry.data.identifier}.pdf`;
+
+const getCanonicalUrlFn =
+  collection === 'flyers'
+    ? getCanonicalUrlToFlyer
+    : collection === 'kits'
+      ? getCanonicalUrlToKit
+      : collection === 'pages'
+        ? getCanonicalUrlToPage
+        : () => `${Astro.site}`;
+
+const canonicalUrl = await getCanonicalUrlFn(
   entry.data.lang,
   entry.data.identifier,
 );

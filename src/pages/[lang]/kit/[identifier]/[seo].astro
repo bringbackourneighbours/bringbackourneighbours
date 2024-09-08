@@ -1,14 +1,16 @@
 ---
 import { type CollectionEntry } from 'astro:content';
-import MarkdownEntry from '../../../../design/MarkdownEntry.astro';
+
+import ContentHeading from '../../../../components/ContentHeading.astro';
 import ContentLayout from '../../../../layouts/ContentLayout.astro';
+import LanguageSwitcher from '../../../../design/LanguageSwitcher.astro';
+import MarkdownEntry from '../../../../design/MarkdownEntry.astro';
+import TableOfContents from '../../../../design/TableOfContents.astro';
+
 import { getCanonicalUrlToKit } from '../../../../util/get-canonical-url';
 import { getStaticPathsForKits } from '../../../../util/get-static-paths';
 import { getTranslationsUrlsForKit } from '../../../../util/get-translations-url';
 import { redirectNotTranslatedForKit } from '../../../../util/redirect-not-found-or-not-translated';
-import Timestamp from '../../../../design/Timestamp.astro';
-import LanguageSwitcher from '../../../../design/LanguageSwitcher.astro';
-import TableOfContents from '../../../../design/TableOfContents.astro';
 
 interface Props {
   entry: CollectionEntry<'kits'>;
@@ -44,17 +46,10 @@ const translationSlugs = await getTranslationsUrlsForKit(
     lang={entry.data.lang}
     translationSlugs={translationSlugs}
   />
-  <hgroup>
-    <h1>{entry.data.title}</h1>
-    <!-- FIXME: Element ul is not allowed here -->
-    <ul class="meta">
-      <li>{entry.data.lang} – {entry.data.germanTitle}</li>
-      <li>
-        <Timestamp entry={entry} />
-      </li>
-    </ul>
-  </hgroup>
-
+  <ContentHeading
+    entry={entry}
+    collection="kits"
+  />
   <TableOfContents rendered={entry.render()} />
 
   <MarkdownEntry rendered={entry.render()} />
