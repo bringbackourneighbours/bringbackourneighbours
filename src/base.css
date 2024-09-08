@@ -221,6 +221,7 @@ https://kizu.dev/fit-to-width/
 
   --captured-length: initial;
   --support-sentinel: var(--captured-length, 9999px);
+  --max-font-size: initial;
 
   & > [aria-hidden] {
     visibility: hidden;
@@ -245,7 +246,7 @@ https://kizu.dev/fit-to-width/
       --font-size: clamp(
         1em,
         1em * var(--ratio),
-        var(--max-font-size, infinity * 1px) - var(--support-sentinel)
+        var(--max-font-size, calc(infinity * 1px)) - var(--support-sentinel)
       );
 
       inline-size: var(--available-space);
