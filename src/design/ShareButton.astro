@@ -29,7 +29,7 @@ const text =
     padding: 0;
   }
 
-  #clipboard-popover {
+  #share-popover {
     border: calc(var(--size-border) * 2) solid var(--color-secondary);
     border-radius: calc(var(--shadow-0) * 0.5);
     padding: var(--vspace-3);
@@ -67,16 +67,15 @@ const text =
 
 <div
   popover
-  id="clipboard-popover"
+  id="share-popover"
 >
-  <div id="clipboard-popover-content">
-    {useUiTranslation('meta.sharedToClipboard', lang)}
+  <div id="share-popover-content">
+    {useUiTranslation('meta.sharedLinkToClipboard', lang)}
   </div>
 </div>
 <script>
   const shareButton: HTMLElement = document.querySelector('#share-button')!;
-  const clipboardPopover: HTMLElement =
-    document.querySelector('#clipboard-popover')!;
+  const sharePopover: HTMLElement = document.querySelector('#share-popover')!;
 
   shareButton?.addEventListener('click', async () => {
     if (navigator.share && shareButton?.dataset?.url) {
@@ -92,7 +91,7 @@ const text =
       await navigator.clipboard.writeText(
         `${shareButton.dataset.text}:\n ${shareButton.dataset.title} \n ${shareButton.dataset.url} `,
       );
-      clipboardPopover.showPopover();
+      sharePopover.showPopover();
     }
   });
 </script>
