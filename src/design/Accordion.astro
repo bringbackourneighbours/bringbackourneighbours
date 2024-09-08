@@ -1,0 +1,52 @@
+---
+import chevronDown from '../assets/icons/ion--chevron-down.svg?raw';
+import Icon from './Icon.astro';
+interface Props {
+  title: string;
+  open?: boolean;
+}
+
+const { title, open = Astro.locals.isPrint } = Astro.props;
+---
+
+<style>
+  details {
+    border: calc(var(--size-border) * 2) solid var(--color-primary);
+
+    &[open] {
+      .icon {
+        transform: rotate(180deg);
+      }
+    }
+
+    summary {
+      padding: var(--vspace);
+      list-style: none;
+      background-color: var(--color-primary);
+      color: var(--color-surface);
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+
+      h3 {
+        margin: 0;
+      }
+    }
+
+    article {
+      padding: var(--vspace);
+    }
+  }
+</style>
+
+<details open={open}>
+  <summary>
+    <h3>
+      {title}
+    </h3>
+    <Icon html={chevronDown} />
+  </summary>
+  <article>
+    <slot />
+  </article>
+</details>

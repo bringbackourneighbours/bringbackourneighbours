@@ -10,7 +10,7 @@ interface Props {
 
 const { identifier, lang = Astro.locals.lang } = Astro.props;
 
-const blockEntries = await getCollection('blocks', (block) => {
+const blockEntries = await getCollection('flyers', (block) => {
   return block.slug === `${identifier}/${lang}`;
 });
 ---
