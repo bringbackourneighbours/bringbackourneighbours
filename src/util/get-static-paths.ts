@@ -1,7 +1,9 @@
 import { type CollectionEntry, getCollection } from 'astro:content';
 import type { LanguagesValue } from './languages.ts';
 
-export interface StandaloneContentProps<T extends 'kits' | 'flyers' | 'pages'> {
+export type StandaloneCollections = 'kits' | 'flyers' | 'pages';
+
+export interface StandaloneContentProps<T extends StandaloneCollections> {
   params: {
     lang: LanguagesValue;
     identifier: string;
@@ -12,7 +14,7 @@ export interface StandaloneContentProps<T extends 'kits' | 'flyers' | 'pages'> {
   };
 }
 
-async function getStaticPaths<T extends 'kits' | 'flyers' | 'pages'>(
+async function getStaticPaths<T extends StandaloneCollections>(
   collection: T,
 ): Promise<StandaloneContentProps<T>[]> {
   const flyerEntries = await getCollection(collection);
