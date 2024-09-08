@@ -104,7 +104,7 @@ const uiCollection = defineCollection({
         contacts: z.string(),
         publicity: z.string(),
         forms: z.string(),
-        kitProfessionals: z.string(),
+        material: z.string(),
         share: z.string(),
         sharedToClipboard: z.string(),
         infosAgainstDeportation: z.string(),

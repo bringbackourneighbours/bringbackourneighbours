@@ -1,10 +1,7 @@
 ---
 import { type LanguagesValue } from '../util/languages';
 import { useUiTranslation } from '../util/use-ui-translation';
-import {
-  getCanonicalUrlToKit,
-  getCanonicalUrlToPage,
-} from '../util/get-canonical-url';
+import { getCanonicalUrlToPage } from '../util/get-canonical-url';
 import Stack from '../design/Stack.astro';
 import Link from '../design/Link.astro';
 import { getLanguageDirection } from '../util/get-language-direction';
@@ -72,19 +69,6 @@ const { lang, showFlyers, showKits } = Astro.props;
     ))
   }
   {
-    getCanonicalUrlToKit(lang, 'professional').then((href) => (
-      <Link
-        lang={lang}
-        href={href}
-      >
-        <h3>
-          {useUiTranslation('meta.kitProfessionals', lang)}
-          {getLanguageDirection(lang) === 'ltr' ? '→' : '←'}
-        </h3>
-      </Link>
-    ))
-  }
-  {
     getCanonicalUrlToPage(lang, 'forms').then((href) => (
       <Link
         lang={lang}
@@ -106,6 +90,19 @@ const { lang, showFlyers, showKits } = Astro.props;
       >
         <h3>
           {useUiTranslation('meta.publicity', lang)}
+          {getLanguageDirection(lang) === 'ltr' ? '→' : '←'}
+        </h3>
+      </Link>
+    ))
+  }
+  {
+    getCanonicalUrlToPage(lang, 'material').then((href) => (
+      <Link
+        lang={lang}
+        href={href}
+      >
+        <h3>
+          {useUiTranslation('meta.material', lang)}
           {getLanguageDirection(lang) === 'ltr' ? '→' : '←'}
         </h3>
       </Link>
