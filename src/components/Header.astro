@@ -208,6 +208,18 @@ const allKits = await getStaticPathsForKits();
         </li>
         <li>
           {
+            getCanonicalUrlToPage(lang, 'material').then((href) => (
+              <Link
+                lang={lang}
+                href={href || ''}
+              >
+                {useUiTranslation('meta.material', lang)}
+              </Link>
+            ))
+          }
+        </li>
+        <li>
+          {
             getCanonicalUrlToPage(lang, 'imprint').then((href) => (
               <Link
                 lang={lang}
