@@ -1,4 +1,5 @@
 ---
+import type { StandaloneCollections } from '../util/get-static-paths';
 import { type LanguagesValue } from '../util/languages';
 import { getCollection } from 'astro:content';
 import MarkdownEntry from '../design/MarkdownEntry.astro';
@@ -6,11 +7,16 @@ import MarkdownEntry from '../design/MarkdownEntry.astro';
 interface Props {
   identifier: string;
   lang: LanguagesValue;
+  collection?: StandaloneCollections;
 }
 
-const { identifier, lang = Astro.locals.lang } = Astro.props;
+const {
+  identifier,
+  lang = Astro.locals.lang,
+  collection = 'blocks',
+} = Astro.props;
 
-const blockEntries = await getCollection('blocks', (block) => {
+const blockEntries = await getCollection(collection, (block) => {
   return block.slug === `${identifier}/${lang}`;
 });
 ---

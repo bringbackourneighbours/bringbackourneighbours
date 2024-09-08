@@ -8,7 +8,6 @@ lastChecked: 2024-09-07
 ---
 
 import Block from '../../../components/Block.astro';
-import FlyerBlock from '../../../components/FlyerBlock.astro';
 import FlyerBox from '../../../components/FlyerBox.astro';
 import Address from '../../../components/Address.astro';
 import ExternalShortLink from '../../../components/ExternalShortLink.astro';
@@ -32,7 +31,7 @@ Wenn du keinen gültigen Aufenthaltstitel in Deutschland hast, droht deine Absch
 [//]: # ':::'
 
 <FlyerBox identifier="decision">
-  <FlyerBlock identifier="decision" />
+  <Block identifier="decision" collection="flyers"/>
 </FlyerBox>
 
 Nach dem negativen Bescheid im Asylverfahren bleiben viele Menschen trotzdem lange Zeit in Deutschland und erhalten eine Duldung.
@@ -44,7 +43,7 @@ Nach dem negativen Bescheid im Asylverfahren bleiben viele Menschen trotzdem lan
 Überleitung fehlt
 
 <FlyerBox identifier="duldung">
-  <FlyerBlock identifier="duldung" />
+  <Block identifier="duldung" collection="flyers" />
 </FlyerBox>
 
 ## Was tun bei Abschiebegefahr?
@@ -52,7 +51,7 @@ Nach dem negativen Bescheid im Asylverfahren bleiben viele Menschen trotzdem lan
 Eine Abschiebung kann jederzeit passieren. Die Angst davor und die Abschiebung an sich sind extrem belastend.
 
 <FlyerBox identifier="stress">
-  <FlyerBlock identifier="stress" />
+  <Block identifier="stress" collection="flyers" />
 </FlyerBox>
 
 Bitte nimm die Gefahr einer Abschiebung ernst: Auch wenn bei dir viele Jahre lang nichts passiert ist und Bekannte von dir auch nicht abgeschoben werden, es kann passieren.
@@ -62,7 +61,7 @@ Es gibt viel praktisches Wissen in deiner Community – nutze es! Aber es gibt a
 <Block identifier="get-legal-advice" />
 
 <FlyerBox identifier="residence">
-  <FlyerBlock identifier="residence" />
+  <Block identifier="residence" collection="flyers" />
 </FlyerBox>
 
 Die Aufgabe der Ausländer-Behörden ist es, Menschen mit Duldung abzuschieben. Darum sei vorsichtig und vertraue nicht auf das, was Mitarbeiter\*innen dir sagen. Verlange für alles, was sie sagen, eine schriftliche Bestätigung! Wenn du dich unsicher fühlst, frage Unterstützer\*innen, ob sie dich zu der Ausländer-Behörde begleiten.
@@ -86,5 +85,9 @@ Hier kannst du dir Hinweise in verschiedenen Sprachen anhören über deine Recht
 Wenn die Ausländerbehörde dich abschieben will, kann sie dich dafür in Haft nehmen.
 
 <FlyerBox identifier="detention">
-  <FlyerBlock identifier="detention" />
+  <Block identifier="detention" collection="flyers" />
 </FlyerBox>
+
+## Übersicht Kontakte (ganz unten)
+
+<Block identifier="contacts" collection="pages" />
