@@ -78,8 +78,7 @@ const allKits = await getStaticPathsForKits();
     border-bottom: 0;
   }
 
-  a h1,
-  a h2 {
+  a .mainline {
     margin: 0;
   }
 
@@ -88,7 +87,7 @@ const allKits = await getStaticPathsForKits();
       gap: 0.1em;
     }
 
-    header h1 {
+    header .mainline {
       font-size: 1.4em !important;
     }
   }
@@ -97,7 +96,7 @@ const allKits = await getStaticPathsForKits();
   <Logo />
   <a href={`${Astro.site}`}>
     <!--this could use the text to with like in the pdf-->
-    <h1 class="h3">Bring Back Our Neighbours</h1>
+    <div class="h3 mainline">Bring Back Our Neighbours</div>
   </a>
   <AnimatedCloseButton
     onclick="document.getElementById('main-nav').classList.toggle('hidden');"
