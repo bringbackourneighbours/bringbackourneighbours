@@ -8,6 +8,7 @@ import { getTranslationsUrlsForKit } from '../../../../util/get-translations-url
 import { redirectNotTranslatedForKit } from '../../../../util/redirect-not-found-or-not-translated';
 import Timestamp from '../../../../design/Timestamp.astro';
 import LanguageSwitcher from '../../../../design/LanguageSwitcher.astro';
+import TableOfContents from '../../../../design/TableOfContents.astro';
 
 interface Props {
   entry: CollectionEntry<'kits'>;
@@ -53,5 +54,8 @@ const translationSlugs = await getTranslationsUrlsForKit(
       </li>
     </ul>
   </hgroup>
+
+  <TableOfContents rendered={entry.render()} />
+
   <MarkdownEntry rendered={entry.render()} />
 </ContentLayout>
