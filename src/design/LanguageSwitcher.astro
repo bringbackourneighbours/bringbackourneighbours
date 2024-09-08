@@ -1,10 +1,11 @@
 ---
+import { type LanguagesValue } from '../util/languages';
+
 import Card from './Card.astro';
 import Icon from './Icon.astro';
 import Link from './Link.astro';
 import languageIcon from '../assets/icons/ion--language.svg?raw';
-import { type LanguagesValue } from '../util/languages';
-import { useUiTranslation } from '../util/use-ui-translation';
+import LanguageChip from './LanguageChip.astro';
 
 interface Props {
   lang: LanguagesValue;
@@ -78,7 +79,10 @@ const { lang = Astro.locals.lang, translationSlugs } = Astro.props;
       <div class="language-switcher-toggle-content">
         <div class="language-switcher-toggle-label">
           <Icon html={languageIcon} />
-          {useUiTranslation(`languages.${lang}`, lang)}
+          <LanguageChip
+            lang={lang}
+            currentLang={lang}
+          />
         </div>
         <div class="language-switcher-alternatives">
           {
@@ -87,11 +91,10 @@ const { lang = Astro.locals.lang, translationSlugs } = Astro.props;
                 lang={translation.lang}
                 href={translation.url}
               >
-                {useUiTranslation(
-                  `languages.${translation.lang}`,
-                  translation.lang,
-                )}
-                ({useUiTranslation(`languages.${translation.lang}`, lang)})
+                <LanguageChip
+                  currentLang={lang}
+                  lang={translation.lang}
+                />
               </Link>
             ))
           }

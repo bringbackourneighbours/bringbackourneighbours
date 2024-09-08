@@ -1,0 +1,85 @@
+---
+import type { CollectionEntry } from 'astro:content';
+import type { StandaloneCollections } from '../util/get-static-paths';
+
+import { Languages } from '../util/languages';
+import ShareButton from '../design/ShareButton.astro';
+import Card from '../design/Card.astro';
+import Timestamp from '../design/Timestamp.astro';
+import CardLink from '../design/CardLink.astro';
+
+import { getCanonicalUrlToFlyer } from '../util/get-canonical-url';
+import LanguageChip from '../design/LanguageChip.astro';
+
+interface Props<T extends StandaloneCollections> {
+  collection: T;
+  entry: CollectionEntry<T>;
+}
+
+const { entry, collection } = Astro.props;
+
+// TODO: this might be depending on collection
+const printUrl = `${Astro.site}print/flyer-${entry.data.lang}-${entry.data.identifier}.pdf`;
+const canonicalUrl = await getCanonicalUrlToFlyer(
+  entry.data.lang,
+  entry.data.identifier,
+);
+---
+
+<style>
+  .german-title {
+    display: block;
+    margin-block-end: calc(-1 * var(--vspace-1) + var(--vspace-3));
+  }
+
+  .header-meta {
+    display: flex;
+    justify-content: flex-start;
+    gap: var(--vspace);
+    align-items: baseline;
+    flex-wrap: wrap;
+    margin-block-end: var(--vspace-1);
+  }
+</style>
+
+<hgroup>
+  {
+    entry.data.lang !== `${Languages.GERMAN}` && (
+      <span class="german-title">{entry.data.germanTitle}</span>
+    )
+  }
+  <h1>{entry.data.title}</h1>
+  <p>
+    <LanguageChip
+      lang={entry.data.lang}
+      currentLang="de"
+    />
+    –
+    <Timestamp entry={entry} />
+  </p>
+</hgroup>
+
+<div class="header-meta">
+  <ShareButton
+    title={entry.data.title}
+    url={canonicalUrl}
+  />
+
+  <Card
+    invalid={true}
+    size="p"
+    smaller
+    >Text kopieren</Card
+  >
+  {
+    collection != 'pages' && (
+      <CardLink
+        size="p"
+        smaller
+        href={printUrl}
+      >
+        Download als PDF
+      </CardLink>
+    )
+  }
+</div>
