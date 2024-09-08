@@ -1,7 +1,9 @@
 ---
-import { getFlatLinksEntries } from '../util/get-flat-links-entries';
-import Link from '../design/Link.astro';
 import { type LanguagesValue } from '../util/languages';
+
+import Link from '../design/Link.astro';
+
+import { getFlatLinksEntries } from '../util/get-flat-links-entries';
 import { linkUrl } from '../../astro.config.mjs';
 
 interface Props {
@@ -22,10 +24,16 @@ const link = (await getFlatLinksEntries()).find((entry) => {
       href={link.url}
       lang={lang}
     >
-      {!Astro.locals.isPrint ? (
+      <slot />
+      {Astro.locals.isPrint &&
+        (Astro.slots.has('default') ? (
+          <>{` ${linkUrl}/${link.slug} `}</>
+        ) : (
+          <>{`${linkUrl}/${link.slug}`}</>
+        ))}
+
+      {!Astro.locals.isPrint && !Astro.slots.has('default') && (
         <>{`${link.type}: ${link.title}`}</>
-      ) : (
-        <>{`${linkUrl}/${link.slug}`}</>
       )}
     </Link>
   ) : (
