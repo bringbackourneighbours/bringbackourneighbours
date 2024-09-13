@@ -38,7 +38,7 @@ const canonicalUrl =
 const isDev = import.meta.env.DEV;
 
 // FIXME: for some unknown reason in build and in dev this is needs to differ
-const footerposition = isDev ? '460mm' : '560mm';
+const footerposition = isDev ? '496mm' : '596mm';
 ---
 
 <style define:vars={{ footerposition }}>
@@ -49,17 +49,25 @@ const footerposition = isDev ? '460mm' : '560mm';
 
   html {
     /* Good base size for printing */
-    font-size: 10pt;
+    font-size: 8pt;
   }
 
   .h2,
   h2 {
     font-size: 1.5em;
+    line-height: 1.5em;
+    margin: 0;
   }
 
   .h3,
   h3 {
     font-size: 1em;
+    line-height: 1em;
+    margin: 0;
+  }
+
+  ul {
+    margin-block-end: 1em;
   }
 
   .cover-page {
@@ -185,7 +193,7 @@ const footerposition = isDev ? '460mm' : '560mm';
   <div class="end-footer">
     <div class="qr-link">
       <QrImage
-        size="120"
+        size="100"
         url={canonicalUrl}
       />
       <div class="find-translation">
@@ -203,9 +211,9 @@ const footerposition = isDev ? '460mm' : '560mm';
     </div>
     <p>
       {useUiTranslation(`meta.infosAgainstDeportation`, entry.data.lang)}
-    </p>
-    <p class="ltr">
-      <Link href={`${Astro.site}`} />
+      <span class="ltr">
+        <Link href={`${Astro.site}`} />
+      </span>
     </p>
     <p>
       <Imprint lang={entry.data.lang} />
