@@ -80,31 +80,31 @@ h6,
 h1 {
   font-size: 2.4167em;
   margin: var(--vspace-1) 0 var(--vspace-3) 0;
-  line-height: 2.4167em;
+  line-height: calc(2.4167 * var(--vspace));
 }
 
 .h2,
 h2 {
   font-size: 1.7917em;
-  line-height: 1.7917em;
+  line-height: calc(1.7917 * var(--vspace));
 }
 
 .h3,
 h3 {
   font-size: 1.5em;
-  line-height: 1.5em;
+  line-height: calc(1.5 * var(--vspace));
 }
 
 .h4,
 h4 {
   font-size: 1.3333em;
-  line-height: 1.3333em;
+  line-height: calc(1.3333 * var(--vspace));
 }
 
 .h5,
 h5 {
   font-size: 1.25em;
-  line-height: 1.25em;
+  line-height: calc(1.25 * var(--vspace));
 }
 
 .h6,
