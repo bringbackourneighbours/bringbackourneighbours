@@ -1,12 +1,19 @@
 ---
 import { type LanguagesValue } from '../util/languages';
+import Icon from './Icon.astro';
+import openIcon from '../assets/icons/ion--open.svg?raw';
 
 interface Props {
   href?: string;
   lang?: LanguagesValue;
+  openInNewTab?: boolean;
 }
 
-const { href = '', lang = Astro.locals.lang } = Astro.props;
+const {
+  href = '',
+  lang = Astro.locals.lang,
+  openInNewTab = false,
+} = Astro.props;
 
 // FIXME Only replace from beginning of string
 const site = Astro.site!.toString();
@@ -19,6 +26,9 @@ const pretty_screen = href
   .replace(site, '')
   .replace('https://', '')
   .replace('http://', '');
+
+const target = openInNewTab ? '_blank' : '_self';
+const rel = openInNewTab ? 'noopener noreferrer' : '';
 ---
 
 <style>
@@ -26,14 +36,20 @@ const pretty_screen = href
     color: var(--color-primary);
     text-decoration: underline;
     overflow-wrap: break-word;
+
+    .new-tab {
+      /* this is for the logo: it needs to be primary */
+      --color-surface: var(--color-primary);
+    }
   }
 
   a:active {
     color: var(--color-secondary);
-  }
 
-  a:visited {
-    color: var(--color-primary-bright);
+    .new-tab {
+      /* this is for the logo: it needs to be primary */
+      --color-surface: var(--color-secondary);
+    }
   }
 
   @media print {
@@ -45,15 +61,13 @@ const pretty_screen = href
     a:active {
       color: var(--color-primary);
     }
-
-    a:visited {
-      color: var(--color-primary);
-    }
   }
 </style>
 <a
   href={href}
   hreflang={lang}
+  target={target}
+  rel={rel}
 >
   <slot />
   {
@@ -63,5 +77,15 @@ const pretty_screen = href
       ) : (
         <span> {pretty_screen} </span>
       ))
+  }
+  {
+    openInNewTab && !Astro.locals.isPrint && (
+      <span class="new-tab">
+        <Icon
+          html={openIcon}
+          size="1em"
+        />
+      </span>
+    )
   }
 </a>

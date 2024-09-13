@@ -36,6 +36,7 @@ const alternativeLanguages = [...SupportedLanguages, ...UnSupportedLanguages]
     <Link
       href={localizedLinkData.url}
       lang={lang}
+      openInNewTab={true}
     >
       {!Astro.locals.isPrint ? (
         <>{`${localizedLinkData.type}: ${localizedLinkData.title}`}</>
