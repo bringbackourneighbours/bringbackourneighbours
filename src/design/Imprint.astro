@@ -9,9 +9,10 @@ interface Props {
 const { lang = Astro.locals.lang } = Astro.props;
 ---
 
-<strong>{useUiTranslation('meta.imprint', lang)}</strong>
-<p class="ltr">
-  Kontaktgruppe Asyl und Abschiebehaft e.V.<br />
-  Heinrich-Zille-Str. 6<br />
-  01219 Dresden
+<p>
+  <strong>{useUiTranslation('meta.imprint', lang)}:</strong>
+  <span class="ltr">
+    Kontaktgruppe Asyl und Abschiebehaft e.V. <br />Heinrich-Zille-Str. 6 01219
+    Dresden
+  </span>
 </p>
