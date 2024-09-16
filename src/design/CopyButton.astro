@@ -1,7 +1,7 @@
 ---
 import type { LanguagesValue } from '../util/languages';
 
-import Card from './Card.astro';
+import CardButton from './CardButton.astro';
 
 import { useUiTranslation } from '../util/use-ui-translation';
 
@@ -13,16 +13,6 @@ const { lang = Astro.locals.lang } = Astro.props;
 ---
 
 <style>
-  button {
-    all: unset;
-  }
-
-  #share-button {
-    background: none;
-    border: none;
-    padding: 0;
-  }
-
   #copy-popover {
     border: calc(var(--size-border) * 2) solid var(--color-secondary);
     border-radius: calc(var(--shadow-0) * 0.5);
@@ -53,13 +43,9 @@ const { lang = Astro.locals.lang } = Astro.props;
   <slot />
 </template>
 
-<button id="copy-button">
-  <Card
-    size="p"
-    smaller
-    >{useUiTranslation('meta.copy', lang)}</Card
-  >
-</button>
+<CardButton id="copy-button">
+  {useUiTranslation('meta.copy', lang)}
+</CardButton>
 
 <div
   popover

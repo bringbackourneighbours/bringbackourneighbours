@@ -1,6 +1,8 @@
 ---
-import Card from './Card.astro';
 import type { LanguagesValue } from '../util/languages';
+
+import CardButton from './CardButton.astro';
+
 import { useUiTranslation } from '../util/use-ui-translation';
 
 interface Props {
@@ -19,16 +21,6 @@ const text =
 ---
 
 <style>
-  button {
-    all: unset;
-  }
-
-  #share-button {
-    background: none;
-    border: none;
-    padding: 0;
-  }
-
   #share-popover {
     border: calc(var(--size-border) * 2) solid var(--color-secondary);
     border-radius: calc(var(--shadow-0) * 0.5);
@@ -52,18 +44,17 @@ const text =
   }
 </style>
 
-<button
+<template
+  open
+  id="share-content"
   data-title={title}
   data-text={text}
   data-url={url}
-  id="share-button"
->
-  <Card
-    size="p"
-    smaller
-    >{useUiTranslation('meta.share', lang)}</Card
-  >
-</button>
+></template>
+
+<CardButton id="share-button">
+  {useUiTranslation('meta.share', lang)}
+</CardButton>
 
 <div
   popover
@@ -74,22 +65,24 @@ const text =
   </div>
 </div>
 <script>
+  const shareContent: HTMLTemplateElement =
+    document.querySelector('#share-content')!;
   const shareButton: HTMLElement = document.querySelector('#share-button')!;
   const sharePopover: HTMLElement = document.querySelector('#share-popover')!;
 
   shareButton?.addEventListener('click', async () => {
-    if (navigator.share && shareButton?.dataset?.url) {
+    if (navigator.share && shareContent?.dataset?.url) {
       navigator
         .share({
-          title: shareButton.dataset.title,
-          text: shareButton.dataset.text,
-          url: shareButton.dataset.url,
+          title: shareContent.dataset.title,
+          text: shareContent.dataset.text,
+          url: shareContent.dataset.url,
         })
         .then(() => {})
         .catch(console.error);
     } else {
       await navigator.clipboard.writeText(
-        `${shareButton.dataset.text}:\n ${shareButton.dataset.title} \n ${shareButton.dataset.url} `,
+        `${shareContent.dataset.text}:\n ${shareContent.dataset.title} \n ${shareContent.dataset.url} `,
       );
       sharePopover.showPopover();
     }
