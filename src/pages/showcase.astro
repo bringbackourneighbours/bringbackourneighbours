@@ -7,6 +7,7 @@ import ExternalShortLink from '../components/ExternalShortLink.astro';
 import QrImage from '../design/QrImage.astro';
 import { DEFAULT_LANG, Languages } from '../util/languages';
 import CardButton from '../design/CardButton.astro';
+import Popover from '../design/Popover.astro';
 ---
 
 <html lang="en">
@@ -38,6 +39,27 @@ import CardButton from '../design/CardButton.astro';
     <h2>elements</h2>
 
     <CardButton>CardButton</CardButton>
+    <Popover>
+      <span slot="button"> Click me pop </span>
+      <div>
+        <CardButton>CardButton</CardButton>
+        <p>... some random content</p>
+        <ul>
+          <li>
+            <Link href={`${Astro.site}link/flyer-de-detention`} />
+          </li>
+          <li>
+            <Link href={`${Astro.site}link/flyer-en-detention`} />
+          </li>
+          <li>
+            <Link href={`${Astro.site}link/kit-de-affected`} />
+          </li>
+          <li>
+            <Link href={`${Astro.site}link/kit-ar-affected`} />
+          </li>
+        </ul>
+      </div>
+    </Popover>
 
     <h2>QrCodes</h2>
 
