@@ -9,12 +9,13 @@ import {
   getCanonicalUrlToKit,
   getCanonicalUrlToPage,
 } from './get-canonical-url.ts';
+import type { LinkTypes } from './link-icon-type.ts';
 
 export interface LinkData {
   slug: string;
   title?: string;
   url?: string;
-  type?: string;
+  type?: LinkTypes;
   identifier?: string;
   lang?: string;
 }
