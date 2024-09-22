@@ -1,0 +1,68 @@
+---
+import { getEntry } from 'astro:content';
+
+import audioIcon from '../assets/icons/ion--volume-high.svg?raw';
+import docIcon from '../assets/icons/ion--document-text.svg?raw';
+import videoIcon from '../assets/icons/ion--film.svg?raw';
+import webIcon from '../assets/icons/ion--globe.svg?raw';
+import ShortLink from '../design/ShortLink.astro';
+
+import { type LanguagesValue } from '../util/languages';
+import { type LinkTypes } from '../util/link-icon-type';
+import { useUiTranslation } from '../util/use-ui-translation';
+
+interface Props {
+  identifier: string;
+  lang?: LanguagesValue;
+}
+
+const { identifier, lang = Astro.locals.lang } = Astro.props;
+
+export const getIconForType = (type?: LinkTypes) => {
+  switch (type) {
+    case 'PDF':
+      return docIcon;
+    case 'VIDEO':
+      return videoIcon;
+    case 'AUDIO':
+      return audioIcon;
+    case 'WEB':
+    default:
+      return webIcon;
+  }
+};
+
+// FIXME: this seems needless... but without the type is not working. no idea why
+const getLink = async (identifier: string) =>
+  await getEntry('links', identifier);
+
+const link = await getLink(identifier);
+
+let localizedLinkData = {
+  ...link?.data['all'],
+  ...link?.data[lang],
+};
+---
+
+<style>
+  .type {
+    padding-inline-end: var(--vspace-4);
+  }
+</style>
+
+{
+  localizedLinkData?.url ? (
+    <ShortLink
+      lang={lang}
+      openInNewTab={true}
+      slug={localizedLinkData.slug}
+      title={localizedLinkData.title}
+      type={localizedLinkData.type}
+      url={localizedLinkData.url}
+    />
+  ) : (
+    <>
+      <p>{useUiTranslation('shortLink.notAvailableInCurrentLanguage', lang)}</p>
+    </>
+  )
+}

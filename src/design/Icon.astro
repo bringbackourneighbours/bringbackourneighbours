@@ -1,26 +1,42 @@
 ---
+import { type ColorVariants } from '../util/color-variants';
+
 interface Props {
   size?: string;
   html: string;
+  variant?: ColorVariants;
 }
 
-const { size = '1.5em', html } = Astro.props;
+const { size = '1.5em', html, variant = 'primary' } = Astro.props;
 ---
 
 <style>
+  .-primary {
+    --icon-color: var(--color-primary);
+  }
+
+  .-secondary {
+    --icon-color: var(--color-secondary);
+  }
+
+  .-inverted-primary,
+  .-inverted-secondary {
+    --icon-color: var(--color-surface);
+  }
+
   .icon {
     width: 1.5em;
     height: 1.5em;
-    color: var(--color-surface);
+    color: var(--icon-color);
     padding-top: 3px;
     display: inline-block;
     flex-shrink: 0;
-    fill: var(--color-surface);
+    fill: var(--icon-color);
   }
 </style>
 
 <div
-  class="icon"
+  class={`icon -${variant}`}
   style={`width:${size}; height: ${size}`}
 >
   <Fragment set:html={html} />

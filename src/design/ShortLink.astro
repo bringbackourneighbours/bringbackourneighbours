@@ -1,0 +1,54 @@
+---
+import Icon from './Icon.astro';
+import Link from './Link.astro';
+import audioIcon from '../assets/icons/ion--volume-high.svg?raw';
+import docIcon from '../assets/icons/ion--document-text.svg?raw';
+import videoIcon from '../assets/icons/ion--film.svg?raw';
+import webIcon from '../assets/icons/ion--globe.svg?raw';
+
+import type { LinkTypes } from '../util/link-icon-type';
+import type { LanguagesValue } from '../util/languages';
+import { linkUrl } from '../../astro.config.mjs';
+
+interface Props {
+  lang: LanguagesValue;
+  openInNewTab: boolean;
+  slug?: string;
+  title?: string;
+  type?: LinkTypes;
+  url: string;
+}
+
+export const getIconForType = (type?: LinkTypes) => {
+  switch (type) {
+    case 'PDF':
+      return docIcon;
+    case 'VIDEO':
+      return videoIcon;
+    case 'AUDIO':
+      return audioIcon;
+    // TODO: add KIT and FLYER
+    case 'WEB':
+    default:
+      return webIcon;
+  }
+};
+
+const { slug, title, url, lang, openInNewTab, type } = Astro.props;
+
+let iconHtml = getIconForType(type);
+---
+
+<Link
+  href={url}
+  lang={lang}
+  openInNewTab={openInNewTab}
+>
+  <span class="type">
+    <Icon
+      html={iconHtml}
+      size="1em"
+    />
+  </span>
+  {!Astro.locals.isPrint ? <>{`${title}`}</> : <>{`${linkUrl}/${slug}`}</>}
+</Link>

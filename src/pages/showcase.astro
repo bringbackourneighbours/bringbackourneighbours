@@ -1,13 +1,15 @@
 ---
-import Link from '../design/Link.astro';
-import { useUiTranslation } from '../util/use-ui-translation';
-import OverviewLayout from '../layouts/OverviewLayout.astro';
+import Accordion from '../design/Accordion.astro';
 import Address from '../components/Address.astro';
-import ExternalShortLink from '../components/ExternalShortLink.astro';
-import QrImage from '../design/QrImage.astro';
-import { DEFAULT_LANG, Languages } from '../util/languages';
 import CardButton from '../design/CardButton.astro';
+import ExternalShortLink from '../components/ExternalShortLink.astro';
+import Link from '../design/Link.astro';
+import OverviewLayout from '../layouts/OverviewLayout.astro';
 import Popover from '../design/Popover.astro';
+import QrImage from '../design/QrImage.astro';
+
+import { useUiTranslation } from '../util/use-ui-translation';
+import { DEFAULT_LANG, Languages } from '../util/languages';
 ---
 
 <html lang="en">
@@ -38,7 +40,9 @@ import Popover from '../design/Popover.astro';
 
     <h2>elements</h2>
 
+    <h3>CardButton</h3>
     <CardButton>CardButton</CardButton>
+    <h3>Popover</h3>
     <Popover>
       <span slot="button"> Click me pop </span>
       <div>
@@ -60,6 +64,32 @@ import Popover from '../design/Popover.astro';
         </ul>
       </div>
     </Popover>
+
+    <h3>Accordion</h3>
+    <Accordion>
+      <CardButton slot="summary">summary as slot</CardButton>
+      CONTENTS
+    </Accordion>
+
+    <Accordion
+      variant="secondary"
+      title="summary as input"
+      >CONTENTS</Accordion
+    >
+    <br />
+
+    <Accordion
+      variant="inverted-primary"
+      title="summary as input"
+      >CONTENTS</Accordion
+    >
+    <br />
+    <Accordion
+      variant="inverted-secondary"
+      title="summary as input"
+      >CONTENTS</Accordion
+    >
+    <br />
 
     <h2>QrCodes</h2>
 

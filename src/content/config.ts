@@ -122,6 +122,12 @@ const uiCollection = defineCollection({
       ur: z.string(),
       findTranslation: z.string().optional(),
     }),
+    shortLink: z
+      .object({
+        availableInOtherLanguages: z.string(),
+        notAvailableInCurrentLanguage: z.string(),
+      })
+      .optional(),
     wizard: z
       .object({
         isThereDangerQuestion: z.string(),

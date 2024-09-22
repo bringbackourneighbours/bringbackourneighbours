@@ -28,6 +28,10 @@
     "ur": "Urdu",
     "findTranslation": "Translation to English available"
   },
+  "shortLink": {
+    "availableInOtherLanguages": "This information is also available in other languages",
+    "notAvailableInCurrentLanguage": "This content is not available in this language"
+  },
   "wizard": {
     "isThereDangerQuestion": "Are you or someone else at risk of deportation?",
     "areYouInDangerQuestion": "Are you yourself at risk of deportation?",
