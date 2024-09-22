@@ -1,5 +1,6 @@
 import { z, defineCollection } from 'astro:content';
 import { SupportedLanguages, UnSupportedLanguages } from '../util/languages.ts';
+import { LinkTypes } from '../util/link-icon-type.ts';
 
 const translatableSchema = {
   identifier: z.string(),
@@ -76,7 +77,7 @@ const linksCollection = defineCollection({
       slug: z.string().optional(),
       url: z.string().optional(),
       title: z.string().optional(),
-      type: z.string().optional(), // TODO: PDF,WEB as literal
+      type: z.enum(LinkTypes).optional(), // TODO: PDF,WEB as literal
     }),
   ),
 });
