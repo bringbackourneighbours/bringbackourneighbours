@@ -1,46 +1,23 @@
 ---
 import { getEntry } from 'astro:content';
 
-import Icon from '../design/Icon.astro';
-import Link from '../design/Link.astro';
-import audioIcon from '../assets/icons/ion--volume-high.svg?raw';
-import docIcon from '../assets/icons/ion--document-text.svg?raw';
-import videoIcon from '../assets/icons/ion--film.svg?raw';
-import webIcon from '../assets/icons/ion--globe.svg?raw';
+import Accordion from '../design/Accordion.astro';
+import ExternalShortLinkAnchor from './ExternalShortLinkAnchor.astro';
 
 import {
   type LanguagesValue,
   SupportedLanguages,
   UnSupportedLanguages,
 } from '../util/languages';
-import { linkUrl } from '../../astro.config.mjs';
-import { type LinkTypes } from '../util/link-icon-type';
+
+import { useUiTranslation } from '../util/use-ui-translation';
 
 interface Props {
   identifier: string;
   lang?: LanguagesValue;
-  showAlternatives?: boolean;
 }
 
-const {
-  identifier,
-  lang = Astro.locals.lang,
-  showAlternatives = true,
-} = Astro.props;
-
-export const getIconForType = (type?: (typeof LinkTypes)[number]) => {
-  switch (type) {
-    case 'PDF':
-      return docIcon;
-    case 'VIDEO':
-      return videoIcon;
-    case 'AUDIO':
-      return audioIcon;
-    case 'WEB':
-    default:
-      return webIcon;
-  }
-};
+const { identifier, lang = Astro.locals.lang } = Astro.props;
 
 // FIXME: this seems needless... but without the type is not working. no idea why
 const getLink = async (identifier: string) =>
@@ -48,69 +25,37 @@ const getLink = async (identifier: string) =>
 
 const link = await getLink(identifier);
 
-let localizedLinkData = {
-  ...link?.data['all'],
-  ...link?.data[lang],
-};
-
 const alternativeLanguages = [...SupportedLanguages, ...UnSupportedLanguages]
   .filter((l) => l.valueOf() !== lang)
   .filter((l) => link?.data[l]);
-
-let iconHtml = getIconForType(localizedLinkData.type);
 ---
 
 <style>
-  .type {
-    --color-surface: var(--color-primary);
-
-    padding-inline-end: var(--vspace-4);
+  .alternatives {
+    padding-inline-start: var(--vspace);
   }
 </style>
 
-{
-  localizedLinkData?.url ? (
-    <Link
-      href={localizedLinkData.url}
+<Accordion variant="inverted-primary">
+  <div slot="summary">
+    <ExternalShortLinkAnchor
       lang={lang}
-      openInNewTab={true}
-    >
-      <span class="type">
-        <Icon
-          html={iconHtml}
-          size="1em"
-        />
-      </span>
-      {!Astro.locals.isPrint ? (
-        <>{`${localizedLinkData.title}`}</>
-      ) : (
-        <>{`${linkUrl}/${localizedLinkData.slug}`}</>
-      )}
-    </Link>
-  ) : (
-    <>
-      <p>
-        <em>LINK NOT FOUND.</em>
-      </p>
-    </>
-  )
-}
-
-{
-  showAlternatives && (
-    <>
-      <span> Diese Info gibt es auch in anderen Sprachen</span>
-      <ul>
-        {alternativeLanguages.map((l) => (
+      identifier={identifier}
+    />
+  </div>
+  <div class="alternatives">
+    <p>{useUiTranslation('shortLink.availableInOtherLanguages', lang)}</p>
+    <ul>
+      {
+        alternativeLanguages.map((l) => (
           <li>
-            <Astro.self
+            <ExternalShortLinkAnchor
               identifier={identifier}
               lang={l}
-              showAlternatives={false}
             />
           </li>
-        ))}
-      </ul>
-    </>
-  )
-}
+        ))
+      }
+    </ul>
+  </div>
+</Accordion>

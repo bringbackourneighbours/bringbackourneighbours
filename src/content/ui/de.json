@@ -17,6 +17,10 @@
     "copiedContentToClipboard": "Inhalt in Zwischenablage kopiert",
     "infosAgainstDeportation": "Hier gibt es mehr Infos, was du gegen eine Abschiebung tun kannst"
   },
+  "shortLink": {
+    "availableInOtherLanguages": "Diese Info gibt es auch in anderen Sprachen",
+    "notAvailableInCurrentLanguage": "Dieser Inhalt ist nicht in dieser Sprachen verfügbar"
+  },
   "languages": {
     "de": "Deutsch",
     "ar": "Arabisch",

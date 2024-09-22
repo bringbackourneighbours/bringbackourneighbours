@@ -1,32 +1,69 @@
 ---
 import chevronDown from '../assets/icons/ion--chevron-down.svg?raw';
 import Icon from './Icon.astro';
+
+import { type ColorVariants, invertColorVariant } from '../util/color-variants';
+
 interface Props {
-  title: string;
+  title?: string;
+  variant?: ColorVariants;
   open?: boolean;
 }
 
-const { title, open = Astro.locals.isPrint } = Astro.props;
+const { title, variant = 'primary', open = Astro.locals.isPrint } = Astro.props;
 ---
 
 <style>
+  .-primary {
+    --accordion-color: var(--color-primary);
+  }
+
+  .-inverted-primary {
+    --accordion-background-color: var(--color-primary);
+  }
+
+  .-secondary {
+    --accordion-color: var(--color-secondary);
+  }
+
+  .-inverted-secondary {
+    --accordion-background-color: var(--color-secondary);
+  }
+
+  .-primary,
+  .-secondary {
+    --accordion-background-color: var(--color-surface);
+    --accordion-padding: var(--vspace);
+    --accordion-content-color: var(--accordion-color);
+  }
+
+  .-inverted-primary,
+  .-inverted-secondary {
+    --accordion-color: var(--color-surface-dark);
+    --accordion-padding: 0;
+    --accordion-max-width: fit-content;
+    --accordion-content-color: var(--accordion-background-color);
+  }
+
   details {
-    border: calc(var(--size-border) * 2) solid var(--color-primary);
+    border: calc(var(--size-border) * 2) solid var(--accordion-color);
+    max-width: var(--accordion-max-width);
 
     &[open] {
-      .icon {
+      .chevron-icon {
         transform: rotate(180deg);
       }
     }
 
     summary {
-      padding: var(--vspace);
+      padding: var(--accordion-padding);
       list-style: none;
-      background-color: var(--color-primary);
-      color: var(--color-surface);
+      background-color: var(--accordion-color);
+      color: var(--accordion-background-color);
       display: flex;
       align-items: center;
       justify-content: space-between;
+      gap: var(--vspace);
 
       h3 {
         margin: 0;
@@ -34,17 +71,28 @@ const { title, open = Astro.locals.isPrint } = Astro.props;
     }
 
     article {
-      padding: var(--vspace);
+      padding: var(--accordion-padding);
+      color: var(--accordion-content-color);
     }
   }
 </style>
 
-<details open={open}>
+<details
+  open={open}
+  class={`-${variant}`}
+>
   <summary>
-    <h3>
-      {title}
-    </h3>
-    {!Astro.locals.isPrint && <Icon html={chevronDown} />}
+    {Astro.slots.has('summary') ? <slot name="summary" /> : <h3>{title}</h3>}
+    {
+      !Astro.locals.isPrint && (
+        <span class="chevron-icon">
+          <Icon
+            variant={invertColorVariant(variant)}
+            html={chevronDown}
+          />
+        </span>
+      )
+    }
   </summary>
   <article>
     <slot />

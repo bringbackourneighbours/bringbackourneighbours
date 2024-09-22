@@ -22,6 +22,10 @@
     "areYouInDangerQuestion": "هل أنت نفسك معرض لخطر الترحيل؟",
     "someoneElseInDangerQuestion": "هل ترغب في دعم شخص معرض لخطر الترحيل؟"
   },
+  "shortLink": {
+    "availableInOtherLanguages": "هذه المعلومات متاحة أيضاً بلغات أخرى",
+    "notAvailableInCurrentLanguage": "هذا المحتوى غير متوفر بهذه اللغة"
+  },
   "languages": {
     "de": "الألمانية",
     "ar": "العربية",
