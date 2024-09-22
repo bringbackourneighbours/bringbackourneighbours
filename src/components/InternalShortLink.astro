@@ -1,10 +1,9 @@
 ---
 import { type LanguagesValue } from '../util/languages';
 
-import Link from '../design/Link.astro';
+import ShortLink from '../design/ShortLink.astro';
 
 import { getFlatLinksEntries } from '../util/get-flat-links-entries';
-import { linkUrl } from '../../astro.config.mjs';
 
 interface Props {
   identifier: string;
@@ -20,22 +19,16 @@ const link = (await getFlatLinksEntries()).find((entry) => {
 
 {
   link?.url ? (
-    <Link
-      href={link.url}
+    <ShortLink
       lang={lang}
+      openInNewTab={false}
+      slug={link.slug}
+      title={link.title}
+      type={link.type}
+      url={link.url}
     >
       <slot />
-      {Astro.locals.isPrint &&
-        (Astro.slots.has('default') ? (
-          <>{` ${linkUrl}/${link.slug} `}</>
-        ) : (
-          <>{`${linkUrl}/${link.slug}`}</>
-        ))}
-
-      {!Astro.locals.isPrint && !Astro.slots.has('default') && (
-        <>{`${link.type}: ${link.title}`}</>
-      )}
-    </Link>
+    </ShortLink>
   ) : (
     <p>
       <em>LINK NOT FOUND.</em>

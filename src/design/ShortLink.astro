@@ -5,6 +5,7 @@ import audioIcon from '../assets/icons/ion--volume-high.svg?raw';
 import docIcon from '../assets/icons/ion--document-text.svg?raw';
 import videoIcon from '../assets/icons/ion--film.svg?raw';
 import webIcon from '../assets/icons/ion--globe.svg?raw';
+import bbonLogo from '../assets/logo.svg?raw';
 
 import type { LinkTypes } from '../util/link-icon-type';
 import type { LanguagesValue } from '../util/languages';
@@ -27,7 +28,10 @@ export const getIconForType = (type?: LinkTypes) => {
       return videoIcon;
     case 'AUDIO':
       return audioIcon;
-    // TODO: add KIT and FLYER
+    case 'FLYER':
+    case 'KIT':
+    case 'PAGE':
+      return bbonLogo;
     case 'WEB':
     default:
       return webIcon;
@@ -37,6 +41,10 @@ export const getIconForType = (type?: LinkTypes) => {
 const { slug, title, url, lang, openInNewTab, type } = Astro.props;
 
 let iconHtml = getIconForType(type);
+
+const slotText = (await Astro.slots.render('default')) || null;
+
+const label = slotText ?? title;
 ---
 
 <Link
@@ -44,11 +52,25 @@ let iconHtml = getIconForType(type);
   lang={lang}
   openInNewTab={openInNewTab}
 >
-  <span class="type">
-    <Icon
-      html={iconHtml}
-      size="1em"
-    />
-  </span>
-  {!Astro.locals.isPrint ? <>{`${title}`}</> : <>{`${linkUrl}/${slug}`}</>}
+  {
+    !slotText && (
+      <span class="type">
+        <Icon
+          html={iconHtml}
+          size="0.9em"
+        />
+      </span>
+    )
+  }
+
+  {
+    Astro.locals.isPrint &&
+      (Astro.slots.has('default') ? (
+        <>{` ${linkUrl}/${slug} `}</>
+      ) : (
+        <>{`${linkUrl}/${slug}`}</>
+      ))
+  }
+
+  {!Astro.locals.isPrint && <>{label}</>}
 </Link>

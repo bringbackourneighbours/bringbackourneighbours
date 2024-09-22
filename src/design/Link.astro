@@ -1,7 +1,8 @@
 ---
-import { type LanguagesValue } from '../util/languages';
 import Icon from './Icon.astro';
 import openIcon from '../assets/icons/ion--open.svg?raw';
+
+import { type LanguagesValue } from '../util/languages';
 
 interface Props {
   href?: string;
@@ -38,7 +39,7 @@ const rel = openInNewTab ? 'noopener noreferrer' : '';
     overflow-wrap: break-word;
 
     .new-tab {
-      /* this is for the logo: it needs to be primary */
+      /* this is for the bbonLogo: it needs to be primary */
       --color-surface: var(--color-primary);
     }
   }
@@ -47,7 +48,7 @@ const rel = openInNewTab ? 'noopener noreferrer' : '';
     color: var(--color-secondary);
 
     .new-tab {
-      /* this is for the logo: it needs to be primary */
+      /* this is for the bbonLogo: it needs to be primary */
       --color-surface: var(--color-secondary);
     }
   }
