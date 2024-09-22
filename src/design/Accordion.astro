@@ -43,17 +43,15 @@ const { title, variant = 'primary', open = Astro.locals.isPrint } = Astro.props;
     --accordion-padding: 0;
     --accordion-max-width: fit-content;
     --accordion-content-color: var(--accordion-background-color);
+
+    @media print {
+      --accordion-color: var(--color-surface);
+    }
   }
 
   details {
     border: calc(var(--size-border) * 2) solid var(--accordion-color);
     max-width: var(--accordion-max-width);
-
-    &[open] {
-      .chevron-icon {
-        transform: rotate(180deg);
-      }
-    }
 
     summary {
       padding: var(--accordion-padding);
@@ -70,10 +68,35 @@ const { title, variant = 'primary', open = Astro.locals.isPrint } = Astro.props;
       }
     }
 
+    /* accordions can be nested... but the styles will cascade */
+    /* stylelint-disable no-descending-specificity */
+    &[open] {
+      summary {
+        .chevron-icon {
+          transform: rotate(180deg);
+        }
+      }
+    }
+
     article {
       padding: var(--accordion-padding);
       color: var(--accordion-content-color);
+
+      details {
+        .chevron-icon {
+          /* accordions can be nested... but the styles will cascade */
+          transform: unset !important;
+        }
+
+        &[open] {
+          .chevron-icon {
+            /* accordions can be nested... but the styles will cascade */
+            transform: rotate(180deg) !important;
+          }
+        }
+      }
     }
+    /* stylelint-enable no-descending-specificity */
   }
 </style>
 
