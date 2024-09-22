@@ -1,0 +1,50 @@
+---
+import CardButton from './CardButton.astro';
+
+// TODO: we need random #id if we have many popovers
+// const randomIdPart = crypto.randomUUID();
+---
+
+<style>
+  #popover {
+    border: calc(var(--size-border) * 2) solid var(--color-secondary);
+    border-radius: calc(var(--shadow-0) * 0.5);
+    padding: var(--vspace-3);
+    background-color: var(--color-surface-dark);
+    color: var(--color-secondary-dark);
+    animation: fadein 0.5s;
+    position: absolute;
+    margin: 0;
+  }
+
+  @keyframes fadein {
+    from {
+      inset-inline-start: 100vh;
+      opacity: 0;
+    }
+
+    to {
+      opacity: 1;
+    }
+  }
+</style>
+
+<CardButton id="popover-button"><slot name="button" /></CardButton>
+<div
+  popover
+  id="popover"
+>
+  <div id="popover-content">
+    <slot />
+  </div>
+</div>
+<script>
+  const shareButton: HTMLElement = document.querySelector('#popover-button')!;
+  const sharePopover: HTMLElement = document.querySelector('#popover')!;
+
+  shareButton?.addEventListener('click', () => {
+    sharePopover.showPopover();
+    sharePopover.style.left = `${shareButton.offsetLeft + shareButton.clientWidth}px`;
+    sharePopover.style.top = `${shareButton.offsetTop}px`;
+  });
+</script>
