@@ -64,12 +64,12 @@ const label = slotText ?? title;
   }
 
   {
-    Astro.locals.isPrint &&
-      (Astro.slots.has('default') ? (
-        <>{` ${linkUrl}/${slug} `}</>
-      ) : (
-        <>{`${linkUrl}/${slug}`}</>
-      ))
+    Astro.locals.isPrint && (
+      <>
+        {slotText}
+        {` ${linkUrl}/${slug} `}
+      </>
+    )
   }
 
   {!Astro.locals.isPrint && <>{label}</>}
