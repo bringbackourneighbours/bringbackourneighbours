@@ -28,6 +28,8 @@ const link = await getLink(identifier);
 const alternativeLanguages = [...SupportedLanguages, ...UnSupportedLanguages]
   .filter((l) => l.valueOf() !== lang)
   .filter((l) => link?.data[l]);
+
+const showAlternatives = !(Astro.locals.isPrint && Astro.locals.isFlyer);
 ---
 
 <style>
@@ -43,19 +45,21 @@ const alternativeLanguages = [...SupportedLanguages, ...UnSupportedLanguages]
       identifier={identifier}
     />
   </div>
-  <div class="alternatives">
-    <p>{useUiTranslation('shortLink.availableInOtherLanguages', lang)}</p>
-    <ul>
-      {
-        alternativeLanguages.map((l) => (
-          <li>
-            <ExternalShortLinkAnchor
-              identifier={identifier}
-              lang={l}
-            />
-          </li>
-        ))
-      }
-    </ul>
-  </div>
+  {
+    showAlternatives && (
+      <div class="alternatives">
+        <p>{useUiTranslation('shortLink.availableInOtherLanguages', lang)}</p>
+        <ul>
+          {alternativeLanguages.map((l) => (
+            <li>
+              <ExternalShortLinkAnchor
+                identifier={identifier}
+                lang={l}
+              />
+            </li>
+          ))}
+        </ul>
+      </div>
+    )
+  }
 </Accordion>

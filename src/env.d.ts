@@ -10,6 +10,14 @@ declare namespace App {
      */
     isPrint: boolean;
     /**
+     * when set then this is a kit, so some things can be more verbose when printing
+     */
+    isKit: boolean;
+    /**
+     * when set then this is a flyer, so some things can be more compact when printing
+     */
+    isFlyer: boolean;
+    /**
      * the current context is in this language: all components can use this if not set explicitly
      */
     lang: import('./util/languages.ts').LanguagesValue;
