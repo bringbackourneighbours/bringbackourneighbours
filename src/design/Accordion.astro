@@ -1,6 +1,6 @@
 ---
-import chevronDown from '../assets/icons/ion--chevron-down.svg?raw';
 import Icon from './Icon.astro';
+import chevronDown from '../assets/icons/ion--chevron-down.svg?raw';
 
 import { type ColorVariants, invertColorVariant } from '../util/color-variants';
 
@@ -66,14 +66,20 @@ const { title, variant = 'primary', open = Astro.locals.isPrint } = Astro.props;
       h3 {
         margin: 0;
       }
+
+      .icons {
+        display: flex;
+      }
     }
 
     /* accordions can be nested... but the styles will cascade */
     /* stylelint-disable no-descending-specificity */
     &[open] {
       summary {
-        .chevron-icon {
-          transform: rotate(180deg);
+        .icons {
+          .chevron-icon {
+            transform: rotate(180deg);
+          }
         }
       }
     }
@@ -83,15 +89,19 @@ const { title, variant = 'primary', open = Astro.locals.isPrint } = Astro.props;
       color: var(--accordion-content-color);
 
       details {
-        .chevron-icon {
-          /* accordions can be nested... but the styles will cascade */
-          transform: unset !important;
+        .icons {
+          .chevron-icon {
+            /* accordions can be nested... but the styles will cascade */
+            transform: unset !important;
+          }
         }
 
         &[open] {
-          .chevron-icon {
-            /* accordions can be nested... but the styles will cascade */
-            transform: rotate(180deg) !important;
+          .icons {
+            .chevron-icon {
+              /* accordions can be nested... but the styles will cascade */
+              transform: rotate(180deg) !important;
+            }
           }
         }
       }
@@ -108,11 +118,18 @@ const { title, variant = 'primary', open = Astro.locals.isPrint } = Astro.props;
     {Astro.slots.has('summary') ? <slot name="summary" /> : <h3>{title}</h3>}
     {
       !Astro.locals.isPrint && (
-        <span class="chevron-icon">
-          <Icon
-            variant={invertColorVariant(variant)}
-            html={chevronDown}
-          />
+        <span class="icons">
+          {Astro.slots.has('extra-icon') && (
+            <span class="extra-icon">
+              <slot name="extra-icon" />
+            </span>
+          )}
+          <span class="chevron-icon">
+            <Icon
+              variant={invertColorVariant(variant)}
+              html={chevronDown}
+            />
+          </span>
         </span>
       )
     }
