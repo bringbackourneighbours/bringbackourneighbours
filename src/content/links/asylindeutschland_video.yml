@@ -12,10 +12,10 @@ fr:
   slug: videoentretien
   url: https://www.asylindeutschland.de/fr/film-3/
   title: L'asile en allemagne - l'entretien
-ar:
-  slug: videohearingar
-  url: https://www.asylindeutschland.de/ar/فيلم/
-  title: اللجوء في ألمانيا – جلسة الإستماع الى الحجج
+#ar:
+#  slug: videohearingar
+#  url: "https://www.asylindeutschland.de/ar/فيلم/"
+#  title: "اللجوء في ألمانيا – جلسة الإستماع الى الحجج"
 #TODO:
 #  ps: پښتو (Paschtu)
 #  ckb: سۆرانی (Sorani)
