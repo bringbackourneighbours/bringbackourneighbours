@@ -1,0 +1,34 @@
+all:
+  type: VIDEO
+de:
+  slug: videoanhoerung
+  url: https://www.asylindeutschland.de/de/film-2/
+  title: Video Asyl in Deutschland - Die Anhörung
+en:
+  slug: videohearing
+  url: https://www.asylindeutschland.de/en/film/
+  title: Video Asylum in Germany - The Hearing
+fr:
+  slug: videoentretien
+  url: https://www.asylindeutschland.de/fr/film-3/
+  title: L'asile en allemagne - l'entretien
+ar:
+  slug: videohearingar
+  url: https://www.asylindeutschland.de/ar/فيلم/
+  title: اللجوء في ألمانيا – جلسة الإستماع الى الحجج
+#TODO:
+#  ps: پښتو (Paschtu)
+#  ckb: سۆرانی (Sorani)
+#  ur: اردو (Urdu)
+#  sq: Shqipja (Albanisch)
+#  ar: العربية (Arabisch)
+#  sdh: Kurmancî (Kurmandschi)
+#  mk: македонски јазик (Mazedonisch)
+#  ti: ትግርኛ (Tigrinisch)
+#  bs: Bosanski (Bosnisch)
+#  fa: فارسی (Farsi)
+#  sr: Srpski (Serbisch)
+#  ru: Русский (Russisch)
+#  dari: درى (Dari)
+#  tr: Türkçe (Türkisch)
+#  so: Af-Soomaali (Somali)
