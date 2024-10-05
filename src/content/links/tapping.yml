@@ -1,0 +1,16 @@
+all:
+  type: VIDEO
+  slug: tapping
+  url: https://www.selfhelpfortrauma.org/
+de:
+  title: Selbsthilfe bei Trauma mit der Trauma Tapping Technik
+en:
+  title: Self-help for trauma with the Trauma Tapping Technique
+es:
+  title: Autoayuda para traumas con la técnica de tapping para traumas
+fr:
+  title: Auto-assistance en cas de traumatisme avec la technique du Trauma Tapping
+ar:
+  title: المساعدة الذاتية للصدمات النفسية باستخدام تقنية النقر على الصدمات النفسية
+fa:
+  title: خودیاری برای تروما با تکنیک ضربه زدن به تروما
