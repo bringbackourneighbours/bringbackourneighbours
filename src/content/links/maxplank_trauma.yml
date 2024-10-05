@@ -1,0 +1,20 @@
+all:
+  type: VIDEO
+  slug: flightandtrauma
+  url: https://www.youtube.com/playlist?list=PLGLgaqvZTv7DXMCiXv015bdSClrjgQZYz
+de:
+  title: Flucht und Trauma - Selbsthilfe
+en:
+  title: Flight and Trauma – Self Help
+es:
+  title: Escape y Trauma - autoayuda
+fr:
+  title: Fuite et Traumatisme - auto-assistance
+ar:
+  title: "اللجوء والصدمة: كيف تتعامل مع الضغوط النفسية ؟"
+fa:
+  title: "پرواز و صدمه - به خود کمک کردن"
+#ku:
+#  title: Koçberî ü şok - Alîkariya xweser
+#tr:
+#  title: Kaçış ve Travma - Kendi Kendine Yardım

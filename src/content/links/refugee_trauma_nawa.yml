@@ -1,0 +1,32 @@
+all:
+  type: AUDIO
+en:
+  slug: nawaen
+  title: Informations and exercises for traumatized persons
+  url: https://www.refugee-trauma.help/fuer-betroffene/erwachsene/englisch/
+de:
+  slug: nawade
+  title: Informationen und Übungen für traumatisierte Menschen
+  url: https://www.refugee-trauma.help/fuer-betroffene/erwachsene/deutsch/
+fr:
+  slug: nawafr
+  title: informations et exercises pour personnes traumatisées
+  url: https://www.refugee-trauma.help/fuer-betroffene/erwachsene/franzoesisch/
+ar:
+  slug: nawaar
+  type: PDF
+  title: معلومات وتمارين للأشخاص المصابين بصدمات نفسية
+  url: https://www.refugee-trauma.help/fileadmin/downloads/pdf/nawa/arabisch/nawa-arabisch-information-and-exercises.pdf
+fa:
+  slug: nawafa
+  title: دانش و راهنمایی برای آسیب دیدگان روانی
+  url: https://www.refugee-trauma.help/fuer-betroffene/erwachsene/farsi/
+tr:
+  slug: nawatr
+  title: travma yaþamýþ insanlar için bilgilendirme ve alýþtýrma kurslarý
+  url: https://www.refugee-trauma.help/fuer-betroffene/erwachsene/tuerkisch/
+#ku:
+#  slug: nawa
+#  title: Zanyarî û rêanîn ji bo mirovên hatî trawma kirin
+#  url: https://www.refugee-trauma.help/fuer-betroffene/erwachsene/kurdisch-kurmanci/
+#  shqiptare, српско-корејски, босански, தமிழ், سورانی  https://www.refugee-trauma.help/

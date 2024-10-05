@@ -1,0 +1,38 @@
+all:
+  type: PDF
+de:
+  slug: whode
+  url: https://iris.who.int/bitstream/handle/10665/331901/9789240003910-ger.pdf
+  title: "Gut mit Stress und Belastungen umgehen: Ein illustriertes Übungsbuch"
+en:
+  slug: whoen
+  url: https://iris.who.int/bitstream/handle/10665/331901/9789240003910-eng.pdf
+  title: "Doing What Matters in Times of Stress: An Illustrated Guide"
+fr:
+  slug: whofr
+  url: https://iris.who.int/bitstream/handle/10665/336217/9789240009646-fre.pdf
+  title: "Faire ce qui compte en période de stress : Un guide illustré"
+ar:
+  slug: whoar
+  url: https://iris.who.int/bitstream/handle/10665/331901/9789240011670-ara.pdf
+  title: "التعامل الجيد مع التوتر والإجهاد: كتاب عمل مصور"
+fa:
+  slug: whofa
+  url: https://iris.who.int/bitstream/handle/10665/331901/9789240003910-prs.pdf
+  title: "انجام آنچه در زمان استرس مهم است: راهنمای مصور"
+ur:
+  slug: whour
+  url: https://iris.who.int/bitstream/handle/10665/331901/9789240003910-urd.pdf
+  title: "تناؤ کے وقت میں کیا فرق پڑتا ہے: ایک تصویری گائیڈ"
+ka:
+  slug: whoka
+  url: https://iris.who.int/bitstream/handle/10665/331901/9789240003910-geo.pdf
+  title: "ვაკეთოთ ის, რაც მნიშვნელოვანია სტრესის ჟამს: დასურათებული სახელმძღვანელო"
+es:
+  slug: whoes
+  url: https://iris.who.int/bitstream/handle/10665/336218/9789240009561-spa.pdf
+  title: "En tiempos de estrés, haz lo que importa: Una guía ilustrada"
+tr:
+  slug: whotr
+  url: https://iris.who.int/bitstream/handle/10665/333917/WHO-EURO-2020-361-40096-54908-tur.pdf
+  title: "Stresli anlarda ne yapmalı?: resimli rehber"
