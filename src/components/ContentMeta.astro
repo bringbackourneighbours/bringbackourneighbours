@@ -1,0 +1,25 @@
+---
+import type { StandaloneCollections } from '../util/get-static-paths';
+import type { CollectionEntry } from 'astro:content';
+
+import LanguageChip from '../design/LanguageChip.astro';
+import Timestamp from '../design/Timestamp.astro';
+
+interface Props {
+  entry: CollectionEntry<StandaloneCollections>;
+}
+
+const { entry } = Astro.props;
+---
+
+<p>
+  <LanguageChip
+    lang={entry.data.lang}
+    currentLang="de"
+  />
+  –
+  <Timestamp
+    lang={entry.data.lang}
+    lastChecked={entry.data.lastChecked}
+  />
+</p>
