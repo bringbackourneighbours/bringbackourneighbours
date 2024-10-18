@@ -30,7 +30,10 @@ const { entry } = Astro.props;
       <p>{entry.data.germanTitle}</p>
       <h1>{entry.data.title}</h1>
       <p>
-        <Timestamp entry={entry} />
+        <Timestamp
+          lang={entry.data.lang}
+          lastChecked={entry.data.lastChecked}
+        />
       </p>
     </hgroup>
 

@@ -1,10 +1,17 @@
 ---
+import { type LanguagesValue } from '../util/languages.ts';
+
 import { useUiTranslation } from '../util/use-ui-translation';
 
-const { entry } = Astro.props;
+interface Props {
+  lastChecked: Date;
+  lang: LanguagesValue;
+}
+
+const { lastChecked, lang } = Astro.props;
 ---
 
-{useUiTranslation('meta.updated', entry.data.lang)}
-<time datetime={entry.data.lastChecked.toISOString()}
-  >{entry.data.lastChecked.toLocaleDateString(entry.data.lang)}</time
+{useUiTranslation('meta.updated', lang)}
+<time datetime={lastChecked.toISOString()}
+  >{lastChecked.toLocaleDateString(lang)}</time
 >

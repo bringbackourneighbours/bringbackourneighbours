@@ -1,8 +1,11 @@
 ---
 import { type LanguagesValue } from '../util/languages';
+
 import { getCollection } from 'astro:content';
+
 import Accordion from '../design/Accordion.astro';
 import InternalShortLink from './InternalShortLink.astro';
+import ContentMeta from './ContentMeta.astro';
 
 interface Props {
   identifier: string;
@@ -29,9 +32,8 @@ const blockEntries = await getCollection('flyers', (block) => {
 <Accordion title={`Weitere Informationen zu: "${blockEntries[0].data.title}"`}>
   <slot />
   <div class="meta-section">
-    Diesen Abschnitt findest du auch einzeln im <InternalShortLink
-      identifier={identifier}
-    />
-    <!--TODO: add header-meta-->
+    Diesen Abschnitt findest du auch einzeln im
+    <InternalShortLink identifier={identifier} />
+    <ContentMeta entry={blockEntries[0]} />
   </div>
 </Accordion>

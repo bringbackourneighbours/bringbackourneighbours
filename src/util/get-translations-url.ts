@@ -6,10 +6,9 @@ import {
 } from './get-canonical-url.ts';
 import { SupportedLanguages, type LanguagesValue } from './languages.ts';
 import { getAbsoluteUrl } from './get-absolute-url.ts';
+import type { StandaloneCollections } from './get-static-paths.ts';
 
-export async function getTranslationsUrls<
-  T extends 'kits' | 'flyers' | 'pages',
->(
+export async function getTranslationsUrls<T extends StandaloneCollections>(
   collection: T,
   lang: LanguagesValue,
   identifier: string,
