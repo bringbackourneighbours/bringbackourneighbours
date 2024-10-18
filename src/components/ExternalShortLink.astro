@@ -40,31 +40,38 @@ const showAlternatives = !(Astro.locals.isPrint && Astro.locals.isFlyer);
   }
 </style>
 
-<Accordion variant="inverted-primary">
-  <div slot="summary">
+{
+  0 === alternativeLanguages.length ? (
     <ExternalShortLinkAnchor
       lang={lang}
       identifier={identifier}
     />
-  </div>
-  <div slot="extra-icon">
-    <Icon html={languageIcon} />
-  </div>
-  {
-    showAlternatives && (
-      <div class="alternatives">
-        <p>{useUiTranslation('shortLink.availableInOtherLanguages', lang)}</p>
-        <ul>
-          {alternativeLanguages.map((l) => (
-            <li>
-              <ExternalShortLinkAnchor
-                identifier={identifier}
-                lang={l}
-              />
-            </li>
-          ))}
-        </ul>
+  ) : (
+    <Accordion variant="inverted-primary">
+      <div slot="summary">
+        <ExternalShortLinkAnchor
+          lang={lang}
+          identifier={identifier}
+        />
       </div>
-    )
-  }
-</Accordion>
+      <div slot="extra-icon">
+        <Icon html={languageIcon} />
+      </div>
+      {showAlternatives && (
+        <div class="alternatives">
+          <p>{useUiTranslation('shortLink.availableInOtherLanguages', lang)}</p>
+          <ul>
+            {alternativeLanguages.map((l) => (
+              <li>
+                <ExternalShortLinkAnchor
+                  identifier={identifier}
+                  lang={l}
+                />
+              </li>
+            ))}
+          </ul>
+        </div>
+      )}
+    </Accordion>
+  )
+}
