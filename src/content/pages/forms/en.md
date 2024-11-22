@@ -28,4 +28,4 @@ This follow-up application should only be used if there is no lawyer or counsell
 
 ## Person of trust for detention pending deportation
 
-Persons affected by detention pending deportation can appoint a so-called person of trust in addition to or instead of a lawyer. The person of trust supports the person who is often unable to organise much in the deportation prison themselves. They can also lodge complaints against the detention centre on behalf of those affected and inspect files. The deportation detention contact group in Dresden provides voluntary counselling in deportation detention and is happy to provide support.
+Persons affected by detention pending deportation can appoint a so-called person of trust. The person of trust supports the person who is often unable to organise much in the deportation prison themselves. They can also lodge complaints against the detention centre on behalf of those affected and inspect files. The deportation detention contact group in Dresden provides voluntary counselling in deportation detention and is happy to provide support.
