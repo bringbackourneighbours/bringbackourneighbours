@@ -1,0 +1,16 @@
+all:
+  slug: sfraudio
+  type: AUDIO
+  url: https://www.saechsischer-fluechtlingsrat.de/de/audioinfo/
+de:
+  title: Informationen zu verschiedenen asyl- und aufenthaltsrechtlichen relevanten Themen zum Anhören
+ar:
+  title: معلومات عن مختلف الموضوعات ذات الصلة بقانون اللجوء والإقامة للاستشارة
+fa:
+  title:  'به اطلاعات در مورد موضوعات مختلف مربوط به قانون پناهندگی و اقامت گوش دهید'
+ka:
+  title: 'მოუსმინეთ ინფორმაციას თავშესაფრისა და ბინადრობის კანონთან დაკავშირებული სხვადასხვა თემების შესახებ'
+ur:
+  title: 'پناہ اور رہائش کے قانون سے متعلق مختلف موضوعات پر معلومات سنیں۔'
+es:
+  title: Información sobre diversos temas relacionados con el Derecho de asilo y residencia para consulta
