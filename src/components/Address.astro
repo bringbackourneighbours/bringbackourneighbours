@@ -3,6 +3,7 @@ import { type LanguagesValue } from '../util/languages';
 import { getEntry } from 'astro:content';
 import Link from '../design/Link.astro';
 import ExternalShortLink from './ExternalShortLink.astro';
+import NotFoundError from '../design/NotFoundError.astro';
 
 interface Props {
   identifier: string;
@@ -39,138 +40,135 @@ const address = await getAddress(identifier);
   }
 </style>
 
-<address>
-  <strong>{address?.data.name}</strong><br />
-  {
-    showLocation && (
+{
+  address ? (
+    <address>
       <>
-        {address?.data.additional && (
-          <>
-            {address?.data.additional}
-            <br />
-          </>
-        )}
-        {address?.data.streetLine && (
-          <>
-            {address?.data.streetLine}
-            <br />
-          </>
-        )}
-        {address?.data.zip && <>{address?.data.zip + ' '}</>}
-        {address?.data.city && <>{address?.data.city}</>}
-        {(address?.data.zip || address?.data.city) && (
-          <>
-            <br />
-          </>
-        )}
-      </>
-    )
-  }
-
-  {
-    showContact && (
-      <>
-        {address?.data.phone && (
-          <>
-            {address?.data.phone}
-            <br />
-          </>
-        )}
-
-        {address?.data.mail && (
-          <>
-            <Link href={`mailto:${address?.data.mail}`}>
-              {address?.data.mail}
-            </Link>
-            <br />
-          </>
-        )}
-      </>
-    )
-  }
-
-  {
-    showWeb && (
-      <>
-        {address?.data.url && (
-          <>
-            <Link
-              href={address?.data.url}
-              openInNewTab={true}
-            />
-            <br />
-          </>
-        )}
-
-        {address?.data.facebook && (
-          <>
-            Facebook:
-            <Link
-              href={`https://www.facebook.com/${address?.data.facebook}`}
-              openInNewTab={true}
-            >
-              @{address?.data.facebook}
-            </Link>
-            <br />
-          </>
-        )}
-        {address?.data.instagram && (
-          <>
-            Instagram:
-            <Link
-              href={`https://instagram.com/${address?.data.instagram}`}
-              openInNewTab={true}
-            >
-              @{address?.data.instagram}
-            </Link>
-            <br />
-          </>
-        )}
-        {address?.data.telegram && (
-          <>
-            Telegram:
-            <Link
-              href={`https://t.me/${address?.data.telegram}`}
-              openInNewTab={true}
-            >
-              @{address?.data.telegram}
-            </Link>
-            <br />
-          </>
-        )}
-      </>
-    )
-  }
-  {
-    address?.data.twitter && (
-      <>
-        twitter/X:
-        <Link
-          href={`https://twitter.com/${address?.data.twitter}`}
-          openInNewTab={true}
-        >
-          @{address?.data.twitter}
-        </Link>
+        <strong>{address?.data.name}</strong>
         <br />
       </>
-    )
-  }
+      {showLocation && (
+        <>
+          {address?.data.additional && (
+            <>
+              {address?.data.additional}
+              <br />
+            </>
+          )}
+          {address?.data.streetLine && (
+            <>
+              {address?.data.streetLine}
+              <br />
+            </>
+          )}
+          {address?.data.zip && <>{address?.data.zip + ' '}</>}
+          {address?.data.city && <>{address?.data.city}</>}
+          {(address?.data.zip || address?.data.city) && (
+            <>
+              <br />
+            </>
+          )}
+        </>
+      )}
 
-  {
-    showBbon && address?.data.bbon && (
-      <>
-        <ExternalShortLink identifier={address.data.bbon} />
-        <br />
-      </>
-    )
-  }
+      {showContact && (
+        <>
+          {address?.data.phone && (
+            <>
+              {address?.data.phone}
+              <br />
+            </>
+          )}
 
-  {
-    showNotes && address?.data.translatedNotes?.[lang] && (
-      <>
-        {address?.data.translatedNotes?.[lang]}
-        <br />
-      </>
-    )
-  }
-</address>
+          {address?.data.mail && (
+            <>
+              <Link href={`mailto:${address?.data.mail}`}>
+                {address?.data.mail}
+              </Link>
+              <br />
+            </>
+          )}
+        </>
+      )}
+
+      {showWeb && (
+        <>
+          {address?.data.url && (
+            <>
+              <Link
+                href={address?.data.url}
+                openInNewTab={true}
+              />
+              <br />
+            </>
+          )}
+
+          {address?.data.facebook && (
+            <>
+              Facebook:
+              <Link
+                href={`https://www.facebook.com/${address?.data.facebook}`}
+                openInNewTab={true}
+              >
+                @{address?.data.facebook}
+              </Link>
+              <br />
+            </>
+          )}
+          {address?.data.instagram && (
+            <>
+              Instagram:
+              <Link
+                href={`https://instagram.com/${address?.data.instagram}`}
+                openInNewTab={true}
+              >
+                @{address?.data.instagram}
+              </Link>
+              <br />
+            </>
+          )}
+          {address?.data.telegram && (
+            <>
+              Telegram:
+              <Link
+                href={`https://t.me/${address?.data.telegram}`}
+                openInNewTab={true}
+              >
+                @{address?.data.telegram}
+              </Link>
+              <br />
+            </>
+          )}
+        </>
+      )}
+      {address?.data.twitter && (
+        <>
+          twitter/X:
+          <Link
+            href={`https://twitter.com/${address?.data.twitter}`}
+            openInNewTab={true}
+          >
+            @{address?.data.twitter}
+          </Link>
+          <br />
+        </>
+      )}
+
+      {showBbon && address?.data.bbon && (
+        <>
+          <ExternalShortLink identifier={address.data.bbon} />
+          <br />
+        </>
+      )}
+
+      {showNotes && address?.data.translatedNotes?.[lang] && (
+        <>
+          {address?.data.translatedNotes?.[lang]}
+          <br />
+        </>
+      )}
+    </address>
+  ) : (
+    <NotFoundError context={`address/${identifier}/${lang}`} />
+  )
+}

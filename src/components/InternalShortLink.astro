@@ -4,6 +4,7 @@ import { type LanguagesValue } from '../util/languages';
 import ShortLink from '../design/ShortLink.astro';
 
 import { getFlatLinksEntries } from '../util/get-flat-links-entries';
+import NotFoundError from '../design/NotFoundError.astro';
 
 interface Props {
   identifier: string;
@@ -30,8 +31,6 @@ const link = (await getFlatLinksEntries()).find((entry) => {
       <slot />
     </ShortLink>
   ) : (
-    <p>
-      <em>LINK NOT FOUND.</em>
-    </p>
+    <NotFoundError context={`InternalShortLink/${identifier}/${lang}`} />
   )
 }

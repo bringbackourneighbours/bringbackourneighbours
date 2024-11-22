@@ -3,6 +3,7 @@ import type { StandaloneCollections } from '../util/get-static-paths';
 import { type LanguagesValue } from '../util/languages';
 import { getCollection } from 'astro:content';
 import MarkdownEntry from '../design/MarkdownEntry.astro';
+import NotFoundError from '../design/NotFoundError.astro';
 
 interface Props {
   identifier: string;
@@ -21,4 +22,10 @@ const blockEntries = await getCollection(collection, (block) => {
 });
 ---
 
-<MarkdownEntry rendered={blockEntries[0].render()} />
+{
+  blockEntries[0] ? (
+    <MarkdownEntry rendered={blockEntries[0].render()} />
+  ) : (
+    <NotFoundError context={`${collection}/${identifier}/${lang}`} />
+  )
+}
