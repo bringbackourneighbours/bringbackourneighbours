@@ -13,9 +13,10 @@
     "forms": "Templates and forms to print out",
     "share": "share",
     "sharedLinkToClipboard": "Link copied to clipboard",
-    "copy": "Text kopieren",
-    "copiedContentToClipboard": "Inhalt in Zwischenablage kopiert",
-    "infosAgainstDeportation": "Here you can find more information on what you can do to prevent a deportation"
+    "copy": "copy text",
+    "copiedContentToClipboard": "Content copied to clipboard",
+    "infosAgainstDeportation": "Here you can find more information on what you can do to prevent a deportation",
+    "machineTranslation": "This section has been automatically translated and may contain translation errors. Please let us know if you have any suggestions for improvement."
   },
   "languages": {
     "de": "German",
