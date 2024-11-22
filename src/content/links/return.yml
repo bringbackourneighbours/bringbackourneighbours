@@ -1,0 +1,18 @@
+all:
+  slug: return
+  type: WEB
+de: 
+  title: "Informationsportal zu freiwilliger Rückkehr und Reintegration"
+  url: https://www.returningfromgermany.de/de/
+en: 
+  title: "Information portal on voluntary return and reintegration"
+  url: https://www.returningfromgermany.de/en/
+fr: 
+  title: "Portail d'information sur le retour volontaire et la réintégration"
+  url: https://www.returningfromgermany.de/fr/
+ar: 
+  title: "بوابة معلومات عن العودة الطوعية وإعادة الإدماج"
+  url: https://www.returningfromgermany.de/ar/
+fa: 
+  title: "پورتال اطلاعات در مورد بازگشت داوطلبانه و ادغام"
+  url: https://www.returningfromgermany.de/fa/
