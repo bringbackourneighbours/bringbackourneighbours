@@ -5,6 +5,7 @@ import Accordion from '../design/Accordion.astro';
 import ExternalShortLinkAnchor from './ExternalShortLinkAnchor.astro';
 import Icon from '../design/Icon.astro';
 import languageIcon from '../assets/icons/ion--language.svg?raw';
+import NotFoundError from '../design/NotFoundError.astro';
 
 import {
   type LanguagesValue,
@@ -39,39 +40,46 @@ const showAlternatives = !(Astro.locals.isPrint && Astro.locals.isFlyer);
     padding-inline-start: var(--vspace);
   }
 </style>
-
 {
-  0 === alternativeLanguages.length ? (
-    <ExternalShortLinkAnchor
-      lang={lang}
-      identifier={identifier}
-    />
-  ) : (
-    <Accordion variant="inverted-primary">
-      <div slot="summary">
+  link ? (
+    <>
+      {0 === alternativeLanguages.length ? (
         <ExternalShortLinkAnchor
           lang={lang}
           identifier={identifier}
         />
-      </div>
-      <div slot="extra-icon">
-        <Icon html={languageIcon} />
-      </div>
-      {showAlternatives && (
-        <div class="alternatives">
-          <p>{useUiTranslation('shortLink.availableInOtherLanguages', lang)}</p>
-          <ul>
-            {alternativeLanguages.map((l) => (
-              <li>
-                <ExternalShortLinkAnchor
-                  identifier={identifier}
-                  lang={l}
-                />
-              </li>
-            ))}
-          </ul>
-        </div>
+      ) : (
+        <Accordion variant="inverted-primary">
+          <div slot="summary">
+            <ExternalShortLinkAnchor
+              lang={lang}
+              identifier={identifier}
+            />
+          </div>
+          <div slot="extra-icon">
+            <Icon html={languageIcon} />
+          </div>
+          {showAlternatives && (
+            <div class="alternatives">
+              <p>
+                {useUiTranslation('shortLink.availableInOtherLanguages', lang)}
+              </p>
+              <ul>
+                {alternativeLanguages.map((l) => (
+                  <li>
+                    <ExternalShortLinkAnchor
+                      identifier={identifier}
+                      lang={l}
+                    />
+                  </li>
+                ))}
+              </ul>
+            </div>
+          )}
+        </Accordion>
       )}
-    </Accordion>
+    </>
+  ) : (
+    <NotFoundError context={`ExternalShortLink/${identifier}/${lang}`} />
   )
 }

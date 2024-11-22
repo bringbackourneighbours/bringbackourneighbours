@@ -1,0 +1,28 @@
+---
+interface Props {
+  context: string;
+}
+
+const { context } = Astro.props;
+---
+
+<style>
+  .error {
+    background-color: deeppink;
+    color: white;
+    text-align: center;
+    padding: var(--vspace);
+  }
+</style>
+
+<pre
+  class="error">
+NOT FOUND NOT FOUND NOT FOUND
+Content {context} could not found.
+
+Please inform: info@bringbackourneighbours.de
+
+Or fix it yourself:
+
+https://github.com/bringbackourneighbours/bringbackourneighbours
+</pre>
