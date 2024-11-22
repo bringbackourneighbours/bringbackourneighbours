@@ -1,18 +1,24 @@
 all:
   slug: wcu
   type: WEB
-  title: "We'll come United"
 en:
+  title: "We'll come united - en"
   url: https://www.welcome-united.org/en/
 ar:
+  title: "We'll come united - ar"
   url: https://www.welcome-united.org/ar/
 fa:
+  title: "We'll come united - fa"
   url: https://www.welcome-united.org/fa/
 de:
+  title: "We'll come united - de"
   url: https://www.welcome-united.org/de/
 fr:
+  title: "We'll come united - fr"
   url: https://www.welcome-united.org/fr/
 es:
+  title: "We'll come united - es"
   url: https://www.welcome-united.org/es/
 tr:
+  title: "We'll come united - tr"
   url: https://www.welcome-united.org/tr/
