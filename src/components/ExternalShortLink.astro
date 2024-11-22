@@ -37,7 +37,14 @@ const showAlternatives = !(Astro.locals.isPrint && Astro.locals.isFlyer);
 
 <style>
   .alternatives {
-    padding-inline-start: var(--vspace);
+    padding-block-start: var(--vspace-3);
+    padding-inline: var(--vspace-3) var(--vspace-3);
+
+    em {
+      display: block;
+      text-align: center;
+      padding-block-end: var(--vspace-3);
+    }
   }
 </style>
 {
@@ -61,9 +68,9 @@ const showAlternatives = !(Astro.locals.isPrint && Astro.locals.isFlyer);
           </div>
           {showAlternatives && (
             <div class="alternatives">
-              <p>
+              <em>
                 {useUiTranslation('shortLink.availableInOtherLanguages', lang)}
-              </p>
+              </em>
               <ul>
                 {alternativeLanguages.map((l) => (
                   <li>
