@@ -108,6 +108,7 @@ const uiCollection = defineCollection({
         share: z.string(),
         sharedLinkToClipboard: z.string(),
         copy: z.string(),
+        downloadPdf: z.string(),
         copiedContentToClipboard: z.string(),
         infosAgainstDeportation: z.string(),
         machineTranslation: z.string(),

@@ -14,6 +14,7 @@ import {
   getCanonicalUrlToKit,
   getCanonicalUrlToPage,
 } from '../util/get-canonical-url';
+import { useUiTranslation } from '../util/use-ui-translation';
 
 interface Props<T extends StandaloneCollections> {
   collection: T;
@@ -87,7 +88,7 @@ const canonicalUrl = await getCanonicalUrlFn(
         smaller
         href={printUrl}
       >
-        Download als PDF
+        {useUiTranslation('meta.downloadPdf', entry.data.lang)}
       </CardLink>
     )
   }
