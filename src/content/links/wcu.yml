@@ -1,7 +1,7 @@
 all:
   slug: wcu
   type: web
-  title: We'll come United
+  title: "We'll come United"
 en:
   url: https://www.welcome-united.org/en/
 ar:
@@ -15,4 +15,4 @@ fr:
 es:
   url: https://www.welcome-united.org/es/
 tr:
-  title: https://www.welcome-united.org/tr/
+  url: https://www.welcome-united.org/tr/
