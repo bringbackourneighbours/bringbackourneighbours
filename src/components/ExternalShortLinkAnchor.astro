@@ -27,12 +27,13 @@ let localizedLinkData = {
 ---
 
 <style>
-  .type {
-    padding-inline-end: var(--vspace-4);
+  em {
+    text-align: center;
+    display: block;
   }
 </style>
 {
-  localizedLinkData?.url ? (
+  localizedLinkData?.url && localizedLinkData?.title ? (
     <>
       <ShortLink
         lang={lang}
@@ -50,8 +51,6 @@ let localizedLinkData = {
       )}
     </>
   ) : (
-    <>
-      <p>{useUiTranslation('shortLink.notAvailableInCurrentLanguage', lang)}</p>
-    </>
+    <em>{useUiTranslation('shortLink.notAvailableInCurrentLanguage', lang)}</em>
   )
 }

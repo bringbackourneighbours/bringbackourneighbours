@@ -2,12 +2,13 @@
 import { type CollectionEntry } from 'astro:content';
 
 import { getStaticPathsForKits } from '../../util/get-static-paths';
-import PrintLayout from '../../layouts/PrintLayout.astro';
-import MarkdownEntry from '../../design/MarkdownEntry.astro';
+
+import Block from '../../components/Block.astro';
+import Imprint from '../../design/Imprint.astro';
 import Logo from '../../design/Logo.astro';
+import PrintLayout from '../../layouts/PrintLayout.astro';
 import PrinterPage from '../../design/PrinterPage.astro';
 import Timestamp from '../../design/Timestamp.astro';
-import Imprint from '../../design/Imprint.astro';
 
 interface Props {
   entry: CollectionEntry<'kits'>;
@@ -46,6 +47,9 @@ const { entry } = Astro.props;
     <Imprint lang={entry.data.lang} />
   </PrinterPage>
   <PrinterPage breakBefore={true}>
-    <MarkdownEntry rendered={entry.render()} />
+    <Block
+      identifier={entry.data.identifier}
+      collection="kits"
+    />
   </PrinterPage>
 </PrintLayout>

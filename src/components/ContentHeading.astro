@@ -2,10 +2,10 @@
 import type { CollectionEntry } from 'astro:content';
 import type { StandaloneCollections } from '../util/get-static-paths';
 
+import Block from './Block.astro';
 import CardLink from '../design/CardLink.astro';
 import ContentMeta from './ContentMeta.astro';
 import CopyButton from '../design/CopyButton.astro';
-import MarkdownEntry from '../design/MarkdownEntry.astro';
 import ShareButton from '../design/ShareButton.astro';
 
 import { Languages } from '../util/languages';
@@ -14,6 +14,7 @@ import {
   getCanonicalUrlToKit,
   getCanonicalUrlToPage,
 } from '../util/get-canonical-url';
+import { useUiTranslation } from '../util/use-ui-translation';
 
 interface Props<T extends StandaloneCollections> {
   collection: T;
@@ -74,7 +75,10 @@ const canonicalUrl = await getCanonicalUrlFn(
   />
   <CopyButton>
     <h1>{entry.data.title}</h1>
-    <MarkdownEntry rendered={entry.render()} />
+    <Block
+      identifier={entry.data.identifier}
+      collection={collection}
+    />
   </CopyButton>
 
   {
@@ -84,7 +88,7 @@ const canonicalUrl = await getCanonicalUrlFn(
         smaller
         href={printUrl}
       >
-        Download als PDF
+        {useUiTranslation('meta.downloadPdf', entry.data.lang)}
       </CardLink>
     )
   }

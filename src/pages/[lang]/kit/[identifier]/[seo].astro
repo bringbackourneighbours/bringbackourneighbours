@@ -1,10 +1,10 @@
 ---
 import { type CollectionEntry } from 'astro:content';
 
+import Block from '../../../../components/Block.astro';
 import ContentHeading from '../../../../components/ContentHeading.astro';
 import ContentLayout from '../../../../layouts/ContentLayout.astro';
 import LanguageSwitcher from '../../../../design/LanguageSwitcher.astro';
-import MarkdownEntry from '../../../../design/MarkdownEntry.astro';
 import TableOfContents from '../../../../design/TableOfContents.astro';
 
 import { getCanonicalUrlToKit } from '../../../../util/get-canonical-url';
@@ -52,5 +52,8 @@ const translationSlugs = await getTranslationsUrlsForKit(
   />
   <TableOfContents rendered={entry.render()} />
 
-  <MarkdownEntry rendered={entry.render()} />
-</ContentLayout>
+  <Block
+    identifier={entry.data.identifier}
+    collection="kits"
+  /></ContentLayout
+>

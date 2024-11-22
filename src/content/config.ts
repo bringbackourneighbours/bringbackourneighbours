@@ -6,6 +6,7 @@ const translatableSchema = {
   identifier: z.string(),
   lang: z.enum(SupportedLanguages),
   fallback: z.enum(SupportedLanguages).optional(),
+  machineTranslation: z.boolean().optional(),
 };
 
 const i18nUrlSchema = {
@@ -107,8 +108,10 @@ const uiCollection = defineCollection({
         share: z.string(),
         sharedLinkToClipboard: z.string(),
         copy: z.string(),
+        downloadPdf: z.string(),
         copiedContentToClipboard: z.string(),
         infosAgainstDeportation: z.string(),
+        machineTranslation: z.string(),
       })
       .optional(),
     languages: z.object({

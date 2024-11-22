@@ -1,21 +1,23 @@
 {
   "meta": {
-    "title": "Bring Back Our Neighbours",
-    "subtitle": "Gemeinsam solidarisch gegen die sächsische Abschiebepolitik",
-    "updated": "Zuletzt aktualisiert: ",
-    "imprint": "Impressum",
-    "moreInfo": "Weitere Informationen",
     "allFlyers": "Alle Flyer",
     "allKits": "Alle Notfallkoffer",
     "contacts": "Kontakte zu Verantwortlichen & Unterstützer*innen",
-    "publicity": "Tipps für Öffentlichkeitsarbeit",
-    "material": "Druck-Sammel-Seite",
+    "copiedContentToClipboard": "Inhalt in Zwischenablage kopiert",
+    "copy": "Text kopieren",
+    "downloadPdf": "Download als PDF",
     "forms": "Vorlagen und Formulare zum Ausdrucken",
+    "imprint": "Impressum",
+    "infosAgainstDeportation": "Hier gibt es mehr Infos, was du gegen eine Abschiebung tun kannst",
+    "machineTranslation": "Dieser Abschnitt wurden automatisch übersetzt und enthält vielleicht Übersetzungsfehler. Bitte informiere uns, wenn du Verbesserungsvorschläge hast.",
+    "material": "Druck-Sammel-Seite",
+    "moreInfo": "Weitere Informationen",
+    "publicity": "Tipps für Öffentlichkeitsarbeit",
     "share": "Teilen",
     "sharedLinkToClipboard": "Link in Zwischenablage kopiert",
-    "copy": "Text kopieren",
-    "copiedContentToClipboard": "Inhalt in Zwischenablage kopiert",
-    "infosAgainstDeportation": "Hier gibt es mehr Infos, was du gegen eine Abschiebung tun kannst"
+    "subtitle": "Gemeinsam solidarisch gegen die sächsische Abschiebepolitik",
+    "title": "Bring Back Our Neighbours",
+    "updated": "Zuletzt aktualisiert: "
   },
   "shortLink": {
     "availableInOtherLanguages": "Diese Info gibt es auch in anderen Sprachen",

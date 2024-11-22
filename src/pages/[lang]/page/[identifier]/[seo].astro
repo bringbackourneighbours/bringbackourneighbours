@@ -1,10 +1,10 @@
 ---
 import type { CollectionEntry } from 'astro:content';
 
+import Block from '../../../../components/Block.astro';
 import ContentHeading from '../../../../components/ContentHeading.astro';
 import ContentLayout from '../../../../layouts/ContentLayout.astro';
 import LanguageSwitcher from '../../../../design/LanguageSwitcher.astro';
-import MarkdownEntry from '../../../../design/MarkdownEntry.astro';
 import TableOfContents from '../../../../design/TableOfContents.astro';
 
 import { getCanonicalUrlToPage } from '../../../../util/get-canonical-url';
@@ -52,5 +52,9 @@ const translationSlugs = await getTranslationsUrlsForPages(
     collection="pages"
   />
   <TableOfContents rendered={entry.render()} />
-  <MarkdownEntry rendered={entry.render()} />
+
+  <Block
+    identifier={entry.data.identifier}
+    collection="pages"
+  />
 </ContentLayout>

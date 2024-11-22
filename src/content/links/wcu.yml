@@ -1,0 +1,18 @@
+all:
+  slug: wcu
+  type: WEB
+  title: "We'll come United"
+en:
+  url: https://www.welcome-united.org/en/
+ar:
+  url: https://www.welcome-united.org/ar/
+fa:
+  url: https://www.welcome-united.org/fa/
+de:
+  url: https://www.welcome-united.org/de/
+fr:
+  url: https://www.welcome-united.org/fr/
+es:
+  url: https://www.welcome-united.org/es/
+tr:
+  url: https://www.welcome-united.org/tr/
