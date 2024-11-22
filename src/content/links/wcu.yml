@@ -3,16 +3,16 @@ all:
   type: web
   title: We'll come United
 en:
-  url: "https://www.welcome-united.org/en/"
+  url: https://www.welcome-united.org/en/
 ar:
-  url: "https://www.welcome-united.org/ar/"
+  url: https://www.welcome-united.org/ar/
 fa:
-  url: "https://www.welcome-united.org/fa/"
+  url: https://www.welcome-united.org/fa/
 de:
-  url: "https://www.welcome-united.org/de/"
+  url: https://www.welcome-united.org/de/
 fr:
-  url: "https://www.welcome-united.org/fr/"
+  url: https://www.welcome-united.org/fr/
 es:
-  url: "https://www.welcome-united.org/es/"
+  url: https://www.welcome-united.org/es/
 tr:
-  title: "https://www.welcome-united.org/tr/"
+  title: https://www.welcome-united.org/tr/
