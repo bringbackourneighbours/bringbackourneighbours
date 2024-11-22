@@ -93,8 +93,10 @@ const allKits = await getStaticPathsForKits();
   }
 </style>
 <header>
-  <Logo />
-  <a href={`${Astro.site}`}>
+  <a href={`${Astro.site}${lang}`}>
+    <Logo />
+  </a>
+  <a href={`${Astro.site}${lang}`}>
     <!--this could use the text to with like in the pdf-->
     <div class="h3 mainline">Bring Back Our Neighbours</div>
   </a>
