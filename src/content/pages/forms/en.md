@@ -8,11 +8,11 @@ germanTitle: Vorlagen zum Ausdrucken
 
 ## Important information:
 
-We have compiled templates that can be used in an emergency, i.e. in the event of an ongoing deportation. However, we recommend that applications and powers of attorney are drawn up by lawyers or advice centres in relation to the specific individual case. The templates are only available in German.
+We have compiled templates that can be used in an emergency, i.e. in the event of an ongoing deportation. However, we strongly recommend that applications and powers of attorney are drawn up by lawyers or advice centres in relation to the specific individual case. The templates are only available in German.
 
 ## Objection to the search of your home
 
-During deportations, the police may only enter and not search the homes of those affected. The room of a collective accommodation centre is also considered a home. If police officers want to search a person's home, they need a search warrant from a judge, which they usually do not have. They can search a home without a warrant if there is ‘imminent danger’, for example if someone has a weapon and is threatening to commit (suicide).
+During deportations, the police may only enter and not search the homes of those affected. The room of a collective accommodation centre is also considered a home. If police officers want to search a person's home, they need a search warrant from a judge, which they usually do not have. They can search a home without a warrant if there is ‘imminent danger’, for example if someone has a weapon and is threatening to commit suicide.
 
 ## Urgent application
 
