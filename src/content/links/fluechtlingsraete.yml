@@ -1,0 +1,24 @@
+all:
+slug: fluechtlingsräte
+url: https://www.fluechtlingsrat.de/
+type: WEB
+de:
+  title: Übersicht über die Flüchtlingsräte in Deutschland
+en:
+  title: Overview of the refugee councils in Germany
+fr:
+  title: Aperçu des conseils de réfugiés en Allemagne
+ar:
+  title: نظرة عامة على مجالس اللاجئين في ألمانيا  
+fa:
+  title: مروری بر شوراهای پناهندگان در آلمان
+ur:
+  title: جرمنی میں پناہ گزینوں کی کونسلوں کا جائزہ
+ka:
+  title: ლტოლვილთა საბჭოების მიმოხილვა გერმანიაში
+es:
+  title: Panorama de los consejos de refugiados en Alemania
+tr:
+  title: Almanya'daki mülteci konseylerine genel bakış
+ku:
+  title: پوختەی ئەنجوومەنی پەنابەران لە ئەڵمانیا
