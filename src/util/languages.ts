@@ -13,6 +13,12 @@ export enum Languages {
   TURKISH = 'tr',
   UKRAINIAN = 'uk',
   URDU = 'ur',
+  KURDISH = 'ku',
+  KURDISH_SORANI = 'ckb',
+  ALBANIAN = 'sq',
+  MACEDONIAN = 'mk',
+  BOSNIAN = 'bs',
+  SOMALI = 'so',
 }
 
 export const SupportedLanguages = [
@@ -33,6 +39,12 @@ export const UnSupportedLanguages = [
   Languages.TIGRINYA,
   Languages.TURKISH,
   Languages.UKRAINIAN,
+  Languages.KURDISH,
+  Languages.KURDISH_SORANI,
+  Languages.ALBANIAN,
+  Languages.MACEDONIAN,
+  Languages.BOSNIAN,
+  Languages.SOMALI,
 ] as const;
 
 export type LanguagesValue = `${Languages}`;
@@ -42,6 +54,7 @@ export const RTL_LANGUAGES: Languages[] = [
   Languages.URDU,
   Languages.FARSI,
   Languages.PASHTO,
+  Languages.KURDISH_SORANI,
 ] as const;
 
 export const DEFAULT_LANG: LanguagesValue = Languages.GERMAN;
