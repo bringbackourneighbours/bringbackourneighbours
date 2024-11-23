@@ -1,0 +1,10 @@
+all:
+  type: PDF
+en:
+  slug: wcurighttostay
+  url: https://www.welcome-united.org/wp-content/uploads/2024/04/Recht-zu-bleiben-englisch-digital.pdf
+  title: "information against the fear: Right to stay"
+de:
+  slug: wcubleibrecht
+  url: https://www.welcome-united.org/wp-content/uploads/2024/04/Rechtzu-bleiben-deutsch-digital.pdf
+  title: "Informationen gegen die Angst. Für das Recht zu bleiben"
