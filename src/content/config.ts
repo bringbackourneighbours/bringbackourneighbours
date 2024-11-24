@@ -39,6 +39,8 @@ const addressesCollection = defineCollection({
     mail: z.string().optional(),
     mails: z.array(z.string()).optional(),
     phone: z.string().optional(),
+    phones: z.array(z.string()).optional(),
+
     // web
     facebook: z.string().optional(),
     instagram: z.string().optional(),

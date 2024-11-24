@@ -1,24 +1,39 @@
-identifier: test
-lastChecked: 2024-07-17
-name: Name
+# every Address needs at least 
+identifier: my-address  # the identifier you have to use to reference this address
+lastChecked: 2024-07-17 # date this address was last checked for correctness
+name: Projekt Namenlos # the main title of the address, the name of the group/organisatio
 
-additional: c/o Namelos e.V.
+# all other information is optional
+additional: c/o Namelos e.V. #  addition information, like subtitel or addtion address information
 streetLine: Am Ende 123
 zip: "12345"
 city: Dresden
 
+# mail ahd phone can be plural or singular, or even both
 mail: mail@hallo.de
 mails:
   - mail1@web.de
   - mail2@web.de
-phone: "+4917333444555"
 
-url: example.com
+phone: "+4917333444550"
+phones:
+  - "+4917333444551"
+  - "+49173334445552"
+  - "+49173334445553"
+
+url: example.com # the url is the website
+
+# for social media only use the username, not the full url
 facebook: facebook
 instagram: instagram
 telegram: telegram
 twitter: twitter
-bbon: saxhfk_hardship
 
+# it's possible to a add a bbon ExternalShortLINK to an address
+# in most caes the normal url should be prefered, only when the adress is to long to type use a link as shortener
+bbon: slug
+
+# you can add   a note on the adress. providing some contecxt, explaining what this organisation is doing. only the one in the current language will be shown
 translatedNotes:
   de: "Nur ein Beispiel"
+  en: "Just an Example"
