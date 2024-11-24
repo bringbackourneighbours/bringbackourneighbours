@@ -17,7 +17,9 @@
     "sharedLinkToClipboard": "تم نسخ الرابط إلى الحافظة",
     "subtitle": "الوقوف معًا متضامنين ضد سياسة الترحيل في ساكسونيا",
     "title": "Bring Back Our Neighbours",
-    "updated": "آخر تحديث: "
+    "updated": "آخر تحديث: ",
+    "moreInfoAbout": "مزيد من المعلومات عن",
+    "findAlsoInFlyer": "يمكنك أيضًا العثور على هذا القسم بشكل منفرد في النشرة الإعلانية"
   },
   "wizard": {
     "isThereDangerQuestion": "هل أنت أو أي شخص آخر معرض لخطر الترحيل؟",

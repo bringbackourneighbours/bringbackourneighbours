@@ -115,6 +115,8 @@ const uiCollection = defineCollection({
         copiedContentToClipboard: z.string(),
         infosAgainstDeportation: z.string(),
         machineTranslation: z.string(),
+        moreInfoAbout: z.string(),
+        findAlsoInFlyer: z.string(),
       })
       .optional(),
     languages: z.object({

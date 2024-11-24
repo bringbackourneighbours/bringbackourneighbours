@@ -7,6 +7,7 @@ import Accordion from '../design/Accordion.astro';
 import InternalShortLink from './InternalShortLink.astro';
 import ContentMeta from './ContentMeta.astro';
 import NotFoundError from '../design/NotFoundError.astro';
+import { useUiTranslation } from '../util/use-ui-translation';
 
 interface Props {
   identifier: string;
@@ -33,11 +34,11 @@ const blockEntries = await getCollection('flyers', (block) => {
 {
   blockEntries[0] ? (
     <Accordion
-      title={`Weitere Informationen zu: "${blockEntries[0].data.title}"`}
+      title={` ${await useUiTranslation('meta.moreInfoAbout', lang)}: "${blockEntries[0].data.title}"`}
     >
       <slot />
       <div class="meta-section">
-        Diesen Abschnitt findest du auch einzeln im
+        {useUiTranslation('meta.findAlsoInFlyer', lang)}
         <InternalShortLink identifier={identifier} />
         <ContentMeta entry={blockEntries[0]} />
       </div>
