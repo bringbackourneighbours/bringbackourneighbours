@@ -15,155 +15,169 @@ interface Props {
   showNotes?: boolean;
 }
 
+const isPrintedFlyer = Astro.locals.isPrint && Astro.locals.isFlyer;
+
 const {
   identifier,
   lang = Astro.locals.lang,
-  showLocation = !Astro.locals.isPrint,
-  showContact = !Astro.locals.isPrint,
+  showLocation = !isPrintedFlyer,
+  showContact = !isPrintedFlyer,
   showWeb = true,
-  showBbon = Astro.locals.isPrint,
-  showNotes = !Astro.locals.isPrint,
+  showBbon = true,
+  showNotes = !isPrintedFlyer,
 } = Astro.props;
 
 // FIXME: this seems needless... but without the type is not working. no idea why
 const getAddress = async (identifier: string) =>
   await getEntry('addresses', identifier);
 
-const address = await getAddress(identifier);
+const address = (await getAddress(identifier))?.data;
+
+const hasLocation =
+  address?.additional || address?.streetLine || address?.zip || address?.city;
+
+const hasContact =
+  address?.phone || address?.phones || address?.mail || address?.mails;
+
+const hasWeb =
+  address?.url ||
+  address?.facebook ||
+  address?.instagram ||
+  address?.telegram ||
+  address?.twitter;
 ---
 
 <style>
   address {
     margin: var(--vspace-3) 0;
-    padding: var(--vspace-3) 0;
+    padding-inline-start: var(--vspace-3);
     width: fit-content;
+    border-inline-start: calc(var(--size-border) * 2) solid
+      var(--color-primary-dark);
+    color: var(--color-primary-dark);
+
+    --color-primary: var(--color-primary-dark);
   }
 </style>
 
 {
   address ? (
     <address>
-      <>
-        <strong>{address?.data.name}</strong>
-        <br />
-      </>
-      {showLocation && (
+      <strong>{address?.name}</strong> <br />
+      {showLocation && hasLocation && (
         <>
-          {address?.data.additional && (
+          {address?.additional && (
             <>
-              {address?.data.additional}
+              {address?.additional}
               <br />
             </>
           )}
-          {address?.data.streetLine && (
+          {address?.streetLine && (
             <>
-              {address?.data.streetLine}
+              {address?.streetLine}
               <br />
             </>
           )}
-          {address?.data.zip && <>{address?.data.zip + ' '}</>}
-          {address?.data.city && <>{address?.data.city}</>}
-          {(address?.data.zip || address?.data.city) && (
+          {address?.zip && <>{address?.zip + ' '}</>}
+          {address?.city && <>{address?.city}</>}
+          {(address?.zip || address?.city) && (
             <>
               <br />
             </>
           )}
         </>
       )}
-
-      {showContact && (
+      {showContact && hasContact && (
         <>
-          {[address?.data.phone, ...(address?.data.phones ?? [])].map(
-            (phone) => (
-              <>
-                {phone}
-                <br />
-              </>
-            ),
+          {[address?.phone, ...(address?.phones ?? [])].map(
+            (phone) =>
+              phone && (
+                <>
+                  {phone}
+                  <br />
+                </>
+              ),
           )}
 
-          {[address?.data.mail, ...(address?.data.mails ?? [])].map((mail) => (
+          {[address?.mail, ...(address?.mails ?? [])].map((mail) => (
             <>
               <Link href={`mailto:${mail}`}>{mail}</Link> <br />
             </>
           ))}
         </>
       )}
-
-      {showWeb && (
+      {showWeb && hasWeb && (
         <>
-          {address?.data.url && (
+          {address?.url && (
             <>
               <Link
-                href={address?.data.url}
+                href={address?.url}
                 openInNewTab={true}
               />
               <br />
             </>
           )}
 
-          {address?.data.facebook && (
+          {address?.facebook && (
             <>
               Facebook:
               <Link
-                href={`https://www.facebook.com/${address?.data.facebook}`}
+                href={`https://www.facebook.com/${address?.facebook}`}
                 openInNewTab={true}
               >
-                @{address?.data.facebook}
+                @{address?.facebook}
               </Link>
               <br />
             </>
           )}
-          {address?.data.instagram && (
+          {address?.instagram && (
             <>
               Instagram:
               <Link
-                href={`https://instagram.com/${address?.data.instagram}`}
+                href={`https://instagram.com/${address?.instagram}`}
                 openInNewTab={true}
               >
-                @{address?.data.instagram}
+                @{address?.instagram}
               </Link>
               <br />
             </>
           )}
-          {address?.data.telegram && (
+          {address?.telegram && (
             <>
               Telegram:
               <Link
-                href={`https://t.me/${address?.data.telegram}`}
+                href={`https://t.me/${address?.telegram}`}
                 openInNewTab={true}
               >
-                @{address?.data.telegram}
+                @{address?.telegram}
               </Link>
               <br />
             </>
           )}
         </>
       )}
-      {address?.data.twitter && (
+      {address?.twitter && (
         <>
           twitter/X:
           <Link
-            href={`https://twitter.com/${address?.data.twitter}`}
+            href={`https://twitter.com/${address?.twitter}`}
             openInNewTab={true}
           >
-            @{address?.data.twitter}
+            @{address?.twitter}
           </Link>
           <br />
         </>
       )}
-
-      {showBbon && address?.data.bbon && (
+      {showBbon && address?.bbon && (
         <>
-          <ExternalShortLink identifier={address.data.bbon} />
+          <ExternalShortLink identifier={address.bbon} />
           <br />
         </>
       )}
-
-      {showNotes && address?.data.translatedNotes?.[lang] && (
+      {showNotes && address?.translatedNotes?.[lang] && (
         <>
-          {address?.data.translatedNotes?.[lang]}
           <br />
+          {address?.translatedNotes?.[lang]}
         </>
       )}
     </address>
