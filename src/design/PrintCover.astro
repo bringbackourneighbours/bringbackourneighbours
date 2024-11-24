@@ -1,0 +1,111 @@
+---
+import type { CollectionEntry } from 'astro:content';
+import { type StandaloneCollections } from '../util/get-static-paths';
+
+import { useUiTranslation } from '../util/use-ui-translation';
+
+import LanguageChip from './LanguageChip.astro';
+import Logo from './Logo.astro';
+
+interface Props {
+  entry: CollectionEntry<StandaloneCollections>;
+  pagewidth: string;
+}
+
+const { entry, pagewidth } = Astro.props;
+---
+
+<style define:vars={{ pagewidth }}>
+  .cover-page {
+    aside {
+      color: white;
+      background: var(--color-primary);
+      position: absolute;
+      inset-inline-start: 0;
+      inset-block-start: 0;
+      display: block;
+      font-variant: small-caps;
+      padding: 0.5em;
+      font-size: 1.2em;
+      font-weight: 700;
+    }
+
+    hgroup {
+      margin-block-start: 20vh;
+      font-size: 18px;
+
+      h1 {
+        line-height: 1em;
+      }
+    }
+
+    footer {
+      position: absolute;
+      inset-block-end: 0;
+      width: calc(var(--pagewidth) - 2 * 5mm);
+
+      /* this is for the bbonLogo: it needs to be primary */
+      --color-surface: var(--color-primary);
+
+      .logo-line {
+        display: flex;
+        align-items: stretch;
+        gap: 2mm;
+
+        .titles {
+          flex-grow: 1;
+          margin-block-start: 2mm;
+
+          .title {
+            font-variant: small-caps;
+            font-size: 16pt; /* with the flex-grow we need to have a good baseline  */
+            margin: 0;
+          }
+
+          .sub-title {
+            margin-block-start: 2mm;
+            font-size: 2px; /* the text-fit will only make it grow  */
+          }
+        }
+      }
+    }
+  }
+</style>
+
+<div class="cover-page">
+  <aside>
+    <LanguageChip
+      lang={entry.data.lang}
+      currentLang="de"
+    />
+  </aside>
+  <hgroup>
+    {entry.data.lang != 'de' && <h6>{entry.data.germanTitle}</h6>}
+    <h1>{entry.data.title}</h1>
+  </hgroup>
+  <footer>
+    <div class="logo-line">
+      <Logo size="12mm" />
+      <div class="titles">
+        <h2 class="title text-fit">
+          <span
+            ><span>{useUiTranslation('meta.title', entry.data.lang)}</span
+            ></span
+          >
+          <span aria-hidden="true"
+            >{useUiTranslation('meta.title', entry.data.lang)}</span
+          >
+        </h2>
+        <p class="sub-title text-fit">
+          <span
+            ><span>{useUiTranslation('meta.subtitle', entry.data.lang)}</span
+            ></span
+          >
+          <span aria-hidden="true"
+            >{useUiTranslation('meta.subtitle', entry.data.lang)}</span
+          >
+        </p>
+      </div>
+    </div>
+  </footer>
+</div>

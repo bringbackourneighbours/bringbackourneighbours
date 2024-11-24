@@ -2,13 +2,15 @@
 import { type CollectionEntry } from 'astro:content';
 
 import { getStaticPathsForKits } from '../../util/get-static-paths';
+import { getTranslationsUrlsForKit } from '../../util/get-translations-url';
+import { getCanonicalUrlToKit } from '../../util/get-canonical-url';
 
-import Block from '../../components/Block.astro';
-import Imprint from '../../design/Imprint.astro';
-import Logo from '../../design/Logo.astro';
 import PrintLayout from '../../layouts/PrintLayout.astro';
 import PrinterPage from '../../design/PrinterPage.astro';
-import Timestamp from '../../design/Timestamp.astro';
+import PrintCover from '../../design/PrintCover.astro';
+import PrintEndFooter from '../../design/PrintEndFooter.astro';
+import Block from '../../components/Block.astro';
+import TableOfContents from '../../design/TableOfContents.astro';
 
 interface Props {
   entry: CollectionEntry<'kits'>;
@@ -19,37 +21,58 @@ export async function getStaticPaths() {
 }
 
 const { entry } = Astro.props;
+
+const translationSlugs = await getTranslationsUrlsForKit(
+  entry.data.lang,
+  entry.data.identifier,
+);
+
+// FIXME: this should be the SHORTURL and not the canonical
+const canonicalUrl =
+  (await getCanonicalUrlToKit(entry.data.lang, entry.data.identifier)) || '';
 ---
+
+<style>
+  @page {
+    size: a4;
+    margin: 25mm;
+  }
+
+  @page :first {
+    margin: 10mm;
+  }
+
+  .end-footer {
+    margin-top: 20cm;
+  }
+</style>
 
 <PrintLayout
   lang={entry.data.lang}
-  title={'PDF ' + entry.data.title + ' | BringBackOurNeighbours'}
+  title={'PDF Kit ' + entry.data.title + ' | BringBackOurNeighbours'}
 >
   <PrinterPage>
-    <hgroup>
-      <p>{entry.data.lang}</p>
-      <p>{entry.data.germanTitle}</p>
-      <h1>{entry.data.title}</h1>
-      <p>
-        <Timestamp
-          lang={entry.data.lang}
-          lastChecked={entry.data.lastChecked}
-        />
-      </p>
-    </hgroup>
-
-    <strong>Bring Back Our Neighbours</strong>
-    <Logo />
-    <p>Gemeinsam solidarisch gegen die sächsische Abschiebepolitik</p>
+    <PrintCover
+      entry={entry}
+      pagewidth="210mm"
+    />
   </PrinterPage>
   <PrinterPage breakBefore={true}>
-    <p>bringbackourneighbours.de</p>
-    <Imprint lang={entry.data.lang} />
+    <TableOfContents rendered={entry.render()} />
   </PrinterPage>
   <PrinterPage breakBefore={true}>
     <Block
       identifier={entry.data.identifier}
       collection="kits"
     />
+  </PrinterPage>
+  <PrinterPage breakBefore={true}>
+    <div class="end-footer">
+      <PrintEndFooter
+        entry={entry}
+        translationSlugs={translationSlugs}
+        canonicalUrl={canonicalUrl}
+      />
+    </div>
   </PrinterPage>
 </PrintLayout>
