@@ -73,29 +73,20 @@ const address = await getAddress(identifier);
 
       {showContact && (
         <>
-          {address?.data.phone && (
-            <>
-              {address?.data.phone}
-              <br />
-            </>
-          )}
-
-          {address?.data.mail && (
-            <>
-              <Link href={`mailto:${address?.data.mail}`}>
-                {address?.data.mail}
-              </Link>
-              <br />
-            </>
-          )}
-
-          {address?.data?.mails &&
-            address?.data.mails.map((mail) => (
+          {[address?.data.phone, ...(address?.data.phones ?? [])].map(
+            (phone) => (
               <>
-                <Link href={`mailto:${mail}`}>{mail}</Link>
+                {phone}
                 <br />
               </>
-            ))}
+            ),
+          )}
+
+          {[address?.data.mail, ...(address?.data.mails ?? [])].map((mail) => (
+            <>
+              <Link href={`mailto:${mail}`}>{mail}</Link> <br />
+            </>
+          ))}
         </>
       )}
 
