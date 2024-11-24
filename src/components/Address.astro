@@ -88,6 +88,14 @@ const address = await getAddress(identifier);
               <br />
             </>
           )}
+
+          {address?.data?.mails &&
+            address?.data.mails.map((mail) => (
+              <>
+                <Link href={`mailto:${mail}`}>{mail}</Link>
+                <br />
+              </>
+            ))}
         </>
       )}
 

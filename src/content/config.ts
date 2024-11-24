@@ -37,6 +37,7 @@ const addressesCollection = defineCollection({
     city: z.string().optional(),
     // contact
     mail: z.string().optional(),
+    mails: z.array(z.string()).optional(),
     phone: z.string().optional(),
     // web
     facebook: z.string().optional(),

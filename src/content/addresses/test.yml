@@ -8,6 +8,9 @@ zip: "12345"
 city: Dresden
 
 mail: mail@hallo.de
+mails:
+  - mail1@web.de
+  - mail2@web.de
 phone: "+4917333444555"
 
 url: example.com
