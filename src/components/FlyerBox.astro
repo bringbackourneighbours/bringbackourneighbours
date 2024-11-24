@@ -62,7 +62,7 @@ const canonicalUrl = await getCanonicalUrlToFlyer(lang, identifier);
           <div>
             <p>
               {useUiTranslation('meta.findAlsoInFlyer', lang)}{' '}
-              {blockEntries[0].data.title}
+              <strong>{blockEntries[0].data.title}</strong>
             </p>
             <InternalShortLink identifier={identifier} />
             <ContentMeta entry={blockEntries[0]} />
