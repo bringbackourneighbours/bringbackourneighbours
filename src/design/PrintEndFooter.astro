@@ -1,0 +1,69 @@
+---
+import type { CollectionEntry } from 'astro:content';
+import type { StandaloneCollections } from '../util/get-static-paths';
+import type { LanguagesValue } from '../util/languages';
+
+import { useUiTranslation } from '../util/use-ui-translation';
+
+import QrImage from './QrImage.astro';
+import Link from './Link.astro';
+import Timestamp from './Timestamp.astro';
+import Imprint from './Imprint.astro';
+
+interface Props {
+  entry: CollectionEntry<StandaloneCollections>;
+  translationSlugs: {
+    lang: LanguagesValue;
+    url: string;
+  }[];
+  canonicalUrl: string;
+}
+
+const { entry, translationSlugs, canonicalUrl } = Astro.props;
+---
+
+<style>
+  .qr-link {
+    display: flex;
+    align-items: center;
+    gap: var(--vspace);
+
+    .find-translation {
+      display: flex;
+      align-items: center;
+      gap: var(--vspace);
+      flex-direction: column;
+    }
+  }
+</style>
+
+<div class="qr-link">
+  <QrImage
+    size="100"
+    url={canonicalUrl}
+  />
+  <div class="find-translation">
+    {
+      translationSlugs.map((translationSlug) => (
+        <Link href={translationSlug.url}>
+          {useUiTranslation(`languages.findTranslation`, translationSlug.lang)}
+        </Link>
+      ))
+    }
+  </div>
+</div>
+<p>
+  {useUiTranslation(`meta.infosAgainstDeportation`, entry.data.lang)}
+  <span class="ltr">
+    <Link href={`${Astro.site}`} />
+  </span>
+</p>
+<p>
+  <Imprint lang={entry.data.lang} />
+</p>
+<p>
+  <Timestamp
+    lang={entry.data.lang}
+    lastChecked={entry.data.lastChecked}
+  />
+</p>

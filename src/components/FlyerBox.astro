@@ -2,12 +2,14 @@
 import { type LanguagesValue } from '../util/languages';
 
 import { getCollection } from 'astro:content';
+import { getCanonicalUrlToFlyer } from '../util/get-canonical-url';
+import { useUiTranslation } from '../util/use-ui-translation';
 
 import Accordion from '../design/Accordion.astro';
 import InternalShortLink from './InternalShortLink.astro';
 import ContentMeta from './ContentMeta.astro';
 import NotFoundError from '../design/NotFoundError.astro';
-import { useUiTranslation } from '../util/use-ui-translation';
+import QrImage from '../design/QrImage.astro';
 
 interface Props {
   identifier: string;
@@ -19,6 +21,14 @@ const { identifier, lang = Astro.locals.lang } = Astro.props;
 const blockEntries = await getCollection('flyers', (block) => {
   return block.slug === `${identifier}/${lang}`;
 });
+
+const isPrint = Astro.locals.isPrint;
+
+const title = isPrint
+  ? blockEntries[0]?.data.title
+  : `${await useUiTranslation('meta.moreInfoAbout', lang)}: "${blockEntries[0]?.data.title}"`;
+
+const canonicalUrl = await getCanonicalUrlToFlyer(lang, identifier);
 ---
 
 <style>
@@ -28,20 +38,47 @@ const blockEntries = await getCollection('flyers', (block) => {
     margin-block-start: var(--vspace);
     padding: var(--vspace);
     padding-block-end: 0;
+
+    &.-is-print {
+      border: calc(var(--size-border) * 2) solid var(--color-primary);
+      padding: var(--vspace);
+      margin: 0;
+      display: flex;
+      align-items: center;
+      gap: var(--vspace);
+    }
   }
 </style>
 
 {
   blockEntries[0] ? (
-    <Accordion
-      title={` ${await useUiTranslation('meta.moreInfoAbout', lang)}: "${blockEntries[0].data.title}"`}
-    >
+    <Accordion title={title}>
+      {isPrint && (
+        <div class={`meta-section ${isPrint ? ' -is-print' : ''}`}>
+          <QrImage
+            size="100"
+            url={canonicalUrl!}
+          />
+          <div>
+            <p>
+              {useUiTranslation('meta.findAlsoInFlyer', lang)}{' '}
+              {blockEntries[0].data.title}
+            </p>
+            <InternalShortLink identifier={identifier} />
+            <ContentMeta entry={blockEntries[0]} />
+          </div>
+        </div>
+      )}
       <slot />
-      <div class="meta-section">
-        {useUiTranslation('meta.findAlsoInFlyer', lang)}
-        <InternalShortLink identifier={identifier} />
-        <ContentMeta entry={blockEntries[0]} />
-      </div>
+      {!isPrint && (
+        <div class="meta-section">
+          <div>
+            {useUiTranslation('meta.findAlsoInFlyer', lang)}
+            <InternalShortLink identifier={identifier} />
+            <ContentMeta entry={blockEntries[0]} />
+          </div>
+        </div>
+      )}
     </Accordion>
   ) : (
     <NotFoundError context={`FlyerBox/${identifier}/${lang}`} />

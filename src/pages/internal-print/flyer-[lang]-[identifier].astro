@@ -1,20 +1,15 @@
 ---
 import { type CollectionEntry } from 'astro:content';
 
-import Block from '../../components/Block.astro';
-import Imprint from '../../design/Imprint.astro';
-import LanguageChip from '../../design/LanguageChip.astro';
-import Link from '../../design/Link.astro';
-import Logo from '../../design/Logo.astro';
-import PrintLayout from '../../layouts/PrintLayout.astro';
-import PrinterPage from '../../design/PrinterPage.astro';
-import QrImage from '../../design/QrImage.astro';
-import Timestamp from '../../design/Timestamp.astro';
-
-import { getCanonicalUrlToFlyer } from '../../util/get-canonical-url';
 import { getStaticPathsForFlyers } from '../../util/get-static-paths';
 import { getTranslationsUrlsForFlyer } from '../../util/get-translations-url';
-import { useUiTranslation } from '../../util/use-ui-translation';
+import { getCanonicalUrlToFlyer } from '../../util/get-canonical-url';
+
+import Block from '../../components/Block.astro';
+import PrintLayout from '../../layouts/PrintLayout.astro';
+import PrinterPage from '../../design/PrinterPage.astro';
+import PrintCover from '../../design/PrintCover.astro';
+import PrintEndFooter from '../../design/PrintEndFooter.astro';
 
 interface Props {
   entry: CollectionEntry<'flyers'>;
@@ -47,84 +42,6 @@ const footerposition = isDev ? '496mm' : '629mm';
     size: 105mm 148mm;
   }
 
-  html {
-    /* Good base size for printing */
-    font-size: 8pt;
-  }
-
-  .h2,
-  h2 {
-    font-size: 1.5em;
-    line-height: 1.5em;
-    margin: 0;
-  }
-
-  .h3,
-  h3 {
-    font-size: 1em;
-    line-height: 1em;
-    margin: 0;
-  }
-
-  ul {
-    margin-block-end: 1em;
-  }
-
-  .cover-page {
-    aside {
-      color: white;
-      background: var(--color-primary);
-      position: absolute;
-      inset-inline-start: 0;
-      inset-block-start: 0;
-      display: block;
-      font-variant: small-caps;
-      padding: 0.5em;
-      font-size: 1.2em;
-      font-weight: 700;
-    }
-
-    hgroup {
-      margin-block-start: 20vh;
-      font-size: 18px;
-
-      h1 {
-        line-height: 1em;
-      }
-    }
-
-    footer {
-      position: absolute;
-      inset-block-end: 0;
-      width: calc(105mm - 2 * 5mm);
-
-      /* this is for the bbonLogo: it needs to be primary */
-      --color-surface: var(--color-primary);
-
-      .logo-line {
-        display: flex;
-        align-items: stretch;
-        gap: 2mm;
-
-        .titles {
-          flex-grow: 1;
-          margin-block-start: 2mm;
-
-          .title {
-            font-variant: small-caps;
-            font-size: 16pt; /* with the flex-grow we need to have a good baseline  */
-            margin: 0;
-          }
-
-          .sub-title {
-            margin-block-start: 2mm;
-            font-size: 2px; /* the text-fit will only make it grow  */
-          }
-        }
-      }
-    }
-  }
-
   .end-footer {
     position: absolute;
 
@@ -133,59 +50,17 @@ const footerposition = isDev ? '496mm' : '629mm';
     calc would need to consider the page margins */
     inset-block-start: 0;
     margin-block-start: var(--footerposition);
-
-    .qr-link {
-      display: flex;
-      align-items: center;
-      gap: var(--vspace);
-
-      .find-translation {
-        display: flex;
-        align-items: center;
-        gap: var(--vspace);
-        flex-direction: column;
-      }
-    }
   }
 </style>
 <PrintLayout
   lang={entry.data.lang}
-  title={'PDF ' + entry.data.title + ' | BringBackOurNeighbours'}
+  title={'PDF Flyer ' + entry.data.title + ' | BringBackOurNeighbours'}
 >
   <PrinterPage>
-    <div class="cover-page">
-      <aside>
-        <LanguageChip
-          lang={entry.data.lang}
-          currentLang="de"
-        />
-      </aside>
-      <hgroup>
-        {entry.data.lang != 'de' && <h6>{entry.data.germanTitle}</h6>}
-        <h1>{entry.data.title}</h1>
-      </hgroup>
-      <footer>
-        <div class="logo-line">
-          <Logo size="12mm" />
-          <div class="titles">
-            <h2 class="title text-fit">
-              <span><span>Bring Back Our Neighbours</span></span>
-              <span aria-hidden="true">Bring Back Our Neighbours</span>
-            </h2>
-            <p class="sub-title text-fit">
-              <span
-                ><span
-                  >{useUiTranslation('meta.subtitle', entry.data.lang)}</span
-                ></span
-              >
-              <span aria-hidden="true"
-                >{useUiTranslation('meta.subtitle', entry.data.lang)}</span
-              >
-            </p>
-          </div>
-        </div>
-      </footer>
-    </div>
+    <PrintCover
+      entry={entry}
+      pagewidth="105mm"
+    />
   </PrinterPage>
   <PrinterPage breakBefore={true}>
     <Block
@@ -194,38 +69,10 @@ const footerposition = isDev ? '496mm' : '629mm';
     />
   </PrinterPage>
   <div class="end-footer">
-    <div class="qr-link">
-      <QrImage
-        size="100"
-        url={canonicalUrl}
-      />
-      <div class="find-translation">
-        {
-          translationSlugs.map((translationSlug) => (
-            <Link href={translationSlug.url}>
-              {useUiTranslation(
-                `languages.findTranslation`,
-                translationSlug.lang,
-              )}
-            </Link>
-          ))
-        }
-      </div>
-    </div>
-    <p>
-      {useUiTranslation(`meta.infosAgainstDeportation`, entry.data.lang)}
-      <span class="ltr">
-        <Link href={`${Astro.site}`} />
-      </span>
-    </p>
-    <p>
-      <Imprint lang={entry.data.lang} />
-    </p>
-    <p>
-      <Timestamp
-        lang={entry.data.lang}
-        lastChecked={entry.data.lastChecked}
-      />
-    </p>
+    <PrintEndFooter
+      entry={entry}
+      translationSlugs={translationSlugs}
+      canonicalUrl={canonicalUrl}
+    />
   </div>
 </PrintLayout>

@@ -9,55 +9,71 @@ interface Props {
   variant?: ColorVariants;
   open?: boolean;
 }
+const isPrint = Astro.locals.isPrint;
 
-const { title, variant = 'primary', open = Astro.locals.isPrint } = Astro.props;
+const { title, variant = 'primary', open = isPrint } = Astro.props;
 ---
 
 <style>
   .-primary {
-    --accordion-color: var(--color-primary);
+    --accordion-border-color: var(--color-primary);
   }
 
   .-inverted-primary {
     --accordion-background-color: var(--color-primary);
+    --accordion-summary-color: var(--color-primary);
   }
 
   .-secondary {
-    --accordion-color: var(--color-secondary);
+    --accordion-border-color: var(--color-secondary);
   }
 
   .-inverted-secondary {
     --accordion-background-color: var(--color-secondary);
+    --accordion-summary-color: var(--color-secondary);
   }
 
   .-primary,
   .-secondary {
     --accordion-background-color: var(--color-surface);
+    --accordion-summary-color: var(--color-surface);
     --accordion-padding: var(--vspace);
-    --accordion-content-color: var(--accordion-color);
+    --accordion-content-color: var(--accordion-border-color);
   }
 
   .-inverted-primary,
   .-inverted-secondary {
-    --accordion-color: var(--color-surface-dark);
+    --accordion-border-color: var(--color-surface-dark);
     --accordion-padding: var(--vspace-3);
     --accordion-max-width: fit-content;
     --accordion-content-color: var(--accordion-background-color);
+  }
 
-    @media print {
-      --accordion-color: var(--color-surface);
-    }
+  .-primary,
+  .-secondary,
+  .-inverted-primary,
+  .-inverted-secondary {
+    --accordion-border-width: calc(var(--size-border) * 2);
+  }
+
+  .-is-print {
+    --accordion-content-color: var(--color-primary);
+    --accordion-summary-color: var(--color-primary);
+    --accordion-border-color: var(--color-surface);
+    --accordion-background-color: var(--color-surface);
+    --accordion-padding: 0;
+    --accordion-border-width: 0;
   }
 
   details {
-    border: calc(var(--size-border) * 2) solid var(--accordion-color);
+    border: var(--accordion-border-width) solid var(--accordion-border-color);
     max-width: var(--accordion-max-width);
 
     summary {
       padding: var(--accordion-padding);
       list-style: none;
-      background-color: var(--accordion-color);
-      color: var(--accordion-background-color);
+      background-color: var(--accordion-border-color);
+      color: var(--accordion-summary-color);
       display: flex;
       align-items: center;
       justify-content: space-between;
@@ -112,12 +128,12 @@ const { title, variant = 'primary', open = Astro.locals.isPrint } = Astro.props;
 
 <details
   open={open}
-  class={`-${variant}`}
+  class={`-${variant}${isPrint ? ' -is-print' : ''}`}
 >
   <summary>
     {Astro.slots.has('summary') ? <slot name="summary" /> : <h3>{title}</h3>}
     {
-      !Astro.locals.isPrint && (
+      !isPrint && (
         <span class="icons">
           {Astro.slots.has('extra-icon') && (
             <span class="extra-icon">
