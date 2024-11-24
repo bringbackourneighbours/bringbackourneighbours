@@ -1,3 +1,6 @@
+/**
+ * we are using the codes of https://en.wikipedia.org/wiki/IETF_language_tag
+ */
 export enum Languages {
   ARABIC = 'ar',
   ENGLISH = 'en',
@@ -9,7 +12,7 @@ export enum Languages {
   RUSSIAN = 'ru',
   SERBIAN = 'sr',
   SPANISH = 'es',
-  TIGRINYA = 'ti',
+  TIGRINYA = 'ti', // not in IEFT included
   TURKISH = 'tr',
   UKRAINIAN = 'uk',
   URDU = 'ur',
@@ -19,6 +22,7 @@ export enum Languages {
   MACEDONIAN = 'mk',
   BOSNIAN = 'bs',
   SOMALI = 'so',
+  VIETNAMESE = 'vi',
 }
 
 export const SupportedLanguages = [
@@ -45,6 +49,7 @@ export const UnSupportedLanguages = [
   Languages.MACEDONIAN,
   Languages.BOSNIAN,
   Languages.SOMALI,
+  Languages.VIETNAMESE,
 ] as const;
 
 export type LanguagesValue = `${Languages}`;
