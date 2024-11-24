@@ -1,7 +1,7 @@
 all:
-slug: fluechtlingsräte
-url: https://www.fluechtlingsrat.de/
-type: WEB
+  slug: fluechtlingsraete
+  url: https://www.fluechtlingsrat.de/
+  type: WEB
 de:
   title: Übersicht über die Flüchtlingsräte in Deutschland
 en:
