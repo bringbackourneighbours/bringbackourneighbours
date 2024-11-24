@@ -1,6 +1,9 @@
 identifier: lsvd_chemnitz
 name:  Information Center for LGBTI Refugees
 city: Chemnitz
-mail: "qr-chemnitz1@lsvd.de qr-chemnitz2@lsvd.de qr-chemnitz3@lsvd.de"
+mails:
+  - qr-chemnitz1@lsvd.de
+  - qr-chemnitz2@lsvd.de
+  - qr-chemnitz3@lsvd.de
 url: https://sachsen.lsvd.de/projekte/gefluechtete
 lastChecked: 2024-07-17
