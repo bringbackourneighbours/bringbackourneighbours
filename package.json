@@ -28,7 +28,7 @@
     "eslint": "^9.15.0",
     "eslint-config-prettier": "^9.1.0",
     "eslint-plugin-astro": "^1.2.4",
-    "eslint-plugin-jsx-a11y": "^6.10.0",
+    "eslint-plugin-jsx-a11y": "^6.10.2",
     "husky": "^9.1.6",
     "lint-staged": "^15.2.10",
     "postcss-html": "^1.6.0",
