@@ -1,8 +1,5 @@
-all:
-  slug: vertrauen
-  url: /de/page/forms/Vorlagen%20zum%20Ausdrucken
-  type: WEB
 de:
-  title: Link zu Druckvorlage Abschiebehaft
-en:
-  title: Link to print template for deportation custody
+  slug: vertrauen
+  url: /forms/Person des Vertrauens bei Abschiebehaft.pdf
+  type: DOC
+  title: "Person des Vertrauens bei Abschiebehaft"

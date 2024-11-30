@@ -1,4 +1,5 @@
 export const LinkTypes = [
+  'DOC',
   'PDF',
   'WEB',
   'AUDIO',
