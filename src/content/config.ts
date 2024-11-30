@@ -117,6 +117,7 @@ const uiCollection = defineCollection({
         machineTranslation: z.string(),
         moreInfoAbout: z.string(),
         findAlsoInFlyer: z.string(),
+        findAlsoAsPage: z.string(),
       })
       .optional(),
     languages: z.object({
