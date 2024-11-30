@@ -6,6 +6,7 @@ import Block from '../components/Block.astro';
 import FlyerBox from '../components/FlyerBox.astro';
 import Address from '../components/Address.astro';
 import ExternalShortLink from '../components/ExternalShortLink.astro';
+import InternalShortLink from '../components/InternalShortLink.astro';
 
 /**
  * Renders a CollectionEntry's markdown to Html... while using our custom components for it
@@ -32,5 +33,6 @@ const { Content } = await rendered;
     FlyerBox,
     Address,
     ExternalShortLink,
+    InternalShortLink,
   }}
 />
