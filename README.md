@@ -73,7 +73,7 @@ all the content is stored in the directory `src/content` with the following stru
 
 ```text
 /
-├── public/
+├── public/             # => Files that we provide for direct download
 ├── src/
 │   └── content/
 │       ├── addresses/  # => all the Addresses
@@ -98,7 +98,7 @@ Example:
 # every Address needs at least
 identifier: my-address # the identifier you have to use to reference this address
 lastChecked: 2024-07-17 # date this address was last checked for correctness
-name: Projekt Namenlos # the main title of the address, the name of the group/organisatio
+name: Projekt Namenlos # the main title of the address, the name of the group/organisation
 
 # all other information is optional
 additional: c/o Namelos e.V. #  addition information, like subtitel or addtion address information
@@ -127,23 +127,23 @@ telegram: telegram
 twitter: twitter
 
 # it's possible to a add a bbon ExternalShortLINK to an address
-# in most caes the normal url should be prefered, only when the adress is to long to type use a link as shortener
+# in most case the normal url should be prefered, only when the address is too long to type use a link as shortener
 bbon: slug
 
-# you can add   a note on the adress. providing some contecxt, explaining what this organisation is doing. only the one in the current language will be shown
+# you can add   a note on the address. providing some context, explaining what this organisation is doing. only the one in the current language will be shown
 translatedNotes:
   de: 'Nur ein Beispiel'
   en: 'Just an Example'
 ```
 
 To use an Address in the Content(MDX-only) you first have to import the component and then place it with the identifier set.
-In most Component the `Address` is omported automatically.
+In most Component the `Address` is imported automatically.
 
 Usage-Example:
 
 ```mdxjs
 ---
-identifier: some-contet
+identifier: some-content
 lang: de
 lastChecked: 2024-09-07
 ---
@@ -167,3 +167,36 @@ This together will result in something like
 #### Kits
 
 #### Pages
+
+#### Forms/Templates
+
+We have compiled templates that can be used in an emergency, i.e. in the event of an ongoing deportation. Those might be forms as Pdfs or Docs that can be directly downloaded form our site.
+
+To make them available the files can be uploaded in the folder `public/forms`. Then create a (external) Link, that points to the document. Best use a relative URI.
+
+Example File: `/public/forms/Urgent Application.pdf`
+
+Example Link: `/src/content/form_urgent.yml`:
+
+```yaml
+en:
+  slug: urgent
+  url: /forms/Urgent Application.pdf
+  type: DOC
+  title: Urgent application to the administrative court for the granting of tolerated stay, prevention of the deportation scheduled for today
+```
+
+Usage-Example:
+
+```mdxjs
+---
+identifier: some-content
+lang: de
+lastChecked: 2024-09-07
+---
+
+Random Text...
+
+<ExternalShortLink identifier="form_urgent"/>
+
+```

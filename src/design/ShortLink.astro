@@ -2,7 +2,8 @@
 import Icon from './Icon.astro';
 import Link from './Link.astro';
 import audioIcon from '../assets/icons/ion--volume-high.svg?raw';
-import docIcon from '../assets/icons/ion--document-text.svg?raw';
+import pdfIcon from '../assets/icons/ion--document-text.svg?raw';
+import docIcon from '../assets/icons/ion--document.svg?raw';
 import videoIcon from '../assets/icons/ion--film.svg?raw';
 import webIcon from '../assets/icons/ion--globe.svg?raw';
 import bbonLogo from '../assets/logo.svg?raw';
@@ -23,6 +24,8 @@ interface Props {
 export const getIconForType = (type?: LinkTypes) => {
   switch (type) {
     case 'PDF':
+      return pdfIcon;
+    case 'DOC':
       return docIcon;
     case 'VIDEO':
       return videoIcon;

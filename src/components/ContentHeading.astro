@@ -9,11 +9,7 @@ import CopyButton from '../design/CopyButton.astro';
 import ShareButton from '../design/ShareButton.astro';
 
 import { Languages } from '../util/languages';
-import {
-  getCanonicalUrlToFlyer,
-  getCanonicalUrlToKit,
-  getCanonicalUrlToPage,
-} from '../util/get-canonical-url';
+import { getCanonicalUrlFn } from '../util/get-canonical-url';
 import { useUiTranslation } from '../util/use-ui-translation';
 
 interface Props<T extends StandaloneCollections> {
@@ -27,16 +23,7 @@ const { entry, collection } = Astro.props;
 
 const printUrl = `${Astro.site}print/${collection.slice(0, -1)}-${entry.data.lang}-${entry.data.identifier}.pdf`;
 
-const getCanonicalUrlFn =
-  collection === 'flyers'
-    ? getCanonicalUrlToFlyer
-    : collection === 'kits'
-      ? getCanonicalUrlToKit
-      : collection === 'pages'
-        ? getCanonicalUrlToPage
-        : () => `${Astro.site}`;
-
-const canonicalUrl = await getCanonicalUrlFn(
+const canonicalUrl = await getCanonicalUrlFn(collection)(
   entry.data.lang,
   entry.data.identifier,
 );
