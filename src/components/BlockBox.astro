@@ -1,8 +1,9 @@
 ---
 import { type LanguagesValue } from '../util/languages';
+import type { StandaloneCollections } from '../util/get-static-paths';
 
 import { getCollection } from 'astro:content';
-import { getCanonicalUrlToFlyer } from '../util/get-canonical-url';
+import { getCanonicalUrlFn } from '../util/get-canonical-url';
 import { useUiTranslation } from '../util/use-ui-translation';
 
 import Accordion from '../design/Accordion.astro';
@@ -14,11 +15,16 @@ import QrImage from '../design/QrImage.astro';
 interface Props {
   identifier: string;
   lang: LanguagesValue;
+  collection?: StandaloneCollections;
 }
 
-const { identifier, lang = Astro.locals.lang } = Astro.props;
+const {
+  identifier,
+  lang = Astro.locals.lang,
+  collection = 'flyers',
+} = Astro.props;
 
-const blockEntries = await getCollection('flyers', (block) => {
+const blockEntries = await getCollection(collection, (block) => {
   return block.slug === `${identifier}/${lang}`;
 });
 
@@ -28,7 +34,12 @@ const title = isPrint
   ? blockEntries[0]?.data.title
   : `${await useUiTranslation('meta.moreInfoAbout', lang)}: "${blockEntries[0]?.data.title}"`;
 
-const canonicalUrl = await getCanonicalUrlToFlyer(lang, identifier);
+const canonicalUrl = await getCanonicalUrlFn(collection)(lang, identifier);
+
+const collectionLabel =
+  collection === 'flyers'
+    ? await useUiTranslation('meta.findAlsoInFlyer', lang)
+    : await useUiTranslation('meta.findAlsoAsPage', lang);
 ---
 
 <style>
@@ -61,8 +72,7 @@ const canonicalUrl = await getCanonicalUrlToFlyer(lang, identifier);
           />
           <div>
             <p>
-              {useUiTranslation('meta.findAlsoInFlyer', lang)}{' '}
-              <strong>{blockEntries[0].data.title}</strong>
+              {collectionLabel} <strong>{blockEntries[0].data.title}</strong>
             </p>
             <InternalShortLink identifier={identifier} />
             <ContentMeta entry={blockEntries[0]} />
@@ -73,7 +83,7 @@ const canonicalUrl = await getCanonicalUrlToFlyer(lang, identifier);
       {!isPrint && (
         <div class="meta-section">
           <div>
-            {useUiTranslation('meta.findAlsoInFlyer', lang)}
+            {collectionLabel}
             <InternalShortLink identifier={identifier} />
             <ContentMeta entry={blockEntries[0]} />
           </div>
@@ -81,6 +91,6 @@ const canonicalUrl = await getCanonicalUrlToFlyer(lang, identifier);
       )}
     </Accordion>
   ) : (
-    <NotFoundError context={`FlyerBox/${identifier}/${lang}`} />
+    <NotFoundError context={`BlockBox/${identifier}/${lang}`} />
   )
 }
