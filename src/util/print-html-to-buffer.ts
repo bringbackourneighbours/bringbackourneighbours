@@ -6,7 +6,9 @@ export const printHtmlToBuffer = async (
   pagePath: string,
 ): Promise<Uint8Array> => {
   const isDev = import.meta.env.DEV;
-  const browser = await puppeteer.launch();
+  const browser = await puppeteer.launch({
+    args: ['--no-sandbox', '--disable-setuid-sandbox'],
+  });
   const page = await browser.newPage();
 
   if (isDev) {
