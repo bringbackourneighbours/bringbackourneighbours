@@ -1,5 +1,6 @@
 import { defineConfig } from 'astro/config';
 import mdx from '@astrojs/mdx';
+import checkFlyers from './src/integrations/check-flyers';
 
 const isDev = import.meta.env.DEV;
 const siteUrl = isDev
@@ -18,5 +19,6 @@ export default defineConfig({
   integrations: [
     mdx(),
     // printPdfs() // disabled fo now
+    checkFlyers(),
   ],
 });
