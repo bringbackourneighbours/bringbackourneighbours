@@ -5,12 +5,16 @@ import {
 import { printHtmlToBuffer } from '../../util/print-html-to-buffer.ts';
 
 export async function getStaticPaths() {
-  return getStaticPathsForFlyers();
+  const isDev = import.meta.env.DEV;
+  if (isDev) {
+    // here we provide the as live preview for the dev mode
+    return getStaticPathsForFlyers();
+  }
+  return [];
 }
 
-// TODO: this is a little hacky: we do render the pages within the builud step.
-// this only works because the "internal-print" was build just before.
-// alternativ would be to move this to an astro integration
+// DEV MOVE ONLY!!!
+// For the production env we render the pages within the build step as astro integration.
 export async function GET(flyer: StandaloneContentProps<'flyers'>) {
   return new Response(
     await printHtmlToBuffer(

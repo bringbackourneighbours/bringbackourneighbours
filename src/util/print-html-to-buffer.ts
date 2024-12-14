@@ -1,14 +1,20 @@
-import puppeteer from 'puppeteer';
+import puppeteer, { Browser } from 'puppeteer';
 import fs from 'fs';
 import AstroConfig from '../../astro.config.mjs';
 
 export const printHtmlToBuffer = async (
   pagePath: string,
+  browserToReuse?: Browser,
 ): Promise<Uint8Array> => {
   const isDev = import.meta.env.DEV;
-  const browser = await puppeteer.launch({
-    args: ['--no-sandbox', '--disable-setuid-sandbox'],
-  });
+  // when printing en masse we don't want to set up and tear the browers for each page
+  const browser =
+    browserToReuse ??
+    (await puppeteer.launch({
+      // in the github ci the build will fail without diasbling the sandbox.
+      // TODO: investigate possible workaround
+      args: ['--no-sandbox', '--disable-setuid-sandbox'],
+    }));
   const page = await browser.newPage();
 
   if (isDev) {
@@ -17,7 +23,7 @@ export const printHtmlToBuffer = async (
   } else {
     // we will not get the global stylesheets without loading them first.
     // so we visit the production page once and then the css is already loaded
-    // alternatively we could intercept the request for the styles... do it works for now.
+    // alternatively we could intercept the request for the styles... but it works for now.
     await page.goto(AstroConfig.site!, {
       waitUntil: ['domcontentloaded', 'networkidle0'],
     });
@@ -33,7 +39,9 @@ export const printHtmlToBuffer = async (
     preferCSSPageSize: true,
   });
 
-  await browser.close();
+  if (!browserToReuse) {
+    await browser.close();
+  }
 
   return pdfBuffer;
 };
