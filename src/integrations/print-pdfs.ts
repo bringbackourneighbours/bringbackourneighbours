@@ -1,5 +1,7 @@
 import { type AstroIntegration } from 'astro';
-import { writeFile, mkdir } from 'node:fs/promises';
+import { mkdir, writeFile } from 'node:fs/promises';
+import puppeteer from 'puppeteer';
+
 import { printHtmlToBuffer } from '../util/print-html-to-buffer.ts';
 
 // this actually works, but it was more partically to implement this as an endpoint... becuase we can use that in dev mode as well
@@ -8,23 +10,39 @@ export default function printPdfs(): AstroIntegration {
     name: 'print-pdfs',
     hooks: {
       'astro:build:done': async ({ dir, pages, logger }): Promise<void> => {
-        const pdfDistDir = `${dir.pathname}pdfs`;
-        logger.info(`printing the flyers to ${pdfDistDir} `);
+        const pdfDistDir = `${dir.pathname}print`;
+        logger.info(`Printing all the pages to ${pdfDistDir} as PDF`);
 
         await mkdir(pdfDistDir, { recursive: true });
 
-        for (const htmlPage of pages.filter((page) =>
-          page.pathname.startsWith('internal-print'),
-        )) {
-          const htmlTemplatePath = `${dir.pathname}${htmlPage.pathname}/index.html`;
-          const pdfOutputPath = `${dir.pathname}pdfs/${htmlPage.pathname.replace('internal-print/', '').replace('/', '.pdf')}`;
+        const browser = await puppeteer.launch({
+          args: ['--no-sandbox', '--disable-setuid-sandbox'],
+        });
+        logger.debug(`Launched puppeteer Browser ${await browser.version()}`);
 
-          logger.info(`printing from ${htmlTemplatePath} to ${pdfOutputPath}`);
+        const printJobs = pages
+          .filter((page) => page.pathname.startsWith('internal-print'))
+          .map(async (htmlPage) => {
+            const pdfOutputFilename = `${htmlPage.pathname.replace('internal-print/', '').replace('/', '.pdf')}`;
+            const pdfOutputPath = `${pdfDistDir}/${pdfOutputFilename}`;
 
-          const pdfBuffer = await printHtmlToBuffer(htmlPage.pathname);
+            logger.debug(`Printing ${htmlPage.pathname}`);
 
-          await writeFile(pdfOutputPath, pdfBuffer);
-        }
+            const pdfBuffer = await printHtmlToBuffer(
+              htmlPage.pathname,
+              browser,
+            );
+
+            await writeFile(pdfOutputPath, pdfBuffer);
+            logger.info(`Printed ${pdfOutputFilename}`);
+            return;
+          });
+
+        // we try to print all the pdf in parallel, as this is at least 5 times faster
+        await Promise.all(printJobs);
+
+        await browser.close();
+        logger.debug('Closed puppeteer Browser.');
       },
     },
   };
