@@ -1,5 +1,6 @@
 import { defineConfig } from 'astro/config';
 import mdx from '@astrojs/mdx';
+
 const isDev = import.meta.env.DEV;
 const siteUrl = isDev
   ? 'http://localhost:4321/'
@@ -14,5 +15,8 @@ export const linkUrl = isDev
 export default defineConfig({
   site: siteUrl,
   base: basePath,
-  integrations: [mdx()],
+  integrations: [
+    mdx(),
+    // printPdfs() // disabled fo now
+  ],
 });
