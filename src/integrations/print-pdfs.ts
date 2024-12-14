@@ -2,6 +2,7 @@ import { type AstroIntegration } from 'astro';
 import { writeFile, mkdir } from 'node:fs/promises';
 import { printHtmlToBuffer } from '../util/print-html-to-buffer.ts';
 
+// this actually works, but it was more partically to implement this as an endpoint... becuase we can use that in dev mode as well
 export default function printPdfs(): AstroIntegration {
   return {
     name: 'print-pdfs',
@@ -20,7 +21,7 @@ export default function printPdfs(): AstroIntegration {
 
           logger.info(`printing from ${htmlTemplatePath} to ${pdfOutputPath}`);
 
-          const pdfBuffer = await printHtmlToBuffer(htmlTemplatePath);
+          const pdfBuffer = await printHtmlToBuffer(htmlPage.pathname);
 
           await writeFile(pdfOutputPath, pdfBuffer);
         }
