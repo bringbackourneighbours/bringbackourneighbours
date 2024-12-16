@@ -16,7 +16,7 @@
     "@fontsource/firago": "^5.1.0",
     "@types/jsonpath": "^0.2.4",
     "@types/qrcode": "^1.5.5",
-    "astro": "^4.16.6",
+    "astro": "^4.16.17",
     "jsonpath": "^1.1.1",
     "muhammara": "^5.2.0",
     "puppeteer": "^23.9.0",
