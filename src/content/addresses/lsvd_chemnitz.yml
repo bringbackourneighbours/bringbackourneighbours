@@ -1,9 +1,25 @@
 identifier: lsvd_chemnitz
-name:  Information Center for LGBTI Refugees
+name: Information Center for LGBTI Refugees
 city: Chemnitz
 mails:
   - qr-chemnitz1@lsvd.de
   - qr-chemnitz2@lsvd.de
   - qr-chemnitz3@lsvd.de
+phones:
+ - ' +4937135146557'
+ - ' +491789363457'
+ - ' +4917675926504'
+ - ' +4917676818471'
 url: https://sachsen.lsvd.de/projekte/gefluechtete
 lastChecked: 2024-07-17
+translatedNotes:  
+  de: "Information Center for LGBTI Refugees"  
+  en: "Information Center for LGBTI Refugees"
+  fr: "Centre d'information pour les réfugiés LGBTI"
+  ar: "مركز المعلومات الخاص باللاجئين المثليين والمثليات ومزدوجي الميل الجنسي ومغايري الهوية الجنسانية وحاملي صفات الجنسين"
+  ka: "ლგბტი ლტოლვილთა საინფორმაციო ცენტრი"
+  fa: مرکز اطلاعات برای پناهندگان LGBTI
+  ur: ایل جی بی ٹی آئی پناہ گزینوں کے لئے انفارمیشن سینٹر
+  es: Centro de Información para Refugiados LGBTI
+  tr: LGBTİ Mülteciler için Bilgi Merkezi
+  ku: ناوەندی زانیاری بۆ پەنابەرانی هاوڕەگەزخواز

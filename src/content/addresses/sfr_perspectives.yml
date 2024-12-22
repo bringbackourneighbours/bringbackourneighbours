@@ -1,7 +1,16 @@
 identifier: sfr_perspectives
 name: PERSPECTIVES
 additional: Perspektivberatung für Geflüchtete in Sachsen
-city: Dresden
-mail: asyl@sfrev.de
 url: https://www.saechsischer-fluechtlingsrat.de/de/projekt-perspectives/
-lastChecked: 2024-07-17
+lastChecked: 2024-07-30
+translated Notes:
+  en: Counselling on the right to stay for people with tolerated status
+  de: Beratung zum Bleiberecht für Menschen mit Duldung
+  fr: Conseil sur le droit de rester pour les personnes tolérées
+  ar: المشورة بشأن الحق في الإقامة للأشخاص ذوي الوضع المسموح به
+  ka: რჩევები დეპორტაციის დროებითი შეჩერების მქონე ადამიანებისთვის დარჩენის უფლების შესახებ
+  fa: مشاوره در مورد حق اقامت برای افرادی که اخراج موقت دارند
+  ur: ملک بدری کی عارضی معطلی والے افراد کے لئے رہنے کے حق کے بارے میں مشورہ
+  es: Asesoramiento sobre el derecho de estancia de las personas en situación tolerada
+  tr: Müsamaha gösterilen statüdeki kişiler için kalma hakkı konusunda danışmanlık
+  ku: ئامۆژگاری لەسەر مافی مانەوە بۆ ئەو کەسانەی کە بە کاتی ڕاگرتنی دیپۆرتکردنەوەیان هەیە
