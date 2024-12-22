@@ -1,8 +1,17 @@
 identifier: rlc_leipzig
 name: Refugee Law Clinic Leipzig
+# No address here, because address is variable
 mail: beratung@rlc-leipzig.de
 url: https://rlcl.de
-lastChecked: 2024-06-07
-streetline: Taubestraße 2
-zip: "04347"
-city: Leipzig
+lastChecked: 2024-07-17
+translatedNotes:
+de: "Refugee Law Clinic Leipzig - Kostenlose Rechtsberatung für Geflüchtete"  
+en: "Refugee Law Clinic Leipzig - Free legal advice for refugees"
+fr: "Refugee Law Clinic Leipzig - conseil juridique gratuit pour les réfugiés"
+ar: "Refugee Law Clinic Leipzig - استشارات قانونية مجانية للاجئين"
+ka: ლტოლვილთა სამართლის კლინიკა ლაიფციგი - უფასო იურიდიული კონსულტაცია ლტოლვილებისთვის
+fa: Refugee Law Clinic Leipzig - مشاوره حقوقی رایگان برای پناهندگان
+ur:  پناہ گزینوں کے لاء کلینک لیپزگ - پناہ گزینوں کے لئے مفت قانونی مشورہ 
+es: Refugee Law Clinic Leipzig - Asesoramiento jurídico gratuito para refugiados
+tr: Refugee Law Clinic Leipzig - Mülteciler için ücretsiz hukuki danışmanlık
+ku: کلینیکی یاسایی پەنابەران لایپزیگ - ڕێنمایی یاسایی بەخۆڕایی بۆ پەنابەران
