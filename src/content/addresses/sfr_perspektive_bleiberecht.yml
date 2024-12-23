@@ -1,14 +1,21 @@
 identifier: sfr_perspektive_bleiberecht
-name: Perspektive Bleiberecht  Dresden
+name: Perspektive Bleiberecht Dresden
 additional: Perspektivberatung für Geflüchtete in Dresden
 streetLine: Dammweg 3
 zip: "01097"
 city: Dresden
 mail: sickert@sfrev.de
+phone: ' +49 351 79 66 51 55'
 url: https://www.saechsischer-fluechtlingsrat.de/de/projekt-perspektive-bleiberecht-dresden/
-lastChecked: 2024-07-17
+lastChecked: 2024-07-30
 translatedNotes:
-  de: "Das Modellprojekt „Perspektive Bleiberecht Dresden“ bietet in Dresden lebenden Geflüchteten eine individuelle, unabhängige und ergebnisoffene Perspektivberatung an. Das Beratungsangebot richtet sich an Personen mit Duldung, die absehbar von einer Bleiberechtsregelung begünstigt werden können."
-  en: "The “Perspektive Bleiberecht Dresden” project offers refugees living in Dresden individual, independent and open-ended advice on their future prospects. The advice service is aimed at people with tolerated status who are likely to benefit from a right to stay."
-
-# https://www.saechsischer-fluechtlingsrat.de/wp-content/uploads/2024/05/modellprojekt_digital_fuer_OeA_Endversion.pdf
+  de: Perspektive Bleiberecht Dresden - Beratungsstelle für Menschen mit Duldung  
+  en: Perspektive Bleiberecht Dresden - Counselling centre for people with tolerated status
+  fr: Perspektive Bleiberecht Dresden - Service de consultation pour les personnes en situation de tolérance
+  ar: Perspektive Bleiberecht Dresden - مركز المشورة للأشخاص ذوي الوضع المقبول
+  ka: Perspektive Bleiberecht Dresden - დეპორტაციის დროებითი შეჩერების მქონე ადამიანებისთვის საკონსულტაციო ცენტრი
+  fa: Perspektive Bleiberecht Dresden - مشاوره در مورد حق اقامت برای افرادی که اخراج موقت دارند
+  ur: Perspektive Bleiberecht Dresden - ملک بدری کی عارضی معطلی والے افراد کے لئے مشاورتی مرکز
+  es: Perspektive Bleiberecht Dresden - Centro de asesoramiento para personas en situación tolerada
+  tr: Perspektive Bleiberecht Dresden - Tolere edilen statüdeki kişiler için danışma merkezi
+  ku: Perspektive Bleiberecht Dresden- سەنتەری راوێژکاریی بۆ ئەو کەسانەی کە بە شێوەیەکی کاتی دیپۆرتیان ڕاگرتووە

@@ -1,6 +1,19 @@
 identifier: gerede_dresden
 name:  Gerede e.V.
+streetLine: Prießnitzstraße 18  
+zip: "01099"  
 city: Dresden
 mail: refugees@gerede-dresden.de
 url: https://gerede-dresden.de/beratung/queer-refugees/
 lastChecked: 2024-07-17
+translatedNotes:  
+  de: "queer refugees - Rechtsberatung"  
+  en: "queer refugees - legal advice"
+  fr: "queer refugees - Conseil juridique"
+  ar: "اللاجئون المثليون - المشورة القانونية"
+  ka: "ქვიარ ლტოლვილები - იურიდიული რჩევები"
+  fa: پناهندگان کوئیر – مشاوره حقوقی
+  ur: queer refugees - legal advice
+  es: Refugiados queer - asesoramiento legal
+  tr: Queer mülteciler – hukuki danışmanlık
+  ku: Penaberên Queer - şêwirmendiya qanûnî
