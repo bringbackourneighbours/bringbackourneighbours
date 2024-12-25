@@ -209,6 +209,18 @@ const allKits = await getStaticPathsForKits();
         </li>
         <li>
           {
+            getCanonicalUrlToPage(lang, 'supporters').then((href) => (
+              <Link
+                lang={lang}
+                href={href || ''}
+              >
+                {useUiTranslation('meta.supporters', lang)}
+              </Link>
+            ))
+          }
+        </li>
+        <li>
+          {
             getCanonicalUrlToPage(lang, 'material').then((href) => (
               <Link
                 lang={lang}
