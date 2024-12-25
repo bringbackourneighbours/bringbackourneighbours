@@ -1,0 +1,31 @@
+---
+import type { LanguagesValue } from '../util/languages';
+
+import { getLanguageDirection } from '../util/get-language-direction';
+
+import Link from '../design/Link.astro';
+
+interface Props {
+  lang?: LanguagesValue;
+  label: string;
+  canonicalUrl: string;
+}
+
+const { lang = Astro.locals.lang, label, canonicalUrl } = Astro.props;
+---
+
+<style>
+  .h3 {
+    margin: 0;
+  }
+</style>
+
+<Link
+  lang={lang}
+  href={canonicalUrl}
+>
+  <p class="h3">
+    {label}
+    {getLanguageDirection(lang) === 'ltr' ? '→' : '←'}
+  </p>
+</Link>

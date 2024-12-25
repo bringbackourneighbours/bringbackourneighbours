@@ -1,26 +1,41 @@
 ---
 import { type LanguagesValue } from '../util/languages';
 import { useUiTranslation } from '../util/use-ui-translation';
-import { getCanonicalUrlToPage } from '../util/get-canonical-url';
+import {
+  getCanonicalUrlToKit,
+  getCanonicalUrlToPage,
+} from '../util/get-canonical-url';
+
 import Stack from '../design/Stack.astro';
-import Link from '../design/Link.astro';
-import { getLanguageDirection } from '../util/get-language-direction';
+import MenuLink from '../design/MenuLink.astro';
+
 interface Props {
   lang: LanguagesValue;
   showFlyers?: boolean;
   showKits?: boolean;
+  showKit?: boolean;
 }
 
-const { lang, showFlyers, showKits } = Astro.props;
+const { lang, showFlyers, showKits, showKit } = Astro.props;
+
+const kitAffectedCanonicalUrl = await getCanonicalUrlToKit(lang, 'affected');
+const contactsCanonicalUrl = await getCanonicalUrlToPage(lang, 'contacts');
+const formsCanonicalUrl = await getCanonicalUrlToPage(lang, 'forms');
+const publicityCanonicalUrl = await getCanonicalUrlToPage(lang, 'publicity');
+const materialCanonicalUrl = await getCanonicalUrlToPage(lang, 'material');
+
+const kitAffectedLabel = await useUiTranslation('meta.emergencyKit', lang);
+const allFlyersLabel = await useUiTranslation('meta.allFlyers', lang);
+const allKitsLabel = await useUiTranslation('meta.allKits', lang);
+const contactsLabel = await useUiTranslation('meta.contacts', lang);
+const formsLabel = await useUiTranslation('meta.forms', lang);
+const publicityLabel = await useUiTranslation('meta.publicity', lang);
+const materialLabel = await useUiTranslation('meta.material', lang);
 ---
 
 <style>
   h2 {
     text-align: center;
-  }
-
-  h3 {
-    margin: 0;
   }
 </style>
 
@@ -28,84 +43,51 @@ const { lang, showFlyers, showKits } = Astro.props;
 
 <Stack>
   {
+    showKit && (
+      <MenuLink
+        lang={lang}
+        canonicalUrl={kitAffectedCanonicalUrl ?? ''}
+        label={kitAffectedLabel}
+      />
+    )
+  }
+  {
     showFlyers && (
-      <>
-        <Link
-          lang={lang}
-          href={`${Astro.site}${lang}/flyer`}
-        >
-          <h3>
-            {useUiTranslation('meta.allFlyers', lang)}
-            {getLanguageDirection(lang) === 'ltr' ? '→' : '←'}
-          </h3>
-        </Link>
-      </>
+      <MenuLink
+        lang={lang}
+        canonicalUrl={`${Astro.site}${lang}/flyer`}
+        label={allFlyersLabel}
+      />
     )
   }
   {
     showKits && (
-      <Link
+      <MenuLink
         lang={lang}
-        href={`${Astro.site}${lang}/kit`}
-      >
-        <h3>
-          {useUiTranslation('meta.allKits', lang)}
-          {getLanguageDirection(lang) === 'ltr' ? '→' : '←'}
-        </h3>
-      </Link>
+        canonicalUrl={`${Astro.site}${lang}/kit`}
+        label={allKitsLabel}
+      />
     )
   }
-  {
-    getCanonicalUrlToPage(lang, 'contacts').then((href) => (
-      <Link
-        lang={lang}
-        href={href}
-      >
-        <h3>
-          {useUiTranslation('meta.contacts', lang)}
-          {getLanguageDirection(lang) === 'ltr' ? '→' : '←'}
-        </h3>
-      </Link>
-    ))
-  }
-  {
-    getCanonicalUrlToPage(lang, 'forms').then((href) => (
-      <Link
-        lang={lang}
-        href={href}
-      >
-        <h3>
-          {useUiTranslation('meta.forms', lang)}
-          {getLanguageDirection(lang) === 'ltr' ? '→' : '←'}
-        </h3>
-      </Link>
-    ))
-  }
 
-  {
-    getCanonicalUrlToPage(lang, 'publicity').then((href) => (
-      <Link
-        lang={lang}
-        href={href}
-      >
-        <h3>
-          {useUiTranslation('meta.publicity', lang)}
-          {getLanguageDirection(lang) === 'ltr' ? '→' : '←'}
-        </h3>
-      </Link>
-    ))
-  }
-  {
-    getCanonicalUrlToPage(lang, 'material').then((href) => (
-      <Link
-        lang={lang}
-        href={href}
-      >
-        <h3>
-          {useUiTranslation('meta.material', lang)}
-          {getLanguageDirection(lang) === 'ltr' ? '→' : '←'}
-        </h3>
-      </Link>
-    ))
-  }
+  <MenuLink
+    lang={lang}
+    canonicalUrl={contactsCanonicalUrl ?? ''}
+    label={contactsLabel}
+  />
+  <MenuLink
+    lang={lang}
+    canonicalUrl={formsCanonicalUrl ?? ''}
+    label={formsLabel}
+  />
+  <MenuLink
+    lang={lang}
+    canonicalUrl={publicityCanonicalUrl ?? ''}
+    label={publicityLabel}
+  />
+  <MenuLink
+    lang={lang}
+    canonicalUrl={materialCanonicalUrl ?? ''}
+    label={materialLabel}
+  />
 </Stack>

@@ -1,13 +1,15 @@
 ---
+import { type LanguagesValue } from '../util/languages';
+
+import { SupportedLanguages } from '../util/languages';
+import { getTranslationsUrlsForPath } from '../util/get-translations-url';
+import { useUiTranslation } from '../util/use-ui-translation';
+
 import CardLink from '../design/CardLink.astro';
 import LanguageSwitcher from '../design/LanguageSwitcher.astro';
 import MoreInfoStack from './MoreInfoStack.astro';
 import OverviewLayout from '../layouts/OverviewLayout.astro';
 import Stack from '../design/Stack.astro';
-import { SupportedLanguages } from '../util/languages';
-import { getTranslationsUrlsForPath } from '../util/get-translations-url';
-import { type LanguagesValue } from '../util/languages';
-import { useUiTranslation } from '../util/use-ui-translation';
 
 interface Props {
   lang?: LanguagesValue;
@@ -44,7 +46,7 @@ const translationSlugs = await getTranslationsUrlsForPath(lang, '');
 
   <MoreInfoStack
     lang={lang}
-    showKits={true}
+    showKits={false}
     showFlyers={true}
   />
 </OverviewLayout>
