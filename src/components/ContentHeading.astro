@@ -15,9 +15,16 @@ import { useUiTranslation } from '../util/use-ui-translation';
 interface Props<T extends StandaloneCollections> {
   collection: T;
   entry: CollectionEntry<T>;
+  showCopyButton?: boolean;
+  showDownloadButton?: boolean;
 }
 
-const { entry, collection } = Astro.props;
+const {
+  entry,
+  collection,
+  showCopyButton = collection !== 'kits',
+  showDownloadButton = collection !== 'pages',
+} = Astro.props;
 
 // TODO: this might be depending on collection
 
@@ -60,16 +67,19 @@ const canonicalUrl = await getCanonicalUrlFn(collection)(
     title={entry.data.title}
     url={canonicalUrl}
   />
-  <CopyButton>
-    <h1>{entry.data.title}</h1>
-    <Block
-      identifier={entry.data.identifier}
-      collection={collection}
-    />
-  </CopyButton>
-
   {
-    collection != 'pages' && (
+    showCopyButton && (
+      <CopyButton>
+        <h1>{entry.data.title}</h1>
+        <Block
+          identifier={entry.data.identifier}
+          collection={collection}
+        />
+      </CopyButton>
+    )
+  }
+  {
+    showDownloadButton && (
       <CardLink
         size="p"
         smaller
