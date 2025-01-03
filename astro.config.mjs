@@ -1,5 +1,6 @@
 import { defineConfig } from 'astro/config';
 import mdx from '@astrojs/mdx';
+import sitemap from '@astrojs/sitemap';
 import printPdfs from './src/integrations/print-pdfs';
 import checkFlyers from './src/integrations/check-flyers';
 
@@ -17,7 +18,7 @@ export const linkUrl = isDev
 export default defineConfig({
   site: siteUrl,
   base: basePath,
-  integrations: [mdx(), printPdfs(), checkFlyers()],
+  integrations: [mdx(), sitemap(), printPdfs(), checkFlyers()],
   build: {
     concurrency: 4,
   },

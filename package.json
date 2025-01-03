@@ -13,6 +13,7 @@
   "dependencies": {
     "@astrojs/check": "^0.9.4",
     "@astrojs/mdx": "^3.1.9",
+    "@astrojs/sitemap": "^3.2.1",
     "@fontsource/firago": "^5.1.0",
     "@types/jsonpath": "^0.2.4",
     "@types/qrcode": "^1.5.5",
