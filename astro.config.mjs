@@ -18,7 +18,35 @@ export const linkUrl = isDev
 export default defineConfig({
   site: siteUrl,
   base: basePath,
-  integrations: [mdx(), sitemap(), printPdfs(), checkFlyers()],
+  integrations: [
+    mdx(),
+    sitemap({
+      filter: (page) => {
+        return (
+          !/\/internal-print\//.test(page) &&
+          !/\/link\//.test(page) &&
+          !/\/showcase\//.test(page)
+        );
+      },
+
+      // this will not work:
+      // astro well just replace the 'de' with 'en' but our canonical URl are more complex!
+      i18n: {
+        defaultLocale: 'de',
+        locales: {
+          en: 'en-GB',
+          de: 'de-DE',
+        },
+      },
+      serialize: (item) => {
+        // console.log(item.links);
+        // we cannot access the content here to populate the links for the translations
+        return item;
+      },
+    }),
+    printPdfs(),
+    checkFlyers(),
+  ],
   build: {
     concurrency: 4,
   },
