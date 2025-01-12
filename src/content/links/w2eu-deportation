@@ -2,7 +2,7 @@ all:
 type: PDF
 en:
 slug: w2eu-deportationen
-url:https://w2eu.info/media/pages/countries/germany/deportation/672393118c-1716037674/abschiebungen-englisch-digital.pdf
+url: https://w2eu.info/media/pages/countries/germany/deportation/672393118c-1716037674/abschiebungen-englisch-digital.pdf
 title: stop deportation
 dt:
 slug: slug: w2eu-deportationde
