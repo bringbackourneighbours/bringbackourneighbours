@@ -1,0 +1,14 @@
+identifier: bamf-dd
+name: BAMF Dresden
+additional: Bundesamt für Migration und Flüchtlinge
+streetLine: Nossener Brücke 12
+zip: "01187"
+city:  Dresden
+mail: service@bamf.bund.de
+tel: 0911 943-28803
+fax: 0911 943-72299 and 0911 943-10000
+url: https://www.bamf.de/DE/Behoerde/Aufbau/Standorte/standorte-node.html
+lastChecked: 2024-11-22
+translatedNotes:
+  de: "Bundesamt für Migration und Flüchtlinge, Dresden"
+  en: "Federal Office for Migration and Refugees, Dresden"
