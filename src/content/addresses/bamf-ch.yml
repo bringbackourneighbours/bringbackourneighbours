@@ -1,14 +1,13 @@
-identifier: BAMF-CH  
-name: BAMF Chemnitz  
-additional: Bundesamt für Migration und Flüchtlinge  
-streetLine: Adalbert-Stifter-Weg 25  
-zip: 09131  
+identifier: bamf-ch
+name: BAMF Chemnitz
+additional: Bundesamt für Migration und Flüchtlinge
+streetLine: Adalbert-Stifter-Weg 25
+zip: "09131"
 city: Chemnitz
-
 tel: 0911 943 72799  
 fax: 0911 943 34199 and 0911 943-10000  
-url: https://www.bamf.de/DE/Behoerde/Aufbau/Standorte/standorte-node.html  
-last checked: 2024-11-22  
+url: https://www.bamf.de/DE/Behoerde/Aufbau/Standorte/standorte-node.html
+lastChecked: 2024-11-22
 translatedNotes:  
-de: "Bundesamt für Migration und Flüchtlinge, Chemnitz"  
-en: "Federal Office for Migration and Refugees, Chemnitz"
+  de: "Bundesamt für Migration und Flüchtlinge, Chemnitz"
+  en: "Federal Office for Migration and Refugees, Chemnitz"

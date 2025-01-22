@@ -1,10 +1,9 @@
-identifier: BAMF-allg  
-name: BAMF Standorte  
+identifier: bamf-allg
+name: BAMF Standorte
 mail: service@bamf.bund.de
-
-fax: 0911 943-10000  
-url: https://www.bamf.de/DE/Behoerde/Aufbau/Standorte/standorte-node.html  
-last checked: 2024-11-22  
-translatedNotes:  
-de: "Kontakte zu allen Stellen des Bundesamt für Migration und Flüchtlinge"  
-en: "Contact to all field offices of the Federal Office for Migration and Refugees"
+fax: 0911 943-10000
+url: https://www.bamf.de/DE/Behoerde/Aufbau/Standorte/standorte-node.html
+lastChecked: 2024-11-22
+translatedNotes:
+  de: "Kontakte zu allen Stellen des Bundesamt für Migration und Flüchtlinge"
+  en: "Contact to all field offices of the Federal Office for Migration and Refugees"
