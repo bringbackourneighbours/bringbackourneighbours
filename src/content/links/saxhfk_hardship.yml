@@ -1,6 +1,6 @@
 all:
   slug: hfk
-  url: https://sab.landtag.sachsen.de/download/SAB/SAB-HfK_11sprachig_3-2023_web.pdf
+  url: https://sab.landtag.sachsen.de/download/SAB/SAB-HFK-8sprachig-November2024-web_150dpi.pdf
   type: WEB
 en:
   title: Saxon commission on hardship cases
