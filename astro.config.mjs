@@ -11,7 +11,7 @@ const basePath = '';
 
 export const linkUrl = isDev
   ? 'http://localhost:4321/link'
-  : 'https://beta.bbonlink.de/link';
+  : 'beta.bbonlink.de';
 
 // https://astro.build/config
 export default defineConfig({
