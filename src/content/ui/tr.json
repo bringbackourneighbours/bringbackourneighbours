@@ -1,0 +1,26 @@
+{
+  "languages": {
+    "ar": "Arapça",
+    "bs": "Boşnakça",
+    "ckb": "Kürtçe (Sorani)",
+    "de": "Almanca",
+    "en": "İngilizce",
+    "es": "İspanyol",
+    "fa": "Farsça",
+    "fr": "Fransızca",
+    "ka": "Gürcü",
+    "ku": "Kürt",
+    "mk": "Makedonca",
+    "ps": "Peştuca",
+    "ru": "Rusça",
+    "so": "Somali",
+    "sq": "Arnavut",
+    "sr": "Sırpça",
+    "ti": "Tigrinya",
+    "tr": "Türkçe",
+    "uk": "Ukrayna",
+    "vi": "Vietnam",
+    "ur": "Urdu",
+    "findTranslation": "Türkçe çevirisi mevcuttur"
+  }
+}

@@ -1,0 +1,26 @@
+{
+  "languages": {
+    "ar": "arapski",
+    "bs": "bosanski",
+    "ckb": "kurdski (sorani)",
+    "de": "njemački",
+    "en": "engleski",
+    "es": "španjolski",
+    "fa": "farsi",
+    "fr": "francuski",
+    "ka": "Gruzijski",
+    "ku": "Kurdski",
+    "mk": "makedonski",
+    "ps": "Pashto",
+    "ru": "ruski",
+    "so": "somalijski",
+    "sq": "Albanac",
+    "sr": "srpski",
+    "ti": "Tigrinya",
+    "tr": "turski",
+    "uk": "ukrajinski",
+    "vi": "Vijetnamski",
+    "ur": "Urdu",
+    "findTranslation": "Dostupan prevod na bosanski jezik"
+  }
+}

@@ -1,0 +1,26 @@
+{
+  "languages": {
+    "ar": "arabisht",
+    "bs": "boshnjake",
+    "ckb": "kurde (sorani)",
+    "de": "gjermane",
+    "en": "anglisht",
+    "es": "spanjisht",
+    "fa": "persisht",
+    "fr": "frëngjisht",
+    "ka": "gjeorgjiane",
+    "ku": "kurde",
+    "mk": "maqedonase",
+    "ps": "Pashto",
+    "ru": "ruse",
+    "so": "somalez",
+    "sq": "shqiptare",
+    "sr": "serb",
+    "ti": "Tigrinja",
+    "tr": "turqisht",
+    "uk": "ukrainase",
+    "vi": "vietnameze",
+    "ur": "urdu",
+    "findTranslation": "Përkthimi në dispozicion në shqip"
+  }
+}

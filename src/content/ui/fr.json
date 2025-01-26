@@ -6,13 +6,26 @@
     "someoneElseInDangerQuestion": "Tu veux soutenir une personne menacée d'expulsion?"
   },
   "languages": {
-    "de": "Allemand",
-    "ar": "Arabe",
+    "ar": "arabe",
+    "bs": "bosniaque",
+    "ckb": "Kurde (Sorani)",
+    "de": "allemand",
     "en": "anglais",
-    "fr": "français",
-    "fa": "Farsi",
-    "ka": "géorgien",
     "es": "espagnol",
-    "ur": "ourdou"
+    "fa": "farsi",
+    "fr": "français",
+    "ka": "géorgien",
+    "ku": "kurde",
+    "mk": "macédonien",
+    "ps": "pashto",
+    "ru": "russe",
+    "so": "somalien",
+    "sq": "albanais",
+    "sr": "serbe",
+    "ti": "Tigrinya",
+    "tr": "turc",
+    "uk": "ukrainien",
+    "ur": "ourdou",
+    "vi": "vietnamien"
   }
 }
