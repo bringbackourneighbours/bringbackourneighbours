@@ -97,7 +97,7 @@ const allKits = await getStaticPathsForKits();
     <Logo />
   </a>
   <a href={`${Astro.site}${lang}`}>
-    <!--this could use the text to with like in the pdf-->
+    <!--this could use the text to width like in the pdf-->
     <div class="h3 mainline">Bring Back Our Neighbours</div>
   </a>
   <AnimatedCloseButton
@@ -110,6 +110,36 @@ const allKits = await getStaticPathsForKits();
   >
     <div class="nav-content">
       <ul>
+        <li>
+          <Link
+            lang={lang}
+            href={`${Astro.site}${lang}`}
+          >
+            {useUiTranslation('meta.title', lang)} –
+            {useUiTranslation('meta.home', lang)}
+          </Link>
+        </li>
+
+        {
+          allKits
+            .filter((kit) => kit.params.lang === lang)
+            .map(async (kit) => (
+              <li>
+                <Link
+                  lang={lang}
+                  href={
+                    (await getCanonicalUrlToKit(
+                      lang,
+                      kit.props.entry.data.identifier,
+                    )) || ''
+                  }
+                >
+                  {kit.props.entry.data.title}
+                </Link>
+              </li>
+            ))
+        }
+
         <li>
           <Link
             lang={lang}
@@ -140,37 +170,6 @@ const allKits = await getStaticPathsForKits();
             }
           </ul>
         </li>
-        <li>
-          <Link
-            lang={lang}
-            href={`${Astro.site}${lang}/kit`}
-          >
-            {useUiTranslation('meta.allKits', lang)}
-          </Link>
-
-          <ul>
-            {
-              allKits
-                .filter((kit) => kit.params.lang === lang)
-                .map(async (kit) => (
-                  <li>
-                    <Link
-                      lang={lang}
-                      href={
-                        (await getCanonicalUrlToKit(
-                          lang,
-                          kit.props.entry.data.identifier,
-                        )) || ''
-                      }
-                    >
-                      {kit.props.entry.data.title}
-                    </Link>
-                  </li>
-                ))
-            }
-          </ul>
-        </li>
-
         <li>
           {
             getCanonicalUrlToPage(lang, 'contacts').then((href) => (
