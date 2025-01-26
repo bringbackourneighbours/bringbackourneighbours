@@ -107,6 +107,7 @@ const uiCollection = defineCollection({
         findAlsoAsPage: z.string(),
         findAlsoInFlyer: z.string(),
         forms: z.string(),
+        home: z.string(),
         imprint: z.string(),
         infosAgainstDeportation: z.string(),
         machineTranslation: z.string(),
