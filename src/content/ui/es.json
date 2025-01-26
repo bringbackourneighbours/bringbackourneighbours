@@ -6,13 +6,26 @@
     "someoneElseInDangerQuestion": "¿Te gustaría apoyar a una persona que está en riesgo de deportación?"
   },
   "languages": {
-    "de": "alemán",
     "ar": "Árabe",
-    "en": "Inglés",
-    "fr": "Francés",
-    "fa": "Farsi",
-    "ka": "Georgiano",
+    "bs": "bosnio",
+    "ckb": "kurdo (sorani)",
+    "de": "alemán",
+    "en": "inglés",
     "es": "español",
-    "ur": "Urdu"
+    "fa": "farsi",
+    "fr": "francés",
+    "ka": "georgiano",
+    "ku": "kurdo",
+    "mk": "macedonio",
+    "ps": "pashto",
+    "ru": "ruso",
+    "so": "somalí",
+    "sq": "albanés",
+    "sr": "serbio",
+    "ti": "tigrinya",
+    "tr": "turkish",
+    "uk": "ucraniano",
+    "ur": "urdu",
+    "vi": "vietnamita"
   }
 }
