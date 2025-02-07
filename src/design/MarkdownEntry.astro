@@ -14,7 +14,7 @@ import InternalShortLink from '../components/InternalShortLink.astro';
  * BEWARE: this only works for `mdx`
  */
 interface Props {
-  rendered: Render['.mdx'];
+  rendered: Render['.mdx'] | Render['.md'];
 }
 
 const { rendered } = Astro.props;
