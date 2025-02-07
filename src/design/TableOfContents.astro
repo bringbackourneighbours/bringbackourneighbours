@@ -4,7 +4,7 @@ import TableOfContentsHeading from './TableOfContentsHeading.astro';
 import { buildToc } from '../util/table-of-contents';
 
 interface Props {
-  rendered: Render['.mdx'];
+  rendered: Render['.mdx'] | Render['.md'];
 }
 
 const { rendered } = Astro.props;
