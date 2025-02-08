@@ -5,10 +5,7 @@ import {
   type LanguagesValue,
 } from '../../util/languages';
 import { useUiTranslation } from '../../util/use-ui-translation';
-import {
-  getCanonicalUrlToKit,
-  getCanonicalUrlToPage,
-} from '../../util/get-canonical-url';
+import { getCanonicalUrlToKit } from '../../util/get-canonical-url';
 import { getTranslationsUrlsForPath } from '../../util/get-translations-url';
 
 import CardLink from '../../design/CardLink.astro';
@@ -56,7 +53,7 @@ const translationSlugs = await getTranslationsUrlsForPath(lang, 'wizard');
       ))
     }
     {
-      getCanonicalUrlToPage(lang, 'supporters').then((href) => (
+      getCanonicalUrlToKit(lang, 'support').then((href) => (
         <CardLink
           lang={lang}
           href={href}

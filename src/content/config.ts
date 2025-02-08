@@ -114,6 +114,7 @@ const uiCollection = defineCollection({
         material: z.string(),
         moreInfo: z.string(),
         moreInfoAbout: z.string(),
+        professionals: z.string(),
         publicity: z.string(),
         share: z.string(),
         sharedLinkToClipboard: z.string(),

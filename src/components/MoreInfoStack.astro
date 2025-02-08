@@ -22,7 +22,10 @@ const kitAffectedCanonicalUrl = await getCanonicalUrlToKit(lang, 'affected');
 const contactsCanonicalUrl = await getCanonicalUrlToPage(lang, 'contacts');
 const formsCanonicalUrl = await getCanonicalUrlToPage(lang, 'forms');
 const publicityCanonicalUrl = await getCanonicalUrlToPage(lang, 'publicity');
-const materialCanonicalUrl = await getCanonicalUrlToPage(lang, 'material');
+const professionalsCanonicalUrl = await getCanonicalUrlToPage(
+  lang,
+  'professionals',
+);
 
 const kitAffectedLabel = await useUiTranslation('meta.emergencyKit', lang);
 const allFlyersLabel = await useUiTranslation('meta.allFlyers', lang);
@@ -30,7 +33,7 @@ const allKitsLabel = await useUiTranslation('meta.allKits', lang);
 const contactsLabel = await useUiTranslation('meta.contacts', lang);
 const formsLabel = await useUiTranslation('meta.forms', lang);
 const publicityLabel = await useUiTranslation('meta.publicity', lang);
-const materialLabel = await useUiTranslation('meta.material', lang);
+const professionalsLabel = await useUiTranslation('meta.professionals', lang);
 ---
 
 <style>
@@ -77,17 +80,17 @@ const materialLabel = await useUiTranslation('meta.material', lang);
   />
   <MenuLink
     lang={lang}
-    canonicalUrl={formsCanonicalUrl ?? ''}
-    label={formsLabel}
-  />
-  <MenuLink
-    lang={lang}
     canonicalUrl={publicityCanonicalUrl ?? ''}
     label={publicityLabel}
   />
   <MenuLink
     lang={lang}
-    canonicalUrl={materialCanonicalUrl ?? ''}
-    label={materialLabel}
+    canonicalUrl={professionalsCanonicalUrl ?? ''}
+    label={professionalsLabel}
+  />
+  <MenuLink
+    lang={lang}
+    canonicalUrl={formsCanonicalUrl ?? ''}
+    label={formsLabel}
   />
 </Stack>
