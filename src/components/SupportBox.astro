@@ -1,0 +1,17 @@
+---
+import Accordion from '../design/Accordion.astro';
+
+interface Props {
+  title: string;
+}
+
+const { title } = Astro.props;
+---
+
+<Accordion
+  title={title}
+  variant="secondary"
+  open={true}
+>
+  <slot />
+</Accordion>

@@ -57,8 +57,18 @@ const { title, variant = 'primary', open = isPrint } = Astro.props;
   }
 
   .-is-print {
-    --accordion-content-color: var(--color-primary);
-    --accordion-summary-color: var(--color-primary);
+    &.-primary,
+    &.-inverted-primary {
+      --accordion-content-color: var(--color-primary);
+      --accordion-summary-color: var(--color-primary);
+    }
+
+    &.-secondary,
+    &.-inverted-secondary {
+      --accordion-content-color: var(--color-secondary);
+      --accordion-summary-color: var(--color-secondary);
+    }
+
     --accordion-border-color: var(--color-surface);
     --accordion-background-color: var(--color-surface);
     --accordion-padding: 0;
