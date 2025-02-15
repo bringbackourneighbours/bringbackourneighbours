@@ -26,29 +26,29 @@ export enum Languages {
 }
 
 export const SupportedLanguages = [
-  Languages.ARABIC,
   Languages.ENGLISH,
-  Languages.FRENCH,
-  Languages.GEORGIAN,
   Languages.GERMAN,
-  Languages.SPANISH,
-  Languages.URDU,
 ] as const;
 
 export const UnSupportedLanguages = [
+  Languages.ALBANIAN,
+  Languages.ARABIC,
+  Languages.BOSNIAN,
   Languages.FARSI,
+  Languages.FRENCH,
+  Languages.GEORGIAN,
+  Languages.KURDISH,
+  Languages.KURDISH_SORANI,
+  Languages.MACEDONIAN,
   Languages.PASHTO,
   Languages.RUSSIAN,
   Languages.SERBIAN,
+  Languages.SOMALI,
+  Languages.SPANISH,
   Languages.TIGRINYA,
   Languages.TURKISH,
   Languages.UKRAINIAN,
-  Languages.KURDISH,
-  Languages.KURDISH_SORANI,
-  Languages.ALBANIAN,
-  Languages.MACEDONIAN,
-  Languages.BOSNIAN,
-  Languages.SOMALI,
+  Languages.URDU,
   Languages.VIETNAMESE,
 ] as const;
 
