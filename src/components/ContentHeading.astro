@@ -22,7 +22,7 @@ interface Props<T extends StandaloneCollections> {
 const {
   entry,
   collection,
-  showCopyButton = collection !== 'kits',
+  showCopyButton = true,
   showDownloadButton = collection !== 'pages',
 } = Astro.props;
 
