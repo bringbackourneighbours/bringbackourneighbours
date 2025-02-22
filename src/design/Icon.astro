@@ -12,23 +12,22 @@ const { size = '1.5em', html, variant = 'primary' } = Astro.props;
 
 <style>
   .-primary {
-    --icon-color: var(--color-primary);
+    --icon-color: var(--bbon-color-primary);
   }
 
   .-secondary {
-    --icon-color: var(--color-secondary);
+    --icon-color: var(--bbon-color-secondary);
   }
 
   .-inverted-primary,
   .-inverted-secondary {
-    --icon-color: var(--color-surface);
+    --icon-color: var(--bbon-color-surface);
   }
 
   .icon {
     width: 1.5em;
     height: 1.5em;
     color: var(--icon-color);
-    padding-top: 3px;
     display: inline-block;
     flex-shrink: 0;
     fill: var(--icon-color);

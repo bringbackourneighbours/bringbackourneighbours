@@ -24,24 +24,27 @@ const allKits = await getStaticPathsForKits();
 
 <style>
   header {
-    background: var(--color-secondary);
-    color: var(--color-surface);
+    background: var(--bbon-color-secondary);
+    color: var(--bbon-color-surface);
     display: flex;
-    gap: 1em;
     justify-content: space-between;
+    align-items: center;
     position: sticky;
     top: 0;
-    padding: 1.5rem;
+    padding: var(--bbon-size-p);
+
+    /* FIXME: extract shadow */
     box-shadow:
-      0 8px 0 0 var(--color-secondary-dark),
-      2px 0 14px 10px rgb(0 0 0 / 30%);
+      0 8px 0 0 var(--bbon-color-secondary-dark),
+      var(--bbon-size-border) 0 var(--bbon-size-p)
+        var(--bbon-size-shadow-spread) rgb(0 0 0 / 30%);
   }
 
   a,
   a:hover,
   a:visited,
   a:active {
-    color: var(--color-surface);
+    color: var(--bbon-color-surface);
     text-decoration: none;
     border-bottom: 0;
   }
@@ -54,41 +57,18 @@ const allKits = await getStaticPathsForKits();
     left: 0;
     width: 100vw;
     height: 100vh;
-    background-color: var(--color-surface);
-    color: var(--color-secondary);
+    background-color: var(--bbon-color-surface);
+    color: var(--bbon-color-secondary);
     z-index: 100;
     box-sizing: border-box;
-    padding: 4rem;
+    padding: var(--bbon-size-gap);
     overflow: auto;
-  }
 
-  .nav-content {
-    /*
-    padding g so the language switcher has enough room
-     */
-    padding-block-end: calc(var(--vspace) + 2 * var(--vspace-3) + 1.5em);
-  }
+    --bbon-color-primary: var(--bbon-color-secondary);
 
-  #main-nav a,
-  #main-nav a:hover,
-  #main-nav a:visited,
-  #main-nav a:active {
-    color: var(--color-secondary);
-    text-decoration: none;
-    border-bottom: 0;
-  }
-
-  a .mainline {
-    margin: 0;
-  }
-
-  @media (width <= 600px) {
-    header {
-      gap: 0.1em;
-    }
-
-    header .mainline {
-      font-size: 1.4em !important;
+    .nav-content {
+      display: flex;
+      justify-content: center;
     }
   }
 </style>
@@ -96,9 +76,12 @@ const allKits = await getStaticPathsForKits();
   <a href={`${Astro.site}${lang}`}>
     <Logo />
   </a>
-  <a href={`${Astro.site}${lang}`}>
+  <a
+    class="mainline"
+    href={`${Astro.site}${lang}`}
+  >
     <!--this could use the text to width like in the pdf-->
-    <div class="h3 mainline">Bring Back Our Neighbours</div>
+    <span class="h2">{useUiTranslation('meta.title', lang)}</span>
   </a>
   <AnimatedCloseButton
     onclick="document.getElementById('main-nav').classList.toggle('hidden');"

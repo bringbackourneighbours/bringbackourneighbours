@@ -22,8 +22,8 @@ const { lang = Astro.locals.lang, translationSlugs } = Astro.props;
   .language-switcher {
     z-index: 1000;
     position: fixed;
-    inset-inline-end: var(--vspace);
-    inset-block-end: var(--vspace);
+    inset-inline-end: var(--bbon-size-gap);
+    inset-block-end: var(--bbon-size-gap);
 
     &.-collapsed {
       .language-switcher-alternatives {
@@ -37,26 +37,25 @@ const { lang = Astro.locals.lang, translationSlugs } = Astro.props;
       font-family: inherit;
 
       .language-switcher-toggle-content {
-        align-items: flex-end;
         display: flex;
-        gap: var(--vspace);
+        gap: var(--bbon-size-gap);
 
         .language-switcher-toggle-label {
           align-items: center;
           display: flex;
-          gap: var(--vspace);
+          gap: var(--bbon-size-gap);
         }
 
         .language-switcher-alternatives {
           align-items: center;
           display: flex;
           flex-wrap: wrap;
-          font-size: 1rem;
-          gap: var(--vspace);
-          padding: var(--vspace-4);
+          font-size: var(--bbon-size-p);
+          gap: var(--bbon-size-gap);
+          padding: var(--bbon-size-spacing);
 
-          --color-primary: var(--color-surface);
-          --color-primary-bright: var(--color-surface);
+          --bbon-color-primary: var(--bbon-color-surface);
+          --bbon-color-primary-bright: var(--bbon-color-surface);
         }
       }
     }
@@ -72,9 +71,8 @@ const { lang = Astro.locals.lang, translationSlugs } = Astro.props;
     class="language-switcher-toggle"
   >
     <Card
-      size="h3"
+      size="medium"
       variant="secondary"
-      smaller
     >
       <div class="language-switcher-toggle-content">
         <div class="language-switcher-toggle-label">

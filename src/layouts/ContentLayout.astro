@@ -29,15 +29,17 @@ const {
     justify-content: center;
 
     main {
-      max-width: var(--size-max-text-span);
-      background-color: var(--color-surface);
-      padding: var(--vspace);
+      max-width: var(--bbon-size-max-text-span);
+      background-color: var(--bbon-color-surface);
+      padding: var(--bbon-size-gap);
       overflow: auto;
 
       /*
       padding g so the language switcher has enough room
        */
-      padding-block-end: calc(var(--vspace) + 2 * var(--vspace-3) + 3.5em);
+      padding-block-end: calc(
+        var(--bbon-size-gap) + 2 * var(--bbon-size-spacing) + 3.5em
+      );
     }
   }
 </style>

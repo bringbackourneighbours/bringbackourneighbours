@@ -9,6 +9,14 @@ interface Props {
 const { lang } = Astro.props;
 ---
 
+<style>
+  body {
+    font-family: FiraGO, sans-serif;
+    background: var(--bbon-color-surface);
+    margin: 0;
+    color: var(--bbon-color-primary);
+  }
+</style>
 <body class={`${getLanguageDirection(lang)}`}>
   <slot />
 </body>

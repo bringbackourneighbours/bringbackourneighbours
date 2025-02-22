@@ -39,16 +39,15 @@ const canonicalUrl = await getCanonicalUrlFn(collection)(
 <style>
   .german-title {
     display: block;
-    margin-block-end: calc(-1 * var(--vspace-1) + var(--vspace-3));
   }
 
   .header-meta {
     display: flex;
     justify-content: flex-start;
-    gap: var(--vspace);
+    gap: var(--bbon-size-gap);
     align-items: baseline;
     flex-wrap: wrap;
-    margin-block-end: var(--vspace-1);
+    margin-block-end: var(--bbon-size-gap);
   }
 </style>
 
@@ -81,8 +80,7 @@ const canonicalUrl = await getCanonicalUrlFn(collection)(
   {
     showDownloadButton && (
       <CardLink
-        size="p"
-        smaller
+        size="small"
         href={printUrl}
       >
         {useUiTranslation('meta.downloadPdf', entry.data.lang)}
