@@ -18,6 +18,13 @@ import '../base.css';
 const { lang } = Astro.props;
 ---
 
+<style>
+  html {
+    font-size: var(--bbon-size-p);
+    line-height: var(--bbon-size-p-line);
+  }
+</style>
+
 <html
   lang={lang}
   dir={`${getLanguageDirection(lang)}`}

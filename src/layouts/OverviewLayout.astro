@@ -24,13 +24,15 @@ const { title, lang, canonicalSlug, translationSlugs } = Astro.props;
     justify-content: center;
 
     main {
-      padding: var(--vspace);
+      padding: var(--bbon-size-gap);
       overflow: auto;
 
       /*
       padding g so the language switcher has enough room
        */
-      padding-block-end: calc(var(--vspace) + 2 * var(--vspace-3) + 1.5em);
+      padding-block-end: calc(
+        var(--bbon-size-gap) + 2 * var(--bbon-size-spacing) + 1.5em
+      );
     }
   }
 </style>

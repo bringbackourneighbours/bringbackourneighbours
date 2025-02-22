@@ -5,10 +5,9 @@ import Card from './Card.astro';
 
 interface Props {
   lang?: LanguagesValue;
-  size?: 'p' | 'h2' | 'h3' | 'h4';
+  size?: 'small' | 'medium' | 'big';
   variant?: 'primary' | 'secondary';
   invalid?: boolean;
-  smaller?: boolean;
   id?: string;
 }
 
@@ -16,8 +15,7 @@ const {
   lang = Astro.locals.lang,
   variant = 'primary',
   invalid = false,
-  size = 'p',
-  smaller = true,
+  size = 'small',
   id = undefined,
 } = Astro.props;
 ---
@@ -34,7 +32,6 @@ const {
     variant={variant}
     invalid={invalid}
     size={size}
-    smaller={smaller}
   >
     <slot />
   </Card>

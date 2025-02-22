@@ -4,50 +4,52 @@ import { type LanguagesValue } from '../util/languages';
 
 interface Props {
   lang?: LanguagesValue;
-  size?: 'p' | 'h2' | 'h3' | 'h4';
+  size?: 'small' | 'medium' | 'big';
   variant?: 'primary' | 'secondary';
   invalid?: boolean;
-  smaller?: boolean;
 }
 
 const {
   lang = Astro.locals.lang,
   variant = 'primary',
   invalid = false,
-  size = 'h2',
-  smaller = false,
+  size = 'big',
 } = Astro.props;
 ---
 
 <style>
   .-primary {
-    --card-link-color-main-dark: var(--color-primary);
-    --card-link-color-active: var(--color-primary-dark);
-    --card-link-color-font: var(--color-primary);
-    --card-link-color-surface-fx: var(--color-surface);
-    --card-link-color-surface: var(--color-surface-dark);
+    --card-link-color-main-dark: var(--bbon-color-primary);
+    --card-link-color-active: var(--bbon-color-primary-dark);
+    --card-link-color-font: var(--bbon-color-primary);
+    --card-link-color-surface-fx: var(--bbon-color-surface);
+    --card-link-color-surface: var(--bbon-color-surface-dark);
   }
 
   .-secondary {
-    --card-link-color-main-dark: var(--color-secondary-dark);
-    --card-link-color-active: var(--color-secondary-dark);
-    --card-link-color-font: var(--color-surface);
-    --card-link-color-surface-fx: var(--color-secondary-bright);
-    --card-link-color-surface: var(--color-secondary);
+    --card-link-color-main-dark: var(--bbon-color-secondary-dark);
+    --card-link-color-active: var(--bbon-color-secondary-dark);
+    --card-link-color-font: var(--bbon-color-surface);
+    --card-link-color-surface-fx: var(--bbon-color-secondary-bright);
+    --card-link-color-surface: var(--bbon-color-secondary);
   }
 
   .card {
-    height: calc(100% - 3 * var(--vspace-3));
+    height: calc(100% - 3 * var(--bbon-size-spacing));
     color: var(--card-link-color-font);
     display: block;
-    padding: var(--vspace-3);
-    border: calc(var(--size-border) * 2) solid var(--card-link-color-main-dark);
-    border-radius: calc(var(--shadow-0) * 0.5);
-    box-shadow: var(--shadow-0) calc(var(--shadow-0) * 0.8) 0 0
+    padding: var(--bbon-size-spacing);
+    border: var(--bbon-size-border) solid var(--card-link-color-main-dark);
+    border-radius: var(--bbon-size-border);
+
+    /* FIXME: extract shadow */
+    box-shadow: var(--bbon-size-shadow-spread)
+      calc(var(--bbon-size-shadow-spread) * 0.8) 0 0
       var(--card-link-color-main-dark);
 
     /* Optically center the box, since the shadow is not part of the box-size  */
-    margin: 0 calc(0.5 * var(--shadow-0)) calc(0.5 * var(--shadow-0)) 0;
+    margin: 0 calc(0.5 * var(--bbon-size-shadow-spread))
+      calc(0.5 * var(--bbon-size-shadow-spread)) 0;
     font-weight: 500;
     letter-spacing: normal;
 
@@ -66,10 +68,20 @@ const {
       cursor: not-allowed;
     }
 
-    &.-smaller {
-      box-shadow: calc(var(--shadow-0) * 0.42) calc(var(--shadow-0) * 0.35) 0 0
+    &.-small,
+    &.-medium {
+      /* FIXME: extract shadow */
+      box-shadow: calc(var(--bbon-size-shadow-spread) * 0.42)
+        calc(var(--bbon-size-shadow-spread) * 0.35) 0 0
         var(--card-link-color-main-dark);
-      padding: calc(var(--vspace-3) * 0.8) var(--vspace-3);
+    }
+
+    &.-medium {
+      font-size: var(--bbon-size-h3);
+    }
+
+    &.-big {
+      font-size: var(--bbon-size-h2);
     }
 
     &:not(.-invalid) {
@@ -80,16 +92,13 @@ const {
         transform: rotate(0.35deg);
       }
 
-      &.-smaller:hover {
-        background: var(--card-link-color-surface-fx);
-        transform: rotate(0.2deg);
-      }
-
       &:active {
         color: var(--card-link-color-active);
         border-color: var(--card-link-color-active);
+
+        /* FIXME: extract shadow */
         box-shadow:
-          var(--shadow-0) 7px 0 0 var(--card-link-color-active),
+          var(--bbon-size-shadow-spread) 7px 0 0 var(--card-link-color-active),
           16px 19px 40px -31px rgb(0 0 0 / 40%),
           inset 1px 0 9px rgb(0 0 0 / 15%);
       }
@@ -100,8 +109,10 @@ const {
         background: var(--card-link-color-surface);
       }
 
-      &.-smaller:active {
-        box-shadow: calc(var(--shadow-0) * 0.4) calc(var(--shadow-0) * 0.1) 0 0
+      &.-small:active {
+        /* FIXME: extract shadow */
+        box-shadow: calc(var(--bbon-size-shadow-spread) * 0.4)
+          calc(var(--bbon-size-shadow-spread) * 0.1) 0 0
           var(--card-link-color-active);
       }
     }
@@ -118,7 +129,12 @@ const {
   }
 </style>
 <div
-  class={`card ${getLanguageDirection(lang)} ${size} ${variant === 'primary' ? '-primary' : '-secondary'} ${invalid ? '-invalid' : ''} ${smaller ? '-smaller' : ''}`}
+  class={`card
+   ${getLanguageDirection(lang)}
+   -${size}
+   ${variant === 'primary' ? '-primary' : '-secondary'}
+   ${invalid ? '-invalid' : ''}
+    `}
 >
   <slot />
 </div>

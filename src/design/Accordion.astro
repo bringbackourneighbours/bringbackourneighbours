@@ -16,35 +16,35 @@ const { title, variant = 'primary', open = isPrint } = Astro.props;
 
 <style>
   .-primary {
-    --accordion-border-color: var(--color-primary);
+    --accordion-border-color: var(--bbon-color-primary);
   }
 
   .-inverted-primary {
-    --accordion-background-color: var(--color-primary);
-    --accordion-summary-color: var(--color-primary);
+    --accordion-background-color: var(--bbon-color-primary);
+    --accordion-summary-color: var(--bbon-color-primary);
   }
 
   .-secondary {
-    --accordion-border-color: var(--color-secondary);
+    --accordion-border-color: var(--bbon-color-secondary);
   }
 
   .-inverted-secondary {
-    --accordion-background-color: var(--color-secondary);
-    --accordion-summary-color: var(--color-secondary);
+    --accordion-background-color: var(--bbon-color-secondary);
+    --accordion-summary-color: var(--bbon-color-secondary);
   }
 
   .-primary,
   .-secondary {
-    --accordion-background-color: var(--color-surface);
-    --accordion-summary-color: var(--color-surface);
-    --accordion-padding: var(--vspace);
+    --accordion-background-color: var(--bbon-color-surface);
+    --accordion-summary-color: var(--bbon-color-surface);
+    --accordion-padding: var(--bbon-size-gap);
     --accordion-content-color: var(--accordion-border-color);
   }
 
   .-inverted-primary,
   .-inverted-secondary {
-    --accordion-border-color: var(--color-surface-dark);
-    --accordion-padding: var(--vspace-3);
+    --accordion-border-color: var(--bbon-color-surface-dark);
+    --accordion-padding: var(--bbon-size-spacing);
     --accordion-max-width: fit-content;
     --accordion-content-color: var(--accordion-background-color);
   }
@@ -53,24 +53,24 @@ const { title, variant = 'primary', open = isPrint } = Astro.props;
   .-secondary,
   .-inverted-primary,
   .-inverted-secondary {
-    --accordion-border-width: calc(var(--size-border) * 2);
+    --accordion-border-width: var(--bbon-size-border);
   }
 
   .-is-print {
     &.-primary,
     &.-inverted-primary {
-      --accordion-content-color: var(--color-primary);
-      --accordion-summary-color: var(--color-primary);
+      --accordion-content-color: var(--bbon-color-primary);
+      --accordion-summary-color: var(--bbon-color-primary);
     }
 
     &.-secondary,
     &.-inverted-secondary {
-      --accordion-content-color: var(--color-secondary);
-      --accordion-summary-color: var(--color-secondary);
+      --accordion-content-color: var(--bbon-color-secondary);
+      --accordion-summary-color: var(--bbon-color-secondary);
     }
 
-    --accordion-border-color: var(--color-surface);
-    --accordion-background-color: var(--color-surface);
+    --accordion-border-color: var(--bbon-color-surface);
+    --accordion-background-color: var(--bbon-color-surface);
     --accordion-padding: 0;
     --accordion-border-width: 0;
   }
@@ -78,6 +78,7 @@ const { title, variant = 'primary', open = isPrint } = Astro.props;
   details {
     border: var(--accordion-border-width) solid var(--accordion-border-color);
     max-width: var(--accordion-max-width);
+    margin: var(--bbon-size-spacing) 0;
 
     summary {
       padding: var(--accordion-padding);
@@ -87,7 +88,7 @@ const { title, variant = 'primary', open = isPrint } = Astro.props;
       display: flex;
       align-items: center;
       justify-content: space-between;
-      gap: var(--vspace);
+      gap: var(--bbon-size-gap);
 
       h3 {
         margin: 0;

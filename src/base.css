@@ -2,49 +2,53 @@
 * GENERAL STYLES
 */
 :root {
-  --color-primary: lch(28.229% 58.73 285.304deg);
-  --color-primary-dark: color-mix(in lch, var(--color-primary) 80%, black);
-  --color-primary-bright: color-mix(in lch, var(--color-primary) 70%, white);
-  --color-secondary: lch(55% 90.4 42deg);
-  --color-secondary-dark: color-mix(in lch, var(--color-secondary) 58%, black);
-  --color-secondary-bright: color-mix(
-    in srgb,
-    var(--color-secondary) 90%,
+  --bbon-color-primary: lch(28.229% 58.73 285.304deg);
+  --bbon-color-primary-dark: color-mix(
+    in lch,
+    var(--bbon-color-primary) 80%,
+    black
+  );
+  --bbon-color-primary-bright: color-mix(
+    in lch,
+    var(--bbon-color-primary) 70%,
     white
   );
-  --color-surface: #fff;
-  --color-surface-dark: #ededf5d4;
-  --color-text: black;
-  --space: 1.62;
-  --vspace: calc(var(--space) * 1rem);
-  --vspace-0: calc(3 * var(--space) * 1rem);
-  --vspace-1: calc(2 * var(--space) * 1rem);
-  --vspace-2: calc(1.5 * var(--space) * 1rem);
-  --vspace-3: calc(0.5 * var(--space) * 1rem);
-  --vspace-4: calc(0.25 * var(--space) * 1rem);
-  --shadow-0: 10px;
-  --size-border: 2px;
-  --size-max-text-span: calc(34 * var(--space) * 1rem);
+  --bbon-color-secondary: lch(55% 90.4 42deg);
+  --bbon-color-secondary-dark: color-mix(
+    in lch,
+    var(--bbon-color-secondary) 58%,
+    black
+  );
+  --bbon-color-secondary-bright: color-mix(
+    in srgb,
+    var(--bbon-color-secondary) 90%,
+    white
+  );
+  --bbon-color-surface: #fff;
+  --bbon-color-surface-dark: #ededf5d4;
+
+  /** @deprecated */
+
+  --bbon-size-p: 16px;
+  --bbon-size-p-line: 1.6;
+  --bbon-size-h1: 2.4rem;
+  --bbon-size-h1-line: 1.2;
+  --bbon-size-h2: 1.6rem;
+  --bbon-size-h3: 1.5rem;
+  --bbon-size-h4: 1rem;
+  --bbon-size-spacing: 0.3em;
+  --bbon-size-gap: 1em;
+  --bbon-size-shadow-spread: 10px;
+  --bbon-size-border: 4px;
+  --bbon-size-max-text-span: 80ch;
 }
 
-html {
-  font-size: 14px;
+p {
+  font-size: var(--bbon-size-p);
+  margin: var(--bbon-size-spacing) 0;
 }
 
-body {
-  font-size: 1.1667em;
-  font-family: FiraGO, sans-serif;
-  background: var(--color-surface);
-  margin: 0;
-  color: var(--color-primary);
-}
-
-p,
-.p {
-  margin: var(--vspace-3) 0;
-  line-height: var(--vspace);
-}
-
+/* TODO: Extract to Heading component */
 h1,
 h2,
 h3,
@@ -58,142 +62,44 @@ h6,
 .h5,
 .h6 {
   font-weight: 500;
-  letter-spacing: -0.02rem;
+  letter-spacing: -0.02em;
   word-break: auto-phrase;
-}
-
-h2,
-h3,
-h4,
-h5,
-h6,
-.h2,
-.h3,
-.h4,
-.h5,
-.h6 {
-  margin: var(--vspace-2) 0 var(--vspace-3) 0;
-  line-height: var(--vspace);
+  font-size: var(--bbon-size-h4);
+  line-height: var(--bbon-size-h1-line);
+  margin: var(--bbon-size-spacing) 0;
 }
 
 .h1,
 h1 {
-  font-size: 2.4167em;
-  margin: var(--vspace-1) 0 var(--vspace-3) 0;
-  line-height: calc(2.4167 * var(--vspace));
+  font-size: var(--bbon-size-h1);
 }
 
 .h2,
 h2 {
-  font-size: 1.7917em;
-  line-height: calc(1.7917 * var(--vspace));
+  font-size: var(--bbon-size-h2);
+  margin-block-start: var(--bbon-size-gap);
 }
 
 .h3,
 h3 {
-  font-size: 1.5em;
-  line-height: calc(1.5 * var(--vspace));
+  font-size: var(--bbon-size-h3);
 }
 
-.h4,
-h4 {
-  font-size: 1.3333em;
-  line-height: calc(1.3333 * var(--vspace));
-}
-
-.h5,
-h5 {
-  font-size: 1.25em;
-  line-height: calc(1.25 * var(--vspace));
-}
-
-.h6,
-h6 {
-  font-size: 1em;
-  letter-spacing: 0;
-}
-
-blockquote {
-  font-size: 1.1667em;
-  font-style: italic;
-  line-height: calc(1.1667 * var(--vspace));
-  margin: var(--vspace-2) var(--vspace-2);
-}
-
-/* TODO: Move to printAstro */
-@media print {
-  header {
-    display: none !important;
-  }
-
-  h6 + h1 {
-    margin-top: 0;
-  }
-}
-
-.caption {
-  font-size: 1.0417em;
-  font-weight: normal;
-  font-style: italic;
-}
-
-.endnote {
-  font-size: 1.0417em;
-}
-
-.footnote {
-  margin: var(--vspace-0) 0 var(--vspace-2) 0;
-  font-size: 0.9792em;
-  border-top: 1px solid #ccc;
-  line-height: 2em;
-}
-
-sup {
-  font-size: 0.9792rem;
-  margin: 0.5em;
-  text-transform: none;
-  font-style: italic;
-  font-weight: normal;
-}
+/* TODO: Extract to List component */
 
 dl,
 ol,
 ul {
-  list-style: none;
-  margin-top: 0;
-  padding-left: 0;
+  margin: var(--bbon-size-spacing) 1em;
+  padding: 0;
 }
 
 ul {
-  list-style: disc inside;
-  margin-bottom: var(--vspace-2);
+  list-style: disc outside;
 }
 
 li {
-  line-height: var(--vspace);
-  list-style-position: outside;
-  margin-left: 1.1em;
-  padding-left: 0;
-}
-
-.button,
-button,
-dd,
-dt,
-li {
-  margin-bottom: var(--vspace-4);
-}
-
-dl dl,
-dl ol,
-dl ul,
-ol dl,
-ol ol,
-ol ul,
-ul dl,
-ul ol,
-ul ul {
-  margin: var(--vspace-4);
+  margin: var(--bbon-size-spacing) 0;
 }
 
 /**

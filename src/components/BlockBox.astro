@@ -44,19 +44,19 @@ const collectionLabel =
 
 <style>
   .meta-section {
-    border-block-start: calc(var(--size-border) * 2) solid var(--color-primary);
-    margin-inline: calc(-1 * var(--vspace));
-    margin-block-start: var(--vspace);
-    padding: var(--vspace);
+    border-block-start: var(--bbon-size-border) solid var(--bbon-color-primary);
+    margin-inline: calc(-1 * var(--bbon-size-gap));
+    margin-block-start: var(--bbon-size-gap);
+    padding: var(--bbon-size-gap);
     padding-block-end: 0;
 
     &.-is-print {
-      border: calc(var(--size-border) * 2) solid var(--color-primary);
-      padding: var(--vspace);
+      border: var(--bbon-size-border) solid var(--bbon-color-primary);
+      padding: var(--bbon-size-gap);
       margin: 0;
       display: flex;
       align-items: center;
-      gap: var(--vspace);
+      gap: var(--bbon-size-gap);
     }
   }
 </style>
