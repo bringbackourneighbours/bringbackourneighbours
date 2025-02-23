@@ -32,8 +32,9 @@
   --bbon-size-p: 16px;
   --bbon-size-p-line: 1.6;
   --bbon-size-h1: 2.4rem;
-  --bbon-size-h1-line: 1.2;
+  --bbon-size-heading-line: 1.2;
   --bbon-size-h2: 1.6rem;
+  --bbon-size-h2-margin-start: 0.3em;
   --bbon-size-h3: 1.5rem;
   --bbon-size-h4: 1rem;
   --bbon-size-spacing: 0.3em;
@@ -65,7 +66,7 @@ h6,
   letter-spacing: -0.02em;
   word-break: auto-phrase;
   font-size: var(--bbon-size-h4);
-  line-height: var(--bbon-size-h1-line);
+  line-height: var(--bbon-size-heading-line);
   margin: var(--bbon-size-spacing) 0;
 }
 
@@ -77,7 +78,7 @@ h1 {
 .h2,
 h2 {
   font-size: var(--bbon-size-h2);
-  margin-block-start: var(--bbon-size-gap);
+  margin-block-start: var(--bbon-size-h2-margin-start);
 }
 
 .h3,
@@ -100,6 +101,11 @@ ul {
 
 li {
   margin: var(--bbon-size-spacing) 0;
+
+  &::before {
+    content: '';
+    margin-inline-start: -0.5em;
+  }
 }
 
 /**
