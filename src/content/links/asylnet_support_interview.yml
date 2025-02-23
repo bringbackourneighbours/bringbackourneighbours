@@ -1,6 +1,5 @@
-all:
-  slug: basiswissen
+de:
+  slug: beistand
   url: https://basiswissen.asyl.net/wissen-kompakt/detailansicht/die-anhoerung-im-asylverfahren-informationen-fuer-unterstuetzerinnen-und-beistaende-1
   type: WEB
-de:
   title: 'Die Anhörung im Asylverfahren: Informationen für Unterstützer*innen und Beistände'
