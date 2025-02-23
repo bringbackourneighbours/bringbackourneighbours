@@ -1,0 +1,26 @@
+:root {
+  --bbon-color-primary: lch(28.229% 58.73 285.304deg);
+  --bbon-color-primary-dark: color-mix(
+    in lch,
+    var(--bbon-color-primary) 80%,
+    black
+  );
+  --bbon-color-primary-bright: color-mix(
+    in lch,
+    var(--bbon-color-primary) 70%,
+    white
+  );
+  --bbon-color-secondary: lch(55% 90.4 42deg);
+  --bbon-color-secondary-dark: color-mix(
+    in lch,
+    var(--bbon-color-secondary) 58%,
+    black
+  );
+  --bbon-color-secondary-bright: color-mix(
+    in srgb,
+    var(--bbon-color-secondary) 90%,
+    white
+  );
+  --bbon-color-surface: #fff;
+  --bbon-color-surface-dark: #ededf5d4;
+}

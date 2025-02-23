@@ -1,0 +1,15 @@
+:root {
+  --bbon-size-p: 16px;
+  --bbon-size-p-line: 1.6;
+  --bbon-size-h1: 2.4rem;
+  --bbon-size-heading-line: 1.2;
+  --bbon-size-h2: 1.6rem;
+  --bbon-size-h2-margin-start: 0.3em;
+  --bbon-size-h3: 1.5rem;
+  --bbon-size-h4: 1rem;
+  --bbon-size-spacing: 0.3em;
+  --bbon-size-gap: 1em;
+  --bbon-size-shadow-spread: 10px;
+  --bbon-size-border: 4px;
+  --bbon-size-max-text-span: 80ch;
+}

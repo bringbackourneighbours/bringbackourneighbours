@@ -1,47 +1,9 @@
 /* 
 * GENERAL STYLES
 */
-:root {
-  --bbon-color-primary: lch(28.229% 58.73 285.304deg);
-  --bbon-color-primary-dark: color-mix(
-    in lch,
-    var(--bbon-color-primary) 80%,
-    black
-  );
-  --bbon-color-primary-bright: color-mix(
-    in lch,
-    var(--bbon-color-primary) 70%,
-    white
-  );
-  --bbon-color-secondary: lch(55% 90.4 42deg);
-  --bbon-color-secondary-dark: color-mix(
-    in lch,
-    var(--bbon-color-secondary) 58%,
-    black
-  );
-  --bbon-color-secondary-bright: color-mix(
-    in srgb,
-    var(--bbon-color-secondary) 90%,
-    white
-  );
-  --bbon-color-surface: #fff;
-  --bbon-color-surface-dark: #ededf5d4;
-
-  /** @deprecated */
-
-  --bbon-size-p: 16px;
-  --bbon-size-p-line: 1.6;
-  --bbon-size-h1: 2.4rem;
-  --bbon-size-heading-line: 1.2;
-  --bbon-size-h2: 1.6rem;
-  --bbon-size-h2-margin-start: 0.3em;
-  --bbon-size-h3: 1.5rem;
-  --bbon-size-h4: 1rem;
-  --bbon-size-spacing: 0.3em;
-  --bbon-size-gap: 1em;
-  --bbon-size-shadow-spread: 10px;
-  --bbon-size-border: 4px;
-  --bbon-size-max-text-span: 80ch;
+html {
+  font-size: var(--bbon-size-p);
+  line-height: var(--bbon-size-p-line);
 }
 
 p {
@@ -93,6 +55,7 @@ ol,
 ul {
   margin: var(--bbon-size-spacing) 1em;
   padding: 0;
+  padding-inline-start: var(--bbon-size-border);
 }
 
 ul {
@@ -103,8 +66,9 @@ li {
   margin: var(--bbon-size-spacing) 0;
 
   &::before {
+    /* small hack to reduce the distance between marker and content */
     content: '';
-    margin-inline-start: -0.5em;
+    margin-inline-start: -0.6em;
   }
 }
 
