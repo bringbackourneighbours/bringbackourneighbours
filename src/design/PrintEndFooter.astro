@@ -39,7 +39,7 @@ const { entry, translationSlugs, canonicalUrl } = Astro.props;
 
 <div class="qr-link">
   <QrImage
-    size="100"
+    size="70"
     url={canonicalUrl}
   />
   <div class="find-translation">
@@ -50,6 +50,12 @@ const { entry, translationSlugs, canonicalUrl } = Astro.props;
         </Link>
       ))
     }
+    <p>
+      <Timestamp
+        lang={entry.data.lang}
+        lastChecked={entry.data.lastChecked}
+      />
+    </p>
   </div>
 </div>
 <p>
@@ -60,10 +66,4 @@ const { entry, translationSlugs, canonicalUrl } = Astro.props;
 </p>
 <p>
   <Imprint lang={entry.data.lang} />
-</p>
-<p>
-  <Timestamp
-    lang={entry.data.lang}
-    lastChecked={entry.data.lastChecked}
-  />
 </p>

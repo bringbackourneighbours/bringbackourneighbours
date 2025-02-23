@@ -26,7 +26,7 @@ export default function checkFlyers(): AstroIntegration {
             if (pagesCount > 4) {
               logger.error(`${fileName}: ${pagesCount} pages`);
             } else {
-              logger.debug(`${fileName}: ${pagesCount} pages`);
+              logger.info(`${fileName}: ${pagesCount} pages`);
             }
           });
       },

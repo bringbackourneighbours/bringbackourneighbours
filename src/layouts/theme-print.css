@@ -1,10 +1,10 @@
 :root {
   --bbon-size-p: 9pt;
   --bbon-size-p-line: 1.2;
-  --bbon-size-h1: 24pt;
+  --bbon-size-h1: 28pt;
   --bbon-size-heading-line: 1.2;
   --bbon-size-h2: 1rem;
-  --bbon-size-h2-margin-start: 0.1em;
+  --bbon-size-h2-margin-start: 0.8em;
   --bbon-size-h3: 1rem;
   --bbon-size-h4: 1rem;
   --bbon-size-spacing: 0.2em;
