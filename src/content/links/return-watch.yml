@@ -1,0 +1,13 @@
+all:
+  slug: returnwatch
+  type: WEB
+de:
+  url: https://www.freiwillige-rueckkehr.de/
+  title: Ein Recherche- und Dokumentationsprojekt von medico international zur Rückkehrförderung Deutschlands
+en:
+  url: https://www.return-watch.org/
+  title: A cross-national research and documentation project by medico international on Germany's support programmes for  “voluntary” return of refugees and migrants
+fr:
+  url: https://www.return-watch.org/fr/
+  title: Un projet de recherche et de documentation de medico international sur l'aide au retour de l'Allemagne
+  
