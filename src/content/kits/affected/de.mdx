@@ -9,7 +9,6 @@ lastChecked: 2024-11-22
 
 import Block from '../../../components/Block.astro';
 import BlockBox from '../../../components/BlockBox.astro';
-import ExternalShortLink from '../../../components/ExternalShortLink.astro';
 
 <Block identifier="kit-intro" />
 
@@ -17,15 +16,15 @@ import ExternalShortLink from '../../../components/ExternalShortLink.astro';
 
 ## Asylverfahren und Dublin
 
-<Block identifier="kit-procedure-dublin"/>
+<Block identifier="kit-procedure-dublin" />
 
 ## Was ist eine Abschiebung?
 
-<Block identifier="kit-deportation-definition"/>
+<Block identifier="kit-deportation-definition" />
 
 ## Wann droht meine Abschiebung?
 
-<Block identifier="kit-deportation-risk"/>
+<Block identifier="kit-deportation-risk" />
 
 ## Was tun bei Abschiebegefahr?
 
@@ -57,12 +56,36 @@ import ExternalShortLink from '../../../components/ExternalShortLink.astro';
 
 ### Öffentlichkeit schaffen und Unterstützung gewinnen
 
-<Block identifier="publicity" collection="pages"/>
+<BlockBox
+  identifier="publicity"
+  collection="pages"
+>
+  <Block
+    identifier="publicity"
+    collection="pages"
+  />
+</BlockBox>
 
-### Kontakte zu Verantwortlichen & Unterstützer*innen
+### Kontakte zu Verantwortlichen & Unterstützer\*innen
 
-<Block identifier="contacts" collection="pages"/>
+<BlockBox
+  identifier="contacts"
+  collection="pages"
+>
+  <Block
+    identifier="contacts"
+    collection="pages"
+  />
+</BlockBox>
 
 ### Druckvorlagen
 
-<Block identifier="forms" collection="pages"/>
+<BlockBox
+  identifier="forms"
+  collection="pages"
+>
+  <Block
+    identifier="forms"
+    collection="pages"
+  />
+</BlockBox>
