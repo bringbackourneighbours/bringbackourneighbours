@@ -3,14 +3,12 @@ import { type LanguagesValue } from '../util/languages';
 import type { StandaloneCollections } from '../util/get-static-paths';
 
 import { getCollection } from 'astro:content';
-import { getCanonicalUrlFn } from '../util/get-canonical-url';
 import { useUiTranslation } from '../util/use-ui-translation';
 
 import Accordion from '../design/Accordion.astro';
-import InternalShortLink from './InternalShortLink.astro';
-import ContentMeta from '../design/ContentMeta.astro';
+
 import NotFoundError from '../design/NotFoundError.astro';
-import QrImage from '../design/QrImage.astro';
+import ContentMetaSection from '../design/ContentMetaSection.astro';
 
 interface Props {
   identifier: string;
@@ -31,65 +29,34 @@ const blockEntries = await getCollection(collection, (block) => {
 const isPrint = Astro.locals.isPrint;
 
 const title = isPrint
-  ? blockEntries[0]?.data.title
+  ? collection !== 'pages'
+    ? blockEntries[0]?.data.title
+    : undefined
   : `${await useUiTranslation('meta.moreInfoAbout', lang)}: "${blockEntries[0]?.data.title}"`;
 
-const canonicalUrl = await getCanonicalUrlFn(collection)(lang, identifier);
-
-const collectionLabel =
-  collection === 'flyers'
-    ? await useUiTranslation('meta.findAlsoInFlyer', lang)
-    : await useUiTranslation('meta.findAlsoAsPage', lang);
+const showOnlyLink = !isPrint && collection === 'pages';
 ---
-
-<style>
-  .meta-section {
-    border-block-start: var(--bbon-size-border) solid var(--bbon-color-primary);
-    margin-inline: calc(-1 * var(--bbon-size-gap));
-    margin-block-start: var(--bbon-size-gap);
-    padding: var(--bbon-size-gap);
-    padding-block-end: 0;
-
-    &.-is-print {
-      border: var(--bbon-size-border) solid var(--bbon-color-primary);
-      padding: var(--bbon-size-gap);
-      margin: 0;
-      display: flex;
-      align-items: center;
-      gap: var(--bbon-size-gap);
-    }
-  }
-</style>
 
 {
   blockEntries[0] ? (
-    <Accordion title={title}>
-      {isPrint && (
-        <div class={`meta-section ${isPrint ? ' -is-print' : ''}`}>
-          <QrImage
-            size="100"
-            url={canonicalUrl!}
-          />
-          <div>
-            <p>
-              {collectionLabel} <strong>{blockEntries[0].data.title}</strong>
-            </p>
-            <InternalShortLink identifier={identifier} />
-            <ContentMeta entry={blockEntries[0]} />
-          </div>
-        </div>
-      )}
-      <slot />
-      {!isPrint && (
-        <div class="meta-section">
-          <div>
-            {collectionLabel}
-            <InternalShortLink identifier={identifier} />
-            <ContentMeta entry={blockEntries[0]} />
-          </div>
-        </div>
-      )}
-    </Accordion>
+    showOnlyLink ? (
+      <ContentMetaSection
+        collection={collection}
+        entry={blockEntries[0]}
+      />
+    ) : (
+      <Accordion
+        title={title}
+        open={true}
+      >
+        <ContentMetaSection
+          collection={collection}
+          entry={blockEntries[0]}
+        >
+          <slot />
+        </ContentMetaSection>
+      </Accordion>
+    )
   ) : (
     <NotFoundError context={`BlockBox/${identifier}/${lang}`} />
   )
