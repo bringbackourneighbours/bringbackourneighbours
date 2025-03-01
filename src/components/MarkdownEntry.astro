@@ -1,11 +1,11 @@
 ---
 import type { Render } from 'astro:content';
 import Link from '../design/Link.astro';
-import Block from '../components/Block.astro';
-import BlockBox from '../components/BlockBox.astro';
-import Address from '../components/Address.astro';
-import ExternalShortLink from '../components/ExternalShortLink.astro';
-import InternalShortLink from '../components/InternalShortLink.astro';
+import Block from './Block.astro';
+import BlockBox from './BlockBox.astro';
+import Address from './Address.astro';
+import ExternalShortLink from './ExternalShortLink.astro';
+import InternalShortLink from './InternalShortLink.astro';
 
 /**
  * Renders a CollectionEntry's markdown to Html... while using our custom components for it
@@ -20,7 +20,7 @@ const { rendered } = Astro.props;
 
 const { Content } = await rendered;
 
-// FIXME: there is na open Astro issue:
+// FIXME: there is an open Astro issue:
 // we need to include all the custom components we use in mdx there so their css and scripts will be hoisted
 // https://github.com/withastro/astro/issues/7761#issuecomment-2265685058
 ---
