@@ -1,11 +1,14 @@
 ---
 import type { Render } from 'astro:content';
-import Link from '../design/Link.astro';
+
+import Address from './Address.astro';
 import Block from './Block.astro';
 import BlockBox from './BlockBox.astro';
-import Address from './Address.astro';
 import ExternalShortLink from './ExternalShortLink.astro';
 import InternalShortLink from './InternalShortLink.astro';
+import Link from '../design/Link.astro';
+import NoopBlock from './NoopBlock.astro';
+import SupportBox from '../design/SupportBox.astro';
 
 /**
  * Renders a CollectionEntry's markdown to Html... while using our custom components for it
@@ -14,24 +17,35 @@ import InternalShortLink from './InternalShortLink.astro';
  */
 interface Props {
   rendered: Render['.mdx'] | Render['.md'];
+  recursive?: boolean;
 }
 
-const { rendered } = Astro.props;
+const { rendered, recursive = true } = Astro.props;
 
 const { Content } = await rendered;
 
 // FIXME: there is an open Astro issue:
 // we need to include all the custom components we use in mdx there so their css and scripts will be hoisted
 // https://github.com/withastro/astro/issues/7761#issuecomment-2265685058
+const componentsMap = recursive
+  ? {
+      a: Link,
+      Address,
+      Block,
+      BlockBox,
+      ExternalShortLink,
+      InternalShortLink,
+      SupportBox,
+    }
+  : {
+      a: NoopBlock,
+      Address: NoopBlock,
+      Block: NoopBlock,
+      BlockBox: NoopBlock,
+      ExternalShortLink: NoopBlock,
+      InternalShortLink: NoopBlock,
+      SupportBox: NoopBlock,
+    };
 ---
 
-<Content
-  components={{
-    a: Link,
-    Block,
-    BlockBox,
-    Address,
-    ExternalShortLink,
-    InternalShortLink,
-  }}
-/>
+<Content components={componentsMap} />

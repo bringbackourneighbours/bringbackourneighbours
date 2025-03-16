@@ -1,0 +1,55 @@
+---
+import { type CollectionEntry, getCollection, getEntry } from 'astro:content';
+
+import {
+  getStaticPathsForFlyers,
+  type StandaloneCollections,
+} from '../../util/get-static-paths';
+import type { LanguagesValue } from '../../util/languages';
+
+import PrintLayout from '../../layouts/PrintLayout.astro';
+import CopyButton from '../../design/CopyButton.astro';
+import PreviewTranslation from '../../components/PreviewTranslation.astro';
+
+export interface InternalTranslateProps {
+  params: {
+    fromLang: LanguagesValue;
+    toLang: LanguagesValue;
+  };
+}
+
+export async function getStaticPaths(): Promise<InternalTranslateProps[]> {
+  return [
+    {
+      params: {
+        fromLang: 'de',
+        toLang: 'en',
+      },
+    },
+    {
+      params: {
+        fromLang: 'de',
+        toLang: 'fr',
+      },
+    },
+  ];
+}
+
+const { fromLang, toLang } = Astro.params;
+---
+
+<PrintLayout
+  lang={fromLang}
+  title="INTERNAL TRANSLATION"
+>
+  <CopyButton>
+    <PreviewTranslation
+      fromLang={fromLang}
+      toLang={toLang}
+    />
+  </CopyButton>
+  <PreviewTranslation
+    fromLang={fromLang}
+    toLang={toLang}
+  />
+</PrintLayout>
