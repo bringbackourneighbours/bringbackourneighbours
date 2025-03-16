@@ -1,0 +1,15 @@
+---
+interface Props {}
+
+const {} = Astro.props;
+---
+
+<tr>
+  <th colspan="2">
+    <slot name="id" />
+  </th>
+</tr>
+<tr>
+  <td><slot name="from" /></td>
+  <td><slot name="to" /></td>
+</tr>
