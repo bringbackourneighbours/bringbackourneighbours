@@ -1,0 +1,235 @@
+---
+import { type CollectionEntry, getCollection, getEntry } from 'astro:content';
+
+import { type LanguagesValue } from '../util/languages';
+import { useUiTranslation } from '../util/use-ui-translation';
+
+import MarkdownEntry from './MarkdownEntry.astro';
+import TranslationTableRow from './TranslationTableRow.astro';
+
+interface Props {
+  fromLang: LanguagesValue;
+  toLang: LanguagesValue;
+}
+
+const { fromLang, toLang } = Astro.props;
+
+const uiEntryCollection = await getEntry('ui', fromLang);
+
+const uiEntriesKeys = [
+  ...Object.keys(uiEntryCollection?.data.meta ?? {}).map(
+    (key) => `meta.${key}`,
+  ),
+  ...Object.keys(uiEntryCollection?.data.shortLink ?? {}).map(
+    (key) => `shortLink.${key}`,
+  ),
+  ...Object.keys(uiEntryCollection?.data?.languages ?? {}).map(
+    (key) => `languages.${key}`,
+  ),
+  ...Object.keys(uiEntryCollection?.data?.wizard ?? {}).map(
+    (key) => `wizard.${key}`,
+  ),
+];
+
+const uiEntries = uiEntriesKeys.map(async (key) => ({
+  id: `ui/${key}`,
+  from: await useUiTranslation(key, fromLang),
+  to: await useUiTranslation(key, toLang),
+}));
+
+// const blocksEntryCollection = await getCollection('blocks');
+// const flyersEntryCollection = await getCollection('flyers');
+// const kitsEntryCollection = await getCollection('kits');
+// const pagesEntryCollection = await getCollection('pages');
+//
+// const blockEntries = blocksEntryCollection?.filter(
+//   (blocks: CollectionEntry<'blocks'>) => {
+//     return blocks.data.lang === fromLang;
+//   },
+// );
+//
+// const flyersEntries = flyersEntryCollection?.filter(
+//   (flyers: CollectionEntry<'flyers'>) => {
+//     return flyers.data.lang === fromLang;
+//   },
+// );
+// const kitsEntries = kitsEntryCollection?.filter(
+//   (kits: CollectionEntry<'kits'>) => {
+//     return kits.data.lang === fromLang;
+//   },
+// );
+// const pagesEntries = pagesEntryCollection?.filter(
+//   (pages: CollectionEntry<'pages'>) => {
+//     return pages.data.lang === fromLang;
+//   },
+// );
+---
+
+<table>
+  <thead>
+    <tr>
+      <th>From {fromLang}</th>
+      <th>To {toLang}</th>
+    </tr>
+  </thead>
+  <tbody>
+    {
+      uiEntriesKeys.map((key) => (
+        <TranslationTableRow>
+          <span slot="id">{key}</span>
+          <span slot="from">{useUiTranslation(key, fromLang)}</span>
+          <span slot="to">{useUiTranslation(key, toLang)}</span>
+        </TranslationTableRow>
+      ))
+    }
+    <!--          &lt;!&ndash;<tr>&ndash;&gt;-->
+    <!--          &lt;!&ndash;    <th colspan="2">ui/{entry[0]}</th>&ndash;&gt;-->
+    <!--          &lt;!&ndash;</tr>&ndash;&gt;-->
+    <!--          &lt;!&ndash;<tr>&ndash;&gt;-->
+    <!--          &lt;!&ndash;    <td>{entry[1]}</td>&ndash;&gt;-->
+    <!--          &lt;!&ndash;    <td>{useUiTranslation(entry[0], toLang)}</td>&ndash;&gt;-->
+    <!--          &lt;!&ndash;</tr>&ndash;&gt;-->
+    <!--  ))-->
+    <!--}-->
+    <!--{-->
+    <!--  blockEntries.map(async (entry) => (-->
+
+    <!--      &lt;!&ndash;<tr>&ndash;&gt;-->
+    <!--      &lt;!&ndash;  <th colspan="2">blocks/{entry.data.identifier}</th>&ndash;&gt;-->
+    <!--      &lt;!&ndash;</tr>&ndash;&gt;-->
+    <!--      <tr>-->
+    <!--        <td>-->
+    <!--          <MarkdownEntry-->
+    <!--            rendered={entry.render()}-->
+    <!--            recursive={false}-->
+    <!--          />-->
+    <!--        </td>-->
+    <!--        <td>-->
+    <!--          {(await getEntry(-->
+    <!--            'blocks',-->
+    <!--            `${entry.data.identifier}/${toLang}`,-->
+    <!--          )) && (-->
+    <!--            <MarkdownEntry-->
+    <!--              rendered={-->
+    <!--                (-->
+    <!--                  await getEntry(-->
+    <!--                    'blocks',-->
+    <!--                    `${entry.data.identifier}/${toLang}`,-->
+    <!--                  )-->
+    <!--                )?.render()!-->
+    <!--              }-->
+    <!--              recursive={false}-->
+    <!--            />-->
+    <!--          )}-->
+    <!--        </td>-->
+    <!--      </tr>-->
+
+    <!--  ))-->
+    <!--}-->
+    <!--{-->
+    <!--  flyersEntries.map(async (entry) => (-->
+    <!--    <>-->
+    <!--      <tr>-->
+    <!--        <th colspan="2">flyers/{entry.data.identifier}</th>-->
+    <!--      </tr>-->
+    <!--      <tr>-->
+    <!--        <td>-->
+    <!--          <MarkdownEntry-->
+    <!--            rendered={entry.render()}-->
+    <!--            recursive={false}-->
+    <!--          />-->
+    <!--        </td>-->
+    <!--        <td>-->
+    <!--          {(await getEntry(-->
+    <!--            'flyers',-->
+    <!--            `${entry.data.identifier}/${toLang}`,-->
+    <!--          )) && (-->
+    <!--            <MarkdownEntry-->
+    <!--              rendered={-->
+    <!--                (-->
+    <!--                  await getEntry(-->
+    <!--                    'flyers',-->
+    <!--                    `${entry.data.identifier}/${toLang}`,-->
+    <!--                  )-->
+    <!--                )?.render()!-->
+    <!--              }-->
+    <!--              recursive={false}-->
+    <!--            />-->
+    <!--          )}-->
+    <!--        </td>-->
+    <!--      </tr>-->
+    <!--    </>-->
+    <!--  ))-->
+    <!--}-->
+    <!--{-->
+    <!--  kitsEntries.map(async (entry) => (-->
+    <!--    <>-->
+    <!--      <tr>-->
+    <!--        <th colspan="2">kits/{entry.data.identifier}</th>-->
+    <!--      </tr>-->
+    <!--      <tr>-->
+    <!--        <td>-->
+    <!--          <MarkdownEntry-->
+    <!--            rendered={entry.render()}-->
+    <!--            recursive={false}-->
+    <!--          />-->
+    <!--        </td>-->
+    <!--        <td>-->
+    <!--          {(await getEntry(-->
+    <!--            'kits',-->
+    <!--            `${entry.data.identifier}/${toLang}`,-->
+    <!--          )) && (-->
+    <!--            <MarkdownEntry-->
+    <!--              rendered={-->
+    <!--                (-->
+    <!--                  await getEntry(-->
+    <!--                    'kits',-->
+    <!--                    `${entry.data.identifier}/${toLang}`,-->
+    <!--                  )-->
+    <!--                )?.render()!-->
+    <!--              }-->
+    <!--              recursive={false}-->
+    <!--            />-->
+    <!--          )}-->
+    <!--        </td>-->
+    <!--      </tr>-->
+    <!--    </>-->
+    <!--  ))-->
+    <!--}-->
+    <!--{-->
+    <!--  pagesEntries.map(async (entry) => (-->
+    <!--    <>-->
+    <!--      <tr>-->
+    <!--        <th colspan="2">pages/{entry.data.identifier}</th>-->
+    <!--      </tr>-->
+    <!--      <tr>-->
+    <!--        <td>-->
+    <!--          <MarkdownEntry-->
+    <!--            rendered={entry.render()}-->
+    <!--            recursive={false}-->
+    <!--          />-->
+    <!--        </td>-->
+    <!--        <td>-->
+    <!--          {(await getEntry(-->
+    <!--            'pages',-->
+    <!--            `${entry.data.identifier}/${toLang}`,-->
+    <!--          )) && (-->
+    <!--            <MarkdownEntry-->
+    <!--              rendered={-->
+    <!--                (-->
+    <!--                  await getEntry(-->
+    <!--                    'pages',-->
+    <!--                    `${entry.data.identifier}/${toLang}`,-->
+    <!--                  )-->
+    <!--                )?.render()!-->
+    <!--              }-->
+    <!--              recursive={false}-->
+    <!--            />-->
+    <!--          )}-->
+    <!--        </td>-->
+    <!--      </tr>-->
+    <!--    </>-->
+    <!--  ))-->
+    <!--}-->
+  </tbody>
+</table>
