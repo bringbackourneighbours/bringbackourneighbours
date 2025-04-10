@@ -29,6 +29,7 @@ export const SupportedLanguages = [
   Languages.ENGLISH,
   Languages.GERMAN,
   Languages.FRENCH,
+  Languages.SPANISH,
 ] as const;
 
 export const UnSupportedLanguages = [
@@ -44,7 +45,6 @@ export const UnSupportedLanguages = [
   Languages.RUSSIAN,
   Languages.SERBIAN,
   Languages.SOMALI,
-  Languages.SPANISH,
   Languages.TIGRINYA,
   Languages.TURKISH,
   Languages.UKRAINIAN,
