@@ -1,0 +1,58 @@
+---
+identifier: decision
+title: Decisiones negativas en el procedimiento de asilo
+germanTitle: Negative Entscheidungen im Asylverfahren
+lang: es
+seo: Decisiones negativas en el procedimiento de asilo
+lastChecked: 2025-04-05
+---
+
+import Address from '../../../components/Address.astro';
+import Block from '../../../components/Block.astro';
+import InternalShortLink from '../../../components/InternalShortLink.astro';
+import ExternalShortLink from '../../../components/ExternalShortLink.astro';
+
+La decisión de la Oficina Federal le será enviada por escrito en una carta amarilla. Si tiene abogado, él recibirá las cartas.
+
+Si la decisión es positiva, puedes quedarte: ahora tienes que hacer muchas otras cosas burocráticas y puede que necesites ayuda de los centros de asesoramiento sobre migración, pero tienes un permiso de residencia en Alemania por un tiempo determinado.
+
+Hay 3 tipos de decisiones negativas:
+
+## Inadmisible - "Unzulässig":
+
+Para los rechazos de Dublín y una segunda solicitud de asilo "Folgeantrag". Encontrará más información sobre el procedimiento de Dublín aquí: <InternalShortLink identifier="dublin" /> <br/>
+Un rechazo como inadmisible significa que no se examinan a fondo sus motivos para la solicitud de asilo y que Alemania no considera necesaria la solicitud de asilo. <br/>
+Dispone de 7 días para presentar una reclamación y una solicitud urgente. El recurso no le protege de la expulsión. Por tanto, debe presentar también una solicitud urgente de protección contra la deportación. 
+
+## Simplemente infundada - "abgelehnt":
+
+La decisión del BAMF dice: Su solicitud de asilo es rechazada. <br/>
+Dispone de 2 semanas para presentar un recurso. Este recurso le protege de la expulsión hasta que el tribunal tome una decisión. Por lo tanto, no necesita un recurso urgente.
+
+## Obviamente infundado - "offensichtlich unbegründet":
+
+Tiene 7 días para presentar una denuncia y un recurso urgente. Esta denuncia no le protege de la expulsión. Por tanto, debe presentar también una solicitud urgente de protección contra la expulsión.
+
+<Block identifier="get-legal-advice" />
+
+El sistema de asilo alemán es muy complicado, por lo que no es posible resumir toda la información en un breve folleto. Utilice también la información adicional de nuestro folleto: <InternalShortLink identifier="procedure"/>
+
+## Asesoramiento gratuito sobre el procedimiento de asilo en sajonia
+
+<Block identifier="counseling_addresses" />
+
+Si no puede obtener ayuda allí, los asesores le recomendarán abogados especializados. Por favor, decídase por un centro de asesoramiento o informe a un nuevo centro de asesoramiento que le haya ayudado con qué hasta ahora. Lamentablemente, a veces hay que esperar unos días o semanas para una cita. Así que no espere demasiado si necesita asesoramiento, pero pida cita rápidamente. Si hay un plazo para presentar una queja, lo mejor es comunicarlo o escribir al centro de asesoramiento inmediatamente. Lleva contigo todos los documentos importantes (por ejemplo, certificado del curso de idiomas, contrato de alquiler, contrato de trabajo, informes médicos) y todas las cartas de las autoridades alemanas.
+
+## Volver de Alemania
+
+Si quiere irse de Alemania, puede solicitar una ayuda. Aquí encontrará más información en diferentes idiomas. Son informaciones del gobierno alemán.
+
+<ExternalShortLink identifier="return" />
+
+Tenemos una opinión crítica sobre la ayuda al retorno, ya que no funciona como promete Alemania. En esta página encontrará documentación y valoración de expertos sobre la promoción del retorno:
+
+<ExternalShortLink identifier="return-watch" />
+
+
+
+*Traducción realizada con la versión gratuita del traductor DeepL.com*
