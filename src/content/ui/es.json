@@ -1,12 +1,33 @@
 {
-  "fallback": "de",
-  "wizard": {
-    "isThereDangerQuestion": "¿Está usted u otra persona en riesgo de deportación?",
-    "areYouInDangerQuestion": "¿Estás tú mismo en riesgo de deportación?",
-    "someoneElseInDangerQuestion": "¿Te gustaría apoyar a una persona que está en riesgo de deportación?"
+  "meta": {
+    "allFlyers": "Todos los folletos",
+    "allKits": "Todos los kits de emergencia",
+    "contacts": "Contactos con personas responsables y simpatizantes",
+    "copiedContentToClipboard": "Contenido copiado en el portapapeles",
+    "copy": "copiar texto",
+    "downloadPdf": "descargar en PDF",
+    "emergencyKit": "Botiquín de emergencia contra deportaciones",
+    "findAlsoAsPage": "También puede encontrar esta sección individualmente como una página",
+    "findAlsoInFlyer": "También puede encontrar esta sección individualmente en el folleto",
+    "forms": "Plantillas y formularios para imprimir",
+    "home": "home",
+    "imprint": "Impresión",
+    "infosAgainstDeportation": "Aquí puede encontrar más información sobre lo que puede hacer para evitar una deportación",
+    "machineTranslation": "Esta sección ha sido traducida automáticamente y puede contener errores de traducción. Por favor, háganos saber si tiene alguna sugerencia de mejora.",
+    "material": "Imprimir página de la colección",
+    "moreInfo": "Más información",
+    "moreInfoAbout": "Más información sobre",
+    "professionals": "Apuntes para los profesionales del trabajo social",
+    "publicity": "Consejos para el trabajo de relaciones públicas",
+    "share": "share",
+    "sharedLinkToClipboard": "Enlace copiado al portapapeles",
+    "subtitle": "Contra la política de deportación de Sajonia",
+    "supporters": "Notas para los partidarios voluntarios",
+    "title": "Bring Back Our Neighbours",
+    "updated": "Last updated: "
   },
   "languages": {
-    "ar": "Árabe",
+    "ar": "árabe",
     "bs": "bosnio",
     "ckb": "kurdo (sorani)",
     "de": "alemán",
@@ -19,13 +40,23 @@
     "mk": "macedonio",
     "ps": "pashto",
     "ru": "ruso",
-    "so": "somalí",
+    "so": "somali",
     "sq": "albanés",
     "sr": "serbio",
     "ti": "tigrinya",
-    "tr": "turkish",
+    "tr": "turco",
     "uk": "ucraniano",
     "ur": "urdu",
-    "vi": "vietnamita"
+    "vi": "vietnamita",
+    "findTranslation": "Traducción al español disponible"
+  },
+  "shortLink": {
+    "availableInOtherLanguages": "Esta información también está disponible en otros idiomas",
+    "notAvailableInCurrentLanguage": "Este contenido no está disponible en este idioma"
+  },
+  "wizard": {
+    "isThereDangerQuestion": "Está usted o alguien más en riesgo de deportación?",
+    "areYouInDangerQuestion": "Está usted en riesgo de deportación?",
+    "someoneElseInDangerQuestion": "Le gustaría apoyar a una persona que está en riesgo de deportación?"
   }
 }
