@@ -1,30 +1,4 @@
-all:
   slug: krankenhaus
   type: WEB
   url: https://www.abschiebungen-krankenhaus.de/startseite
-de:
   title: Melde- und Informationsstelle für Abschiebungen aus dem Krankenhaus 
-en: 
-  title: Reporting and information centre for hospital deportations (only in German)
-fr: 
-  title: Bureau d'enregistrement et d'information pour les expulsions de l'hôpital (uniquement en allemand)
-es: 
-  title: Bureau d'enregistrement et d'information pour les expulsions de l'hôpital (uniquement en allemand)
-ar:
-  title: الترحيل من المستشفى (بالألمانية فقط)
-fa: 
-  title: اخراج از بیمارستان (فقط آلمانی)
-ur: 
-  title: ہسپتال سے جلاوطنی (صرف جرمن میں)
-tr:
-  title: Kayıt ve Bilgi Merkezi: Hastaneden sınır dışı edilme (sadece Almanca)
-ku:
-  title: Jicîkirinî / *Abschiebung* ji nexweşxaneyê (tenê almanî)
-ka:
-  title: დეპორტაცია საავადმყოფოდან (მხოლოდ გერმანული)
-ru:
-  title: Регистрационно-информационный центр: депортация из больницы (только на немецком языке)
-ti:
- title: ካብ ሆስፒታል ብፖሊስ ምፍናው (ጀርመንኛ ጥራይ)
-vi:
-  title: Trục xuất khỏi bệnh viện (chỉ bằng tiếng Đức)
