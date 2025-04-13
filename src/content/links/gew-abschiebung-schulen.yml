@@ -1,5 +1,5 @@
 all:
-  slug: gew-abschiebung-schulen
+  slug: gew
   url: https://www.gew-berlin.de/fileadmin/media/sonstige_downloads/be/Infoblatt-Was-tun-bei-Abschiebungen-GEW-BERLIN.pdf
   type: PDF
 de: 
