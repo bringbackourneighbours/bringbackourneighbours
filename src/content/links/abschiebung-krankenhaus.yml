@@ -1,6 +1,6 @@
 all:
+  slug: krankenhaus
   type: WEB
-  slug: abschiebung-krankenhaus
   url: https://www.abschiebungen-krankenhaus.de/startseite
 de:
   title: Melde- und Informationsstelle für Abschiebungen aus dem Krankenhaus 
