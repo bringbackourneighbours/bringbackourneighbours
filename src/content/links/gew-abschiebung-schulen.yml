@@ -1,18 +1,30 @@
-slug: gew-abschiebung-schulen
-url: https://www.gew-berlin.de/fileadmin/media/sonstige_downloads/be/Infoblatt-Was-tun-bei-Abschiebungen-GEW-BERLIN.pdf
-type: PDF
-title: 
-  de: Was tun bei Abschiebungen von Schüler\*innen?
-  en: What to do in the event of the deportation of pupils (only in German)
-  fr: Que faire en cas d'expulsion d'élèves ? (uniquement en allemand)
-  es: ¿Qué hacer en caso de expulsión de alumnos? (solo en alemán)
-  ar: ماذا تفعل إذا تم ترحيل التلاميذ؟ (بالألمانية فقط)
-  fa: در صورت اخراج دانش آموزان چه باید کرد؟ (فقط به زبان آلمانی)
-  ur: اگر طلباء کو ملک بدر کر دیا جائے تو کیا کریں؟ (صرف جرمن میں)
-  tr: Öğrenciler sınır dışı edilirse ne yapmalı (sadece Almanca)
-  ku: Ger xwendekar bên dersînorkirin dê çi bikin? (tenê bi Almanî)
-  ka: რა უნდა გააკეთოს, თუ სტუდენტები დეპორტირებულნი არიან? (მხოლოდ გერმანული)
-  ru: Что делать, если учеников депортируют?
-  ti: ፖሊስ ንተማሃሮ ክጥረዙ እንተደልዩ እንታይ ክትገብሩ ትኽእሉ? (ብቋንቋ ጀርመን ጥራይ)
-  vi: Phải làm gì nếu sinh viên bị cảnh sát trục xuất? (chỉ tiếng Đức)
- 
+all:
+  slug: gew-abschiebung-schulen
+  url: https://www.gew-berlin.de/fileadmin/media/sonstige_downloads/be/Infoblatt-Was-tun-bei-Abschiebungen-GEW-BERLIN.pdf
+  type: PDF
+de: 
+  title: Was tun bei Abschiebungen von Schüler\*innen?
+en: 
+  title: What to do in the event of the deportation of pupils (only in German)
+fr: 
+  title: Que faire en cas d'expulsion d'élèves ? (uniquement en allemand)
+es:
+  title: ¿Qué hacer en caso de expulsión de alumnos? (solo en alemán)
+ar: 
+  title: ماذا تفعل إذا تم ترحيل التلاميذ؟ (بالألمانية فقط)
+fa:  
+  title: در صورت اخراج دانش آموزان چه باید کرد؟ (فقط به زبان آلمانی)
+ur:  
+  title: اگر طلباء کو ملک بدر کر دیا جائے تو کیا کریں؟ (صرف جرمن میں)
+tr:
+   title: Öğrenciler sınır dışı edilirse ne yapmalı (sadece Almanca)
+ku:
+   title: Ger xwendekar bên dersînorkirin dê çi bikin? (tenê bi Almanî)
+ka:
+   title: რა უნდა გააკეთოს, თუ სტუდენტები დეპორტირებულნი არიან? (მხოლოდ გერმანული)
+ru:
+   title: Что делать, если учеников депортируют?
+ti:
+   title: ፖሊስ ንተማሃሮ ክጥረዙ እንተደልዩ እንታይ ክትገብሩ ትኽእሉ? (ብቋንቋ ጀርመን ጥራይ)
+vi:
+   title: Phải làm gì nếu sinh viên bị cảnh sát trục xuất? (chỉ tiếng Đức)
