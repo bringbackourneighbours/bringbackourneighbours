@@ -1,4 +1,35 @@
 {
+  "meta": {
+    "allFlyers": "Hemû broşur",
+    "allKits": "Hemû kîtên acîl",
+    "contacts": "Têkilî bi kesên berpirsiyar û piştgiran re",
+    "copiedContentToClipboard": "Naverok li clipboard hate kopî kirin",
+    "copy": "Nivîsarê kopî bikin",
+    "downloadPdf": "Wekî PDF dakêşin",
+    "emergencyKit": "Li dijî sirgûnan pakêta lezgîn",
+    "findAlsoAsPage": "Her weha hûn dikarin vê beşê bi ferdî li ser rûpelê bibînin",
+    "findAlsoInFlyer": "Her weha hûn dikarin vê beşê ji hev cuda di belavokê de bibînin",
+    "forms": "Şablon û formên ji bo çapkirinê",
+    "home": "Rûpelê malê",
+    "imprint": "imprint parastina daneyên",
+    "infosAgainstDeportation": "Li vir hûn dikarin bêtir agahdarî bibînin ka hûn dikarin çi bikin da ku pêşî li dersînorkirinê bigirin",
+    "machineTranslation": "Ev beş jixweber hatiye wergerandin û dibe ku xeletiyên wergerê tê de hebe. Ji kerema xwe ji me re agahdar bikin ku hûn ji bo çêtirkirina pêşniyarên we hene.",
+    "material": "Materyal çap bikin",
+    "moreInfo": "Agahiyên bêtir",
+    "moreInfoAbout": "Agahiyên bêtir li ser",
+    "professionals": "Agahdarî ji bo pisporên xebata civakî",
+    "publicity": "Serişteyên ji bo têkiliyên giştî",
+    "share": "par",
+    "sharedLinkToClipboard": "Girêdan li clipboard hate kopî kirin",
+    "subtitle": "Bi hev re li dijî polîtîkaya dersînorkirinê ya Saksonyayê hevgirtin",
+    "supporters": "Agahî ji bo alîgirên dilxwaz",
+    "title": "Cîranên Me Vegerînin",
+    "updated": "Herî dawî hat nûkirin: "
+  },
+  "shortLink": {
+    "availableInOtherLanguages": "Ev agahî bi zimanên din jî hene",
+    "notAvailableInCurrentLanguage": "Ev naverok bi vî zimanî tune ye"
+  },
   "languages": {
     "ar": "Erebî",
     "bs": "Bosnayî",
@@ -22,5 +53,10 @@
     "vi": "Vîetnamî",
     "ur": "Ûrdûyî",
     "findTranslation": "Wergera bi kurdî heye"
+     },
+  "wizard": {
+    "isThereDangerQuestion": "Hûn an jî kesekî din bi dersînorkirinê tehdît dikin?",
+    "areYouInDangerQuestion": "Hûn bi xwe bi dersînorkirinê tehdît dikin?",
+    "someoneElseInDangerQuestion": "Ma hûn dixwazin piştgirî bidin kesê ku bi dersînorkirinê tê tehdît kirin?"
   }
 }
