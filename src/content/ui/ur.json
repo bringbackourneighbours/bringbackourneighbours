@@ -30,7 +30,6 @@
     "availableInOtherLanguages": "یہ معلومات دوسری زبانوں میں بھی دستیاب ہے۔",
     "notAvailableInCurrentLanguage": "یہ مواد اس زبان میں دستیاب نہیں ہے۔"
   },
-  "fallback": "en",
   "wizard": {
     "isThereDangerQuestion": "کیا آپ کو نکالنے کا خطرہ ہے؟",
     "areYouInDangerQuestion": "کیا آپ کو خود ملک بدری کی دھمکی دی گئی ہے؟",
@@ -59,7 +58,5 @@
     "vi": "ویتنامی",
     "ur": "اردو",
     "findTranslation": "اردو میں ترجمہ دستیاب ہے۔"
-      }
-}
   }
 }
