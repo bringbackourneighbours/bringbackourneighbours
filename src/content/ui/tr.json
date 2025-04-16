@@ -1,4 +1,35 @@
 {
+  "meta": {
+    "allFlyers": "Tüm broşürler",
+    "allKits": "Tüm acil durum kitleri",
+    "contacts": "Sorumlu kişiler ve destekçilerle iletişim",
+    "copiedContentToClipboard": "Panoya kopyalanan içerik",
+    "copy": "Metni kopyala",
+    "downloadPdf": "PDF olarak indir",
+    "emergencyKit": "Sınır dışı edilmelere karşı “acil durum kiti”",
+    "findAlsoAsPage": "Bu bölümü ayrı ayrı sayfada da bulabilirsiniz",
+    "findAlsoInFlyer": "Bu bölümü ayrıca broşürde ayrı ayrı bulabilirsiniz",
+    "forms": "Çıktı almak için şablonlar ve formlar",
+    "home": "Ana Sayfa",
+    "imprint": "Künye",
+    "infosAgainstDeportation": "Burada sınır dışı edilmeyi önlemek için neler yapabileceğiniz hakkında daha fazla bilgi bulabilirsiniz",
+    "machineTranslation": "Bu bölüm otomatik olarak çevrilmiştir ve çeviri hataları içerebilir. Herhangi bir iyileştirme öneriniz varsa lütfen bize bildirin.",
+    "material": "Çıktı alınacak malzemeler",
+    "moreInfo": "Daha fazla bilgi",
+    "moreInfoAbout": "Hakkında daha fazla bilgi",
+    "professionals": "Sosyal hizmet uzmanları için bilgiler",
+    "publicity": "Halkla ilişkiler için ipuçları",
+    "share": "Paylaş",
+    "sharedLinkToClipboard": "Panoya kopyalanan bağlantı",
+    "subtitle": "Saksonya'nın sınır dışı politikasına karşı dayanışma içinde bir arada durmak",
+    "supporters": "Gönüllü destekçiler için bilgiler",
+    "title": "Komşularımızı Geri Getirin",
+    "updated": "Güncelleme: "
+  },
+  "shortLink": {
+    "availableInOtherLanguages": "Bu bilgiler diğer dillerde de mevcuttur",
+    "notAvailableInCurrentLanguage": "Bu içerik bu dilde mevcut değil"
+  },
   "languages": {
     "ar": "Arapça",
     "bs": "Boşnakça",
@@ -22,5 +53,10 @@
     "vi": "Vietnam",
     "ur": "Urdu",
     "findTranslation": "Türkçe çevirisi mevcuttur"
+  },
+  "wizard": {
+    "isThereDangerQuestion": "Siz veya bir başkası sınır dışı edilme riski altında mısınız?",
+    "areYouInDangerQuestion": "Siz de sınır dışı edilme riski altında mısınız?",
+    "someoneElseInDangerQuestion": "Sınır dışı edilme riski altında olan bir kişiye destek olmak ister misiniz?"
   }
 }
