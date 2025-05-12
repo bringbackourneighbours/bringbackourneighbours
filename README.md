@@ -28,6 +28,15 @@ All commands are run from the root of the project, from a terminal:
 | `npx prettier --write "**/*.astro" "**/*.ts" "**/*.css" "**/*.md"`          | Format Astro, TypeScript, CSS, and Markdown files               |
 | `npx eslint . --ignore-pattern ".astro/**" --ignore-pattern "src/env.d.ts"` | Run ESLint on all files, ignoring .astro files and src/env.d.ts |
 
+## Requirements
+
+For now, we have tested this project mainly on ubuntu 24.04., as this is the worker GitHub will provide us.
+
+This projects needs to have the following software installed:
+
+- [node.js](https://nodejs.org/en/download) LTS with npm
+- all [dependencies](https://pptr.dev/guides/system-requirements) of puppeteer with chromium.
+
 ## Project Structure
 
 See: https://github.com/bringbackourneighbours/docs/tree/main/architecture
