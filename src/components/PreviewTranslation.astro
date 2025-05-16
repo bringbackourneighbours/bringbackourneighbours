@@ -14,51 +14,47 @@ interface Props {
 
 const { fromLang, toLang } = Astro.props;
 
-const uiEntryCollection = await getEntry('ui', fromLang);
+const uiEntry = await getEntry('ui', fromLang);
+const addressesCollection = await getCollection('addresses');
+const blocksCollection = await getCollection('blocks');
+const flyersCollection = await getCollection('flyers');
+const kitsCollection = await getCollection('kits');
+const pagesCollection = await getCollection('pages');
 
 const uiEntriesKeys = [
-  ...Object.keys(uiEntryCollection?.data.meta ?? {}).map(
-    (key) => `meta.${key}`,
-  ),
-  ...Object.keys(uiEntryCollection?.data.shortLink ?? {}).map(
+  ...Object.keys(uiEntry?.data.meta ?? {}).map((key) => `meta.${key}`),
+  ...Object.keys(uiEntry?.data.shortLink ?? {}).map(
     (key) => `shortLink.${key}`,
   ),
-  ...Object.keys(uiEntryCollection?.data?.languages ?? {}).map(
+  ...Object.keys(uiEntry?.data?.languages ?? {}).map(
     (key) => `languages.${key}`,
   ),
-  ...Object.keys(uiEntryCollection?.data?.wizard ?? {}).map(
-    (key) => `wizard.${key}`,
-  ),
+  ...Object.keys(uiEntry?.data?.wizard ?? {}).map((key) => `wizard.${key}`),
 ];
 
-// const uiEntries = uiEntriesKeys.map(async (key) => ({
-//   id: `ui/${key}`,
-//   from: await useUiTranslation(key, fromLang),
-//   to: await useUiTranslation(key, toLang),
-// }));
+const addressesNotesEntries = addressesCollection
+  .filter((address) => address.data.translatedNotes)
+  .map((address) => ({
+    key: address.data.identifier,
+    from: address.data.translatedNotes?.[fromLang] ?? '',
+    to: address.data.translatedNotes?.[toLang] ?? '',
+  }));
 
-const blocksEntryCollection = await getCollection('blocks');
-const flyersEntryCollection = await getCollection('flyers');
-const kitsEntryCollection = await getCollection('kits');
-const pagesEntryCollection = await getCollection('pages');
-//
-const blockEntries = blocksEntryCollection?.filter(
+const blockEntries = blocksCollection?.filter(
   (blocks: CollectionEntry<'blocks'>) => {
     return blocks.data.lang === fromLang;
   },
 );
 
-const flyersEntries = flyersEntryCollection?.filter(
+const flyersEntries = flyersCollection?.filter(
   (flyers: CollectionEntry<'flyers'>) => {
     return flyers.data.lang === fromLang;
   },
 );
-const kitsEntries = kitsEntryCollection?.filter(
-  (kits: CollectionEntry<'kits'>) => {
-    return kits.data.lang === fromLang;
-  },
-);
-const pagesEntries = pagesEntryCollection?.filter(
+const kitsEntries = kitsCollection?.filter((kits: CollectionEntry<'kits'>) => {
+  return kits.data.lang === fromLang;
+});
+const pagesEntries = pagesCollection?.filter(
   (pages: CollectionEntry<'pages'>) => {
     return pages.data.lang === fromLang;
   },
@@ -67,9 +63,8 @@ const date = new Date();
 ---
 
 <h1>
-  BBON Übersetzung {useUiTranslation(`languages.${fromLang}`, 'de')} =&gt; {
-    useUiTranslation(`languages.${toLang}`, 'de')
-  }
+  BBON Übersetzung {useUiTranslation(`languages.${fromLang}`, 'de')}
+  =&gt; {useUiTranslation(`languages.${toLang}`, 'de')}
   {date.toLocaleDateString()}
 </h1>
 <ul>
@@ -86,8 +81,10 @@ const date = new Date();
     Überschriften und Listen
   </li>
   <li>
-    Bitte nicht die <pre>&lt;markierten&#x2F;&gt;</pre> Stellen übersetzen Text-Stellen
-    übersetzen. Einfach an der selben Stellen stehen lassen.
+    Bitte nicht die
+    <pre>&lt;markierten&#x2F;&gt;</pre>
+    Stellen übersetzen Text-Stellen übersetzen. Einfach an der selben Stellen stehen
+    lassen.
   </li>
   <li>
     Bitte nutze eine gut verständliche gender-neutrale Sprache oder wechsle mit
@@ -116,6 +113,21 @@ const date = new Date();
           <div slot="id">ui/{key}</div>
           <div slot="from">{useUiTranslation(key, fromLang)}</div>
           <div slot="to">{useUiTranslation(key, toLang)}</div>
+        </TranslationTableRow>
+      ))
+    }
+    {
+      addressesNotesEntries.map((entry) => (
+        <TranslationTableRow>
+          <div slot="id">addresses/{entry.key}.translatedNotes</div>
+          <div slot="from">
+            <pre> {fromLang}:</pre>
+            {entry.from}
+          </div>
+          <div slot="to">
+            <pre> {toLang}:</pre>
+            {entry.to}
+          </div>
         </TranslationTableRow>
       ))
     }
