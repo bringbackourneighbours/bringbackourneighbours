@@ -1,6 +1,4 @@
 all:
-  slug: pass
-  url: https://www.fluechtlingsrat-thr.de/sites/fluechtlingsrat/files/pdf/Beratungshilfe/2020 08 Mitwirkungspflichten Gestattung_englisch.pdf
   type: WEB
 de:
   slug: passde
@@ -19,8 +17,6 @@ tr:
   url: https://www.fluechtlingsrat-thr.de/sites/fluechtlingsrat/files/pdf/Beratungshilfe/2020 08 Mitwirkungspflichten Gestattung_türkisch.pdf
   title: 'Kimliğin açıklığa kavuşturulması konusunda işbirliği yapma yükümlülükleri'
 en:
+  slug: pass
+  url: https://www.fluechtlingsrat-thr.de/sites/fluechtlingsrat/files/pdf/Beratungshilfe/2020 08 Mitwirkungspflichten Gestattung_englisch.pdf
   title: 'Obligations to cooperate in clarifying the identity of persons in asylum procedures'
-fr:
-  title: "Obligations de coopérer à la clarification de l'identité - informations en anglais"
-ka:
-  title: 'პირადობის გარკვევაში თანამშრომლობის ვალდებულებები - ინფორმაცია ინგლისურ ენაზე'
