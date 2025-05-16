@@ -1,16 +1,16 @@
 ---
-import { type LanguagesValue } from '../util/languages';
-import type { StandaloneCollections } from '../util/get-static-paths';
+import { type LanguagesValue } from '../../util/languages';
+import type { StandaloneCollections } from '../../util/get-static-paths';
 
 import { getCollection } from 'astro:content';
-import { useUiTranslation } from '../util/use-ui-translation';
+import { useUiTranslation } from '../../util/use-ui-translation';
 
-import Accordion from '../design/Accordion.astro';
+import Accordion from '../../design/Accordion.astro';
 
-import NotFoundError from '../design/NotFoundError.astro';
-import ContentMetaSection from '../design/ContentMetaSection.astro';
+import NotFoundError from '../../design/NotFoundError.astro';
+import ContentMetaSection from '../../design/ContentMetaSection.astro';
 
-interface Props {
+export interface Props {
   identifier: string;
   lang: LanguagesValue;
   collection?: StandaloneCollections;

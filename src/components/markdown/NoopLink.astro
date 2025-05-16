@@ -1,0 +1,15 @@
+---
+import type { Props } from '../../design/Link.astro';
+
+const props: Props = Astro.props;
+---
+
+<pre>&lt;a href&#x3D;&quot;{props.href}&quot;{!Astro.slots.has('default') ? <>&#x2F;&gt;</> : <>&gt;</>}</pre>
+{
+  Astro.slots.has('default') && (
+    <>
+      <slot />
+      <pre>&lt;&#x2F;a &gt;</pre>
+    </>
+  )
+}

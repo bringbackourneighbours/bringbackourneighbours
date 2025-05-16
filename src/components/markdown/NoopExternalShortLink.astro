@@ -1,0 +1,15 @@
+---
+import type { Props } from './ExternalShortLink.astro';
+
+const props: Props = Astro.props;
+---
+
+<pre>&lt;ExternalShortLink identifier&#x3D;&quot;{props.identifier}&quot;{!Astro.slots.has('default')  ? <>&#x2F;&gt;</> : <>&gt;</>}</pre>
+{
+  Astro.slots.has('default') && (
+    <>
+      <slot />
+      <pre>&lt;&#x2F;ExternalShortLink &gt;</pre>
+    </>
+  )
+}

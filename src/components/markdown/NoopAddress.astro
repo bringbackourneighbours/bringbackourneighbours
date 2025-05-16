@@ -1,0 +1,10 @@
+---
+import type { Props as AddressProps } from './Address.astro';
+
+// eslint-disable-next-line @typescript-eslint/no-empty-object-type
+interface Props extends AddressProps {}
+
+const props = Astro.props;
+---
+
+<pre>&lt;Address identifier&#x3D;&quot;{props.identifier}&quot; &#x2F;&gt;</pre>

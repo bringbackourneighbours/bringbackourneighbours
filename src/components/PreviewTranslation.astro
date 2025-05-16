@@ -4,8 +4,8 @@ import { type CollectionEntry, getCollection, getEntry } from 'astro:content';
 import { type LanguagesValue } from '../util/languages';
 import { useUiTranslation } from '../util/use-ui-translation';
 
-import MarkdownEntry from './MarkdownEntry.astro';
-import TranslationTableRow from './TranslationTableRow.astro';
+import TranslationTableRow from '../design/TranslationTableRow.astro';
+import Block from './markdown/Block.astro';
 
 interface Props {
   fromLang: LanguagesValue;
@@ -31,39 +31,76 @@ const uiEntriesKeys = [
   ),
 ];
 
-const uiEntries = uiEntriesKeys.map(async (key) => ({
-  id: `ui/${key}`,
-  from: await useUiTranslation(key, fromLang),
-  to: await useUiTranslation(key, toLang),
-}));
+// const uiEntries = uiEntriesKeys.map(async (key) => ({
+//   id: `ui/${key}`,
+//   from: await useUiTranslation(key, fromLang),
+//   to: await useUiTranslation(key, toLang),
+// }));
 
-// const blocksEntryCollection = await getCollection('blocks');
-// const flyersEntryCollection = await getCollection('flyers');
-// const kitsEntryCollection = await getCollection('kits');
-// const pagesEntryCollection = await getCollection('pages');
+const blocksEntryCollection = await getCollection('blocks');
+const flyersEntryCollection = await getCollection('flyers');
+const kitsEntryCollection = await getCollection('kits');
+const pagesEntryCollection = await getCollection('pages');
 //
-// const blockEntries = blocksEntryCollection?.filter(
-//   (blocks: CollectionEntry<'blocks'>) => {
-//     return blocks.data.lang === fromLang;
-//   },
-// );
-//
-// const flyersEntries = flyersEntryCollection?.filter(
-//   (flyers: CollectionEntry<'flyers'>) => {
-//     return flyers.data.lang === fromLang;
-//   },
-// );
-// const kitsEntries = kitsEntryCollection?.filter(
-//   (kits: CollectionEntry<'kits'>) => {
-//     return kits.data.lang === fromLang;
-//   },
-// );
-// const pagesEntries = pagesEntryCollection?.filter(
-//   (pages: CollectionEntry<'pages'>) => {
-//     return pages.data.lang === fromLang;
-//   },
-// );
+const blockEntries = blocksEntryCollection?.filter(
+  (blocks: CollectionEntry<'blocks'>) => {
+    return blocks.data.lang === fromLang;
+  },
+);
+
+const flyersEntries = flyersEntryCollection?.filter(
+  (flyers: CollectionEntry<'flyers'>) => {
+    return flyers.data.lang === fromLang;
+  },
+);
+const kitsEntries = kitsEntryCollection?.filter(
+  (kits: CollectionEntry<'kits'>) => {
+    return kits.data.lang === fromLang;
+  },
+);
+const pagesEntries = pagesEntryCollection?.filter(
+  (pages: CollectionEntry<'pages'>) => {
+    return pages.data.lang === fromLang;
+  },
+);
+const date = new Date();
 ---
+
+<h1>
+  BBON Übersetzung {useUiTranslation(`languages.${fromLang}`, 'de')} =&gt; {
+    useUiTranslation(`languages.${toLang}`, 'de')
+  }
+  {date.toLocaleDateString()}
+</h1>
+<ul>
+  <li>
+    Dieses Dokument hat 2 Spalten: links die Quellsprache und Rechts die
+    Zielsprache. Dabei sind die einzelnne Blöcke immer einer Zeile geschrieben.
+  </li>
+  <li>
+    Eventuell sind bereits einzelne, oder große Teile übersetzt. Dann sind die
+    Zellen schon gefüllt, Markiere gerne Fehler oder Verbesserungen.
+  </li>
+  <li>
+    Bitte versuche die Formatierungen in der Zielsprache zu übernehmen: z.B.
+    Überschriften und Listen
+  </li>
+  <li>
+    Bitte nicht die <pre>&lt;markierten&#x2F;&gt;</pre> Stellen übersetzen Text-Stellen
+    übersetzen. Einfach an der selben Stellen stehen lassen.
+  </li>
+  <li>
+    Bitte nutze eine gut verständliche gender-neutrale Sprache oder wechsle mit
+    männlicher und weiblicher Form ab, z.B.: „Die Ärztin und der Berater“. Wenn
+    es mit Sternchen * üblich ist, also: „Lehrer*innen“ » dann mach bitte direkt
+    vor dem * dieses Zeichen: \ (Schrägstrich nach links) also: „Lehrer\*innen“
+  </li>
+  <li>
+    Bitte übersetze und erkläre beim ersten Mal das Wort deutsche Eigenwörter
+    „Duldung“ und nutze dann das deutsche Wort in kursiv, wenn es keine gute
+    Übersetzung in deiner Sprache gibt.
+  </li>
+</ul>
 
 <table>
   <thead>
@@ -76,160 +113,101 @@ const uiEntries = uiEntriesKeys.map(async (key) => ({
     {
       uiEntriesKeys.map((key) => (
         <TranslationTableRow>
-          <span slot="id">{key}</span>
-          <span slot="from">{useUiTranslation(key, fromLang)}</span>
-          <span slot="to">{useUiTranslation(key, toLang)}</span>
+          <div slot="id">ui/{key}</div>
+          <div slot="from">{useUiTranslation(key, fromLang)}</div>
+          <div slot="to">{useUiTranslation(key, toLang)}</div>
         </TranslationTableRow>
       ))
     }
-    <!--          &lt;!&ndash;<tr>&ndash;&gt;-->
-    <!--          &lt;!&ndash;    <th colspan="2">ui/{entry[0]}</th>&ndash;&gt;-->
-    <!--          &lt;!&ndash;</tr>&ndash;&gt;-->
-    <!--          &lt;!&ndash;<tr>&ndash;&gt;-->
-    <!--          &lt;!&ndash;    <td>{entry[1]}</td>&ndash;&gt;-->
-    <!--          &lt;!&ndash;    <td>{useUiTranslation(entry[0], toLang)}</td>&ndash;&gt;-->
-    <!--          &lt;!&ndash;</tr>&ndash;&gt;-->
-    <!--  ))-->
-    <!--}-->
-    <!--{-->
-    <!--  blockEntries.map(async (entry) => (-->
-
-    <!--      &lt;!&ndash;<tr>&ndash;&gt;-->
-    <!--      &lt;!&ndash;  <th colspan="2">blocks/{entry.data.identifier}</th>&ndash;&gt;-->
-    <!--      &lt;!&ndash;</tr>&ndash;&gt;-->
-    <!--      <tr>-->
-    <!--        <td>-->
-    <!--          <MarkdownEntry-->
-    <!--            rendered={entry.render()}-->
-    <!--            recursive={false}-->
-    <!--          />-->
-    <!--        </td>-->
-    <!--        <td>-->
-    <!--          {(await getEntry(-->
-    <!--            'blocks',-->
-    <!--            `${entry.data.identifier}/${toLang}`,-->
-    <!--          )) && (-->
-    <!--            <MarkdownEntry-->
-    <!--              rendered={-->
-    <!--                (-->
-    <!--                  await getEntry(-->
-    <!--                    'blocks',-->
-    <!--                    `${entry.data.identifier}/${toLang}`,-->
-    <!--                  )-->
-    <!--                )?.render()!-->
-    <!--              }-->
-    <!--              recursive={false}-->
-    <!--            />-->
-    <!--          )}-->
-    <!--        </td>-->
-    <!--      </tr>-->
-
-    <!--  ))-->
-    <!--}-->
-    <!--{-->
-    <!--  flyersEntries.map(async (entry) => (-->
-    <!--    <>-->
-    <!--      <tr>-->
-    <!--        <th colspan="2">flyers/{entry.data.identifier}</th>-->
-    <!--      </tr>-->
-    <!--      <tr>-->
-    <!--        <td>-->
-    <!--          <MarkdownEntry-->
-    <!--            rendered={entry.render()}-->
-    <!--            recursive={false}-->
-    <!--          />-->
-    <!--        </td>-->
-    <!--        <td>-->
-    <!--          {(await getEntry(-->
-    <!--            'flyers',-->
-    <!--            `${entry.data.identifier}/${toLang}`,-->
-    <!--          )) && (-->
-    <!--            <MarkdownEntry-->
-    <!--              rendered={-->
-    <!--                (-->
-    <!--                  await getEntry(-->
-    <!--                    'flyers',-->
-    <!--                    `${entry.data.identifier}/${toLang}`,-->
-    <!--                  )-->
-    <!--                )?.render()!-->
-    <!--              }-->
-    <!--              recursive={false}-->
-    <!--            />-->
-    <!--          )}-->
-    <!--        </td>-->
-    <!--      </tr>-->
-    <!--    </>-->
-    <!--  ))-->
-    <!--}-->
-    <!--{-->
-    <!--  kitsEntries.map(async (entry) => (-->
-    <!--    <>-->
-    <!--      <tr>-->
-    <!--        <th colspan="2">kits/{entry.data.identifier}</th>-->
-    <!--      </tr>-->
-    <!--      <tr>-->
-    <!--        <td>-->
-    <!--          <MarkdownEntry-->
-    <!--            rendered={entry.render()}-->
-    <!--            recursive={false}-->
-    <!--          />-->
-    <!--        </td>-->
-    <!--        <td>-->
-    <!--          {(await getEntry(-->
-    <!--            'kits',-->
-    <!--            `${entry.data.identifier}/${toLang}`,-->
-    <!--          )) && (-->
-    <!--            <MarkdownEntry-->
-    <!--              rendered={-->
-    <!--                (-->
-    <!--                  await getEntry(-->
-    <!--                    'kits',-->
-    <!--                    `${entry.data.identifier}/${toLang}`,-->
-    <!--                  )-->
-    <!--                )?.render()!-->
-    <!--              }-->
-    <!--              recursive={false}-->
-    <!--            />-->
-    <!--          )}-->
-    <!--        </td>-->
-    <!--      </tr>-->
-    <!--    </>-->
-    <!--  ))-->
-    <!--}-->
-    <!--{-->
-    <!--  pagesEntries.map(async (entry) => (-->
-    <!--    <>-->
-    <!--      <tr>-->
-    <!--        <th colspan="2">pages/{entry.data.identifier}</th>-->
-    <!--      </tr>-->
-    <!--      <tr>-->
-    <!--        <td>-->
-    <!--          <MarkdownEntry-->
-    <!--            rendered={entry.render()}-->
-    <!--            recursive={false}-->
-    <!--          />-->
-    <!--        </td>-->
-    <!--        <td>-->
-    <!--          {(await getEntry(-->
-    <!--            'pages',-->
-    <!--            `${entry.data.identifier}/${toLang}`,-->
-    <!--          )) && (-->
-    <!--            <MarkdownEntry-->
-    <!--              rendered={-->
-    <!--                (-->
-    <!--                  await getEntry(-->
-    <!--                    'pages',-->
-    <!--                    `${entry.data.identifier}/${toLang}`,-->
-    <!--                  )-->
-    <!--                )?.render()!-->
-    <!--              }-->
-    <!--              recursive={false}-->
-    <!--            />-->
-    <!--          )}-->
-    <!--        </td>-->
-    <!--      </tr>-->
-    <!--    </>-->
-    <!--  ))-->
-    <!--}-->
+    {
+      kitsEntries.map(async (entry) => (
+        <TranslationTableRow>
+          <div slot="id">kits/{entry.data.identifier}</div>
+          <div slot="from">
+            <Block
+              collection="kits"
+              identifier={entry.data.identifier}
+              lang={fromLang}
+              recursive={false}
+            />
+          </div>
+          <div slot="to">
+            <Block
+              collection="kits"
+              identifier={entry.data.identifier}
+              lang={toLang}
+              recursive={false}
+            />
+          </div>
+        </TranslationTableRow>
+      ))
+    }
+    {
+      blockEntries.map(async (entry) => (
+        <TranslationTableRow>
+          <div slot="id">blocks/{entry.data.identifier}</div>
+          <div slot="from">
+            <Block
+              identifier={entry.data.identifier}
+              lang={fromLang}
+              recursive={false}
+            />
+          </div>
+          <div slot="to">
+            <Block
+              identifier={entry.data.identifier}
+              lang={toLang}
+              recursive={false}
+            />
+          </div>
+        </TranslationTableRow>
+      ))
+    }
+    {
+      flyersEntries.map(async (entry) => (
+        <TranslationTableRow>
+          <div slot="id">flyers/{entry.data.identifier}</div>
+          <div slot="from">
+            <Block
+              identifier={entry.data.identifier}
+              lang={fromLang}
+              recursive={false}
+              collection="flyers"
+            />
+          </div>
+          <div slot="to">
+            <Block
+              identifier={entry.data.identifier}
+              lang={toLang}
+              recursive={false}
+              collection="flyers"
+            />
+          </div>
+        </TranslationTableRow>
+      ))
+    }
+    {
+      pagesEntries.map(async (entry) => (
+        <TranslationTableRow>
+          <div slot="id">pages/{entry.data.identifier}</div>
+          <div slot="from">
+            <Block
+              identifier={entry.data.identifier}
+              lang={fromLang}
+              recursive={false}
+              collection="pages"
+            />
+          </div>
+          <div slot="to">
+            <Block
+              identifier={entry.data.identifier}
+              lang={toLang}
+              recursive={false}
+              collection="pages"
+            />
+          </div>
+        </TranslationTableRow>
+      ))
+    }
   </tbody>
 </table>

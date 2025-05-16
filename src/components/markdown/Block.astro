@@ -1,21 +1,23 @@
 ---
-import type { StandaloneCollections } from '../util/get-static-paths';
-import { type LanguagesValue } from '../util/languages';
-import { useUiTranslation } from '../util/use-ui-translation';
+import type { StandaloneCollections } from '../../util/get-static-paths';
+import { type LanguagesValue } from '../../util/languages';
+import { useUiTranslation } from '../../util/use-ui-translation';
 import { getCollection } from 'astro:content';
 import MarkdownEntry from './MarkdownEntry.astro';
-import NotFoundError from '../design/NotFoundError.astro';
+import NotFoundError from '../../design/NotFoundError.astro';
 
-interface Props {
+export interface Props {
   identifier: string;
   lang?: LanguagesValue;
   collection?: StandaloneCollections;
+  recursive?: boolean;
 }
 
 const {
   identifier,
   lang = Astro.locals.lang,
   collection = 'blocks',
+  recursive = true,
 } = Astro.props;
 
 const blockEntries = await getCollection(collection, (block) => {
@@ -31,9 +33,14 @@ const blockEntries = await getCollection(collection, (block) => {
           <strong>{useUiTranslation('meta.machineTranslation', lang)}</strong>
         </p>
       )}
-      <MarkdownEntry rendered={blockEntries[0].render()} />
+      <MarkdownEntry
+        rendered={blockEntries[0].render()}
+        recursive={recursive}
+      />
     </>
   ) : (
-    <NotFoundError context={`${collection}/${identifier}/${lang}`} />
+    recursive && (
+      <NotFoundError context={`${collection}/${identifier}/${lang}`} />
+    )
   )
 }

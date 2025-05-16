@@ -1,0 +1,10 @@
+---
+import type { Props as BlockProps } from './Block.astro';
+
+// eslint-disable-next-line @typescript-eslint/no-empty-object-type
+interface Props extends BlockProps {}
+
+const props = Astro.props;
+---
+
+<pre>&lt;Block{props.collection && <> collection&#x3D;&quot;{props.collection}&quot;</>} identifier&#x3D;&quot;{props.identifier}&quot;&#x2F;&gt;</pre>
