@@ -1,0 +1,20 @@
+---
+import type { Props } from './BlockBox.astro';
+
+const props: Props = Astro.props;
+---
+
+<pre>&lt;BlockBox
+  collection&#x3D;&quot;{props.collection}&quot;
+  identifier&#x3D;&quot;{props.identifier}&quot;
+{!Astro.slots.has('default')  ? <>&#x2F;&gt;</> : <>&gt;</>}</pre>
+{
+  Astro.slots.has('default') && (
+    <>
+      <pre>
+        <slot />
+      </pre>
+      <pre>&lt;&#x2F;BlockBox&gt;</pre>
+    </>
+  )
+}

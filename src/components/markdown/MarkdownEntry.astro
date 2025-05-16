@@ -6,9 +6,15 @@ import Block from './Block.astro';
 import BlockBox from './BlockBox.astro';
 import ExternalShortLink from './ExternalShortLink.astro';
 import InternalShortLink from './InternalShortLink.astro';
-import Link from '../design/Link.astro';
+import Link from '../../design/Link.astro';
+import NoopAddress from './NoopAddress.astro';
 import NoopBlock from './NoopBlock.astro';
-import SupportBox from '../design/SupportBox.astro';
+import NoopBlockBox from './NoopBlockBox.astro';
+import NoopExternalShortLink from './NoopExternalShortLink.astro';
+import NoopInternalShortLink from './NoopInternalShortLink.astro';
+import NoopLink from './NoopLink.astro';
+import NoopSupportBox from './NoopSupportBox.astro';
+import SupportBox from '../../design/SupportBox.astro';
 
 /**
  * Renders a CollectionEntry's markdown to Html... while using our custom components for it
@@ -38,13 +44,13 @@ const componentsMap = recursive
       SupportBox,
     }
   : {
-      a: NoopBlock,
-      Address: NoopBlock,
+      a: NoopLink,
+      Address: NoopAddress,
       Block: NoopBlock,
-      BlockBox: NoopBlock,
-      ExternalShortLink: NoopBlock,
-      InternalShortLink: NoopBlock,
-      SupportBox: NoopBlock,
+      BlockBox: NoopBlockBox,
+      ExternalShortLink: NoopExternalShortLink,
+      InternalShortLink: NoopInternalShortLink,
+      SupportBox: NoopSupportBox,
     };
 ---
 
