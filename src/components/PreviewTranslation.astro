@@ -59,13 +59,12 @@ const pagesEntries = pagesCollection?.filter(
     return pages.data.lang === fromLang;
   },
 );
-const date = new Date();
 ---
 
 <h1>
   BBON Übersetzung {useUiTranslation(`languages.${fromLang}`, 'de')}
   =&gt; {useUiTranslation(`languages.${toLang}`, 'de')}
-  {date.toLocaleDateString()}
+  {new Date().toLocaleDateString()}
 </h1>
 <ul>
   <li>
@@ -94,8 +93,8 @@ const date = new Date();
   </li>
   <li>
     Bitte übersetze und erkläre beim ersten Mal das Wort deutsche Eigenwörter
-    „Duldung“ und nutze dann das deutsche Wort in kursiv, wenn es keine gute
-    Übersetzung in deiner Sprache gibt.
+    wie z.B. „Duldung“ und nutze dann das deutsche Wort in kursiv, wenn es keine
+    gute Übersetzung in deiner Sprache gibt.
   </li>
 </ul>
 
@@ -111,8 +110,8 @@ const date = new Date();
       uiEntriesKeys.map((key) => (
         <TranslationTableRow>
           <div slot="id">ui/{key}</div>
-          <div slot="from">{useUiTranslation(key, fromLang)}</div>
-          <div slot="to">{useUiTranslation(key, toLang)}</div>
+          <div slot="from">{useUiTranslation(key, fromLang, false, false)}</div>
+          <div slot="to">{useUiTranslation(key, toLang, false, false)}</div>
         </TranslationTableRow>
       ))
     }

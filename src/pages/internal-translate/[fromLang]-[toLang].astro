@@ -5,6 +5,8 @@ import { SupportedLanguages, UnSupportedLanguages } from '../../util/languages';
 import PrintLayout from '../../layouts/PrintLayout.astro';
 import CopyButton from '../../design/CopyButton.astro';
 import PreviewTranslation from '../../components/PreviewTranslation.astro';
+import { useUiTranslation } from '../../util/use-ui-translation';
+import Link from '../../design/Link.astro';
 
 export interface InternalTranslateProps {
   params: {
@@ -27,20 +29,50 @@ export async function getStaticPaths(): Promise<InternalTranslateProps[]> {
 }
 
 const { fromLang, toLang } = Astro.params;
+const allPaths = await getStaticPaths();
 ---
 
 <PrintLayout
-  lang={fromLang}
+  lang={toLang}
   title={`INTERNAL TRANSLATION ${fromLang} => ${toLang}`}
 >
+  <h1>
+    BBON Übersetzung {useUiTranslation(`languages.${fromLang}`, 'de')}
+    =&gt; {useUiTranslation(`languages.${toLang}`, 'de')}
+    {new Date().toLocaleDateString()}
+  </h1>
+  <h2>Anleitung zum Erstellen eines Übersetzungsdokuments:</h2>
+  <ol>
+    <li>Diese Seite in den gewünschten Sprachen öffnen</li>
+    <li>Auf den Button "Text kopieren" klicken</li>
+    <li>Office-Programm nit einem neue Text-Dokument öffnen</li>
+    <li>
+      Inhalt der Zwischenablage einfügen. Eventuell mit STRG + SHIFT + V.
+      "Special Paste", mit Formatierung "HTML" wählen.
+    </li>
+    <li>Eventuell muss die Tabelle in der Breite korrigiert werden</li>
+  </ol>
+
   <CopyButton>
     <PreviewTranslation
       fromLang={fromLang}
       toLang={toLang}
     />
   </CopyButton>
-  <PreviewTranslation
-    fromLang={fromLang}
-    toLang={toLang}
-  />
+
+  <h2>Alle Sprachen</h2>
+  <ul>
+    {
+      allPaths.map((path) => (
+        <li>
+          <Link
+            href={`${Astro.site}internal-translate/${path.params.fromLang}-${path.params.toLang}`}
+          >
+            {useUiTranslation(`languages.${path.params.fromLang}`, 'de')}
+            =&gt; {useUiTranslation(`languages.${path.params.toLang}`, 'de')}
+          </Link>
+        </li>
+      ))
+    }
+  </ul>
 </PrintLayout>
