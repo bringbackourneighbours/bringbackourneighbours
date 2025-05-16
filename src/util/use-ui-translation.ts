@@ -14,12 +14,14 @@ import { Languages, type LanguagesValue } from './languages.ts';
  *
  * @param key
  * @param language
- * @param withFallback (optinal) will prevent using the fallback language. used to prevent endless recursions.
+ * @param withFallback (optional) will prevent using the fallback language. used to prevent endless recursions.
+ * @param showError (optional) will show an error text when no translation found
  */
 export const useUiTranslation = async (
   key: string,
   language: LanguagesValue | Languages,
   withFallback = true,
+  showError = true,
 ): Promise<string> => {
   const foundTranslation = await getEntry('ui', language);
 
@@ -36,5 +38,7 @@ export const useUiTranslation = async (
     return await useUiTranslation(key, foundTranslation?.data.fallback, false);
   }
 
-  return foundValue || `${key}/${language} (Noch nicht übersetzt)`;
+  return (
+    foundValue || (showError ? `${key}/${language} (Noch nicht übersetzt)` : '')
+  );
 };
