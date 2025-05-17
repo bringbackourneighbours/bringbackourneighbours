@@ -1,16 +1,18 @@
 ---
+import { type CollectionEntry, getCollection } from 'astro:content';
 import type { StandaloneCollections } from '../../util/get-static-paths';
 import { type LanguagesValue } from '../../util/languages';
-import { useUiTranslation } from '../../util/use-ui-translation';
-import { getCollection } from 'astro:content';
+
 import MarkdownEntry from './MarkdownEntry.astro';
 import NotFoundError from '../../design/NotFoundError.astro';
+import NoteMachineTranslation from '../NoteMachineTranslation.astro';
 
 export interface Props {
   identifier: string;
   lang?: LanguagesValue;
   collection?: StandaloneCollections;
   recursive?: boolean;
+  isRootLevelContent?: boolean;
 }
 
 const {
@@ -18,26 +20,27 @@ const {
   lang = Astro.locals.lang,
   collection = 'blocks',
   recursive = true,
+  isRootLevelContent = false,
 } = Astro.props;
 
 const blockEntries = await getCollection(collection, (block) => {
   return block.slug === `${identifier}/${lang}`;
 });
+
+const blockEntry = blockEntries[0] as CollectionEntry<StandaloneCollections>;
 ---
 
 {
-  blockEntries[0] ? (
-    <>
-      {blockEntries[0]?.data.machineTranslation && (
-        <p>
-          <strong>{useUiTranslation('meta.machineTranslation', lang)}</strong>
-        </p>
-      )}
+  blockEntry ? (
+    <NoteMachineTranslation
+      entry={blockEntry}
+      isRootLevelContent={isRootLevelContent}
+    >
       <MarkdownEntry
-        rendered={blockEntries[0].render()}
+        rendered={blockEntry.render()}
         recursive={recursive}
       />
-    </>
+    </NoteMachineTranslation>
   ) : (
     recursive && (
       <NotFoundError context={`${collection}/${identifier}/${lang}`} />

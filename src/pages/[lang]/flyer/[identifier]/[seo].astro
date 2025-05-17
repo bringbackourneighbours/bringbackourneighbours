@@ -51,10 +51,11 @@ const canonicalUrl = await getCanonicalUrlToFlyer(
   <ContentHeading
     entry={entry}
     collection="flyers"
-  />
-
-  <Block
-    identifier={entry.data.identifier}
-    collection="flyers"
-  />
+  >
+    <Block
+      identifier={entry.data.identifier}
+      collection="flyers"
+      isRootLevelContent={true}
+    />
+  </ContentHeading>
 </ContentLayout>

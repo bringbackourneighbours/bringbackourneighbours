@@ -49,11 +49,13 @@ const translationSlugs = await getTranslationsUrlsForKit(
   <ContentHeading
     entry={entry}
     collection="kits"
-  />
-  <TableOfContents rendered={entry.render()} />
+  >
+    <TableOfContents rendered={entry.render()} />
 
-  <Block
-    identifier={entry.data.identifier}
-    collection="kits"
-  /></ContentLayout
->
+    <Block
+      identifier={entry.data.identifier}
+      collection="kits"
+      isRootLevelContent={true}
+    />
+  </ContentHeading>
+</ContentLayout>
