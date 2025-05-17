@@ -52,21 +52,29 @@ Inside your Astro project, you'll see the following folders and files:
 └── package.json
 ```
 
-Astro looks for `.astro` or `.md` files in the `src/pages/` directory. Each page is exposed as a route based on its file name.
+Astro looks for `.astro` or `.md` files in the `src/pages/` directory. Each page is exposed as a route based on its file
+name.
 
-There's nothing special about `src/components/`, but that's where we like to put any Astro/React/Vue/Svelte/Preact components.
+There's nothing special about `src/components/`, but that's where we like to put any Astro/React/Vue/Svelte/Preact
+components.
 
 Any static assets, like images, can be placed in the `public/` directory.
 
 ## Contributing
 
-As part of the ‘Bring Back Our Neighbours’ campaign, we, a group of full-time and volunteer activists in the field of asylum and political education in Saxony, Germany, have produced several information flyers and this emergency kit against deportations.
+As part of the ‘Bring Back Our Neighbours’ campaign, we, a group of full-time and volunteer activists in the field of
+asylum and political education in Saxony, Germany, have produced several information flyers and this emergency kit
+against deportations.
 
-The aim is to provide people who fear deportation, voluntary supporters and professionals with a quick overview and further information on the subject of deportations.
+The aim is to provide people who fear deportation, voluntary supporters and professionals with a quick overview and
+further information on the subject of deportations.
 
-The information is primarily for Saxony. Much of it is valid and helpful throughout Germany. However, the contacts to advice centres and authorities are only for Saxony.
+The information is primarily for Saxony. Much of it is valid and helpful throughout Germany. However, the contacts to
+advice centres and authorities are only for Saxony.
 
-We try to ensure that all information is up-to-date and complete. However, we would be happy to receive further information and criticism from you. What has worked in the past to prevent deportation? Write to: info@bringbackourneighbours.de
+We try to ensure that all information is up-to-date and complete. However, we would be happy to receive further
+information and criticism from you. What has worked in the past to prevent deportation? Write to:
+info@bringbackourneighbours.de
 
 ### Code of conduct
 
@@ -97,11 +105,61 @@ all the content is stored in the directory `src/content` with the following stru
 └── package.json
 ```
 
+#### Block
+
+The biggest portion of the content is stored as so called `blocks`. Those blocks will be embedded in the other "
+standalone" content types
+
+All block need to be in the [MDX](https://mdxjs.com) format, it has the file ending `.mdx` or `.md` (if only using the
+base markdown features).
+
+Place the files in `/src/content/blocks`. Add a folder per block, that contains one mdx file per language. The file and
+folder names are not evaluated.
+
+Each block has a "frontmatter"-section and content below. With the content you can embed other elements, even different
+blocks. Please note, that you don't need to and should not import other component in the MDX body, as it would impact
+the
+mapping logic.
+
+Example Block: `/src/content/blocks/example/de.mdx`:
+
+```yaml
+---
+identifier: example       # identifier to embed the block
+lang: de                  # language of tme block
+lastChecked: 2025-10-01   # the day this content was last checked. use to spot outdated translations
+fallback: en              # (optional) another language, it will be shown as fallback. use if no vvtranslation available but content is necessary
+machineTranslation: false # (optional) mark that the content was not translated by a human and may contain errors.
+---
+
+# h1
+
+Random Text in the markdown format
+
+  # h2
+
+* list item1
+* list item2
+* list item3
+
+<Block
+  identifier="another"
+  lang="tr"
+/>
+
+```
+
+#### Standalone Content: Flyers, Kits and Pages
+
+To actually show the content we need to put in one of the standalone content collections. They all behave in the same
+way and are super-sets of the normal 'blocks'.
+
 #### Addresses
 
 All the Adresses of a consultation center, a group or just a website.
 
-An Adresses needs to be in the [YAML](https://en.wikipedia.org/wiki/YAML) format, it has the file ending `.yaml` or `.yml`.
+An Adresses needs to be in the [YAML](https://en.wikipedia.org/wiki/YAML) format, it has the file ending `.yaml` or
+`.yml`.
 
 Example:
 
@@ -147,47 +205,64 @@ translatedNotes:
   en: 'Just an Example'
 ```
 
-To use an Address in the Content(MDX-only) you first have to import the component and then place it with the identifier set.
+To use an Address in the Content(MDX-only) you first have to import the component and then place it with the identifier
+set.
 In most Component the `Address` is imported automatically.
 
 Usage-Example:
 
-```mdxjs
+```yaml
 ---
 identifier: some-content
 lang: de
 lastChecked: 2024-09-07
 ---
-
 // Import the component if needed, in most content it will work wihtout
 import Address from '../../../components/Address.astro';
 
-Random Text...
-
-<Address identifier="my-address" />
-
+Random Text
+---
+<Address identifier="my-address"/>
 ```
 
 This together will result in something like
 ![address_web_example.png](docs/images/address_web_example.png)
 
-#### Block
+#### Links
 
-#### Flyers
+Within the content we link to material (pdf, audio, video, webpages) from others, sometimes differently for each language.
 
-#### Kits
+For each link you have to create a file in the [YAML](https://en.wikipedia.org/wiki/YAML) format, it has the file ending `.yaml` or
+`.yml`.
 
-#### Pages
+Within the file there can be a section for each language, that the material is available. Additional optionally a section `all` can be used, all properties with in this section will be overridden by the properties per language.
+
+Example Link: `/src/content/links/example.yml`:
+
+```yaml
+all:
+  type: PDF
+en:
+  slug: stuff
+  url: www.anothersite.com/thathassomeinteresstingstuffEnglish.pdf
+  title: Interessting Stuff
+de:
+  slug: zeugs
+  url: www.anothersite.com/thathassomeinteresstingstuffGerman.pdf
+  title: Interessesantes Zeugs
+```
 
 #### Forms/Templates
 
-We have compiled templates that can be used in an emergency, i.e. in the event of an ongoing deportation. Those might be forms as Pdfs or Docs that can be directly downloaded form our site.
+We have compiled templates that can be used in an emergency, i.e. in the event of an ongoing deportation. Those might be
+forms as Pdfs or Docs that can be directly downloaded form our site.
 
-To make them available the files can be uploaded in the folder `public/forms`. Then create a (external) Link, that points to the document. Best use a relative URI.
+To make them available the files can be uploaded in the folder `public/forms`. Then create a (external) Link, that
+points to the document. Best use a relative URI.
 
 Example File: `/public/forms/Urgent Application.pdf`
 
-Example Link: `/src/content/form_urgent.yml`:
+Example Link: `/src/content/links/form_urgent.yml`:
 
 ```yaml
 en:
@@ -199,15 +274,13 @@ en:
 
 Usage-Example:
 
-```mdxjs
+```yaml
 ---
 identifier: some-content
 lang: de
 lastChecked: 2024-09-07
 ---
-
-Random Text...
+Random Text
 
 <ExternalShortLink identifier="form_urgent"/>
-
 ```
