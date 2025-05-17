@@ -1,4 +1,3 @@
-// eslint-disable-next-line @typescript-eslint/triple-slash-reference
 /// <reference types="astro/client" />
 // eslint-disable-next-line @typescript-eslint/triple-slash-reference
 /// <reference path="../.astro/types.d.ts" />
@@ -21,5 +20,11 @@ declare namespace App {
      * the current context is in this language: all components can use this if not set explicitly
      */
     lang: import('./util/languages.ts').LanguagesValue;
+
+    /**
+     * there was a note about machineTranslation displayed in the context
+     * so we don't need to show the same note again
+     */
+    machineTranslationNoteWasDisplayed?: boolean;
   }
 }

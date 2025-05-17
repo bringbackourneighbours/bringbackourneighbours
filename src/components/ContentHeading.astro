@@ -2,7 +2,6 @@
 import type { CollectionEntry } from 'astro:content';
 import type { StandaloneCollections } from '../util/get-static-paths';
 
-import Block from './markdown/Block.astro';
 import CardLink from '../design/CardLink.astro';
 import ContentMeta from '../design/ContentMeta.astro';
 import CopyButton from '../design/CopyButton.astro';
@@ -25,8 +24,6 @@ const {
   showCopyButton = true,
   showDownloadButton = collection !== 'pages',
 } = Astro.props;
-
-// TODO: this might be depending on collection
 
 const printUrl = `${Astro.site}print/${collection.slice(0, -1)}-${entry.data.lang}-${entry.data.identifier}.pdf`;
 
@@ -70,10 +67,9 @@ const canonicalUrl = await getCanonicalUrlFn(collection)(
     showCopyButton && (
       <CopyButton>
         <h1>{entry.data.title}</h1>
-        <Block
-          identifier={entry.data.identifier}
-          collection={collection}
-        />
+        <br />
+        <br />
+        <slot />
       </CopyButton>
     )
   }
@@ -88,3 +84,5 @@ const canonicalUrl = await getCanonicalUrlFn(collection)(
     )
   }
 </div>
+
+<slot />

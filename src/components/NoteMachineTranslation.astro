@@ -1,0 +1,36 @@
+---
+import type { CollectionEntry } from 'astro:content';
+import type { StandaloneCollections } from '../util/get-static-paths';
+
+import { useUiTranslation } from '../util/use-ui-translation';
+
+interface Props {
+  entry: CollectionEntry<StandaloneCollections>;
+  isRootLevelContent?: boolean;
+}
+
+const { entry, isRootLevelContent = false } = Astro.props;
+
+// don't show the note, when the context already does
+const showMachineTranslation =
+  entry.data.machineTranslation &&
+  !Astro.locals.machineTranslationNoteWasDisplayed;
+
+if (isRootLevelContent) {
+  Astro.locals.machineTranslationNoteWasDisplayed =
+    entry.data.machineTranslation;
+}
+---
+
+<section>
+  {
+    showMachineTranslation && (
+      <p role="note">
+        <strong>
+          {useUiTranslation('meta.machineTranslation', entry.data.lang)}
+        </strong>
+      </p>
+    )
+  }
+  <slot />
+</section>
