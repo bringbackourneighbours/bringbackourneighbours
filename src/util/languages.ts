@@ -26,6 +26,7 @@ export enum Languages {
 }
 
 export const SupportedLanguages = [
+  Languages.ARABIC,
   Languages.ENGLISH,
   Languages.GERMAN,
   Languages.FRENCH,
@@ -34,7 +35,6 @@ export const SupportedLanguages = [
 
 export const UnSupportedLanguages = [
   Languages.ALBANIAN,
-  Languages.ARABIC,
   Languages.BOSNIAN,
   Languages.FARSI,
   Languages.GEORGIAN,
