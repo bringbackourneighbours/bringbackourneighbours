@@ -13,5 +13,6 @@
   --bbon-size-shadow-spread: 10px;
   --bbon-size-border: 4px;
   --bbon-size-max-text-span: 80ch;
+  --bbon-size-list-inset: 0.1em;
   --bbon-hyphens-p: none;
 }
