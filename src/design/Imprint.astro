@@ -9,17 +9,7 @@ interface Props {
 const { lang = Astro.locals.lang } = Astro.props;
 ---
 
-<style>
-  p {
-    font-size: 0.75em;
-    letter-spacing: -0.01em;
-  }
-</style>
-
-<p>
-  <strong>{useUiTranslation('meta.imprint', lang)}:</strong>
-  <span class="ltr">
-    Kontaktgruppe Asyl und Abschiebehaft e.V. Heinrich-Zille-Str. 6 01219
-    Dresden
-  </span>
-</p>
+<span>{useUiTranslation('meta.imprint', lang)}:</span>
+<span class="ltr">
+  Kontaktgruppe Asyl und Abschiebehaft e.V. Heinrich-Zille-Str. 6 01219 Dresden
+</span>

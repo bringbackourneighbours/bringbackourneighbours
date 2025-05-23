@@ -23,47 +23,69 @@ const { entry, translationSlugs, canonicalUrl } = Astro.props;
 ---
 
 <style>
-  .qr-link {
-    display: flex;
-    align-items: center;
-    gap: var(--bbon-size-gap);
+  .footer {
+    font-size: var(--bbon-size-mini);
 
-    .find-translation {
+    --bbon-size-p: var(--bbon-size-mini);
+
+    letter-spacing: -0.01em;
+
+    .home-link {
+      text-align: center;
+    }
+
+    .links {
       display: flex;
       align-items: center;
       gap: var(--bbon-size-gap);
-      flex-direction: column;
+      padding-block-end: var(--bbon-size-gap);
+
+      .translation-links {
+        flex-grow: 1;
+        display: grid;
+        grid-template-columns: repeat(2, 1fr);
+        justify-items: center;
+        gap: calc(0.5 * var(--bbon-size-gap));
+
+        --link-font-weight: normal;
+      }
     }
   }
 </style>
-
-<div class="qr-link">
-  <QrImage
-    size="70"
-    url={canonicalUrl}
-  />
-  <div class="find-translation">
-    {
-      translationSlugs.map((translationSlug) => (
-        <Link href={translationSlug.url}>
-          {useUiTranslation(`languages.findTranslation`, translationSlug.lang)}
-        </Link>
-      ))
-    }
-    <p>
-      <Timestamp
-        lang={entry.data.lang}
-        lastChecked={entry.data.lastChecked}
-      />
-    </p>
+<section class="footer">
+  <div class="links">
+    <QrImage
+      size="60"
+      url={canonicalUrl}
+    />
+    <div class="translation-links">
+      {
+        [...translationSlugs, ...translationSlugs].map((translationSlug) => (
+          <Link href={translationSlug.url}>
+            {useUiTranslation(
+              `languages.findTranslation`,
+              translationSlug.lang,
+            )}
+          </Link>
+        ))
+      }
+    </div>
   </div>
-</div>
-<p>
-  {useUiTranslation(`meta.infosAgainstDeportation`, entry.data.lang)}
-  <span class="ltr">
-    <Link href={`${Astro.site}`} />
-  </span>
-</p>
-<p>
-  <Imprint lang={entry.data.lang} />
-</p>
+  <p class="home-link">
+    <strong>
+      {useUiTranslation(`meta.infosAgainstDeportation`, entry.data.lang)}
+    </strong>
+    <span class="ltr">
+      <Link href={`${Astro.site}`} />
+    </span>
+  </p>
+  <p>
+    <Timestamp
+      lang={entry.data.lang}
+      lastChecked={entry.data.lastChecked}
+    />
+  </p>
+  <p>
+    <Imprint lang={entry.data.lang} />
+  </p>
+</section>
