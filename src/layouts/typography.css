@@ -53,9 +53,9 @@ h3 {
 dl,
 ol,
 ul {
-  margin: var(--bbon-size-spacing) 1em;
+  margin: var(--bbon-size-border) 1em;
   padding: 0;
-  padding-inline-start: var(--bbon-size-border);
+  padding-inline-start: calc(var(--bbon-size-border));
 }
 
 ul {
@@ -68,7 +68,7 @@ li {
   &::before {
     /* small hack to reduce the distance between marker and content */
     content: '';
-    margin-inline-start: -0.6em;
+    margin-inline-start: calc(-2 * var(--bbon-size-border));
   }
 }
 
