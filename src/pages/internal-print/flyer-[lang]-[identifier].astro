@@ -26,7 +26,6 @@ const translationSlugs = await getTranslationsUrlsForFlyer(
   entry.data.identifier,
 );
 
-// FIXME: this should be the SHORTURL and not the canonical
 const canonicalUrl =
   (await getCanonicalUrlToFlyer(entry.data.lang, entry.data.identifier)) || '';
 ---
@@ -40,11 +39,22 @@ const canonicalUrl =
   .end-footer {
     position: absolute;
 
-    /*
-    every flyer has 4 pages, so the footer needs to be somewhere on the bottom of page 4...
-    calc would need to consider the page margins */
+    /**
+    * every flyer has 4 pages, so the footer needs to be somewhere on the bottom of page 4...
+    * calc would need to consider the page margins
+    */
     inset-block-start: 0;
-    margin-block-start: 522mm;
+    margin-block-start: 524mm;
+  }
+
+  .overprint-protector {
+    /**
+    * to make sure nothing fo the content it printed over tke footer we add this protector
+    * if they content and thes footer would overlap this invisible div will be pushed
+    * on the next page... so we will get a warning per astro integration
+    * as we then would have 5 page
+    */
+    height: 29mm;
   }
 </style>
 <PrintLayout
@@ -63,6 +73,7 @@ const canonicalUrl =
       collection="flyers"
     />
   </PrinterPage>
+  <div class="overprint-protector"></div>
   <div class="end-footer">
     <PrintEndFooter
       entry={entry}
