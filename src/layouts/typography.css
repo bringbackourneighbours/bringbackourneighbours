@@ -4,11 +4,14 @@
 html {
   font-size: var(--bbon-size-p);
   line-height: var(--bbon-size-p-line);
+  hyphenate-limit-chars: auto 5;
+  overflow-wrap: break-word;
 }
 
 p {
   font-size: var(--bbon-size-p);
   margin: var(--bbon-size-spacing) 0;
+  hyphens: var(--bbon-hyphens-p);
 }
 
 /* TODO: Extract to Heading component */
@@ -64,6 +67,7 @@ ul {
 
 li {
   margin: var(--bbon-size-spacing) 0;
+  hyphens: var(--bbon-hyphens-p);
 
   &::before {
     /* small hack to reduce the distance between marker and content */

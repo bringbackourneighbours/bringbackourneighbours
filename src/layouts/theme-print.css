@@ -12,4 +12,5 @@
   --bbon-size-shadow-spread: 10px;
   --bbon-size-border: 1pt;
   --bbon-size-max-text-span: 80ch;
+  --bbon-hyphens-p: auto;
 }
