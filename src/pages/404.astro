@@ -1,0 +1,40 @@
+---
+import OverviewLayout from '../layouts/OverviewLayout.astro';
+
+import { useUiTranslation } from '../util/use-ui-translation';
+import { DEFAULT_LANG, SupportedLanguages } from '../util/languages';
+import Stack from '../design/Stack.astro';
+import CardLink from '../design/CardLink.astro';
+
+const lang = DEFAULT_LANG;
+
+const supportedLanguages = Object.values(SupportedLanguages);
+---
+
+<OverviewLayout
+  lang={lang}
+  title=`${await useUiTranslation('meta.notFound', lang)} | ${await useUiTranslation('meta.title', lang)}`
+>
+  <Stack>
+    {
+      supportedLanguages.map(async (supportedLang) => (
+        <div>
+          <h1>{await useUiTranslation('meta.notFound', supportedLang)}</h1>
+          <p>{await useUiTranslation('meta.notFoundText', supportedLang)}</p>
+        </div>
+      ))
+    }
+  </Stack>
+  <Stack>
+    {
+      supportedLanguages.map(async (supportedLang) => (
+        <CardLink
+          href={`${Astro.site}${supportedLang}/wizard`}
+          lang={supportedLang}
+        >
+          {useUiTranslation('wizard.isThereDangerQuestion', supportedLang)}
+        </CardLink>
+      ))
+    }
+  </Stack>
+</OverviewLayout>

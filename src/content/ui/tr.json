@@ -17,6 +17,8 @@
     "material": "Çıktı alınacak malzemeler",
     "moreInfo": "Daha fazla bilgi",
     "moreInfoAbout": "Hakkında daha fazla bilgi",
+    "notFound": "Bulunamadı",
+    "notFoundText": "İçerik bulunamadı. Bağlantı muhtemelen güncel değil veya bir yazım hatası var.",
     "professionals": "Sosyal hizmet uzmanları için bilgiler",
     "publicity": "Halkla ilişkiler için ipuçları",
     "share": "Paylaş",
