@@ -53,7 +53,7 @@ const canonicalUrl = await getCanonicalUrlFn(collection)(
 <hgroup>
   {
     entry.data.lang !== `${Languages.GERMAN}` && (
-      <span class="german-title">{entry.data.germanTitle}</span>
+      <span class="german-title ltr">{entry.data.germanTitle}</span>
     )
   }
   <h1>{entry.data.title}</h1>
