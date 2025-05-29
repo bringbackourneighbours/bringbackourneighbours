@@ -5,7 +5,7 @@
     "contacts": "تماس با مسئولان و مددکاران",
     "copiedContentToClipboard": "محتوا در کلیپ بورد کپی شد",
     "copy": "کپی کنید",
-    "downloadPdf":"PDF دانلود به صورت",
+    "downloadPdf": "PDF دانلود به صورت",
     "emergencyKit": "کیت اضطراری علیه اخراج",
     "findAlsoAsPage": "همچنین می توانید این بخش را به صورت جداگانه در صفحه پیدا کنید",
     "findAlsoInFlyer": "این بخش نیز به صورت جداگانه در بروشور موجود است",
@@ -28,7 +28,9 @@
   },
   "shortLink": {
     "availableInOtherLanguages": "این اطلاعات به زبان های دیگر نیز موجود است",
-    "notAvailableInCurrentLanguage": "این محتوا به این زبان موجود نیست"
+    "notAvailableInCurrentLanguage": "این محتوا به این زبان موجود نیست",
+    "onlyAvailableInOtherLanguages": "این محتوا فقط به زبان\u200Cهای دیگر موجود است.",
+    "onlyAvailableOnlineInOtherLanguages": "شما می\u200Cتوانید این اطلاعات را در نسخه وب پیدا کنید."
   },
   "languages": {
     "ar": "عربی",
@@ -54,7 +56,7 @@
     "ur": "اردو",
     "findTranslation": "ترجمه فارسی موجود است"
   },
- "wizard": {
+  "wizard": {
     "isThereDangerQuestion": "آیا شما یا شخص دیگری تهدید به اخراج شده اید؟",
     "areYouInDangerQuestion": "آیا خود شما تهدید به اخراج هستید؟",
     "someoneElseInDangerQuestion": "آیا می خواهید از فردی که تهدید به اخراج است حمایت کنید؟"

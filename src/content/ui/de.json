@@ -28,7 +28,8 @@
   },
   "shortLink": {
     "availableInOtherLanguages": "Diese Info gibt es auch in anderen Sprachen",
-    "notAvailableInCurrentLanguage": "Dieser Inhalt ist nicht in dieser Sprachen verfügbar"
+    "onlyAvailableInOtherLanguages": "Diesen Inhalt gibt es nur in anderen Sprachen",
+    "onlyAvailableOnlineInOtherLanguages": "Du findest diese Info in der Web-Version"
   },
   "languages": {
     "ar": "Arabisch",

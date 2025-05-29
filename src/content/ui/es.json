@@ -52,7 +52,8 @@
   },
   "shortLink": {
     "availableInOtherLanguages": "Esta información también está disponible en otros idiomas",
-    "notAvailableInCurrentLanguage": "Este contenido no está disponible en este idioma"
+    "onlyAvailableInOtherLanguages": "Este contenido sólo está disponible en otros idiomas",
+    "onlyAvailableOnlineInOtherLanguages": "Puede encontrar esta información en la versión web"
   },
   "wizard": {
     "isThereDangerQuestion": "¿Está usted o alguien más en riesgo de deportación?",

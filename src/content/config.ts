@@ -151,7 +151,8 @@ const uiCollection = defineCollection({
     shortLink: z
       .object({
         availableInOtherLanguages: z.string(),
-        notAvailableInCurrentLanguage: z.string(),
+        onlyAvailableInOtherLanguages: z.string(),
+        onlyAvailableOnlineInOtherLanguages: z.string(),
       })
       .optional(),
     wizard: z

@@ -51,8 +51,9 @@
     "findTranslation": "Traduction en français disponible"
   },
   "shortLink": {
-    "availableInOtherLanguages": "Ces informations sont également disponibles dans d'autres langues",
-    "notAvailableInCurrentLanguage": "Ce contenu n'est pas disponible dans cette langue"
+    "availableInOtherLanguages": "Cette info existe aussi dans d'autres langues",
+    "onlyAvailableInOtherLanguages": "Ce contenu n'existe que dans d'autres langues",
+    "onlyAvailableOnlineInOtherLanguages": "Tu trouveras cette info dans la version web"
   },
   "wizard": {
     "isThereDangerQuestion": "Êtes-vous ou quelqu'un d'autre menacé d'expulsion?",

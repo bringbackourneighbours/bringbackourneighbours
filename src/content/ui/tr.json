@@ -28,7 +28,8 @@
   },
   "shortLink": {
     "availableInOtherLanguages": "Bu bilgiler diğer dillerde de mevcuttur",
-    "notAvailableInCurrentLanguage": "Bu içerik bu dilde mevcut değil"
+    "onlyAvailableInOtherLanguages": "Bu içerik yalnızca diğer dillerde mevcuttur\n",
+    "onlyAvailableOnlineInOtherLanguages": "Bu bilgileri web sürümünde bulabilirsiniz"
   },
   "languages": {
     "ar": "Arapça",

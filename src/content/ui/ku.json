@@ -27,8 +27,9 @@
     "updated": "Herî dawî hat nûkirin: "
   },
   "shortLink": {
-    "availableInOtherLanguages": "Ev agahî bi zimanên din jî hene",
-    "notAvailableInCurrentLanguage": "Ev naverok bi vî zimanî tune ye"
+    "availableInOtherLanguages": "Ev agahî bi zimanên din jî heye",
+    "onlyAvailableInOtherLanguages": "Ev naverok tenê bi zimanên din heye",
+    "onlyAvailableOnlineInOtherLanguages": "Hûn dikarin vê agahiyê di guhertoya webê de bibînin"
   },
   "languages": {
     "ar": "Erebî",
@@ -53,7 +54,7 @@
     "vi": "Vîetnamî",
     "ur": "Ûrdûyî",
     "findTranslation": "Wergera bi kurdî heye"
-     },
+  },
   "wizard": {
     "isThereDangerQuestion": "Hûn an jî kesekî din bi dersînorkirinê tehdît dikin?",
     "areYouInDangerQuestion": "Hûn bi xwe bi dersînorkirinê tehdît dikin?",

@@ -24,6 +24,10 @@ let localizedLinkData = {
   ...link?.data['all'],
   ...link?.data[lang],
 };
+
+const hasLinkInCurrentLang = localizedLinkData?.url && localizedLinkData?.title;
+
+const showGoOnline = Astro.locals.isPrint && Astro.locals.isFlyer;
 ---
 
 <style>
@@ -33,7 +37,7 @@ let localizedLinkData = {
   }
 </style>
 {
-  localizedLinkData?.url && localizedLinkData?.title ? (
+  hasLinkInCurrentLang ? (
     <>
       <ShortLink
         lang={lang}
@@ -41,7 +45,7 @@ let localizedLinkData = {
         slug={localizedLinkData.slug}
         title={localizedLinkData.title}
         type={localizedLinkData.type}
-        url={localizedLinkData.url}
+        url={localizedLinkData.url!}
       />
       {Astro.locals.isPrint && Astro.locals.isKit && (
         <LanguageChip
@@ -50,7 +54,11 @@ let localizedLinkData = {
         />
       )}
     </>
+  ) : showGoOnline ? (
+    <em>
+      {useUiTranslation('shortLink.onlyAvailableOnlineInOtherLanguages', lang)}
+    </em>
   ) : (
-    <em>{useUiTranslation('shortLink.notAvailableInCurrentLanguage', lang)}</em>
+    <em>{useUiTranslation('shortLink.onlyAvailableInOtherLanguages', lang)}</em>
   )
 }

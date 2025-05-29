@@ -1,5 +1,5 @@
 {
-    "meta": {
+  "meta": {
     "allFlyers": "تمام فلائیرز",
     "allKits": "تمام ایمرجنسی کٹس",
     "contacts": "ذمہ دار افراد اور مددگاروں سے رابطہ کریں۔",
@@ -28,7 +28,8 @@
   },
   "shortLink": {
     "availableInOtherLanguages": "یہ معلومات دوسری زبانوں میں بھی دستیاب ہے۔",
-    "notAvailableInCurrentLanguage": "یہ مواد اس زبان میں دستیاب نہیں ہے۔"
+    "onlyAvailableInOtherLanguages": "",
+    "onlyAvailableOnlineInOtherLanguages": ""
   },
   "wizard": {
     "isThereDangerQuestion": "کیا آپ کو نکالنے کا خطرہ ہے؟",

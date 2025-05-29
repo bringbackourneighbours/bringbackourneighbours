@@ -32,8 +32,9 @@
     "someoneElseInDangerQuestion": "هل ترغب في دعم شخص معرض لخطر الترحيل؟"
   },
   "shortLink": {
-    "availableInOtherLanguages": "هذه المعلومات متاحة أيضاً بلغات أخرى",
-    "notAvailableInCurrentLanguage": "هذا المحتوى غير متوفر بهذه اللغة"
+    "availableInOtherLanguages": "هذه المعلومات متوفرة أيضًا بلغات أخرى",
+    "onlyAvailableInOtherLanguages": "هذا المحتوى متوفر بلغات أخرى فقط",
+    "onlyAvailableOnlineInOtherLanguages": "يمكنك العثور على هذه المعلومات في نسخة الويب"
   },
   "languages": {
     "ar": "العربية",
