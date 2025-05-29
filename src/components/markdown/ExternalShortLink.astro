@@ -33,6 +33,14 @@ const alternativeLanguages = [...SupportedLanguages, ...UnSupportedLanguages]
   .filter((l) => link?.data[l]);
 
 const showAlternatives = !(Astro.locals.isPrint && Astro.locals.isFlyer);
+
+let localizedLinkData = {
+  ...link?.data['all'],
+  ...link?.data[lang],
+};
+
+const hasNoAlternatives = 0 === alternativeLanguages.length;
+const onlyInOtherLangs = !(localizedLinkData?.url && localizedLinkData?.title);
 ---
 
 <style>
@@ -50,7 +58,7 @@ const showAlternatives = !(Astro.locals.isPrint && Astro.locals.isFlyer);
 {
   link ? (
     <>
-      {0 === alternativeLanguages.length ? (
+      {hasNoAlternatives ? (
         <ExternalShortLinkAnchor
           lang={lang}
           identifier={identifier}
@@ -68,9 +76,14 @@ const showAlternatives = !(Astro.locals.isPrint && Astro.locals.isFlyer);
           </div>
           {showAlternatives && (
             <div class="alternatives">
-              <em>
-                {useUiTranslation('shortLink.availableInOtherLanguages', lang)}
-              </em>
+              {!onlyInOtherLangs && (
+                <em>
+                  {useUiTranslation(
+                    'shortLink.availableInOtherLanguages',
+                    lang,
+                  )}
+                </em>
+              )}
               <ul>
                 {alternativeLanguages.map((l) => (
                   <li>

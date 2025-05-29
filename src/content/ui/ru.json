@@ -1,5 +1,5 @@
 {
-    "meta": {
+  "meta": {
     "allFlyers": "Все брошюры",
     "allKits": "Все аварийные наборы",
     "contacts": "Контакты с ответственными лицами и сторонниками",
@@ -28,7 +28,8 @@
   },
   "shortLink": {
     "availableInOtherLanguages": "Эта информация также доступна на других языках",
-    "notAvailableInCurrentLanguage": "Этот контент недоступен на данном языке"
+    "onlyAvailableInOtherLanguages": "Это содержание доступно только на других языках",
+    "onlyAvailableOnlineInOtherLanguages": "Вы можете найти эту информацию в веб-версии"
   },
   "languages": {
     "ar": "арабский",
@@ -53,7 +54,7 @@
     "vi": "вьетнамский",
     "ur": "урду",
     "findTranslation": "Доступен перевод на русский язык."
-    },
+  },
   "wizard": {
     "isThereDangerQuestion": "Вам или кому-то еще грозит депортация?",
     "areYouInDangerQuestion": "Вы сами подвергаетесь риску депортации?",
