@@ -10,6 +10,7 @@ import ShareButton from '../design/ShareButton.astro';
 import { Languages } from '../util/languages';
 import { getCanonicalUrlFn } from '../util/get-canonical-url';
 import { useUiTranslation } from '../util/use-ui-translation';
+import { getPrintUrl } from '../util/get-absolute-url';
 
 interface Props<T extends StandaloneCollections> {
   collection: T;
@@ -25,7 +26,11 @@ const {
   showDownloadButton = collection !== 'pages',
 } = Astro.props;
 
-const printUrl = `${Astro.site}print/${collection.slice(0, -1)}-${entry.data.lang}-${entry.data.identifier}.pdf`;
+const printUrl = getPrintUrl(
+  collection,
+  entry.data.lang,
+  entry.data.identifier,
+);
 
 const canonicalUrl = await getCanonicalUrlFn(collection)(
   entry.data.lang,
