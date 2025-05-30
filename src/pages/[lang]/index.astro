@@ -1,5 +1,7 @@
 ---
-import { SupportedLanguages, type LanguagesValue } from '../../util/languages';
+import { type LanguagesValue } from '../../util/languages';
+
+import { getStaticPathsForPaths } from '../../util/get-static-paths';
 
 import LangingPage from '../../components/LangingPage.astro';
 
@@ -8,12 +10,7 @@ interface Props {
 }
 
 export async function getStaticPaths() {
-  return Object.values(SupportedLanguages).map((lang) => {
-    return {
-      params: { lang },
-      props: { lang },
-    };
-  });
+  return getStaticPathsForPaths();
 }
 
 const { lang } = Astro.props;

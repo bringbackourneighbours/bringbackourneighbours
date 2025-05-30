@@ -2,6 +2,7 @@
 import { type LanguagesValue } from '../util/languages';
 import { useUiTranslation } from '../util/use-ui-translation';
 import {
+  getCanonicalUrlForPath,
   getCanonicalUrlToKit,
   getCanonicalUrlToPage,
 } from '../util/get-canonical-url';
@@ -58,7 +59,7 @@ const professionalsLabel = await useUiTranslation('meta.professionals', lang);
     showFlyers && (
       <MenuLink
         lang={lang}
-        canonicalUrl={`${Astro.site}${lang}/flyer`}
+        canonicalUrl={getCanonicalUrlForPath(lang, 'flyer')}
         label={allFlyersLabel}
       />
     )
@@ -67,7 +68,7 @@ const professionalsLabel = await useUiTranslation('meta.professionals', lang);
     showKits && (
       <MenuLink
         lang={lang}
-        canonicalUrl={`${Astro.site}${lang}/kit`}
+        canonicalUrl={getCanonicalUrlForPath(lang, 'kit')}
         label={allKitsLabel}
       />
     )
