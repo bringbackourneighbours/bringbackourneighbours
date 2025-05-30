@@ -22,6 +22,10 @@ const { title, lang, canonicalSlug, translationSlugs } = Astro.props;
     href="/favicon.svg"
   />
   <link
+    rel="sitemap"
+    href="/sitemap-index.xml"
+  />
+  <link
     rel="canonical"
     hreflang={lang}
     href={canonicalSlug}
