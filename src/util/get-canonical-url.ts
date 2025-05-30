@@ -42,12 +42,20 @@ export const getCanonicalUrlToPage = async (
   return getCanonicalUrl('pages', 'page', lang, identifier);
 };
 
-export const getCanonicalUrlFn = (collection: StandaloneCollections) => {
-  return collection === 'flyers'
-    ? getCanonicalUrlToFlyer
-    : collection === 'kits'
-      ? getCanonicalUrlToKit
-      : collection === 'pages'
-        ? getCanonicalUrlToPage
-        : () => `${AstroConfig.site}`;
+export const getCanonicalUrlFn = (
+  collection: StandaloneCollections,
+): ((
+  lang: LanguagesValue,
+  identifier: string,
+) => Promise<string | undefined>) => {
+  if (collection === 'flyers') {
+    return getCanonicalUrlToFlyer;
+  }
+  if (collection === 'kits') {
+    return getCanonicalUrlToKit;
+  }
+  if (collection === 'pages') {
+    return getCanonicalUrlToPage;
+  }
+  return () => Promise.resolve(`${AstroConfig.site}`);
 };

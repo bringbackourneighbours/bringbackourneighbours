@@ -1,18 +1,9 @@
 ---
 import { getCanonicalUrlToPage } from '../../../../util/get-canonical-url';
-import { getCollection, type CollectionEntry } from 'astro:content';
+import { getStaticPathsForPages } from '../../../../util/get-static-paths';
 
 export async function getStaticPaths() {
-  const pageEntries = await getCollection('pages');
-  return pageEntries.map((entry: CollectionEntry<'pages'>) => {
-    return {
-      params: {
-        lang: entry.data.lang,
-        identifier: entry.data.identifier,
-        seo: entry.data.seo,
-      },
-    };
-  });
+  return getStaticPathsForPages();
 }
 
 const url = await getCanonicalUrlToPage(

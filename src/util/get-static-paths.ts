@@ -14,11 +14,11 @@ export interface StandaloneContentProps<T extends StandaloneCollections> {
   };
 }
 
-async function getStaticPaths<T extends StandaloneCollections>(
+export async function getStaticPaths<T extends StandaloneCollections>(
   collection: T,
 ): Promise<StandaloneContentProps<T>[]> {
-  const flyerEntries = await getCollection(collection);
-  return flyerEntries.map((entry: CollectionEntry<T>) => {
+  const entries = await getCollection(collection);
+  return entries.map((entry: CollectionEntry<T>) => {
     return {
       params: {
         lang: entry.data.lang,
