@@ -1,5 +1,5 @@
 import { type CollectionEntry, getCollection } from 'astro:content';
-import type { LanguagesValue } from './languages.ts';
+import { type LanguagesValue, SupportedLanguages } from './languages.ts';
 
 export type StandaloneCollections = 'kits' | 'flyers' | 'pages';
 
@@ -40,4 +40,13 @@ export async function getStaticPathsForKits() {
 
 export async function getStaticPathsForPages() {
   return getStaticPaths('pages');
+}
+
+export async function getStaticPathsForPaths() {
+  return Object.values(SupportedLanguages).map((lang) => {
+    return {
+      params: { lang },
+      props: { lang },
+    };
+  });
 }

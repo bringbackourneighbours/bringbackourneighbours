@@ -4,6 +4,7 @@ import { type LanguagesValue } from '../util/languages';
 import { SupportedLanguages } from '../util/languages';
 import { getTranslationsUrlsForPath } from '../util/get-translations-url';
 import { useUiTranslation } from '../util/use-ui-translation';
+import { getCanonicalUrlForPath } from '../util/get-canonical-url';
 
 import CardLink from '../design/CardLink.astro';
 import LanguageSwitcher from '../design/LanguageSwitcher.astro';
@@ -35,7 +36,7 @@ const translationSlugs = await getTranslationsUrlsForPath(lang, '');
     {
       allLanguages.map(async (langs) => (
         <CardLink
-          href={`${Astro.site}${langs}/wizard`}
+          href={getCanonicalUrlForPath(langs, 'wizard')}
           lang={langs}
         >
           {useUiTranslation('wizard.isThereDangerQuestion', langs)}

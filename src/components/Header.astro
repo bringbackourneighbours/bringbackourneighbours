@@ -1,16 +1,19 @@
 ---
+import type { LanguagesValue } from '../util/languages';
+
 import { getStaticPathsForKits } from '../util/get-static-paths';
 import { getStaticPathsForFlyers } from '../util/get-static-paths';
-import AnimatedCloseButton from '../design/AnimatedCloseButton.astro';
-import Link from '../design/Link.astro';
-import Logo from '../design/Logo.astro';
-import type { LanguagesValue } from '../util/languages';
 import {
+  getCanonicalUrlForPath,
   getCanonicalUrlToFlyer,
   getCanonicalUrlToKit,
   getCanonicalUrlToPage,
 } from '../util/get-canonical-url';
 import { useUiTranslation } from '../util/use-ui-translation';
+
+import AnimatedCloseButton from '../design/AnimatedCloseButton.astro';
+import Link from '../design/Link.astro';
+import Logo from '../design/Logo.astro';
 
 interface Props {
   lang: LanguagesValue;
@@ -20,6 +23,7 @@ const { lang = Astro.locals.lang } = Astro.props;
 
 const allFlyers = await getStaticPathsForFlyers();
 const allKits = await getStaticPathsForKits();
+const homeUrl = getCanonicalUrlForPath(lang, '');
 ---
 
 <style>
@@ -73,12 +77,12 @@ const allKits = await getStaticPathsForKits();
   }
 </style>
 <header>
-  <a href={`${Astro.site}${lang}`}>
+  <a href={homeUrl}>
     <Logo />
   </a>
   <a
     class="mainline"
-    href={`${Astro.site}${lang}`}
+    href={homeUrl}
   >
     <!--this could use the text to width like in the pdf-->
     <span class="h2">{useUiTranslation('meta.title', lang)}</span>
@@ -96,7 +100,7 @@ const allKits = await getStaticPathsForKits();
         <li>
           <Link
             lang={lang}
-            href={`${Astro.site}${lang}`}
+            href={homeUrl}
           >
             {useUiTranslation('meta.title', lang)} –
             {useUiTranslation('meta.home', lang)}
@@ -126,7 +130,7 @@ const allKits = await getStaticPathsForKits();
         <li>
           <Link
             lang={lang}
-            href={`${Astro.site}${lang}/flyer`}
+            href={getCanonicalUrlForPath(lang, 'flyer')}
           >
             {useUiTranslation('meta.allFlyers', lang)}
           </Link>

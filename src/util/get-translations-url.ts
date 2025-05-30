@@ -1,7 +1,9 @@
 import { type CollectionEntry, getCollection } from 'astro:content';
-import { getCanonicalUrlFn } from './get-canonical-url.ts';
+import {
+  getCanonicalUrlFn,
+  getCanonicalUrlForPath,
+} from './get-canonical-url.ts';
 import { type LanguagesValue, SupportedLanguages } from './languages.ts';
-import { getAbsoluteUrl } from './get-absolute-url.ts';
 import type { StandaloneCollections } from './get-static-paths.ts';
 
 export async function getTranslationsUrls<T extends StandaloneCollections>(
@@ -106,7 +108,7 @@ export const getTranslationsUrlsForPath = (
       .filter((possibleLang) => possibleLang !== lang)
       .map((lang) => ({
         lang,
-        url: getAbsoluteUrl(`${lang}/${path}`),
+        url: getCanonicalUrlForPath(lang, path),
       })),
   );
 };

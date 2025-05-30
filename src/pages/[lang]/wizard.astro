@@ -1,12 +1,9 @@
 ---
-import {
-  DEFAULT_LANG,
-  SupportedLanguages,
-  type LanguagesValue,
-} from '../../util/languages';
+import { DEFAULT_LANG, type LanguagesValue } from '../../util/languages';
 import { useUiTranslation } from '../../util/use-ui-translation';
 import { getCanonicalUrlToKit } from '../../util/get-canonical-url';
 import { getTranslationsUrlsForPath } from '../../util/get-translations-url';
+import { getStaticPathsForPaths } from '../../util/get-static-paths';
 
 import CardLink from '../../design/CardLink.astro';
 import LanguageSwitcher from '../../design/LanguageSwitcher.astro';
@@ -19,12 +16,7 @@ interface Props {
 }
 
 export async function getStaticPaths() {
-  return Object.values(SupportedLanguages).map((lang) => {
-    return {
-      params: { lang },
-      props: { lang },
-    };
-  });
+  return getStaticPathsForPaths();
 }
 
 const { lang = DEFAULT_LANG } = Astro.props;

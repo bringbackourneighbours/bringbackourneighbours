@@ -5,39 +5,7 @@ import {
 } from '../util/get-static-paths.ts';
 import { getCanonicalUrlFn } from '../util/get-canonical-url.ts';
 import { getTranslationsUrls } from '../util/get-translations-url.ts';
-
-type SiteMapUrl = {
-  loc: URL;
-  lastMod?: Date;
-  links?: {
-    hreflang: string;
-    href: URL;
-  }[];
-};
-
-const renderSitemapUrlSet = (
-  entries: SiteMapUrl[],
-): string => `<?xml version="1.0" encoding="UTF-8"?>
-<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9" xmlns:xhtml="http://www.w3.org/1999/xhtml">
-${entries
-  .map(
-    (entry) => `
-    <url>
-      <loc>${entry.loc}</loc>
-      <lastmod>${entry.lastMod?.toISOString()}</lastmod>
-        ${entry.links
-          ?.map(
-            (link) =>
-              `      <xhtml:link rel="alternate" hreflang="${link.hreflang}" href="${link.href}"/>`,
-          )
-          .join('')}
-    
-    </url>
-`,
-  )
-  .join('')}
-</urlset>
-`;
+import { renderSitemapUrlset, type SiteMapUrl } from '../util/sitemap.ts';
 
 async function getSiteMapUrls(
   collection: StandaloneCollections,
@@ -78,7 +46,7 @@ export const GET: APIRoute = async () => {
   const flyers: SiteMapUrl[] = await getSiteMapUrls('flyers');
   const pages: SiteMapUrl[] = await getSiteMapUrls('pages');
 
-  return new Response(renderSitemapUrlSet([...kits, ...flyers, ...pages]), {
+  return new Response(renderSitemapUrlset([...kits, ...flyers, ...pages]), {
     status: 200,
     headers: {
       'Content-Type': 'application/xml',

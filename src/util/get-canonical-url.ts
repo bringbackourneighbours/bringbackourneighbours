@@ -59,3 +59,11 @@ export const getCanonicalUrlFn = (
   }
   return () => Promise.resolve(`${AstroConfig.site}`);
 };
+
+export function getCanonicalUrlForPath(lang: LanguagesValue, path: string) {
+  if (path === '') {
+    // avoid trailing slash
+    return getAbsoluteUrl(lang);
+  }
+  return getAbsoluteUrl(`${[lang, path].join('/')}`);
+}
