@@ -21,6 +21,7 @@ export const GET: APIRoute = ({ site }) => {
     renderSitemapIndex([
       new URL('sitemap-collections.xml', site),
       new URL('sitemap-paths.xml', site),
+      new URL('sitemap-pdfs.xml', site),
     ]),
     {
       status: 200,
