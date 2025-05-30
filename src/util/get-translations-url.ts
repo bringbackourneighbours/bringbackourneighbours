@@ -1,10 +1,6 @@
 import { type CollectionEntry, getCollection } from 'astro:content';
-import {
-  getCanonicalUrlToFlyer,
-  getCanonicalUrlToKit,
-  getCanonicalUrlToPage,
-} from './get-canonical-url.ts';
-import { SupportedLanguages, type LanguagesValue } from './languages.ts';
+import { getCanonicalUrlFn } from './get-canonical-url.ts';
+import { type LanguagesValue, SupportedLanguages } from './languages.ts';
 import { getAbsoluteUrl } from './get-absolute-url.ts';
 import type { StandaloneCollections } from './get-static-paths.ts';
 
@@ -56,7 +52,7 @@ export const getTranslationsUrlsForFlyer = async (
     'flyers',
     lang,
     identifier,
-    getCanonicalUrlToFlyer,
+    getCanonicalUrlFn('flyers'),
   );
 };
 
@@ -69,7 +65,12 @@ export const getTranslationsUrlsForKit = async (
     url: string;
   }[]
 > => {
-  return getTranslationsUrls('kits', lang, identifier, getCanonicalUrlToKit);
+  return getTranslationsUrls(
+    'kits',
+    lang,
+    identifier,
+    getCanonicalUrlFn('kits'),
+  );
 };
 
 export const getTranslationsUrlsForPages = async (
@@ -81,7 +82,12 @@ export const getTranslationsUrlsForPages = async (
     url: string;
   }[]
 > => {
-  return getTranslationsUrls('pages', lang, identifier, getCanonicalUrlToPage);
+  return getTranslationsUrls(
+    'pages',
+    lang,
+    identifier,
+    getCanonicalUrlFn('pages'),
+  );
 };
 
 export const getTranslationsUrlsForPath = (
