@@ -4,6 +4,14 @@ export interface NestedMarkdownHeading extends MarkdownHeading {
   subheadings: NestedMarkdownHeading[];
 }
 
+/**
+ * we shift all the heading one level up as we will not include ghe one h1 per page
+ * the TOC should "start" with the h2 as root
+ *
+ *
+ * @param headings the heaidng info as astro will render it from the markdown
+ * TODO: the heading with blocks are not registered here, would be nice to so how show them
+ */
 export function buildToc(headings: MarkdownHeading[]): NestedMarkdownHeading[] {
   const toc: NestedMarkdownHeading[] = [];
   const parentHeadings = new Map();
