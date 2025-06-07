@@ -1,0 +1,16 @@
+---
+interface Props {
+  level?: 1 | 2 | 3 | 4 | 5;
+}
+
+// TODO: we dont need all the props but the ID for the TOC
+const { level = 2 } = Astro.props;
+
+const shiftedLevel = level + (Astro.locals?.levelShift ?? 0);
+
+const HeadingElement = `h${shiftedLevel.toFixed()}`;
+---
+
+<HeadingElement {...Astro.props}>
+  <slot />
+</HeadingElement>
