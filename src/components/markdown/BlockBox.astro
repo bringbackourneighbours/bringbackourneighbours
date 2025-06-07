@@ -14,12 +14,14 @@ export interface Props {
   identifier: string;
   lang: LanguagesValue;
   collection?: StandaloneCollections;
+  level?: number;
 }
 
 const {
   identifier,
   lang = Astro.locals.lang,
   collection = 'flyers',
+  level = 2,
 } = Astro.props;
 
 const blockEntries = await getCollection(collection, (block) => {
@@ -35,6 +37,10 @@ const title = isPrint
   : `${await useUiTranslation('meta.moreInfoAbout', lang)}: "${blockEntries[0]?.data.title}"`;
 
 const showOnlyLink = !isPrint && collection === 'pages';
+
+// With in a blockbox we shift all the level of the headings up
+// to match the whole docs structure.
+Astro.locals.levelShift = level;
 ---
 
 {
@@ -48,6 +54,7 @@ const showOnlyLink = !isPrint && collection === 'pages';
       <Accordion
         title={title}
         open={true}
+        level={1}
       >
         <ContentMetaSection
           collection={collection}
