@@ -28,6 +28,10 @@ const blockEntries = await getCollection(collection, (block) => {
 });
 
 const blockEntry = blockEntries[0] as CollectionEntry<StandaloneCollections>;
+
+if (isRootLevelContent) {
+  Astro.locals.levelShift = 0;
+}
 ---
 
 {

@@ -20,11 +20,15 @@ declare namespace App {
      * the current context is in this language: all components can use this if not set explicitly
      */
     lang: import('./util/languages.ts').LanguagesValue;
-
     /**
      * there was a note about machineTranslation displayed in the context
      * so we don't need to show the same note again
      */
     machineTranslationNoteWasDisplayed?: boolean;
+    /**
+     * When we embed content within other content we have to make sure the level of the headings stil makes sense
+     * therefore we will set this when ever the headings need to be shifted up
+     */
+    levelShift?: number;
   }
 }
