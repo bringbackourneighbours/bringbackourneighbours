@@ -52,23 +52,9 @@ const hasWeb =
 <style>
   address {
     margin: var(--bbon-size-gap) 0;
-    padding-inline-start: var(--bbon-size-spacing);
-    border-inline-start: var(--bbon-size-border) solid var(--bbon-color-primary);
-
-    &::before,
-    &::after {
-      border-block-start: var(--bbon-size-border) solid
-        var(--bbon-color-primary);
-      content: '';
-      display: block;
-      width: 33%;
-      margin: 0 calc(-1 * var(--bbon-size-spacing));
-    }
-  }
-
-  hr {
-    width: 10%;
-    display: flex;
+    padding: var(--bbon-size-spacing);
+    border: var(--bbon-size-border) solid var(--bbon-color-primary);
+    page-break-inside: avoid;
   }
 </style>
 
@@ -106,7 +92,7 @@ const hasWeb =
               (phone) =>
                 phone && (
                   <>
-                    {phone}
+                    <Link href={`tel:${phone}`}>{phone}</Link>
                     <br />
                   </>
                 ),
