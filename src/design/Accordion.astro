@@ -83,7 +83,7 @@ const { title, variant = 'primary', open = isPrint, level = 3 } = Astro.props;
     margin: var(--bbon-size-spacing) 0;
 
     summary {
-      padding: var(--accordion-padding);
+      padding: 0 var(--accordion-padding);
       list-style: none;
       background-color: var(--accordion-border-color);
       color: var(--accordion-summary-color);
@@ -92,10 +92,6 @@ const { title, variant = 'primary', open = isPrint, level = 3 } = Astro.props;
       justify-content: space-between;
       gap: var(--bbon-size-gap);
 
-      h3 {
-        margin: 0;
-      }
-
       .icons {
         display: flex;
       }
@@ -103,6 +99,7 @@ const { title, variant = 'primary', open = isPrint, level = 3 } = Astro.props;
 
     /* accordions can be nested... but the styles will cascade */
     /* stylelint-disable no-descending-specificity */
+
     &[open] {
       summary {
         .icons {
@@ -116,6 +113,8 @@ const { title, variant = 'primary', open = isPrint, level = 3 } = Astro.props;
     article {
       padding: var(--accordion-padding);
       color: var(--accordion-content-color);
+
+      --bbon-color-primary: var(--accordion-content-color);
 
       details {
         .icons {
@@ -135,6 +134,7 @@ const { title, variant = 'primary', open = isPrint, level = 3 } = Astro.props;
         }
       }
     }
+
     /* stylelint-enable no-descending-specificity */
   }
 </style>
