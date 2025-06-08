@@ -91,6 +91,8 @@ const { title, variant = 'primary', open = isPrint, level = 3 } = Astro.props;
       align-items: center;
       justify-content: space-between;
       gap: var(--bbon-size-gap);
+      page-break-after: avoid;
+      page-break-inside: avoid;
 
       .icons {
         display: flex;
