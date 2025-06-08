@@ -6,12 +6,12 @@ import checkFlyers from './src/integrations/check-flyers';
 const isDev = import.meta.env.DEV;
 const siteUrl = isDev
   ? 'http://localhost:4321/'
-  : 'https://beta.bringbackourneighbours.de/';
+  : 'https://bringbackourneighbours.de/';
 const basePath = '';
 
 export const linkUrl = isDev
   ? 'http://localhost:4321/link'
-  : 'beta.bbonlink.de';
+  : 'bbonlink.de';
 
 // https://astro.build/config
 export default defineConfig({
