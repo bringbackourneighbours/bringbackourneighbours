@@ -20,7 +20,10 @@ import './theme-print.css';
     <meta charset="utf-8" />
     <title>{title}</title>
   </head>
-  <BaseBody lang={lang}>
+  <BaseBody
+    lang={lang}
+    format={Astro.locals.isFlyer ? 'a6' : 'a4'}
+  >
     <slot />
   </BaseBody>
 </BaseHtml>

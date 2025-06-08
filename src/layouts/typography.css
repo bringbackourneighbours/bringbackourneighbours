@@ -32,7 +32,7 @@ h6,
   word-break: auto-phrase;
   font-size: var(--bbon-size-h4);
   line-height: var(--bbon-size-heading-line);
-  margin: var(--bbon-size-spacing) 0;
+  margin: var(--bbon-size-heading-spacing) 0;
 }
 
 .h1,

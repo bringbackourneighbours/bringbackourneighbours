@@ -1,17 +1,19 @@
 ---
+import { type ColorVariants, invertColorVariant } from '../util/color-variants';
+
 import Icon from './Icon.astro';
 import chevronDown from '../assets/icons/ion--chevron-down.svg?raw';
-
-import { type ColorVariants, invertColorVariant } from '../util/color-variants';
+import Heading from './Heading.astro';
 
 interface Props {
   title?: string;
   variant?: ColorVariants;
   open?: boolean;
+  level?: 1 | 2 | 3 | 4 | 5;
 }
 const isPrint = Astro.locals.isPrint;
 
-const { title, variant = 'primary', open = isPrint } = Astro.props;
+const { title, variant = 'primary', open = isPrint, level = 3 } = Astro.props;
 ---
 
 <style>
@@ -81,7 +83,7 @@ const { title, variant = 'primary', open = isPrint } = Astro.props;
     margin: var(--bbon-size-spacing) 0;
 
     summary {
-      padding: var(--accordion-padding);
+      padding: 0 var(--accordion-padding);
       list-style: none;
       background-color: var(--accordion-border-color);
       color: var(--accordion-summary-color);
@@ -90,10 +92,6 @@ const { title, variant = 'primary', open = isPrint } = Astro.props;
       justify-content: space-between;
       gap: var(--bbon-size-gap);
 
-      h3 {
-        margin: 0;
-      }
-
       .icons {
         display: flex;
       }
@@ -101,6 +99,7 @@ const { title, variant = 'primary', open = isPrint } = Astro.props;
 
     /* accordions can be nested... but the styles will cascade */
     /* stylelint-disable no-descending-specificity */
+
     &[open] {
       summary {
         .icons {
@@ -114,6 +113,8 @@ const { title, variant = 'primary', open = isPrint } = Astro.props;
     article {
       padding: var(--accordion-padding);
       color: var(--accordion-content-color);
+
+      --bbon-color-primary: var(--accordion-content-color);
 
       details {
         .icons {
@@ -133,6 +134,7 @@ const { title, variant = 'primary', open = isPrint } = Astro.props;
         }
       }
     }
+
     /* stylelint-enable no-descending-specificity */
   }
 </style>
@@ -142,7 +144,13 @@ const { title, variant = 'primary', open = isPrint } = Astro.props;
   class={`-${variant}${isPrint ? ' -is-print' : ''}`}
 >
   <summary>
-    {Astro.slots.has('summary') ? <slot name="summary" /> : <h3>{title}</h3>}
+    {
+      Astro.slots.has('summary') ? (
+        <slot name="summary" />
+      ) : (
+        <Heading level={level}>{title}</Heading>
+      )
+    }
     {
       !isPrint && (
         <span class="icons">
