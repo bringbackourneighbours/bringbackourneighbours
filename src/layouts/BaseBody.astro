@@ -4,9 +4,10 @@ import { getLanguageDirection } from '../util/get-language-direction';
 
 interface Props {
   lang: LanguagesValue;
+  format?: 'web' | 'a4' | 'a6';
 }
 
-const { lang } = Astro.props;
+const { lang, format = 'web' } = Astro.props;
 ---
 
 <style>
@@ -17,6 +18,6 @@ const { lang } = Astro.props;
     color: var(--bbon-color-primary);
   }
 </style>
-<body class={`${getLanguageDirection(lang)}`}>
+<body class={`${getLanguageDirection(lang)} ${format}`}>
   <slot />
 </body>
