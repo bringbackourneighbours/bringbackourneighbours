@@ -7,6 +7,7 @@ import { DEFAULT_LANG, type LanguagesValue } from '../util/languages';
 
 interface Props {
   title: string;
+  seo: string;
   lang: LanguagesValue;
   canonicalSlug?: string;
   translationSlugs?: Array<{
@@ -17,6 +18,7 @@ interface Props {
 
 const {
   title,
+  seo,
   lang = DEFAULT_LANG,
   canonicalSlug,
   translationSlugs,
@@ -51,6 +53,7 @@ import './theme-web.css';
   <BaseHead
     title={title}
     lang={lang}
+    seo={seo}
     canonicalSlug={canonicalSlug}
     translationSlugs={translationSlugs}
   />
