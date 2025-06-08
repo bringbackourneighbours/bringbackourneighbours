@@ -1,6 +1,8 @@
 ---
 import { type LanguagesValue } from '../../util/languages';
 import { getEntry } from 'astro:content';
+import { getLanguageDirection } from '../../util/get-language-direction';
+
 import Link from '../../design/Link.astro';
 import ExternalShortLink from './ExternalShortLink.astro';
 import NotFoundError from '../../design/NotFoundError.astro';
@@ -49,132 +51,148 @@ const hasWeb =
 
 <style>
   address {
-    margin: var(--bbon-size-spacing) 0;
+    margin: var(--bbon-size-gap) 0;
     padding-inline-start: var(--bbon-size-spacing);
-    width: fit-content;
     border-inline-start: var(--bbon-size-border) solid var(--bbon-color-primary);
+
+    &::before,
+    &::after {
+      border-block-start: var(--bbon-size-border) solid
+        var(--bbon-color-primary);
+      content: '';
+      display: block;
+      width: 33%;
+      margin: 0 calc(-1 * var(--bbon-size-spacing));
+    }
+  }
+
+  hr {
+    width: 10%;
+    display: flex;
   }
 </style>
 
 {
   address ? (
     <address>
-      <strong>{address?.name}</strong> <br />
-      {showLocation && hasLocation && (
-        <>
-          {address?.additional && (
-            <>
-              {address?.additional}
-              <br />
-            </>
-          )}
-          {address?.streetLine && (
-            <>
-              {address?.streetLine}
-              <br />
-            </>
-          )}
-          {address?.zip && <>{address?.zip + ' '}</>}
-          {address?.city && <>{address?.city}</>}
-          {(address?.zip || address?.city) && (
-            <>
-              <br />
-            </>
-          )}
-        </>
-      )}
-      {showContact && hasContact && (
-        <>
-          {[address?.phone, ...(address?.phones ?? [])].map(
-            (phone) =>
-              phone && (
-                <>
-                  {phone}
-                  <br />
-                </>
-              ),
-          )}
+      <div dir="ltr">
+        <strong>{address?.name}</strong> <br />
+        {showLocation && hasLocation && (
+          <>
+            {address?.additional && (
+              <>
+                {address?.additional}
+                <br />
+              </>
+            )}
+            {address?.streetLine && (
+              <>
+                {address?.streetLine}
+                <br />
+              </>
+            )}
+            {address?.zip && <>{address?.zip + ' '}</>}
+            {address?.city && <>{address?.city}</>}
+            {(address?.zip || address?.city) && (
+              <>
+                <br />
+              </>
+            )}
+          </>
+        )}
+        {showContact && hasContact && (
+          <>
+            {[address?.phone, ...(address?.phones ?? [])].map(
+              (phone) =>
+                phone && (
+                  <>
+                    {phone}
+                    <br />
+                  </>
+                ),
+            )}
 
-          {[address?.mail, ...(address?.mails ?? [])].map((mail) => (
-            <>
-              <Link href={`mailto:${mail}`}>{mail}</Link> <br />
-            </>
-          ))}
-        </>
-      )}
-      {showWeb && hasWeb && (
-        <>
-          {address?.url && (
-            <>
-              <Link
-                href={address?.url}
-                openInNewTab={true}
-              />
-              <br />
-            </>
-          )}
+            {[address?.mail, ...(address?.mails ?? [])].map((mail) => (
+              <>
+                <Link href={`mailto:${mail}`}>{mail}</Link>
+                <br />
+              </>
+            ))}
+          </>
+        )}
+        {showWeb && hasWeb && (
+          <>
+            {address?.url && (
+              <>
+                <Link
+                  href={address?.url}
+                  openInNewTab={true}
+                />
+                <br />
+              </>
+            )}
 
-          {address?.facebook && (
-            <>
-              Facebook:
-              <Link
-                href={`https://www.facebook.com/${address?.facebook}`}
-                openInNewTab={true}
-              >
-                @{address?.facebook}
-              </Link>
-              <br />
-            </>
-          )}
-          {address?.instagram && (
-            <>
-              Instagram:
-              <Link
-                href={`https://instagram.com/${address?.instagram}`}
-                openInNewTab={true}
-              >
-                @{address?.instagram}
-              </Link>
-              <br />
-            </>
-          )}
-          {address?.telegram && (
-            <>
-              Telegram:
-              <Link
-                href={`https://t.me/${address?.telegram}`}
-                openInNewTab={true}
-              >
-                @{address?.telegram}
-              </Link>
-              <br />
-            </>
-          )}
-        </>
-      )}
-      {address?.twitter && (
-        <>
-          twitter/X:
-          <Link
-            href={`https://twitter.com/${address?.twitter}`}
-            openInNewTab={true}
-          >
-            @{address?.twitter}
-          </Link>
-          <br />
-        </>
-      )}
-      {showBbon && address?.bbon && (
-        <>
-          <ExternalShortLink identifier={address.bbon} />
-          <br />
-        </>
-      )}
+            {address?.facebook && (
+              <>
+                Facebook:
+                <Link
+                  href={`https://www.facebook.com/${address?.facebook}`}
+                  openInNewTab={true}
+                >
+                  @{address?.facebook}
+                </Link>
+                <br />
+              </>
+            )}
+            {address?.instagram && (
+              <>
+                Instagram:
+                <Link
+                  href={`https://instagram.com/${address?.instagram}`}
+                  openInNewTab={true}
+                >
+                  @{address?.instagram}
+                </Link>
+                <br />
+              </>
+            )}
+            {address?.telegram && (
+              <>
+                Telegram:
+                <Link
+                  href={`https://t.me/${address?.telegram}`}
+                  openInNewTab={true}
+                >
+                  @{address?.telegram}
+                </Link>
+                <br />
+              </>
+            )}
+          </>
+        )}
+        {address?.twitter && (
+          <>
+            twitter/X:
+            <Link
+              href={`https://twitter.com/${address?.twitter}`}
+              openInNewTab={true}
+            >
+              @{address?.twitter}
+            </Link>
+            <br />
+          </>
+        )}
+        {showBbon && address?.bbon && (
+          <>
+            <ExternalShortLink identifier={address.bbon} />
+            <br />
+          </>
+        )}
+      </div>
       {showNotes && address?.translatedNotes?.[lang] && (
-        <>
-          <br />
+        <div dir={getLanguageDirection(lang)}>
           {address?.translatedNotes?.[lang]}
-        </>
+        </div>
       )}
     </address>
   ) : (
