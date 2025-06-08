@@ -7,7 +7,7 @@ export interface StandaloneContentProps<T extends StandaloneCollections> {
   params: {
     lang: LanguagesValue;
     identifier: string;
-    seo: string;
+    title: string;
   };
   props: {
     entry: CollectionEntry<T>;
@@ -23,7 +23,7 @@ export async function getStaticPaths<T extends StandaloneCollections>(
       params: {
         lang: entry.data.lang,
         identifier: entry.data.identifier,
-        seo: entry.data.seo,
+        title: entry.data.title,
       },
       props: { entry },
     };

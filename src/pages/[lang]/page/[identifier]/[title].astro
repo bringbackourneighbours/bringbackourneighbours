@@ -1,5 +1,5 @@
 ---
-import { type CollectionEntry } from 'astro:content';
+import type { CollectionEntry } from 'astro:content';
 
 import Block from '../../../../components/markdown/Block.astro';
 import ContentHeading from '../../../../components/ContentHeading.astro';
@@ -7,27 +7,28 @@ import ContentLayout from '../../../../layouts/ContentLayout.astro';
 import LanguageSwitcher from '../../../../design/LanguageSwitcher.astro';
 import TableOfContents from '../../../../design/TableOfContents.astro';
 
-import { getCanonicalUrlToKit } from '../../../../util/get-canonical-url';
-import { getStaticPathsForKits } from '../../../../util/get-static-paths';
-import { getTranslationsUrlsForKit } from '../../../../util/get-translations-url';
-import { redirectNotTranslatedForKit } from '../../../../util/redirect-not-found-or-not-translated';
+import { getCanonicalUrlToPage } from '../../../../util/get-canonical-url';
+import { getStaticPathsForPages } from '../../../../util/get-static-paths';
+import { getTranslationsUrlsForPages } from '../../../../util/get-translations-url';
+import { redirectNotTranslatedForPage } from '../../../../util/redirect-not-found-or-not-translated';
 
 interface Props {
-  entry: CollectionEntry<'kits'>;
+  entry: CollectionEntry<'pages'>;
 }
 
 export async function getStaticPaths() {
-  return getStaticPathsForKits();
+  return getStaticPathsForPages();
 }
 
 const { entry } = Astro.props;
 
-const redirectResponse = await redirectNotTranslatedForKit(entry);
+const redirectResponse = await redirectNotTranslatedForPage(entry);
+
 if (redirectResponse) {
   return Astro.redirect(redirectResponse.url, redirectResponse.status);
 }
 
-const translationSlugs = await getTranslationsUrlsForKit(
+const translationSlugs = await getTranslationsUrlsForPages(
   entry.data.lang,
   entry.data.identifier,
 );
@@ -36,7 +37,8 @@ const translationSlugs = await getTranslationsUrlsForKit(
 <ContentLayout
   lang={entry.data.lang}
   title={entry.data.title}
-  canonicalSlug={await getCanonicalUrlToKit(
+  seo={entry.data.seo}
+  canonicalSlug={await getCanonicalUrlToPage(
     entry.data.lang,
     entry.data.identifier,
   )}
@@ -48,14 +50,12 @@ const translationSlugs = await getTranslationsUrlsForKit(
   />
   <ContentHeading
     entry={entry}
-    collection="kits"
-  >
-    <TableOfContents rendered={entry.render()} />
+    collection="pages"
+  />
+  <TableOfContents rendered={entry.render()} />
 
-    <Block
-      identifier={entry.data.identifier}
-      collection="kits"
-      isRootLevelContent={true}
-    />
-  </ContentHeading>
+  <Block
+    identifier={entry.data.identifier}
+    collection="pages"
+  />
 </ContentLayout>

@@ -165,7 +165,21 @@ Random Text in the markdown format
 #### Standalone Content: Flyers, Kits and Pages
 
 To actually show the content we need to put in one of the standalone content collections. They all behave in the same
-way and are super-sets of the normal 'blocks'.
+way and are super-sets of the normal 'blocks', but additionally you need to provide a `title` and a `seo`-text.
+
+Example Block: `/src/content/flyers/example/de.mdx`:
+
+```yaml
+---
+identifier: example # identifier to embed the block
+lang: de # language of tme block
+lastChecked: 2025-10-01 # the day this content was last checked. use to spot outdated translations
+title: How to stop a deportation # will also be used as
+seo: Around 150 Characters # will be set a meta description for search engines
+fallback: en # (optional) another language, it will be shown as fallback. use if no vvtranslation available but content is necessary
+machineTranslation: false # (optional) mark that the content was not translated by a human and may contain errors.
+---
+```
 
 #### Addresses
 

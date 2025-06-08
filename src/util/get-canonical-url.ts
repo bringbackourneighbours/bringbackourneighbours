@@ -16,7 +16,7 @@ export async function getCanonicalUrl<T extends StandaloneCollections>(
 
   return entry
     ? getAbsoluteUrl(
-        `${lang}/${collectionSlug}/${identifier}/${entry?.data.seo ? encodeURIComponent(entry.data.seo) : ''}`,
+        `${lang}/${collectionSlug}/${identifier}/${encodeURIComponent(entry.data.title)}`,
       )
     : undefined;
 }
