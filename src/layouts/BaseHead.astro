@@ -1,8 +1,11 @@
 ---
 import { type LanguagesValue } from '../util/languages';
 
+import { useUiTranslation } from '../util/use-ui-translation';
+
 interface Props {
   title: string;
+  seo?: string;
   lang: LanguagesValue;
   canonicalSlug?: string;
   translationSlugs?: Array<{
@@ -11,7 +14,13 @@ interface Props {
   }>;
 }
 
-const { title, lang, canonicalSlug, translationSlugs } = Astro.props;
+const {
+  title,
+  lang,
+  canonicalSlug,
+  translationSlugs,
+  seo = await useUiTranslation('meta.infosAgainstDeportation', lang),
+} = Astro.props;
 ---
 
 <head>
@@ -50,6 +59,10 @@ const { title, lang, canonicalSlug, translationSlugs } = Astro.props;
   <meta
     name="theme-color"
     content="lch(55% 90.4 42deg)"
+  />
+  <meta
+    name="description"
+    content={seo}
   />
   <title>{title}</title>
   <slot />
