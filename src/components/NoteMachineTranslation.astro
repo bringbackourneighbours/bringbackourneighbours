@@ -7,9 +7,10 @@ import { useUiTranslation } from '../util/use-ui-translation';
 interface Props {
   entry: CollectionEntry<StandaloneCollections>;
   isRootLevelContent?: boolean;
+  isStrong?: boolean;
 }
 
-const { entry, isRootLevelContent = false } = Astro.props;
+const { entry, isRootLevelContent = false, isStrong = true } = Astro.props;
 
 // don't show the note, when the context already does
 const showMachineTranslation =
@@ -20,15 +21,17 @@ if (isRootLevelContent) {
   Astro.locals.machineTranslationNoteWasDisplayed =
     entry.data.machineTranslation;
 }
+
+const Strong = `${isStrong ? 'strong' : 'em'}`;
 ---
 
 <section>
   {
     showMachineTranslation && (
       <p role="note">
-        <strong>
+        <Strong>
           {useUiTranslation('meta.machineTranslation', entry.data.lang)}
-        </strong>
+        </Strong>
       </p>
     )
   }

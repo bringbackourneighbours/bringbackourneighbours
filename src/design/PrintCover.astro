@@ -6,6 +6,7 @@ import { useUiTranslation } from '../util/use-ui-translation';
 
 import LanguageChip from './LanguageChip.astro';
 import Logo from './Logo.astro';
+import NoteMachineTranslation from '../components/NoteMachineTranslation.astro';
 
 interface Props {
   entry: CollectionEntry<StandaloneCollections>;
@@ -83,6 +84,14 @@ const { entry, pagewidth } = Astro.props;
     {entry.data.lang != 'de' && <h6 class="ltr">{entry.data.germanTitle}</h6>}
     <h1>{entry.data.title}</h1>
   </hgroup>
+
+  <br />
+  <NoteMachineTranslation
+    entry={entry}
+    isRootLevelContent={true}
+    isStrong={false}
+  />
+
   <footer>
     <div class="logo-line">
       <Logo size="12mm" />
