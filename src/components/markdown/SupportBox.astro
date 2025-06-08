@@ -6,14 +6,12 @@ export interface Props {
 }
 
 const { title } = Astro.props;
-
-Astro.locals.levelShift = 2;
 ---
 
 <Accordion
   title={title}
   variant="secondary"
-  level={1}
+  level={3}
 >
   <slot />
 </Accordion>
