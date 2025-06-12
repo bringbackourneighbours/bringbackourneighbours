@@ -17,9 +17,10 @@ interface Props {
     url: string;
   }[];
   canonicalUrl: string;
+  qrSize?: number;
 }
 
-const { entry, translationSlugs, canonicalUrl } = Astro.props;
+const { entry, translationSlugs, canonicalUrl, qrSize = 60 } = Astro.props;
 ---
 
 <style>
@@ -54,7 +55,7 @@ const { entry, translationSlugs, canonicalUrl } = Astro.props;
 <section class="footer">
   <div class="links">
     <QrImage
-      size="60"
+      size={qrSize.toFixed()}
       url={canonicalUrl}
     />
     <div class="translation-links">
