@@ -2,6 +2,7 @@
 import type { LanguagesValue } from '../util/languages';
 
 import { useUiTranslation } from '../util/use-ui-translation';
+import { getLanguageDirection } from '../util/get-language-direction';
 
 interface Props {
   lang: LanguagesValue;
@@ -11,11 +12,18 @@ interface Props {
 const { lang, currentLang = Astro.locals.lang } = Astro.props;
 ---
 
-<span>
-  {useUiTranslation(`languages.${lang}`, lang)}
+<span dir={getLanguageDirection(lang)}>
+  <span dir={getLanguageDirection(lang)}>
+    {useUiTranslation(`languages.${lang}`, lang)}
+  </span>
   {
     currentLang != lang && (
-      <span> | {useUiTranslation(`languages.${lang}`, currentLang)}</span>
+      <>
+        <span> | </span>
+        <span dir={getLanguageDirection(currentLang)}>
+          {useUiTranslation(`languages.${lang}`, currentLang)}
+        </span>
+      </>
     )
   }
 </span>
