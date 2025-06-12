@@ -39,7 +39,7 @@ const canonicalUrl =
   }
 
   .end-footer {
-    margin-top: 20cm;
+    margin-top: 18.5cm;
   }
 </style>
 
@@ -55,6 +55,14 @@ const canonicalUrl =
   </PrinterPage>
   <PrinterPage breakBefore={true}>
     <TableOfContents rendered={entry.render()} />
+    <div class="end-footer">
+      <PrintEndFooter
+        entry={entry}
+        translationSlugs={translationSlugs}
+        canonicalUrl={canonicalUrl}
+        qrSize={120}
+      />
+    </div>
   </PrinterPage>
   <PrinterPage breakBefore={true}>
     <Block
@@ -62,14 +70,5 @@ const canonicalUrl =
       collection="kits"
       isRootLevelContent={true}
     />
-  </PrinterPage>
-  <PrinterPage breakBefore={true}>
-    <div class="end-footer">
-      <PrintEndFooter
-        entry={entry}
-        translationSlugs={translationSlugs}
-        canonicalUrl={canonicalUrl}
-      />
-    </div>
   </PrinterPage>
 </PrintLayout>
