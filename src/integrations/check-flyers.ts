@@ -1,6 +1,9 @@
 import { type AstroIntegration } from 'astro';
 import { readdir } from 'node:fs/promises';
-import muhammara from 'muhammara';
+import fs from 'fs';
+import { PDFDocument } from 'pdf-lib';
+
+const A6_ON_A4_PAGE_COUNT = 4;
 
 export default function checkFlyers(): AstroIntegration {
   return {
@@ -12,23 +15,30 @@ export default function checkFlyers(): AstroIntegration {
         const pdfDistDir = `${dir.pathname}print`;
         const pdfsFileNames = await readdir(pdfDistDir);
 
-        pdfsFileNames
-          .filter((fileName) => {
-            logger.debug(`Checking if ${fileName} is a flyer`);
-            return fileName.startsWith('flyer');
-          })
-          .forEach((fileName) => {
-            const pdfReader = muhammara.createReader(
-              `${pdfDistDir}/${fileName}`,
-            );
-            const pagesCount = pdfReader.getPagesCount();
+        let hasCorrectPageCount = false;
 
-            if (pagesCount > 4) {
-              logger.error(`${fileName}: ${pagesCount} pages`);
-            } else {
-              logger.info(`${fileName}: ${pagesCount} pages`);
-            }
-          });
+        for (const fileName of pdfsFileNames.filter((fileName) => {
+          logger.debug(`Checking if ${fileName} is a flyer`);
+          return fileName.startsWith('flyer');
+        })) {
+          const fileBuffer = fs.readFileSync(`${pdfDistDir}/${fileName}`);
+          const pdfDoc = await PDFDocument.load(new Uint8Array(fileBuffer));
+          const pagesCount = pdfDoc.getPageCount();
+
+          if (pagesCount != A6_ON_A4_PAGE_COUNT) {
+            logger.error(`${fileName}: ${pagesCount} pages`);
+            hasCorrectPageCount = true;
+          } else {
+            logger.info(`${fileName}: ${pagesCount} pages`);
+          }
+        }
+
+        if (hasCorrectPageCount) {
+          throw new Error(
+            `Some of the flyers pdf did not produce ${A6_ON_A4_PAGE_COUNT} pages. See log messages above.`,
+          );
+        }
+        logger.info('All flyers fit in the printable page range.');
       },
     },
   };
