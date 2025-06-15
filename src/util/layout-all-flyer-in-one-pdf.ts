@@ -3,16 +3,8 @@ import fs from 'fs';
 import { chunks } from './list-helper.ts';
 import { readdir } from 'node:fs/promises';
 
-export const getFlyerPdfPath = (
-  distDir: string,
-  identifier: string,
-  lang: string,
-): string => {
-  return `${getPrintDistDir(distDir)}/flyer-${lang}-${identifier}.pdf`;
-};
-
 export const getPrintDistDir = (distDir: string): string => {
-  return `${distDir.endsWith('/') ? distDir : distDir.slice(0, -1)}/print`;
+  return `${distDir.endsWith('/') ? distDir.slice(0, -1) : distDir}/print`;
 };
 
 export const getFlyerPdfFileNames = async (
