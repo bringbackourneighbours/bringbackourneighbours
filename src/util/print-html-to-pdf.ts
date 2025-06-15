@@ -2,16 +2,16 @@ import puppeteer, { Browser } from 'puppeteer';
 import fs from 'fs';
 import AstroConfig from '../../astro.config.mjs';
 
-export const printHtmlToBuffer = async (
+export const printHtmlToPdf = async (
   pagePath: string,
   browserToReuse?: Browser,
 ): Promise<Uint8Array> => {
   const isDev = import.meta.env.DEV;
-  // when printing en masse we don't want to set up and tear the browers for each page
+  // when printing en masse we don't want to set up and tear the browsers for each page
   const browser =
     browserToReuse ??
     (await puppeteer.launch({
-      // in the github ci the build will fail without diasbling the sandbox.
+      // in the github ci the build will fail without disabling the sandbox.
       // TODO: investigate possible workaround
       args: ['--no-sandbox', '--disable-setuid-sandbox'],
     }));
