@@ -18,22 +18,26 @@ export default function layoutFlyers(): AstroIntegration {
 
         const flyerFileNames = await getFlyerPdfFileNames(dir.pathname);
 
-        for (const lang of SupportedLanguages) {
+        // we provide one pdf per language and additionally one that will contain all languages
+        for (const lang of [...SupportedLanguages, 'all']) {
           logger.info(`Processing language ${lang}`);
 
           const allFlyerPathsInLang = flyerFileNames
             .filter((fileName) => {
-              const regex = new RegExp(`flyer-${lang}-.*`);
-
+              const regex =
+                lang === 'all'
+                  ? new RegExp(`flyer-`)
+                  : new RegExp(`flyer-${lang}`);
               return regex.test(fileName);
             })
             .map((fileName) => `${pdfDir}/${fileName}`);
 
+          logger.info(`For language ${lang} found ${allFlyerPathsInLang}`);
           const pdfBuffer = await layoutAllFlyerInOnePdf(allFlyerPathsInLang);
 
           const outputPath = `${pdfDir}/all-flyer-${lang}.pdf`;
           await writeFile(outputPath, pdfBuffer);
-          logger.debug(`Saved a layouted PDF under ${outputPath}`);
+          logger.info(`Saved a layouted PDF under ${outputPath}`);
         }
       },
     },
