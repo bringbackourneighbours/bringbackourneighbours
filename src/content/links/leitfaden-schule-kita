@@ -1,6 +1,5 @@
-all:
-  type: PDF
 de:
   slug: leitfaden-schule-kita
   url: https://www.fluechtlingsrat-lsa.de/wp-content/uploads/2018/03/180320_GEW_FR-ST_Leitdaden_bei_drohender_Abschiebung_eines_Kindes_oder_Jugendlichen.pdf
+  type: PDF  
   title: Leitfaden bei drohender Abschiebung eines Kindes oder Jugendlichen
