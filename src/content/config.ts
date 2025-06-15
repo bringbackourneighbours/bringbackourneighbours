@@ -102,6 +102,7 @@ const uiCollection = defineCollection({
         contacts: z.string(),
         copiedContentToClipboard: z.string(),
         copy: z.string(),
+        downloadAllPdf: z.string(),
         downloadPdf: z.string(),
         emergencyKit: z.string(),
         findAlsoAsPage: z.string(),

@@ -1,34 +1,41 @@
 import { type AstroIntegration } from 'astro';
-import { readdir } from 'node:fs/promises';
-import muhammara from 'muhammara';
+import fs from 'fs';
+import { PDFDocument } from 'pdf-lib';
+import { getFlyerPdfFileNames } from '../util/layout-all-flyer-in-one-pdf.ts';
+
+const A6_ON_A4_PAGE_COUNT = 4;
 
 export default function checkFlyers(): AstroIntegration {
   return {
     name: 'check-flyers',
     hooks: {
       'astro:build:done': async ({ dir, logger }): Promise<void> => {
-        logger.info('Checking each flyer for the right page count');
+        logger.info('Checking each flyer for the correct page count');
 
-        const pdfDistDir = `${dir.pathname}print`;
-        const pdfsFileNames = await readdir(pdfDistDir);
+        const flyerFileNames = await getFlyerPdfFileNames(dir.pathname);
+        let hasCorrectPageCount = false;
 
-        pdfsFileNames
-          .filter((fileName) => {
-            logger.debug(`Checking if ${fileName} is a flyer`);
-            return fileName.startsWith('flyer');
-          })
-          .forEach((fileName) => {
-            const pdfReader = muhammara.createReader(
-              `${pdfDistDir}/${fileName}`,
-            );
-            const pagesCount = pdfReader.getPagesCount();
+        for (const fileName of flyerFileNames) {
+          const flyerPath = `${dir.pathname}print/${fileName}`;
+          logger.debug(`Checking flyer ${flyerPath}`);
+          const fileBuffer = fs.readFileSync(flyerPath);
+          const pdfDoc = await PDFDocument.load(new Uint8Array(fileBuffer));
+          const pagesCount = pdfDoc.getPageCount();
 
-            if (pagesCount > 4) {
-              logger.error(`${fileName}: ${pagesCount} pages`);
-            } else {
-              logger.info(`${fileName}: ${pagesCount} pages`);
-            }
-          });
+          if (pagesCount != A6_ON_A4_PAGE_COUNT) {
+            logger.error(`${fileName}: ${pagesCount} pages`);
+            hasCorrectPageCount = true;
+          } else {
+            logger.info(`${fileName}: ${pagesCount} pages`);
+          }
+        }
+
+        if (hasCorrectPageCount) {
+          throw new Error(
+            `Some of the flyers pdf did not produce ${A6_ON_A4_PAGE_COUNT} pages. See log messages above.`,
+          );
+        }
+        logger.info('All flyers fit in the printable page range.');
       },
     },
   };

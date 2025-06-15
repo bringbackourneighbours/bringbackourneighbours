@@ -2,7 +2,7 @@ import {
   getStaticPathsForFlyers,
   type StandaloneContentProps,
 } from '../../util/get-static-paths.ts';
-import { printHtmlToBuffer } from '../../util/print-html-to-buffer.ts';
+import { printHtmlToPdf } from '../../util/print-html-to-pdf.ts';
 
 export async function getStaticPaths() {
   const isDev = import.meta.env.DEV;
@@ -17,7 +17,7 @@ export async function getStaticPaths() {
 // For the production env we render the pages within the build step as astro integration.
 export async function GET(flyer: StandaloneContentProps<'flyers'>) {
   return new Response(
-    await printHtmlToBuffer(
+    await printHtmlToPdf(
       `internal-print/flyer-${flyer.params.lang}-${flyer.params.identifier}`,
     ),
     {

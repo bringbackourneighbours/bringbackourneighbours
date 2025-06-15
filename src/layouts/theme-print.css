@@ -18,6 +18,7 @@
   --bbon-size-spacing: 0.2em;
 
   .a4 {
+    --bbon-size-mini: var(--bbon-size-p);
     --bbon-size-h2-margin-start: 1.5em;
     --bbon-size-h2: 2rem;
     --bbon-size-h3: 1.5rem;

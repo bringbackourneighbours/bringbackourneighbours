@@ -27,6 +27,7 @@ const professionalsCanonicalUrl = await getCanonicalUrlToPage(
   lang,
   'professionals',
 );
+const materialCanonicalUrl = await getCanonicalUrlToPage(lang, 'material');
 
 const kitAffectedLabel = await useUiTranslation('meta.emergencyKit', lang);
 const allFlyersLabel = await useUiTranslation('meta.allFlyers', lang);
@@ -35,6 +36,7 @@ const contactsLabel = await useUiTranslation('meta.contacts', lang);
 const formsLabel = await useUiTranslation('meta.forms', lang);
 const publicityLabel = await useUiTranslation('meta.publicity', lang);
 const professionalsLabel = await useUiTranslation('meta.professionals', lang);
+const materialLabel = await useUiTranslation('meta.material', lang);
 ---
 
 <style>
@@ -93,5 +95,10 @@ const professionalsLabel = await useUiTranslation('meta.professionals', lang);
     lang={lang}
     canonicalUrl={formsCanonicalUrl ?? ''}
     label={formsLabel}
+  />
+  <MenuLink
+    lang={lang}
+    canonicalUrl={materialCanonicalUrl ?? ''}
+    label={materialLabel}
   />
 </Stack>

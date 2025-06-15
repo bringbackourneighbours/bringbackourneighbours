@@ -6,6 +6,7 @@ html {
   line-height: var(--bbon-size-p-line);
   hyphenate-limit-chars: auto 5;
   overflow-wrap: break-word;
+  scroll-padding-block-start: calc(var(--bbon-size-p) * 6);
 }
 
 p {
