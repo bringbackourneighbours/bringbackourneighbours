@@ -1,20 +1,16 @@
 import type { APIRoute } from 'astro';
 
+import { DEFAULT_LANG, SupportedLanguages } from '../../util/languages.ts';
 import {
-  DEFAULT_LANG,
-  type LanguagesValue,
-  SupportedLanguages,
-} from '../../util/languages.ts';
-import { getStaticPathsForFlyers } from '../../util/get-static-paths.ts';
-import {
-  getFlyerPdfPath,
+  getFlyerPdfFileNames,
+  getPrintDistDir,
   layoutAllFlyerInOnePdf,
 } from '../../util/layout-all-flyer-in-one-pdf.ts';
 import path from 'node:path';
 
 export interface LangProp {
   params: {
-    lang: LanguagesValue;
+    lang: string;
   };
 }
 
@@ -22,7 +18,7 @@ export function getStaticPaths(): LangProp[] {
   const isDev = import.meta.env.DEV;
   if (isDev) {
     // here we provide the as live preview for the dev mode
-    return SupportedLanguages.map((lang) => {
+    return [...SupportedLanguages, 'all'].map((lang) => {
       return { params: { lang } };
     });
   }
@@ -37,11 +33,18 @@ export const GET: APIRoute<LangProp> = async ({ params }) => {
   const DEFAULT_OUT_DIR = 'dist';
   const distDir = `${path.resolve(process.cwd(), DEFAULT_OUT_DIR)}`;
 
-  const flyersPaths = (await getStaticPathsForFlyers())
-    .filter((flyers) => flyers.props.entry.data.lang === lang)
-    .map(({ params }) => getFlyerPdfPath(distDir, params.identifier, lang));
+  const pdfDir = getPrintDistDir(distDir);
+  const flyerFileNames = await getFlyerPdfFileNames(distDir);
 
-  const newPdfBytes = await layoutAllFlyerInOnePdf(flyersPaths);
+  const allFlyerPathsInLang = flyerFileNames
+    .filter((fileName) => {
+      const regex =
+        lang === 'all' ? new RegExp(`flyer-`) : new RegExp(`flyer-${lang}`);
+      return regex.test(fileName);
+    })
+    .map((fileName) => `${pdfDir}/${fileName}`);
+
+  const newPdfBytes = await layoutAllFlyerInOnePdf(allFlyerPathsInLang);
 
   return new Response(newPdfBytes, {
     status: 200,

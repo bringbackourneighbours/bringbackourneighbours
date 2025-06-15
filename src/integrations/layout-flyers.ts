@@ -32,7 +32,7 @@ export default function layoutFlyers(): AstroIntegration {
             })
             .map((fileName) => `${pdfDir}/${fileName}`);
 
-          logger.info(`For language ${lang} found ${allFlyerPathsInLang}`);
+          logger.debug(`For language ${lang} found ${allFlyerPathsInLang}`);
           const pdfBuffer = await layoutAllFlyerInOnePdf(allFlyerPathsInLang);
 
           const outputPath = `${pdfDir}/all-flyer-${lang}.pdf`;
