@@ -1,0 +1,45 @@
+---
+import type { LanguagesValue } from '../util/languages';
+
+import { useUiTranslation } from '../util/use-ui-translation';
+import { getAllFlyerPrintUrl, getPrintUrl } from '../util/get-absolute-url';
+
+import CardLink from '../design/CardLink.astro';
+import { type StandaloneCollections } from '../util/get-static-paths';
+
+interface Props {
+  lang?: LanguagesValue | 'all';
+  collection: StandaloneCollections;
+  identifier: string;
+}
+
+const { collection, identifier, lang } = Astro.props;
+
+const currentLang = Astro.locals.lang;
+const showLangLabel = lang !== undefined && lang !== 'all';
+
+const targetLang = lang ?? currentLang;
+
+const printUrl =
+  identifier === 'all'
+    ? getAllFlyerPrintUrl(targetLang)
+    : getPrintUrl(collection, identifier, targetLang);
+
+const label = await (identifier === 'all'
+  ? useUiTranslation('meta.downloadAllPdf', currentLang)
+  : useUiTranslation('meta.downloadPdf', currentLang));
+---
+
+<CardLink
+  size="small"
+  href={printUrl}
+>
+  {!Astro.slots.has('default') && label}
+  <slot />
+
+  {
+    showLangLabel && (
+      <> ({useUiTranslation(`languages.${lang}`, currentLang)})</>
+    )
+  }
+</CardLink>
