@@ -14,3 +14,7 @@ export function getPrintUrl(
     `print/${collection.slice(0, -1)}-${lang}-${identifier}.pdf`,
   );
 }
+
+export function getAllFlyerPrintUrl(lang: string) {
+  return getAbsoluteUrl(`print/all-flyer-${lang}.pdf`);
+}

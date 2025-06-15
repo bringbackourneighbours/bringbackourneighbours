@@ -3,6 +3,7 @@ import { mkdir, writeFile } from 'node:fs/promises';
 import puppeteer from 'puppeteer';
 
 import { printHtmlToPdf } from '../util/print-html-to-pdf.ts';
+import { getPrintDistDir } from '../util/layout-all-flyer-in-one-pdf.ts';
 
 // this actually works, but it was more partically to implement this as an endpoint... becuase we can use that in dev mode as well
 export default function printPdfs(): AstroIntegration {
@@ -10,7 +11,7 @@ export default function printPdfs(): AstroIntegration {
     name: 'print-pdfs',
     hooks: {
       'astro:build:done': async ({ dir, pages, logger }): Promise<void> => {
-        const pdfDistDir = `${dir.pathname}print`;
+        const pdfDistDir = getPrintDistDir(dir.pathname);
         logger.info(`Printing all the pages to ${pdfDistDir} as PDF`);
 
         await mkdir(pdfDistDir, { recursive: true });
