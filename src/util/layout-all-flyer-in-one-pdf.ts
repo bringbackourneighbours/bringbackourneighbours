@@ -2,6 +2,7 @@ import { PageSizes, PDFDocument, PDFPage } from 'pdf-lib';
 import fs from 'fs';
 import { chunks } from './list-helper.ts';
 import { readdir } from 'node:fs/promises';
+import { RTL_LANGUAGES } from './languages.ts';
 
 export const getPrintDistDir = (distDir: string): string => {
   return `${distDir.endsWith('/') ? distDir.slice(0, -1) : distDir}/print`;
@@ -24,8 +25,10 @@ const placeFlyerOnPages = async (
   flyerPdfPath: string,
   asTop: boolean,
 ): Promise<void> => {
-  const buffer = fs.readFileSync(flyerPdfPath);
+  const directionRegEx = new RegExp(`flyer-(${RTL_LANGUAGES.join('|')})-`);
+  const isRtlLang = directionRegEx.test(flyerPdfPath);
 
+  const buffer = fs.readFileSync(flyerPdfPath);
   const flyerDoc = await PDFDocument.load(new Uint8Array(buffer));
 
   const [firstPage, secondPage, thirdPage, fourthPage] = await pdfDoc.embedPdf(
@@ -34,26 +37,26 @@ const placeFlyerOnPages = async (
   );
 
   frontPage.drawPage(firstPage, {
-    x: firstPage.width,
+    x: isRtlLang ? 0 : firstPage.width,
     y: asTop ? firstPage.height : 0,
     xScale: 1,
     yScale: 1,
   });
   backPage.drawPage(secondPage, {
-    x: 0,
-    y: asTop ? firstPage.height : 0,
+    x: isRtlLang ? secondPage.width : 0,
+    y: asTop ? secondPage.height : 0,
     xScale: 1,
     yScale: 1,
   });
   backPage.drawPage(thirdPage, {
-    x: thirdPage.width,
-    y: asTop ? firstPage.height : 0,
+    x: isRtlLang ? 0 : thirdPage.width,
+    y: asTop ? thirdPage.height : 0,
     xScale: 1,
     yScale: 1,
   });
   frontPage.drawPage(fourthPage, {
-    x: 0,
-    y: asTop ? firstPage.height : 0,
+    x: isRtlLang ? secondPage.width : 0,
+    y: asTop ? fourthPage.height : 0,
     xScale: 1,
     yScale: 1,
   });
