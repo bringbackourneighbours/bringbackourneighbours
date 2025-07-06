@@ -4,7 +4,7 @@ import { LinkTypes } from '../util/link-icon-type.ts';
 
 const translatableSchema = {
   identifier: z.string(),
-  lang: z.enum(SupportedLanguages),
+  lang: z.enum(SupportedLanguages).or(z.enum(UnSupportedLanguages)),
   fallback: z.enum(SupportedLanguages).optional(),
   machineTranslation: z.boolean().optional(),
 };
