@@ -1,8 +1,9 @@
 ---
-import OverviewLayout from '../layouts/OverviewLayout.astro';
-
 import { useUiTranslation } from '../util/use-ui-translation';
+import { getCanonicalUrlForPath } from '../util/get-canonical-url';
 import { DEFAULT_LANG, SupportedLanguages } from '../util/languages';
+
+import OverviewLayout from '../layouts/OverviewLayout.astro';
 import Stack from '../design/Stack.astro';
 import CardLink from '../design/CardLink.astro';
 
@@ -29,7 +30,7 @@ const supportedLanguages = Object.values(SupportedLanguages);
     {
       supportedLanguages.map(async (supportedLang) => (
         <CardLink
-          href={`${Astro.site}${supportedLang}/wizard`}
+          href={getCanonicalUrlForPath(supportedLang, 'wizard')}
           lang={supportedLang}
         >
           {useUiTranslation('wizard.isThereDangerQuestion', supportedLang)}
