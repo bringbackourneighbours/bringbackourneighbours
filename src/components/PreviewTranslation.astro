@@ -3,6 +3,7 @@ import { type CollectionEntry, getCollection, getEntry } from 'astro:content';
 
 import { type LanguagesValue } from '../util/languages';
 import { useUiTranslation } from '../util/use-ui-translation';
+import { useContentData } from '../util/use-content-data';
 
 import TranslationTableRow from '../design/TranslationTableRow.astro';
 import Block from './markdown/Block.astro';
@@ -135,25 +136,45 @@ const pagesEntries = pagesCollection?.filter(
     }
     {
       kitsEntries.map(async (entry) => (
-        <TranslationTableRow>
-          <div slot="id">kits/{entry.data.identifier}</div>
-          <div slot="from">
-            <Block
-              collection="kits"
-              identifier={entry.data.identifier}
-              lang={fromLang}
-              recursive={false}
-            />
-          </div>
-          <div slot="to">
-            <Block
-              collection="kits"
-              identifier={entry.data.identifier}
-              lang={toLang}
-              recursive={false}
-            />
-          </div>
-        </TranslationTableRow>
+        <>
+          <TranslationTableRow>
+            <div slot="id">kits/{entry.data.identifier}.title</div>
+            <div slot="from">{entry.data.title}</div>
+            <div slot="to">
+              {useContentData('kits', entry.data.identifier, toLang).then(
+                (toData) => toData?.title,
+              )}
+            </div>
+          </TranslationTableRow>
+          <TranslationTableRow>
+            <div slot="id">kits/{entry.data.identifier}.seo</div>
+            <div slot="from">{entry.data.seo}</div>
+            <div slot="to">
+              {useContentData('kits', entry.data.identifier, toLang).then(
+                (toData) => toData?.seo,
+              )}
+            </div>
+          </TranslationTableRow>
+          <TranslationTableRow>
+            <div slot="id">kits/{entry.data.identifier}</div>
+            <div slot="from">
+              <Block
+                collection="kits"
+                identifier={entry.data.identifier}
+                lang={fromLang}
+                recursive={false}
+              />
+            </div>
+            <div slot="to">
+              <Block
+                collection="kits"
+                identifier={entry.data.identifier}
+                lang={toLang}
+                recursive={false}
+              />
+            </div>
+          </TranslationTableRow>
+        </>
       ))
     }
     {
@@ -179,48 +200,88 @@ const pagesEntries = pagesCollection?.filter(
     }
     {
       flyersEntries.map(async (entry) => (
-        <TranslationTableRow>
-          <div slot="id">flyers/{entry.data.identifier}</div>
-          <div slot="from">
-            <Block
-              identifier={entry.data.identifier}
-              lang={fromLang}
-              recursive={false}
-              collection="flyers"
-            />
-          </div>
-          <div slot="to">
-            <Block
-              identifier={entry.data.identifier}
-              lang={toLang}
-              recursive={false}
-              collection="flyers"
-            />
-          </div>
-        </TranslationTableRow>
+        <>
+          <TranslationTableRow>
+            <div slot="id">flyers/{entry.data.identifier}.title</div>
+            <div slot="from">{entry.data.title}</div>
+            <div slot="to">
+              {useContentData('flyers', entry.data.identifier, toLang).then(
+                (toData) => toData?.title,
+              )}
+            </div>
+          </TranslationTableRow>
+          <TranslationTableRow>
+            <div slot="id">flyers/{entry.data.identifier}.seo</div>
+            <div slot="from">{entry.data.seo}</div>
+            <div slot="to">
+              {useContentData('flyers', entry.data.identifier, toLang).then(
+                (toData) => toData?.seo,
+              )}
+            </div>
+          </TranslationTableRow>
+          <TranslationTableRow>
+            <div slot="id">flyers/{entry.data.identifier}</div>
+            <div slot="from">
+              <Block
+                identifier={entry.data.identifier}
+                lang={fromLang}
+                recursive={false}
+                collection="flyers"
+              />
+            </div>
+            <div slot="to">
+              <Block
+                identifier={entry.data.identifier}
+                lang={toLang}
+                recursive={false}
+                collection="flyers"
+              />
+            </div>
+          </TranslationTableRow>
+        </>
       ))
     }
     {
       pagesEntries.map(async (entry) => (
-        <TranslationTableRow>
-          <div slot="id">pages/{entry.data.identifier}</div>
-          <div slot="from">
-            <Block
-              identifier={entry.data.identifier}
-              lang={fromLang}
-              recursive={false}
-              collection="pages"
-            />
-          </div>
-          <div slot="to">
-            <Block
-              identifier={entry.data.identifier}
-              lang={toLang}
-              recursive={false}
-              collection="pages"
-            />
-          </div>
-        </TranslationTableRow>
+        <>
+          <TranslationTableRow>
+            <div slot="id">pages/{entry.data.identifier}.title</div>
+            <div slot="from">{entry.data.title}</div>
+            <div slot="to">
+              {useContentData('pages', entry.data.identifier, toLang).then(
+                (toData) => toData?.title,
+              )}
+            </div>
+          </TranslationTableRow>
+          <TranslationTableRow>
+            <div slot="id">pages/{entry.data.identifier}.seo</div>
+            <div slot="from">{entry.data.seo}</div>
+            <div slot="to">
+              {useContentData('pages', entry.data.identifier, toLang).then(
+                (toData) => toData?.seo,
+              )}
+            </div>
+          </TranslationTableRow>
+          <TranslationTableRow>
+            <div slot="id">pages/{entry.data.identifier}</div>
+            <div slot="from">
+              <Block
+                identifier={entry.data.identifier}
+                lang={fromLang}
+                recursive={false}
+                collection="pages"
+              />
+            </div>
+            <div slot="to">
+              <Block
+                identifier={entry.data.identifier}
+                lang={toLang}
+                recursive={false}
+                collection="pages"
+              />
+            </div>
+          </TranslationTableRow>
+        </>
       ))
     }
   </tbody>
