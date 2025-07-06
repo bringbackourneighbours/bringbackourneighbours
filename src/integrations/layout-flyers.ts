@@ -1,11 +1,12 @@
 import { type AstroIntegration } from 'astro';
+import { writeFile } from 'node:fs/promises';
+
 import {
   getFlyerPdfFileNames,
   getPrintDistDir,
   layoutAllFlyerInOnePdf,
 } from '../util/layout-all-flyer-in-one-pdf.ts';
 import { SupportedLanguages } from '../util/languages.ts';
-import { writeFile } from 'node:fs/promises';
 
 export default function layoutFlyers(): AstroIntegration {
   return {
