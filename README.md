@@ -4,21 +4,28 @@
 
 # Bring Back Our Neighbours
 
+<!-- TOC -->
+
+- [Bring Back Our Neighbours](#bring-back-our-neighbours)
+  - [About](#about)
+  - [Getting Started](#getting-started)
+  - [Linters and Formatters](#linters-and-formatters)
+  - [Requirements](#requirements)
+  - [Project Structure](#project-structure)
+  - [Contributing](#contributing)
+    - [Code of conduct](#code-of-conduct)
+    - [Adding Content](#adding-content)
+      - [Block](#block)
+      - [Standalone Content: Flyers, Kits and Pages](#standalone-content-flyers-kits-and-pages)
+      - [Addresses](#addresses)
+      - [Links](#links)
+      - [Forms/Templates](#formstemplates)
+  - [Licencing](#licencing)
+  <!-- TOC -->
+
 ## About
 
 See https://github.com/bringbackourneighbours
-
-## Copyright (c) [2025] [Kontaktgruppe Asyl und Abschiebehaft e.V.]
-
-CC-NC This content is free to use, modify, and share for non-commercial purposes — no attribution required.
-
-Permission is hereby granted, free of charge, to any person obtaining a copy of this software and associated documentation files (the “Software”), to deal in the Software without restriction, including without limitation the rights to use, copy, modify, merge, publish, distribute, sublicense, and/or sell copies of the Software, **provided that such actions are for non-commercial purposes only**, and subject to the following conditions:
-
-The above copyright notice and this permission notice shall be included in all copies or substantial portions of the Software.
-
-**Commercial use of this Software or any part thereof is strictly prohibited without prior written permission from the copyright holder.**
-
-THE SOFTWARE IS PROVIDED “AS IS”, WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 
 ## Getting Started
 
@@ -140,7 +147,7 @@ Example Block: `/src/content/blocks/example/de.mdx`:
 ---
 identifier: example       # identifier to embed the block
 lang: de                  # language of tme block
-lastChecked: 2025-10-01   # the day this content was last checked. use to spot outdated translations
+lastChecked: 2025-07-08   # the day this content was last checked. use to spot outdated translations
 fallback: en              # (optional) another language, it will be shown as fallback. use if no vvtranslation available but content is necessary
 machineTranslation: false # (optional) mark that the content was not translated by a human and may contain errors.
 ---
@@ -173,7 +180,7 @@ Example Block: `/src/content/flyers/example/de.mdx`:
 ---
 identifier: example # identifier to embed the block
 lang: de # language of tme block
-lastChecked: 2025-10-01 # the day this content was last checked. use to spot outdated translations
+lastChecked: 2025-07-30 # the day this content was last checked. use to spot outdated translations
 title: How to stop a deportation # will also be used as
 seo: Around 150 Characters # will be set a meta description for search engines
 fallback: en # (optional) another language, it will be shown as fallback. use if no vvtranslation available but content is necessary
@@ -242,7 +249,7 @@ Usage-Example:
 ---
 identifier: some-content
 lang: de
-lastChecked: 2024-09-07
+lastChecked: 2025-12-27
 ---
 // Import the component if needed, in most content it will work wihtout
 import Address from '../../../components/Address.astro';
@@ -305,9 +312,15 @@ Usage-Example:
 ---
 identifier: some-content
 lang: de
-lastChecked: 2024-09-07
+lastChecked: 2024-01-31
 ---
 Random Text
 
 <ExternalShortLink identifier="form_urgent"/>
+```
+
+## Licencing
+
+```
+::include{file=LICENCE}
 ```
