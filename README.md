@@ -140,7 +140,7 @@ Example Block: `/src/content/blocks/example/de.mdx`:
 ---
 identifier: example       # identifier to embed the block
 lang: de                  # language of tme block
-lastChecked: 2025-10-01   # the day this content was last checked. use to spot outdated translations
+lastChecked: 2025-07-08   # the day this content was last checked. use to spot outdated translations
 fallback: en              # (optional) another language, it will be shown as fallback. use if no vvtranslation available but content is necessary
 machineTranslation: false # (optional) mark that the content was not translated by a human and may contain errors.
 ---
@@ -173,7 +173,7 @@ Example Block: `/src/content/flyers/example/de.mdx`:
 ---
 identifier: example # identifier to embed the block
 lang: de # language of tme block
-lastChecked: 2025-10-01 # the day this content was last checked. use to spot outdated translations
+lastChecked: 2025-07-30 # the day this content was last checked. use to spot outdated translations
 title: How to stop a deportation # will also be used as
 seo: Around 150 Characters # will be set a meta description for search engines
 fallback: en # (optional) another language, it will be shown as fallback. use if no vvtranslation available but content is necessary
@@ -242,7 +242,7 @@ Usage-Example:
 ---
 identifier: some-content
 lang: de
-lastChecked: 2024-09-07
+lastChecked: 2025-12-27
 ---
 // Import the component if needed, in most content it will work wihtout
 import Address from '../../../components/Address.astro';
@@ -305,7 +305,7 @@ Usage-Example:
 ---
 identifier: some-content
 lang: de
-lastChecked: 2024-09-07
+lastChecked: 2024-01-31
 ---
 Random Text
 
