@@ -1,4 +1,4 @@
-name: Verify the quality
+name: Verify
 
 # on all pushes but the main!
 on:
@@ -9,8 +9,10 @@ on:
 
 jobs:
   install:
-    name: install
+    name: checkout and install
     runs-on: ubuntu-latest
+    outputs:
+      node_modules: ${{ steps.install.outputs.node_modules }}
 
     steps:
       - name: Check out Git repository
@@ -23,6 +25,8 @@ jobs:
 
       - name: Install Node.js dependencies
         run: npm ci
+        id: install
+
 
   stylelint:
     name: Run stylelint
@@ -30,8 +34,16 @@ jobs:
     needs: install
 
     steps:
+      - name: Check out Git repository
+        uses: actions/checkout@v4
+
+      - name: Set up Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: 22
+
       - name: Run stylelint
-        run: npx stylelint **/*.css **/*.astro
+        run: npm run stylelint
 
   prettier:
     name: Run prettier
@@ -52,7 +64,7 @@ jobs:
         run: npx eslint . --ignore-pattern ".astro/**" --ignore-pattern "src/env.d.ts"
 
   test:
-    name: test with vitest
+    name: Test with vitest
     runs-on: ubuntu-latest
     needs: install
 
@@ -61,7 +73,7 @@ jobs:
         run: npm run test
 
   check:
-    name: check with astro
+    name: Check with astro
     runs-on: ubuntu-latest
     needs: install
 
@@ -70,7 +82,7 @@ jobs:
         run: npm run check
 
   build:
-    name: build with astro
+    name: Build with astro
     runs-on: ubuntu-latest
     needs:
       - check
