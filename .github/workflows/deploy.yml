@@ -1,14 +1,11 @@
 name: Deploy to GitHub Pages
 
+# only when push to main
 on:
-  # Trigger the workflow every time you push to the `main` branch
-  # Using a different branch name? Replace `main` with your branch’s name
   push:
     branches: [main]
-  # Allows you to run this workflow manually from the Actions tab on GitHub.
   workflow_dispatch:
 
-# Allow this job to clone the repo and create a page deployment
 permissions:
   contents: read
   pages: write
@@ -21,7 +18,10 @@ jobs:
       - name: Checkout the repository using git
         uses: actions/checkout@v4
       - name: Install, build the site and upload the artifact
-        uses: withastro/action@v2
+        uses: withastro/action@v4
+        with:
+          node-version: '22'
+
 
   deploy:
     needs: build

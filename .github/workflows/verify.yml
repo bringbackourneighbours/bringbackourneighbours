@@ -1,0 +1,63 @@
+name: Verify the quality
+
+# on all pushes but the main!
+on:
+  push:
+    branches:
+      - '**'
+      - '!main'
+
+
+jobs:
+  install:
+    name: install
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Check out Git repository
+        uses: actions/checkout@v4
+
+      - name: Set up Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: 22
+
+      - name: Install Node.js dependencies
+        run: npm ci
+
+  stylelint:
+    name: Run stylelint
+    runs-on: ubuntu-latest
+    needs: install
+
+    steps:
+      - name: Run stylelint
+        run: npx stylelint **/*.css **/*.astro
+
+  prettier:
+    name: Run prettier
+    runs-on: ubuntu-latest
+    needs: install
+
+    steps:
+      - name: Run prettier
+        run: npx prettier -c "**/*.astro" "**/*.ts" "**/*.css" "**/*.md"
+
+  eslint:
+    name: Run eslint
+    runs-on: ubuntu-latest
+    needs: install
+
+    steps:
+      - name: Run linter
+        run: npx eslint . --ignore-pattern ".astro/**" --ignore-pattern "src/env.d.ts"
+
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout the repository using git
+        uses: actions/checkout@v4
+      - name: Install, build the site and upload the artifact
+        uses: withastro/action@v4
+        with:
+          node-version: '22'
