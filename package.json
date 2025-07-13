@@ -8,7 +8,8 @@
     "build": "astro check && astro build",
     "preview": "astro preview",
     "astro": "astro",
-    "prepare": "husky"
+    "prepare": "husky",
+    "test": "vitest"
   },
   "dependencies": {
     "@astrojs/check": "^0.9.4",
@@ -38,6 +39,7 @@
     "stylelint": "^16.21.1",
     "stylelint-config-html": "^1.1.0",
     "stylelint-config-standard": "^38.0.0",
-    "typescript-eslint": "^8.33.1"
+    "typescript-eslint": "^8.33.1",
+    "vitest": "^3.2.4"
   }
 }
