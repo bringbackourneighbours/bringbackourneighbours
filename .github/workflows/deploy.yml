@@ -17,11 +17,12 @@ jobs:
     steps:
       - name: Checkout the repository using git
         uses: actions/checkout@v4
+      - id: get-node-version
+        uses: ./.github/actions/get-node-version-file
       - name: Install, build the site and upload the artifact
         uses: withastro/action@v4
         with:
-          node-version: '22'
-
+          node-version: ${{ steps.get-node-version.outputs.version }}
 
   deploy:
     needs: build
