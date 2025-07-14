@@ -8,13 +8,13 @@ on:
       - '!main'
 
 jobs:
-#  install:
-#    name: checkout and install
-#    runs-on: ubuntu-latest
-#    outputs:
-#      node_modules: ${{ steps.install.outputs.node_modules }}
-#
-#    steps:
+  #  install:
+  #    name: checkout and install
+  #    runs-on: ubuntu-latest
+  #    outputs:
+  #      node_modules: ${{ steps.install.outputs.node_modules }}
+  #
+  #    steps:
 
 
 
@@ -23,6 +23,8 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
+      - run: |
+          ls -la
       - uses: ./.github/actions/checkout-setup-install
       - name: Run stylelint
         run: npm run stylelint
