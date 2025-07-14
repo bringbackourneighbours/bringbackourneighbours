@@ -1,0 +1,14 @@
+name: Setup and Install
+runs:
+  using: "composite"
+  steps:
+    - name: Set up Node.js
+      uses: actions/setup-node@v4
+      with:
+        node-version-file: .node-version
+        cache: 'npm'
+        cache-dependency-path: '**/package-lock.json'
+
+    - name: Install Node.js dependencies
+      shell: bash
+      run: npm ci --prefer-offline
