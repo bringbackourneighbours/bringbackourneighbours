@@ -8,88 +8,70 @@ on:
       - '!main'
 
 jobs:
-  install:
-    name: checkout and install
-    runs-on: ubuntu-latest
-    outputs:
-      node_modules: ${{ steps.install.outputs.node_modules }}
+#  install:
+#    name: checkout and install
+#    runs-on: ubuntu-latest
+#    outputs:
+#      node_modules: ${{ steps.install.outputs.node_modules }}
+#
+#    steps:
 
-    steps:
-      - name: Check out Git repository
-        uses: actions/checkout@v4
-
-      - name: Set up Node.js
-        uses: actions/setup-node@v4
-        with:
-          node-version: 22
-
-      - name: Install Node.js dependencies
-        run: npm ci
-        id: install
 
 
   stylelint:
     name: Run stylelint
     runs-on: ubuntu-latest
-    needs: install
 
     steps:
-      - name: Check out Git repository
-        uses: actions/checkout@v4
-
-      - name: Set up Node.js
-        uses: actions/setup-node@v4
-        with:
-          node-version: 22
-
+      - uses: ./.github/actions/checkout-setup-install
       - name: Run stylelint
         run: npm run stylelint
 
   prettier:
     name: Run prettier
     runs-on: ubuntu-latest
-    needs: install
 
     steps:
+      - uses: ./.github/actions/checkout-setup-install
       - name: Run prettier
         run: npx prettier -c "**/*.astro" "**/*.ts" "**/*.css" "**/*.md"
 
-  eslint:
-    name: Run eslint
-    runs-on: ubuntu-latest
-    needs: install
-
-    steps:
-      - name: Run linter
-        run: npx eslint . --ignore-pattern ".astro/**" --ignore-pattern "src/env.d.ts"
-
-  test:
-    name: Test with vitest
-    runs-on: ubuntu-latest
-    needs: install
-
-    steps:
-      - name: Run vitest
-        run: npm run test
-
-  check:
-    name: Check with astro
-    runs-on: ubuntu-latest
-    needs: install
-
-    steps:
-      - name: Run check
-        run: npm run check
-
-  build:
-    name: Build with astro
-    runs-on: ubuntu-latest
-    needs:
-      - check
-      - test
-
-    steps:
-      - name: Run build
-        run: npm run build
-
-
+#  eslint:
+#    name: Run eslint
+#    runs-on: ubuntu-latest
+#    needs: install
+#
+#    steps:
+#      - name: Run linter
+#        run: npx eslint . --ignore-pattern ".astro/**" --ignore-pattern "src/env.d.ts"
+#
+#  test:
+#    name: Test with vitest
+#    runs-on: ubuntu-latest
+#    needs: install
+#
+#    steps:
+#      - name: Run vitest
+#        run: npm run test
+#
+#  check:
+#    name: Check with astro
+#    runs-on: ubuntu-latest
+#    needs: install
+#
+#    steps:
+#      - name: Run check
+#        run: npm run check
+#
+#  build:
+#    name: Build with astro
+#    runs-on: ubuntu-latest
+#    needs:
+#      - check
+#      - test
+#
+#    steps:
+#      - name: Run build
+#        run: npm run build
+#
+#
