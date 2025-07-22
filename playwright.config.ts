@@ -36,7 +36,7 @@ export default defineConfig({
             use: { ...devices['Desktop Firefox'] },
           },
           {
-            name: 'Mobile Chrome',
+            name: 'Mobile Pixel 7',
             use: { ...devices['Pixel 7'] },
           },
           {

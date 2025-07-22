@@ -1,11 +1,11 @@
 import { expect, test } from '@playwright/test';
 
-test('pages/404', async ({ page }) => {
-  await page.goto('/404');
+test.describe('pages/404', () => {
+  test('all', async ({ page }) => {
+    await page.goto('/404');
 
-  await expect(page.locator('body')).toMatchAriaSnapshot(`
+    await expect(page.locator('body')).toMatchAriaSnapshot(`
 - banner:
-  - /children: contain
   - link "Bring Back Our Neighbours":
     - /url: http://localhost:4321/de
 - main:
@@ -25,4 +25,5 @@ test('pages/404', async ({ page }) => {
   - link:
     - /url: http://localhost:4321/es/wizard
   `);
+  });
 });
