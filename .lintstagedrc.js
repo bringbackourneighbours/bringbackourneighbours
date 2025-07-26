@@ -1,5 +1,5 @@
 export default {
-  // this is quiet broad but works for now
+  // this is quite broad but works for now
   '*.{astro,css,html}': (allFiles) => {
     const allFilesArg = allFiles.join(' ');
     return [

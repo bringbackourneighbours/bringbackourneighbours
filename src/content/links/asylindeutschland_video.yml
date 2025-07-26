@@ -1,5 +1,5 @@
 all:
-  type: WEB
+  type: VIDEO
 de:
   slug: videoanhoerung
   url: https://www.asylindeutschland.de/de/film-2/

@@ -12,7 +12,7 @@ export function getPrintUrl(
   identifier: string,
 ) {
   return getAbsoluteUrl(
-    `print/${collection.slice(0, -1)}-${identifier}-${lang}.pdf`,
+    `print/${collection.slice(0, -1)}-${lang}-${identifier}.pdf`,
   );
 }
 

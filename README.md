@@ -31,22 +31,51 @@ See https://github.com/bringbackourneighbours
 
 All commands are run from the root of the project, from a terminal:
 
-| Command                   | Action                                           |
-| :------------------------ | :----------------------------------------------- |
-| `npm ci`                  | Installs dependencies.                           |
-| `npm run dev`             | Starts local dev server at `localhost:4321`      |
-| `npm run build`           | Build your production site to `./dist/`          |
-| `npm run preview`         | Preview your build locally, before deploying     |
-| `npm run astro ...`       | Run CLI commands like `astro add`, `astro check` |
-| `npm run astro -- --help` | Get help using the Astro CLI                     |
+| Command           | Action                                       |
+| :---------------- | :------------------------------------------- |
+| `npm ci`          | Installs dependencies.                       |
+| `npm run dev`     | Starts local dev server at `localhost:4321`  |
+| `npm run build`   | Build your production site to `./dist/`      |
+| `npm run preview` | Preview your build locally, before deploying |
 
 ## Linters and Formatters
 
+We use `husky` to provide some linting with automatically fixing for the files you are commiting.
+
+Additionally, you may run the linters manually:
+
 | Command                                                                     | Action                                                          |
 | :-------------------------------------------------------------------------- | :-------------------------------------------------------------- |
-| `npx stylelint --fix src/*.css **/*.astro`                                  | Automatically fix CSS and Astro file styling issues             |
+| `npm run stylelint `                                                        | Automatically fix CSS and Astro file styling issues             |
 | `npx prettier --write "**/*.astro" "**/*.ts" "**/*.css" "**/*.md"`          | Format Astro, TypeScript, CSS, and Markdown files               |
 | `npx eslint . --ignore-pattern ".astro/**" --ignore-pattern "src/env.d.ts"` | Run ESLint on all files, ignoring .astro files and src/env.d.ts |
+
+## Testing
+
+We are using 2 testing framework ATM.
+
+| Command        | Action                             |
+| :------------- | :--------------------------------- |
+| `npm run test` | Run all the unit tests with vitest |
+| `npm run e2e`  | Run end-2-end test with playwright |
+
+### Unit testing with vitest
+
+We use `vitest` for testing the code on a unit scope.
+To add a test use a `**.test.ts` file.
+Those test should focus on the logic of smaller parts of the App. before we should not use the real the `.mdx`-content
+in the unit test, as the tests could break when ever we update some parts of the content.
+
+### E2E testing with playwright
+
+To test the overall healthiness of the app, from the perspective of a real user on a physical device we use
+`playwright`.
+It will boot up the app in `local`/`dev` – not statically rendered and open up the pages and analyse the main content on
+then.
+
+To add a test use a `**.spec.ts` file. For now we will mainly use snapshot tests for the pages. Beware: You can put
+those test-files everywhere. To prevent `astro` from trying to render then, the filenamme should begin with an
+underscore. e.g. `src/pages/_wizard.spec.ts`
 
 ## Requirements
 
@@ -148,7 +177,7 @@ Example Block: `/src/content/blocks/example/de.mdx`:
 identifier: example       # identifier to embed the block
 lang: de                  # language of tme block
 lastChecked: 2025-07-08   # the day this content was last checked. use to spot outdated translations
-fallback: en              # (optional) another language, it will be shown as fallback. use if no vvtranslation available but content is necessary
+fallback: en              # (optional) another language, it will be shown as fallback. use if no translation available but content is necessary
 machineTranslation: false # (optional) mark that the content was not translated by a human and may contain errors.
 ---
 
@@ -163,8 +192,8 @@ Random Text in the markdown format
 * list item3
 
 <Block
-  identifier="another"
-  lang="tr"
+identifier="another"
+lang="tr"
 />
 
 ```
@@ -229,7 +258,7 @@ instagram: instagram
 telegram: telegram
 twitter: twitter
 
-# it's possible to a add a bbon ExternalShortLINK to an address
+# it's possible to an add a bbon ExternalShortLINK to an address
 # in most case the normal url should be prefered, only when the address is too long to type use a link as shortener
 bbon: slug
 
@@ -264,12 +293,15 @@ This together will result in something like
 
 #### Links
 
-Within the content we link to material (pdf, audio, video, webpages) from others, sometimes differently for each language.
+Within the content we link to material (pdf, audio, video, webpages) from others, sometimes differently for each
+language.
 
-For each link you have to create a file in the [YAML](https://en.wikipedia.org/wiki/YAML) format, it has the file ending `.yaml` or
+For each link you have to create a file in the [YAML](https://en.wikipedia.org/wiki/YAML) format, it has the file ending
+`.yaml` or
 `.yml`.
 
-Within the file there can be a section for each language, that the material is available. Additional optionally a section `all` can be used, all properties with in this section will be overridden by the properties per language.
+Within the file there can be a section for each language, that the material is available. Additional optionally a
+section `all` can be used, all properties with in this section will be overridden by the properties per language.
 
 Example Link: `/src/content/links/example.yml`:
 

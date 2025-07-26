@@ -23,7 +23,7 @@ const targetLang = lang ?? currentLang;
 const printUrl =
   identifier === 'all'
     ? getAllFlyerPrintUrl(targetLang)
-    : getPrintUrl(collection, identifier, targetLang);
+    : getPrintUrl(collection, targetLang, identifier);
 
 const label = await (identifier === 'all'
   ? useUiTranslation('meta.downloadAllPdf', currentLang)
