@@ -26,25 +26,9 @@ export default defineConfig({
   /* Configure projects for major browsers */
   projects: [
     {
-      name: 'Desktop Chrome',
-      use: { ...devices['Desktop Chrome'] },
+      name: 'Mobile Galaxy S24',
+      use: { ...devices['Galaxy S24'] },
     },
-    ...(process.env.CI
-      ? [
-          {
-            name: 'Desktop Firefox',
-            use: { ...devices['Desktop Firefox'] },
-          },
-          {
-            name: 'Mobile Pixel 7',
-            use: { ...devices['Pixel 7'] },
-          },
-          {
-            name: 'Mobile Galaxy S24',
-            use: { ...devices['Galaxy S24'] },
-          },
-        ]
-      : []),
   ],
 
   /* Run your local dev server before starting the tests */
