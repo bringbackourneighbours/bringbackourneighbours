@@ -1,0 +1,61 @@
+---
+import BaseHtml from './BaseHtml.astro';
+import BaseHead from './BaseHead.astro';
+import BaseBody from './BaseBody.astro';
+import BaseFontsLinkArabic from './BaseFontsLinkArabic.astro';
+import BaseFontsLinkLatin from './BaseFontsLinkLatin.astro';
+
+import {
+  DEFAULT_LANG,
+  FONT_ARABIC__LANGUAGES,
+  FONT_LATIN__LANGUAGES,
+  type LanguagesValue,
+} from '../util/languages';
+
+interface Props {
+  title: string;
+  seo: string;
+  lang: LanguagesValue;
+  canonicalSlug?: string;
+  translationSlugs?: Array<{
+    lang: LanguagesValue;
+    url: string;
+  }>;
+  format?: 'web' | 'a4' | 'a6';
+}
+
+const {
+  title,
+  seo,
+  lang = DEFAULT_LANG,
+  canonicalSlug,
+  translationSlugs,
+} = Astro.props;
+
+const isLatin = FONT_LATIN__LANGUAGES.map((langEnum) => `${langEnum}`).includes(
+  lang,
+);
+
+const isArabic = FONT_ARABIC__LANGUAGES.map(
+  (langEnum) => `${langEnum}`,
+).includes(lang);
+---
+
+<BaseHtml lang={lang}>
+  <BaseHead
+    title={title}
+    lang={lang}
+    canonicalSlug={canonicalSlug}
+    translationSlugs={translationSlugs}
+    seo={seo}
+  >
+    {isLatin && <BaseFontsLinkLatin />}
+    {isArabic && <BaseFontsLinkArabic />}
+  </BaseHead>
+  <BaseBody
+    lang={lang}
+    classList={[{ 'font-latin': isLatin }, { 'font-arabic': isArabic }]}
+  >
+    <slot />
+  </BaseBody>
+</BaseHtml>

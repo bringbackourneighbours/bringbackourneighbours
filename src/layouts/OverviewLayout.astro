@@ -1,9 +1,9 @@
 ---
-import BaseHtml from './BaseHtml.astro';
-import BaseHead from './BaseHead.astro';
-import Header from '../components/Header.astro';
-import BaseBody from './BaseBody.astro';
 import { type LanguagesValue } from '../util/languages';
+
+import WebLayout from './WebLayout.astro';
+
+import { useUiTranslation } from '../util/use-ui-translation';
 
 interface Props {
   title: string;
@@ -39,19 +39,16 @@ import './theme-web.css';
   }
 </style>
 
-<BaseHtml lang={lang}>
-  <BaseHead
-    title={title}
-    lang={lang}
-    canonicalSlug={canonicalSlug}
-    translationSlugs={translationSlugs}
-  />
-  <BaseBody lang={lang}>
-    <Header lang={lang} />
-    <div class="content-wrapper">
-      <main>
-        <slot />
-      </main>
-    </div>
-  </BaseBody>
-</BaseHtml>
+<WebLayout
+  title={title}
+  lang={lang}
+  seo={await useUiTranslation('meta.infosAgainstDeportation', lang)}
+  canonicalSlug={canonicalSlug}
+  translationSlugs={translationSlugs}
+>
+  <div class="content-wrapper">
+    <main>
+      <slot />
+    </main>
+  </div>
+</WebLayout>

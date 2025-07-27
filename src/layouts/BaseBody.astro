@@ -5,11 +5,21 @@ import { getLanguageDirection } from '../util/get-language-direction';
 interface Props {
   lang: LanguagesValue;
   format?: 'web' | 'a4' | 'a6';
+  /**
+   * TODO: extract type or reuse
+   *
+   * classList takes an array of several different possible value kinds:
+   * - string: Added to the element class
+   * - Object: All truthy keys are added to the element class
+   * - Array: flattened
+   * - Set: flattened
+   **/
+  classList?: (string | object | Array<string>)[];
 }
 
-const { lang, format = 'web' } = Astro.props;
+const { lang, format = 'web', classList = [] } = Astro.props;
 ---
 
-<body class={`${getLanguageDirection(lang)} ${format}`}>
+<body class:list={[getLanguageDirection(lang), format, ...classList]}>
   <slot />
 </body>

@@ -62,4 +62,20 @@ export const RTL_LANGUAGES: Languages[] = [
   Languages.KURDISH_SORANI,
 ] as const;
 
+export const FONT_LATIN__LANGUAGES = [
+  Languages.ENGLISH,
+  Languages.GERMAN,
+  Languages.FRENCH,
+  Languages.SPANISH,
+] as const;
+
+export const FONT_ARABIC__LANGUAGES: Languages[] = [
+  Languages.ARABIC,
+  Languages.FARSI,
+  // TODO: Test first
+  // Languages.URDU,
+  // Languages.PASHTO,
+  // Languages.KURDISH_SORANI,
+] as const;
+
 export const DEFAULT_LANG: LanguagesValue = Languages.GERMAN;

@@ -1,8 +1,6 @@
 ---
-import BaseHtml from './BaseHtml.astro';
-import BaseHead from './BaseHead.astro';
-import Header from '../components/Header.astro';
-import BaseBody from './BaseBody.astro';
+import WebLayout from './WebLayout.astro';
+
 import { DEFAULT_LANG, type LanguagesValue } from '../util/languages';
 
 interface Props {
@@ -23,8 +21,6 @@ const {
   canonicalSlug,
   translationSlugs,
 } = Astro.props;
-
-import './theme-web.css';
 ---
 
 <style>
@@ -39,7 +35,7 @@ import './theme-web.css';
       overflow: auto;
 
       /*
-      padding g so the language switcher has enough room
+      padding so the language switcher has enough room
        */
       padding-block-end: calc(
         var(--bbon-size-gap) + 2 * var(--bbon-size-spacing) + 3.5em
@@ -48,20 +44,16 @@ import './theme-web.css';
   }
 </style>
 
-<BaseHtml lang={lang}>
-  <BaseHead
-    title={title}
-    lang={lang}
-    seo={seo}
-    canonicalSlug={canonicalSlug}
-    translationSlugs={translationSlugs}
-  />
-  <BaseBody lang={lang}>
-    <Header lang={lang} />
-    <div class="content-wrapper">
-      <main>
-        <slot />
-      </main>
-    </div>
-  </BaseBody>
-</BaseHtml>
+<WebLayout
+  title={title}
+  lang={lang}
+  seo={seo}
+  canonicalSlug={canonicalSlug}
+  translationSlugs={translationSlugs}
+>
+  <div class="content-wrapper">
+    <main>
+      <slot />
+    </main>
+  </div>
+</WebLayout>

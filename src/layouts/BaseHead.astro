@@ -1,7 +1,5 @@
 ---
-import { Languages, type LanguagesValue } from '../util/languages';
-
-import BaseLatinFontsLink from './BaseLatinFontsLink.astro';
+import { type LanguagesValue } from '../util/languages';
 
 import { useUiTranslation } from '../util/use-ui-translation';
 
@@ -26,20 +24,10 @@ const {
 
 import './theme-color.css';
 import './typography.css';
-
-const isLatin = [
-  Languages.ENGLISH,
-  Languages.GERMAN,
-  Languages.FRENCH,
-  Languages.SPANISH,
-]
-  .map((langEmun) => `${langEmun}`)
-  .includes(lang);
 ---
 
 <head>
   <meta charset="utf-8" />
-  {isLatin && <BaseLatinFontsLink />}
   <link
     rel="icon"
     type="image/svg+xml"
