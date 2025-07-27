@@ -3,22 +3,22 @@ import firagoLatinAllNormalCss from '@fontsource/firago/latin.css?url';
 import firagoLatinAllItalicCss from '@fontsource/firago/latin-italic.css?url';
 
 // all the fonts will be loaded by the fontface, but we want to preload the most used
-import firagolatin400normalwoff2 from '@fontsource/firago/files/firago-latin-400-normal.woff2?url';
-import firagolatin500normalwoff2 from '@fontsource/firago/files/firago-latin-500-normal.woff2?url';
+import firagoLatin400NormalWoff2 from '@fontsource/firago/files/firago-latin-400-normal.woff2?url';
+import firagoLatin500NormalWoff2 from '@fontsource/firago/files/firago-latin-500-normal.woff2?url';
 ---
 
 <link
   rel="preload"
   as="font"
   type="font/woff2"
-  href={firagolatin400normalwoff2}
+  href={firagoLatin400NormalWoff2}
   crossorigin="anonymous"
 />
 <link
   rel="preload"
   as="font"
   type="font/woff2"
-  href={firagolatin500normalwoff2}
+  href={firagoLatin500NormalWoff2}
   crossorigin="anonymous"
 />
 <link
@@ -36,7 +36,7 @@ import firagolatin500normalwoff2 from '@fontsource/firago/files/firago-latin-500
 />
 
 <style>
-  body {
+  body.font-latin {
     font-family: FiraGO, sans-serif;
   }
 </style>

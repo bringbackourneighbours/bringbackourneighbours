@@ -1,0 +1,37 @@
+---
+import Header from '../components/Header.astro';
+
+import { DEFAULT_LANG, type LanguagesValue } from '../util/languages';
+
+interface Props {
+  title: string;
+  seo: string;
+  lang: LanguagesValue;
+  canonicalSlug?: string;
+  translationSlugs?: Array<{
+    lang: LanguagesValue;
+    url: string;
+  }>;
+}
+
+const {
+  title,
+  seo,
+  lang = DEFAULT_LANG,
+  canonicalSlug,
+  translationSlugs,
+} = Astro.props;
+import './theme-web.css';
+import BaseLayout from './BaseLayout.astro';
+---
+
+<BaseLayout
+  title={title}
+  lang={lang}
+  seo={seo}
+  canonicalSlug={canonicalSlug}
+  translationSlugs={translationSlugs}
+>
+  <Header lang={lang} />
+  <slot />
+</BaseLayout>
