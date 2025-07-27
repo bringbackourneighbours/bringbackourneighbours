@@ -47,7 +47,7 @@ const { entry, translationSlugs, canonicalUrl, qrSize = 60 } = Astro.props;
         justify-items: center;
         gap: calc(0.5 * var(--bbon-size-gap));
 
-        --link-font-weight: normal;
+        --link-font-weight: var(--bbon-font-weight-normal, normal);
       }
     }
   }

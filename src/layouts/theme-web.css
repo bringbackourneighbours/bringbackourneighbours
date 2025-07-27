@@ -16,4 +16,7 @@
   --bbon-size-max-text-span: 80ch;
   --bbon-size-list-inset: 0.1em;
   --bbon-hyphens-p: none;
+  --bbon-font-weight-normal: 400;
+  --bbon-font-weight-bold: 500;
+  --bbon-font-weight-bolder: 700;
 }
