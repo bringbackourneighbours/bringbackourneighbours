@@ -14,6 +14,14 @@ export default [
       // override/add rules settings here, such as:
       // "astro/no-set-html-directive": "error"
     },
-    ignores: ['.astro/'],
+    ignores: [
+      '.husky',
+      '.astro',
+      'dist',
+      'test-results',
+      'playwright-report',
+      'blob-report',
+      'playwright',
+    ],
   },
 ];
