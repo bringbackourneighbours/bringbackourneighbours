@@ -21,10 +21,38 @@ const {
   translationSlugs,
   seo = await useUiTranslation('meta.infosAgainstDeportation', lang),
 } = Astro.props;
+
+import '@fontsource/firago/400.css';
+import '@fontsource/firago/500.css';
+import '@fontsource/firago/700.css';
+import '@fontsource/firago/400-italic.css';
+import '@fontsource/firago/500-italic.css';
+import '@fontsource/firago/700-italic.css';
+
+// all the above fonts will be loaded but we want to preload the most used
+import firagolatin400normal from '@fontsource/firago/files/firago-latin-400-normal.woff2?url';
+import firagolatin500normal from '@fontsource/firago/files/firago-latin-500-normal.woff2?url';
+
+import './theme-color.css';
+import './typography.css';
 ---
 
 <head>
   <meta charset="utf-8" />
+  <link
+    rel="preload"
+    as="font"
+    type="font/woff2"
+    href={firagolatin400normal}
+    crossorigin="anonymous"
+  />
+  <link
+    rel="preload"
+    as="font"
+    type="font/woff2"
+    href={firagolatin500normal}
+    crossorigin="anonymous"
+  />
   <link
     rel="icon"
     type="image/svg+xml"

@@ -2,11 +2,19 @@
 * GENERAL STYLES
 */
 html {
+  font-family: FiraGO, sans-serif;
   font-size: var(--bbon-size-p);
-  line-height: var(--bbon-size-p-line);
+  font-weight: var(--bbon-font-weight-normal, normal);
   hyphenate-limit-chars: auto 5;
+  line-height: var(--bbon-size-p-line);
   overflow-wrap: break-word;
   scroll-padding-block-start: calc(var(--bbon-size-p) * 6);
+}
+
+body {
+  background: var(--bbon-color-surface);
+  margin: 0;
+  color: var(--bbon-color-primary);
 }
 
 p {
@@ -28,7 +36,7 @@ h6,
 .h4,
 .h5,
 .h6 {
-  font-weight: 500;
+  font-weight: var(--bbon-font-weight-bold, bold);
   letter-spacing: -0.02em;
   word-break: auto-phrase;
   font-size: var(--bbon-size-h4);
