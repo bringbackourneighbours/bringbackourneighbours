@@ -2,7 +2,6 @@
 * GENERAL STYLES
 */
 html {
-  font-family: FiraGO, sans-serif;
   font-size: var(--bbon-size-p);
   font-weight: var(--bbon-font-weight-normal, normal);
   hyphenate-limit-chars: auto 5;
