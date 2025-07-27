@@ -16,6 +16,9 @@
   --bbon-size-p: 9pt;
   --bbon-size-shadow-spread: 10px;
   --bbon-size-spacing: 0.2em;
+  --bbon-font-weight-normal: 400;
+  --bbon-font-weight-bold: 500;
+  --bbon-font-weight-bolder: 700;
 
   .a4 {
     --bbon-size-mini: var(--bbon-size-p);
