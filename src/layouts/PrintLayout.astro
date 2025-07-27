@@ -1,8 +1,9 @@
 ---
 import { type LanguagesValue } from '../util/languages';
 
-import BaseBody from './BaseBody.astro';
 import BaseHtml from './BaseHtml.astro';
+import BaseHead from './BaseHead.astro';
+import BaseBody from './BaseBody.astro';
 
 interface Props {
   title: string;
@@ -11,15 +12,14 @@ interface Props {
 
 const { lang, title } = Astro.props;
 
-import './theme-color.css';
 import './theme-print.css';
 ---
 
 <BaseHtml lang={lang}>
-  <head>
-    <meta charset="utf-8" />
-    <title>{title}</title>
-  </head>
+  <BaseHead
+    title={title}
+    lang={lang}
+  />
   <BaseBody
     lang={lang}
     format={Astro.locals.isFlyer ? 'a6' : 'a4'}
