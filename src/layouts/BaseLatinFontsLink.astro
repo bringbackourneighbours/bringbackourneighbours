@@ -1,27 +1,42 @@
 ---
-import '@fontsource/firago/latin-400.css';
-import '@fontsource/firago/latin-500.css';
-import '@fontsource/firago/latin-700.css';
-import '@fontsource/firago/latin-400-italic.css';
-import '@fontsource/firago/latin-500-italic.css';
-import '@fontsource/firago/latin-700-italic.css';
+import firagoLatinAllNormalCss from '@fontsource/firago/latin.css?url';
+import firagoLatinAllItalicCss from '@fontsource/firago/latin-italic.css?url';
 
-// all the above fonts will be loaded but we want to preload the most used
-import firagolatin400normal from '@fontsource/firago/files/firago-latin-400-normal.woff2?url';
-import firagolatin500normal from '@fontsource/firago/files/firago-latin-500-normal.woff2?url';
+// all the fonts will be loaded by the fontface, but we want to preload the most used
+import firagolatin400normalwoff2 from '@fontsource/firago/files/firago-latin-400-normal.woff2?url';
+import firagolatin500normalwoff2 from '@fontsource/firago/files/firago-latin-500-normal.woff2?url';
 ---
 
 <link
   rel="preload"
   as="font"
   type="font/woff2"
-  href={firagolatin400normal}
+  href={firagolatin400normalwoff2}
   crossorigin="anonymous"
 />
 <link
   rel="preload"
   as="font"
   type="font/woff2"
-  href={firagolatin500normal}
+  href={firagolatin500normalwoff2}
   crossorigin="anonymous"
 />
+<link
+  rel="preload"
+  href={firagoLatinAllNormalCss}
+  as="style"
+/>
+<link
+  rel="stylesheet"
+  href={firagoLatinAllNormalCss}
+/>
+<link
+  rel="stylesheet"
+  href={firagoLatinAllItalicCss}
+/>
+
+<style>
+  body {
+    font-family: FiraGO, sans-serif;
+  }
+</style>
