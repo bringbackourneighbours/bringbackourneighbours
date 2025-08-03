@@ -1,5 +1,6 @@
 ---
 import Header from '../components/Header.astro';
+import BaseLayout from './BaseLayout.astro';
 
 import { DEFAULT_LANG, type LanguagesValue } from '../util/languages';
 
@@ -22,7 +23,6 @@ const {
   translationSlugs,
 } = Astro.props;
 import './theme-web.css';
-import BaseLayout from './BaseLayout.astro';
 ---
 
 <BaseLayout
