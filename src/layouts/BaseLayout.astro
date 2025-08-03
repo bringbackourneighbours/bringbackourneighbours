@@ -2,15 +2,9 @@
 import BaseHtml from './BaseHtml.astro';
 import BaseHead from './BaseHead.astro';
 import BaseBody from './BaseBody.astro';
-import BaseFontsLinkArabic from './BaseFontsLinkArabic.astro';
-import BaseFontsLinkLatin from './BaseFontsLinkLatin.astro';
+import BaseFontsLinkFirago from './BaseFontsLinkFirago.astro';
 
-import {
-  DEFAULT_LANG,
-  FONT_ARABIC__LANGUAGES,
-  FONT_LATIN__LANGUAGES,
-  type LanguagesValue,
-} from '../util/languages';
+import { DEFAULT_LANG, type LanguagesValue } from '../util/languages';
 
 interface Props {
   title: string;
@@ -31,14 +25,6 @@ const {
   canonicalSlug,
   translationSlugs,
 } = Astro.props;
-
-const isLatin = FONT_LATIN__LANGUAGES.map((langEnum) => `${langEnum}`).includes(
-  lang,
-);
-
-const isArabic = FONT_ARABIC__LANGUAGES.map(
-  (langEnum) => `${langEnum}`,
-).includes(lang);
 ---
 
 <BaseHtml lang={lang}>
@@ -49,13 +35,9 @@ const isArabic = FONT_ARABIC__LANGUAGES.map(
     translationSlugs={translationSlugs}
     seo={seo}
   >
-    {isLatin && <BaseFontsLinkLatin />}
-    {isArabic && <BaseFontsLinkArabic />}
+    <BaseFontsLinkFirago />
   </BaseHead>
-  <BaseBody
-    lang={lang}
-    classList={[{ 'font-latin': isLatin }, { 'font-arabic': isArabic }]}
-  >
+  <BaseBody>
     <slot />
   </BaseBody>
 </BaseHtml>

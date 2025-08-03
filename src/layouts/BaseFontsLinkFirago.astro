@@ -5,6 +5,19 @@ import firagoLatinAllItalicCss from '@fontsource/firago/latin-italic.css?url';
 // all the fonts will be loaded by the fontface, but we want to preload the most used
 import firagoLatin400NormalWoff2 from '@fontsource/firago/files/firago-latin-400-normal.woff2?url';
 import firagoLatin500NormalWoff2 from '@fontsource/firago/files/firago-latin-500-normal.woff2?url';
+
+// See: https://github.com/bBoxType/FiraGO/blob/master/README.md#script-support
+// FiraGo actually supports:
+// Latin Extended
+// IPA
+// Pan African
+// Cyrillic Extended (+ locl BGR and SRB)
+// Polytonic Greek
+// Arabic
+// Devanagari
+// Georgian
+// Hebrew
+// Thai
 ---
 
 <link
@@ -36,7 +49,7 @@ import firagoLatin500NormalWoff2 from '@fontsource/firago/files/firago-latin-500
 />
 
 <style>
-  body.font-latin {
+  body {
     font-family: FiraGO, sans-serif;
   }
 </style>
