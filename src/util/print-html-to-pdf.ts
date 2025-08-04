@@ -1,6 +1,6 @@
 import puppeteer, { Browser } from 'puppeteer';
 import fs from 'fs';
-import AstroConfig from '../../astro.config.mjs';
+import AstroConfig, { previewUrl } from '../../astro.config.mjs';
 
 export const printHtmlToPdf = async (
   pagePath: string,
@@ -22,9 +22,9 @@ export const printHtmlToPdf = async (
     await page.goto(`${AstroConfig.site!}${pagePath}`);
   } else {
     // we will not get the global stylesheets without loading them first.
-    // so we visit the production page once and then the css is already loaded
-    // alternatively we could intercept the request for the styles... but it works for now.
-    await page.goto(AstroConfig.site!, {
+    // so we visit the preview page once and then the css is already loaded
+    // make sure it is up and running under the previewUrl
+    await page.goto(previewUrl, {
       waitUntil: ['domcontentloaded', 'networkidle0'],
     });
 
