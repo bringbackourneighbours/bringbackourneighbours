@@ -10,6 +10,7 @@ const siteUrl = isDev
   : 'https://bringbackourneighbours.de/';
 const basePath = '';
 
+export const previewUrl = 'http://localhost:4321/'
 export const linkUrl = isDev ? 'http://localhost:4321/link' : 'bbonlink.de';
 
 // https://astro.build/config

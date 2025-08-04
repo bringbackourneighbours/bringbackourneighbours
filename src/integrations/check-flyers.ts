@@ -14,7 +14,7 @@ export default function checkFlyers(): AstroIntegration {
         logger.info('Checking each flyer for the correct page count');
 
         const flyerFileNames = await getFlyerPdfFileNames(dir.pathname);
-        let hasCorrectPageCount = false;
+        let hasNotCorrectPageCount = false;
 
         for (const fileName of flyerFileNames) {
           const flyerPath = `${dir.pathname}print/${fileName}`;
@@ -25,13 +25,13 @@ export default function checkFlyers(): AstroIntegration {
 
           if (pagesCount != A6_ON_A4_PAGE_COUNT) {
             logger.error(`${fileName}: ${pagesCount} pages`);
-            hasCorrectPageCount = true;
+            hasNotCorrectPageCount = true;
           } else {
-            logger.info(`${fileName}: ${pagesCount} pages`);
+            logger.debug(`${fileName}: ${pagesCount} pages`);
           }
         }
 
-        if (hasCorrectPageCount) {
+        if (hasNotCorrectPageCount) {
           throw new Error(
             `Some of the flyers pdf did not produce ${A6_ON_A4_PAGE_COUNT} pages. See log messages above.`,
           );
