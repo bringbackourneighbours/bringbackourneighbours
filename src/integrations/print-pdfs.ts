@@ -3,10 +3,14 @@ import { mkdir, writeFile } from 'node:fs/promises';
 import puppeteer from 'puppeteer';
 import { exec } from 'node:child_process';
 
+import AstroConfig from '../../astro.config.mjs';
+
 import { printHtmlToPdf } from '../util/print-html-to-pdf.ts';
 import { getPrintDistDir } from '../util/layout-all-flyer-in-one-pdf.ts';
 
-// this actually works, but it was more partically to implement this as an endpoint... becuase we can use that in dev mode as well
+/**
+ * An Astro integration that prints all pages `dist/internal-print` to PDF after the build is done.
+ */
 export default function printPdfs(): AstroIntegration {
   return {
     name: 'print-pdfs',
@@ -39,7 +43,10 @@ export default function printPdfs(): AstroIntegration {
 
             logger.debug(`Printing ${htmlPage.pathname}`);
 
-            const pdfBuffer = await printHtmlToPdf(htmlPage.pathname, browser);
+            const pdfBuffer = await printHtmlToPdf(
+              `${AstroConfig.site!}${htmlPage.pathname}`,
+              browser,
+            );
 
             await writeFile(pdfOutputPath, pdfBuffer);
             logger.debug(`Printed ${pdfOutputFilename}`);
