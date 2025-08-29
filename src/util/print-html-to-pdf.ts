@@ -1,12 +1,15 @@
 import puppeteer, { Browser } from 'puppeteer';
-import fs from 'fs';
-import AstroConfig, { previewUrl } from '../../astro.config.mjs';
 
+/**
+ * Prints the given HTML page to a PDF buffer.
+ * @param pageUrl The URL of the HTML page to print.
+ * @param browserToReuse An optional Puppeteer browser instance to reuse.
+ * @returns A promise that resolves to a Uint8Array containing the PDF data.
+ */
 export const printHtmlToPdf = async (
-  pagePath: string,
+  pageUrl: string,
   browserToReuse?: Browser,
 ): Promise<Uint8Array> => {
-  const isDev = import.meta.env.DEV;
   // when printing en masse we don't want to set up and tear the browsers for each page
   const browser =
     browserToReuse ??
@@ -17,22 +20,9 @@ export const printHtmlToPdf = async (
     }));
   const page = await browser.newPage();
 
-  if (isDev) {
-    // we will use the fresh page in Dev Mode
-    await page.goto(`${AstroConfig.site!}${pagePath}`);
-  } else {
-    // we will not get the global stylesheets without loading them first.
-    // so we visit the preview page once and then the css is already loaded
-    // make sure it is up and running under the previewUrl
-    await page.goto(previewUrl, {
-      waitUntil: ['domcontentloaded', 'networkidle0'],
-    });
-
-    const contentHtml = fs.readFileSync(`dist/${pagePath}/index.html`, 'utf8');
-    await page.setContent(contentHtml, {
-      waitUntil: ['domcontentloaded', 'networkidle0'],
-    });
-  }
+  await page.goto(pageUrl, {
+    waitUntil: ['domcontentloaded', 'networkidle0'],
+  });
 
   const pdfBuffer = await page.pdf({
     printBackground: true,
