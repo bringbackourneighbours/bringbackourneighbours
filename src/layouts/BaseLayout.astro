@@ -24,6 +24,7 @@ const {
   lang = DEFAULT_LANG,
   canonicalSlug,
   translationSlugs,
+  format,
 } = Astro.props;
 ---
 
@@ -37,7 +38,7 @@ const {
   >
     <BaseFontsLinkFirago />
   </BaseHead>
-  <BaseBody>
+  <BaseBody format={format}>
     <slot />
   </BaseBody>
 </BaseHtml>

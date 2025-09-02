@@ -59,12 +59,13 @@ const canonicalUrl =
 </style>
 <PrintLayout
   lang={entry.data.lang}
-  title={'PDF Flyer ' + entry.data.title + ' | BringBackOurNeighbours'}
+  title={'Flyer ' + entry.data.title + ' | BringBackOurNeighbours'}
 >
   <PrinterPage>
     <PrintCover
       entry={entry}
       pagewidth="105mm"
+      pagemargin="5mm"
     />
   </PrinterPage>
   <PrinterPage breakBefore={true}>
