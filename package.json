@@ -24,7 +24,7 @@
     "pdf-lib": "^1.17.1",
     "puppeteer": "^24.17.1",
     "qrcode": "^1.5.4",
-    "typescript": "^5.8.3"
+    "typescript": "^5.9.2"
   },
   "devDependencies": {
     "@eslint/js": "^9.34.0",
