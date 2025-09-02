@@ -11,12 +11,13 @@ import NoteMachineTranslation from '../components/NoteMachineTranslation.astro';
 interface Props {
   entry: CollectionEntry<StandaloneCollections>;
   pagewidth: string;
+  pagemargin: string;
 }
 
-const { entry, pagewidth } = Astro.props;
+const { entry, pagewidth, pagemargin } = Astro.props;
 ---
 
-<style define:vars={{ pagewidth }}>
+<style define:vars={{ pagewidth, pagemargin }}>
   .cover-page {
     aside {
       color: white;
@@ -43,7 +44,7 @@ const { entry, pagewidth } = Astro.props;
     footer {
       position: absolute;
       inset-block-end: 0;
-      width: calc(var(--pagewidth) - 2 * 5mm);
+      width: calc(var(--pagewidth) - 2 * var(--pagemargin));
 
       /* this is for the bbonLogo: it needs to be primary */
       --bbon-color-surface: var(--bbon-color-primary);
@@ -51,11 +52,16 @@ const { entry, pagewidth } = Astro.props;
       .logo-line {
         display: flex;
         align-items: stretch;
-        gap: 2mm;
+        gap: var(--bbon-size-gap);
 
-        .titles {
+        .logo-line-icon {
+          margin-block-start: calc(
+            var(--bbon-size-gap) - var(--bbon-size-spacing)
+          );
+        }
+
+        .logo-line-titles {
           flex-grow: 1;
-          margin-block-start: 2mm;
 
           .title {
             font-variant: small-caps;
@@ -64,7 +70,7 @@ const { entry, pagewidth } = Astro.props;
           }
 
           .sub-title {
-            margin-block-start: 2mm;
+            margin-block-start: var(--bbon-size-spacing);
             font-size: 2px; /* the text-fit will only make it grow  */
           }
         }
@@ -94,9 +100,12 @@ const { entry, pagewidth } = Astro.props;
 
   <footer>
     <div class="logo-line">
-      <Logo size="12mm" />
-      <div class="titles">
-        <h2 class="title text-fit">
+      <div class="logo-line-icon">
+        <Logo size={`calc(${pagewidth} / 10.5)`} />
+      </div>
+
+      <div class="logo-line-titles">
+        <h2 class="title text-fit ltr">
           <span
             ><span>{useUiTranslation('meta.title', entry.data.lang)}</span
             ></span

@@ -4,6 +4,7 @@ import { type CollectionEntry } from 'astro:content';
 import { getStaticPathsForKits } from '../../util/get-static-paths';
 import { getTranslationsUrlsForKit } from '../../util/get-translations-url';
 import { getCanonicalUrlToKit } from '../../util/get-canonical-url';
+import { useUiTranslation } from '../../util/use-ui-translation';
 
 import PrintLayout from '../../layouts/PrintLayout.astro';
 import PrinterPage from '../../design/PrinterPage.astro';
@@ -38,30 +39,39 @@ const canonicalUrl =
     margin: 15mm;
   }
 
-  .end-footer {
-    margin-top: 18.5cm;
+  .second-page {
+    margin-block-start: 29cm;
+  }
+
+  .link {
+    margin-block-end: 2em;
   }
 </style>
 
 <PrintLayout
   lang={entry.data.lang}
-  title={'PDF Kit ' + entry.data.title + ' | BringBackOurNeighbours'}
+  title={'Kit ' + entry.data.title + ' | BringBackOurNeighbours'}
 >
   <PrinterPage>
     <PrintCover
       entry={entry}
       pagewidth="210mm"
+      pagemargin="15mm"
     />
   </PrinterPage>
   <PrinterPage breakBefore={true}>
-    <TableOfContents rendered={entry.render()} />
-    <div class="end-footer">
-      <PrintEndFooter
-        entry={entry}
-        translationSlugs={translationSlugs}
-        canonicalUrl={canonicalUrl}
-        qrSize={120}
-      />
+    <div class="second-page">
+      <div class="link">
+        <PrintEndFooter
+          entry={entry}
+          translationSlugs={translationSlugs}
+          canonicalUrl={canonicalUrl}
+          qrSize={120}
+        />
+      </div>
+      <Block identifier="kit-outro" />
+      <h2>{useUiTranslation('meta.home', entry.data.lang)}</h2>
+      <TableOfContents rendered={entry.render()} />
     </div>
   </PrinterPage>
   <PrinterPage breakBefore={true}>
