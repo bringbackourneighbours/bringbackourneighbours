@@ -8,6 +8,7 @@ import ContentMeta from '../design/ContentMeta.astro';
 import CopyButton from '../design/CopyButton.astro';
 import ShareButton from '../design/ShareButton.astro';
 import PdfLink from './PdfLink.astro';
+import H1 from '../design/H1.astro';
 
 interface Props<T extends StandaloneCollections> {
   collection: T;
@@ -52,7 +53,7 @@ const canonicalUrl = await getCanonicalUrlFn(collection)(
       <span class="german-title ltr">{entry.data.germanTitle}</span>
     )
   }
-  <h1>{entry.data.title}</h1>
+  <H1>{entry.data.title}</H1>
   <ContentMeta entry={entry} />
 </hgroup>
 

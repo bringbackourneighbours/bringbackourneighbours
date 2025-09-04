@@ -7,6 +7,8 @@ import { useUiTranslation } from '../util/use-ui-translation';
 import LanguageChip from './LanguageChip.astro';
 import Logo from './Logo.astro';
 import NoteMachineTranslation from '../components/NoteMachineTranslation.astro';
+import H1 from './H1.astro';
+import H2 from './H2.astro';
 
 interface Props {
   entry: CollectionEntry<StandaloneCollections>;
@@ -35,10 +37,6 @@ const { entry, pagewidth, pagemargin } = Astro.props;
     hgroup {
       margin-block-start: 20vh;
       font-size: 18px;
-
-      h1 {
-        line-height: 1em;
-      }
     }
 
     footer {
@@ -88,7 +86,7 @@ const { entry, pagewidth, pagemargin } = Astro.props;
   </aside>
   <hgroup>
     {entry.data.lang != 'de' && <h6 class="ltr">{entry.data.germanTitle}</h6>}
-    <h1>{entry.data.title}</h1>
+    <H1>{entry.data.title}</H1>
   </hgroup>
 
   <br />
@@ -105,7 +103,7 @@ const { entry, pagewidth, pagemargin } = Astro.props;
       </div>
 
       <div class="logo-line-titles">
-        <h2 class="title text-fit ltr">
+        <H2 class="title text-fit ltr">
           <span
             ><span>{useUiTranslation('meta.title', entry.data.lang)}</span
             ></span
@@ -113,7 +111,7 @@ const { entry, pagewidth, pagemargin } = Astro.props;
           <span aria-hidden="true"
             >{useUiTranslation('meta.title', entry.data.lang)}</span
           >
-        </h2>
+        </H2>
         <p class="sub-title text-fit">
           <span
             ><span>{useUiTranslation('meta.subtitle', entry.data.lang)}</span
