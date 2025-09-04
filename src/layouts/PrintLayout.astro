@@ -18,6 +18,7 @@ import './theme-print.css';
   lang={lang}
   seo=""
   format={Astro.locals.isFlyer ? 'a6' : 'a4'}
+  allowIndexing={false}
 >
   <slot />
 </BaseLayout>

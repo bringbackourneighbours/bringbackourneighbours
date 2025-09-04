@@ -16,6 +16,7 @@ interface Props {
     url: string;
   }>;
   format?: 'web' | 'a4' | 'a6';
+  allowIndexing: boolean;
 }
 
 const {
@@ -25,6 +26,7 @@ const {
   canonicalSlug,
   translationSlugs,
   format,
+  allowIndexing,
 } = Astro.props;
 ---
 
@@ -35,6 +37,7 @@ const {
     canonicalSlug={canonicalSlug}
     translationSlugs={translationSlugs}
     seo={seo}
+    allowIndexing={allowIndexing}
   >
     <BaseFontsLinkFirago />
   </BaseHead>
