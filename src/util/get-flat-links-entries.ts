@@ -1,4 +1,4 @@
-import { getCollection, type CollectionEntry } from 'astro:content';
+import { type CollectionEntry, getCollection } from 'astro:content';
 import {
   getStaticPathsForFlyers,
   getStaticPathsForKits,
@@ -18,6 +18,7 @@ export interface LinkData {
   type?: LinkTypes;
   identifier?: string;
   lang?: string;
+  filePath?: string;
 }
 
 export const getFlatLinksEntries = async (): Promise<LinkData[]> => {
@@ -29,13 +30,18 @@ export const getFlatLinksEntries = async (): Promise<LinkData[]> => {
   ];
 };
 
-const getAllExternalLinksEntries = async (): Promise<LinkData[]> => {
+export const getAllExternalLinksEntries = async (): Promise<LinkData[]> => {
   const linkEntries: CollectionEntry<'links'>[] = await getCollection('links');
   return linkEntries.reduce((accumulator, currentValue) => {
+    // console.log('reduce', currentValue);
     return [
       ...accumulator,
       ...(Object.values(currentValue.data)
         .filter((value) => value.slug && value.url)
+        .map((value) => ({
+          ...value,
+          filePath: currentValue.filePath,
+        }))
         .flat() as LinkData[]),
     ];
   }, [] as LinkData[]);

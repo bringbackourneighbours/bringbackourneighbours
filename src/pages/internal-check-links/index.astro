@@ -1,5 +1,8 @@
 ---
 import BaseLayout from '../../layouts/BaseLayout.astro';
+import { getAllExternalLinksEntries } from '../../util/get-flat-links-entries';
+
+const linkEntries = await getAllExternalLinksEntries();
 ---
 
 <BaseLayout
@@ -7,4 +10,14 @@ import BaseLayout from '../../layouts/BaseLayout.astro';
   seo=""
   lang="de"
   allowIndexing={false}
-/>
+>
+  <ul>
+    {
+      linkEntries.map((entry) => (
+        <li>
+          {entry.filePath} : {entry.url}
+        </li>
+      ))
+    }
+  </ul>
+</BaseLayout>
