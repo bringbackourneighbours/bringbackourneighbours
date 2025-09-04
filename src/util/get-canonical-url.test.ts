@@ -90,7 +90,7 @@ describe('get-canonical-url', async () => {
 
   describe('getCanonicalUrlForPath', async () => {
     it('returns canonical url when entry exists', async () => {
-      const result = await getCanonicalUrlForPath('de', 'abc');
+      const result = getCanonicalUrlForPath('de', 'abc');
       expect(result).toBe('https://example.com/de/abc');
       expect(getAbsoluteUrl).toHaveBeenCalledWith('de/abc');
     });

@@ -8,13 +8,18 @@ import type { LanguagesValue } from './languages.ts';
 import type { StandaloneCollections } from './get-static-paths.ts';
 
 async function redirectNotTranslated<T extends StandaloneCollections>(
-  collection: T,
   getCanonicalUrlFn: (
     lang: LanguagesValue,
     identifier: string,
   ) => Promise<string | undefined>,
   entry?: CollectionEntry<T>,
-): Promise<{ url: string; status: number } | false> {
+): Promise<
+  | {
+      url: string;
+      status: number;
+    }
+  | false
+> {
   if (entry?.data?.fallback) {
     const fallbackUrl = await getCanonicalUrlFn(
       entry.data.fallback,
@@ -33,12 +38,12 @@ async function redirectNotTranslated<T extends StandaloneCollections>(
 
 export const redirectNotTranslatedForFlyer = async (
   entry?: CollectionEntry<'flyers'>,
-) => redirectNotTranslated('flyers', getCanonicalUrlToFlyer, entry);
+) => redirectNotTranslated(getCanonicalUrlToFlyer, entry);
 
 export const redirectNotTranslatedForKit = async (
   entry?: CollectionEntry<'kits'>,
-) => redirectNotTranslated('kits', getCanonicalUrlToKit, entry);
+) => redirectNotTranslated(getCanonicalUrlToKit, entry);
 
 export const redirectNotTranslatedForPage = async (
   entry?: CollectionEntry<'pages'>,
-) => redirectNotTranslated('pages', getCanonicalUrlToPage, entry);
+) => redirectNotTranslated(getCanonicalUrlToPage, entry);
