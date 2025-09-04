@@ -14,6 +14,7 @@ export interface LinkData {
   type?: LinkTypes;
   identifier?: string;
   lang?: string;
+  filePath?: string;
 }
 
 export const getFlatLinksEntries = async (): Promise<LinkData[]> => {
@@ -25,7 +26,7 @@ export const getFlatLinksEntries = async (): Promise<LinkData[]> => {
   ];
 };
 
-const getAllExternalLinksEntries = async (): Promise<LinkData[]> => {
+export const getAllExternalLinksEntries = async (): Promise<LinkData[]> => {
   // TODO: refactor so avoid dependency to astro:content
   const linkEntries: CollectionEntry<'links'>[] = await getCollection('links');
   return linkEntries.reduce((accumulator, currentValue) => {
@@ -33,6 +34,10 @@ const getAllExternalLinksEntries = async (): Promise<LinkData[]> => {
       ...accumulator,
       ...(Object.values(currentValue.data)
         .filter((value) => value.slug && value.url)
+        .map((value) => ({
+          ...value,
+          filePath: currentValue.filePath,
+        }))
         .flat() as LinkData[]),
     ];
   }, [] as LinkData[]);

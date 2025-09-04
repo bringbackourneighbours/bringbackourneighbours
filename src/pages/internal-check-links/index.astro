@@ -1,5 +1,13 @@
 ---
 import BaseLayout from '../../layouts/BaseLayout.astro';
+import { getAllExternalLinksEntries } from '../../util/get-flat-links-entries';
+import Link from '../../components/design/Link.astro';
+import { linkUrl } from '../../../astro.config.mjs';
+
+const linkEntries = await getAllExternalLinksEntries();
+
+// TODO: check adresses.ulr
+// also internal link?
 ---
 
 <BaseLayout
@@ -7,4 +15,39 @@ import BaseLayout from '../../layouts/BaseLayout.astro';
   seo=""
   lang="de"
   allowIndexing={false}
-/>
+>
+  <h1>BBON Short Links</h1>
+  Auf all diese Links verweisen wir mit der Kurz-Url <code>{linkUrl}</code>. Um
+  sie alle zu checken kann man das tool <a
+    href="https://github.com/JustinBeckwith/linkinator">linkinator</a
+  > nutzen:
+
+  <pre>
+  ❯ npx linkinator {Astro.site}internal-check-links
+  </pre>
+
+  <h2>Externe Links</h2>
+
+  <table>
+    <thead>
+      <tr>
+        <th>slug</th>
+        <th>filePath</th>
+        <th>url</th>
+      </tr>
+    </thead>
+    <tbody>
+      {
+        linkEntries.map((entry) => (
+          <tr>
+            <td>{entry.slug}</td>
+            <td>{entry.filePath}</td>
+            <td>
+              <Link href={entry.url}> {entry.url}</Link>
+            </td>
+          </tr>
+        ))
+      }
+    </tbody>
+  </table>
+</BaseLayout>
