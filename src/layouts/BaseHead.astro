@@ -12,6 +12,7 @@ interface Props {
     lang: LanguagesValue;
     url: string;
   }>;
+  allowIndexing: boolean;
 }
 
 const {
@@ -20,6 +21,7 @@ const {
   canonicalSlug,
   translationSlugs,
   seo = await useUiTranslation('meta.infosAgainstDeportation', lang),
+  allowIndexing = true,
 } = Astro.props;
 
 import './theme-color.css';
@@ -28,6 +30,14 @@ import './typography.css';
 
 <head>
   <meta charset="utf-8" />
+  {
+    !allowIndexing && (
+      <meta
+        name="robots"
+        content="noindex"
+      />
+    )
+  }
   <link
     rel="icon"
     type="image/svg+xml"

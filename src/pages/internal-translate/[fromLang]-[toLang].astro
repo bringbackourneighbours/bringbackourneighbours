@@ -5,7 +5,7 @@ import {
   UnSupportedLanguages,
 } from '../../model/languages';
 
-import PrintLayout from '../../layouts/PrintLayout.astro';
+import BaseLayout from '../../layouts/BaseLayout.astro';
 import CopyButton from '../../components/design/CopyButton.astro';
 import PreviewTranslation from '../../components/PreviewTranslation.astro';
 import { useUiTranslation } from '../../util/use-ui-translation';
@@ -35,9 +35,11 @@ const { fromLang, toLang } = Astro.params;
 const allPaths = await getStaticPaths();
 ---
 
-<PrintLayout
+<BaseLayout
   lang={toLang}
   title={`INTERNAL TRANSLATION ${fromLang} => ${toLang}`}
+  seo=""
+  allowIndexing={false}
 >
   <h1>
     BBON Übersetzung {useUiTranslation(`languages.${fromLang}`, 'de')}
@@ -78,4 +80,4 @@ const allPaths = await getStaticPaths();
       ))
     }
   </ul>
-</PrintLayout>
+</BaseLayout>
