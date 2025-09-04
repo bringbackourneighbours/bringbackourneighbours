@@ -46,7 +46,7 @@ export const GET: APIRoute<LangProp> = async ({ params }) => {
 
   const newPdfBytes = await layoutAllFlyerInOnePdf(allFlyerPathsInLang);
 
-  return new Response(newPdfBytes, {
+  return new Response(newPdfBytes as BodyInit, {
     status: 200,
     headers: {
       'Content-Type': 'application/pdf',

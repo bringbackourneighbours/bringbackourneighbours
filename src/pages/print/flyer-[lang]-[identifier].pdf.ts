@@ -21,7 +21,7 @@ export async function GET({
   params,
 }: APIContext<StandaloneContentProps<'flyers'>>) {
   const pageUrl = `${site?.origin}/internal-print/flyer-${params.lang}-${params.identifier}`;
-  return new Response(await printHtmlToPdf(pageUrl), {
+  return new Response((await printHtmlToPdf(pageUrl)) as BodyInit, {
     status: 200,
     headers: {
       'Content-Type': 'application/pdf',
