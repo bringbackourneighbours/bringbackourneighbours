@@ -22,7 +22,7 @@ export async function GET({
 }: APIContext<StandaloneContentProps<'kits'>>) {
   const pageUrl = `${site?.origin}/internal-print/kit-${params.lang}-${params.identifier}`;
 
-  return new Response(await printHtmlToPdf(pageUrl), {
+  return new Response((await printHtmlToPdf(pageUrl)) as BodyInit, {
     status: 200,
     headers: {
       'Content-Type': 'application/pdf',
