@@ -1,7 +1,8 @@
 {
   "extends": "astro/tsconfigs/strict",
   "compilerOptions": {
-    "types": ["@testing-library/jest-dom", "jsdom"]
+    "types": ["vitest/jsdom", "@testing-library/jest-dom", "jsdom"]
   },
-  "include": ["./vitest.setup.ts"]
+  "include": [".astro/types.d.ts", "**/*", "./vitest.setup.ts"],
+  "exclude": ["dist"]
 }
