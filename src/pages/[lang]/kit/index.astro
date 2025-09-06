@@ -6,12 +6,12 @@ import {
 } from '../../../util/languages';
 import { useUiTranslation } from '../../../util/use-ui-translation';
 import OverviewLayout from '../../../layouts/OverviewLayout.astro';
-import Stack from '../../../design/Stack.astro';
-import CardLink from '../../../design/CardLink.astro';
+import Stack from '../../../components/design/Stack.astro';
+import CardLink from '../../../components/design/CardLink.astro';
 import { getCanonicalUrlToKit } from '../../../util/get-canonical-url';
 import MoreInfoStack from '../../../components/MoreInfoStack.astro';
 import { getTranslationsUrlsForPath } from '../../../util/get-translations-url';
-import LanguageSwitcher from '../../../design/LanguageSwitcher.astro';
+import LanguageSwitcher from '../../../components/design/LanguageSwitcher.astro';
 
 interface Props {
   lang: LanguagesValue;

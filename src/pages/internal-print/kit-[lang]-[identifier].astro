@@ -7,11 +7,11 @@ import { getCanonicalUrlToKit } from '../../util/get-canonical-url';
 import { useUiTranslation } from '../../util/use-ui-translation';
 
 import PrintLayout from '../../layouts/PrintLayout.astro';
-import PrinterPage from '../../design/PrinterPage.astro';
-import PrintCover from '../../design/PrintCover.astro';
-import PrintEndFooter from '../../design/PrintEndFooter.astro';
+import PrinterPage from '../../components/design/PrinterPage.astro';
+import PrintCover from '../../components/design/PrintCover.astro';
+import PrintEndFooter from '../../components/design/PrintEndFooter.astro';
 import Block from '../../components/markdown/Block.astro';
-import TableOfContents from '../../design/TableOfContents.astro';
+import TableOfContents from '../../components/design/TableOfContents.astro';
 
 interface Props {
   entry: CollectionEntry<'kits'>;

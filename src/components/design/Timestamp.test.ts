@@ -1,8 +1,8 @@
 import { describe, expect, it } from 'vitest';
-import { Languages } from '../util/languages';
-import { render } from '../testing/render.ts';
+import { Languages } from '../../util/languages.ts';
+import { render } from '../../testing/render.ts';
 
-import '../testing/with-mocked-translation.ts';
+import '../../testing/with-mocked-translation.ts';
 
 import Timestamp from './Timestamp.astro';
 
