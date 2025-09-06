@@ -11,13 +11,16 @@ import { getPrintDistDir } from '../util/layout-all-flyer-in-one-pdf.ts';
 export async function printPdfsImpl(
   distDirUrl: URL,
   logger: AstroIntegrationLogger,
-  pages: { pathname: string }[],
+  pages: {
+    pathname: string;
+  }[],
 ): Promise<void> {
   const pdfDistDir = getPrintDistDir(distDirUrl.pathname);
   logger.info(`Printing all the pages to ${pdfDistDir} as PDF`);
 
   await mkdir(pdfDistDir, { recursive: true });
 
+  // TODO: there is a new api for it https://docs.astro.build/en/reference/programmatic-reference/#preview
   const previewProcess = exec('npm run preview');
   previewProcess.on('error', (error) => {
     logger.debug(`Preview Process error with ${error}`);
