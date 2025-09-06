@@ -1,0 +1,77 @@
+import { vi } from 'vitest';
+import type { InferEntrySchema } from 'astro:content';
+
+const uiTranslationMock = (lang: string): { data: InferEntrySchema<'ui'> } => ({
+  data: {
+    meta: {
+      allFlyers: `${lang}-allFlyers`,
+      allKits: `${lang}-allKits`,
+      contacts: `${lang}-contacts`,
+      copiedContentToClipboard: `${lang}-copiedContentToClipboard`,
+      copy: `${lang}-copy`,
+      downloadAllPdf: `${lang}-downloadAllPdf`,
+      downloadPdf: `${lang}-downloadPdf`,
+      emergencyKit: `${lang}-emergencyKit`,
+      findAlsoAsPage: `${lang}-findAlsoAsPage`,
+      findAlsoInFlyer: `${lang}-findAlsoInFlyer`,
+      forms: `${lang}-forms`,
+      home: `${lang}-home`,
+      imprint: `${lang}-imprint`,
+      infosAgainstDeportation: `${lang}-infosAgainstDeportation`,
+      machineTranslation: `${lang}-machineTranslation`,
+      material: `${lang}-material`,
+      moreInfo: `${lang}-moreInfo`,
+      moreInfoAbout: `${lang}-moreInfoAbout`,
+      notFound: `${lang}-notFound`,
+      notFoundText: `${lang}-notFoundText`,
+      professionals: `${lang}-professionals`,
+      publicity: `${lang}-publicity`,
+      share: `${lang}-share`,
+      sharedLinkToClipboard: `${lang}-sharedLinkToClipboard`,
+      subtitle: `${lang}-subtitle`,
+      supporters: `${lang}-supporters`,
+      title: `${lang}-title`,
+      updated: `${lang}-updated`,
+    },
+    languages: {
+      ar: `${lang}-ar`,
+      bs: `${lang}-bs`,
+      ckb: `${lang}-ckb`,
+      de: `${lang}-de`,
+      en: `${lang}-en`,
+      es: `${lang}-es`,
+      fa: `${lang}-fa`,
+      fr: `${lang}-fr`,
+      ka: `${lang}-ka`,
+      ku: `${lang}-ku`,
+      mk: `${lang}-mk`,
+      ps: `${lang}-ps`,
+      ru: `${lang}-ru`,
+      so: `${lang}-so`,
+      sq: `${lang}-sq`,
+      sr: `${lang}-sr`,
+      ti: `${lang}-ti`,
+      tr: `${lang}-tr`,
+      uk: `${lang}-uk`,
+      ur: `${lang}-ur`,
+      vi: `${lang}-vi`,
+      findTranslation: `${lang}-findTranslation`,
+    },
+    shortLink: {
+      availableInOtherLanguages: `${lang}-availableInOtherLanguages`,
+      onlyAvailableInOtherLanguages: `${lang}-onlyAvailableInOtherLanguages`,
+      onlyAvailableOnlineInOtherLanguages: `${lang}-onlyAvailableOnlineInOtherLanguages`,
+    },
+    wizard: {
+      isThereDangerQuestion: `${lang}-isThereDangerQuestion`,
+      areYouInDangerQuestion: `${lang}-areYouInDangerQuestion`,
+      someoneElseInDangerQuestion: `${lang}-someoneElseInDangerQuestion`,
+    },
+  },
+});
+
+vi.mock('astro:content', () => ({
+  getEntry: vi.fn((collection, lang) =>
+    Promise.resolve(uiTranslationMock(lang)),
+  ),
+}));
