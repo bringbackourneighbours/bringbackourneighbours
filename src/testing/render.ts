@@ -8,8 +8,6 @@ export async function render(
   component: AstroComponentFactory,
   options?: ContainerRenderOptions,
 ) {
-  // withMockedTranslation();
-
   const container = await AstroContainer.create();
   const renderedString = await container.renderToString(component, options);
   document.body.innerHTML = renderedString;
