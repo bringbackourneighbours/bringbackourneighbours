@@ -2,8 +2,17 @@
 import BaseLayout from '../../layouts/BaseLayout.astro';
 import { getAllExternalLinksEntries } from '../../util/get-flat-links-entries';
 
-const linkEntries = await getAllExternalLinksEntries();
+const linkEntries = (await getAllExternalLinksEntries())
+.filter(
+  (entry) =>
+    entry.filePath ==
+    'src/content/links/noboarderassembly_resistance.yml',
+)
+
+console.log(linkEntries);
 ---
+
+<script src="./check-links.ts"></script>
 
 <BaseLayout
   title="INTERNAL LINK CHECK"
@@ -11,13 +20,28 @@ const linkEntries = await getAllExternalLinksEntries();
   lang="de"
   allowIndexing={false}
 >
+  <pre>
+    scan the links manually with <code>npx linkinator http://localhost:4321/internal-check-links --verbosity DEBUG</code>
+
+    but it does not work well: the redirects are not considered an error.
+  </pre>
   <ul>
     {
-      linkEntries.map((entry) => (
-        <li>
-          {entry.filePath} : {entry.url}
-        </li>
-      ))
+      linkEntries
+
+        .map((entry) => (
+          <li>
+            <a
+              href={entry.url}
+              data-url={entry.url}
+              data-filePath={entry.filePath}
+              data-slug={entry.slug}
+              data-type={entry.type}
+            >
+              {entry.slug} in {entry.filePath}
+            </a>
+          </li>
+        ))
     }
   </ul>
 </BaseLayout>
