@@ -3,9 +3,9 @@ import { type LanguagesValue } from '../../util/languages';
 import { getEntry } from 'astro:content';
 import { getLanguageDirection } from '../../util/get-language-direction';
 
-import Link from '../../design/Link.astro';
+import Link from '../design/Link.astro';
 import ExternalShortLink from './ExternalShortLink.astro';
-import NotFoundError from '../../design/NotFoundError.astro';
+import NotFoundError from '../design/NotFoundError.astro';
 
 export interface Props {
   identifier: string;
