@@ -11,12 +11,13 @@ import H1 from './H1.astro';
 import H2 from './H2.astro';
 
 interface Props {
+  germanTitle: string;
   entry: CollectionEntry<StandaloneCollections>;
   pagewidth: string;
   pagemargin: string;
 }
 
-const { entry, pagewidth, pagemargin } = Astro.props;
+const { germanTitle, entry, pagewidth, pagemargin } = Astro.props;
 ---
 
 <style define:vars={{ pagewidth, pagemargin }}>
@@ -85,7 +86,7 @@ const { entry, pagewidth, pagemargin } = Astro.props;
     />
   </aside>
   <hgroup>
-    {entry.data.lang != 'de' && <h6 class="ltr">{entry.data.germanTitle}</h6>}
+    {entry.data.lang != 'de' && <h6 class="ltr">{germanTitle}</h6>}
     <H1>{entry.data.title}</H1>
   </hgroup>
 
