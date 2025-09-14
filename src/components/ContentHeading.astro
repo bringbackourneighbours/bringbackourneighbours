@@ -2,7 +2,6 @@
 import type { CollectionEntry } from 'astro:content';
 import type { StandaloneCollections } from '../util/get-static-paths';
 import { Languages } from '../util/languages';
-import { getCanonicalUrlFn } from '../util/get-canonical-url';
 
 import ContentMeta from './design/ContentMeta.astro';
 import CopyButton from './design/CopyButton.astro';
@@ -15,6 +14,8 @@ interface Props<T extends StandaloneCollections> {
   entry: CollectionEntry<T>;
   showCopyButton?: boolean;
   showDownloadButton?: boolean;
+  germanTitle: string;
+  canonicalUrl: string;
 }
 
 const {
@@ -22,12 +23,9 @@ const {
   collection,
   showCopyButton = true,
   showDownloadButton = collection !== 'pages',
+  germanTitle,
+  canonicalUrl,
 } = Astro.props;
-
-const canonicalUrl = await getCanonicalUrlFn(collection)(
-  entry.data.lang,
-  entry.data.identifier,
-);
 ---
 
 <style>
@@ -50,7 +48,7 @@ const canonicalUrl = await getCanonicalUrlFn(collection)(
 <hgroup>
   {
     entry.data.lang !== `${Languages.GERMAN}` && (
-      <span class="german-title ltr">{entry.data.germanTitle}</span>
+      <span class="german-title ltr">{germanTitle}</span>
     )
   }
   <H1>{entry.data.title}</H1>

@@ -7,7 +7,6 @@ describe('PrintCover', () => {
   it('should show all the data', async () => {
     const { getByRole, getByText, getAllByText } = await render(PrintCover, {
       props: {
-        collection: 'flyer',
         entry: {
           data: {
             identifier: 'mock',
@@ -19,6 +18,8 @@ describe('PrintCover', () => {
           },
         },
         germanTitle: 'germanTitle',
+        pagewidth: '105mm',
+        pagemargin: '10mm',
       },
     });
 
@@ -30,6 +31,9 @@ describe('PrintCover', () => {
     expect(
       getAllByText('Against the Saxonian deportation policy'),
     ).toBeTruthy();
+
+    expect(getByText('english')).toBeInTheDocument();
+    expect(getByText('Englisch')).toBeInTheDocument();
 
     expect(getByText(/translated using AI/)).toBeInTheDocument();
     expect(getByText(/info@bringbackourneighbours.de/)).toBeInTheDocument();
