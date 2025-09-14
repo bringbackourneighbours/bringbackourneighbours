@@ -4,6 +4,8 @@ import { type CollectionEntry } from 'astro:content';
 import { getStaticPathsForFlyers } from '../../util/get-static-paths';
 import { getTranslationsUrlsForFlyer } from '../../util/get-translations-url';
 import { getCanonicalUrlToFlyer } from '../../util/get-canonical-url';
+import { useContentData } from '../../util/use-content-data';
+import { Languages } from '../../util/languages';
 
 import Block from '../../components/markdown/Block.astro';
 import PrintLayout from '../../layouts/PrintLayout.astro';
@@ -28,6 +30,10 @@ const translationSlugs = await getTranslationsUrlsForFlyer(
 
 const canonicalUrl =
   (await getCanonicalUrlToFlyer(entry.data.lang, entry.data.identifier)) || '';
+
+const germanTitle =
+  (await useContentData('flyers', entry.data.identifier, Languages.GERMAN))
+    ?.title ?? '';
 ---
 
 <style>
@@ -63,6 +69,7 @@ const canonicalUrl =
 >
   <PrinterPage>
     <PrintCover
+      germanTitle={germanTitle}
       entry={entry}
       pagewidth="105mm"
       pagemargin="5mm"

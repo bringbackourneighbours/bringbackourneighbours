@@ -5,6 +5,8 @@ import { getStaticPathsForKits } from '../../util/get-static-paths';
 import { getTranslationsUrlsForKit } from '../../util/get-translations-url';
 import { getCanonicalUrlToKit } from '../../util/get-canonical-url';
 import { useUiTranslation } from '../../util/use-ui-translation';
+import { useContentData } from '../../util/use-content-data';
+import { Languages } from '../../util/languages';
 
 import PrintLayout from '../../layouts/PrintLayout.astro';
 import PrinterPage from '../../components/design/PrinterPage.astro';
@@ -31,6 +33,9 @@ const translationSlugs = await getTranslationsUrlsForKit(
 // FIXME: this should be the SHORTURL and not the canonical
 const canonicalUrl =
   (await getCanonicalUrlToKit(entry.data.lang, entry.data.identifier)) || '';
+const germanTitle =
+  (await useContentData('kits', entry.data.identifier, Languages.GERMAN))
+    ?.title || '';
 ---
 
 <style>
@@ -54,6 +59,7 @@ const canonicalUrl =
 >
   <PrinterPage>
     <PrintCover
+      germanTitle={germanTitle}
       entry={entry}
       pagewidth="210mm"
       pagemargin="15mm"
