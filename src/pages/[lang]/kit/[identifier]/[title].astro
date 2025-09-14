@@ -11,6 +11,8 @@ import { getCanonicalUrlToKit } from '../../../../util/get-canonical-url';
 import { getStaticPathsForKits } from '../../../../util/get-static-paths';
 import { getTranslationsUrlsForKit } from '../../../../util/get-translations-url';
 import { redirectNotTranslatedForKit } from '../../../../util/redirect-not-found-or-not-translated';
+import { useContentData } from '../../../../util/use-content-data';
+import { Languages } from '../../../../util/languages';
 
 interface Props {
   entry: CollectionEntry<'kits'>;
@@ -31,16 +33,20 @@ const translationSlugs = await getTranslationsUrlsForKit(
   entry.data.lang,
   entry.data.identifier,
 );
+
+const canonicalUrl =
+  (await getCanonicalUrlToKit(entry.data.lang, entry.data.identifier)) || '';
+
+const germanTitle =
+  (await useContentData('kits', entry.data.identifier, Languages.GERMAN))
+    ?.title || '';
 ---
 
 <ContentLayout
   lang={entry.data.lang}
   title={entry.data.title}
   seo={entry.data.seo}
-  canonicalSlug={await getCanonicalUrlToKit(
-    entry.data.lang,
-    entry.data.identifier,
-  )}
+  canonicalSlug={canonicalUrl}
   translationSlugs={translationSlugs}
 >
   <LanguageSwitcher
@@ -50,6 +56,8 @@ const translationSlugs = await getTranslationsUrlsForKit(
   <ContentHeading
     entry={entry}
     collection="kits"
+    germanTitle={germanTitle}
+    canonicalUrl={canonicalUrl}
   >
     <TableOfContents rendered={entry.render()} />
 

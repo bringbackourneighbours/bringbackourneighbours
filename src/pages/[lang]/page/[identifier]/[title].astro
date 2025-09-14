@@ -11,6 +11,8 @@ import { getCanonicalUrlToPage } from '../../../../util/get-canonical-url';
 import { getStaticPathsForPages } from '../../../../util/get-static-paths';
 import { getTranslationsUrlsForPages } from '../../../../util/get-translations-url';
 import { redirectNotTranslatedForPage } from '../../../../util/redirect-not-found-or-not-translated';
+import { useContentData } from '../../../../util/use-content-data';
+import { Languages } from '../../../../util/languages';
 
 interface Props {
   entry: CollectionEntry<'pages'>;
@@ -32,16 +34,20 @@ const translationSlugs = await getTranslationsUrlsForPages(
   entry.data.lang,
   entry.data.identifier,
 );
+
+const canonicalUrl =
+  (await getCanonicalUrlToPage(entry.data.lang, entry.data.identifier)) || '';
+
+const germanTitle =
+  (await useContentData('pages', entry.data.identifier, Languages.GERMAN))
+    ?.title || '';
 ---
 
 <ContentLayout
   lang={entry.data.lang}
   title={entry.data.title}
   seo={entry.data.seo}
-  canonicalSlug={await getCanonicalUrlToPage(
-    entry.data.lang,
-    entry.data.identifier,
-  )}
+  canonicalSlug={canonicalUrl}
   translationSlugs={translationSlugs}
 >
   <LanguageSwitcher
@@ -51,6 +57,8 @@ const translationSlugs = await getTranslationsUrlsForPages(
   <ContentHeading
     entry={entry}
     collection="pages"
+    germanTitle={germanTitle}
+    canonicalUrl={canonicalUrl}
   />
   <TableOfContents rendered={entry.render()} />
 
