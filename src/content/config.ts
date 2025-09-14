@@ -1,4 +1,4 @@
-import { z, defineCollection } from 'astro:content';
+import { defineCollection, z } from 'astro:content';
 import { SupportedLanguages, UnSupportedLanguages } from '../util/languages.ts';
 import { LinkTypes } from '../util/link-icon-type.ts';
 
@@ -9,19 +9,14 @@ const translatableSchema = {
   machineTranslation: z.boolean().optional(),
 };
 
-const i18nUrlSchema = {
-  ...translatableSchema,
-  title: z.string(),
-  seo: z.string(),
-};
-
 /**
- * for flyer and kits
+ * for flyer, kits and pages
  */
 const standaloneContentSchema = z.object({
-  germanTitle: z.string(),
+  ...translatableSchema,
   lastChecked: z.date(),
-  ...i18nUrlSchema,
+  title: z.string(),
+  seo: z.string(),
 });
 
 const addressesCollection = defineCollection({
@@ -29,13 +24,11 @@ const addressesCollection = defineCollection({
   schema: z.object({
     identifier: z.string(),
     lastChecked: z.date(),
-    name: z.string(),
-    // location
+    name: z.string(), // location
     streetLine: z.string().optional(),
     additional: z.string().optional(),
     zip: z.string().optional(),
-    city: z.string().optional(),
-    // contact
+    city: z.string().optional(), // contact
     mail: z.string().optional(),
     mails: z.array(z.string()).optional(),
     phone: z.string().optional(),
