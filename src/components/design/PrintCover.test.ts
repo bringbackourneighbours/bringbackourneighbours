@@ -2,6 +2,8 @@ import { describe, expect, it } from 'vitest';
 import { render } from '../../testing/render.ts';
 
 import PrintCover from './PrintCover.astro';
+import { Languages } from '../../util/languages.ts';
+import type { CollectionEntry } from 'astro:content';
 
 describe('PrintCover', () => {
   it('should show all the data', async () => {
@@ -10,13 +12,13 @@ describe('PrintCover', () => {
         entry: {
           data: {
             identifier: 'mock',
-            lang: 'en',
+            lang: Languages.ENGLISH,
             lastChecked: new Date('2024-03-30'),
             title: 'mockTitle',
             seo: 'mockSeo',
             machineTranslation: true,
           },
-        },
+        } as CollectionEntry<'flyers'>,
         germanTitle: 'germanTitle',
         pagewidth: '105mm',
         pagemargin: '10mm',
@@ -43,17 +45,16 @@ describe('PrintCover', () => {
     const { getByRole, getByText, queryByRole, queryByText, getAllByText } =
       await render(PrintCover, {
         props: {
-          collection: 'kit',
           entry: {
             data: {
               identifier: 'mock',
-              lang: 'de',
+              lang: Languages.GERMAN,
               lastChecked: new Date('2024-03-30'),
               title: 'mockTitle',
               seo: 'mockSeo',
               machineTranslation: false,
             },
-          },
+          } as CollectionEntry<'kits'>,
           germanTitle: 'germanTitle',
         },
       });

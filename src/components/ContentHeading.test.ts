@@ -4,6 +4,8 @@ import { render } from '../testing/render.ts';
 import '../testing/with-mocked-translation.ts';
 
 import ContentHeading from './ContentHeading.astro';
+import { Languages } from '../util/languages.ts';
+import type { CollectionEntry } from 'astro:content';
 
 describe('ContentHeading', () => {
   it('should show heading for english flyer', async () => {
@@ -13,13 +15,13 @@ describe('ContentHeading', () => {
         entry: {
           data: {
             identifier: 'mock',
-            lang: 'en',
+            lang: Languages.ENGLISH,
             lastChecked: new Date('2024-03-30'),
             title: 'mockTitle',
             seo: 'mockSeo',
             machineTranslation: true,
           },
-        },
+        } as CollectionEntry<'kits'>,
         germanTitle: 'germanTitle',
       },
       locals: {
@@ -53,13 +55,13 @@ describe('ContentHeading', () => {
         entry: {
           data: {
             identifier: 'mock',
-            lang: 'de',
+            lang: Languages.GERMAN,
             lastChecked: new Date('2024-03-30'),
             title: 'mockTitle',
             seo: 'mockSeo',
             machineTranslation: false,
           },
-        },
+        } as CollectionEntry<'kits'>,
         germanTitle: ' germanTitle',
       },
       locals: {
@@ -93,13 +95,13 @@ describe('ContentHeading', () => {
         entry: {
           data: {
             identifier: 'mock',
-            lang: 'ar',
+            lang: Languages.ARABIC,
             lastChecked: new Date('2024-03-30'),
             title: 'mockTitle',
             seo: 'mockSeo',
             machineTranslation: true,
           },
-        },
+        } as CollectionEntry<'pages'>,
         germanTitle: 'germanTitle',
       },
       locals: {
