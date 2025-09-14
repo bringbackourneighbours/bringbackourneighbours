@@ -1,47 +1,47 @@
 {
   "meta": {
-    "allFlyers": "Hemû broşur",
-    "allKits": "Hemû kîtên acîl",
-    "contacts": "Têkilî bi kesên berpirsiyar û piştgiran re",
-    "copiedContentToClipboard": "Naverok li clipboard hate kopî kirin",
+    "allFlyers": "Hemû belavok",
+    "allKits": "Alavên di dema alikariya pêşîn",
+    "contacts": "Têkiliya bi kesên berpirsiyar û piştgiran re",
+    "copiedContentToClipboard": "Naverok bi panoyê ve hatiye kopîkirin",
     "copy": "Nivîsarê kopî bikin",
     "downloadAllPdf": "Hemî folîyeran wek PDF-êk yek",
-    "downloadPdf": "Wekî PDF dakêşin",
-    "emergencyKit": "Li dijî sirgûnan pakêta lezgîn",
-    "findAlsoAsPage": "Her weha hûn dikarin vê beşê bi ferdî li ser rûpelê bibînin",
-    "findAlsoInFlyer": "Her weha hûn dikarin vê beşê ji hev cuda di belavokê de bibînin",
+    "downloadPdf": "Wekî PDF daxînin",
+    "emergencyKit": "Kîta awarte ya li dijî dersînorkirinê",
+    "findAlsoAsPage": "Her weha hûn dikarin vê beşê bi awayeke cuda li ser rûpelê bibînin",
+    "findAlsoInFlyer": "Her wiha hûn dikarin vê beşê bi awayeke cuda di belavokê de bibînin",
     "forms": "Şablon û formên ji bo çapkirinê",
-    "home": "Rûpelê malê",
+    "home": "Nêrîna bi gelemperî",
     "imprint": "imprint parastina daneyên",
-    "infosAgainstDeportation": "Li vir hûn dikarin bêtir agahdarî bibînin ka hûn dikarin çi bikin da ku pêşî li dersînorkirinê bigirin",
-    "machineTranslation": "Bi kêfxwe, tenê bi zîrekîya zanistî hate wergerandin. Ji kerema xwe alîkarî me bike da agahiyê baştir bikin û e-nameyek binivîsin",
-    "material": "Materyal çap bikin",
+    "infosAgainstDeportation": "Ji bo ku hûn pêşî li dêrsînorkirinê bigirin li vir hûn dikarin bêtir agahiyan bibînin ka hûn dikarin çi bikin",
+    "machineTranslation": "Mixabin, ev agahî tenê bi karanîna AI tê wergerandin. Ji kerema xwe alîkariya me bikin ku em wê baştir bikin û e-nameyek ji me re bişînin: info@bringbackourneighbours.de",
+    "material": "Materyalên ji bo çapkirinê",
     "moreInfo": "Agahiyên bêtir",
-    "moreInfoAbout": "Agahiyên bêtir li ser",
-    "notFound": "Nehat Dîtin",
-    "notFoundText": "Naverok nehat dîtin. Girêdan dibe ku kevn be an jî xeletiyek çapkirinê tê de hebe.",
-    "professionals": "Agahdarî ji bo pisporên xebata civakî",
+    "moreInfoAbout": "Agahiyên bêtir",
+    "notFound": "Nehat Dîtin / Peyda nebû",
+    "notFoundText": "Naverok nehat dîtin. Girêdan dibe ku kevn be an jî xeletiyeke çapkirinê tê de hebe.",
+    "professionals": "Agahiyên ji bo pisporên xebatên civakî",
     "publicity": "Serişteyên ji bo têkiliyên giştî",
-    "share": "par",
-    "sharedLinkToClipboard": "Girêdan li clipboard hate kopî kirin",
-    "subtitle": "Bi hev re li dijî polîtîkaya dersînorkirinê ya Saksonyayê hevgirtin",
+    "share": "dabeşkirin",
+    "sharedLinkToClipboard": "Girêdan bi panoyê ve hate kopî kirin",
+    "subtitle": "Bi hev re li dijî siyaseta dersînorkirinê ya Saksonyayê di nav hestên hevgirtinê de ne.",
     "supporters": "Agahî ji bo alîgirên dilxwaz",
     "title": "Cîranên Me Vegerînin",
-    "updated": "Herî dawî hat nûkirin: "
+    "updated": "Rojanekirina dawî: "
   },
   "shortLink": {
-    "availableInOtherLanguages": "Ev agahî bi zimanên din jî heye",
+    "availableInOtherLanguages": "Ev agahî bi zimanên din jî hene",
     "onlyAvailableInOtherLanguages": "Ev naverok tenê bi zimanên din heye",
-    "onlyAvailableOnlineInOtherLanguages": "Hûn dikarin vê agahiyê di guhertoya webê de bibînin"
+    "onlyAvailableOnlineInOtherLanguages": "Hûn dikarin vê agahiyê li ser Webê de bibînin"
   },
   "languages": {
     "ar": "Erebî",
     "bs": "Bosnayî",
-    "ckb": "Kurdiya Soranî)",
+    "ckb": "Kurdiya (Soranî)",
     "de": "Almanî",
     "en": "Îngilîzî",
     "es": "Îspanyolî",
-    "fa": "Farsi",
+    "fa": "Farisi",
     "fr": "Fransî",
     "ka": "Gurcî",
     "ku": "Kurdî",
@@ -56,11 +56,11 @@
     "uk": "Ûkraynî",
     "vi": "Vîetnamî",
     "ur": "Ûrdûyî",
-    "findTranslation": "Wergera bi kurdî heye"
+    "findTranslation": "Wergera bi Kurdî heye"
   },
   "wizard": {
-    "isThereDangerQuestion": "Hûn an jî kesekî din bi dersînorkirinê tehdît dikin?",
-    "areYouInDangerQuestion": "Hûn bi xwe bi dersînorkirinê tehdît dikin?",
-    "someoneElseInDangerQuestion": "Ma hûn dixwazin piştgirî bidin kesê ku bi dersînorkirinê tê tehdît kirin?"
+    "isThereDangerQuestion": "Hûn an jî kesekî din bi dersînorkirinê re tên tehdît kirin?",
+    "areYouInDangerQuestion": "Gelo hûn jî di bin metirsiya dersînorkirinê de ne?",
+    "someoneElseInDangerQuestion": "Ma hûn dixwazin piştgirî bidin wan kesên ku bi dersînorkirinê tên tehdît kirin?"
   }
 }
