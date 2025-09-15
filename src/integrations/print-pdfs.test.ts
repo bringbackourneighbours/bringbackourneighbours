@@ -34,6 +34,7 @@ vi.mock('node:child_process', () => ({
 // Mock for AstroConfig
 vi.mock('../../astro.config.mjs', () => ({
   default: { site: 'http://localhost:4321/' },
+  previewUrl: 'http://localhost:4321/',
 }));
 // Mock for printHtmlToPdf
 vi.mock('../util/print-html-to-pdf.ts', () => ({

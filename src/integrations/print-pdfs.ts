@@ -3,7 +3,7 @@ import { mkdir, writeFile } from 'node:fs/promises';
 import puppeteer from 'puppeteer';
 import { exec } from 'node:child_process';
 
-import AstroConfig from '../../astro.config.mjs';
+import { previewUrl } from '../../astro.config.mjs';
 
 import { printHtmlToPdf } from '../util/print-html-to-pdf.ts';
 import { getPrintDistDir } from '../util/layout-all-flyer-in-one-pdf.ts';
@@ -40,13 +40,9 @@ export async function printPdfsImpl(
     .map(async (htmlPage) => {
       const pdfOutputFilename = `${htmlPage.pathname.replace('internal-print/', '').replace('/', '.pdf')}`;
       const pdfOutputPath = `${pdfDistDir}/${pdfOutputFilename}`;
-
-      logger.debug(`Printing ${htmlPage.pathname}`);
-
-      const pdfBuffer = await printHtmlToPdf(
-        `${AstroConfig.site!}${htmlPage.pathname}`,
-        browser,
-      );
+      const pageUrl = `${previewUrl}${htmlPage.pathname}`;
+      logger.debug(`Printing ${pageUrl}`);
+      const pdfBuffer = await printHtmlToPdf(pageUrl, browser);
 
       await writeFile(pdfOutputPath, pdfBuffer);
       logger.debug(`Printed ${pdfOutputFilename}`);
