@@ -20,7 +20,7 @@
     "@types/jsdom": "^21.1.7",
     "@types/jsonpath": "^0.2.4",
     "@types/qrcode": "^1.5.5",
-    "astro": "^5.13.5",
+    "astro": "^5.13.7",
     "jsonpath": "^1.1.1",
     "pdf-lib": "^1.17.1",
     "puppeteer": "^24.19.0",
