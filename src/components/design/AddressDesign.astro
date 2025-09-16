@@ -1,0 +1,190 @@
+---
+import { type LanguagesValue } from '../../util/languages';
+import { type CollectionEntry } from 'astro:content';
+import { getLanguageDirection } from '../../util/get-language-direction';
+
+import Link from '../design/Link.astro';
+// FIXME: this breaks the architekture: design should only import other design
+import ExternalShortLink from '../markdown/ExternalShortLink.astro';
+
+export interface Props {
+  entry: CollectionEntry<'addresses'>;
+  lang?: LanguagesValue;
+  showLocation?: boolean;
+  showContact?: boolean;
+  showWeb?: boolean;
+  showBbon?: boolean;
+  showNotes?: boolean;
+}
+
+const isPrintedFlyer = Astro.locals.isPrint && Astro.locals.isFlyer;
+
+const {
+  entry,
+  lang = Astro.locals.lang,
+  showLocation = !isPrintedFlyer,
+  showContact = !isPrintedFlyer,
+  showWeb = true,
+  showBbon = true,
+  showNotes = !isPrintedFlyer,
+} = Astro.props;
+
+const address = entry.data;
+
+const hasLocation =
+  address?.additional || address?.streetLine || address?.zip || address?.city;
+
+const hasContact =
+  address?.phone || address?.phones || address?.mail || address?.mails;
+
+const hasWeb =
+  address?.url ||
+  address?.facebook ||
+  address?.instagram ||
+  address?.telegram ||
+  address?.twitter;
+---
+
+<style>
+  address {
+    margin: var(--bbon-size-spacing) 0;
+    padding: var(--bbon-size-spacing);
+    border: var(--bbon-size-border) solid var(--bbon-color-primary);
+    break-inside: avoid;
+  }
+</style>
+
+<address>
+  <div dir="ltr">
+    <strong>{address?.name}</strong>
+    <br />
+    {
+      showLocation && hasLocation && (
+        <>
+          {address?.additional && (
+            <>
+              {address?.additional}
+              <br />
+            </>
+          )}
+          {address?.streetLine && (
+            <>
+              {address?.streetLine}
+              <br />
+            </>
+          )}
+          {address?.zip && <>{address?.zip + ' '}</>}
+          {address?.city && <>{address?.city}</>}
+          {(address?.zip || address?.city) && (
+            <>
+              <br />
+            </>
+          )}
+        </>
+      )
+    }
+    {
+      showContact && hasContact && (
+        <>
+          {[address?.phone, ...(address?.phones ?? [])].map(
+            (phone) =>
+              phone && (
+                <>
+                  <Link href={`tel:${phone}`}>{phone}</Link>
+                  <br />
+                </>
+              ),
+          )}
+
+          {[address?.mail, ...(address?.mails ?? [])].map((mail) => (
+            <>
+              <Link href={`mailto:${mail}`}>{mail}</Link>
+              <br />
+            </>
+          ))}
+        </>
+      )
+    }
+    {
+      showWeb && hasWeb && (
+        <>
+          {address?.url && (
+            <>
+              <Link
+                href={address?.url}
+                openInNewTab={true}
+              />
+              <br />
+            </>
+          )}
+
+          {address?.facebook && (
+            <>
+              Facebook:
+              <Link
+                href={`https://www.facebook.com/${address?.facebook}`}
+                openInNewTab={true}
+              >
+                @{address?.facebook}
+              </Link>
+              <br />
+            </>
+          )}
+          {address?.instagram && (
+            <>
+              Instagram:
+              <Link
+                href={`https://instagram.com/${address?.instagram}`}
+                openInNewTab={true}
+              >
+                @{address?.instagram}
+              </Link>
+              <br />
+            </>
+          )}
+          {address?.telegram && (
+            <>
+              Telegram:
+              <Link
+                href={`https://t.me/${address?.telegram}`}
+                openInNewTab={true}
+              >
+                @{address?.telegram}
+              </Link>
+              <br />
+            </>
+          )}
+        </>
+      )
+    }
+    {
+      address?.twitter && (
+        <>
+          twitter/X:
+          <Link
+            href={`https://twitter.com/${address?.twitter}`}
+            openInNewTab={true}
+          >
+            @{address?.twitter}
+          </Link>
+          <br />
+        </>
+      )
+    }
+    {
+      showBbon && address?.bbon && (
+        <>
+          <ExternalShortLink identifier={address.bbon} />
+          <br />
+        </>
+      )
+    }
+  </div>
+  {
+    showNotes && address?.translatedNotes?.[lang] && (
+      <div dir={getLanguageDirection(lang)}>
+        {address?.translatedNotes?.[lang]}
+      </div>
+    )
+  }
+</address>

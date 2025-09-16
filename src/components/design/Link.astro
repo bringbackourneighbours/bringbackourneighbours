@@ -17,7 +17,7 @@ const {
 } = Astro.props;
 
 // FIXME Only replace from beginning of string
-const site = Astro.site!.toString();
+const site = Astro.site?.toString() || '';
 const pretty_print = href
   .replace('mailto:', '')
   .replace('https://', '')

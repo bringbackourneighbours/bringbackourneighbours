@@ -1,10 +1,8 @@
 ---
 import { type LanguagesValue } from '../../util/languages';
 import { getEntry } from 'astro:content';
-import { getLanguageDirection } from '../../util/get-language-direction';
 
-import Link from '../design/Link.astro';
-import ExternalShortLink from './ExternalShortLink.astro';
+import AddressDesign from '../design/AddressDesign.astro';
 import NotFoundError from '../design/NotFoundError.astro';
 
 export interface Props {
@@ -17,171 +15,18 @@ export interface Props {
   showNotes?: boolean;
 }
 
-const isPrintedFlyer = Astro.locals.isPrint && Astro.locals.isFlyer;
-
-const {
-  identifier,
-  lang = Astro.locals.lang,
-  showLocation = !isPrintedFlyer,
-  showContact = !isPrintedFlyer,
-  showWeb = true,
-  showBbon = true,
-  showNotes = !isPrintedFlyer,
-} = Astro.props;
-
-// FIXME: this seems needless... but without the type is not working. no idea why
-const getAddress = async (identifier: string) =>
-  await getEntry('addresses', identifier);
-
-const address = (await getAddress(identifier))?.data;
-
-const hasLocation =
-  address?.additional || address?.streetLine || address?.zip || address?.city;
-
-const hasContact =
-  address?.phone || address?.phones || address?.mail || address?.mails;
-
-const hasWeb =
-  address?.url ||
-  address?.facebook ||
-  address?.instagram ||
-  address?.telegram ||
-  address?.twitter;
+const addressEntry = await getEntry('addresses', Astro.props.identifier);
 ---
 
-<style>
-  address {
-    margin: var(--bbon-size-spacing) 0;
-    padding: var(--bbon-size-spacing);
-    border: var(--bbon-size-border) solid var(--bbon-color-primary);
-    break-inside: avoid;
-  }
-</style>
-
 {
-  address ? (
-    <address>
-      <div dir="ltr">
-        <strong>{address?.name}</strong> <br />
-        {showLocation && hasLocation && (
-          <>
-            {address?.additional && (
-              <>
-                {address?.additional}
-                <br />
-              </>
-            )}
-            {address?.streetLine && (
-              <>
-                {address?.streetLine}
-                <br />
-              </>
-            )}
-            {address?.zip && <>{address?.zip + ' '}</>}
-            {address?.city && <>{address?.city}</>}
-            {(address?.zip || address?.city) && (
-              <>
-                <br />
-              </>
-            )}
-          </>
-        )}
-        {showContact && hasContact && (
-          <>
-            {[address?.phone, ...(address?.phones ?? [])].map(
-              (phone) =>
-                phone && (
-                  <>
-                    <Link href={`tel:${phone}`}>{phone}</Link>
-                    <br />
-                  </>
-                ),
-            )}
-
-            {[address?.mail, ...(address?.mails ?? [])].map((mail) => (
-              <>
-                <Link href={`mailto:${mail}`}>{mail}</Link>
-                <br />
-              </>
-            ))}
-          </>
-        )}
-        {showWeb && hasWeb && (
-          <>
-            {address?.url && (
-              <>
-                <Link
-                  href={address?.url}
-                  openInNewTab={true}
-                />
-                <br />
-              </>
-            )}
-
-            {address?.facebook && (
-              <>
-                Facebook:
-                <Link
-                  href={`https://www.facebook.com/${address?.facebook}`}
-                  openInNewTab={true}
-                >
-                  @{address?.facebook}
-                </Link>
-                <br />
-              </>
-            )}
-            {address?.instagram && (
-              <>
-                Instagram:
-                <Link
-                  href={`https://instagram.com/${address?.instagram}`}
-                  openInNewTab={true}
-                >
-                  @{address?.instagram}
-                </Link>
-                <br />
-              </>
-            )}
-            {address?.telegram && (
-              <>
-                Telegram:
-                <Link
-                  href={`https://t.me/${address?.telegram}`}
-                  openInNewTab={true}
-                >
-                  @{address?.telegram}
-                </Link>
-                <br />
-              </>
-            )}
-          </>
-        )}
-        {address?.twitter && (
-          <>
-            twitter/X:
-            <Link
-              href={`https://twitter.com/${address?.twitter}`}
-              openInNewTab={true}
-            >
-              @{address?.twitter}
-            </Link>
-            <br />
-          </>
-        )}
-        {showBbon && address?.bbon && (
-          <>
-            <ExternalShortLink identifier={address.bbon} />
-            <br />
-          </>
-        )}
-      </div>
-      {showNotes && address?.translatedNotes?.[lang] && (
-        <div dir={getLanguageDirection(lang)}>
-          {address?.translatedNotes?.[lang]}
-        </div>
-      )}
-    </address>
+  addressEntry ? (
+    <AddressDesign
+      entry={addressEntry}
+      {...Astro.props}
+    />
   ) : (
-    <NotFoundError context={`address/${identifier}/${lang}`} />
+    <NotFoundError
+      context={`addresses/${Astro.props.identifier}/${Astro.props.lang}`}
+    />
   )
 }
