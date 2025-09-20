@@ -8,11 +8,6 @@ import NotFoundError from '../design/NotFoundError.astro';
 export interface Props {
   identifier: string;
   lang?: LanguagesValue;
-  showLocation?: boolean;
-  showContact?: boolean;
-  showWeb?: boolean;
-  showBbon?: boolean;
-  showNotes?: boolean;
 }
 
 const addressEntry = await getEntry('addresses', Astro.props.identifier);

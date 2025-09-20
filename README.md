@@ -229,10 +229,6 @@ instagram: instagram
 telegram: telegram
 twitter: twitter
 
-# it's possible to a add a bbon ExternalShortLINK to an address
-# in most case the normal url should be prefered, only when the address is too long to type use a link as shortener
-bbon: slug
-
 # you can add   a note on the address. providing some context, explaining what this organisation is doing. only the one in the current language will be shown
 translatedNotes:
   de: 'Nur ein Beispiel'

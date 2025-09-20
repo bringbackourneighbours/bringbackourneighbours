@@ -4,30 +4,15 @@ import { type CollectionEntry } from 'astro:content';
 import { getLanguageDirection } from '../../util/get-language-direction';
 
 import Link from '../design/Link.astro';
-// FIXME: this breaks the architekture: design should only import other design
-import ExternalShortLink from '../markdown/ExternalShortLink.astro';
 
 export interface Props {
   entry: CollectionEntry<'addresses'>;
   lang?: LanguagesValue;
-  showLocation?: boolean;
-  showContact?: boolean;
-  showWeb?: boolean;
-  showBbon?: boolean;
-  showNotes?: boolean;
 }
 
 const isPrintedFlyer = Astro.locals.isPrint && Astro.locals.isFlyer;
 
-const {
-  entry,
-  lang = Astro.locals.lang,
-  showLocation = !isPrintedFlyer,
-  showContact = !isPrintedFlyer,
-  showWeb = true,
-  showBbon = true,
-  showNotes = !isPrintedFlyer,
-} = Astro.props;
+const { entry, lang = Astro.locals.lang } = Astro.props;
 
 const address = entry.data;
 
@@ -43,6 +28,12 @@ const hasWeb =
   address?.instagram ||
   address?.telegram ||
   address?.twitter;
+
+// we allways show the web info but hide the other info in printed flyers
+const showWeb = true;
+const showLocation = !isPrintedFlyer;
+const showContact = !isPrintedFlyer;
+const showNotes = !isPrintedFlyer;
 ---
 
 <style>
@@ -167,14 +158,6 @@ const hasWeb =
           >
             @{address?.twitter}
           </Link>
-          <br />
-        </>
-      )
-    }
-    {
-      showBbon && address?.bbon && (
-        <>
-          <ExternalShortLink identifier={address.bbon} />
           <br />
         </>
       )
