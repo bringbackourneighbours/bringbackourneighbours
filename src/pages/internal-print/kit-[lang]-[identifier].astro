@@ -1,5 +1,5 @@
 ---
-import { type CollectionEntry } from 'astro:content';
+import { type CollectionEntry, getCollection } from 'astro:content';
 
 import { getStaticPathsForKits } from '../../util/get-static-paths';
 import { getTranslationsUrlsForKit } from '../../util/get-translations-url';
@@ -26,6 +26,7 @@ export async function getStaticPaths() {
 const { entry } = Astro.props;
 
 const translationSlugs = await getTranslationsUrlsForKit(
+  await getCollection('kits'),
   entry.data.lang,
   entry.data.identifier,
 );

@@ -6,6 +6,7 @@ import {
 import { getCanonicalUrlFn } from '../util/get-canonical-url.ts';
 import { getTranslationsUrls } from '../util/get-translations-url.ts';
 import { renderSitemapUrlset, type SiteMapUrl } from '../util/sitemap.ts';
+import { getCollection } from 'astro:content';
 
 async function getSiteMapUrls(
   collection: StandaloneCollections,
@@ -16,7 +17,7 @@ async function getSiteMapUrls(
       const lang = entry.params.lang;
       const identifier = entry.params.identifier;
       const translations = await getTranslationsUrls(
-        collection,
+        await getCollection(collection),
         lang,
         identifier,
         getCanonicalUrlFn(collection),
