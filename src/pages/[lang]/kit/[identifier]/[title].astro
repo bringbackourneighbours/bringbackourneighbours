@@ -1,5 +1,5 @@
 ---
-import { type CollectionEntry } from 'astro:content';
+import { type CollectionEntry, getCollection } from 'astro:content';
 
 import Block from '../../../../components/markdown/Block.astro';
 import ContentHeading from '../../../../components/ContentHeading.astro';
@@ -30,6 +30,7 @@ if (redirectResponse) {
 }
 
 const translationSlugs = await getTranslationsUrlsForKit(
+  await getCollection('kits'),
   entry.data.lang,
   entry.data.identifier,
 );

@@ -1,4 +1,4 @@
-import { type CollectionEntry, getCollection } from 'astro:content';
+import { type CollectionEntry } from 'astro:content';
 import {
   getCanonicalUrlFn,
   getCanonicalUrlForPath,
@@ -7,7 +7,7 @@ import { type LanguagesValue, SupportedLanguages } from './languages.ts';
 import type { StandaloneCollections } from './get-static-paths.ts';
 
 export async function getTranslationsUrls<T extends StandaloneCollections>(
-  collection: T,
+  allEntries: CollectionEntry<T>[],
   lang: LanguagesValue,
   identifier: string,
   getCanonicalUrlFn: (
@@ -20,16 +20,21 @@ export async function getTranslationsUrls<T extends StandaloneCollections>(
     url: string;
   }[]
 > {
-  const allEntries = await getCollection(collection);
   const allWithUrls = await Promise.all(
     allEntries
-      .filter((flyer: CollectionEntry<T>) => {
-        return flyer.data.identifier === identifier && flyer.data.lang !== lang;
+      .filter((entry: CollectionEntry<T>) => {
+        return SupportedLanguages.map((e) => `${e}`).includes(entry.data.lang);
       })
-      .map(async (flyer: CollectionEntry<T>) => {
+      .filter((entry: CollectionEntry<T>) => {
+        return entry.data.identifier === identifier;
+      })
+      .filter((entry: CollectionEntry<T>) => {
+        return entry.data.lang !== lang;
+      })
+      .map(async (entry: CollectionEntry<T>) => {
         return {
-          lang: flyer.data.lang,
-          url: await getCanonicalUrlFn(flyer.data.lang, flyer.data.identifier),
+          lang: entry.data.lang,
+          url: await getCanonicalUrlFn(entry.data.lang, entry.data.identifier),
         };
       }),
   );
@@ -42,6 +47,7 @@ export async function getTranslationsUrls<T extends StandaloneCollections>(
 }
 
 export const getTranslationsUrlsForFlyer = async (
+  allEntries: CollectionEntry<'flyers'>[],
   lang: LanguagesValue,
   identifier: string,
 ): Promise<
@@ -51,7 +57,7 @@ export const getTranslationsUrlsForFlyer = async (
   }[]
 > => {
   return getTranslationsUrls(
-    'flyers',
+    allEntries,
     lang,
     identifier,
     getCanonicalUrlFn('flyers'),
@@ -59,6 +65,7 @@ export const getTranslationsUrlsForFlyer = async (
 };
 
 export const getTranslationsUrlsForKit = async (
+  allEntries: CollectionEntry<'kits'>[],
   lang: LanguagesValue,
   identifier: string,
 ): Promise<
@@ -68,7 +75,7 @@ export const getTranslationsUrlsForKit = async (
   }[]
 > => {
   return getTranslationsUrls(
-    'kits',
+    allEntries,
     lang,
     identifier,
     getCanonicalUrlFn('kits'),
@@ -76,6 +83,7 @@ export const getTranslationsUrlsForKit = async (
 };
 
 export const getTranslationsUrlsForPages = async (
+  allEntries: CollectionEntry<'pages'>[],
   lang: LanguagesValue,
   identifier: string,
 ): Promise<
@@ -85,7 +93,7 @@ export const getTranslationsUrlsForPages = async (
   }[]
 > => {
   return getTranslationsUrls(
-    'pages',
+    allEntries,
     lang,
     identifier,
     getCanonicalUrlFn('pages'),

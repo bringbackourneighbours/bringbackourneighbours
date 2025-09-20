@@ -1,5 +1,5 @@
 ---
-import { type CollectionEntry } from 'astro:content';
+import { type CollectionEntry, getCollection } from 'astro:content';
 
 import { getStaticPathsForFlyers } from '../../util/get-static-paths';
 import { getTranslationsUrlsForFlyer } from '../../util/get-translations-url';
@@ -24,10 +24,10 @@ export async function getStaticPaths() {
 const { entry } = Astro.props;
 
 const translationSlugs = await getTranslationsUrlsForFlyer(
+  await getCollection('flyers'),
   entry.data.lang,
   entry.data.identifier,
 );
-
 const canonicalUrl =
   (await getCanonicalUrlToFlyer(entry.data.lang, entry.data.identifier)) || '';
 
