@@ -7,6 +7,7 @@ phones:
   - 'Tel: +49 371 4599 - 2910'
   - 'Fax: +49 371 4599 - 3333'
 translatedNotes:
+  # TODO: look like additinal. note should explain what this is
   de: Landesdirektion Sachsen - Referat 63 Aufenthaltsbeendende Maßnahmen
   fr: Landesdirektion Sachsen - Unité 63 Mesures de fin de séjour
   ar: Landesdirektion Sachsen - القسم 63 تدابير إنهاء الإقامة
