@@ -40,9 +40,14 @@ const addressesCollection = defineCollection({
     telegram: z.string().optional(),
     twitter: z.string().optional(),
     url: z.string().optional(),
-    bbon: z.string().optional(), // identifier for bbon link
+
     // notes
-    translatedNotes: z.record(z.string(), z.string()).optional(),
+    translatedNotes: z
+      .record(
+        z.enum(SupportedLanguages).or(z.enum(UnSupportedLanguages)),
+        z.string(),
+      )
+      .optional(),
   }),
 });
 
