@@ -1,5 +1,4 @@
 import { type CollectionEntry } from 'astro:content';
-import { SupportedLanguages } from '../model/languages.ts';
 import type {
   StandaloneCollectionEntry,
   StandaloneCollections,
@@ -17,15 +16,6 @@ export function mapStaticPathsForStandalone<T extends StandaloneCollections>(
         title: entry.data.title,
       },
       props: { entry },
-    };
-  });
-}
-
-export async function getStaticPathsForPaths() {
-  return Object.values(SupportedLanguages).map((lang) => {
-    return {
-      params: { lang },
-      props: { lang },
     };
   });
 }
