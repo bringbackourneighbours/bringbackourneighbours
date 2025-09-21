@@ -1,11 +1,12 @@
 import type { APIRoute } from 'astro';
-import { getStaticPathsForPaths } from '../util/map-static-paths-for-standalone.ts';
 import { getTranslationsUrlsForPath } from '../util/get-translations-url.ts';
 import { renderSitemapUrlset, type SiteMapUrl } from '../util/sitemap.ts';
 import { getCanonicalUrlForPath } from '../util/get-canonical-url.ts';
+import { SupportedLanguages } from '../model/languages.ts';
+import { mapStaticPathsForPaths } from '../util/map-static-paths-for-paths.ts';
 
 async function getSiteMapUrls(path: string): Promise<SiteMapUrl[]> {
-  const pages = await getStaticPathsForPaths();
+  const pages = mapStaticPathsForPaths([...SupportedLanguages]);
   return await Promise.all(
     pages.map(async (entry): Promise<SiteMapUrl> => {
       const lang = entry.params.lang;
