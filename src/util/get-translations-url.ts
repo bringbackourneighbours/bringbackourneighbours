@@ -4,7 +4,8 @@ import {
   getCanonicalUrlForPath,
 } from './get-canonical-url.ts';
 import { type LanguagesValue, SupportedLanguages } from './languages.ts';
-import type { StandaloneCollections } from './get-static-paths.ts';
+
+import type { StandaloneCollections } from '../model/standalone-collections.ts';
 
 export async function getTranslationsUrls<T extends StandaloneCollections>(
   allEntries: CollectionEntry<T>[],

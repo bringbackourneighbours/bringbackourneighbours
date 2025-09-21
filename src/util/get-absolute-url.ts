@@ -1,6 +1,6 @@
 import AstroConfig from '../../astro.config.mjs';
-import type { StandaloneCollections } from './get-static-paths.ts';
 import type { LanguagesValue } from './languages.ts';
+import type { StandaloneCollections } from '../model/standalone-collections.ts';
 
 export const getAbsoluteUrl = (path: string): string => {
   return `${AstroConfig.site}${path}`;

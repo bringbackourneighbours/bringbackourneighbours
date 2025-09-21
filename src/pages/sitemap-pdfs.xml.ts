@@ -1,13 +1,11 @@
 import type { APIRoute } from 'astro';
-import {
-  getStaticPaths,
-  type StandaloneCollections,
-} from '../util/get-static-paths.ts';
+import { getStaticPaths } from '../util/get-static-paths.ts';
 import { getCanonicalUrlFn } from '../util/get-canonical-url.ts';
 import { getTranslationsUrls } from '../util/get-translations-url.ts';
 import { renderSitemapUrlset, type SiteMapUrl } from '../util/sitemap.ts';
 import { getPrintUrl } from '../util/get-absolute-url.ts';
 import { getCollection } from 'astro:content';
+import type { StandaloneCollections } from '../model/standalone-collections.ts';
 
 async function getSiteMapUrls(
   collection: StandaloneCollections,
