@@ -10,6 +10,7 @@ import QrImage from '../components/design/QrImage.astro';
 
 import { useUiTranslation } from '../util/use-ui-translation';
 import { DEFAULT_LANG, Languages } from '../model/languages';
+import Block from '../components/markdown/Block.astro';
 ---
 
 <html lang="en">
@@ -34,6 +35,10 @@ import { DEFAULT_LANG, Languages } from '../model/languages';
     title="Design Showcase"
     lang={Languages.ENGLISH}
   >
+    <Block
+      identifier="deportation-protection"
+      lang="ku"
+    />
     <h1>Showcase</h1>
     This page is for testing new feature... it will be removed when we are going
     live
