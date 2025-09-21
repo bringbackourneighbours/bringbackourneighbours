@@ -1,9 +1,9 @@
 ---
-import { getStaticPathsForFlyers } from '../../../util/get-static-paths';
 import {
   SupportedLanguages,
   type LanguagesValue,
 } from '../../../model/languages';
+import { getCollection } from 'astro:content';
 import { useUiTranslation } from '../../../util/use-ui-translation';
 import { getTranslationsUrlsForPath } from '../../../util/get-translations-url';
 import { getCanonicalUrlToFlyer } from '../../../util/get-canonical-url';
@@ -14,6 +14,7 @@ import CardLink from '../../../components/design/CardLink.astro';
 import MoreInfoStack from '../../../components/MoreInfoStack.astro';
 import LanguageSwitcher from '../../../components/design/LanguageSwitcher.astro';
 import H2 from '../../../components/design/H2.astro';
+import { getStaticPathsForFlyers } from '../../../util/get-static-paths-for-standalone';
 
 interface Props {
   lang: LanguagesValue;

@@ -1,14 +1,14 @@
-import { type CollectionEntry, getCollection } from 'astro:content';
+import { type CollectionEntry } from 'astro:content';
 import { SupportedLanguages } from '../model/languages.ts';
 import type {
+  StandaloneCollectionEntry,
   StandaloneCollections,
   StandaloneContentProps,
 } from '../model/standalone-collections.ts';
 
-export async function getStaticPaths<T extends StandaloneCollections>(
-  collection: T,
-): Promise<StandaloneContentProps<T>[]> {
-  const entries = await getCollection(collection);
+export function getStaticPathsForStandalone<T extends StandaloneCollections>(
+  entries: StandaloneCollectionEntry<T>[],
+): StandaloneContentProps<T>[] {
   return entries.map((entry: CollectionEntry<T>) => {
     return {
       params: {
@@ -22,15 +22,15 @@ export async function getStaticPaths<T extends StandaloneCollections>(
 }
 
 export async function getStaticPathsForFlyers() {
-  return getStaticPaths('flyers');
+  return getStaticPathsForStandalone('flyers');
 }
 
 export async function getStaticPathsForKits() {
-  return getStaticPaths('kits');
+  return getStaticPathsForStandalone('kits');
 }
 
 export async function getStaticPathsForPages() {
-  return getStaticPaths('pages');
+  return getStaticPathsForStandalone('pages');
 }
 
 export async function getStaticPathsForPaths() {

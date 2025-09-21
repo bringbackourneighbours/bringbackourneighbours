@@ -3,6 +3,9 @@ import type { CollectionEntry } from 'astro:content';
 
 export type StandaloneCollections = 'kits' | 'flyers' | 'pages';
 
+export type StandaloneCollectionEntry<T extends StandaloneCollections> =
+  CollectionEntry<T>;
+
 export interface StandaloneContentProps<T extends StandaloneCollections> {
   params: {
     lang: LanguagesValue;
@@ -10,6 +13,6 @@ export interface StandaloneContentProps<T extends StandaloneCollections> {
     title: string;
   };
   props: {
-    entry: CollectionEntry<T>;
+    entry: StandaloneCollectionEntry<T>;
   };
 }
