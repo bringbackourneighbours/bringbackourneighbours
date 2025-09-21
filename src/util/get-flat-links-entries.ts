@@ -26,6 +26,7 @@ export const getFlatLinksEntries = async (): Promise<LinkData[]> => {
 };
 
 const getAllExternalLinksEntries = async (): Promise<LinkData[]> => {
+  // TODO: refactor so avoid dependency to astro:content
   const linkEntries: CollectionEntry<'links'>[] = await getCollection('links');
   return linkEntries.reduce((accumulator, currentValue) => {
     return [
@@ -39,6 +40,7 @@ const getAllExternalLinksEntries = async (): Promise<LinkData[]> => {
 
 const getAllFlyerLinksEntries = async (): Promise<LinkData[]> => {
   return Promise.all(
+    // TODO: refactor so avoid dependency to astro:content
     mapStaticPathsForStandalone(await getCollection('flyers')).map(
       async (flyer) => {
         const data = flyer.props.entry.data;
@@ -57,6 +59,7 @@ const getAllFlyerLinksEntries = async (): Promise<LinkData[]> => {
 
 const getAllKitLinksEntries = async (): Promise<LinkData[]> => {
   return Promise.all(
+    // TODO: refactor so avoid dependency to astro:content
     mapStaticPathsForStandalone(await getCollection('kits')).map(
       async (kit) => {
         const data = kit.props.entry.data;
@@ -75,6 +78,7 @@ const getAllKitLinksEntries = async (): Promise<LinkData[]> => {
 
 const getAllPageLinksEntries = async (): Promise<LinkData[]> => {
   return Promise.all(
+    // TODO: refactor so avoid dependency to astro:content
     mapStaticPathsForStandalone(await getCollection('pages')).map(
       async (kit) => {
         const data = kit.props.entry.data;

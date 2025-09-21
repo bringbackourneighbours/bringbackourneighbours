@@ -12,6 +12,7 @@ export async function getCanonicalUrl<T extends StandaloneCollections>(
   lang: LanguagesValue,
   identifier: string,
 ): Promise<string | undefined> {
+  // TODO: refactor so avoid dependency to astro:content
   const entry = await getEntry(collection, `${identifier}/${lang}`);
 
   return entry
