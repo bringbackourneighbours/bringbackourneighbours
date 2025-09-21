@@ -1,5 +1,6 @@
 import { expect, test } from 'vitest';
-import { ColorVariants, invertColorVariant } from './color-variants.ts';
+import { invertColorVariant } from './invert-color-variants.ts';
+import { ColorVariants } from '../model/color-variants.ts';
 
 test.each([
   { input: 'primary', expected: 'inverted-primary' },

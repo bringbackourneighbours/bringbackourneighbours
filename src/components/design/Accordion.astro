@@ -1,12 +1,10 @@
 ---
-import {
-  type ColorVariants,
-  invertColorVariant,
-} from '../../util/color-variants';
+import { invertColorVariant } from '../../util/invert-color-variants';
 
 import Icon from './Icon.astro';
 import chevronDown from '../../assets/icons/ion--chevron-down.svg?raw';
 import Heading from './Heading.astro';
+import { ColorVariants } from '../../model/color-variants';
 
 interface Props {
   title?: string;
