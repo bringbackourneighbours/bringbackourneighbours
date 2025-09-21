@@ -3,7 +3,7 @@ import {
   SupportedLanguages,
   UnSupportedLanguages,
 } from '../model/languages.ts';
-import { LinkTypes } from '../util/link-icon-type.ts';
+import { LinkTypes } from '../model/link-types.ts';
 
 const translatableSchema = {
   identifier: z.string(),
