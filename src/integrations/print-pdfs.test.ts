@@ -41,7 +41,7 @@ vi.mock('../util/print-html-to-pdf.ts', () => ({
   printHtmlToPdf: vi.fn().mockResolvedValue(Buffer.from('PDF')),
 }));
 // Mock for getPrintDistDir
-vi.mock('../util/layout-all-flyer-in-one-pdf.ts', () => ({
+vi.mock('../util/get-print-dist-dir.ts', () => ({
   getPrintDistDir: vi.fn((dir) => `${dir}/print`),
 }));
 
@@ -75,9 +75,7 @@ describe('printPdfs Integration', () => {
       const { mkdir, writeFile } = await import('node:fs/promises');
       const puppeteer = (await import('puppeteer')).default;
       const { printHtmlToPdf } = await import('../util/print-html-to-pdf.ts');
-      const { getPrintDistDir } = await import(
-        '../util/layout-all-flyer-in-one-pdf.ts'
-      );
+      const { getPrintDistDir } = await import('../util/get-print-dist-dir.ts');
       const { exec } = await import('node:child_process');
 
       expect(getPrintDistDir).toHaveBeenCalledWith('/dist');
