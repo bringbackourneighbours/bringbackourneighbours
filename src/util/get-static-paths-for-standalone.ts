@@ -21,18 +21,6 @@ export function getStaticPathsForStandalone<T extends StandaloneCollections>(
   });
 }
 
-export async function getStaticPathsForFlyers() {
-  return getStaticPathsForStandalone('flyers');
-}
-
-export async function getStaticPathsForKits() {
-  return getStaticPathsForStandalone('kits');
-}
-
-export async function getStaticPathsForPages() {
-  return getStaticPathsForStandalone('pages');
-}
-
 export async function getStaticPathsForPaths() {
   return Object.values(SupportedLanguages).map((lang) => {
     return {

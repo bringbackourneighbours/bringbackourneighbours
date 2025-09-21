@@ -12,10 +12,8 @@ import { useUiTranslation } from '../util/use-ui-translation';
 import AnimatedCloseButton from './design/AnimatedCloseButton.astro';
 import Link from './design/Link.astro';
 import Logo from './design/Logo.astro';
-import {
-  getStaticPathsForFlyers,
-  getStaticPathsForKits,
-} from '../util/get-static-paths-for-standalone';
+import { getStaticPathsForStandalone } from '../util/get-static-paths-for-standalone';
+import { getCollection } from 'astro:content';
 
 interface Props {
   lang: LanguagesValue;
@@ -23,8 +21,8 @@ interface Props {
 
 const { lang = Astro.locals.lang } = Astro.props;
 
-const allFlyers = await getStaticPathsForFlyers();
-const allKits = await getStaticPathsForKits();
+const allFlyers = getStaticPathsForStandalone(await getCollection('flyers'));
+const allKits = getStaticPathsForStandalone(await getCollection('kits'));
 const homeUrl = getCanonicalUrlForPath(lang, '');
 ---
 

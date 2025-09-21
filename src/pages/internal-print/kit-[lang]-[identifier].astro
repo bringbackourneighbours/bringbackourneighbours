@@ -1,7 +1,7 @@
 ---
 import { type CollectionEntry, getCollection } from 'astro:content';
 
-import { getStaticPathsForKits } from '../../util/get-static-paths-for-standalone';
+import { getStaticPathsForStandalone } from '../../util/get-static-paths-for-standalone';
 import { getTranslationsUrlsForKit } from '../../util/get-translations-url';
 import { getCanonicalUrlToKit } from '../../util/get-canonical-url';
 import { useUiTranslation } from '../../util/use-ui-translation';
@@ -20,7 +20,7 @@ interface Props {
 }
 
 export async function getStaticPaths() {
-  return getStaticPathsForKits();
+  return getStaticPathsForStandalone(await getCollection('kits'));
 }
 
 const { entry } = Astro.props;

@@ -1,14 +1,14 @@
 ---
-import { type CollectionEntry } from 'astro:content';
+import { type CollectionEntry, getCollection } from 'astro:content';
 import { getCanonicalUrlToKit } from '../../../../util/get-canonical-url';
-import { getStaticPathsForKits } from '../../../../util/get-static-paths-for-standalone';
+import { getStaticPathsForStandalone } from '../../../../util/get-static-paths-for-standalone';
 
 interface Props {
   entry: CollectionEntry<'kits'>;
 }
 
 export async function getStaticPaths() {
-  return getStaticPathsForKits();
+  return getStaticPathsForStandalone(await getCollection('kits'));
 }
 
 const url = await getCanonicalUrlToKit(
