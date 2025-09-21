@@ -1,11 +1,4 @@
-export const ColorVariants = [
-  'primary',
-  'secondary',
-  'inverted-primary',
-  'inverted-secondary',
-] as const;
-
-export type ColorVariants = (typeof ColorVariants)[number];
+import type { ColorVariants } from '../model/color-variants.ts';
 
 export const invertColorVariant = (input: ColorVariants): ColorVariants => {
   switch (input) {
