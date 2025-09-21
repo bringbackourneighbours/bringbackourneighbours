@@ -1,10 +1,10 @@
 ---
 import { getCanonicalUrlToPage } from '../../../../util/get-canonical-url';
-import { getStaticPathsForStandalone } from '../../../../util/get-static-paths-for-standalone';
+import { mapStaticPathsForStandalone } from '../../../../util/map-static-paths-for-standalone';
 import { getCollection } from 'astro:content';
 
 export async function getStaticPaths() {
-  return getStaticPathsForStandalone(await getCollection('pages'));
+  return mapStaticPathsForStandalone(await getCollection('pages'));
 }
 
 const url = await getCanonicalUrlToPage(

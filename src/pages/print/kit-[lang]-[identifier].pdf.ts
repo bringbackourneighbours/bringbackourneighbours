@@ -1,4 +1,4 @@
-import { getStaticPathsForStandalone } from '../../util/get-static-paths-for-standalone.ts';
+import { mapStaticPathsForStandalone } from '../../util/map-static-paths-for-standalone.ts';
 import { printHtmlToPdf } from '../../util/print-html-to-pdf.ts';
 import type { APIContext } from 'astro';
 import type { StandaloneContentProps } from '../../model/standalone-collections.ts';
@@ -8,7 +8,7 @@ export async function getStaticPaths() {
   const isDev = import.meta.env.DEV;
   if (isDev) {
     // here we provide the as live preview for the dev mode
-    return getStaticPathsForStandalone(await getCollection('kits'));
+    return mapStaticPathsForStandalone(await getCollection('kits'));
   }
   return [];
 }

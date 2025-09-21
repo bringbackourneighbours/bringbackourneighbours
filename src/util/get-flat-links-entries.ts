@@ -1,5 +1,5 @@
 import { type CollectionEntry, getCollection } from 'astro:content';
-import { getStaticPathsForStandalone } from './get-static-paths-for-standalone.ts';
+import { mapStaticPathsForStandalone } from './map-static-paths-for-standalone.ts';
 import {
   getCanonicalUrlToFlyer,
   getCanonicalUrlToKit,
@@ -39,7 +39,7 @@ const getAllExternalLinksEntries = async (): Promise<LinkData[]> => {
 
 const getAllFlyerLinksEntries = async (): Promise<LinkData[]> => {
   return Promise.all(
-    getStaticPathsForStandalone(await getCollection('flyers')).map(
+    mapStaticPathsForStandalone(await getCollection('flyers')).map(
       async (flyer) => {
         const data = flyer.props.entry.data;
         return {
@@ -57,7 +57,7 @@ const getAllFlyerLinksEntries = async (): Promise<LinkData[]> => {
 
 const getAllKitLinksEntries = async (): Promise<LinkData[]> => {
   return Promise.all(
-    getStaticPathsForStandalone(await getCollection('kits')).map(
+    mapStaticPathsForStandalone(await getCollection('kits')).map(
       async (kit) => {
         const data = kit.props.entry.data;
         return {
@@ -75,7 +75,7 @@ const getAllKitLinksEntries = async (): Promise<LinkData[]> => {
 
 const getAllPageLinksEntries = async (): Promise<LinkData[]> => {
   return Promise.all(
-    getStaticPathsForStandalone(await getCollection('pages')).map(
+    mapStaticPathsForStandalone(await getCollection('pages')).map(
       async (kit) => {
         const data = kit.props.entry.data;
         return {
