@@ -3,7 +3,7 @@ import { describe, expect, it } from 'vitest';
 import { within } from '@testing-library/dom';
 
 import { render } from '../../testing/render.ts';
-import { Languages } from '../../util/languages';
+import { Languages } from '../../model/languages.ts';
 
 import AddressDesign from './AddressDesign.astro';
 

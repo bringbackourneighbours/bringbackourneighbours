@@ -1,6 +1,6 @@
 import type { APIRoute } from 'astro';
 
-import { DEFAULT_LANG, SupportedLanguages } from '../../util/languages.ts';
+import { DEFAULT_LANG, SupportedLanguages } from '../../model/languages.ts';
 import {
   getFlyerPdfFileNames,
   getPrintDistDir,

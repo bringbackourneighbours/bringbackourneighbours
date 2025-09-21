@@ -1,7 +1,7 @@
 import type { CollectionEntry } from 'astro:content';
 import { describe, expect, it } from 'vitest';
 import { render } from '../../testing/render.ts';
-import { Languages } from '../../util/languages.ts';
+import { Languages } from '../../model/languages.ts';
 
 import '../../testing/with-mocked-translation.ts';
 

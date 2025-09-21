@@ -1,6 +1,6 @@
 import { defineMiddleware } from 'astro:middleware';
 
-import { DEFAULT_LANG, type LanguagesValue } from './util/languages.ts';
+import { DEFAULT_LANG, type LanguagesValue } from './model/languages.ts';
 import AstroConfig from '../astro.config.mjs';
 
 // `context` and `next` are automatically typed

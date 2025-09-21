@@ -1,6 +1,6 @@
 import { getEntry, type InferEntrySchema } from 'astro:content';
 
-import { Languages, type LanguagesValue } from './languages.ts';
+import { Languages, type LanguagesValue } from '../model/languages.ts';
 
 import type { StandaloneCollections } from '../model/standalone-collections.ts';
 

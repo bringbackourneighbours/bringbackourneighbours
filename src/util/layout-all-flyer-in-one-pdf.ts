@@ -2,7 +2,7 @@ import { PageSizes, PDFDocument, PDFPage } from 'pdf-lib';
 import fs from 'fs';
 import { chunks } from './list-helper.ts';
 import { readdir } from 'node:fs/promises';
-import { RTL_LANGUAGES } from './languages.ts';
+import { RTL_LANGUAGES } from '../model/languages.ts';
 
 export const getPrintDistDir = (distDir: string): string => {
   return `${distDir.endsWith('/') ? distDir.slice(0, -1) : distDir}/print`;
