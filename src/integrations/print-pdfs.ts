@@ -6,7 +6,8 @@ import { exec } from 'node:child_process';
 import { previewUrl } from '../../astro.config.mjs';
 
 import { printHtmlToPdf } from '../util/print-html-to-pdf.ts';
-import { getPrintDistDir } from '../util/layout-all-flyer-in-one-pdf.ts';
+
+import { getPrintDistDir } from '../util/get-print-dist-dir.ts';
 
 export async function printPdfsImpl(
   distDirUrl: URL,

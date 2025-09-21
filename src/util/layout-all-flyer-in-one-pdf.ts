@@ -1,22 +1,7 @@
 import { PageSizes, PDFDocument, PDFPage } from 'pdf-lib';
 import fs from 'fs';
 import { chunks } from './list-helper.ts';
-import { readdir } from 'node:fs/promises';
 import { RTL_LANGUAGES } from '../model/languages.ts';
-
-export const getPrintDistDir = (distDir: string): string => {
-  return `${distDir.endsWith('/') ? distDir.slice(0, -1) : distDir}/print`;
-};
-
-export const getFlyerPdfFileNames = async (
-  distDir: string,
-): Promise<string[]> => {
-  const pdfsFileNames = await readdir(getPrintDistDir(distDir));
-
-  return pdfsFileNames.filter((fileName) => {
-    return fileName.startsWith('flyer-');
-  });
-};
 
 const placeFlyerOnPages = async (
   pdfDoc: PDFDocument,

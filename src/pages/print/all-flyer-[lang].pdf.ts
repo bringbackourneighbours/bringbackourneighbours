@@ -1,12 +1,10 @@
 import type { APIRoute } from 'astro';
 
 import { DEFAULT_LANG, SupportedLanguages } from '../../model/languages.ts';
-import {
-  getFlyerPdfFileNames,
-  getPrintDistDir,
-  layoutAllFlyerInOnePdf,
-} from '../../util/layout-all-flyer-in-one-pdf.ts';
+import { layoutAllFlyerInOnePdf } from '../../util/layout-all-flyer-in-one-pdf.ts';
 import path from 'node:path';
+import { getFlyerPdfFileNames } from '../../util/get-flyer-pdf-file-names.ts';
+import { getPrintDistDir } from '../../util/get-print-dist-dir.ts';
 
 export interface LangProp {
   params: {
