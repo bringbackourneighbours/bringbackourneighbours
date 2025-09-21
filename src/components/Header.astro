@@ -1,8 +1,6 @@
 ---
 import type { LanguagesValue } from '../model/languages';
 
-import { getStaticPathsForKits } from '../util/get-static-paths';
-import { getStaticPathsForFlyers } from '../util/get-static-paths';
 import {
   getCanonicalUrlForPath,
   getCanonicalUrlToFlyer,
@@ -14,6 +12,10 @@ import { useUiTranslation } from '../util/use-ui-translation';
 import AnimatedCloseButton from './design/AnimatedCloseButton.astro';
 import Link from './design/Link.astro';
 import Logo from './design/Logo.astro';
+import {
+  getStaticPathsForFlyers,
+  getStaticPathsForKits,
+} from '../util/get-static-paths-for-standalone';
 
 interface Props {
   lang: LanguagesValue;

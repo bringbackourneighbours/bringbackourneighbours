@@ -1,4 +1,4 @@
-import { getStaticPathsForKits } from '../../util/get-static-paths.ts';
+import { getStaticPathsForKits } from '../../util/get-static-paths-for-standalone.ts';
 import { printHtmlToPdf } from '../../util/print-html-to-pdf.ts';
 import type { APIContext } from 'astro';
 import type { StandaloneContentProps } from '../../model/standalone-collections.ts';

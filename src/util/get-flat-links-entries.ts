@@ -3,7 +3,7 @@ import {
   getStaticPathsForFlyers,
   getStaticPathsForKits,
   getStaticPathsForPages,
-} from './get-static-paths.ts';
+} from './get-static-paths-for-standalone.ts';
 import {
   getCanonicalUrlToFlyer,
   getCanonicalUrlToKit,
