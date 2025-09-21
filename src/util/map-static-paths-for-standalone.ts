@@ -6,7 +6,7 @@ import type {
   StandaloneContentProps,
 } from '../model/standalone-collections.ts';
 
-export function getStaticPathsForStandalone<T extends StandaloneCollections>(
+export function mapStaticPathsForStandalone<T extends StandaloneCollections>(
   entries: StandaloneCollectionEntry<T>[],
 ): StandaloneContentProps<T>[] {
   return entries.map((entry: CollectionEntry<T>) => {

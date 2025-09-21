@@ -8,7 +8,7 @@ import LanguageSwitcher from '../../../../components/design/LanguageSwitcher.ast
 import TableOfContents from '../../../../components/design/TableOfContents.astro';
 
 import { getCanonicalUrlToPage } from '../../../../util/get-canonical-url';
-import { getStaticPathsForStandalone } from '../../../../util/get-static-paths-for-standalone';
+import { mapStaticPathsForStandalone } from '../../../../util/map-static-paths-for-standalone';
 import { getTranslationsUrlsForPages } from '../../../../util/get-translations-url';
 import { redirectNotTranslatedForPage } from '../../../../util/redirect-not-found-or-not-translated';
 import { useContentData } from '../../../../util/use-content-data';
@@ -19,7 +19,7 @@ interface Props {
 }
 
 export async function getStaticPaths() {
-  return getStaticPathsForStandalone(await getCollection('pages'));
+  return mapStaticPathsForStandalone(await getCollection('pages'));
 }
 
 const { entry } = Astro.props;

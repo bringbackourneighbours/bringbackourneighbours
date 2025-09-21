@@ -1,11 +1,11 @@
 import { describe, expect, it } from 'vitest';
-import { getStaticPathsForStandalone } from './get-static-paths-for-standalone.ts';
+import { mapStaticPathsForStandalone } from './map-static-paths-for-standalone.ts';
 import type { StandaloneCollectionEntry } from '../model/standalone-collections.ts';
 
-describe('getStaticPaths', () => {
+describe('mapStaticPathsForStandalone', () => {
   it('return all mapped', () => {
     expect(
-      getStaticPathsForStandalone([
+      mapStaticPathsForStandalone([
         {
           data: {
             identifier: 'aaa',

@@ -1,5 +1,5 @@
 ---
-import { getStaticPathsForStandalone } from '../../../util/get-static-paths-for-standalone';
+import { mapStaticPathsForStandalone } from '../../../util/map-static-paths-for-standalone';
 import {
   SupportedLanguages,
   type LanguagesValue,
@@ -29,7 +29,7 @@ export async function getStaticPaths() {
 
 const { lang } = Astro.props;
 
-const allKits = getStaticPathsForStandalone(await getCollection('kits'));
+const allKits = mapStaticPathsForStandalone(await getCollection('kits'));
 
 const translationSlugs = await getTranslationsUrlsForPath(lang, 'kit');
 ---

@@ -1,7 +1,7 @@
 ---
 import { type CollectionEntry, getCollection } from 'astro:content';
 
-import { getStaticPathsForStandalone } from '../../util/get-static-paths-for-standalone';
+import { mapStaticPathsForStandalone } from '../../util/map-static-paths-for-standalone';
 import { getTranslationsUrlsForFlyer } from '../../util/get-translations-url';
 import { getCanonicalUrlToFlyer } from '../../util/get-canonical-url';
 import { useContentData } from '../../util/use-content-data';
@@ -18,7 +18,7 @@ interface Props {
 }
 
 export async function getStaticPaths() {
-  return getStaticPathsForStandalone(await getCollection('flyers'));
+  return mapStaticPathsForStandalone(await getCollection('flyers'));
 }
 
 const { entry } = Astro.props;

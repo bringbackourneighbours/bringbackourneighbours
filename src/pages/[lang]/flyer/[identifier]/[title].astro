@@ -7,7 +7,7 @@ import ContentLayout from '../../../../layouts/ContentLayout.astro';
 import LanguageSwitcher from '../../../../components/design/LanguageSwitcher.astro';
 
 import { getCanonicalUrlToFlyer } from '../../../../util/get-canonical-url';
-import { getStaticPathsForStandalone } from '../../../../util/get-static-paths-for-standalone';
+import { mapStaticPathsForStandalone } from '../../../../util/map-static-paths-for-standalone';
 import { getTranslationsUrlsForFlyer } from '../../../../util/get-translations-url';
 import { redirectNotTranslatedForFlyer } from '../../../../util/redirect-not-found-or-not-translated';
 import { useContentData } from '../../../../util/use-content-data';
@@ -18,7 +18,7 @@ interface Props {
 }
 
 export async function getStaticPaths() {
-  return getStaticPathsForStandalone(await getCollection('flyers'));
+  return mapStaticPathsForStandalone(await getCollection('flyers'));
 }
 
 const { entry } = Astro.props;

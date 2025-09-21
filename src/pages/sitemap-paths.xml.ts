@@ -1,5 +1,5 @@
 import type { APIRoute } from 'astro';
-import { getStaticPathsForPaths } from '../util/get-static-paths-for-standalone.ts';
+import { getStaticPathsForPaths } from '../util/map-static-paths-for-standalone.ts';
 import { getTranslationsUrlsForPath } from '../util/get-translations-url.ts';
 import { renderSitemapUrlset, type SiteMapUrl } from '../util/sitemap.ts';
 import { getCanonicalUrlForPath } from '../util/get-canonical-url.ts';

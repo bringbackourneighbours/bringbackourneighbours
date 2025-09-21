@@ -14,7 +14,7 @@ import CardLink from '../../../components/design/CardLink.astro';
 import MoreInfoStack from '../../../components/MoreInfoStack.astro';
 import LanguageSwitcher from '../../../components/design/LanguageSwitcher.astro';
 import H2 from '../../../components/design/H2.astro';
-import { getStaticPathsForStandalone } from '../../../util/get-static-paths-for-standalone';
+import { mapStaticPathsForStandalone } from '../../../util/map-static-paths-for-standalone';
 
 interface Props {
   lang: LanguagesValue;
@@ -31,7 +31,7 @@ export async function getStaticPaths() {
 
 const { lang } = Astro.props;
 
-const allFlyers = getStaticPathsForStandalone(await getCollection('flyers'));
+const allFlyers = mapStaticPathsForStandalone(await getCollection('flyers'));
 
 const translationSlugs = await getTranslationsUrlsForPath(lang, 'flyer');
 ---
