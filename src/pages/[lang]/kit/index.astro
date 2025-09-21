@@ -1,5 +1,5 @@
 ---
-import { getStaticPathsForKits } from '../../../util/get-static-paths-for-standalone';
+import { getStaticPathsForStandalone } from '../../../util/get-static-paths-for-standalone';
 import {
   SupportedLanguages,
   type LanguagesValue,
@@ -12,6 +12,7 @@ import { getCanonicalUrlToKit } from '../../../util/get-canonical-url';
 import MoreInfoStack from '../../../components/MoreInfoStack.astro';
 import { getTranslationsUrlsForPath } from '../../../util/get-translations-url';
 import LanguageSwitcher from '../../../components/design/LanguageSwitcher.astro';
+import { getCollection } from 'astro:content';
 
 interface Props {
   lang: LanguagesValue;
@@ -28,7 +29,7 @@ export async function getStaticPaths() {
 
 const { lang } = Astro.props;
 
-const allKits = await getStaticPathsForKits();
+const allKits = getStaticPathsForStandalone(await getCollection('kits'));
 
 const translationSlugs = await getTranslationsUrlsForPath(lang, 'kit');
 ---

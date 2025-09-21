@@ -1,9 +1,5 @@
 import { type CollectionEntry, getCollection } from 'astro:content';
-import {
-  getStaticPathsForFlyers,
-  getStaticPathsForKits,
-  getStaticPathsForPages,
-} from './get-static-paths-for-standalone.ts';
+import { getStaticPathsForStandalone } from './get-static-paths-for-standalone.ts';
 import {
   getCanonicalUrlToFlyer,
   getCanonicalUrlToKit,
@@ -43,48 +39,54 @@ const getAllExternalLinksEntries = async (): Promise<LinkData[]> => {
 
 const getAllFlyerLinksEntries = async (): Promise<LinkData[]> => {
   return Promise.all(
-    (await getStaticPathsForFlyers()).map(async (flyer) => {
-      const data = flyer.props.entry.data;
-      return {
-        identifier: data.identifier,
-        slug: `flyer-${data.lang}-${data.identifier}`,
-        title: data.title,
-        type: 'FLYER',
-        url: await getCanonicalUrlToFlyer(data.lang, data.identifier),
-        lang: data.lang,
-      };
-    }),
+    getStaticPathsForStandalone(await getCollection('flyers')).map(
+      async (flyer) => {
+        const data = flyer.props.entry.data;
+        return {
+          identifier: data.identifier,
+          slug: `flyer-${data.lang}-${data.identifier}`,
+          title: data.title,
+          type: 'FLYER',
+          url: await getCanonicalUrlToFlyer(data.lang, data.identifier),
+          lang: data.lang,
+        };
+      },
+    ),
   );
 };
 
 const getAllKitLinksEntries = async (): Promise<LinkData[]> => {
   return Promise.all(
-    (await getStaticPathsForKits()).map(async (kit) => {
-      const data = kit.props.entry.data;
-      return {
-        identifier: data.identifier,
-        slug: `kit-${data.lang}-${data.identifier}`,
-        title: data.title,
-        type: 'KIT',
-        url: await getCanonicalUrlToKit(data.lang, data.identifier),
-        lang: data.lang,
-      };
-    }),
+    getStaticPathsForStandalone(await getCollection('kits')).map(
+      async (kit) => {
+        const data = kit.props.entry.data;
+        return {
+          identifier: data.identifier,
+          slug: `kit-${data.lang}-${data.identifier}`,
+          title: data.title,
+          type: 'KIT',
+          url: await getCanonicalUrlToKit(data.lang, data.identifier),
+          lang: data.lang,
+        };
+      },
+    ),
   );
 };
 
 const getAllPageLinksEntries = async (): Promise<LinkData[]> => {
   return Promise.all(
-    (await getStaticPathsForPages()).map(async (kit) => {
-      const data = kit.props.entry.data;
-      return {
-        identifier: data.identifier,
-        slug: `page-${data.lang}-${data.identifier}`,
-        title: data.title,
-        type: 'PAGE',
-        url: await getCanonicalUrlToPage(data.lang, data.identifier),
-        lang: data.lang,
-      };
-    }),
+    getStaticPathsForStandalone(await getCollection('pages')).map(
+      async (kit) => {
+        const data = kit.props.entry.data;
+        return {
+          identifier: data.identifier,
+          slug: `page-${data.lang}-${data.identifier}`,
+          title: data.title,
+          type: 'PAGE',
+          url: await getCanonicalUrlToPage(data.lang, data.identifier),
+          lang: data.lang,
+        };
+      },
+    ),
   );
 };
