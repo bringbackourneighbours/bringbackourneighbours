@@ -1,4 +1,4 @@
-import { getCollection, type CollectionEntry } from 'astro:content';
+import { type CollectionEntry, getCollection } from 'astro:content';
 import {
   getStaticPathsForFlyers,
   getStaticPathsForKits,
@@ -9,7 +9,7 @@ import {
   getCanonicalUrlToKit,
   getCanonicalUrlToPage,
 } from './get-canonical-url.ts';
-import type { LinkTypes } from './link-icon-type.ts';
+import type { LinkTypes } from '../model/link-types.ts';
 
 export interface LinkData {
   slug: string;
