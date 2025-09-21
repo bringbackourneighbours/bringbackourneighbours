@@ -1,7 +1,6 @@
 ---
 import type { CollectionEntry } from 'astro:content';
 
-import type { StandaloneCollections } from '../../util/get-static-paths';
 import type { LanguagesValue } from '../../util/languages';
 
 import InternalShortLink from '../markdown/InternalShortLink.astro';
@@ -10,6 +9,7 @@ import QrImage from './QrImage.astro';
 
 import { getCanonicalUrlFn } from '../../util/get-canonical-url';
 import { useUiTranslation } from '../../util/use-ui-translation';
+import type { StandaloneCollections } from '../../model/standalone-collections';
 
 interface Props {
   entry: CollectionEntry<StandaloneCollections>;

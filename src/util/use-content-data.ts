@@ -1,7 +1,8 @@
 import { getEntry, type InferEntrySchema } from 'astro:content';
 
 import { Languages, type LanguagesValue } from './languages.ts';
-import type { StandaloneCollections } from './get-static-paths.ts';
+
+import type { StandaloneCollections } from '../model/standalone-collections.ts';
 
 export const useContentData = async (
   collection: StandaloneCollections,

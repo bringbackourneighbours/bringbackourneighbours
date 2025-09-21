@@ -1,9 +1,7 @@
 import type { APIContext } from 'astro';
-import {
-  getStaticPathsForFlyers,
-  type StandaloneContentProps,
-} from '../../util/get-static-paths.ts';
+import { getStaticPathsForFlyers } from '../../util/get-static-paths.ts';
 import { printHtmlToPdf } from '../../util/print-html-to-pdf.ts';
+import type { StandaloneContentProps } from '../../model/standalone-collections.ts';
 
 export async function getStaticPaths() {
   const isDev = import.meta.env.DEV;

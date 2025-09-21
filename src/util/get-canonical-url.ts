@@ -1,10 +1,10 @@
 import type { LanguagesValue } from './languages.ts';
-import type { StandaloneCollections } from './get-static-paths.ts';
 
 import AstroConfig from '../../astro.config.mjs';
 
 import { getAbsoluteUrl } from './get-absolute-url.ts';
 import { getEntry } from 'astro:content';
+import type { StandaloneCollections } from '../model/standalone-collections.ts';
 
 export async function getCanonicalUrl<T extends StandaloneCollections>(
   collection: T,

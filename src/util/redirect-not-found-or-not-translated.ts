@@ -5,7 +5,8 @@ import {
   getCanonicalUrlToPage,
 } from './get-canonical-url.ts';
 import type { LanguagesValue } from './languages.ts';
-import type { StandaloneCollections } from './get-static-paths.ts';
+
+import type { StandaloneCollections } from '../model/standalone-collections.ts';
 
 async function redirectNotTranslated<T extends StandaloneCollections>(
   getCanonicalUrlFn: (

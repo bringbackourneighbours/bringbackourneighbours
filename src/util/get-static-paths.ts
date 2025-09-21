@@ -1,18 +1,9 @@
 import { type CollectionEntry, getCollection } from 'astro:content';
-import { type LanguagesValue, SupportedLanguages } from './languages.ts';
-
-export type StandaloneCollections = 'kits' | 'flyers' | 'pages';
-
-export interface StandaloneContentProps<T extends StandaloneCollections> {
-  params: {
-    lang: LanguagesValue;
-    identifier: string;
-    title: string;
-  };
-  props: {
-    entry: CollectionEntry<T>;
-  };
-}
+import { SupportedLanguages } from './languages.ts';
+import type {
+  StandaloneCollections,
+  StandaloneContentProps,
+} from '../model/standalone-collections.ts';
 
 export async function getStaticPaths<T extends StandaloneCollections>(
   collection: T,
