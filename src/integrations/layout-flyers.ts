@@ -6,7 +6,7 @@ import {
   getPrintDistDir,
   layoutAllFlyerInOnePdf,
 } from '../util/layout-all-flyer-in-one-pdf.ts';
-import { SupportedLanguages } from '../util/languages.ts';
+import { SupportedLanguages } from '../model/languages.ts';
 
 export default function layoutFlyers(): AstroIntegration {
   return {

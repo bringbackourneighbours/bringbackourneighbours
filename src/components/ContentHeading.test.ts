@@ -4,7 +4,7 @@ import { render } from '../testing/render.ts';
 import '../testing/with-mocked-translation.ts';
 
 import ContentHeading from './ContentHeading.astro';
-import { Languages } from '../util/languages.ts';
+import { Languages } from '../model/languages.ts';
 import type { CollectionEntry } from 'astro:content';
 
 describe('ContentHeading', () => {

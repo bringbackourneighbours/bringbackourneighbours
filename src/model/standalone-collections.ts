@@ -1,4 +1,4 @@
-import type { LanguagesValue } from '../util/languages.ts';
+import type { LanguagesValue } from './languages.ts';
 import type { CollectionEntry } from 'astro:content';
 
 export type StandaloneCollections = 'kits' | 'flyers' | 'pages';

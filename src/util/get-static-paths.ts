@@ -1,5 +1,5 @@
 import { type CollectionEntry, getCollection } from 'astro:content';
-import { SupportedLanguages } from './languages.ts';
+import { SupportedLanguages } from '../model/languages.ts';
 import type {
   StandaloneCollections,
   StandaloneContentProps,

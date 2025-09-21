@@ -1,5 +1,5 @@
 import AstroConfig from '../../astro.config.mjs';
-import type { LanguagesValue } from './languages.ts';
+import type { LanguagesValue } from '../model/languages.ts';
 import type { StandaloneCollections } from '../model/standalone-collections.ts';
 
 export const getAbsoluteUrl = (path: string): string => {

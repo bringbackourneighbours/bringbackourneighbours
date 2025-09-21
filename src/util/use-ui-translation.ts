@@ -1,6 +1,6 @@
 import { getEntry } from 'astro:content';
 import jp from 'jsonpath';
-import { Languages, type LanguagesValue } from './languages.ts';
+import { Languages, type LanguagesValue } from '../model/languages.ts';
 
 /**
  * translates the `key` to the `language` based on the `ui`-Collection.

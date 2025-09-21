@@ -3,7 +3,7 @@ import {
   getCanonicalUrlFn,
   getCanonicalUrlForPath,
 } from './get-canonical-url.ts';
-import { type LanguagesValue, SupportedLanguages } from './languages.ts';
+import { type LanguagesValue, SupportedLanguages } from '../model/languages.ts';
 
 import type { StandaloneCollections } from '../model/standalone-collections.ts';
 

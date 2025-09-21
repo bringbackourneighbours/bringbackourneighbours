@@ -1,4 +1,4 @@
-import type { LanguagesValue } from './languages.ts';
+import type { LanguagesValue } from '../model/languages.ts';
 
 import AstroConfig from '../../astro.config.mjs';
 
