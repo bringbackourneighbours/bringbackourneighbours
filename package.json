@@ -15,7 +15,7 @@
   },
   "dependencies": {
     "@astrojs/check": "^0.9.4",
-    "@astrojs/mdx": "^4.3.4",
+    "@astrojs/mdx": "^4.3.6",
     "@fontsource/firago": "^5.2.5",
     "@types/jsdom": "^21.1.7",
     "@types/jsonpath": "^0.2.4",
