@@ -1,18 +1,18 @@
 all:
   type: WEB
-de:
-  slug: kirche
-  url: https://kirchenasyl.de/info-fuer-gefluechtete/
-  title:  Wie finde ich ein Kirchenasyl?
-en:
-  slug: church
-  url: https://kirchenasyl.de/info-fuer-gefluechtete/how-to-get-into-church-asylum/
-  title:  How to get into church asylum?
 ar:
   slug: churchar
+  title: كيفية الوصول إلى اللجوء الكنسي
   url: https://kirchenasyl.de/info-fuer-gefluechtete/%D9%83%D9%8A%D9%81%D9%8A%D8%A9-%D8%A7%D9%84%D9%88%D8%B5%D9%88%D9%84-%D8%A5%D9%84%D9%89-%D8%A7%D9%84%D9%84%D8%AC%D9%88%D8%A1-%D8%A7%D9%84%D9%83%D9%86%D8%B3%D9%8A/
-  title:  كيفية الوصول إلى اللجوء الكنسي
+de:
+  slug: kirche
+  title: Wie finde ich ein Kirchenasyl?
+  url: https://kirchenasyl.de/info-fuer-gefluechtete/
+en:
+  slug: church
+  title: How to get into church asylum?
+  url: https://kirchenasyl.de/info-fuer-gefluechtete/how-to-get-into-church-asylum/
 fa:
   slug: churchfa
+  title: علومات در مورد پناهندگی در کلیسا و جلوگیری از اخراج از آلمان
   url: https://kirchenasyl.de/info-fuer-gefluechtete/%D8%B9%D9%84%D9%88%D9%85%D8%A7%D8%AA-%D8%AF%D8%B1-%D9%85%D9%88%D8%B1%D8%AF-%D9%BE%D9%86%D8%A7%D9%87%D9%86%D8%AF%DA%AF%DB%8C-%D8%AF%D8%B1-%DA%A9%D9%84%DB%8C%D8%B3%D8%A7-%D9%88-%D8%AC%D9%84%D9%88%DA%AF/
-  title:  علومات در مورد پناهندگی در کلیسا و جلوگیری از اخراج از آلمان

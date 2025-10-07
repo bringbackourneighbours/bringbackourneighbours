@@ -1,24 +1,24 @@
 all:
   slug: airplane
-  url: https://www.youtube.com/watch?v=g2Umb7MyDhw
   type: VIDEO
-en:
-  title: "Video: How to stop a deportation in an airplane"
+  url: https://www.youtube.com/watch?v=g2Umb7MyDhw
 ar:
-  title: "كيفية إيقاف الترحيل داخل الطائرة"
-fa:
-  title: "ویدئو: چگونه از اخراج در هواپیما جلوگیری کنیم؟"
+  title: كيفية إيقاف الترحيل داخل الطائرة
 de:
-  title: "Video: Wie man eine Abschiebung in einem Flugzeug verhindert"
-fr:
-  title: "Vidéo : Comment empêcher une expulsion dans un avion ?"
-ur:
-  title: "ویڈیو: جہاز میں ملک بدری کو کیسے روکا جائے؟"
-ka:
-  title: "ვიდეო: როგორ ავიცილოთ თავიდან დეპორტაცია თვითმფრინავში?"
+  title: 'Video: Wie man eine Abschiebung in einem Flugzeug verhindert'
+en:
+  title: 'Video: How to stop a deportation in an airplane'
 es:
-  title: "Vídeo: ¿Cómo detener una deportación en un avión?"
+  title: 'Vídeo: ¿Cómo detener una deportación en un avión?'
+fa:
+  title: 'ویدئو: چگونه از اخراج در هواپیما جلوگیری کنیم؟'
+fr:
+  title: 'Vidéo : Comment empêcher une expulsion dans un avion ?'
+ka:
+  title: 'ვიდეო: როგორ ავიცილოთ თავიდან დეპორტაცია თვითმფრინავში?'
+ku:
+  title: 'Vîdyo: Meriv çawa dersînorkirina li balafirê rawestîne?'
 tr:
-  title: "Video: Uçakta sınır dışı edilmeyi nasıl durdurabilirim?"
-#ku:
-#  title: "Vîdyo: Meriv çawa dersînorkirina li balafirê rawestîne?"
+  title: 'Video: Uçakta sınır dışı edilmeyi nasıl durdurabilirim?'
+ur:
+  title: 'ویڈیو: جہاز میں ملک بدری کو کیسے روکا جائے؟'

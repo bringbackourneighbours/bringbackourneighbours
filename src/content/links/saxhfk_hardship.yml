@@ -1,30 +1,33 @@
 all:
   slug: hfk
-  url: https://sab.landtag.sachsen.de/download/SAB/SAB-HFK-8sprachig-November2024-web_150dpi.pdf
   type: WEB
-en:
-  title: Saxon commission on hardship cases
-de:
-  title: Sächsische Härtefallkommission
-fr:
-  title: Commission saxonne pour les cas de rigueur
+  url: https://sab.landtag.sachsen.de/download/SAB/SAB-HFK-8sprachig-November2024-web_150dpi.pdf
 ar:
   title: اللجنة السكسونية لحالات العسر الشديد
+bs:
+  title: SASKA POSEBNA KOMISIJA
+de:
+  title: Sächsische Härtefallkommission
+en:
+  title: Saxon commission on hardship cases
 fa:
   title: کمیسیون ساکسون در موارد سختی
-ur:
-  title: "سیکسن ہارڈشپ کمیشن: البانی، عربی، انگریزی، فرانسیسی، مقدونیائی، فارسی، روسی، بوسنیائی، ترکی، ویتنامی میں معلومات"
+fr:
+  title: Commission saxonne pour les cas de rigueur
 ka:
-  title: "საქსონური კომისია სერიოზული საქმეებისთვის: ინფორმაცია ალბანურ, არაბულ, ინგლისურ, ფრანგულ, მაკედონიურ, სპარსულ, რუსულ, ბოსნიურ, თურქულ, ვიეტნამურ ენებზე"
-tr:
-  title: "Sakson Zorluk Komisyonu de Dificultades: Información en albanés, árabe, inglés, francés, macedonio, persa, ruso, bosnio, turco y vietnamita"
-sq:
-  title: KOMISIONI I RASTEVE TË RËNDA I SACHSEN
+  title: 'საქსონური კომისია სერიოზული საქმეებისთვის: ინფორმაცია ალბანურ, არაბულ, ინგლისურ,
+    ფრანგულ, მაკედონიურ, სპარსულ, რუსულ, ბოსნიურ, თურქულ, ვიეტნამურ ენებზე'
 mk:
   title: САКСОНСКА КОМИСИЈА ЗА СЛОЖЕНИ СЛУЧАИ
 ru:
   title: САКСОНСКАЯ КОМИССИЯ ПО ОСОБО ТЯЖЁЛЫМ СЛУЧАЯМ
-bs:
-  title: SASKA POSEBNA KOMISIJA
+sq:
+  title: KOMISIONI I RASTEVE TË RËNDA I SACHSEN
+tr:
+  title: 'Sakson Zorluk Komisyonu de Dificultades: Información en albanés, árabe,
+    inglés, francés, macedonio, persa, ruso, bosnio, turco y vietnamita'
+ur:
+  title: 'سیکسن ہارڈشپ کمیشن: البانی، عربی، انگریزی، فرانسیسی، مقدونیائی، فارسی، روسی،
+    بوسنیائی، ترکی، ویتنامی میں معلومات'
 vi:
   title: BANG SACHSEN HỘI ĐỒNG CỨU XÉT TRƯỜNG HỢP KHI NGOẠI KIỀU BỊ TRỤC XUẤT (HFK)

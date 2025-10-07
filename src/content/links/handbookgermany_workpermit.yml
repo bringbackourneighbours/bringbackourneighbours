@@ -1,5 +1,9 @@
 all:
   type: WEB
+ar:
+  slug: workpermitar
+  title: تصريح العمل للاجئين/ات
+  url: https://handbookgermany.de/ar/work-permit
 de:
   slug: arbeiten
   title: Arbeitserlaubnis für Geflüchtete
@@ -8,30 +12,26 @@ en:
   slug: workpermit
   title: Work Permit for Refugees
   url: https://handbookgermany.de/en/work-permit
-fr:
-  slug: travail
-  title: Permis de travail pour les réfugiés
-  url: https://handbookgermany.de/fr/work-permit
-ar:
-  slug: workpermitar
-  title: تصريح العمل للاجئين/ات
-  url: https://handbookgermany.de/ar/work-permit
 fa:
   slug: workpermitfa
   title: اجازه کاربرای پناهجویان در آلمان
   url: https://handbookgermany.de/fa/work-permit
-tr:
-  slug: workpermittr
-  title: Mülteciler İçin Çalışma İzni
-  url: https://handbookgermany.de/tr/work-permit
-ru:
-  slug: workpermitru
-  title: Разрешение на работу для беженцев и соискателей убежища
-  url: https://handbookgermany.de/ru/work-permit
+fr:
+  slug: travail
+  title: Permis de travail pour les réfugiés
+  url: https://handbookgermany.de/fr/work-permit
 ps:
   slug: workpermitps
   title: په جرمني کې د کډوالو لپاره د کار اجازه
   url: https://handbookgermany.de/ps/work-permit
+ru:
+  slug: workpermitru
+  title: Разрешение на работу для беженцев и соискателей убежища
+  url: https://handbookgermany.de/ru/work-permit
+tr:
+  slug: workpermittr
+  title: Mülteciler İçin Çalışma İzni
+  url: https://handbookgermany.de/tr/work-permit
 uk:
   slug: workpermituk
   title: Дозвіл на роботу для біженців і претендентів на притулок

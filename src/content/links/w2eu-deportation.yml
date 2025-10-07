@@ -1,22 +1,22 @@
 all:
   type: PDF
-en:
-  slug: w2eu-deportationen
-  url: https://w2eu.info/media/pages/countries/germany/deportation/672393118c-1716037674/abschiebungen-englisch-digital.pdf
-  title: stop deportation
-de:
-  slug: w2eu-deportationde
-  url: https://w2eu.info/media/pages/countries/germany/deportation/7969a0e502-1716037677/abschiebungen-deutsch-digital.pdf
-  title: Abschiebung verhindern
 ar:
   slug: w2eu-deportationar
-  url: https://w2eu.info/media/pages/countries/germany/deportation/5780dd989d-1718118787/abschiebungen-arabisch-digital.pdf
   title: وقف الترحيل
+  url: https://w2eu.info/media/pages/countries/germany/deportation/5780dd989d-1718118787/abschiebungen-arabisch-digital.pdf
+de:
+  slug: w2eu-deportationde
+  title: Abschiebung verhindern
+  url: https://w2eu.info/media/pages/countries/germany/deportation/7969a0e502-1716037677/abschiebungen-deutsch-digital.pdf
+en:
+  slug: w2eu-deportationen
+  title: stop deportation
+  url: https://w2eu.info/media/pages/countries/germany/deportation/672393118c-1716037674/abschiebungen-englisch-digital.pdf
 fa:
   slug: w2eu-deportationfa
-  url: https://w2eu.info/media/pages/countries/germany/deportation/79ac447db2-1718118787/abschiebungen-farsi-digital.pdf
   title: اخراج مردم را متوقف کنید
+  url: https://w2eu.info/media/pages/countries/germany/deportation/79ac447db2-1718118787/abschiebungen-farsi-digital.pdf
 fr:
   slug: w2eu-deportationfr
-  url: https://w2eu.info/media/pages/countries/germany/deportation/722917a9e6-1718118787/abschiebungen-franzosisch-digital.pdf
   title: stop l'epulsion
+  url: https://w2eu.info/media/pages/countries/germany/deportation/722917a9e6-1718118787/abschiebungen-franzosisch-digital.pdf

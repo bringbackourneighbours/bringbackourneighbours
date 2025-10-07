@@ -1,7 +1,7 @@
 all:
   slug: soliasyl
-  url: https://citizenasylum.noblogs.org/
   type: WEB
+  url: https://citizenasylum.noblogs.org/
 de:
   title: Informationen zu Soli-Asyl in Sachsen
 en:
@@ -10,7 +10,7 @@ es:
   title: Información sobre el Asilo Solidario
 fr:
   title: Informations sur l’hébergement citoyen
-ru:
-  title: Информация об Соли-убежище
 ka:
   title: ინფორმაცია Soli-Asyl ის შესახებ
+ru:
+  title: Информация об Соли-убежище
