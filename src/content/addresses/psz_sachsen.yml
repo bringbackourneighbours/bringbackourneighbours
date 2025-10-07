@@ -3,16 +3,24 @@ name:  PSZ Sachsen
 url: https://psz-sachsen.de
 lastChecked: 2025-07-08
 translatedNotes:
-  de: "Beratungs- und Behandlungsstellen für seelisch belasteten Menschen mit Migrationserfahrung. Kostenfrei und vertraulich. Alle Mitarbeitenden stehen unter Schweigepﬂicht"
-  es: "Centros de asesoramiento y tratamiento para personas con trastornos mentales y experiencia migratoria. Gratuitos y confidenciales. Todos los empleados tienen el deber de confidencialidad"
-  fr: "Services de consultation et de traitement pour les personnes migrantes souffrant de troubles psychiques. Gratuit et confidentiel. Tous les collaborateurs sont tenus au secret professionnel."
-  en: "Counselling and treatment centres for mentally distressed people with migration experience. Free of charge and confidential. All employees are under a duty of confidentiality"
-  ar: "مراكز تقديم المشورة والعلاج للأشخاص الذين يعانون من مشاكل نفسية من ذوي الخبرة في مجال الهجرة. مجانية وسرية. جميع الموظفين ملزمون بواجب السرية"
-  tr: "Göçmenlik deneyimi olan ruhsal sorunlu kişiler için danışmanlık ve tedavi merkezleri. Ücretsiz ve gizlidir. Tüm çalışanlar gizlilik yükümlülüğü altındadır"
-  fa: "مراکز مشاوره و درمان برای افراد مبتلا به اختلال روانی با تجربه مهاجرت. رایگان و محرمانه. همه کارکنان سوگند یاد کرده اند که رازداری کنند"
-  ka: "მიგრაციის გამოცდილების მქონე ფსიქიკურად დაავადებული ადამიანების საკონსულტაციო და მკურნალობის ცენტრები. უფასო და კონფიდენციალური. ყველა თანამშრომელი ფიცს დებს კონფიდენციალურობას"
-  ur: "نقل مکانی کا تجربہ رکھنے والے ذہنی طور پر تناؤ کا شکار افراد کے لئے مشاورت اور علاج کے مراکز۔ مفت اور خفیہ. تمام ملازمین رازداری کے فرائض کے تحت ہیں"
-  ku: "Navendên şêwirmendiyê û dermankirinê ji bo kesên bi pirsgirêkên tenduristiya derûnî yên ku koçberî dîtine. Belaş û nehênî. Hemû karmend bi nehêniyê ve girêdayî ne."
-  ru: "Консультационные и лечебные центры для душевнобольных людей с миграционным стажем. Бесплатно и конфиденциально. Все сотрудники обязаны хранить профессиональную тайну"
-  ti: "ነቶም ተመክሮ ስደተኛታት ዘለዎም ኣእምሮኣዊ ውጥረት ዘለዎም ሰባት ዚኸውን ምኽርን ሕክምናን ዚግበረሉ ማእከላት ኣሎ። ብዘይ ክፍሊትን ብምስጢርን። ኵሎም ሰራሕተኛታት ኣብ ትሕቲ ምስጢር እዮም ዘለዉ"
-  vi: "Trung tâm tư vấn và điều trị cho những người bị căng thẳng về tâm thần có kinh nghiệm di cư. Miễn phí và bảo mật. Tất cả nhân viên đều có nghĩa vụ bảo mật"
+  ar: مراكز تقديم المشورة والعلاج للأشخاص الذين يعانون من مشاكل نفسية من ذوي الخبرة في مجال الهجرة. مجانية وسرية. جميع الموظفين ملزمون بواجب السرية
+  bs: Centri za savjetovanje i liječenje mentalno oboljelih osoba s iskustvom migracije. Besplatno i povjerljivo. Svi zaposlenici imaju obavezu čuvanja povjerljivosti.
+  ckb: سەنتەری ڕاوێژکاری و چارەسەری ئەو کەسانەی کە تووشی کێشەی دەروونین و ئەزموونی کۆچکردنیان هەیە. بێ بەرامبەر و نهێنی. هەموو فەرمانبەران لە ژێر ئەرکی نهێنی دان
+  de: Beratungs- und Behandlungsstellen für seelisch belasteten Menschen mit Migrationserfahrung. Kostenfrei und vertraulich. Alle Mitarbeitenden stehen unter Schweigepﬂicht
+  en: Counselling and treatment centres for mentally distressed people with migration experience. Free of charge and confidential. All employees are under a duty of confidentiality
+  es: Centros de asesoramiento y tratamiento para personas con trastornos mentales y experiencia migratoria. Gratuitos y confidenciales. Todos los empleados tienen el deber de confidencialidad
+  fa: مراکز مشاوره و درمان برای افراد مبتلا به اختلال روانی با تجربه مهاجرت. رایگان و محرمانه. همه کارکنان سوگند یاد کرده اند که رازداری کنند
+  fr: Services de consultation et de traitement pour les personnes migrantes souffrant de troubles psychiques. Gratuit et confidentiel. Tous les collaborateurs sont tenus au secret professionnel.
+  ka: მიგრაციის გამოცდილების მქონე ფსიქიკურად დაავადებული ადამიანების საკონსულტაციო და მკურნალობის ცენტრები. უფასო და კონფიდენციალური. ყველა თანამშრომელი ფიცს დებს კონფიდენციალურობას
+  ku: Navendên şêwirmendiyê û dermankirinê ji bo kesên bi pirsgirêkên tenduristiya derûnî yên ku koçberî dîtine. Belaş û nehênî. Hemû karmend bi nehêniyê ve girêdayî ne.
+  mk: Центри за советување и лекување на лица со ментални проблеми со миграциско искуство. Бесплатно и доверливо. Сите вработени се обврзани да чуваат доверливост.
+  ps: د مهاجرت تجربه لرونکي ذهني رنځیدلي خلکو لپاره د مشورې او درملنې مرکزونه. وړیا او محرم. ټول کارمندان د محرمیت دندې لاندې دي.
+  ru: Консультационные и лечебные центры для душевнобольных людей с миграционным стажем. Бесплатно и конфиденциально. Все сотрудники обязаны хранить профессиональную тайну
+  so: Xarumaha la-talinta iyo daawaynta ee loogu talagalay dadka maskaxda ka xanuunsan ee khibradda socdaalka. Lacag la'aan iyo sir. Dhammaan shaqaaluhu waxay ku hoos jiraan waajibaad qarsoodi ah
+  sq: Qendra këshillimi dhe trajtimi për persona me probleme mendore me përvojë në migrim. Falas dhe konfidenciale. Të gjithë punonjësit janë të detyruar të ruajnë konfidencialitetin.
+  sr: Центри за саветовање и лечење ментално узнемирених особа са искуством миграције. Бесплатно и поверљиво. Сви запослени су обавезни да чувају поверљивост.
+  ti: ነቶም ተመክሮ ስደተኛታት ዘለዎም ኣእምሮኣዊ ውጥረት ዘለዎም ሰባት ዚኸውን ምኽርን ሕክምናን ዚግበረሉ ማእከላት ኣሎ። ብዘይ ክፍሊትን ብምስጢርን። ኵሎም ሰራሕተኛታት ኣብ ትሕቲ ምስጢር እዮም ዘለዉ
+  tr: Göçmenlik deneyimi olan ruhsal sorunlu kişiler için danışmanlık ve tedavi merkezleri. Ücretsiz ve gizlidir. Tüm çalışanlar gizlilik yükümlülüğü altındadır
+  uk: Консультаційні та лікувальні центри для людей з психічними розладами та досвідом міграції. Безкоштовно та конфіденційно. Усі співробітники зобов'язані зберігати конфіденційність.
+  ur: نقل مکانی کا تجربہ رکھنے والے ذہنی طور پر تناؤ کا شکار افراد کے لئے مشاورت اور علاج کے مراکز۔ مفت اور خفیہ. تمام ملازمین رازداری کے فرائض کے تحت ہیں
+  vi: Trung tâm tư vấn và điều trị cho những người bị căng thẳng về tâm thần có kinh nghiệm di cư. Miễn phí và bảo mật. Tất cả nhân viên đều có nghĩa vụ bảo mật
