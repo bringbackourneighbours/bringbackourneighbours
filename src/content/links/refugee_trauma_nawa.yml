@@ -5,6 +5,15 @@ ar:
   title: معلومات وتمارين للأشخاص المصابين بصدمات نفسية
   type: PDF
   url: https://www.refugee-trauma.help/fileadmin/downloads/pdf/nawa/arabisch/nawa-arabisch-information-and-exercises.pdf
+bs:
+  slug: nawabs
+  title: Informacije i vježbe za traumatizirane osobe
+  url: https://www.refugee-trauma.help/index.php?id=14
+  type: PDF
+ckb:
+  slug: nawackb
+  title: زانیاری و ڕاهێنان بۆ ئەو کەسانەی کە تووشی زەبر و زەنگ بوون
+  url: https://www.refugee-trauma.help/fuer-betroffene/erwachsene/kurdisch-sorani/
 de:
   slug: nawade
   title: Informationen und Übungen für traumatisierte Menschen
@@ -20,11 +29,19 @@ fa:
 fr:
   slug: nawafr
   title: informations et exercises pour personnes traumatisées
-  url: https://www.refugee-trauma.help/fuer-betroffene/erwachsene/franzoesisch/
+  url: https://www.refugee-trauma.help/fuer-betroffene/erwachsene/franzoesisch/s
 ku:
   slug: nawa
   title: Zanyarî û rêanîn ji bo mirovên hatî trawma kirin
   url: https://www.refugee-trauma.help/fuer-betroffene/erwachsene/kurdisch-kurmanci/
+ru:
+  slug: nawaru
+  title: Информация и упражнения для травмированных людей
+  url: https://www.refugee-trauma.help/fuer-betroffene/erwachsene/russisch/
+sq:
+  slug: nawasq
+  title: Informacion dhe ushtrime për njerëzit e traumatizuar
+  url: https://www.refugee-trauma.help/fuer-betroffene/erwachsene/albanisch/
 tr:
   slug: nawatr
   title: travma yaþamýþ insanlar için bilgilendirme ve alýþtýrma kurslarý
