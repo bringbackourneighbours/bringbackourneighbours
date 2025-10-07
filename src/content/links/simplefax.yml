@@ -1,5 +1,5 @@
 all:
   slug: simple-fax
-  url: https://simple-fax.de/registrieren
-  type: WEB
   title: simple fax
+  type: WEB
+  url: https://simple-fax.de/registrieren

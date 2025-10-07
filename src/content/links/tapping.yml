@@ -1,16 +1,68 @@
 all:
-  type: VIDEO
   slug: tapping
+  type: VIDEO
   url: https://www.selfhelpfortrauma.org/
-de:
-  title: Selbsthilfe bei Trauma mit der Trauma Tapping Technik
-en:
-  title: Self-help for trauma with the Trauma Tapping Technique
-es:
-  title: Autoayuda para traumas con la técnica de tapping para traumas
-fr:
-  title: Auto-assistance en cas de traumatisme avec la technique du Trauma Tapping
 ar:
+  slug: tappingar
   title: المساعدة الذاتية للصدمات النفسية باستخدام تقنية النقر على الصدمات النفسية
+  type: PDF
+  url: https://www.selfhelpfortrauma.org/s/TTT_StepByStep-Arabia.pdf
+bs:
+  title: Samopomoć kod traume tehnikom tapkanja traume
+ckb:
+  title: خۆ یارمەتیدان بۆ زەبر و زەنگ بە تەکنیکی زەبر و زەنگ
+de:
+  slug: tappingde
+  title: Selbsthilfe bei Trauma mit der Trauma Tapping Technik
+  type: PDF
+  url: https://www.selfhelpfortrauma.org/s/TTT_StepByStep-German.pdf
+en:
+  slug: tappingde
+  title: Self-help for trauma with the Trauma Tapping Technique
+  type: PDF
+  url: https://www.selfhelpfortrauma.org/s/TTT_StepBySteppdf.zip
+es:
+  slug: tappinges
+  title: Autoayuda para traumas con la técnica de tapping para traumas
+  type: PDF
+  url: https://www.selfhelpfortrauma.org/s/TTT_StepByStep-Spain.pdf
 fa:
+  slug: tappingfa
   title: خودیاری برای تروما با تکنیک ضربه زدن به تروما
+  type: PDF
+  url: https://www.selfhelpfortrauma.org/s/TTT_StepByStep-Farsi.pdf
+fr:
+  slug: tappingfr
+  title: Auto-assistance en cas de traumatisme avec la technique du Trauma Tapping
+  type: PDF
+  url: https://www.selfhelpfortrauma.org/s/TTT_StepByStep-French.pdf
+ka:
+  title: ტრავმის დროს თვითდახმარება ტრავმის შეხების ტექნიკით
+ku:
+  title: Xwealîkarî ji bo trawmayê bi Teknîka Tapkirina Trawmayê
+mk:
+  title: Самопомош за траума со техниката на тапкање при траума
+ps:
+  title: د ټراما ټیپ کولو تخنیک سره د صدمې لپاره ځان مرسته
+ru:
+  title: Самопомощь при травмах с помощью техники травматического постукивания
+so:
+  slug: tappingso
+  title: Is-caawinta dhaawacyada ee Farsamada Taabsiinta Dhaawaca
+  type: PDF
+  url: https://www.selfhelpfortrauma.org/s/TTT_StepByStep-Somali.pdf
+sq:
+  title: Vetëndihmë për traumën me Teknikën e Përgjimit të Traumës
+sr:
+  title: Самопомоћ код трауме техником тапкања трауме
+ti:
+  slug: tappingti
+  title: ንስንባደ ዝኸውን ርእሰ-ሓገዝ ብ ትራውማ ታፒንግ ቴክኒክ
+  type: PDF
+  url: https://www.selfhelpfortrauma.org/s/TTT_StepByStep-Tigrinya.pdf
+tr:
+  title: Travma Dokunma Tekniği ile travmaya karşı kendi kendine yardım
+uk:
+  title: Самодопомога при травмах за допомогою техніки травматичного постукування
+vi:
+  title: Tự cứu chữa chấn thương bằng Kỹ thuật gõ chấn thương

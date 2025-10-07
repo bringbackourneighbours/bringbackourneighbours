@@ -1,18 +1,19 @@
 all:
   type: WEB
-en:
-  slug: w2eu
-  url: https://w2eu.info/en/countries/germany/contacts
-  title: "List of selforganisations, activist counselling and refugee councils in Germany"
-fr:
-  slug: w2eufr
-  url: https://w2eu.info/fr/countries/germany/contacts
-  title: "Liste des groupes auto-gérés, des conseils d’activistes et des conseils de réfugiés en Allemagne"
-fa:
-  slug: w2eufa
-  url: https://w2eu.info/fa/countries/germany/contacts
-  title: "فهرست سازمان های خودی، مشاوره فعالان و شوراهای پناهندگان در آلمان"
 ar:
   slug: w2euar
+  title: قائمة بالمنظمات الذاتية و استشارات الناشطين ومجالس اللاجئين في ألمانيا
   url: https://w2eu.info/ar/countries/germany/contacts
-  title: "قائمة بالمنظمات الذاتية و استشارات الناشطين ومجالس اللاجئين في ألمانيا"
+en:
+  slug: w2eu
+  title: List of selforganisations, activist counselling and refugee councils in Germany
+  url: https://w2eu.info/en/countries/germany/contacts
+fa:
+  slug: w2eufa
+  title: فهرست سازمان های خودی، مشاوره فعالان و شوراهای پناهندگان در آلمان
+  url: https://w2eu.info/fa/countries/germany/contacts
+fr:
+  slug: w2eufr
+  title: Liste des groupes auto-gérés, des conseils d’activistes et des conseils de
+    réfugiés en Allemagne
+  url: https://w2eu.info/fr/countries/germany/contacts

@@ -1,54 +1,54 @@
 all:
   type: PDF
-en:
-  slug: asyleng
-  url: https://www.asyl.net/fileadmin/user_upload/publikationen/infoblatt_anhoerung/Infoblatt_Asyl_2016_en.pdf
-  title: 'The Interview: a key part of the asylum procedure'
-de:
-  slug: asyldt
-  url: https://www.asyl.net/fileadmin/user_upload/publikationen/infoblatt_anhoerung/Infoblatt_Asyl_dt_2016_fin.pdf
-  title: 'Die Anhörung im Asylverfahren'
 ar:
   slug: asylar
+  title: المقابلة في إجراءات اللجوء
   url: https://www.asyl.net/fileadmin/user_upload/publikationen/infoblatt_anhoerung/Infoblatt_Asyl_2016_arab.pdf
-  title: 'المقابلة في إجراءات اللجوء'
-fr:
-  slug: asylfr
-  url: https://www.asyl.net/fileadmin/user_upload/publikationen/infoblatt_anhoerung/InfoblattAsyl_2016_frz.pdf
-  title: 'L’audition au sein de la procédure d‘asile'
-sq:
-  slug: hearingsq
-  url: https://www.asyl.net/fileadmin/user_upload/publikationen/infoblatt_anhoerung/Infoblatt_Asyl_2016_alb.pdf
-  title: 'Intervista në periudhën e kërkesës së azilit'
 bs:
   slug: hearingbo
+  title: Naputak o provođenju zahtjeva za azil
   url: https://www.asyl.net/fileadmin/user_upload/publikationen/infoblatt_anhoerung/Infoblatt_Asyl_2016_bosn.pdf
-  title: 'Naputak o provođenju zahtjeva za azil'
+de:
+  slug: asyldt
+  title: Die Anhörung im Asylverfahren
+  url: https://www.asyl.net/fileadmin/user_upload/publikationen/infoblatt_anhoerung/Infoblatt_Asyl_dt_2016_fin.pdf
+en:
+  slug: asyleng
+  title: 'The Interview: a key part of the asylum procedure'
+  url: https://www.asyl.net/fileadmin/user_upload/publikationen/infoblatt_anhoerung/Infoblatt_Asyl_2016_en.pdf
 fa:
   slug: hearingfa
+  title: تساوخرد هب یگدیسر دنور رد هبحاصم ةسلج یگدنهانپ
   url: https://www.asyl.net/fileadmin/user_upload/publikationen/infoblatt_anhoerung/InfoAsyl_2016_farsi.pdf
-  title: 'تساوخرد هب یگدیسر دنور رد هبحاصم ةسلج یگدنهانپ'
+fr:
+  slug: asylfr
+  title: L’audition au sein de la procédure d‘asile
+  url: https://www.asyl.net/fileadmin/user_upload/publikationen/infoblatt_anhoerung/InfoblattAsyl_2016_frz.pdf
 ku:
   slug: hearingku
+  title: Di pêvajoya penaberiyê de îfade
   url: https://www.asyl.net/fileadmin/user_upload/publikationen/infoblatt_anhoerung/Infoblatt_Asyl_2016_kurd.pdf
-  title: 'Di pêvajoya penaberiyê de îfade'
 ru:
   slug: hearingru
+  title: Значение интервью в процессе рассмотрения ходатайства о предоставлении убежища
   url: https://www.asyl.net/fileadmin/user_upload/publikationen/infoblatt_anhoerung/Infoblatt_Asyl_2016_russ.pdf
-  title: 'Значение интервью в процессе рассмотрения ходатайства о предоставлении убежища'
+sq:
+  slug: hearingsq
+  title: Intervista në periudhën e kërkesës së azilit
+  url: https://www.asyl.net/fileadmin/user_upload/publikationen/infoblatt_anhoerung/Infoblatt_Asyl_2016_alb.pdf
 ti:
   slug: hearingtir
+  title: ኣብ እዋን ኣገባብ ጉዳይ ዑቕባ ቃለ መጠይቕ
   url: https://www.asyl.net/fileadmin/user_upload/publikationen/infoblatt_anhoerung/InfoblattAsyl_2016_tigr.pdf
-  title: 'ኣብ እዋን ኣገባብ ጉዳይ ዑቕባ ቃለ መጠይቕ'
 tr:
   slug: hearingtr
+  title: İltica Müracaatı İşlemleri İle İlgili Sorgulama
   url: https://www.asyl.net/fileadmin/user_upload/publikationen/infoblatt_anhoerung/InfoAsyl_2016_t%C3%BCrk.pdf
-  title: 'İltica Müracaatı İşlemleri İle İlgili Sorgulama'
 uk:
   slug: hearinguk
+  title: Значення інтерв’ю при розгляді заяви про надання притулку
   url: https://www.asyl.net/fileadmin/user_upload/publikationen/infoblatt_anhoerung/InfoAsyl_2016_ukr.pdf
-  title: 'Значення інтерв’ю при розгляді заяви про надання притулку'
 ur:
   slug: hearingur
+  title: عا نارود ے ل ے ہا یاس تا ادےے ںو اے ہا یاس م یر
   url: https://www.asyl.net/fileadmin/user_upload/publikationen/infoblatt_anhoerung/InfoAsyl_2016_urdu.pdf
-  title: 'عا نارود ے ل ے ہا یاس تا ادےے ںو اے ہا یاس م یر'

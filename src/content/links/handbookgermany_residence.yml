@@ -1,38 +1,39 @@
 all:
   type: WEB
-en:
-  slug: stay
-  url: https://handbookgermany.de/en/bleiberecht
-  title: 'Residence Permits for Individuals with "Duldung"'
-de:
-  slug: bleiben
-  url: https://handbookgermany.de/de/bleiberecht
-  title: 'Bleiberecht für Menschen mit Duldung'
-fr:
-  slug: rester
-  url: https://handbookgermany.de/fr/bleiberecht
-  title: 'Droit de séjour en faveur des personnes tolérées'
 ar:
   slug: bleiben
+  title: حق الإقامة للأفراد الذين لديهم "Duldung"
   url: https://handbookgermany.de/ar/bleiberecht
-  title: 'حق الإقامة للأفراد الذين لديهم "Duldung"'
+de:
+  slug: bleiben
+  title: Bleiberecht für Menschen mit Duldung
+  url: https://handbookgermany.de/de/bleiberecht
+en:
+  slug: stay
+  title: Residence Permits for Individuals with "Duldung"
+  url: https://handbookgermany.de/en/bleiberecht
 fa:
   slug: ماندن
+  title: اقامت برای افرادی که با دولدونگ در آلمان زندگی میکنند
   url: https://handbookgermany.de/fa/bleiberecht
-  title: 'اقامت برای افرادی که با دولدونگ در آلمان زندگی میکنند'
-tr:
-  slug: kalmak
-  url: https://handbookgermany.de/tr/bleiberecht
-  title: 'Duldung Sahipleri İçin Kalma Hakkı'
+fr:
+  slug: rester
+  title: Droit de séjour en faveur des personnes tolérées
+  url: https://handbookgermany.de/fr/bleiberecht
 ps:
   slug: پاتې
+  title: ډولډونګ څه ډول په قبولۍ بدلولای شو؟
   url: https://handbookgermany.de/ps/bleiberecht
-  title: 'ډولډونګ څه ډول په قبولۍ بدلولای شو؟'
 ru:
   slug: оставаться
+  title: Разрешение на пребывание для людей с отсрочкой депортации
   url: https://handbookgermany.de/ru/bleiberecht
-  title: 'Разрешение на пребывание для людей с отсрочкой депортации'
+tr:
+  slug: kalmak
+  title: Duldung Sahipleri İçin Kalma Hakkı
+  url: https://handbookgermany.de/tr/bleiberecht
 uk:
   slug: залишаються
+  title: Дозвіл на перебування для людей з відтермінуванням депортації (Bleiberecht
+    für Geduldete)
   url: https://handbookgermany.de/uk/bleiberecht
-  title: 'Дозвіл на перебування для людей з відтермінуванням депортації (Bleiberecht für Geduldete)'

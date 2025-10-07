@@ -1,8 +1,8 @@
 all:
   slug: transfer
-  url: https://ag-asylsuchende.de/wp-content/uploads/2023/08/How2-write-a-Transfer-request.pdf
   type: PDF
+  url: https://ag-asylsuchende.de/wp-content/uploads/2023/08/How2-write-a-Transfer-request.pdf
 de:
-  title: 'Wie schreibt man einen Transferantrag?'
+  title: Wie schreibt man einen Transferantrag?
 en:
-  title: 'How to write a transfer-request'
+  title: How to write a transfer-request
