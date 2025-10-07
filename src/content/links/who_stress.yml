@@ -28,11 +28,27 @@ ka:
   slug: whoka
   title: 'ვაკეთოთ ის, რაც მნიშვნელოვანია სტრესის ჟამს: დასურათებული სახელმძღვანელო'
   url: https://iris.who.int/bitstream/handle/10665/331901/9789240003910-geo.pdf
+ru:
+  slug: whoru
+  title: https://apps.who.int/iris/bitstream/handle/10665/331901/9789240009547-rus.pdf
+  url: 'Важные навыки в периоды стресса:   иллюстрированное пособие'
+ti:
+  slug: whoti
+  title: ኣብ እዋን ጭንቀት ክስርሑ ዝግበኦም ኣገደስቲ ተግባራት ብምስሊ ዝተሓገዘ መምርሒ
+  url: https://iris.who.int/bitstream/handle/10665/331901/9789240003910-tir.pdf
 tr:
   slug: whotr
   title: 'Stresli anlarda ne yapmalı?: resimli rehber'
   url: https://iris.who.int/bitstream/handle/10665/333917/WHO-EURO-2020-361-40096-54908-tur.pdf
+uk:
+  slug: whouk
+  title: 'Важливі навички в періоди стресу: iлюстроване керівництво'
+  url: https://apps.who.int/iris/handle/10665/339150
 ur:
   slug: whour
   title: 'تناؤ کے وقت میں کیا فرق پڑتا ہے: ایک تصویری گائیڈ'
   url: https://iris.who.int/bitstream/handle/10665/331901/9789240003910-urd.pdf
+vi:
+  slug: whovi
+  title: 'Những Việc Cần Làm Khi Căng Thẳng: Hướng Dẫn có Minh Họa'
+  url: https://apps.who.int/iris/bitstream/handle/10665/331901/9789240003910-vie.pdf
