@@ -1,6 +1,6 @@
 # Architecture
 
-This document describes the initial specification for the new web-project. It documents the architectural decisions and how the where made.
+This document describes the initial specification for the new web-project. It documents the architectural decisions and how they were made.
 
 <!-- TOC -->
 
@@ -466,6 +466,8 @@ In the future, we might add some postprocessing of the pdfs (via ghostscript or 
 
 This is just a draft. Pleas keep updated.
 
+Any static assets, like images of files we provide, can be placed in the `public/` directory.
+
 ```
 bringbackourneighbours/
 ├─ docs/
@@ -474,7 +476,6 @@ bringbackourneighbours/
 ├─ node_modules/
 ├─ public/
 │  ├─ favicon.svg
-│  ├─ robots.txt
 ├─ src/
 │  ├─ content/
 │  |  ├─ pages/
