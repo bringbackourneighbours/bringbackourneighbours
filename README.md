@@ -11,7 +11,7 @@
   - [Getting Started](#getting-started)
   - [Linters and Formatters](#linters-and-formatters)
   - [Requirements](#requirements)
-  - [Project Structure](#project-structure)
+  - [Project Structure &](#project-structure-)
   - [Contributing](#contributing)
     - [Code of conduct](#code-of-conduct)
     - [Adding Content](#adding-content)
@@ -20,12 +20,14 @@
       - [Addresses](#addresses)
       - [Links](#links)
       - [Forms/Templates](#formstemplates)
+    - [Translation](#translation)
   - [Licencing](#licencing)
   <!-- TOC -->
 
 ## About
 
-See https://github.com/bringbackourneighbours
+We are developing comprehensive and multilingual information material on protection against deportations.
+Visit https://bringbackourneighbours.de for the latest edition, Digital and to print out and for you to distribute.
 
 ## Getting Started
 
@@ -50,18 +52,17 @@ All commands are run from the root of the project, from a terminal:
 
 ## Requirements
 
-For now, we have tested this project mainly on ubuntu 24.04., as this is the worker GitHub will provide us.
+For now, we have tested this project mainly on ubuntu 24.04., as this is the worker GitHub will provide us, but it
+should work on all kinds of machines.
 
 This projects needs to have the following software installed:
 
 - [node.js](https://nodejs.org/en/download) LTS with npm
 - all [dependencies](https://pptr.dev/guides/system-requirements) of puppeteer with chromium.
 
-## Project Structure
+## Project Structure &
 
-See: https://github.com/bringbackourneighbours/docs/tree/main/architecture
-
-Inside your Astro project, you'll see the following folders and files:
+See: https://github.com/bringbackourneighbours/docs/tree/main/architecture for more details and the initial ideas.
 
 ```text
 /
@@ -72,7 +73,8 @@ Inside your Astro project, you'll see the following folders and files:
 └── package.json
 ```
 
-Astro looks for `.astro` or `.md` files in the `src/pages/` directory. Each page is exposed as a route based on its file
+Astro looks for `.astro`, `.md` or `.mdx` files in the `src/pages/` directory. Each page is exposed as a route based on
+its file
 name.
 
 There's nothing special about `src/components/`, but that's where we like to put any Astro/React/Vue/Svelte/Preact
@@ -90,7 +92,8 @@ The aim is to provide people who fear deportation, voluntary supporters and prof
 further information on the subject of deportations.
 
 The information is primarily for Saxony. Much of it is valid and helpful throughout Germany. However, the contacts to
-advice centres and authorities are only for Saxony.
+advice centres and authorities are only for Saxony. Please contact us if you are considering adding more information on
+other regions.
 
 We try to ensure that all information is up-to-date and complete. However, we would be happy to receive further
 information and criticism from you. What has worked in the past to prevent deportation? Write to:
@@ -108,7 +111,7 @@ We want to protect as many people as possible from this violence.
 
 ### Adding Content
 
-all the content is stored in the directory `src/content` with the following structure:
+All the content is stored in the directory `src/content` with the following structure:
 
 ```text
 /
@@ -116,7 +119,7 @@ all the content is stored in the directory `src/content` with the following stru
 ├── src/
 │   └── content/
 │       ├── addresses/  # => all the Addresses
-│       ├── blocks/     # => all the Block
+│       ├── blocks/     # => all the Blocks
 │       ├── flyers/     # => all the Flyers
 │       ├── kits/       # => all the Kits
 │       ├── pages/      # => all the Pages
@@ -127,8 +130,8 @@ all the content is stored in the directory `src/content` with the following stru
 
 #### Block
 
-The biggest portion of the content is stored as so called `blocks`. Those blocks will be embedded in the other "
-standalone" content types
+The biggest portion of the content is stored as so called `blocks`. Those blocks will be embedded in the other
+"standalone" content types.
 
 All block need to be in the [MDX](https://mdxjs.com) format, it has the file ending `.mdx` or `.md` (if only using the
 base markdown features).
@@ -136,10 +139,10 @@ base markdown features).
 Place the files in `/src/content/blocks`. Add a folder per block, that contains one mdx file per language. The file and
 folder names are not evaluated.
 
-Each block has a "frontmatter"-section and content below. With the content you can embed other elements, even different
+Each block has a "frontmatter"-section and content body below. Within the body you can embed other elements, even
+different
 blocks. Please note, that you don't need to and should not import other component in the MDX body, as it would impact
-the
-mapping logic.
+the mapping logic.
 
 Example Block: `/src/content/blocks/example/de.mdx`:
 
@@ -148,7 +151,7 @@ Example Block: `/src/content/blocks/example/de.mdx`:
 identifier: example       # identifier to embed the block
 lang: de                  # language of tme block
 lastChecked: 2025-07-08   # the day this content was last checked. use to spot outdated translations
-fallback: en              # (optional) another language, it will be shown as fallback. use if no vvtranslation available but content is necessary
+fallback: en              # (optional) another language, it will be shown as fallback. use if no translation is available but content is necessary
 machineTranslation: false # (optional) mark that the content was not translated by a human and may contain errors.
 ---
 
@@ -156,7 +159,7 @@ machineTranslation: false # (optional) mark that the content was not translated 
 
 Random Text in the markdown format
 
-  # h2
+        # h2
 
 * list item1
 * list item2
@@ -186,6 +189,7 @@ seo: Around 150 Characters # will be set a meta description for search engines
 fallback: en # (optional) another language, it will be shown as fallback. use if no vvtranslation available but content is necessary
 machineTranslation: false # (optional) mark that the content was not translated by a human and may contain errors.
 ---
+Random Text in the **markdown** format
 ```
 
 #### Addresses
@@ -229,7 +233,7 @@ instagram: instagram
 telegram: telegram
 twitter: twitter
 
-# you can add   a note on the address. providing some context, explaining what this organisation is doing. only the one in the current language will be shown
+# you can add a note on the address. providing some context, explaining what this organisation is doing. only the one in the current language will be shown
 translatedNotes:
   de: 'Nur ein Beispiel'
   en: 'Just an Example'
@@ -247,11 +251,11 @@ identifier: some-content
 lang: de
 lastChecked: 2025-12-27
 ---
-// Import the component if needed, in most content it will work wihtout
+// Import the component if needed, in most content it will work without
 import Address from '../../../components/Address.astro';
 
-Random Text
----
+Random Text...
+
 <Address identifier="my-address"/>
 ```
 
@@ -315,8 +319,17 @@ Random Text
 <ExternalShortLink identifier="form_urgent"/>
 ```
 
-## Licencing
+#### UI-Translation
 
-```
-::include{file=LICENCE}
-```
+Apart from the content of the interface of the website and the printable pdfs also contains text, which needs to be translated. Like "descargar en PDF" or "download as PDF". All those strings are stored in one `JSON` file per language in then folder `src/content/ui`.
+
+### Translation
+
+If you want to add another language, you just have to add more of content files in the new language. As soon as the files are place the can be viewed, still the language will remain "hidden".
+
+To publish the language: Within the files `src/model/languages.ts` is a definition of the currently active Languages: the `SupportedLanguages`, add the new language there.
+
+The live website provides a handy tool to export all text in a easy so edit way in 2 languages for translations.
+Visit: https://bringbackourneighbours.de/internal-translate/de-en/
+
+There you can copy the whole content into your clipboard and the paste it with in office software, like LibreOffice.
