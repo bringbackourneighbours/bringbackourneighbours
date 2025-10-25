@@ -11,18 +11,19 @@
   - [Getting Started](#getting-started)
   - [Linters and Formatters](#linters-and-formatters)
   - [Requirements](#requirements)
-  - [Project Structure &](#project-structure-)
   - [Contributing](#contributing)
     - [Code of conduct](#code-of-conduct)
+    - [Project Structure](#project-structure)
     - [Adding Content](#adding-content)
       - [Block](#block)
       - [Standalone Content: Flyers, Kits and Pages](#standalone-content-flyers-kits-and-pages)
       - [Addresses](#addresses)
       - [Links](#links)
       - [Forms/Templates](#formstemplates)
+      - [UI-Translation](#ui-translation)
     - [Translation](#translation)
-  - [Licencing](#licencing)
-  <!-- TOC -->
+
+<!-- TOC -->
 
 ## About
 
@@ -60,28 +61,6 @@ This projects needs to have the following software installed:
 - [node.js](https://nodejs.org/en/download) LTS with npm
 - all [dependencies](https://pptr.dev/guides/system-requirements) of puppeteer with chromium.
 
-## Project Structure &
-
-See: https://github.com/bringbackourneighbours/docs/tree/main/architecture for more details and the initial ideas.
-
-```text
-/
-├── public/
-├── src/
-│   └── pages/
-│       └── index.astro
-└── package.json
-```
-
-Astro looks for `.astro`, `.md` or `.mdx` files in the `src/pages/` directory. Each page is exposed as a route based on
-its file
-name.
-
-There's nothing special about `src/components/`, but that's where we like to put any Astro/React/Vue/Svelte/Preact
-components.
-
-Any static assets, like images, can be placed in the `public/` directory.
-
 ## Contributing
 
 As part of the ‘Bring Back Our Neighbours’ campaign, we, a group of full-time and volunteer activists in the field of
@@ -96,8 +75,10 @@ advice centres and authorities are only for Saxony. Please contact us if you are
 other regions.
 
 We try to ensure that all information is up-to-date and complete. However, we would be happy to receive further
-information and criticism from you. What has worked in the past to prevent deportation? Write to:
-info@bringbackourneighbours.de
+information and criticism from you. What has worked in the past to prevent deportation? Write to
+info@bringbackourneighbours.de or directly
+[open an issue](https://github.com/bringbackourneighbours/bringbackourneighbours/issues/new/choose)
+here in github.
 
 ### Code of conduct
 
@@ -108,6 +89,55 @@ We fundamentally reject deportations as inhumane; they symbolise racism and nati
 We criticise the violent practice of deportations in Saxony, which endangers people’s lives and health.
 
 We want to protect as many people as possible from this violence.
+
+### Project Structure
+
+See: https://github.com/bringbackourneighbours/docs/tree/main/architecture for more details and the initial ideas.
+
+```text
+/
+├── public/
+├── src/
+│   ├── assets/
+│   ├── components/
+│   │    ├── design/
+│   │    ├── markdown/
+│   │    └── *.astro
+│   ├── content/
+│   ├── integrations/
+│   ├── layouts/
+│   ├── model/
+│   ├── pages/
+│   ├── testing/
+│   └── util/
+└── package.json
+```
+
+Astro looks for `.astro`, `.md` or `.mdx` files in the `src/pages/` directory.
+Each page is exposed as a route based on its file name.
+See [Astro-docs on Pages](https://docs.astro.build/en/basics/astro-pages/) about it.
+
+All other `.astro`-files in `src/components/` and `src/layouts` are just normal components.
+Layouts components are being used to define the basic html base.
+
+Whereas the components in `src/components/markdown` are used to be renders within `.mdx` files. Within
+`src/components/markdown/MarkdownEntry.astro` you will find some logic to replace the with fake versions for translation
+purpose.
+The components in `src/components/design` should provide the visual building blocks of the whole app, those components
+should not be depended on the `content`.
+
+`content` contains the actual content of the app – see below for more details.
+
+In `src/integrations` there are some custom Astro-Integration we use to generate the page and the pdfs.
+
+`models` contains basic interfaces and types as all over the app.
+
+`utils` contains functions and helpers.
+
+`testing` contains helpers for unit testing.
+
+Any static assets, like images, can be placed in the `public/` directory – they will end up directly in the root of the
+generated `dist`.
 
 ### Adding Content
 
@@ -325,7 +355,8 @@ Apart from the content of the interface of the website and the printable pdfs al
 
 ### Translation
 
-If you want to add another language, you just have to add more of content files in the new language. As soon as the files are place the can be viewed, still the language will remain "hidden".
+If you want to add another language, you just have to add more of content files in the new language. As soon as the
+files are placed they can be viewed, still the language will remain "hidden".
 
 To publish the language: Within the files `src/model/languages.ts` is a definition of the currently active Languages: the `SupportedLanguages`, add the new language there.
 
