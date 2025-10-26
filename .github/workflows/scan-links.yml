@@ -1,4 +1,4 @@
-name: Scan external Links for Errors
+name: Scan external links for errors
 
 on:
   schedule:
@@ -10,4 +10,4 @@ jobs:
     name: Check with linkinator
     runs-on: ubuntu-latest
     steps:
-      - run: npx linkinator --redirects=error https://bringbackourneighbours.de/internal-check-links
+      - run: npx linkinator --redirects=error https://bringbackourneighbours.de/internal-check-links/
