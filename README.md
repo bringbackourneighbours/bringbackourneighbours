@@ -13,19 +13,20 @@
   - [Linters and Formatters](#linters-and-formatters)
   - [Requirements](#requirements)
   - [Contributing](#contributing)
-  _ [Code of conduct](#code-of-conduct)
-  _ [Project Structure](#project-structure)
-  _ [Adding Content](#adding-content)
-  _ [Block](#block)
-  _ [Standalone Content: Flyers, Kits and Pages](#standalone-content-flyers-kits-and-pages)
-  _ [Addresses](#addresses)
-  _ [Links](#links)
-  _ [Forms/Templates](#formstemplates)
-  _ [UI-Translation](#ui-translation)
-  _ [Translation](#translation)
-  _ [Creation of printable PDFs](#creation-of-printable-pdfs)
-  _ [Short Url for Links](#short-url-for-links)
-  <!-- TOC -->
+    - [Code of conduct](#code-of-conduct)
+    - [Project Structure](#project-structure)
+    - [Adding Content](#adding-content)
+      - [Block](#block)
+      - [Standalone Content: Flyers, Kits and Pages](#standalone-content-flyers-kits-and-pages)
+      - [Addresses](#addresses)
+      - [Links](#links)
+      - [Forms/Templates](#formstemplates)
+      - [UI-Translation](#ui-translation)
+    - [Translation](#translation)
+    - [Creation of printable PDFs](#creation-of-printable-pdfs)
+    - [Short Url for Links](#short-url-for-links)
+
+<!-- TOC -->
 
 ## About
 
@@ -396,7 +397,9 @@ For the printed version we want to provide shortened urls to external and intern
 type `bbonlink.de/asylar` when you want to view this external
 material: https://www.asyl.net/fileadmin/user_upload/publikationen/infoblatt_anhoerung/Infoblatt_Asyl_2016_arab.pdf
 
-Per schedule, we will check every night if the external sites are still up and running. Most of the time there will be not much we can do:
+Per schedule, we will check every night if the external sites are still up and running. Most of the time there will be
+not much we can do:
 if some other site goes offline, we only can decide to remove the link to it.
 
 If you want to check for yourself visit http://localhost:4321/internal-check-links
+or run `npx linkinator --redirects=error https://bringbackourneighbours.de/internal-check-links/`
