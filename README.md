@@ -1,5 +1,5 @@
-[![Test](https://github.com/bringbackourneighbours/bringbackourneighbours/actions/workflows/lint.yml/badge.svg)](https://github.com/bringbackourneighbours/bringbackourneighbours/actions/workflows/lint.yml)
-[![Deploy](https://github.com/bringbackourneighbours/bringbackourneighbours/actions/workflows/staging.yml/badge.svg)](https://bringbackourneighbours.github.io/bringbackourneighbours/)
+[![Test Build](https://github.com/bringbackourneighbours/bringbackourneighbours/actions/workflows/verify.yml/badge.svg)](https://github.com/bringbackourneighbours/bringbackourneighbours/actions/workflows/verify.yml)
+[![Deploy](https://github.com/bringbackourneighbours/bringbackourneighbours/actions/workflows/deploy.yml/badge.svg)](https://bringbackourneighbours.github.io/bringbackourneighbours/)
 ![License: MIT (Non-Commercial)](https://img.shields.io/badge/license-MIT--NC-blue.svg)
 
 # Bring Back Our Neighbours
