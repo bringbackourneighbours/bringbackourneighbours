@@ -1,8 +1,9 @@
-[![Verify](https://github.com/bringbackourneighbours/bringbackourneighbours/actions/workflows/verify.yml/badge.svg)](https://github.com/bringbackourneighbours/bringbackourneighbours/actions/workflows/verify.yml)
-[![Deploy](https://github.com/bringbackourneighbours/bringbackourneighbours/actions/workflows/deploy.yml/badge.svg)](https://bringbackourneighbours.github.io/bringbackourneighbours/)
-![License: MIT (Non-Commercial)](https://img.shields.io/badge/license-MIT--NC-blue.svg)
-
 # Bring Back Our Neighbours
+
+[![Deploy](https://github.com/bringbackourneighbours/bringbackourneighbours/actions/workflows/deploy.yml/badge.svg)](https://bringbackourneighbours.github.io/bringbackourneighbours/)
+[![Scan Links](https://github.com/bringbackourneighbours/bringbackourneighbours/actions/workflows/scan-links.yml/badge.svg)](https://github.com/bringbackourneighbours/bringbackourneighbours/actions/workflows/scan-links.yml)
+
+![License: MIT (Non-Commercial)](https://img.shields.io/badge/license-MIT--NC-blue.svg)
 
 <!-- TOC -->
 
@@ -12,19 +13,19 @@
   - [Linters and Formatters](#linters-and-formatters)
   - [Requirements](#requirements)
   - [Contributing](#contributing)
-    - [Code of conduct](#code-of-conduct)
-    - [Project Structure](#project-structure)
-    - [Adding Content](#adding-content)
-      - [Block](#block)
-      - [Standalone Content: Flyers, Kits and Pages](#standalone-content-flyers-kits-and-pages)
-      - [Addresses](#addresses)
-      - [Links](#links)
-      - [Forms/Templates](#formstemplates)
-      - [UI-Translation](#ui-translation)
-    - [Translation](#translation)
-    - [Creation of printable PDFs](#creation-of-printable-pdfs)
-
-<!-- TOC -->
+  _ [Code of conduct](#code-of-conduct)
+  _ [Project Structure](#project-structure)
+  _ [Adding Content](#adding-content)
+  _ [Block](#block)
+  _ [Standalone Content: Flyers, Kits and Pages](#standalone-content-flyers-kits-and-pages)
+  _ [Addresses](#addresses)
+  _ [Links](#links)
+  _ [Forms/Templates](#formstemplates)
+  _ [UI-Translation](#ui-translation)
+  _ [Translation](#translation)
+  _ [Creation of printable PDFs](#creation-of-printable-pdfs)
+  _ [Short Url for Links](#short-url-for-links)
+  <!-- TOC -->
 
 ## About
 
@@ -388,3 +389,14 @@ To inspect the pages before printing visit for example: http://localhost:4321/in
 
 After all the pdfs have been created, we open the pdfs in separate intergrations and check for the number of pages to
 avoid losing content and also concat the pdf together so its more convient to print them all at once.
+
+### Short Url for Links
+
+For the printed version we want to provide shortened urls to external and internal links. For example it is easier to
+type `bbonlink.de/asylar` when you want to view this external
+material: https://www.asyl.net/fileadmin/user_upload/publikationen/infoblatt_anhoerung/Infoblatt_Asyl_2016_arab.pdf
+
+Per schedule, we will check every night if the external sites are still up and running. Most of the time there will be not much we can do:
+if some other site goes offline, we only can decide to remove the link to it.
+
+If you want to check for yourself visit http://localhost:4321/internal-check-links
