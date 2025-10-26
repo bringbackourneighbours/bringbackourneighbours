@@ -1,0 +1,13 @@
+name: Scan external Links for Errors
+
+on:
+  schedule:
+    - cron: 0 8 * * *
+  workflow_dispatch:
+
+jobs:
+  scan:
+    name: Check with linkinator
+    runs-on: ubuntu-latest
+    steps:
+      - run: npx linkinator --redirects=error https://bringbackourneighbours.de/internal-check-links
