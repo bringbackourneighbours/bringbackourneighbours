@@ -1,13 +1,16 @@
 ---
-import BaseLayout from '../../layouts/BaseLayout.astro';
-import { getAllExternalLinksEntries } from '../../util/get-flat-links-entries';
-import Link from '../../components/design/Link.astro';
+import { type CollectionEntry, getCollection } from 'astro:content';
 import { linkUrl } from '../../../astro.config.mjs';
+
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import Link from '../../components/design/Link.astro';
+
+import { getAllExternalLinksEntries } from '../../util/get-flat-links-entries';
 
 const linkEntries = await getAllExternalLinksEntries();
 
-// TODO: check adresses.ulr
-// also internal link?
+const adresses: CollectionEntry<'addresses'>[] =
+  await getCollection('addresses');
 ---
 
 <BaseLayout
@@ -23,7 +26,7 @@ const linkEntries = await getAllExternalLinksEntries();
   > nutzen:
 
   <pre>
-  ❯ npx linkinator {Astro.site}internal-check-links
+  ❯ npx linkinator --redirects=error {Astro.site}internal-check-links
   </pre>
 
   <h2>Externe Links</h2>
@@ -47,6 +50,32 @@ const linkEntries = await getAllExternalLinksEntries();
             </td>
           </tr>
         ))
+      }
+    </tbody>
+  </table>
+  <h2>Adress Links</h2>
+
+  <table>
+    <thead>
+      <tr>
+        <th>id</th>
+        <th>filePath</th>
+        <th>url</th>
+      </tr>
+    </thead>
+    <tbody>
+      {
+        adresses
+          .filter((address) => address.data.url)
+          .map((entry) => (
+            <tr>
+              <td>{entry.id}</td>
+              <td>{entry.filePath}</td>
+              <td>
+                <Link href={entry.data.url}> {entry.data.url}</Link>
+              </td>
+            </tr>
+          ))
       }
     </tbody>
   </table>
