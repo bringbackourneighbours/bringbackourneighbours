@@ -25,10 +25,19 @@ import SupportBox from './SupportBox.astro';
 /**
  * Renders a CollectionEntry's markdown to Html... while using our custom components for it
  *
+ * this allows us to include our own custom components in the mdx without importing them there.
+ *
+ * also allows to switch out the real components by some fake "No-Op" versions.
+ *
  * BEWARE: this only works for `mdx`
  */
 interface Props {
   rendered: Render['.mdx'] | Render['.md'];
+  /**
+   * will recursively render other markdown embed in the mdx if true (default)
+   *
+   * if false the embeded components will be replaced by fake markup that to use as placeholder to make it easier for translators.
+   */
   recursive?: boolean;
 }
 
