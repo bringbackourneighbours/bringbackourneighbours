@@ -1,4 +1,4 @@
-[![Test Build](https://github.com/bringbackourneighbours/bringbackourneighbours/actions/workflows/verify.yml/badge.svg)](https://github.com/bringbackourneighbours/bringbackourneighbours/actions/workflows/verify.yml)
+[![Verify](https://github.com/bringbackourneighbours/bringbackourneighbours/actions/workflows/verify.yml/badge.svg)](https://github.com/bringbackourneighbours/bringbackourneighbours/actions/workflows/verify.yml)
 [![Deploy](https://github.com/bringbackourneighbours/bringbackourneighbours/actions/workflows/deploy.yml/badge.svg)](https://bringbackourneighbours.github.io/bringbackourneighbours/)
 ![License: MIT (Non-Commercial)](https://img.shields.io/badge/license-MIT--NC-blue.svg)
 
@@ -22,6 +22,7 @@
       - [Forms/Templates](#formstemplates)
       - [UI-Translation](#ui-translation)
     - [Translation](#translation)
+    - [Creation of printable PDFs](#creation-of-printable-pdfs)
 
 <!-- TOC -->
 
@@ -125,6 +126,8 @@ Whereas the components in `src/components/markdown` are used to be renders withi
 purpose.
 The components in `src/components/design` should provide the visual building blocks of the whole app, those components
 should not be depended on the `content`.
+You can add them easily on https://bringbackourneighbours.de/showcase/ or http://localhost:4321/showcase and check and
+test them out
 
 `content` contains the actual content of the app – see below for more details.
 
@@ -189,15 +192,15 @@ machineTranslation: false # (optional) mark that the content was not translated 
 
 Random Text in the markdown format
 
-        # h2
+  # h2
 
 * list item1
 * list item2
 * list item3
 
 <Block
-  identifier="another"
-  lang="tr"
+identifier="another"
+lang="tr"
 />
 
 ```
@@ -294,12 +297,14 @@ This together will result in something like
 
 #### Links
 
-Within the content we link to material (pdf, audio, video, webpages) from others, sometimes differently for each language.
+Within the content we link to material (pdf, audio, video, webpages) from others, sometimes differently for each
+language.
 
-For each link you have to create a file in the [YAML](https://en.wikipedia.org/wiki/YAML) format, it has the file ending `.yaml` or
-`.yml`.
+For each link you have to create a file in the [YAML](https://en.wikipedia.org/wiki/YAML) format, it has the file ending
+`.yaml` or `.yml`.
 
-Within the file there can be a section for each language, that the material is available. Additional optionally a section `all` can be used, all properties with in this section will be overridden by the properties per language.
+Within the file there can be a section for each language, that the material is available. Additional optionally a
+section `all` can be used, all properties with in this section will be overridden by the properties per language.
 
 Example Link: `/src/content/links/example.yml`:
 
@@ -351,16 +356,35 @@ Random Text
 
 #### UI-Translation
 
-Apart from the content of the interface of the website and the printable pdfs also contains text, which needs to be translated. Like "descargar en PDF" or "download as PDF". All those strings are stored in one `JSON` file per language in then folder `src/content/ui`.
+Apart from the content of the interface of the website and the printable pdfs also contains text, which needs to be
+translated. Like "descargar en PDF" or "download as PDF". All those strings are stored in one `JSON` file per language
+in then folder `src/content/ui`.
 
 ### Translation
 
 If you want to add another language, you just have to add more of content files in the new language. As soon as the
 files are placed they can be viewed, still the language will remain "hidden".
 
-To publish the language: Within the files `src/model/languages.ts` is a definition of the currently active Languages: the `SupportedLanguages`, add the new language there.
+To publish the language: Within the files `src/model/languages.ts` is a definition of the currently active Languages:
+the `SupportedLanguages`, add the new language there.
 
 The live website provides a handy tool to export all text in a easy so edit way in 2 languages for translations.
 Visit: https://bringbackourneighbours.de/internal-translate/de-en/
 
 There you can copy the whole content into your clipboard and the paste it with in office software, like LibreOffice.
+
+### Creation of printable PDFs
+
+To generate uptodate pdf versions of the content, we use `puppeteer` within the ci-pipeline. This is hooked up as
+astro-intergration but works also locally in dev mode.
+
+In general puppeteer will open up a (headless) browers and visit one page per flyer and kit, when the page is fully
+puppeteer will use the browsers buildin "print" function and export the page as pdf.
+
+We can use CSS and also a [Astro.local](https://docs.astro.build/en/reference/api-reference/#locals) `isPrint` to
+programmtically change the design and behavior of the compontents so the same content can be used for web and print.
+
+To inspect the pages before printing visit for example: http://localhost:4321/internal-print/flyer-de-police
+
+After all the pdfs have been created, we open the pdfs in separate intergrations and check for the number of pages to
+avoid losing content and also concat the pdf together so its more convient to print them all at once.
