@@ -1,0 +1,4 @@
+{
+  name: "Minimal",
+  image: "ubuntu:24.04",
+}
