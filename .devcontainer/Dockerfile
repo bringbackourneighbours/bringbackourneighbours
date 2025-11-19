@@ -22,5 +22,7 @@ RUN bash -c "source $NVM_DIR/nvm.sh && nvm install $NODE_VERSION"
 # set ENTRYPOINT for reloading nvm-environment
 ENTRYPOINT ["bash", "-c", "source $NVM_DIR/nvm.sh && exec \"$@\"", "--"]
 
+ENV ASTRO_TELEMETRY_DISABLED=1
+
 # set cmd to bash
 CMD ["/bin/bash"]
