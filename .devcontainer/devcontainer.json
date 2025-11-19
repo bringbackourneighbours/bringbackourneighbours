@@ -30,5 +30,5 @@
     // Add additional features to your project using auto-completion.
   },
   // Comment out to connect as the root user.
-  "remoteUser": "ubuntu"
+  "remoteUser": "root"
 }
