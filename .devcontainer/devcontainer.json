@@ -1,4 +1,34 @@
+// Default Ubuntu-based DevContainer Template.
+// For more customization options, see https://containers.dev/implementors/json_reference
 {
-  name: "Minimal",
-  image: "ubuntu:24.04",
+  "name": "Default",
+  "build": {
+    "dockerfile": "./Dockerfile",
+    "context": "."
+  },
+  "customizations": {
+    // Configure JetBrains IDE-specific properties
+    "jetbrains": {
+      "backend": "IntelliJ",
+      "settings": {
+        "com.intellij:app:BuiltInServerOptions.builtInServerPort": 54437,
+        "com.intellij:app:EditorSettings.is_ensure_newline_at_eof": true,
+        "com.intellij:app:HttpConfigurable.use_proxy_pac": true,
+        "org.jetbrains.plugins.terminal:app:TerminalOptionsProvider.myShellPath": "/bin/zsh"
+        // IDE settings can be added via “Show context actions”|“Add currently modified settings from IDE”.
+        // A complete list of supported settings is also available through auto-completion
+      },
+      "plugins": [
+        "org.jetbrains.plugins.astro"
+        // A set of plugin IDs.
+        // Plugin ID can be found on the corresponding plugin’s page at https://plugins.jetbrains.com.
+      ]
+    }
+  },
+  "features": {
+    "ghcr.io/devcontainers/features/git": {}
+    // Add additional features to your project using auto-completion.
+  },
+  // Comment out to connect as the root user.
+  "remoteUser": "ubuntu"
 }
