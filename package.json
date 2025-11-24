@@ -28,7 +28,7 @@
     "typescript": "^5.9.3"
   },
   "devDependencies": {
-    "@eslint/js": "^9.36.0",
+    "@eslint/js": "^9.39.1",
     "@testing-library/dom": "^10.4.0",
     "@testing-library/jest-dom": "^6.9.1",
     "@typescript-eslint/parser": "^8.43.0",
