@@ -1,11 +1,12 @@
 // Default Ubuntu-based DevContainer Template.
 // For more customization options, see https://containers.dev/implementors/json_reference
 {
-  "name": "Default",
+  "name": "bbon",
   "build": {
     "dockerfile": "./Dockerfile",
     "context": "."
   },
+  "forwardPorts": [4321],
   "customizations": {
     // Configure JetBrains IDE-specific properties
     "jetbrains": {
