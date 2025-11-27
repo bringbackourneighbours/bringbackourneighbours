@@ -23,7 +23,7 @@
     "astro": "^5.14.6",
     "jsonpath": "^1.1.1",
     "pdf-lib": "^1.17.1",
-    "puppeteer": "^24.29.1",
+    "puppeteer": "^24.31.0",
     "qrcode": "^1.5.4",
     "typescript": "^5.9.3"
   },
