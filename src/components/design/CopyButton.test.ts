@@ -15,8 +15,11 @@ describe('CopyButton', () => {
     });
 
     expect(getByRole('button', { name: 'ar-copy' })).toBeInTheDocument();
-    expect(getByRole('status')).toContainHTML('ar-copiedContentToClipboard');
-    expect(getByRole('status').id).toContain('toast-copy-');
+
+    // the popover is not visible per default call .showPopover() to make it appear
+    const toastEl = getByRole('status', { hidden: true });
+    expect(toastEl).toContainHTML('ar-copiedContentToClipboard');
+    expect(toastEl.id).toContain('toast-copy-');
     // astro will not "render" the client-side script... so we cannot test it:(
   });
 });

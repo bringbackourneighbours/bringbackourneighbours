@@ -16,10 +16,12 @@ describe('ShareButton', () => {
         url: 'https://example.com',
       },
     });
-
     expect(getByRole('button', { name: 'fa-share' })).toBeInTheDocument();
-    expect(getByRole('status')).toContainHTML('fa-sharedLinkToClipboard');
-    expect(getByRole('status').id).toContain('toast-share-');
+
+    // the popover is not visible per default call .showPopover() to make it appear
+    const toastEl = getByRole('status', { hidden: true });
+    expect(toastEl).toContainHTML('fa-sharedLinkToClipboard');
+    expect(toastEl.id).toContain('toast-share-');
     // astro will not "render" the client-side script... so we cannot test it:(
   });
 });

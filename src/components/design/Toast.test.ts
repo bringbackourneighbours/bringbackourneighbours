@@ -15,10 +15,16 @@ describe('Toast', () => {
       slots: { default: 'Toast content' },
     });
 
-    const toastEl = getByRole('status');
+    // the popover is not visible per default call .showPopover() to make it appear
+    const toastEl = getByRole('status', { hidden: true });
 
-    expect(within(toastEl).getByText('Toast content')).toBeInTheDocument();
-
-    expect(toastEl.id).toBe('mock');
+    expect(toastEl).toBeInTheDocument();
+    expect(toastEl).not.toBeVisible();
+    expect(within(toastEl!).getByText('Toast content')).toBeInTheDocument();
+    expect(toastEl!.id).toBe('mock');
+    // it would be nice to test more of this, but sadly jsdom does not support the PopoverApi (yet)
+    // see: https://github.com/jsdom/jsdom/issues/3721
+    // toastEl.showPopover();
+    // expect(toastEl).toBeVisible();
   });
 });
