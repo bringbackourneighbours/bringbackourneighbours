@@ -107,6 +107,10 @@ const {
     &:hover {
       background: var(--card-link-color-surface-fx);
       transform: rotate(0.35deg);
+
+      @media (prefers-reduced-motion: reduce) {
+        transform: none;
+      }
     }
 
     &:active {
