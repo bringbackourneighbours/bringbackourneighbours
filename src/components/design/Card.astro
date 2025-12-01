@@ -18,6 +18,16 @@ const {
 ---
 
 <style>
+  @keyframes glamour {
+    0% {
+      background-position: 100% 50%;
+    }
+
+    100% {
+      background-position: 0 50%;
+    }
+  }
+
   .-primary {
     --card-link-color-main-dark: var(--bbon-color-primary);
     --card-link-color-active: var(--bbon-color-primary-dark);
@@ -87,56 +97,55 @@ const {
     }
 
     &:not(.-invalid) {
-      animation: anime 2s linear infinite;
+      animation: glamour 2s linear infinite;
 
-      &:hover {
-        background: var(--card-link-color-surface-fx);
-        transform: rotate(0.35deg);
-      }
-
-      &:active {
-        color: var(--card-link-color-active);
-        border-color: var(--card-link-color-active);
-
-        /* FIXME: extract shadow */
-        box-shadow:
-          var(--bbon-size-shadow-spread) 7px 0 0 var(--card-link-color-active),
-          16px 19px 40px -31px rgb(0 0 0 / 40%),
-          inset 1px 0 9px rgb(0 0 0 / 15%);
-      }
-
-      &.-secondary:active {
-        color: var(--card-link-color-font);
-        border-color: var(--card-link-color-active);
-        background: var(--card-link-color-surface);
-      }
-
-      &.-small:active {
-        /* FIXME: extract shadow */
-        box-shadow: calc(var(--bbon-size-shadow-spread) * 0.4)
-          calc(var(--bbon-size-shadow-spread) * 0.1) 0 0
-          var(--card-link-color-active);
+      @media (prefers-reduced-motion: reduce) {
+        animation: none;
       }
     }
-  }
 
-  @keyframes anime {
-    0% {
-      background-position: 100% 50%;
+    &:hover {
+      background: var(--card-link-color-surface-fx);
+      transform: rotate(0.35deg);
+
+      @media (prefers-reduced-motion: reduce) {
+        transform: none;
+      }
     }
 
-    100% {
-      background-position: 0 50%;
+    &:active {
+      color: var(--card-link-color-active);
+      border-color: var(--card-link-color-active);
+
+      /* FIXME: extract shadow */
+      box-shadow:
+        var(--bbon-size-shadow-spread) 7px 0 0 var(--card-link-color-active),
+        16px 19px 40px -31px rgb(0 0 0 / 40%),
+        inset 1px 0 9px rgb(0 0 0 / 15%);
+    }
+
+    &.-secondary:active {
+      color: var(--card-link-color-font);
+      border-color: var(--card-link-color-active);
+      background: var(--card-link-color-surface);
+    }
+
+    &.-small:active {
+      /* FIXME: extract shadow */
+      box-shadow: calc(var(--bbon-size-shadow-spread) * 0.4)
+        calc(var(--bbon-size-shadow-spread) * 0.1) 0 0
+        var(--card-link-color-active);
     }
   }
 </style>
 <div
-  class={`card
-   ${getLanguageDirection(lang)}
-   -${size}
-   ${variant === 'primary' ? '-primary' : '-secondary'}
-   ${invalid ? '-invalid' : ''}
-    `}
+  class:list={[
+    'card',
+    getLanguageDirection(lang),
+    `-${size}`,
+    `-${variant}`,
+    { '-invalid': invalid },
+  ]}
 >
   <slot />
 </div>

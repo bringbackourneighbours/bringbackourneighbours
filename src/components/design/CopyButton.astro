@@ -4,41 +4,22 @@ import type { LanguagesValue } from '../../model/languages.ts';
 import CardButton from './CardButton.astro';
 
 import { useUiTranslation } from '../../util/use-ui-translation';
+import Toast from './Toast.astro';
 
 interface Props {
   lang?: LanguagesValue;
 }
 
 const { lang = Astro.locals.lang } = Astro.props;
+
+// we need a unique id for the toast, as there might be multiple on the page
+const toastId = `toast-copy-${crypto.randomUUID()}`;
 ---
-
-<style>
-  #copy-popover {
-    border: var(--bbon-size-border) solid var(--bbon-color-secondary);
-    border-radius: var(--bbon-size-border);
-    padding: var(--bbon-size-spacing);
-    background-color: var(--bbon-color-surface-dark);
-    color: var(--bbon-color-secondary-dark);
-    animation: fadein 0.5s;
-    inset-block-start: 80vh;
-  }
-
-  @keyframes fadein {
-    from {
-      inset-block-start: 100vh;
-      opacity: 0;
-    }
-
-    to {
-      inset-block-start: 80vh;
-      opacity: 1;
-    }
-  }
-</style>
 
 <template
   open
   id="copy-content"
+  data-toastid={toastId}
 >
   <slot />
 </template>
@@ -47,19 +28,16 @@ const { lang = Astro.locals.lang } = Astro.props;
   {useUiTranslation('meta.copy', lang)}
 </CardButton>
 
-<div
-  popover
-  id="copy-popover"
+<Toast id={toastId}>
+  {useUiTranslation('meta.copiedContentToClipboard', lang)}</Toast
 >
-  <div id="copy-popover-content">
-    {useUiTranslation('meta.copiedContentToClipboard', lang)}
-  </div>
-</div>
 <script>
-  const copyButton: HTMLButtonElement = document.querySelector('#copy-button')!;
-  const copyPopover: HTMLElement = document.querySelector('#copy-popover')!;
   const copyContent: HTMLTemplateElement =
     document.querySelector('#copy-content')!;
+  const copyButton: HTMLButtonElement = document.querySelector('#copy-button')!;
+  const copyPopover: HTMLElement = document.querySelector(
+    `#${copyContent.dataset.toastid}`,
+  )!;
 
   copyButton?.addEventListener('click', async () => {
     const html = new Blob([copyContent.innerHTML], { type: 'text/html' });

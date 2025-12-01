@@ -2,6 +2,7 @@
 import type { LanguagesValue } from '../../model/languages.ts';
 
 import CardButton from './CardButton.astro';
+import Toast from './Toast.astro';
 
 import { useUiTranslation } from '../../util/use-ui-translation';
 
@@ -9,7 +10,7 @@ interface Props {
   lang?: LanguagesValue;
   title?: string;
   text?: string;
-  url?: string;
+  url: string;
 }
 
 const { lang = Astro.locals.lang, url = Astro.site } = Astro.props;
@@ -18,73 +19,50 @@ const title = Astro.props.title || (await useUiTranslation('meta.title', lang));
 const text =
   Astro.props.text ||
   (await useUiTranslation('meta.infosAgainstDeportation', lang));
+
+// we need a unique id for the toast, as there might be multiple on the page
+const toastId = `toast-share-${crypto.randomUUID()}`;
 ---
-
-<style>
-  #share-popover {
-    border: var(--bbon-size-border) solid var(--bbon-color-secondary);
-    border-radius: var(--bbon-size-border);
-    padding: var(--bbon-size-spacing);
-    background-color: var(--bbon-color-surface-dark);
-    color: var(--bbon-color-secondary-dark);
-    animation: fadein 0.5s;
-    inset-block-start: 80vh;
-  }
-
-  @keyframes fadein {
-    from {
-      inset-block-start: 100vh;
-      opacity: 0;
-    }
-
-    to {
-      inset-block-start: 80vh;
-      opacity: 1;
-    }
-  }
-</style>
-
-<template
-  open
-  id="share-content"
-  data-title={title}
-  data-text={text}
-  data-url={url}
-></template>
 
 <CardButton id="share-button">
   {useUiTranslation('meta.share', lang)}
 </CardButton>
 
-<div
-  popover
-  id="share-popover"
->
-  <div id="share-popover-content">
-    {useUiTranslation('meta.sharedLinkToClipboard', lang)}
-  </div>
-</div>
+<Toast id={toastId}>
+  {useUiTranslation('meta.sharedLinkToClipboard', lang)}
+</Toast>
+
+<template
+  open
+  id="share-meta"
+  data-toastid={toastId}
+  data-title={title}
+  data-text={text}
+  data-url={url}
+></template>
+
 <script>
-  const shareContent: HTMLTemplateElement =
-    document.querySelector('#share-content')!;
+  const shareMeta: HTMLTemplateElement = document.querySelector('#share-meta')!;
   const shareButton: HTMLElement = document.querySelector('#share-button')!;
-  const sharePopover: HTMLElement = document.querySelector('#share-popover')!;
+  const shareToast: HTMLElement = document.querySelector(
+    `#${shareMeta.dataset.toastid}`,
+  )!;
 
   shareButton?.addEventListener('click', async () => {
-    if (navigator.share && shareContent?.dataset?.url) {
+    if (navigator.share && shareMeta?.dataset?.url) {
       navigator
         .share({
-          title: shareContent.dataset.title,
-          text: shareContent.dataset.text,
-          url: shareContent.dataset.url,
+          title: shareMeta.dataset.title,
+          text: shareMeta.dataset.text,
+          url: shareMeta.dataset.url,
         })
         .then(() => {})
         .catch(console.error);
     } else {
       await navigator.clipboard.writeText(
-        `${shareContent.dataset.text}:\n ${shareContent.dataset.title} \n ${shareContent.dataset.url} `,
+        `${shareMeta.dataset.text}:\n ${shareMeta.dataset.title} \n ${shareMeta.dataset.url} `,
       );
-      sharePopover.showPopover();
+      shareToast.showPopover();
     }
   });
 </script>

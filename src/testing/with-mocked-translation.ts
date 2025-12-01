@@ -71,7 +71,5 @@ const uiTranslationMock = (lang: string): { data: InferEntrySchema<'ui'> } => ({
 });
 
 vi.mock('astro:content', () => ({
-  getEntry: vi.fn((collection, lang) =>
-    Promise.resolve(uiTranslationMock(lang)),
-  ),
+  getEntry: vi.fn((_, lang) => Promise.resolve(uiTranslationMock(lang))),
 }));

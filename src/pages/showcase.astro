@@ -5,7 +5,7 @@ import CardButton from '../components/design/CardButton.astro';
 import ExternalShortLink from '../components/markdown/ExternalShortLink.astro';
 import Link from '../components/design/Link.astro';
 import OverviewLayout from '../layouts/OverviewLayout.astro';
-import Popover from '../components/design/Popover.astro';
+import Toast from '../components/design/Toast.astro';
 import QrImage from '../components/design/QrImage.astro';
 
 import { useUiTranslation } from '../util/use-ui-translation';
@@ -35,10 +35,6 @@ import Block from '../components/markdown/Block.astro';
     title="Design Showcase"
     lang={Languages.ENGLISH}
   >
-    <Block
-      identifier="deportation-protection"
-      lang="ku"
-    />
     <h1>Showcase</h1>
     This page is for testing new feature... it will be removed when we are going
     live
@@ -47,9 +43,11 @@ import Block from '../components/markdown/Block.astro';
 
     <h3>CardButton</h3>
     <CardButton>CardButton</CardButton>
-    <h3>Popover</h3>
-    <Popover>
-      <span slot="button"> Click me pop </span>
+    <h3>Toast</h3>
+    <button onclick="document.querySelector('#my-toast').showPopover()">
+      Click me show toast
+    </button>
+    <Toast id="my-toast">
       <div>
         <CardButton>CardButton</CardButton>
         <p>... some random content</p>
@@ -68,7 +66,7 @@ import Block from '../components/markdown/Block.astro';
           </li>
         </ul>
       </div>
-    </Popover>
+    </Toast>
 
     <h3>Accordion</h3>
     <Accordion>
@@ -105,6 +103,13 @@ import Block from '../components/markdown/Block.astro';
 
     <QrImage
       url="https://www.npmjs.com/package/qrcode#todataurltext-options-cberror-url-1"
+    />
+
+    <h2>Blocks</h2>
+    <Block identifier="counseling_addresses" />
+    <Block
+      identifier="counseling_addresses"
+      lang="ku"
     />
 
     <h2>Addresses</h2>

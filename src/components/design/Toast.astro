@@ -1,0 +1,53 @@
+---
+interface Props {
+  id: string;
+}
+
+const { id } = Astro.props;
+---
+
+<style>
+  @keyframes fade-in {
+    from {
+      opacity: 0;
+    }
+
+    to {
+      opacity: 1;
+    }
+  }
+
+  @keyframes slide-in {
+    from {
+      inset-block-start: 100vh;
+    }
+
+    to {
+      inset-block-start: 80vh;
+    }
+  }
+
+  [popover] {
+    border: var(--bbon-size-border) solid var(--bbon-color-secondary);
+    border-radius: var(--bbon-size-border);
+    padding: var(--bbon-size-spacing);
+    background-color: var(--bbon-color-surface-dark);
+    color: var(--bbon-color-secondary-dark);
+    animation-name: fade-in;
+    animation-duration: 0.5s;
+    inset-block-start: 80vh;
+
+    /* people might prefer reduced vertical motion... */
+    @media (prefers-reduced-motion: no-preference) {
+      animation-name: fade-in, slids-in;
+    }
+  }
+</style>
+
+<div
+  role="status"
+  id={id}
+  popover
+>
+  <slot />
+</div>
