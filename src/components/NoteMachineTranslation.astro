@@ -19,7 +19,7 @@ const showMachineTranslation =
 
 if (isRootLevelContent) {
   Astro.locals.machineTranslationNoteWasDisplayed =
-    entry.data.machineTranslation;
+    entry.data.machineTranslation ?? false;
 }
 
 const Strong = `${isStrong ? 'strong' : 'em'}`;
