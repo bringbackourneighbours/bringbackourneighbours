@@ -10,10 +10,6 @@ export default [
   ...eslintPluginAstro.configs['flat/jsx-a11y-strict'],
   eslintConfigPrettier,
   {
-    rules: {
-      // override/add rules settings here, such as:
-      // "astro/no-set-html-directive": "error"
-    },
-    ignores: ['.astro/'],
+    ignores: ['.astro/**'],
   },
 ];
