@@ -2,12 +2,13 @@
 import { ColorVariants } from '../../model/color-variants.ts';
 
 interface Props {
-  size?: string;
   html: string;
+  label?: string;
+  size?: string;
   variant?: ColorVariants;
 }
 
-const { size = '1.5em', html, variant = 'primary' } = Astro.props;
+const { size = '1.5em', html, label, variant = 'primary' } = Astro.props;
 ---
 
 <style>
@@ -37,6 +38,8 @@ const { size = '1.5em', html, variant = 'primary' } = Astro.props;
 <div
   class={`icon -${variant}`}
   style={`width:${size}; height: ${size}`}
+  role="img"
+  aria-label={label}
 >
   <Fragment set:html={html} />
 </div>
