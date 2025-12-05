@@ -1,18 +1,20 @@
 identifier: returningfromgermany
-name: Rückkehrberatung
+name: Rückkehrberatung der deutschen Regierung
 url: https://www.returningfromgermany.de
 lastChecked: 2025-07-08
 translatedNotes:
+  ar: "بوابة معلومات عن العودة الطوعية وإعادة الإدماج"
+  ckb: "دەروازەی زانیاریی لەسەر گەڕانەوەی دڵخوازانە و سەرلەنوێ تێکەڵبوونەوە لە کۆمەڵگا"
   de: "Informationsportal zu freiwilliger Rückkehr und Reintegration"
   en: "Information portal on voluntary return and reintegration"
-  fr: "Portail d'information sur le retour volontaire et la réintégration"
-  ar: "بوابة معلومات عن العودة الطوعية وإعادة الإدماج"
-  fa: "پورتال اطلاعات در مورد بازگشت داوطلبانه و ادغام"
   es: "Portal de información sobre retorno voluntario y reintegración"
-  ur: "رضاکارانہ واپسی اور دوبارہ انضمام کے بارے میں معلوماتی پورٹل"
-  tr: "Gönüllü geri dönüş ve yeniden entegrasyona ilişkin bilgi portalı"
-  ku: "Portala agahdariyê li ser vegera bi dilxwazî û ji nû ve entegrekirinê"
+  fa: "پورتال اطلاعات در مورد بازگشت داوطلبانه و ادغام"
+  fr: "Portail d'information sur le retour volontaire et la réintégration"
   ka: "საინფორმაციო პორტალი ნებაყოფლობითი დაბრუნებისა და რეინტეგრაციის შესახებ"
+  ku: "Portala agahdariyê li ser vegera bi dilxwazî û ji nû ve entegrekirinê"
   ru: "Информационный портал о добровольном возвращении и реинтеграции"
   ti: "ብወለንታ ብዛዕባ ምምላስን እንደገና ብዛዕባ ምትሕብባርን ዚገልጽ ሓበሬታ ዝሓዘ ፖርት"
+  tr: "Gönüllü geri dönüş ve yeniden entegrasyona ilişkin bilgi portalı"
+  ur: "رضاکارانہ واپسی اور دوبارہ انضمام کے بارے میں معلوماتی پورٹل"
   vi: "Cổng thông tin về tự nguyện trở về và tái hòa nhập"
+
