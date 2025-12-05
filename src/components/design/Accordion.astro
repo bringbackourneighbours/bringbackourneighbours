@@ -145,8 +145,9 @@ const { title, variant = 'primary', open = isPrint, level = 3 } = Astro.props;
 <details
   open={open}
   class={`-${variant}${isPrint ? ' -is-print' : ''}`}
+  aria-labelledby="summary"
 >
-  <summary>
+  <summary id="summary">
     {
       Astro.slots.has('summary') ? (
         <slot name="summary" />
@@ -172,7 +173,7 @@ const { title, variant = 'primary', open = isPrint, level = 3 } = Astro.props;
       )
     }
   </summary>
-  <article>
+  <article aria-labelledby="summary">
     <slot />
   </article>
 </details>
