@@ -1,0 +1,13 @@
+{
+  "extends": "./tsconfig.base.json",
+  "compilerOptions": {
+    "types": ["vitest", "vitest/jsdom", "@testing-library/jest-dom", "jsdom"]
+  },
+  "include": [
+    ".astro/types.d.ts",
+    "vitest.config.ts",
+    "src/**/*.ts",
+    "src/**/*.test.ts"
+  ],
+  "files": ["vitest.setup.ts"]
+}
