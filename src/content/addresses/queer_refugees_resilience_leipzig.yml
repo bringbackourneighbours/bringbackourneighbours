@@ -1,6 +1,23 @@
 identifier: queer_refugees_resilience_leipzig
 name:  Queer Refugees Resilience Projekt
+additional: RosaLinde Leipzig e.V.
+streetLine: Demmeringstraße 32
+zip: "04177"
 city: Leipzig
-mail: resilience@rosalinde-leipzig.de
+mails:
+  - resilience@rosalinde-leipzig.de
+  - mavi.kotan@rosalinde-leipzig.de
+  - samir.lehmann@rosalinde-leipzig.de
+phones:
+  - "+49 157 38216491"
+  - "+49 0157 31554295"
 url: https://www.rosalinde-leipzig.de/de/beratung/qrrp/
-lastChecked: 2025-07-08
+lastChecked: 2025-12-17
+translatedNotes:
+  de: Das Queer Refugees Resilience Project arbeitet für und mit LSBTIANQ* Geflüchteten, die auf Grund von traumatischen Erfahrungen von einer Traumafolgesymptomatik bedroht oder betroffen sind.
+  en: The Queer Refugees Resilience Project works for and with LGBTQ* refugees who are at risk of or affected by post-traumatic stress disorder (PTSD) as a result of traumatic experiences.
+  es: El Proyecto de Resiliencia para Refugiados Queer trabaja para y con refugiados LGBTQ* que están en riesgo de sufrir o se ven afectados por el trastorno de estrés postraumático (TEPT) como resultado de experiencias traumáticas.
+  ar: يعمل مشروع دعم اللاجئين المثليين على دعم اللاجئين من مجتمع الميم الذين يعانون من اضطراب ما بعد الصدمة (PTSD) نتيجة لتجارب مؤلمة، أو المعرضين لخطر الإصابة به بالفعل.
+  fa: پروژه تاب‌آوری پناهندگان کوئیر (Queer Refugees Resilience Project) برای پناهندگان LGBTQ* که در معرض خطر یا تحت تأثیر اختلال استرس پس از سانحه (PTSD) در نتیجه تجربیات آسیب‌زا هستند، کار می‌کند.
+  fr: Le projet de résilience pour les réfugiés LGBTQ+ œuvre pour et avec les réfugiés LGBTQ+ qui risquent de développer un syndrome de stress post-traumatique (SSPT) ou qui en souffrent déjà suite à des expériences traumatisantes.
+  tr: LGBTQ+ Mültecilerin Dayanıklılık Projesi, travmatik deneyimler sonucu travma sonrası stres bozukluğu (TSSB) riski altında olan veya bu durumdan etkilenen LGBTQ+ mülteciler için ve onlarla birlikte çalışmaktadır.
