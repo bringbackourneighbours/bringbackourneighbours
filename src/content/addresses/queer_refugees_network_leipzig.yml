@@ -1,6 +1,22 @@
 identifier: queer_refugees_network_leipzig
-name:  Queer Refugees Network Leipzig
+name: Queer Refugees Network Leipzig
+additional: RosaLinde Leipzig e.V.
+streetLine: Demmeringstraße 32
+zip: "04177"
 city: Leipzig
-mail: refugees@rosalinde-leipzig.de
-url: https://www.rosalinde-leipzig.de/de/beratung/queer-refugees-network/
-lastChecked: 2025-07-08
+mails:
+  - refugees@rosalinde-leipzig.de
+  - rechtsberatung-asyl@rosalinde-leipzig.de
+phones:
+  - "+49 341 392946722"
+  - "+49 0178 8130371"
+url: https://www.rosalinde-leipzig.de/beratung/queer-refugees-network/
+lastChecked: 2025-12-17
+translatedNotes:
+  de: Das Queer Refugees Network begleitet LSBTIAQ* (Lesbisch, Schwule, Bisexuelle, Transgeschlechtliche, Intergeschlechtliche, Asexuelle, Queere,*) Geflüchtete im Asylprozess.
+  en: The Queer Refugees Network supports LGBTQI* (Lesbian, Gay, Bisexual, Transgender, Intersex, Asexual, Queer*) refugees in the asylum process.
+  es: La Red de Refugiados Queer apoya a las personas refugiadas LGBTQI* (Lesbianas, Gays, Bisexuales, Transgénero, Intersexuales, Asexuales, Queer*) en el proceso de asilo.
+  fr: Le Réseau des réfugiés LGBTQI* (lesbiennes, gays, bisexuels, transgenres, intersexes, asexuels, queers*) soutient les réfugiés dans leurs démarches d'asile.
+  ar: تدعم شبكة اللاجئين المثليين والمثليات ومزدوجي الميول الجنسية والمتحولين جنسياً وثنائيي الجنس واللاجنسيين والمثليين والمثليات ومزدوجي الميول الجنسية ...
+  fa: شبکه پناهندگان کوئیر از پناهندگان LGBTQI* (لزبین، گی، دوجنسگرا، تراجنسیتی، بیناجنسی، غیرجنسی، کوئیر*) در فرآیند پناهندگی حمایت می‌کند.
+  tr: Queer Mülteciler Ağı, LGBTQI* (Lezbiyen, Gay, Biseksüel, Transseksüel, İnterseks, Aseksüel, Queer*) mültecileri sığınma sürecinde desteklemektedir.
