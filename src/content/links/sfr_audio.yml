@@ -1,7 +1,7 @@
 all:
   slug: sfraudio
   type: AUDIO
-  url: https://www.saechsischer-fluechtlingsrat.de/de/audioinfo/
+  url: https://www.saechsischer-fluechtlingsrat.de/audioinfo/
 ar:
   title: معلومات عن مختلف الموضوعات ذات الصلة بقانون اللجوء والإقامة للاستشارة
 de:
