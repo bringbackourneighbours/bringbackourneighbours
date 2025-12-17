@@ -1,12 +1,13 @@
 identifier: airport_halle-leipzig
-lastChecked: 2025-07-08
+lastChecked: 2025-12-17
 name: Diakonisches Werk Innere Mission Leipzig e.V.
 streetLine: Gneisenaufstraße 10
 zip: "04105"
 city: Leipzig
 mail: abschiebebeobachtung@diakonie-leipzig.de
-phone: "+49170 2279 000"
-url: https://www.diakonie-leipzig.de/angebote_fuer_menschen_in_not_abschiebungsmonitoring_am_flughafen_leipzig_halle_de.html
+phones:
+  - "+49 176 72 07 52 92"
+url: https://www.diakonie-leipzig.de/hilfe-angebote/beratung-nothilfe/abschiebemonitoring/
 translatedNotes:
   de: "Unabhängige Abschiebungsbeobachtung am Flughafen Halle Leipzig"  
   en: "Independent deportation monitoring at Halle Leipzig Airport"
