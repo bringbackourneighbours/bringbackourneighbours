@@ -14,7 +14,7 @@
     "stylelint": "stylelint  **/*.{css,html,astro}"
   },
   "dependencies": {
-    "@astrojs/check": "^0.9.4",
+    "@astrojs/check": "^0.9.6",
     "@astrojs/mdx": "^4.3.6",
     "@fontsource/firago": "^5.2.5",
     "@types/jsdom": "^27.0.0",
