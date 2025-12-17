@@ -4,7 +4,10 @@ name: Diakonisches Werk Hamburg
 streetLine: Königstraße 54
 zip: "22767"
 city: Hamburg
-phone: " +4940 30620 345"
+phones:
+  - "+49 40 30620 345"
+  - "+49 (0)160 99420661"
+  - "+49 151 536 55551"
 url: https://www.diakonie-hamburg.de/de/adressen/Abschiebemonitoring/
 translatedNotes:
   de: "Unabhängige Abschiebungsbeobachtung am Flughafen Hamburg"  
