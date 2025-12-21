@@ -1,38 +1,31 @@
 all:
   type: WEB
+  lastChecked: 2025-12-21
 ar:
   slug: duldungar
   title: الإقامة المتسامحة "Duldung" في ألمانيا
-  url: https://handbookgermany.de/ar/duldung
+  url: https://asylum-info-germany.de/ar/duldung
 de:
   slug: duldung
   title: Duldung
-  url: https://handbookgermany.de/de/duldung
+  url: https://asylum-info-germany.de/de/duldung
 en:
   slug: tolerated
   title: Tolerated Stay (“Duldung”)
-  url: https://handbookgermany.de/en/duldung
+  url: https://asylum-info-germany.de/en/duldung
 fa:
   slug: duldungfa
   title: دولدونگ
-  url: https://handbookgermany.de/fa/duldung
+  url: https://asylum-info-germany.de/fa/duldung
 fr:
   slug: toleree
   title: Résidence tolérée (Duldung)
-  url: https://handbookgermany.de/fr/duldung
-ps:
-  slug: duldungps
-  title: ډولډونګ يا د زغمل شوې استوګنې اجازه
-  url: https://handbookgermany.de/ps/duldung
+  url: https://asylum-info-germany.de/fr/duldung
 ru:
   slug: duldungru
   title: Отсрочка депортации (Duldung)
-  url: https://handbookgermany.de/ru/duldung
+  url: https://asylum-info-germany.de/ru/duldung
 tr:
   slug: duldungtr
   title: Duldung (Müsamaha Belgesi)
-  url: https://handbookgermany.de/tr/duldung
-uk:
-  slug: duldunguk
-  title: Відтермінування депортації (Duldung)
-  url: https://handbookgermany.de/uk/duldung
+  url: https://asylum-info-germany.de/tr/duldung
