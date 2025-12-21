@@ -21,7 +21,7 @@ phones:
   - '+49173334445552'
   - '+49173334445553'
 
-url: example.com # the url is the website
+url: https://example.com # the url is the website
 
 # for social media only use the username, not the full url
 facebook: facebook

@@ -2,6 +2,8 @@ all:
   slug: flightandtrauma
   type: VIDEO
   url: https://www.youtube.com/playlist?list=PLGLgaqvZTv7DXMCiXv015bdSClrjgQZYz
+  lastChecked: 2025-12-21
+  noCheckUntil: 2025-31-05 # link works still getting 302
 ar:
   title: 'اللجوء والصدمة: كيف تتعامل مع الضغوط النفسية ؟'
 de:
