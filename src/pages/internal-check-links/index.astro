@@ -9,9 +9,9 @@ import { getAllExternalLinksEntries } from '../../util/get-flat-links-entries';
 
 const now = new Date();
 
-const linkEntries = (await getAllExternalLinksEntries()).filter(
-  (link) => now >= (link?.noCheckUntil || now),
-);
+const linkEntries = (
+  await getAllExternalLinksEntries(await getCollection('links'))
+).filter((link) => now >= (link?.noCheckUntil || now));
 
 const adresses: CollectionEntry<'addresses'>[] = (
   await getCollection('addresses')
