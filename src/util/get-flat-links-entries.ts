@@ -21,16 +21,17 @@ export interface LinkData {
 
 export const getFlatLinksEntries = async (): Promise<LinkData[]> => {
   return [
-    ...(await getAllExternalLinksEntries()),
-    ...(await getAllFlyerLinksEntries()),
-    ...(await getAllKitLinksEntries()),
-    ...(await getAllPageLinksEntries()),
+    // TODO: refactor so avoid dependency to astro:content
+    ...(await getAllExternalLinksEntries(await getCollection('links'))),
+    ...(await getAllFlyerLinksEntries(await getCollection('flyers'))),
+    ...(await getAllKitLinksEntries(await getCollection('kits'))),
+    ...(await getAllPageLinksEntries(await getCollection('pages'))),
   ];
 };
 
-export const getAllExternalLinksEntries = async (): Promise<LinkData[]> => {
-  // TODO: refactor so avoid dependency to astro:content
-  const linkEntries: CollectionEntry<'links'>[] = await getCollection('links');
+export const getAllExternalLinksEntries = async (
+  linkEntries: CollectionEntry<'links'>[],
+): Promise<LinkData[]> => {
   return linkEntries.reduce((accumulator, currentValue) => {
     return [
       ...accumulator,
@@ -49,59 +50,56 @@ export const getAllExternalLinksEntries = async (): Promise<LinkData[]> => {
   }, [] as LinkData[]);
 };
 
-const getAllFlyerLinksEntries = async (): Promise<LinkData[]> => {
+const getAllFlyerLinksEntries = async (
+  entries: CollectionEntry<'flyers'>[],
+): Promise<LinkData[]> => {
   return Promise.all(
-    // TODO: refactor so avoid dependency to astro:content
-    mapStaticPathsForStandalone(await getCollection('flyers')).map(
-      async (flyer) => {
-        const data = flyer.props.entry.data;
-        return {
-          identifier: data.identifier,
-          slug: `flyer-${data.lang}-${data.identifier}`,
-          title: data.title,
-          type: 'FLYER',
-          url: await getCanonicalUrlToFlyer(data.lang, data.identifier),
-          lang: data.lang,
-        };
-      },
-    ),
+    mapStaticPathsForStandalone(entries).map(async (flyer) => {
+      const data = flyer.props.entry.data;
+      return {
+        identifier: data.identifier,
+        slug: `flyer-${data.lang}-${data.identifier}`,
+        title: data.title,
+        type: 'FLYER',
+        url: await getCanonicalUrlToFlyer(data.lang, data.identifier),
+        lang: data.lang,
+      };
+    }),
   );
 };
 
-const getAllKitLinksEntries = async (): Promise<LinkData[]> => {
+const getAllKitLinksEntries = async (
+  entries: CollectionEntry<'kits'>[],
+): Promise<LinkData[]> => {
   return Promise.all(
-    // TODO: refactor so avoid dependency to astro:content
-    mapStaticPathsForStandalone(await getCollection('kits')).map(
-      async (kit) => {
-        const data = kit.props.entry.data;
-        return {
-          identifier: data.identifier,
-          slug: `kit-${data.lang}-${data.identifier}`,
-          title: data.title,
-          type: 'KIT',
-          url: await getCanonicalUrlToKit(data.lang, data.identifier),
-          lang: data.lang,
-        };
-      },
-    ),
+    mapStaticPathsForStandalone(entries).map(async (kit) => {
+      const data = kit.props.entry.data;
+      return {
+        identifier: data.identifier,
+        slug: `kit-${data.lang}-${data.identifier}`,
+        title: data.title,
+        type: 'KIT',
+        url: await getCanonicalUrlToKit(data.lang, data.identifier),
+        lang: data.lang,
+      };
+    }),
   );
 };
 
-const getAllPageLinksEntries = async (): Promise<LinkData[]> => {
+const getAllPageLinksEntries = async (
+  entries: CollectionEntry<'pages'>[],
+): Promise<LinkData[]> => {
   return Promise.all(
-    // TODO: refactor so avoid dependency to astro:content
-    mapStaticPathsForStandalone(await getCollection('pages')).map(
-      async (kit) => {
-        const data = kit.props.entry.data;
-        return {
-          identifier: data.identifier,
-          slug: `page-${data.lang}-${data.identifier}`,
-          title: data.title,
-          type: 'PAGE',
-          url: await getCanonicalUrlToPage(data.lang, data.identifier),
-          lang: data.lang,
-        };
-      },
-    ),
+    mapStaticPathsForStandalone(entries).map(async (kit) => {
+      const data = kit.props.entry.data;
+      return {
+        identifier: data.identifier,
+        slug: `page-${data.lang}-${data.identifier}`,
+        title: data.title,
+        type: 'PAGE',
+        url: await getCanonicalUrlToPage(data.lang, data.identifier),
+        lang: data.lang,
+      };
+    }),
   );
 };
