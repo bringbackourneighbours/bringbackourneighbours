@@ -2,15 +2,15 @@ identifier: bupo_ber
 lastChecked: 2025-07-08
 name: Bundespolizeirevier Flughafen Berlin-Brandenburg
 streetLine: Hugo-Eckener-Allee 13
-zip: "12529"
+zip: '12529'
 city: Schönefeld
 mail: bpoli.ber@polizei.bund.de
-phone: "+49 30 856211-0"
+phone: '+49 30 856211-0'
 translatedNotes:
-  de: "Bundespolizei Flughafen Berlin-Brandenburg"  
-  en: "Federal Police Berlin-Brandenburg Airport"
+  de: 'Bundespolizei Flughafen Berlin-Brandenburg'
+  en: 'Federal Police Berlin-Brandenburg Airport'
   fr: "Police fédérale de l'aéroport de Berlin-Brandenburg"
-  ar: "الشرطة الاتحادية في مطار برلين-براندنبورغ"
+  ar: 'الشرطة الاتحادية في مطار برلين-براندنبورغ'
   ka: ფედერალური პოლიცია ბერლინი-ბრანდენბურგის აეროპორტში
   fa: پلیس فدرال فرودگاه برلین-براندنبورگ
   ur: برلن-برانڈنبرگ ہوائی اڈے پر وفاقی پولیس

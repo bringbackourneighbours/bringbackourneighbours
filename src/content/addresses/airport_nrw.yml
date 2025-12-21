@@ -1,20 +1,20 @@
 identifier: airport_nrw
 lastChecked: 2025-07-08
 name: Diakonisches Werk Rheinland-Westfalen-Lippe e.V.
-streetLine: "40474"
+streetLine: '40474'
 city: Düsseldorf
 mails:
-- m.sayim@diakonie-rwl.de
-- j.fisch@diakonie-rwl.de
+  - m.sayim@diakonie-rwl.de
+  - j.fisch@diakonie-rwl.de
 phones:
-  - "+49 211 6398 418"
-  - "+49 151 46727350"
-  - "+49 211 6398 411"
-  - "+49 160 8434681"
+  - '+49 211 6398 418'
+  - '+49 151 46727350'
+  - '+49 211 6398 411'
+  - '+49 160 8434681'
 url: https://www.diakonie-rwl.de/themen/flucht-und-migration/zeuginnen-flughafen
 translatedNotes:
-  de: "Unabhängige Abschiebungsbeobachtung an den Flughäfen Düsseldorf und Köln/Bonn"  
-  en: "Independent deportation monitoring at Dusseldorf and Köln/Bonn Airport"
+  de: 'Unabhängige Abschiebungsbeobachtung an den Flughäfen Düsseldorf und Köln/Bonn'
+  en: 'Independent deportation monitoring at Dusseldorf and Köln/Bonn Airport'
   fr: "Observation indépendante des expulsions à l'aéroport de Düsseldorf et Köln/Bonn"
   ar: المراقبة المستقلة للترحيلات في مطاري دوسلدورف وكولونيا/بون
   ka: დამოუკიდებელი დეპორტაციის დაკვირვება დიუსელდორფისა და კიოლნის / ბონის აეროპორტებში

@@ -1,12 +1,12 @@
-# every Address needs at least 
-identifier: my-address  # the identifier you have to use to reference this address
+# every Address needs at least
+identifier: my-address # the identifier you have to use to reference this address
 lastChecked: 2025-07-08 # date this address was last checked for correctness
 name: Projekt Namenlos # the main title of the address, the name of the group/organisatio
 
 # all other information is optional
 additional: c/o Namelos e.V. #  addition information, like subtitel or addtion address information
 streetLine: Am Ende 123
-zip: "12345"
+zip: '12345'
 city: Dresden
 
 # mail ahd phone can be plural or singular, or even both
@@ -15,11 +15,11 @@ mails:
   - mail1@web.de
   - mail2@web.de
 
-phone: "+4917333444550"
+phone: '+4917333444550'
 phones:
-  - "+4917333444551"
-  - "+49173334445552"
-  - "+49173334445553"
+  - '+4917333444551'
+  - '+49173334445552'
+  - '+49173334445553'
 
 url: example.com # the url is the website
 
@@ -31,6 +31,6 @@ twitter: twitter
 
 # you can add   a note on the adress. providing some contecxt, explaining what this organisation is doing. only the one in the current language will be shown
 translatedNotes:
-  de: "Nur ein Beispiel"
-  en: "Just an Example"
+  de: 'Nur ein Beispiel'
+  en: 'Just an Example'
   ku: Tenê nimûneyek

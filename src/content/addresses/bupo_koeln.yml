@@ -2,15 +2,15 @@ identifier: bupo_koeln
 lastChecked: 2025-07-08
 name: Bundespolizeirevier Flughafen Köln / Bonn
 streetLine: Terminal 1, Ankunft C
-zip: "51147"
+zip: '51147'
 city: Köln
 mail: bpolifh.cgn@polizei.bund.de
-phone: "+49 2203 9522-0"
+phone: '+49 2203 9522-0'
 translatedNotes:
-  de: "Bundespolizei Flughafen Köln / Bonn"  
-  en: "Federal Police Cologne / Bonn Airport"
+  de: 'Bundespolizei Flughafen Köln / Bonn'
+  en: 'Federal Police Cologne / Bonn Airport'
   fr: "Police fédérale de l'aگéroport de Cologne / Bonn"
-  ar: "الشرطة الفيدرالية كولونيا/مطار بون"
+  ar: 'الشرطة الفيدرالية كولونيا/مطار بون'
   ka: ფედერალური პოლიცია კიოლნში / ბონის აეროპორტში
   fa: پلیس فدرال کلن / فرودگاه بن
   ur: کولون / بون ہوائی اڈے پر وفاقی پولیس

@@ -2,18 +2,18 @@ identifier: airport_munich
 lastChecked: 2025-12-17
 name: Erzdiözese München und Freising
 streetLine: Terminalstraße Mitte 18 MAC / Zentralbereich - Ebene 4 - Raum Z4291/Z4295
-zip: "85356"
+zip: '85356'
 city: München
 mails:
   - protestant-services@munich-airport.de
   - katholische.seelsorge@munich-airport.de
 phones:
-  - "+49 89 975 909 24"
-  - "+49 89 975 909 28"
+  - '+49 89 975 909 24'
+  - '+49 89 975 909 28'
 url: https://www.munich-airport.de/kirchliche-dienste-591635
 translatedNotes:
-  de: "Unabhängige Abschiebungsbeobachtung am Flughafen München"  
-  en: "Independent deportation monitoring at Munich Airport"
+  de: 'Unabhängige Abschiebungsbeobachtung am Flughafen München'
+  en: 'Independent deportation monitoring at Munich Airport'
   fr: "Observation indépendante des expulsions à l'aéroport de Munich"
   ar: المراقبة المستقلة للترحيلات في مطار ميونيخ
   ka: დამოუკიდებელი დეპორტაციის დაკვირვება მიუნხენის აეროპორტში

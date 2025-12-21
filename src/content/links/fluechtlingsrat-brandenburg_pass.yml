@@ -3,26 +3,32 @@ all:
 ar:
   slug: passar
   title: التزامات التعاون في توضيح الهوية
-  url: https://www.fluechtlingsrat-thr.de/sites/fluechtlingsrat/files/pdf/Beratungshilfe/2020
+  url:
+    https://www.fluechtlingsrat-thr.de/sites/fluechtlingsrat/files/pdf/Beratungshilfe/2020
     08 Mitwirkungspflichten Gestattung_arabisch.pdf
 de:
   slug: passde
   title: Mitwirkungspflichten bei der Identitätsklärung
-  url: https://www.fluechtlingsrat-thr.de/sites/fluechtlingsrat/files/infoheft/pdf/2020
+  url:
+    https://www.fluechtlingsrat-thr.de/sites/fluechtlingsrat/files/infoheft/pdf/2020
     08 Mitwirkungspflichten Gestattung_deutsch.pdf
 en:
   slug: pass
-  title: Obligations to cooperate in clarifying the identity of persons in asylum
+  title:
+    Obligations to cooperate in clarifying the identity of persons in asylum
     procedures
-  url: https://www.fluechtlingsrat-thr.de/sites/fluechtlingsrat/files/pdf/Beratungshilfe/2020
+  url:
+    https://www.fluechtlingsrat-thr.de/sites/fluechtlingsrat/files/pdf/Beratungshilfe/2020
     08 Mitwirkungspflichten Gestattung_englisch.pdf
 fa:
   slug: passfa
   title: تعهدات همکاری در جهت شفاف سازی هویت
-  url: https://www.fluechtlingsrat-thr.de/sites/fluechtlingsrat/files/pdf/Beratungshilfe/2020
+  url:
+    https://www.fluechtlingsrat-thr.de/sites/fluechtlingsrat/files/pdf/Beratungshilfe/2020
     08 Mitwirkungspflichten Gestattung_dari.pdf
 tr:
   slug: passtr
   title: Kimliğin açıklığa kavuşturulması konusunda işbirliği yapma yükümlülükleri
-  url: https://www.fluechtlingsrat-thr.de/sites/fluechtlingsrat/files/pdf/Beratungshilfe/2020
+  url:
+    https://www.fluechtlingsrat-thr.de/sites/fluechtlingsrat/files/pdf/Beratungshilfe/2020
     08 Mitwirkungspflichten Gestattung_türkisch.pdf

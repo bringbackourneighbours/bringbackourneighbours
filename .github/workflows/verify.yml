@@ -31,7 +31,7 @@ jobs:
     steps:
       - uses: actions/checkout@v4
       - uses: ./.github/actions/setup-install
-      -  run: npx eslint --config eslint.config.js
+      - run: npx eslint --config eslint.config.js
 
   check:
     name: Check with astro

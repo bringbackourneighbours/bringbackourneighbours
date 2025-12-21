@@ -2,14 +2,14 @@ identifier: queer_refugees_network_leipzig
 name: Queer Refugees Network Leipzig
 additional: RosaLinde Leipzig e.V.
 streetLine: Demmeringstraße 32
-zip: "04177"
+zip: '04177'
 city: Leipzig
 mails:
   - refugees@rosalinde-leipzig.de
   - rechtsberatung-asyl@rosalinde-leipzig.de
 phones:
-  - "+49 341 392946722"
-  - "+49 0178 8130371"
+  - '+49 341 392946722'
+  - '+49 0178 8130371'
 url: https://www.rosalinde-leipzig.de/beratung/queer-refugees-network/
 lastChecked: 2025-12-17
 translatedNotes:
