@@ -10,4 +10,4 @@ jobs:
     name: Check with linkinator
     runs-on: ubuntu-latest
     steps:
-      - run: npx linkinator --redirects=error https://bringbackourneighbours.de/internal-check-links/
+      - run: npx linkinator --format=json --redirects=error https://bringbackourneighbours.de/internal-check-links/ |  jq '.links[] | select(.state =="BROKEN")'
