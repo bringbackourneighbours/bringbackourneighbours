@@ -10,4 +10,5 @@ jobs:
     name: Check with linkinator
     runs-on: ubuntu-latest
     steps:
-      - run: npx linkinator --format=json --redirects=error https://bringbackourneighbours.de/internal-check-links/ |  jq '.links[] | select(.state =="BROKEN")'
+      # status: 0 means that we have been blocked by their firewall/cloudflare etc
+      - run: npx linkinator --format=json --redirects=error https://bringbackourneighbours.de/internal-check-links/ |  jq '.links[] | select(.state =="BROKEN" and .status != 0)'
