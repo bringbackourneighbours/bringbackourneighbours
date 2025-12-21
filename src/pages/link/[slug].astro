@@ -7,16 +7,16 @@ interface Props {
 
 export async function getStaticPaths() {
   const entries = await getFlatLinksEntries();
-  return entries.map((params) => ({
-    params,
-    props: { ...params },
+  return entries.map(({ slug }) => ({
+    params: { slug },
+    props: { slug },
   }));
 }
 
-const entries = await getFlatLinksEntries();
-const target = entries.find((entry) => {
-  return entry.slug === Astro.props.slug;
-});
-
-return Astro.redirect(target.url, 307);
+return Astro.redirect(
+  (await getFlatLinksEntries()).find((entry) => {
+    return entry.slug === Astro.props.slug;
+  })?.url,
+  307,
+);
 ---
