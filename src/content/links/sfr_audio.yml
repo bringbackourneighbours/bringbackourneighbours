@@ -5,15 +5,18 @@ all:
 ar:
   title: معلومات عن مختلف الموضوعات ذات الصلة بقانون اللجوء والإقامة للاستشارة
 de:
-  title: Informationen zu verschiedenen asyl- und aufenthaltsrechtlichen relevanten
+  title:
+    Informationen zu verschiedenen asyl- und aufenthaltsrechtlichen relevanten
     Themen zum Anhören
 es:
-  title: Información sobre diversos temas relacionados con el Derecho de asilo y residencia
+  title:
+    Información sobre diversos temas relacionados con el Derecho de asilo y residencia
     para consulta
 fa:
   title: به اطلاعات در مورد موضوعات مختلف مربوط به قانون پناهندگی و اقامت گوش دهید
 ka:
-  title: მოუსმინეთ ინფორმაციას თავშესაფრისა და ბინადრობის კანონთან დაკავშირებული სხვადასხვა
+  title:
+    მოუსმინეთ ინფორმაციას თავშესაფრისა და ბინადრობის კანონთან დაკავშირებული სხვადასხვა
     თემების შესახებ
 ur:
   title: پناہ اور رہائش کے قانون سے متعلق مختلف موضوعات پر معلومات سنیں۔

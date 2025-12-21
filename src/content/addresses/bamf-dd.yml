@@ -2,24 +2,24 @@ identifier: bamf-dd
 name: BAMF Dresden
 additional: Bundesamt für Migration und Flüchtlinge
 streetLine: Nossener Brücke 12
-zip: "01187"
-city:  Dresden
+zip: '01187'
+city: Dresden
 mail: service@bamf.bund.de
 tel: 0911 943-28803
 fax: 0911 943-72299 and 0911 943-10000
 url: https://www.bamf.de/DE/Behoerde/Aufbau/Standorte/standorte-node.html
 lastChecked: 2025-07-08
 translatedNotes:
-  de: "Bundesamt für Migration und Flüchtlinge, Dresden"
-  en: "Federal Office for Migration and Refugees, Dresden"
-  fr: "Office fédéral de la migration et des réfugiés, Dresde"
-  es: "Oficina Federal de Migración y Refugiados, Dresde"
-  ar: "المكتب الاتحادي للهجرة واللاجئين، دريسدن"
-  fa: "اداره فدرال مهاجرت و پناهندگان، درسدن"
-  ur: "مہاجرت اور پناہ گزینوں کا وفاقی دفتر، ڈریسڈن"
-  tr: "Federal Göç ve Mülteciler Dairesi, Dresden"
-  ku: "Ofîsa Federal ji bo Koçberî û Penaberan, a Dresden‘ê"
-  ka: "მიგრაციისა და ლტოლვილთა ფედერალური ოფისი, დრეზდენი"
-  ru: "Федеральное ведомство по делам миграции и беженцев, Дрезден"
-  ti: "ፌደራላዊ ቤት ጽሕፈት ስደተኛታትን ድረዝደን"
-  vi: "Văn phòng Liên bang về Di cư và Người tị nạn, Dresden"
+  de: 'Bundesamt für Migration und Flüchtlinge, Dresden'
+  en: 'Federal Office for Migration and Refugees, Dresden'
+  fr: 'Office fédéral de la migration et des réfugiés, Dresde'
+  es: 'Oficina Federal de Migración y Refugiados, Dresde'
+  ar: 'المكتب الاتحادي للهجرة واللاجئين، دريسدن'
+  fa: 'اداره فدرال مهاجرت و پناهندگان، درسدن'
+  ur: 'مہاجرت اور پناہ گزینوں کا وفاقی دفتر، ڈریسڈن'
+  tr: 'Federal Göç ve Mülteciler Dairesi, Dresden'
+  ku: 'Ofîsa Federal ji bo Koçberî û Penaberan, a Dresden‘ê'
+  ka: 'მიგრაციისა და ლტოლვილთა ფედერალური ოფისი, დრეზდენი'
+  ru: 'Федеральное ведомство по делам миграции и беженцев, Дрезден'
+  ti: 'ፌደራላዊ ቤት ጽሕፈት ስደተኛታትን ድረዝደን'
+  vi: 'Văn phòng Liên bang về Di cư và Người tị nạn, Dresden'

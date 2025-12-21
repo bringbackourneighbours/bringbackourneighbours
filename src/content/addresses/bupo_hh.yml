@@ -2,15 +2,15 @@ identifier: bupo_hh
 lastChecked: 2025-07-08
 name: Bundespolizeirevier Flughafen Hamburg
 streetLine: Flughafenstraße 1-3
-zip: "22335"
+zip: '22335'
 city: Hamburg
 mail: bpolifh.ham@polizei.bund.de
-phone: "+49 40 50027-0"
+phone: '+49 40 50027-0'
 translatedNotes:
-  de: "Bundespolizei Flughafen Hamburg"  
-  en: "Federal Police Hamburg Airport"
+  de: 'Bundespolizei Flughafen Hamburg'
+  en: 'Federal Police Hamburg Airport'
   fr: "Police fédérale de l'aگéroport de Hamburg"
-  ar: "الشرطة الفيدرالية لمطار هامبورغ"
+  ar: 'الشرطة الفيدرالية لمطار هامبورغ'
   ka: ფედერალური პოლიცია ჰამბურგის აეროპორტში
   fa: پلیس فدرال فرودگاه هامبورگ
   ur: ہیمبرگ ہوائی اڈے پر وفاقی پولیس

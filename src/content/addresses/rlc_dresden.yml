@@ -1,8 +1,8 @@
 identifier: rlc_dresden
 name: Refugee Law Clinic Dresden
 # No address here, because address is variable
-phone: " +49 351 463-39500"
-mail:  rlc@tu-dresden.de
+phone: ' +49 351 463-39500'
+mail: rlc@tu-dresden.de
 url: https://www.rlc-dresden.de
 lastChecked: 2025-07-08
 translatedNotes:

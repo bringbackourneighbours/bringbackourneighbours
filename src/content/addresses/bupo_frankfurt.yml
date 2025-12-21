@@ -2,15 +2,15 @@ identifier: bupo_frankfurt
 lastChecked: 2025-07-08
 name: Bundespolizeirevier Flughafen Frankfurt / Main
 streetLine: Flughafen, Gebäude 177
-zip: "60549"
+zip: '60549'
 city: Frankfurt / Main
 mail: bpold.frankfurt@polizei.bund.de
-phone: "+49 69 6800-0"
+phone: '+49 69 6800-0'
 translatedNotes:
-  de: "Bundespolizei Flughafen Frankfurt"  
-  en: "Federal Police Frankfurt Airport"
+  de: 'Bundespolizei Flughafen Frankfurt'
+  en: 'Federal Police Frankfurt Airport'
   fr: "Police fédérale de l'aéroport de Frankfurt"
-  ar: "الشرطة الفيدرالية في مطار فرانكفورت"
+  ar: 'الشرطة الفيدرالية في مطار فرانكفورت'
   ka: ფედერალური პოლიცია ფრანკფურტის აეროპორტში
   fa: پلیس فدرال فرودگاه فرانکفورت
   ur: فرینکفرٹ ہوائی اڈے پر وفاقی پولیس

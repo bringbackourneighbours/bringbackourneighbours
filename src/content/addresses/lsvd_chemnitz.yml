@@ -6,18 +6,18 @@ mails:
   - qr-chemnitz2@lsvd.de
   - qr-chemnitz3@lsvd.de
 phones:
- - "+49 371 35146557"
- - "WhatsApp: +491789363457"
- - "WhatsApp: +4917675926504"
- - "WhatsApp: +4917676818471"
+  - '+49 371 35146557'
+  - 'WhatsApp: +491789363457'
+  - 'WhatsApp: +4917675926504'
+  - 'WhatsApp: +4917676818471'
 url: https://sachsen.lsvd.de/projekte/gefluechtete
 lastChecked: 2025-07-08
-translatedNotes:  
-  de: "Information Center for LGBTI Refugees"  
-  en: "Information Center for LGBTI Refugees"
+translatedNotes:
+  de: 'Information Center for LGBTI Refugees'
+  en: 'Information Center for LGBTI Refugees'
   fr: "Centre d'information pour les réfugiés LGBTI"
-  ar: "مركز المعلومات الخاص باللاجئين المثليين والمثليات ومزدوجي الميل الجنسي ومغايري الهوية الجنسانية وحاملي صفات الجنسين"
-  ka: "ლგბტი ლტოლვილთა საინფორმაციო ცენტრი"
+  ar: 'مركز المعلومات الخاص باللاجئين المثليين والمثليات ومزدوجي الميل الجنسي ومغايري الهوية الجنسانية وحاملي صفات الجنسين'
+  ka: 'ლგბტი ლტოლვილთა საინფორმაციო ცენტრი'
   fa: مرکز اطلاعات برای پناهندگان LGBTI
   ur: ایل جی بی ٹی آئی پناہ گزینوں کے لئے انفارمیشن سینٹر
   es: Centro de Información para Refugiados LGBTI

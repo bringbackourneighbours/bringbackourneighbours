@@ -2,15 +2,15 @@ identifier: bupo_duesseldorf
 lastChecked: 2025-07-08
 name: Bundespolizeirevier Flughafen Düsseldorf
 streetLine: Frachtstraße 30
-zip: "40474"
+zip: '40474'
 city: Düsseldorf
 mail: bpolifh.dus@polizei.bund.de
-phone: "+49 211 9518-0"
+phone: '+49 211 9518-0'
 translatedNotes:
-  de: "Bundespolizei Flughafen Düsseldorf"  
-  en: "Federal Police Düsseldorf Airport"
+  de: 'Bundespolizei Flughafen Düsseldorf'
+  en: 'Federal Police Düsseldorf Airport'
   fr: "Police fédérale de l'aگéroport de Düsseldorf"
-  ar: "الشرطة الفيدرالية في مطار دوسلدورف"
+  ar: 'الشرطة الفيدرالية في مطار دوسلدورف'
   ka: ფედერალური პოლიცია ჰამბურგის აეროპორტში
   fa: پلیس فدرال فرودگاه دوسلدورف
   ur: ہیمبرگ ہوائی اڈے پر وفاقی پولیس

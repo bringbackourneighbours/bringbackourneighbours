@@ -2,25 +2,25 @@ identifier: airport_berlin-brandenburg
 lastChecked: 2025-12-17
 name: Caritasverband für das Erzbistum Berlin e.V.
 streetLine: Residenzstraße 90
-zip: "13409"
+zip: '13409'
 city: Berlin
 mail: abschiebebeobachtung@caritas-brandenburg.de
 phones:
-  - "+49 30 666 33 1031"
-  - "+49 173 574 92 43"
-  - "+49 1525 2485739"
+  - '+49 30 666 33 1031'
+  - '+49 173 574 92 43'
+  - '+49 1525 2485739'
 url: https://www.caritas-brandenburg.de/beratung-hilfe/flucht-und-migration/abschiebungsbeobachtung/abschiebungsbeobachtung
 translatedNotes:
-  de: "Unabhängige Abschiebungsbeobachtung am Flughafen BER"  
-  en: "Independent deportation monitoring at BER Airport"
+  de: 'Unabhängige Abschiebungsbeobachtung am Flughafen BER'
+  en: 'Independent deportation monitoring at BER Airport'
   fr: "Observation indépendante des expulsions à l'aéroport de Berlin (BER)"
-  ar: "المراقبة المستقلة للترحيلات في مطار بيروت"
-  ka: "დეპორტაციის დამოუკიდებელი მონიტორინგი ბერლინის აეროპორტში (BER)"
-  fa: "مشاهده مستقل اخراج در فرودگاه BER"
-  ur: "برلن ہوائی اڈے پر آزادانہ جلاوطنی کا مشاہدہ (بی ای آر)"
-  es: "Control independiente de las expulsiones en el aeropuerto de BER"
+  ar: 'المراقبة المستقلة للترحيلات في مطار بيروت'
+  ka: 'დეპორტაციის დამოუკიდებელი მონიტორინგი ბერლინის აეროპორტში (BER)'
+  fa: 'مشاهده مستقل اخراج در فرودگاه BER'
+  ur: 'برلن ہوائی اڈے پر آزادانہ جلاوطنی کا مشاہدہ (بی ای آر)'
+  es: 'Control independiente de las expulsiones en el aeropuerto de BER'
   tr: "BER Havalimanı'nda bağımsız sınır dışı izleme"
-  ku: "Li Balafirgeha BER çavdêriya dersînorkirinê ya serbixwe"
-  ru: "Независимый мониторинг депортации в аэропорту BER"
-  ti: "ኣብ መዓርፎ ነፈርቲ በር እተገብረ ብርእሱ ሓሲቡ እተገብረ መጽናዕቲ"
-  vi: "Quan sát trục xuất độc lập tại sân bay BER"
+  ku: 'Li Balafirgeha BER çavdêriya dersînorkirinê ya serbixwe'
+  ru: 'Независимый мониторинг депортации в аэропорту BER'
+  ti: 'ኣብ መዓርፎ ነፈርቲ በር እተገብረ ብርእሱ ሓሲቡ እተገብረ መጽናዕቲ'
+  vi: 'Quan sát trục xuất độc lập tại sân bay BER'
