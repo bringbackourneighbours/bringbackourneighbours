@@ -5,27 +5,31 @@
 
 ![License: MIT (Non-Commercial)](https://img.shields.io/badge/license-MIT--NC-blue.svg)
 
+<!-- prettier-ignore-start -->
+
+<!-- TOC -->
+* [Bring Back Our Neighbours](#bring-back-our-neighbours)
+  * [About](#about)
+  * [Getting Started](#getting-started)
+  * [Linters and Formatters](#linters-and-formatters)
+  * [Requirements](#requirements)
+  * [Contributing](#contributing)
+    * [Code of conduct](#code-of-conduct)
+    * [Project Structure](#project-structure)
+    * [Adding Content](#adding-content)
+      * [Block](#block)
+      * [Standalone Content: Flyers, Kits and Pages](#standalone-content-flyers-kits-and-pages)
+      * [Addresses](#addresses)
+      * [Links](#links)
+      * [Forms/Templates](#formstemplates)
+      * [keeping content out to date](#keeping-content-out-to-date)
+      * [UI-Translation](#ui-translation)
+    * [Translation](#translation)
+    * [Creation of printable PDFs](#creation-of-printable-pdfs)
+    * [Short Url for Links](#short-url-for-links)
 <!-- TOC -->
 
-- [Bring Back Our Neighbours](#bring-back-our-neighbours)
-  - [About](#about)
-  - [Getting Started](#getting-started)
-  - [Linters and Formatters](#linters-and-formatters)
-  - [Requirements](#requirements)
-  - [Contributing](#contributing)
-  _ [Code of conduct](#code-of-conduct)
-  _ [Project Structure](#project-structure)
-  _ [Adding Content](#adding-content)
-  _ [Block](#block)
-  _ [Standalone Content: Flyers, Kits and Pages](#standalone-content-flyers-kits-and-pages)
-  _ [Addresses](#addresses)
-  _ [Links](#links)
-  _ [Forms/Templates](#formstemplates)
-  _ [keeping content out to date](#keeping-content-out-to-date)
-  _ [UI-Translation](#ui-translation)
-  _ [Translation](#translation)
-  _ [Creation of printable PDFs](#creation-of-printable-pdfs) \* [Short Url for Links](#short-url-for-links)
-  <!-- TOC -->
+<!-- prettier-ignore-end -->
 
 ## About
 
