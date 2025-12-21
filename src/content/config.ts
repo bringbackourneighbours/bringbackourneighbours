@@ -12,12 +12,16 @@ const translatableSchema = {
   machineTranslation: z.boolean().optional(),
 };
 
+const checkableSchema = {
+  noCheckUntil: z.date().optional(),
+  lastChecked: z.date(),
+};
 /**
  * for flyer, kits and pages
  */
 const standaloneContentSchema = z.object({
   ...translatableSchema,
-  lastChecked: z.date(),
+  ...checkableSchema,
   title: z.string(),
   seo: z.string(),
 });
@@ -25,8 +29,8 @@ const standaloneContentSchema = z.object({
 const addressesCollection = defineCollection({
   type: 'data',
   schema: z.object({
+    ...checkableSchema,
     identifier: z.string(),
-    lastChecked: z.date(),
     name: z.string(), // location
     streetLine: z.string().optional(),
     additional: z.string().optional(),
@@ -79,10 +83,13 @@ const linksCollection = defineCollection({
       .or(z.enum(UnSupportedLanguages))
       .or(z.literal('all')),
     z.object({
+      ...checkableSchema,
+      // TODO: only optional for now to allow soft migration
+      lastChecked: checkableSchema.lastChecked.optional(),
       slug: z.string().optional(),
       url: z.string().optional(),
       title: z.string().optional(),
-      type: z.enum(LinkTypes).optional(), // TODO: PDF,WEB as literal
+      type: z.enum(LinkTypes).optional(),
     }),
   ),
 });

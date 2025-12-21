@@ -13,20 +13,19 @@
   - [Linters and Formatters](#linters-and-formatters)
   - [Requirements](#requirements)
   - [Contributing](#contributing)
-    - [Code of conduct](#code-of-conduct)
-    - [Project Structure](#project-structure)
-    - [Adding Content](#adding-content)
-      - [Block](#block)
-      - [Standalone Content: Flyers, Kits and Pages](#standalone-content-flyers-kits-and-pages)
-      - [Addresses](#addresses)
-      - [Links](#links)
-      - [Forms/Templates](#formstemplates)
-      - [UI-Translation](#ui-translation)
-    - [Translation](#translation)
-    - [Creation of printable PDFs](#creation-of-printable-pdfs)
-    - [Short Url for Links](#short-url-for-links)
-
-<!-- TOC -->
+  _ [Code of conduct](#code-of-conduct)
+  _ [Project Structure](#project-structure)
+  _ [Adding Content](#adding-content)
+  _ [Block](#block)
+  _ [Standalone Content: Flyers, Kits and Pages](#standalone-content-flyers-kits-and-pages)
+  _ [Addresses](#addresses)
+  _ [Links](#links)
+  _ [Forms/Templates](#formstemplates)
+  _ [keeping content out to date](#keeping-content-out-to-date)
+  _ [UI-Translation](#ui-translation)
+  _ [Translation](#translation)
+  _ [Creation of printable PDFs](#creation-of-printable-pdfs) \* [Short Url for Links](#short-url-for-links)
+  <!-- TOC -->
 
 ## About
 
@@ -313,10 +312,12 @@ Example Link: `/src/content/links/example.yml`:
 ```yaml
 all:
   type: PDF
+  lastChecked: 2024-01-31
 en:
   slug: stuff
   url: www.anothersite.com/thathassomeinteresstingstuffEnglish.pdf
   title: Interessting Stuff
+  noCheckUntil: 2026-12-01
 de:
   slug: zeugs
   url: www.anothersite.com/thathassomeinteresstingstuffGerman.pdf
@@ -355,6 +356,18 @@ Random Text
 
 <ExternalShortLink identifier="form_urgent"/>
 ```
+
+#### keeping content out to date
+
+All content types (expect ui-translations) has to be marked with a `lastChecked` Date. This date represent the time the
+content has been factual checked: so it's more about the information, less about typos and formating.
+So if for example the german content has been translated to french, both should have the same `lastChecked` Date as the
+factual information is the same.
+
+For Links (external links and the urls of addresses) there is an automatic check to ensure the external pages are still
+up and running.
+
+See [Short Url for Links](#short-url-for-links) for more details.
 
 #### UI-Translation
 
@@ -397,9 +410,13 @@ For the printed version we want to provide shortened urls to external and intern
 type `bbonlink.de/asylar` when you want to view this external
 material: https://www.asyl.net/fileadmin/user_upload/publikationen/infoblatt_anhoerung/Infoblatt_Asyl_2016_arab.pdf
 
-Per schedule, we will check every night if the external sites are still up and running. Most of the time there will be
-not much we can do:
+Per schedule, we will check every night if the external sites are still up and running.
+
+Most of the time there will be not much we can do:
 if some other site goes offline, we only can decide to remove the link to it.
 
 If you want to check for yourself visit http://localhost:4321/internal-check-links
 or run `npx linkinator --redirects=error https://bringbackourneighbours.de/internal-check-links/`
+
+Beware the links (and addresses) can be excluded temporarily for the checking, as a site might be down for some time.
+Set the property `noCheckUntil` to exclude it, until that time.

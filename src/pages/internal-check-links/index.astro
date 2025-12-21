@@ -7,10 +7,15 @@ import Link from '../../components/design/Link.astro';
 
 import { getAllExternalLinksEntries } from '../../util/get-flat-links-entries';
 
-const linkEntries = await getAllExternalLinksEntries();
+const now = new Date();
 
-const adresses: CollectionEntry<'addresses'>[] =
-  await getCollection('addresses');
+const linkEntries = (await getAllExternalLinksEntries()).filter(
+  (link) => now >= (link?.noCheckUntil || now),
+);
+
+const adresses: CollectionEntry<'addresses'>[] = (
+  await getCollection('addresses')
+).filter((address) => now >= (address?.data?.noCheckUntil || now));
 ---
 
 <BaseLayout
@@ -53,7 +58,7 @@ const adresses: CollectionEntry<'addresses'>[] =
       }
     </tbody>
   </table>
-  <h2>Adress Links</h2>
+  <h2>Address Links</h2>
 
   <table>
     <thead>
