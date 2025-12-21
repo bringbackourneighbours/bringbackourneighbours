@@ -15,6 +15,8 @@ export interface LinkData {
   identifier?: string;
   lang?: string;
   filePath?: string;
+  lastChecked?: Date;
+  noCheckUntil?: Date;
 }
 
 export const getFlatLinksEntries = async (): Promise<LinkData[]> => {
@@ -36,6 +38,10 @@ export const getAllExternalLinksEntries = async (): Promise<LinkData[]> => {
         .filter((value) => value.slug && value.url)
         .map((value) => ({
           ...value,
+          lastChecked:
+            value.lastChecked || currentValue.data['all']?.lastChecked,
+          noCheckUntil:
+            value.noCheckUntil || currentValue.data['all']?.noCheckUntil,
           filePath: currentValue.filePath,
         }))
         .flat() as LinkData[]),

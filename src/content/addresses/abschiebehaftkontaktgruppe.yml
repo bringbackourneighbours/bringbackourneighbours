@@ -3,8 +3,11 @@ name: Abschiebehaftkontaktgruppe Dresden
 additional: Kontaktgruppe Asyl und Abschiebehaft e.V.
 city: Dresden
 mail: kontakt@abschiebehaftkontaktgruppe.de
+instagram: abschiebehaftkg_dresden
 url: https://www.abschiebehaftkontaktgruppe.de
-lastChecked: 2025-07-08
+lastChecked: 2025-12-21
+noCheckUntil: 2026-05-01
+# cloudfare is blocking our scans
 translatedNotes:
   de: "Beraten Menschen in Abschiebehaft in der Abschiebehaftanstalt Dresden"
   en: "Counselling people in detention pending deportation in the deportation detention centre in Dresden"
