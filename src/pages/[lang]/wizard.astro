@@ -14,6 +14,7 @@ import MoreInfoStack from '../../components/MoreInfoStack.astro';
 import OverviewLayout from '../../layouts/OverviewLayout.astro';
 import Stack from '../../components/design/Stack.astro';
 import { mapStaticPathsForPaths } from '../../util/map-static-paths-for-paths';
+import { getEntry } from 'astro:content';
 
 interface Props {
   lang: LanguagesValue;
@@ -26,6 +27,14 @@ export async function getStaticPaths() {
 const { lang = DEFAULT_LANG } = Astro.props;
 
 const translationSlugs = await getTranslationsUrlsForPath(lang, 'wizard');
+const kitAffectedCanonicalUrl = await getCanonicalUrlToKit(
+  await getEntry('kits', `affected/${lang}`)!,
+  lang,
+);
+const kitSupportCanonicalUrl = await getCanonicalUrlToKit(
+  await getEntry('kits', `support/${lang}`)!,
+  lang,
+);
 ---
 
 <OverviewLayout
@@ -38,26 +47,18 @@ const translationSlugs = await getTranslationsUrlsForPath(lang, 'wizard');
     translationSlugs={translationSlugs}
   />
   <Stack>
-    {
-      getCanonicalUrlToKit(lang, 'affected').then((href) => (
-        <CardLink
-          lang={lang}
-          href={href}
-        >
-          {useUiTranslation('wizard.areYouInDangerQuestion', lang)}
-        </CardLink>
-      ))
-    }
-    {
-      getCanonicalUrlToKit(lang, 'support').then((href) => (
-        <CardLink
-          lang={lang}
-          href={href}
-        >
-          {useUiTranslation('wizard.someoneElseInDangerQuestion', lang)}
-        </CardLink>
-      ))
-    }
+    <CardLink
+      lang={lang}
+      href={kitAffectedCanonicalUrl}
+    >
+      {useUiTranslation('wizard.areYouInDangerQuestion', lang)}
+    </CardLink>
+    <CardLink
+      lang={lang}
+      href={kitSupportCanonicalUrl}
+    >
+      {useUiTranslation('wizard.someoneElseInDangerQuestion', lang)}
+    </CardLink>
   </Stack>
 
   <MoreInfoStack
