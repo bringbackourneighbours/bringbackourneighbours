@@ -7,7 +7,10 @@ export default getViteConfig({
       enabled: true,
       include: ['src/**/*.{ts,astro}'],
       thresholds: {
-        statements: 30, // FIXME: Adjusted coverage threshold
+        statements: 35,
+        branches: 40,
+        functions: 30,
+        lines: 35,
       },
     },
   },

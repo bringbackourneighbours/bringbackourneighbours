@@ -35,8 +35,7 @@ const translationSlugs = await getTranslationsUrlsForKit(
   entry.data.identifier,
 );
 
-const canonicalUrl =
-  (await getCanonicalUrlToKit(entry.data.lang, entry.data.identifier)) || '';
+const canonicalUrl = (await getCanonicalUrlToKit(entry, entry.data.lang)) || '';
 
 const germanTitle =
   (await useContentData('kits', entry.data.identifier, Languages.GERMAN))

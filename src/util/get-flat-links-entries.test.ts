@@ -39,7 +39,7 @@ describe('getFlatLinksEntries', async () => {
           data: {
             identifier: 'flyer1',
             lang: Languages.FRENCH,
-            title: 'flyer1',
+            title: 'flyer',
             lastChecked: new Date('2012-12-12'),
             seo: '',
           },
@@ -58,7 +58,7 @@ describe('getFlatLinksEntries', async () => {
           data: {
             identifier: 'kit1',
             lang: Languages.KURDISH,
-            title: 'kit1',
+            title: 'kit',
             lastChecked: new Date('2012-12-12'),
             seo: '',
           },
@@ -77,7 +77,7 @@ describe('getFlatLinksEntries', async () => {
           data: {
             identifier: 'page1',
             lang: Languages.ENGLISH,
-            title: 'page1',
+            title: 'page',
             lastChecked: new Date('2012-12-12'),
             seo: '',
           },
@@ -108,25 +108,25 @@ describe('getFlatLinksEntries', async () => {
         identifier: 'flyer1',
         lang: 'fr',
         slug: 'flyer-fr-flyer1',
-        title: 'flyer1',
+        title: 'flyer',
         type: 'FLYER',
-        url: undefined,
+        url: 'http://localhost:4321/fr/flyer/flyer1/flyer',
       },
       {
         identifier: 'kit1',
         lang: 'ku',
         slug: 'kit-ku-kit1',
-        title: 'kit1',
+        title: 'kit',
         type: 'KIT',
-        url: undefined,
+        url: 'http://localhost:4321/ku/kit/kit1/kit',
       },
       {
         identifier: 'page1',
         lang: 'en',
         slug: 'page-en-page1',
-        title: 'page1',
+        title: 'page',
         type: 'PAGE',
-        url: undefined,
+        url: 'http://localhost:4321/en/page/page1/page',
       },
     ]);
   });

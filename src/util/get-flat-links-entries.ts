@@ -7,6 +7,7 @@ import {
   getCanonicalUrlToPage,
 } from './get-canonical-url.ts';
 import { getAllExternalLinksEntries } from './get-all-external-links-entries.ts';
+import type { StandaloneContentProps } from '../model/standalone-collections.ts';
 
 export interface LinkData {
   slug: string;
@@ -38,17 +39,19 @@ const getAllFlyerLinksEntries = async (
   entries: CollectionEntry<'flyers'>[],
 ): Promise<LinkData[]> => {
   return Promise.all(
-    mapStaticPathsForStandalone(entries).map(async (flyer) => {
-      const data = flyer.props.entry.data;
-      return {
-        identifier: data.identifier,
-        slug: `flyer-${data.lang}-${data.identifier}`,
-        title: data.title,
-        type: 'FLYER',
-        url: await getCanonicalUrlToFlyer(data.lang, data.identifier),
-        lang: data.lang,
-      };
-    }),
+    mapStaticPathsForStandalone(entries).map(
+      async (flyer: StandaloneContentProps<'flyers'>) => {
+        const data = flyer.props.entry.data;
+        return {
+          identifier: data.identifier,
+          slug: `flyer-${data.lang}-${data.identifier}`,
+          title: data.title,
+          type: 'FLYER',
+          url: await getCanonicalUrlToFlyer(flyer.props.entry, data.lang),
+          lang: data.lang,
+        };
+      },
+    ),
   );
 };
 
@@ -63,7 +66,10 @@ const getAllKitLinksEntries = async (
         slug: `kit-${data.lang}-${data.identifier}`,
         title: data.title,
         type: 'KIT',
-        url: await getCanonicalUrlToKit(data.lang, data.identifier),
+        url: await getCanonicalUrlToKit(
+          kit.props.entry as CollectionEntry<'kits'>,
+          data.lang,
+        ),
         lang: data.lang,
       };
     }),
@@ -74,14 +80,17 @@ const getAllPageLinksEntries = async (
   entries: CollectionEntry<'pages'>[],
 ): Promise<LinkData[]> => {
   return Promise.all(
-    mapStaticPathsForStandalone(entries).map(async (kit) => {
-      const data = kit.props.entry.data;
+    mapStaticPathsForStandalone(entries).map(async (page) => {
+      const data = page.props.entry.data;
       return {
         identifier: data.identifier,
         slug: `page-${data.lang}-${data.identifier}`,
         title: data.title,
         type: 'PAGE',
-        url: await getCanonicalUrlToPage(data.lang, data.identifier),
+        url: await getCanonicalUrlToPage(
+          page.props.entry as CollectionEntry<'pages'>,
+          data.lang,
+        ),
         lang: data.lang,
       };
     }),
