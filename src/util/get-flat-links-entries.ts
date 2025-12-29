@@ -1,11 +1,12 @@
-import { type CollectionEntry, getCollection } from 'astro:content';
+import type { CollectionEntry } from 'astro:content';
+import type { LinkTypes } from '../model/link-types.ts';
 import { mapStaticPathsForStandalone } from './map-static-paths-for-standalone.ts';
 import {
   getCanonicalUrlToFlyer,
   getCanonicalUrlToKit,
   getCanonicalUrlToPage,
 } from './get-canonical-url.ts';
-import type { LinkTypes } from '../model/link-types.ts';
+import { getAllExternalLinksEntries } from './get-all-external-links-entries.ts';
 
 export interface LinkData {
   slug: string;
@@ -19,35 +20,18 @@ export interface LinkData {
   noCheckUntil?: Date;
 }
 
-export const getFlatLinksEntries = async (): Promise<LinkData[]> => {
-  return [
-    // TODO: refactor so avoid dependency to astro:content
-    ...(await getAllExternalLinksEntries(await getCollection('links'))),
-    ...(await getAllFlyerLinksEntries(await getCollection('flyers'))),
-    ...(await getAllKitLinksEntries(await getCollection('kits'))),
-    ...(await getAllPageLinksEntries(await getCollection('pages'))),
-  ];
-};
-
-export const getAllExternalLinksEntries = async (
-  linkEntries: CollectionEntry<'links'>[],
+export const getFlatLinksEntries = async (
+  linksEntries: CollectionEntry<'links'>[],
+  flyersEntries: CollectionEntry<'flyers'>[],
+  kitsEntries: CollectionEntry<'kits'>[],
+  pagesEntries: CollectionEntry<'pages'>[],
 ): Promise<LinkData[]> => {
-  return linkEntries.reduce((accumulator, currentValue) => {
-    return [
-      ...accumulator,
-      ...(Object.values(currentValue.data)
-        .filter((value) => value.slug && value.url)
-        .map((value) => ({
-          ...value,
-          lastChecked:
-            value.lastChecked || currentValue.data['all']?.lastChecked,
-          noCheckUntil:
-            value.noCheckUntil || currentValue.data['all']?.noCheckUntil,
-          filePath: currentValue.filePath,
-        }))
-        .flat() as LinkData[]),
-    ];
-  }, [] as LinkData[]);
+  return [
+    ...(await getAllExternalLinksEntries(linksEntries)),
+    ...(await getAllFlyerLinksEntries(flyersEntries)),
+    ...(await getAllKitLinksEntries(kitsEntries)),
+    ...(await getAllPageLinksEntries(pagesEntries)),
+  ];
 };
 
 const getAllFlyerLinksEntries = async (
