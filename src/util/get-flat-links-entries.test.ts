@@ -1,83 +1,132 @@
 import { describe, expect, it } from 'vitest';
-import { getAllExternalLinksEntries } from './get-flat-links-entries.ts';
+import { getFlatLinksEntries } from './get-flat-links-entries.ts';
+import { Languages } from '../model/languages.ts';
+import type { Render } from 'astro:content';
 
-describe('getAllExternalLinksEntries', async () => {
+describe('getFlatLinksEntries', async () => {
   it('return on empty', async () => {
-    const result = await getAllExternalLinksEntries([]);
+    const result = await getFlatLinksEntries([], [], [], []);
     expect(result).toEqual([]);
   });
 
   it('should reduce the entries', async () => {
-    const result = await getAllExternalLinksEntries([
-      {
-        id: 'id1',
-        filePath: 'filePath1.yml',
-        collection: 'links',
-        data: {
-          all: {
-            type: 'AUDIO',
-            lastChecked: new Date('2012-12-12'),
-            noCheckUntil: new Date('2024-02-04'),
-          },
-          de: {
-            slug: 'slugde',
-            url: 'example.de',
-          },
-          en: {
-            slug: 'slugen',
-            url: 'example.com',
-          },
-        },
-      },
-      {
-        id: 'id2',
-        filePath: 'filePath2.yml',
-        collection: 'links',
-        data: {
-          de: {
-            slug: 'slugde',
-            url: 'example.de',
-            type: 'DOC',
-            lastChecked: new Date('2012-12-12'),
-          },
-          en: {
-            slug: 'slugde',
-            url: 'example.de',
-            type: 'VIDEO',
+    const result = await getFlatLinksEntries(
+      [
+        {
+          id: 'id1',
+          filePath: 'filePath1.yml',
+          collection: 'links',
+          data: {
+            all: {
+              type: 'AUDIO',
+            },
+            de: {
+              slug: 'slugde',
+              url: 'example.de',
+            },
+            en: {
+              slug: 'slugen',
+              url: 'example.com',
+            },
           },
         },
-      },
-    ]);
+      ],
+      [
+        {
+          id: 'flyer1',
+          filePath: 'flyerPath.mdx',
+          collection: 'flyers',
+          data: {
+            identifier: 'flyer1',
+            lang: Languages.FRENCH,
+            title: 'flyer1',
+            lastChecked: new Date('2012-12-12'),
+            seo: '',
+          },
+          render: function (): Render['.md'] {
+            throw new Error('Function not implemented.');
+          },
+          slug: '',
+          body: '',
+        },
+      ],
+      [
+        {
+          id: 'kit1',
+          filePath: 'kitPath.mdx',
+          collection: 'kits',
+          data: {
+            identifier: 'kit1',
+            lang: Languages.KURDISH,
+            title: 'kit1',
+            lastChecked: new Date('2012-12-12'),
+            seo: '',
+          },
+          render: function (): Render['.md'] {
+            throw new Error('Function not implemented.');
+          },
+          slug: '',
+          body: '',
+        },
+      ],
+      [
+        {
+          id: 'page1',
+          filePath: 'patePath.mdx',
+          collection: 'pages',
+          data: {
+            identifier: 'page1',
+            lang: Languages.ENGLISH,
+            title: 'page1',
+            lastChecked: new Date('2012-12-12'),
+            seo: '',
+          },
+          render: function (): Render['.md'] {
+            throw new Error('Function not implemented.');
+          },
+          slug: '',
+          body: '',
+        },
+      ],
+    );
     expect(result).toEqual([
       {
         filePath: 'filePath1.yml',
-        lastChecked: new Date('2012-12-12'),
-        noCheckUntil: new Date('2024-02-04'),
+        lastChecked: undefined,
+        noCheckUntil: undefined,
         slug: 'slugde',
         url: 'example.de',
       },
       {
         filePath: 'filePath1.yml',
-        lastChecked: new Date('2012-12-12'),
-        noCheckUntil: new Date('2024-02-04'),
+        lastChecked: undefined,
+        noCheckUntil: undefined,
         slug: 'slugen',
         url: 'example.com',
       },
       {
-        filePath: 'filePath2.yml',
-        lastChecked: new Date('2012-12-12'),
-        noCheckUntil: undefined,
-        slug: 'slugde',
-        type: 'DOC',
-        url: 'example.de',
+        identifier: 'flyer1',
+        lang: 'fr',
+        slug: 'flyer-fr-flyer1',
+        title: 'flyer1',
+        type: 'FLYER',
+        url: undefined,
       },
       {
-        filePath: 'filePath2.yml',
-        lastChecked: undefined,
-        noCheckUntil: undefined,
-        slug: 'slugde',
-        type: 'VIDEO',
-        url: 'example.de',
+        identifier: 'kit1',
+        lang: 'ku',
+        slug: 'kit-ku-kit1',
+        title: 'kit1',
+        type: 'KIT',
+        url: undefined,
+      },
+      {
+        identifier: 'page1',
+        lang: 'en',
+        slug: 'page-en-page1',
+        title: 'page1',
+        type: 'PAGE',
+        url: undefined,
       },
     ]);
   });

@@ -5,6 +5,7 @@ import ShortLink from '../design/ShortLink.astro';
 
 import { getFlatLinksEntries } from '../../util/get-flat-links-entries';
 import NotFoundError from '../design/NotFoundError.astro';
+import { getCollection } from 'astro:content';
 
 export interface Props {
   identifier: string;
@@ -13,7 +14,14 @@ export interface Props {
 
 const { identifier, lang = Astro.locals.lang } = Astro.props;
 
-const link = (await getFlatLinksEntries()).find((entry) => {
+const link = (
+  await getFlatLinksEntries(
+    await getCollection('links'),
+    await getCollection('flyers'),
+    await getCollection('kits'),
+    await getCollection('pages'),
+  )
+).find((entry) => {
   return entry?.identifier === identifier && entry?.lang === lang;
 });
 ---
