@@ -41,9 +41,10 @@ Visit https://bringbackourneighbours.de for the latest edition, Digital and to p
 All commands are run from the root of the project, from a terminal:
 
 | Command                   | Action                                           |
-| :------------------------ | :----------------------------------------------- |
+|:--------------------------|:-------------------------------------------------|
 | `npm ci`                  | Installs dependencies.                           |
 | `npm run dev`             | Starts local dev server at `localhost:4321`      |
+| `npm run vitest`          | Run unittest                                     |
 | `npm run build`           | Build your production site to `./dist/`          |
 | `npm run preview`         | Preview your build locally, before deploying     |
 | `npm run astro ...`       | Run CLI commands like `astro add`, `astro check` |
