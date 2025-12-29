@@ -49,7 +49,7 @@ const placeFlyerOnPages = async (
 
 export async function layoutAllFlyerInOnePdf(
   flyersPaths: string[],
-): Promise<Uint8Array> {
+): Promise<PDFDocument> {
   const newPdf = await PDFDocument.create();
 
   for (const [topPath, bottomPath] of [...chunks(flyersPaths, 2)]) {
@@ -64,5 +64,6 @@ export async function layoutAllFlyerInOnePdf(
     }
   }
 
-  return await newPdf.save();
+  // TODO: maybe add some metadata here, like title, author, subject, keywords, etc.
+  return newPdf;
 }
