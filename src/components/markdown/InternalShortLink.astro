@@ -2,9 +2,9 @@
 import { type LanguagesValue } from '../../model/languages';
 
 import ShortLink from '../design/ShortLink.astro';
+import NotFoundError from '../design/NotFoundError.astro';
 
 import { getFlatLinksEntries } from '../../util/get-flat-links-entries';
-import NotFoundError from '../design/NotFoundError.astro';
 import { getCollection } from 'astro:content';
 
 export interface Props {
@@ -21,8 +21,8 @@ const link = (
     await getCollection('kits'),
     await getCollection('pages'),
   )
-).find((entry) => {
-  return entry?.identifier === identifier && entry?.lang === lang;
+).find((links) => {
+  return links?.identifier === identifier && links?.lang === lang;
 });
 ---
 
