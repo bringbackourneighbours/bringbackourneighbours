@@ -1,12 +1,12 @@
 ---
-import type { LanguagesValue } from '../model/languages.ts';
+import type { LanguagesValue } from '../model/languages';
 
-import { useUiTranslation } from '../util/use-ui-translation';
-import { getAllFlyerPrintUrl, getPrintUrl } from '../util/get-based-url.ts';
+import { useUiTranslation } from '../content/use-ui-translation';
+import { getAllFlyerPrintUrl, getPrintUrl } from '../util/get-absolute-url';
 
 import CardLink from './design/CardLink.astro';
 
-import type { StandaloneCollections } from '../model/standalone-collections.ts';
+import type { StandaloneCollections } from '../model/standalone-collections';
 
 interface Props {
   lang?: LanguagesValue | 'all';
