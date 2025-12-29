@@ -1,16 +1,19 @@
 ---
 import { getCanonicalUrlToPage } from '../../../../util/get-canonical-url';
 import { mapStaticPathsForStandalone } from '../../../../util/map-static-paths-for-standalone';
-import { getCollection } from 'astro:content';
+import { type CollectionEntry, getCollection } from 'astro:content';
+
+interface Props {
+  entry: CollectionEntry<'pages'>;
+}
 
 export async function getStaticPaths() {
   return mapStaticPathsForStandalone(await getCollection('pages'));
 }
 
-const url = await getCanonicalUrlToPage(
-  Astro.params.lang,
-  Astro.params.identifier,
-);
+const { entry } = Astro.props;
+
+const url = await getCanonicalUrlToPage(entry, entry.data.lang);
 
 return Astro.redirect(url);
 ---

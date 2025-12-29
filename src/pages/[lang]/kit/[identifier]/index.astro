@@ -12,8 +12,8 @@ export async function getStaticPaths() {
 }
 
 const url = await getCanonicalUrlToKit(
+  Astro.props.entry,
   Astro.props.entry.data.lang,
-  Astro.props.entry.data.identifier,
 );
 
 return Astro.redirect(url);

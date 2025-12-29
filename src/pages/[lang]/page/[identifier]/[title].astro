@@ -37,7 +37,7 @@ const translationSlugs = await getTranslationsUrlsForPages(
 );
 
 const canonicalUrl =
-  (await getCanonicalUrlToPage(entry.data.lang, entry.data.identifier)) || '';
+  (await getCanonicalUrlToPage(entry, entry.data.lang)) || '';
 
 const germanTitle =
   (await useContentData('pages', entry.data.identifier, Languages.GERMAN))

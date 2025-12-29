@@ -21,10 +21,7 @@ const { entry, lang = Astro.locals.lang, collection = 'flyers' } = Astro.props;
 
 const isPrint = Astro.locals.isPrint;
 
-const canonicalUrl = await getCanonicalUrlFn(collection)(
-  lang,
-  entry.data.identifier,
-);
+const canonicalUrl = await getCanonicalUrlFn(collection)(entry, lang);
 
 const collectionLabel =
   collection === 'flyers'
