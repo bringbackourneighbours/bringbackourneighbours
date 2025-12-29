@@ -1,11 +1,10 @@
 ---
 import { type CollectionEntry, getCollection } from 'astro:content';
 import { linkUrl } from '../../../astro.config.mjs';
+import { getAllExternalLinksEntries } from '../../util/get-all-external-links-entries.ts';
 
 import BaseLayout from '../../layouts/BaseLayout.astro';
 import Link from '../../components/design/Link.astro';
-
-import { getAllExternalLinksEntries } from '../../util/get-flat-links-entries';
 
 const now = new Date();
 
