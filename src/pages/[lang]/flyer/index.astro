@@ -58,10 +58,7 @@ const translationSlugs = await getTranslationsUrlsForPath(lang, 'flyer');
         .map(async (flyer) => (
           <CardLink
             lang={lang}
-            href={await getCanonicalUrlToFlyer(
-              lang,
-              flyer.props.entry.data.identifier,
-            )}
+            href={await getCanonicalUrlToFlyer(flyer.props.entry, lang)}
           >
             {flyer.props.entry.data.title}
           </CardLink>

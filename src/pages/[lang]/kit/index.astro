@@ -13,6 +13,7 @@ import MoreInfoStack from '../../../components/MoreInfoStack.astro';
 import { getTranslationsUrlsForPath } from '../../../util/get-translations-url';
 import LanguageSwitcher from '../../../components/design/LanguageSwitcher.astro';
 import { getCollection } from 'astro:content';
+import type { StandaloneContentProps } from '../../../model/standalone-collections.ts';
 
 interface Props {
   lang: LanguagesValue;
@@ -29,7 +30,9 @@ export async function getStaticPaths() {
 
 const { lang } = Astro.props;
 
-const allKits = mapStaticPathsForStandalone(await getCollection('kits'));
+const allKits: StandaloneContentProps<'kits'>[] = mapStaticPathsForStandalone(
+  await getCollection('kits'),
+);
 
 const translationSlugs = await getTranslationsUrlsForPath(lang, 'kit');
 ---
@@ -51,10 +54,7 @@ const translationSlugs = await getTranslationsUrlsForPath(lang, 'kit');
         .map(async (kit) => (
           <CardLink
             lang={lang}
-            href={await getCanonicalUrlToKit(
-              lang,
-              kit.props.entry.data.identifier,
-            )}
+            href={await getCanonicalUrlToKit(kit.props.entry, lang)}
           >
             {kit.props.entry.data.title}
           </CardLink>
