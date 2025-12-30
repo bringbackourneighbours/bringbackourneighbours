@@ -1,7 +1,7 @@
 import { describe, expect, it } from 'vitest';
 import { getTranslationsUrls } from './get-translations-url.ts';
 import type { CollectionEntry } from 'astro:content';
-import { Languages, type LanguagesValue } from '../model/languages.ts';
+import { Languages } from '../model/languages.ts';
 
 describe('getTranslationsUrls', () => {
   const mockEntriesData: CollectionEntry<'flyers'>['data'][] = [
@@ -57,8 +57,7 @@ describe('getTranslationsUrls', () => {
         mockEntriesData.map((data) => ({ data }) as CollectionEntry<'flyers'>),
         Languages.GERMAN,
         'aaa',
-        (lang: LanguagesValue, identifier: string) =>
-          Promise.resolve(`${lang}-${identifier}`),
+        (entry, lang) => Promise.resolve(`${lang}-${entry.data.identifier}`),
       ),
     ).toEqual([{ lang: 'en', url: 'en-aaa' }]);
   });
@@ -69,8 +68,7 @@ describe('getTranslationsUrls', () => {
         mockEntriesData.map((data) => ({ data }) as CollectionEntry<'flyers'>),
         Languages.GERMAN,
         'nono',
-        (lang: LanguagesValue, identifier: string) =>
-          Promise.resolve(`${lang}-${identifier}`),
+        (entry, lang) => Promise.resolve(`${lang}-${entry.data.identifier}`),
       ),
     ).toEqual([]);
   });
