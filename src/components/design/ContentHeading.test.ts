@@ -1,11 +1,12 @@
-import { describe, expect, it } from 'vitest';
-import { render } from '../testing/render.ts';
+import type { CollectionEntry } from 'astro:content';
 
-import '../testing/with-mocked-translation.ts';
+import { describe, expect, it } from 'vitest';
+import { render } from '../../testing/render.ts';
+import { Languages } from '../../model/languages.ts';
+
+import '../../testing/with-mocked-translation.ts';
 
 import ContentHeading from './ContentHeading.astro';
-import { Languages } from '../model/languages.ts';
-import type { CollectionEntry } from 'astro:content';
 
 describe('ContentHeading', () => {
   it('should show heading for english flyer', async () => {
