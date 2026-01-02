@@ -16,7 +16,7 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: Checkout the repository using git
-        uses: actions/checkout@v4
+        uses: actions/checkout@v6
       - id: get-node-version
         uses: ./.github/actions/get-node-version-file
       - name: Install, build the site and upload the artifact
