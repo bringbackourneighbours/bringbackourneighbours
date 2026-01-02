@@ -20,7 +20,7 @@ jobs:
       - id: get-node-version
         uses: ./.github/actions/get-node-version-file
       - name: Install, build the site and upload the artifact
-        uses: withastro/action@v4
+        uses: withastro/action@v5
         with:
           node-version: ${{ steps.get-node-version.outputs.version }}
 
