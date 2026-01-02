@@ -1,6 +1,6 @@
 export default {
   // this is quite broad but works for now
-  '*.{astro,css,html}': (allFiles) => {
+  '*.{astro,css,html,svg}': (allFiles) => {
     const allFilesArg = allFiles.join(' ');
     return [
       `stylelint --fix ${allFilesArg}`,
@@ -8,7 +8,7 @@ export default {
       `prettier --write ${allFilesArg}`,
     ];
   },
-  '*.{md,json,js,ts}': (allFiles) => {
+  '*.{md,mdx,json,mjs,js,ts,yml,yaml}': (allFiles) => {
     const allFilesArg = allFiles.join(' ');
     return [`eslint --fix ${allFilesArg}`, `prettier --write ${allFilesArg}`];
   },
