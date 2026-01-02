@@ -8,8 +8,12 @@ export default {
       `prettier --write ${allFilesArg}`,
     ];
   },
-  '*.{md,mdx,json,mjs,js,ts,yml,yaml}': (allFiles) => {
+  '*.{md,mdx,mjs,js,ts}': (allFiles) => {
     const allFilesArg = allFiles.join(' ');
     return [`eslint --fix ${allFilesArg}`, `prettier --write ${allFilesArg}`];
+  },
+  '*.{json,yml,yaml}': (allFiles) => {
+    const allFilesArg = allFiles.join(' ');
+    return [`prettier --write ${allFilesArg}`];
   },
 };
