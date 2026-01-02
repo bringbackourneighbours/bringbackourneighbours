@@ -8,12 +8,12 @@
     "check": "astro check",
     "build": "astro build",
     "preview": "astro preview",
-    "astro": "astro",
     "prepare": "husky",
     "test": "vitest",
     "prettier": "prettier --check --ignore-path .gitignore .",
     "prettier:write": "prettier --write --ignore-path .gitignore .",
-    "stylelint": "stylelint  **/*.{css,html,astro}"
+    "stylelint": "stylelint  --ignore-path .gitignore '**/*.{css,html,astro}'",
+    "stylelint:write": "stylelint --fix --ignore-path .gitignore '**/*.{css,html,astro}'"
   },
   "dependencies": {
     "@astrojs/check": "^0.9.4",
