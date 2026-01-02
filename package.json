@@ -11,6 +11,8 @@
     "astro": "astro",
     "prepare": "husky",
     "test": "vitest",
+    "prettier": "prettier --check --ignore-path .gitignore .",
+    "prettier:write": "prettier --write --ignore-path .gitignore .",
     "stylelint": "stylelint  **/*.{css,html,astro}"
   },
   "dependencies": {

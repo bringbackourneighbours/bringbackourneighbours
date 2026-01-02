@@ -23,7 +23,7 @@ jobs:
     steps:
       - uses: actions/checkout@v4
       - uses: ./.github/actions/setup-install
-      - run: npx prettier -c "**/*.astro" "**/*.ts" "**/*.css" "**/*.md"
+      - run: npm run prettier
 
   eslint:
     name: Lint with eslint

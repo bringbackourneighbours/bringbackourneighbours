@@ -4,12 +4,12 @@
 
 version: 2
 updates:
-  - package-ecosystem: "github-actions"
-    directory: "/"
+  - package-ecosystem: 'github-actions'
+    directory: '/'
     cooldown:
       default-days: 3
     schedule:
-      interval: "daily"
+      interval: 'daily'
     labels:
       - 'scope:dependencies'
     milestone: 4
