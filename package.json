@@ -9,7 +9,7 @@
     "build": "astro build",
     "preview": "astro preview",
     "prepare": "husky",
-    "test": "vitest",
+    "vitest": "vitest",
     "eslint": "eslint",
     "eslint:fix": "eslint --fix",
     "prettier": "prettier --check --ignore-path .gitignore .",
