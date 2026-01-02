@@ -1,13 +1,24 @@
-# To get started with Dependabot version updates, you'll need to specify which
-# package ecosystems to update and where the package manifests are located.
+# We use Dependabot to keep our dependencies up to date.
 # Please see the documentation for all configuration options:
 # https://docs.github.com/code-security/dependabot/dependabot-version-updates/configuration-options-for-the-dependabot.yml-file
 
 version: 2
 updates:
-  - package-ecosystem: 'npm' # See documentation for possible values
-    directory: '/' # Location of package manifests
+  - package-ecosystem: "github-actions"
+    directory: "/"
+    cooldown:
+      default-days: 3
     schedule:
-      interval: 'weekly'
+      interval: "daily"
     labels:
       - 'scope:dependencies'
+    milestone: 4
+  - package-ecosystem: 'npm'
+    directory: '/'
+    schedule:
+      interval: 'daily'
+    cooldown:
+      default-days: 3
+    labels:
+      - 'scope:dependencies'
+    milestone: 4
