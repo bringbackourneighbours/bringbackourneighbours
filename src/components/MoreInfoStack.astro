@@ -1,6 +1,7 @@
 ---
 import { type LanguagesValue } from '../model/languages';
-import { useUiTranslation } from '../util/use-ui-translation';
+import { getEntry } from 'astro:content';
+import { useUiTranslation } from '../content/use-ui-translation.ts';
 import {
   getCanonicalUrlForPath,
   getCanonicalUrlToKit,
@@ -19,15 +20,30 @@ interface Props {
 
 const { lang, showFlyers, showKits, showKit } = Astro.props;
 
-const kitAffectedCanonicalUrl = await getCanonicalUrlToKit(lang, 'affected');
-const contactsCanonicalUrl = await getCanonicalUrlToPage(lang, 'contacts');
-const formsCanonicalUrl = await getCanonicalUrlToPage(lang, 'forms');
-const publicityCanonicalUrl = await getCanonicalUrlToPage(lang, 'publicity');
-const professionalsCanonicalUrl = await getCanonicalUrlToPage(
+const kitAffectedCanonicalUrl = await getCanonicalUrlToKit(
+  await getEntry('kits', `affected/${lang}`)!,
   lang,
-  'professionals',
 );
-const materialCanonicalUrl = await getCanonicalUrlToPage(lang, 'material');
+const contactsCanonicalUrl = await getCanonicalUrlToPage(
+  await getEntry('pages', `contacts/${lang}`)!,
+  lang,
+);
+const formsCanonicalUrl = await getCanonicalUrlToPage(
+  await getEntry('pages', `forms/${lang}`)!,
+  lang,
+);
+const publicityCanonicalUrl = await getCanonicalUrlToPage(
+  await getEntry('pages', `publicity/${lang}`)!,
+  lang,
+);
+const professionalsCanonicalUrl = await getCanonicalUrlToPage(
+  await getEntry('pages', `professionals/${lang}`)!,
+  lang,
+);
+const materialCanonicalUrl = await getCanonicalUrlToPage(
+  await getEntry('pages', `material/${lang}`)!,
+  lang,
+);
 
 const kitAffectedLabel = await useUiTranslation('meta.emergencyKit', lang);
 const allFlyersLabel = await useUiTranslation('meta.allFlyers', lang);

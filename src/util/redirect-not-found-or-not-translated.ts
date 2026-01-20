@@ -1,18 +1,15 @@
 import type { CollectionEntry } from 'astro:content';
 import {
+  type CanonicalUrlFn,
   getCanonicalUrlToFlyer,
   getCanonicalUrlToKit,
   getCanonicalUrlToPage,
 } from './get-canonical-url.ts';
-import type { LanguagesValue } from '../model/languages.ts';
 
 import type { StandaloneCollections } from '../model/standalone-collections.ts';
 
 async function redirectNotTranslated<T extends StandaloneCollections>(
-  getCanonicalUrlFn: (
-    lang: LanguagesValue,
-    identifier: string,
-  ) => Promise<string | undefined>,
+  getCanonicalUrlFn: CanonicalUrlFn<T>,
   entry?: CollectionEntry<T>,
 ): Promise<
   | {
@@ -22,10 +19,7 @@ async function redirectNotTranslated<T extends StandaloneCollections>(
   | false
 > {
   if (entry?.data?.fallback) {
-    const fallbackUrl = await getCanonicalUrlFn(
-      entry.data.fallback,
-      entry.data.identifier,
-    );
+    const fallbackUrl = await getCanonicalUrlFn(entry, entry.data.lang);
 
     if (fallbackUrl) {
       return {
