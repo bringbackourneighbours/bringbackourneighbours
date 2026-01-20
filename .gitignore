@@ -25,3 +25,9 @@ pnpm-debug.log*
 
 #Python
 venv
+
+# Playwright
+/test-results/
+/playwright-report/
+/blob-report/
+/playwright/.cache/
