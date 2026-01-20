@@ -52,6 +52,6 @@
     "stylelint-config-html": "^1.1.0",
     "stylelint-config-standard": "^39.0.0",
     "typescript-eslint": "^8.52.0",
-    "vitest": "^4.0.14"
+    "vitest": "^4.0.17"
   }
 }
