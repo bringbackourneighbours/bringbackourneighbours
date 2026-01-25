@@ -19,5 +19,5 @@ jobs:
         run: echo $BROKEN_LINKS >> $GITHUB_OUTPUT
       - name: outcheck
         id: check
-        if: ${{steps.tovar.outputs.brokenlinks == ''}}
+        if: ${{steps.tovar.outputs.brokenlinks != ''}}
         run: exit 1
