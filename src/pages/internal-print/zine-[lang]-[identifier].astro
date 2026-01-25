@@ -1,0 +1,93 @@
+---
+import { type CollectionEntry, getCollection } from 'astro:content';
+
+import { mapStaticPathsForStandalone } from '../../util/map-static-paths-for-standalone';
+import { getTranslationsUrlsForFlyer } from '../../util/get-translations-url';
+import { getCanonicalUrlToFlyer } from '../../util/get-canonical-url';
+import { useContentData } from '../../util/use-content-data';
+import { Languages } from '../../model/languages';
+
+import Block from '../../components/markdown/Block.astro';
+import PrintLayout from '../../layouts/PrintLayout.astro';
+import PrinterPage from '../../components/design/PrinterPage.astro';
+import PrintCover from '../../components/design/PrintCover.astro';
+import PrintEndFooter from '../../components/design/PrintEndFooter.astro';
+
+interface Props {
+  entry: CollectionEntry<'flyers'>;
+}
+
+export async function getStaticPaths() {
+  return mapStaticPathsForStandalone(await getCollection('flyers'));
+}
+
+const { entry } = Astro.props;
+
+const translationSlugs = await getTranslationsUrlsForFlyer(
+  await getCollection('flyers'),
+  entry.data.lang,
+  entry.data.identifier,
+);
+const canonicalUrl =
+  (await getCanonicalUrlToFlyer(entry.data.lang, entry.data.identifier)) || '';
+
+const germanTitle =
+  (await useContentData('flyers', entry.data.identifier, Languages.GERMAN))
+    ?.title ?? '';
+---
+
+<style>
+  @page {
+    margin: 5mm;
+    size: 74mm 105mm;
+  }
+
+  .end-footer {
+    position: absolute;
+
+    /**
+    * every zine has 8 pages, so the footer needs to be somewhere on the bottom of page 4...
+    * calc would need to consider the page margins
+    */
+    inset-block-start: 0;
+    margin-block-start: 728mm;
+  }
+
+  .overprint-protector {
+    /**
+    * to make sure nothing fo the content it printed over tke footer we add this protector
+    * if they content and thes footer would overlap this invisible div will be pushed
+    * on the next page... so we will get a warning per astro integration
+    * as we then would have 5 page
+    */
+    height: 32mm;
+  }
+</style>
+<PrintLayout
+  lang={entry.data.lang}
+  title={'Zine ' + entry.data.title + ' | BringBackOurNeighbours'}
+>
+  <PrinterPage>
+    <PrintCover
+      germanTitle={germanTitle}
+      entry={entry}
+      pagewidth="74mm"
+      pagemargin="5mm"
+    />
+  </PrinterPage>
+  <PrinterPage breakBefore={true}>
+    <Block
+      identifier={entry.data.identifier}
+      collection="flyers"
+      isRootLevelContent={true}
+    />
+  </PrinterPage>
+  <div class="overprint-protector"></div>
+  <div class="end-footer">
+    <PrintEndFooter
+      entry={entry}
+      translationSlugs={translationSlugs}
+      canonicalUrl={canonicalUrl}
+    />
+  </div>
+</PrintLayout>
