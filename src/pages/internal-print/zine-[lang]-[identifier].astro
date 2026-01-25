@@ -50,7 +50,7 @@ const germanTitle =
     * calc would need to consider the page margins
     */
     inset-block-start: 0;
-    margin-block-start: 524mm; /** FIXME: for the A7 zine we need aa different height */
+    margin-block-start: 728mm;
   }
 
   .overprint-protector {
@@ -60,12 +60,12 @@ const germanTitle =
     * on the next page... so we will get a warning per astro integration
     * as we then would have 5 page
     */
-    height: 29mm; /** FIXME: for the A7 zine we need aa different height */
+    height: 32mm;
   }
 </style>
 <PrintLayout
   lang={entry.data.lang}
-  title={'Flyer ' + entry.data.title + ' | BringBackOurNeighbours'}
+  title={'Zine ' + entry.data.title + ' | BringBackOurNeighbours'}
 >
   <PrinterPage>
     <PrintCover
