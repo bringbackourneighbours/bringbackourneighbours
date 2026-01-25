@@ -1,6 +1,7 @@
 import type { LanguagesValue } from '../model/languages.ts';
 
-import AstroConfig from '../../astro.config.mjs';
+// import AstroConfig from '../astro.config.mjs';  -> old import. new import WIP
+import { site } from 'astro:config/client';
 
 import { getAbsoluteUrl } from './get-absolute-url.ts';
 import { getEntry } from 'astro:content';
@@ -58,7 +59,7 @@ export const getCanonicalUrlFn = (
   if (collection === 'pages') {
     return getCanonicalUrlToPage;
   }
-  return () => Promise.resolve(`${AstroConfig.site}`);
+  return () => Promise.resolve(`${site}`);
 };
 
 export function getCanonicalUrlForPath(lang: LanguagesValue, path: string) {
