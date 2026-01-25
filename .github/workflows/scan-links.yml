@@ -13,7 +13,7 @@ jobs:
       - name: linkinator
         id: linkinator
       # status: 0 means that we have been blocked by their firewall/cloudflare etc
-        run: | echo "brokenlinks=$(npx linkinator --format=json --redirects=error https://bringbackourneighbours.de/internal-check-links/" |  jq '.links[] | select(.state =="BROKEN" and .status != 0)') >> $GITHUB_OUTPUT
+        run: | echo "brokenlinks=$(npx linkinator --format=json --redirects=error https://bringbackourneighbours.de/internal-check-links/ |  jq '.links[] | select(.state =="BROKEN" and .status != 0)')" >> $GITHUB_OUTPUT
       - name: outcheck
         id: check
         if: {{steps.linkinator.outputs.brokenlinks != ''}}
