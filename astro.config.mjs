@@ -2,7 +2,9 @@ import { defineConfig } from 'astro/config';
 import mdx from '@astrojs/mdx';
 import printPdfs from './src/integrations/print-pdfs';
 import checkFlyers from './src/integrations/check-flyers';
+import checkZines from './src/integrations/check-zines';
 import layoutFlyers from './src/integrations/layout-flyers';
+import layoutZines from './src/integrations/layout-zines';
 
 const isDev = import.meta.env.DEV;
 const isCodespace = import.meta.env.CODESPACES;
@@ -20,7 +22,14 @@ export const linkUrl = isDev ? `${devUrl}link` : 'bbonlink.de';
 export default defineConfig({
   site: siteUrl,
   base: basePath,
-  integrations: [mdx(), printPdfs(), checkFlyers(), layoutFlyers()],
+  integrations: [
+    mdx(),
+    printPdfs(),
+    checkFlyers(),
+    checkZines(),
+    layoutFlyers(),
+    layoutZines(),
+  ],
   build: {
     concurrency: 4,
   },

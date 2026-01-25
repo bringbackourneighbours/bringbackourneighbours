@@ -17,6 +17,10 @@ declare namespace App {
      */
     isFlyer: boolean;
     /**
+     * when set then this is a zine, so some things can be super compact when printing
+     */
+    isZine: boolean;
+    /**
      * the current context is in this language: all components can use this if not set explicitly
      */
     lang: import('./model/languages.ts').LanguagesValue;

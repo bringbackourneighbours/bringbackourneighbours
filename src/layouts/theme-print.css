@@ -35,4 +35,8 @@
   .a6 {
     /* no special styles */
   }
+
+  .a7 {
+    --bbon-size-h1: 24pt;
+  }
 }
