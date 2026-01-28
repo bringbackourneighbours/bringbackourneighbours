@@ -1,6 +1,7 @@
 all:
   type: PDF
-  noCheckUntil: 2026-03-01
+  # FIXME; turn on noCheckUntil  when CI is working
+  # noCheckUntil: 2026-03-01
   # the page is gone
   # see: https://github.com/bringbackourneighbours/bringbackourneighbours/issues/878
 ar:
