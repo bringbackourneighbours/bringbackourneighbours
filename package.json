@@ -51,6 +51,7 @@
     "lint-staged": "^16.1.6",
     "postcss-html": "^1.8.1",
     "prettier": "^3.8.1",
+    "pdf-parse": "^2.4.5",
     "prettier-plugin-astro": "^0.14.1",
     "stylelint": "^17.0.0",
     "stylelint-config-html": "^1.1.0",
