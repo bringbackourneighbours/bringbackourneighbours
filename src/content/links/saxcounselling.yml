@@ -1,0 +1,23 @@
+all:
+  slug: saxcounselling
+  type: WEB
+  url: https://www.saechsischer-fluechtlingsrat.de/informieren/links/
+ar:
+  title: مراكز الاستشارة في ساكسونيا
+de:
+  title: Beratungsstellen in Sachsen
+en:
+  title: counselling centres in Saxony
+  url: https://www.saechsischer-fluechtlingsrat.de/en/links-2/
+fr:
+ title: Centres de consultation en Saxe
+fa:
+  title: مراکز مشاوره در زاکسن
+es:
+  title: Centros de asesoramiento en Sajonia
+tr: 
+  title: Saksonya'daki danışma merkezleri
+ka:
+  title: საკონსულტაციო ცენტრები საქსონიაში
+ku:
+  title: Navendên şêwirmendiyê li Saksonyayê
