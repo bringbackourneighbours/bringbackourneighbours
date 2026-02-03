@@ -3,7 +3,7 @@ all:
   type: WEB
   url: https://www.therapie.de/therapeutensuche/
 ar:
-  title:البحث عن علاج
+  title: البحث عن العلاج
 de:
   title: Suche nach Therapie
 en:
