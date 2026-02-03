@@ -5,13 +5,13 @@ streetLine: Benkendorffstraße 30
 zip: '30855'
 city: Hannover-Langenhagen
 mail: bpolifh.haj@polizei.bund.de
-phone: '+49 511 7281-0'
-phone: '+49 511 7281-1111'
+phone 1: '+49 511 7281-0'
+phone 1: '+49 511 7281-1111'
 translatedNotes:
-  de: Bundespolizei Flughafen Hannover
-  en: Federal Police Hannover Airport
-  fr: Police fédérale de l'aéroport de Hannover
-  ar: الشرطة الفيدرالية في مطار هانوفر
+  de: 'Bundespolizei Flughafen Hannover'
+  en: 'Federal Police Hannover Airport'
+  fr: "Police fédérale de l'aéroport de Hannover"
+  ar: 'الشرطة الفيدرالية في مطار هانوفر
   ka: ფედერალური პოლიცია ჰანოვერის აეროპორტში
   fa: پلیس فدرال در فرودگاه هانوفر
   ur: ہینوور ہوائی اڈے پر وفاقی پولیس
