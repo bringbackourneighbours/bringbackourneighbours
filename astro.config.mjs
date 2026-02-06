@@ -2,22 +2,34 @@ import { defineConfig } from 'astro/config';
 import mdx from '@astrojs/mdx';
 import printPdfs from './src/integrations/print-pdfs';
 import checkFlyers from './src/integrations/check-flyers';
+import checkZines from './src/integrations/check-zines';
 import layoutFlyers from './src/integrations/layout-flyers';
+import layoutZines from './src/integrations/layout-zines';
 
 const isDev = import.meta.env.DEV;
-const siteUrl = isDev
-  ? 'http://localhost:4321/'
-  : 'https://bringbackourneighbours.de/';
+const isCodespace = import.meta.env.CODESPACES;
+const codespaceUrl = `https://${import.meta.env.CODESPACE_NAME}.${import.meta.env.GITHUB_CODESPACES_PORT_FORWARDING_DOMAIN}/`;
+const localhostUrl = 'http://localhost:4321/';
+
+const devUrl = isCodespace ? codespaceUrl : localhostUrl;
+const siteUrl = isDev ? devUrl : 'https://bringbackourneighbours.de/';
 const basePath = '';
 
-export const previewUrl = 'http://localhost:4321/';
-export const linkUrl = isDev ? 'http://localhost:4321/link' : 'bbonlink.de';
+export const previewUrl = devUrl;
+export const linkUrl = isDev ? `${devUrl}link` : 'bbonlink.de';
 
 // https://astro.build/config
 export default defineConfig({
   site: siteUrl,
   base: basePath,
-  integrations: [mdx(), printPdfs(), checkFlyers(), layoutFlyers()],
+  integrations: [
+    mdx(),
+    printPdfs(),
+    checkFlyers(),
+    checkZines(),
+    layoutFlyers(),
+    layoutZines(),
+  ],
   build: {
     concurrency: 4,
   },
