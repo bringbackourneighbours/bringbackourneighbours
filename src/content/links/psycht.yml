@@ -1,0 +1,22 @@
+all:
+  slug: psychT
+  type: WEB
+  url: https://www.therapie.de/therapeutensuche/
+ar:
+  title: البحث عن العلاج
+de:
+  title: Suche nach Therapie
+en:
+  title: Search for therapy
+fr:
+  title: Recherche de thérapie
+fa:
+  title: جستجوی درمانگران
+es:
+  title: Buscar terapeutas
+tr:
+  title: Terapistleri ara
+ka:
+  title: იპოვეთ თერაპევტი
+ku:
+  title: Terapîstekî bibîne
