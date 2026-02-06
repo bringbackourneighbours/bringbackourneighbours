@@ -5,7 +5,7 @@
     "context": "."
   },
   "forwardPorts": [4321],
-  "postCreateCommand": "npm install",
+  "postCreateCommand": "npm ci",
   "customizations": {
     // Configure JetBrains IDE-specific properties
     "jetbrains": {
@@ -25,9 +25,7 @@
       ]
     },
     "vscode": {
-      "extensions": [
-        "astro-build.astro-vscode"
-      ]
+      "extensions": ["astro-build.astro-vscode"]
     }
   },
   "features": {
