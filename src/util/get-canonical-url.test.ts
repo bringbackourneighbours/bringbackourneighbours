@@ -1,98 +1,118 @@
-import { beforeEach, describe, expect, it, vi } from 'vitest';
+import { describe, expect, it, vi } from 'vitest';
+import { Languages } from '../model/languages.ts';
+import type { Render } from 'astro:content';
 import {
-  getCanonicalUrl,
+  getCanonicalUrlFn,
   getCanonicalUrlForPath,
-  getCanonicalUrlToFlyer,
-  getCanonicalUrlToKit,
-  getCanonicalUrlToPage,
-} from './get-canonical-url';
+} from './get-canonical-url.ts';
+import { getAbsoluteUrl } from './get-absolute-url.ts';
 
-// Mocks
-const entryMock = {
-  data: { title: 'Test Title' },
-};
-vi.mock('astro:content', () => ({
-  getEntry: vi.fn(() => Promise.resolve(entryMock)),
-}));
 vi.mock('./get-absolute-url', () => ({
   getAbsoluteUrl: vi.fn((path) => `https://example.com/${path}`),
 }));
-vi.mock('../../astro.config.mjs', () => ({
-  default: { site: 'https://example.com/' },
-}));
 
-describe('get-canonical-url', async () => {
-  beforeEach(() => {
-    vi.clearAllMocks();
+describe('getCanonicalUrlForPath', async () => {
+  it('returns canonical url when entry exists', async () => {
+    const result = getCanonicalUrlForPath('de', 'abc');
+    expect(result).toBe('https://example.com/de/abc');
+    expect(getAbsoluteUrl).toHaveBeenCalledWith('de/abc');
   });
-  const { getEntry } = await import('astro:content');
-  const { getAbsoluteUrl } = await import('./get-absolute-url');
+});
 
-  describe('getCanonicalUrl', async () => {
-    it('returns canonical url when entry exists', async () => {
-      const result = await getCanonicalUrl('flyers', 'flyer', 'de', 'abc');
-      expect(result).toBe('https://example.com/de/flyer/abc/Test%20Title');
-      expect(getEntry).toHaveBeenCalledWith('flyers', 'abc/de');
-      expect(getAbsoluteUrl).toHaveBeenCalledWith('de/flyer/abc/Test%20Title');
-    });
-
-    it('returns undefined when entry does not exist', async () => {
-      vi.mocked(getEntry).mockResolvedValueOnce(undefined);
-      const result = await getCanonicalUrl('flyers', 'flyer', 'de', 'abc');
-      expect(result).toBeUndefined();
-    });
-  });
-
-  describe('getCanonicalUrlToFlyer', async () => {
-    it('returns canonical url when entry exists', async () => {
-      const result = await getCanonicalUrlToFlyer('de', 'abc');
-      expect(result).toBe('https://example.com/de/flyer/abc/Test%20Title');
-      expect(getEntry).toHaveBeenCalledWith('flyers', 'abc/de');
-      expect(getAbsoluteUrl).toHaveBeenCalledWith('de/flyer/abc/Test%20Title');
-    });
-
-    it('returns undefined when entry does not exist', async () => {
-      vi.mocked(getEntry).mockResolvedValueOnce(undefined);
-      const result = await getCanonicalUrlToFlyer('de', 'abc');
-      expect(result).toBeUndefined();
-    });
+describe('getCanonicalUrl', async () => {
+  it('should just return fallback when no collection set', async () => {
+    const result = await getCanonicalUrlFn('kits')(
+      {
+        id: 'kit1',
+        filePath: 'kitPath.mdx',
+        collection: 'kits',
+        data: {
+          identifier: 'kit1',
+          lang: Languages.GERMAN,
+          title: 'kit',
+          lastChecked: new Date('2012-12-12'),
+          seo: '',
+        },
+        render: function (): Render['.md'] {
+          throw new Error('Function not implemented.');
+        },
+        slug: '',
+        body: '',
+      },
+      Languages.KURDISH,
+    );
+    expect(result).toEqual('https://example.com/ku/kit/kit1/kit');
   });
 
-  describe('getCanonicalUrlToKit', async () => {
-    it('returns canonical url when entry exists', async () => {
-      const result = await getCanonicalUrlToKit('de', 'abc');
-      expect(result).toBe('https://example.com/de/kit/abc/Test%20Title');
-      expect(getEntry).toHaveBeenCalledWith('kits', 'abc/de');
-      expect(getAbsoluteUrl).toHaveBeenCalledWith('de/kit/abc/Test%20Title');
-    });
-
-    it('returns undefined when entry does not exist', async () => {
-      vi.mocked(getEntry).mockResolvedValueOnce(undefined);
-      const result = await getCanonicalUrlToKit('de', 'abc');
-      expect(result).toBeUndefined();
-    });
+  it('should calculate url of kits', async () => {
+    const result = await getCanonicalUrlFn('kits')(
+      {
+        id: 'kit1',
+        filePath: 'kitPath.mdx',
+        collection: 'kits',
+        data: {
+          identifier: 'kit1',
+          lang: Languages.GERMAN,
+          title: 'kit',
+          lastChecked: new Date('2012-12-12'),
+          seo: '',
+        },
+        render: function (): Render['.md'] {
+          throw new Error('Function not implemented.');
+        },
+        slug: '',
+        body: '',
+      },
+      Languages.KURDISH,
+    );
+    expect(result).toEqual('https://example.com/ku/kit/kit1/kit');
   });
 
-  describe('getCanonicalUrlToPage', async () => {
-    it('returns canonical url when entry exists', async () => {
-      const result = await getCanonicalUrlToPage('de', 'abc');
-      expect(result).toBe('https://example.com/de/page/abc/Test%20Title');
-      expect(getEntry).toHaveBeenCalledWith('pages', 'abc/de');
-      expect(getAbsoluteUrl).toHaveBeenCalledWith('de/page/abc/Test%20Title');
-    });
-
-    it('returns undefined when entry does not exist', async () => {
-      vi.mocked(getEntry).mockResolvedValueOnce(undefined);
-      const result = await getCanonicalUrlToPage('de', 'abc');
-      expect(result).toBeUndefined();
-    });
+  it('should calculate url of flyers', async () => {
+    const result = await getCanonicalUrlFn('flyers')(
+      {
+        id: 'flyer1',
+        filePath: 'flyerPath.mdx',
+        collection: 'flyers',
+        data: {
+          identifier: 'flyer1',
+          lang: Languages.FRENCH,
+          title: 'flyer',
+          lastChecked: new Date('2012-12-12'),
+          seo: '',
+        },
+        render: function (): Render['.md'] {
+          throw new Error('Function not implemented.');
+        },
+        slug: '',
+        body: '',
+      },
+      Languages.TURKISH,
+    );
+    expect(result).toEqual('https://example.com/tr/flyer/flyer1/flyer');
   });
 
-  describe('getCanonicalUrlForPath', async () => {
-    it('returns canonical url when entry exists', async () => {
-      const result = getCanonicalUrlForPath('de', 'abc');
-      expect(result).toBe('https://example.com/de/abc');
-      expect(getAbsoluteUrl).toHaveBeenCalledWith('de/abc');
-    });
+  it('should calculate url of pages', async () => {
+    const result = await getCanonicalUrlFn('pages')(
+      {
+        id: 'page1',
+        filePath: 'patePath.mdx',
+        collection: 'pages',
+        data: {
+          identifier: 'page1',
+          lang: Languages.ENGLISH,
+          title: 'page',
+          lastChecked: new Date('2012-12-12'),
+          seo: '',
+        },
+        render: function (): Render['.md'] {
+          throw new Error('Function not implemented.');
+        },
+        slug: '',
+        body: '',
+      },
+      Languages.ENGLISH,
+    );
+    expect(result).toEqual('https://example.com/en/page/page1/page');
   });
 });
