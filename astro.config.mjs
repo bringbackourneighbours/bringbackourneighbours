@@ -29,6 +29,8 @@ export default defineConfig({
     concurrency: 4,
   },
   server: {
+    // for runing in devContainer/Codespaces
+    // see: https://vite.dev/guide/troubleshooting.html#dev-containers-vs-code-port-forwarding
     host: '127.0.0.1',
   },
 });
