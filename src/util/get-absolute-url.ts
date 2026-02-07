@@ -2,8 +2,8 @@ import AstroConfig from '../../astro.config.mjs';
 import type { LanguagesValue } from '../model/languages.ts';
 import type { StandaloneCollections } from '../model/standalone-collections.ts';
 
-export const getAbsoluteUrl = (path: string): string => {
-  return `${AstroConfig.site}${path}`;
+export const getAbsoluteUrl = (path: string, withOrigin = false): string => {
+  return `${withOrigin && `${AstroConfig.site}/`}${AstroConfig.base}/${path}`;
 };
 
 export function getPrintUrl(

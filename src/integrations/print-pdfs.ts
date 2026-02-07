@@ -36,23 +36,27 @@ export async function printPdfsImpl(
   });
   logger.debug(`Launched puppeteer Browser ${await browser.version()}`);
 
-  const printJobs = pages
-    .filter((page) => page.pathname.startsWith('internal-print'))
-    .map(async (htmlPage) => {
-      const pdfOutputFilename = `${htmlPage.pathname.replace('internal-print/', '').replace('/', '.pdf')}`;
-      const pdfOutputPath = `${pdfDistDir}/${pdfOutputFilename}`;
-      const pageUrl = `${previewUrl}${htmlPage.pathname}`;
-      logger.debug(`Printing ${pageUrl}`);
-      const pdfBuffer = await printHtmlToPdf(pageUrl, browser);
+  try {
+    const printJobs = pages
+      .filter((page) => page.pathname.startsWith('internal-print'))
+      .map(async (htmlPage) => {
+        const pdfOutputFilename = `${htmlPage.pathname.replace('internal-print/', '').replace('/', '.pdf')}`;
+        const pdfOutputPath = `${pdfDistDir}/${pdfOutputFilename}`;
+        const pageUrl = `${previewUrl}${htmlPage.pathname}`;
+        logger.debug(`Printing ${pageUrl}`);
+        const pdfBuffer = await printHtmlToPdf(pageUrl, browser);
 
-      await writeFile(pdfOutputPath, pdfBuffer);
-      logger.debug(`Printed ${pdfOutputFilename}`);
-      return;
-    });
-  // we try to print all the pdf in parallel, as this is at least 5 times faster
-  await Promise.all(printJobs);
+        await writeFile(pdfOutputPath, pdfBuffer);
+        logger.debug(`Printed ${pdfOutputFilename}`);
+        return;
+      });
+    // we try to print all the pdf in parallel, as this is at least 5 times faster
+    await Promise.all(printJobs);
 
-  logger.info(`Printed Flyers`);
+    logger.info(`Printed Flyers`);
+  } catch (error) {
+    logger.error(`Failed to print PDFs with error ${error}`);
+  }
 
   await browser.close();
   logger.debug('Closed puppeteer Browser.');
