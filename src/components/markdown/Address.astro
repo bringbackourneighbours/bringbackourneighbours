@@ -17,7 +17,7 @@ const addressEntry = await getEntry('addresses', Astro.props.identifier);
   addressEntry ? (
     <AddressDesign
       entry={addressEntry}
-      {...Astro.props}
+      lang={Astro.props.lang}
     />
   ) : (
     <NotFoundError

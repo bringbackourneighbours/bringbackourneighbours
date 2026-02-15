@@ -1,12 +1,18 @@
 ---
 import { getFlatLinksEntries } from '../../util/get-flat-links-entries';
+import { getCollection } from 'astro:content';
 
 interface Props {
   slug: string;
 }
 
 export async function getStaticPaths() {
-  const entries = await getFlatLinksEntries();
+  const entries = await getFlatLinksEntries(
+    await getCollection('links'),
+    await getCollection('flyers'),
+    await getCollection('kits'),
+    await getCollection('pages'),
+  );
   return entries.map(({ slug }) => ({
     params: { slug },
     props: { slug },
@@ -14,7 +20,14 @@ export async function getStaticPaths() {
 }
 
 return Astro.redirect(
-  (await getFlatLinksEntries()).find((entry) => {
+  (
+    await getFlatLinksEntries(
+      await getCollection('links'),
+      await getCollection('flyers'),
+      await getCollection('kits'),
+      await getCollection('pages'),
+    )
+  ).find((entry) => {
     return entry.slug === Astro.props.slug;
   })?.url,
   307,

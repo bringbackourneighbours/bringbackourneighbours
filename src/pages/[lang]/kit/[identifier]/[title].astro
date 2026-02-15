@@ -2,7 +2,7 @@
 import { type CollectionEntry, getCollection } from 'astro:content';
 
 import Block from '../../../../components/markdown/Block.astro';
-import ContentHeading from '../../../../components/ContentHeading.astro';
+import ContentHeading from '../../../../components/design/ContentHeading.astro';
 import ContentLayout from '../../../../layouts/ContentLayout.astro';
 import LanguageSwitcher from '../../../../components/design/LanguageSwitcher.astro';
 import TableOfContents from '../../../../components/design/TableOfContents.astro';
@@ -11,7 +11,7 @@ import { getCanonicalUrlToKit } from '../../../../util/get-canonical-url';
 import { mapStaticPathsForStandalone } from '../../../../util/map-static-paths-for-standalone';
 import { getTranslationsUrlsForKit } from '../../../../util/get-translations-url';
 import { redirectNotTranslatedForKit } from '../../../../util/redirect-not-found-or-not-translated';
-import { useContentData } from '../../../../util/use-content-data';
+import { useContentData } from '../../../../content/use-content-data.ts';
 import { Languages } from '../../../../model/languages';
 
 interface Props {
@@ -35,8 +35,7 @@ const translationSlugs = await getTranslationsUrlsForKit(
   entry.data.identifier,
 );
 
-const canonicalUrl =
-  (await getCanonicalUrlToKit(entry.data.lang, entry.data.identifier)) || '';
+const canonicalUrl = (await getCanonicalUrlToKit(entry, entry.data.lang)) || '';
 
 const germanTitle =
   (await useContentData('kits', entry.data.identifier, Languages.GERMAN))

@@ -1,5 +1,10 @@
 ---
 import type { LanguagesValue } from '../model/languages';
+import type { StandaloneContentProps } from '../model/standalone-collections.ts';
+
+import AnimatedCloseButton from './design/AnimatedCloseButton.astro';
+import Link from './design/Link.astro';
+import Logo from './design/Logo.astro';
 
 import {
   getCanonicalUrlForPath,
@@ -7,13 +12,9 @@ import {
   getCanonicalUrlToKit,
   getCanonicalUrlToPage,
 } from '../util/get-canonical-url';
-import { useUiTranslation } from '../util/use-ui-translation';
-
-import AnimatedCloseButton from './design/AnimatedCloseButton.astro';
-import Link from './design/Link.astro';
-import Logo from './design/Logo.astro';
+import { useUiTranslation } from '../content/use-ui-translation.ts';
 import { mapStaticPathsForStandalone } from '../util/map-static-paths-for-standalone';
-import { getCollection } from 'astro:content';
+import { getCollection, getEntry } from 'astro:content';
 
 interface Props {
   lang: LanguagesValue;
@@ -21,9 +22,37 @@ interface Props {
 
 const { lang = Astro.locals.lang } = Astro.props;
 
-const allFlyers = mapStaticPathsForStandalone(await getCollection('flyers'));
-const allKits = mapStaticPathsForStandalone(await getCollection('kits'));
+const allFlyers: StandaloneContentProps<'flyers'>[] =
+  mapStaticPathsForStandalone(await getCollection('flyers'));
+const allKits: StandaloneContentProps<'kits'>[] = mapStaticPathsForStandalone(
+  await getCollection('kits'),
+);
 const homeUrl = getCanonicalUrlForPath(lang, '');
+
+const contactsCanonicalUrl = await getCanonicalUrlToPage(
+  await getEntry('pages', `contacts/${lang}`)!,
+  lang,
+);
+const formsCanonicalUrl = await getCanonicalUrlToPage(
+  await getEntry('pages', `forms/${lang}`)!,
+  lang,
+);
+const publicityCanonicalUrl = await getCanonicalUrlToPage(
+  await getEntry('pages', `publicity/${lang}`)!,
+  lang,
+);
+const professionalsCanonicalUrl = await getCanonicalUrlToPage(
+  await getEntry('pages', `professionals/${lang}`)!,
+  lang,
+);
+const materialCanonicalUrl = await getCanonicalUrlToPage(
+  await getEntry('pages', `material/${lang}`)!,
+  lang,
+);
+const imprintCanonicalUrl = await getCanonicalUrlToPage(
+  await getEntry('pages', `imprint/${lang}`)!,
+  lang,
+);
 ---
 
 <style>
@@ -115,10 +144,7 @@ const homeUrl = getCanonicalUrlForPath(lang, '');
                 <Link
                   lang={lang}
                   href={
-                    (await getCanonicalUrlToKit(
-                      lang,
-                      kit.props.entry.data.identifier,
-                    )) || ''
+                    (await getCanonicalUrlToKit(kit.props.entry, lang)) || ''
                   }
                 >
                   {kit.props.entry.data.title}
@@ -145,8 +171,8 @@ const homeUrl = getCanonicalUrlForPath(lang, '');
                       lang={lang}
                       href={
                         (await getCanonicalUrlToFlyer(
+                          flyer.props.entry,
                           lang,
-                          flyer.props.entry.data.identifier,
                         )) || ''
                       }
                     >
@@ -158,64 +184,52 @@ const homeUrl = getCanonicalUrlForPath(lang, '');
           </ul>
         </li>
         <li>
-          {
-            getCanonicalUrlToPage(lang, 'contacts').then((href) => (
-              <Link
-                lang={lang}
-                href={href || ''}
-              >
-                {useUiTranslation('meta.contacts', lang)}
-              </Link>
-            ))
-          }
+          <Link
+            lang={lang}
+            href={contactsCanonicalUrl || ''}
+          >
+            {useUiTranslation('meta.contacts', lang)}
+          </Link>
         </li>
         <li>
-          {
-            getCanonicalUrlToPage(lang, 'forms').then((href) => (
-              <Link
-                lang={lang}
-                href={href || ''}
-              >
-                {useUiTranslation('meta.forms', lang)}
-              </Link>
-            ))
-          }
+          <Link
+            lang={lang}
+            href={formsCanonicalUrl || ''}
+          >
+            {useUiTranslation('meta.forms', lang)}
+          </Link>
         </li>
         <li>
-          {
-            getCanonicalUrlToPage(lang, 'publicity').then((href) => (
-              <Link
-                lang={lang}
-                href={href || ''}
-              >
-                {useUiTranslation('meta.publicity', lang)}
-              </Link>
-            ))
-          }
+          <Link
+            lang={lang}
+            href={publicityCanonicalUrl || ''}
+          >
+            {useUiTranslation('meta.publicity', lang)}
+          </Link>
         </li>
         <li>
-          {
-            getCanonicalUrlToPage(lang, 'professionals').then((href) => (
-              <Link
-                lang={lang}
-                href={href || ''}
-              >
-                {useUiTranslation('meta.professionals', lang)}
-              </Link>
-            ))
-          }
+          <Link
+            lang={lang}
+            href={professionalsCanonicalUrl || ''}
+          >
+            {useUiTranslation('meta.professionals', lang)}
+          </Link>
         </li>
         <li>
-          {
-            getCanonicalUrlToPage(lang, 'imprint').then((href) => (
-              <Link
-                lang={lang}
-                href={href || ''}
-              >
-                {useUiTranslation('meta.imprint', lang)}
-              </Link>
-            ))
-          }
+          <Link
+            lang={lang}
+            href={materialCanonicalUrl || ''}
+          >
+            {useUiTranslation('meta.material', lang)}
+          </Link>
+        </li>
+        <li>
+          <Link
+            lang={lang}
+            href={imprintCanonicalUrl || ''}
+          >
+            {useUiTranslation('meta.imprint', lang)}
+          </Link>
         </li>
       </ul>
     </div>

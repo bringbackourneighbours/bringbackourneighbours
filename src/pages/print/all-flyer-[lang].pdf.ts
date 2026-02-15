@@ -42,7 +42,9 @@ export const GET: APIRoute<LangProp> = async ({ params }) => {
     })
     .map((fileName) => `${pdfDir}/${fileName}`);
 
-  const newPdfBytes = await layoutAllFlyerInOnePdf(allFlyerPathsInLang);
+  const newPdfBytes = await (
+    await layoutAllFlyerInOnePdf(allFlyerPathsInLang)
+  ).save();
 
   return new Response(newPdfBytes as BodyInit, {
     status: 200,

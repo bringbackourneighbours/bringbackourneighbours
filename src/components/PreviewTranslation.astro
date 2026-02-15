@@ -2,8 +2,8 @@
 import { type CollectionEntry, getCollection, getEntry } from 'astro:content';
 
 import { type LanguagesValue } from '../model/languages';
-import { useUiTranslation } from '../util/use-ui-translation';
-import { useContentData } from '../util/use-content-data';
+import { useUiTranslation } from '../content/use-ui-translation.ts';
+import { useContentData } from '../content/use-content-data.ts';
 
 import TranslationTableRow from './design/TranslationTableRow.astro';
 import Block from './markdown/Block.astro';

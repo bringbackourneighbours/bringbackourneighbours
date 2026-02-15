@@ -1,13 +1,22 @@
 ---
-import type { LanguagesValue } from '../model/languages.ts';
+import type { LanguagesValue } from '../../model/languages.ts';
+import type { StandaloneCollections } from '../../model/standalone-collections.ts';
 
-import { useUiTranslation } from '../util/use-ui-translation';
-import { getAllFlyerPrintUrl, getPrintUrl } from '../util/get-absolute-url';
+import { useUiTranslation } from '../../content/use-ui-translation.ts';
+import {
+  getAllFlyerPrintUrl,
+  getPrintUrl,
+} from '../../util/get-absolute-url.ts';
 
-import CardLink from './design/CardLink.astro';
+import CardLink from './CardLink.astro';
 
-import type { StandaloneCollections } from '../model/standalone-collections.ts';
-
+/**
+ * Renders a link to a PDF
+ *
+ * set `identifier` to `all` to get a link to the merged PDF of with all flyer in the `lang` language
+ *
+ * additionally set `lang` to `all` to even get a link to the merged PDF with all languages
+ */
 interface Props {
   lang?: LanguagesValue | 'all';
   collection: StandaloneCollections;
@@ -16,7 +25,7 @@ interface Props {
 
 const { collection, identifier, lang } = Astro.props;
 
-const currentLang = Astro.locals.lang;
+const currentLang: LanguagesValue = Astro.locals.lang;
 const showLangLabel = lang !== undefined && lang !== 'all';
 
 const targetLang = lang ?? currentLang;
@@ -29,11 +38,14 @@ const printUrl =
 const label = await (identifier === 'all'
   ? useUiTranslation('meta.downloadAllPdf', currentLang)
   : useUiTranslation('meta.downloadPdf', currentLang));
+
+const hrefLang = (!showLangLabel ? currentLang : targetLang) as LanguagesValue;
 ---
 
 <CardLink
   size="small"
   href={printUrl}
+  lang={hrefLang}
 >
   {!Astro.slots.has('default') && label}
   <slot />
