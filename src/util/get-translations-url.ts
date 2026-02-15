@@ -14,7 +14,9 @@ export async function getTranslationsUrls<T extends StandaloneCollections>(
   getCanonicalUrlFn: (
     lang: LanguagesValue,
     identifier: string,
+    absolute?: boolean,
   ) => Promise<string | undefined>,
+  absolute = false,
 ): Promise<
   {
     lang: LanguagesValue;
@@ -35,7 +37,11 @@ export async function getTranslationsUrls<T extends StandaloneCollections>(
       .map(async (entry: CollectionEntry<T>) => {
         return {
           lang: entry.data.lang,
-          url: await getCanonicalUrlFn(entry.data.lang, entry.data.identifier),
+          url: await getCanonicalUrlFn(
+            entry.data.lang,
+            entry.data.identifier,
+            absolute,
+          ),
         };
       }),
   );
@@ -104,6 +110,7 @@ export const getTranslationsUrlsForPages = async (
 export const getTranslationsUrlsForPath = (
   lang: LanguagesValue,
   path: string,
+  absolute = false,
 ): Promise<
   {
     lang: LanguagesValue;
@@ -117,7 +124,7 @@ export const getTranslationsUrlsForPath = (
       .filter((possibleLang) => possibleLang !== lang)
       .map((lang) => ({
         lang,
-        url: getCanonicalUrlForPath(lang, path),
+        url: getCanonicalUrlForPath(lang, path, absolute),
       })),
   );
 };

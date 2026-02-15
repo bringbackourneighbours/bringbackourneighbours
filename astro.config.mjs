@@ -5,13 +5,17 @@ import checkFlyers from './src/integrations/check-flyers';
 import layoutFlyers from './src/integrations/layout-flyers';
 
 const isDev = import.meta.env.DEV;
-const siteUrl = isDev
-  ? 'http://localhost:4321/'
-  : 'https://bringbackourneighbours.de/';
-const basePath = '';
 
-export const previewUrl = 'http://localhost:4321/';
-export const linkUrl = isDev ? 'http://localhost:4321/link' : 'bbonlink.de';
+const localhostUrl = 'http://localhost:4321/';
+const prodUrl = 'https://bringbackourneighbours.de/';
+const prodLinkUrl = 'bbonlink.de';
+const basePath = '';
+// TODO: i think the basepath should be '/' so we could omit it above
+
+const siteUrl = isDev ? localhostUrl : prodUrl;
+
+export const previewUrl = localhostUrl;
+export const linkUrl = isDev ? `${localhostUrl}link` : prodLinkUrl;
 
 // https://astro.build/config
 export default defineConfig({
@@ -20,5 +24,10 @@ export default defineConfig({
   integrations: [mdx(), printPdfs(), checkFlyers(), layoutFlyers()],
   build: {
     concurrency: 4,
+  },
+  server: {
+    // for runing in devContainer/Codespaces
+    // see: https://vite.dev/guide/troubleshooting.html#dev-containers-vs-code-port-forwarding
+    host: '127.0.0.1',
   },
 });

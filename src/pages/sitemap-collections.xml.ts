@@ -20,8 +20,9 @@ async function getSiteMapUrls(
         lang,
         identifier,
         getCanonicalUrlFn(collection),
+        true,
       );
-      const url = await getCanonicalUrlFn(collection)(lang, identifier);
+      const url = await getCanonicalUrlFn(collection)(lang, identifier, true);
 
       return {
         loc: new URL(url!),
