@@ -1,31 +1,36 @@
 import { describe, it, expect, vi, beforeEach } from 'vitest';
 import {
-  getAbsoluteUrl,
+  getBasedUrl,
   getAllFlyerPrintUrl,
   getPrintUrl,
-} from './get-absolute-url.ts';
+} from './get-based-url.ts';
 
 vi.mock('../../astro.config.mjs', () => ({
-  default: { base: '/example' },
+  default: {
+    base: 'example',
+    site: 'https://example.com/',
+  },
 }));
 
-describe('get-absolute-url', () => {
+describe('get-based-url', () => {
   beforeEach(() => {
     vi.clearAllMocks();
   });
 
-  describe('getAbsoluteUrl', () => {
-    it('returns absolute url for a given path', () => {
-      const result = getAbsoluteUrl('foo/bar');
+  describe('getBasedUrl', () => {
+    it('returns based url for a given path', () => {
+      const result = getBasedUrl('foo/bar');
       expect(result).toBe('/example/foo/bar');
     });
-    it('works with leading slash in path', () => {
-      const result = getAbsoluteUrl('/foo/bar');
-      expect(result).toBe('/example//foo/bar');
-    });
-    it('returns site url if path is empty', () => {
-      const result = getAbsoluteUrl('');
+
+    it('returns base url if path is empty', () => {
+      const result = getBasedUrl('');
       expect(result).toBe('/example/');
+    });
+
+    it('returns absolute url for a given path', () => {
+      const result = getBasedUrl('foo/bar', true);
+      expect(result).toBe('https://example.com/example/foo/bar');
     });
   });
 
@@ -34,9 +39,10 @@ describe('get-absolute-url', () => {
       const result = getPrintUrl('flyers', 'de', 'abc');
       expect(result).toBe('/example/print/flyer-de-abc.pdf');
     });
+
     it('returns correct print url for kits', () => {
-      const result = getPrintUrl('kits', 'en', 'kitid');
-      expect(result).toBe('/example/print/kit-en-kitid.pdf');
+      const result = getPrintUrl('kits', 'en', 'kitid', true);
+      expect(result).toBe('https://example.com/example/print/kit-en-kitid.pdf');
     });
   });
 

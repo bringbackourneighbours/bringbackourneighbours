@@ -2,20 +2,25 @@ import AstroConfig from '../../astro.config.mjs';
 import type { LanguagesValue } from '../model/languages.ts';
 import type { StandaloneCollections } from '../model/standalone-collections.ts';
 
-export const getAbsoluteUrl = (path: string, withOrigin = false): string => {
-  return `${withOrigin && `${AstroConfig.site}/`}${AstroConfig.base}/${path}`;
+export const getBasedUrl = (path: string, absolute = false): string => {
+  // TODO: could we use the native URL class here?
+  return `${absolute ? `${AstroConfig.site}` : '/'}${AstroConfig.base && AstroConfig.base != '' ? `${AstroConfig.base}/` : ''}${path}`;
 };
 
+// TODO: move to own file
 export function getPrintUrl(
   collection: StandaloneCollections,
   lang: string,
   identifier: string,
+  absolute = false,
 ) {
-  return getAbsoluteUrl(
+  return getBasedUrl(
     `print/${collection.slice(0, -1)}-${lang}-${identifier}.pdf`,
+    absolute,
   );
 }
 
+// TODO: move to own file
 export function getAllFlyerPrintUrl(lang: LanguagesValue | 'all') {
-  return getAbsoluteUrl(`print/all-flyer-${lang}.pdf`);
+  return getBasedUrl(`print/all-flyer-${lang}.pdf`);
 }

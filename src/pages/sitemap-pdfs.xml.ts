@@ -3,7 +3,7 @@ import { mapStaticPathsForStandalone } from '../util/map-static-paths-for-standa
 import { getCanonicalUrlFn } from '../util/get-canonical-url.ts';
 import { getTranslationsUrls } from '../util/get-translations-url.ts';
 import { renderSitemapUrlset, type SiteMapUrl } from '../util/sitemap.ts';
-import { getPrintUrl } from '../util/get-absolute-url.ts';
+import { getPrintUrl } from '../util/get-based-url.ts';
 import { getCollection } from 'astro:content';
 import type { StandaloneCollections } from '../model/standalone-collections.ts';
 
@@ -22,7 +22,7 @@ async function getSiteMapUrls(
         identifier,
         getCanonicalUrlFn(collection),
       );
-      const url = getPrintUrl(collection, lang, identifier);
+      const url = getPrintUrl(collection, lang, identifier, true);
 
       return {
         loc: new URL(url),
@@ -35,7 +35,7 @@ async function getSiteMapUrls(
           ...translations.map((translation) => ({
             hreflang: translation.lang as string,
             href: new URL(
-              getPrintUrl(collection, translation.lang, identifier),
+              getPrintUrl(collection, translation.lang, identifier, true),
             ),
           })),
         ],
