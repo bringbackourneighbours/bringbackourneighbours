@@ -11,13 +11,15 @@ interface Props {
 const { lang, title } = Astro.props;
 
 import './theme-print.css';
+
+const format = Astro.locals.isZine ? 'a7' : Astro.locals.isFlyer ? 'a6' : 'a4';
 ---
 
 <BaseLayout
   title={title}
   lang={lang}
   seo=""
-  format={Astro.locals.isFlyer ? 'a6' : 'a4'}
+  format={format}
   allowIndexing={false}
 >
   <slot />
