@@ -9,5 +9,5 @@
     "src/**/*.ts",
     "src/**/*.test.ts"
   ],
-  "files": ["vitest.setup.ts"]
+  "files": ["vitest-setup.ts"]
 }

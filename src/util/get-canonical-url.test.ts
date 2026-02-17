@@ -14,11 +14,10 @@ const entryMock = {
 vi.mock('astro:content', () => ({
   getEntry: vi.fn(() => Promise.resolve(entryMock)),
 }));
-vi.mock('./get-absolute-url', () => ({
-  getAbsoluteUrl: vi.fn((path) => `https://example.com/${path}`),
-}));
 vi.mock('../../astro.config.mjs', () => ({
-  default: { site: 'https://example.com/' },
+  default: {
+    site: 'https://example.com/',
+  },
 }));
 
 describe('get-canonical-url', async () => {
@@ -26,14 +25,24 @@ describe('get-canonical-url', async () => {
     vi.clearAllMocks();
   });
   const { getEntry } = await import('astro:content');
-  const { getAbsoluteUrl } = await import('./get-absolute-url');
 
   describe('getCanonicalUrl', async () => {
     it('returns canonical url when entry exists', async () => {
       const result = await getCanonicalUrl('flyers', 'flyer', 'de', 'abc');
+      expect(result).toBe('/de/flyer/abc/Test%20Title');
+      expect(getEntry).toHaveBeenCalledWith('flyers', 'abc/de');
+    });
+
+    it('returns absolute canonical url when entry exists', async () => {
+      const result = await getCanonicalUrl(
+        'flyers',
+        'flyer',
+        'de',
+        'abc',
+        true,
+      );
       expect(result).toBe('https://example.com/de/flyer/abc/Test%20Title');
       expect(getEntry).toHaveBeenCalledWith('flyers', 'abc/de');
-      expect(getAbsoluteUrl).toHaveBeenCalledWith('de/flyer/abc/Test%20Title');
     });
 
     it('returns undefined when entry does not exist', async () => {
@@ -44,11 +53,10 @@ describe('get-canonical-url', async () => {
   });
 
   describe('getCanonicalUrlToFlyer', async () => {
-    it('returns canonical url when entry exists', async () => {
-      const result = await getCanonicalUrlToFlyer('de', 'abc');
+    it('returns absolute canonical url when entry exists', async () => {
+      const result = await getCanonicalUrlToFlyer('de', 'abc', true);
       expect(result).toBe('https://example.com/de/flyer/abc/Test%20Title');
       expect(getEntry).toHaveBeenCalledWith('flyers', 'abc/de');
-      expect(getAbsoluteUrl).toHaveBeenCalledWith('de/flyer/abc/Test%20Title');
     });
 
     it('returns undefined when entry does not exist', async () => {
@@ -59,11 +67,10 @@ describe('get-canonical-url', async () => {
   });
 
   describe('getCanonicalUrlToKit', async () => {
-    it('returns canonical url when entry exists', async () => {
-      const result = await getCanonicalUrlToKit('de', 'abc');
+    it('returns absolute canonical url when entry exists', async () => {
+      const result = await getCanonicalUrlToKit('de', 'abc', true);
       expect(result).toBe('https://example.com/de/kit/abc/Test%20Title');
       expect(getEntry).toHaveBeenCalledWith('kits', 'abc/de');
-      expect(getAbsoluteUrl).toHaveBeenCalledWith('de/kit/abc/Test%20Title');
     });
 
     it('returns undefined when entry does not exist', async () => {
@@ -74,11 +81,10 @@ describe('get-canonical-url', async () => {
   });
 
   describe('getCanonicalUrlToPage', async () => {
-    it('returns canonical url when entry exists', async () => {
-      const result = await getCanonicalUrlToPage('de', 'abc');
+    it('returns  absolute canonical url when entry exists', async () => {
+      const result = await getCanonicalUrlToPage('de', 'abc', true);
       expect(result).toBe('https://example.com/de/page/abc/Test%20Title');
       expect(getEntry).toHaveBeenCalledWith('pages', 'abc/de');
-      expect(getAbsoluteUrl).toHaveBeenCalledWith('de/page/abc/Test%20Title');
     });
 
     it('returns undefined when entry does not exist', async () => {
@@ -89,10 +95,13 @@ describe('get-canonical-url', async () => {
   });
 
   describe('getCanonicalUrlForPath', async () => {
+    it('returns absolute canonical url when entry exists', async () => {
+      const result = getCanonicalUrlForPath('de', 'abc', true);
+      expect(result).toBe('https://example.com/de/abc');
+    });
     it('returns canonical url when entry exists', async () => {
       const result = getCanonicalUrlForPath('de', 'abc');
-      expect(result).toBe('https://example.com/de/abc');
-      expect(getAbsoluteUrl).toHaveBeenCalledWith('de/abc');
+      expect(result).toBe('/de/abc');
     });
   });
 });
