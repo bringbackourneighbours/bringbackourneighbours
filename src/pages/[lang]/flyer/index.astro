@@ -32,8 +32,11 @@ export async function getStaticPaths() {
 
 const { lang } = Astro.props;
 
-const allFlyers: StandaloneContentProps<'flyers'>[] =
-  mapStaticPathsForStandalone(await getCollection('flyers'));
+const sortedFlyers: StandaloneContentProps<'flyers'>[] =
+  mapStaticPathsForStandalone<'flyers'>(await getCollection('flyers')).sort(
+    (a, b) =>
+      (a.props.entry.data?.index || 0) - (b.props.entry.data?.index || 0),
+  );
 
 const translationSlugs = await getTranslationsUrlsForPath(lang, 'flyer');
 ---
@@ -50,12 +53,8 @@ const translationSlugs = await getTranslationsUrlsForPath(lang, 'flyer');
   <H2>{useUiTranslation('meta.allFlyers', lang)}:</H2>
   <Stack>
     {
-      allFlyers
+      sortedFlyers
         .filter((flyer) => flyer.params.lang === lang)
-        .sort(
-          (a, b) =>
-            (a.props.entry.data?.index || 0) - (b.props.entry.data?.index || 0),
-        )
         .map(async (flyer) => (
           <CardLink
             lang={lang}
