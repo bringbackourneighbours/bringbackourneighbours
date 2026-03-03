@@ -213,13 +213,14 @@ lang="tr"
 #### Standalone Content: Flyers, Kits and Pages
 
 To actually show the content we need to put in one of the standalone content collections. They all behave in the same
-way and are super-sets of the normal 'blocks', but additionally you need to provide a `title` and a `seo`-text.
+way and are super-sets of the normal 'blocks', but additionally you need to provide a `title` and a `seo`-text. For flyers only we also need a `index` to have a sorted all flyer landing page.
 
 Example Block: `/src/content/flyers/example/de.mdx`:
 
 ```yaml
 ---
 identifier: example # identifier to embed the block
+index: 220 # to have the same order for flyers on the site as well as in the kits
 lang: de # language of tme block
 lastChecked: 2025-07-30 # the day this content was last checked. use to spot outdated translations
 title: How to stop a deportation # will also be used as
