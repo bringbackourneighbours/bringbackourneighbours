@@ -23,7 +23,7 @@
     "@astrojs/check": "^0.9.4",
     "@astrojs/mdx": "^4.3.6",
     "@fontsource/firago": "^5.2.5",
-    "@types/jsdom": "^27.0.0",
+    "@types/jsdom": "^28.0.0",
     "@types/jsonpath": "^0.2.4",
     "@types/qrcode": "^1.5.6",
     "astro": "^5.17.1",
