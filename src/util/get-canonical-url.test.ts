@@ -41,7 +41,7 @@ describe('getCanonicalUrlFn', () => {
         undefined as unknown as CollectionEntry<'kits'>,
         'fa',
         true,
-      )
+      ),
     ).rejects.toThrowError();
   });
 

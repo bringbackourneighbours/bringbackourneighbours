@@ -7,7 +7,6 @@ import type {
 
 import { getBasedUrl } from './get-based-url';
 
-
 export type CanonicalUrlFn<T extends StandaloneCollections> = (
   entry: StandaloneCollectionEntry<T>,
   lang: LanguagesValue, // FIXME: the lang here is redundant, as it has to be the same as entry.data.lang
@@ -22,9 +21,9 @@ async function getCanonicalUrl<T extends StandaloneCollections>(
 ): Promise<string> {
   if (entry) {
     return getBasedUrl(
-        `${lang}/${collectionSlug}/${entry.data.identifier}/${encodeURIComponent(entry.data.title)}`,
-        absolute,
-      );
+      `${lang}/${collectionSlug}/${entry.data.identifier}/${encodeURIComponent(entry.data.title)}`,
+      absolute,
+    );
   } else {
     throw new Error(
       `And Link to a ${collectionSlug} in ${lang} requires an entry. See in log above what might be missing.`,
