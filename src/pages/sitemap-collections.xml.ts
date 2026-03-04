@@ -22,7 +22,11 @@ async function getSiteMapUrls(
         getCanonicalUrlFn(collection),
         true,
       );
-      const url = await getCanonicalUrlFn(collection)(entry.props.entry, lang, true);
+      const url = await getCanonicalUrlFn(collection)(
+        entry.props.entry,
+        lang,
+        true,
+      );
 
       return {
         loc: new URL(url!),

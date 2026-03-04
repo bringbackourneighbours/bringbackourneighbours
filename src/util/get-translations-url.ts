@@ -34,8 +34,7 @@ export async function getTranslationsUrls<T extends StandaloneCollections>(
       .map(async (entry: CollectionEntry<T>) => {
         return {
           lang: entry.data.lang,
-          url: await getCanonicalUrlFn(entry, entry.data.lang,             absolute,
-          ),
+          url: await getCanonicalUrlFn(entry, entry.data.lang, absolute),
         };
       }),
   );
