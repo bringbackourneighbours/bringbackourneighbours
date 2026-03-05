@@ -22,12 +22,10 @@ export async function printPdfsImpl(
   await mkdir(pdfDistDir, { recursive: true });
 
   // TODO: there is a new api for it https://docs.astro.build/en/reference/programmatic-reference/#preview
+  // weirdly it doesnt work. something with the adapter i guess.
   const previewProcess = exec('npm run preview');
   previewProcess.on('error', (error) => {
-    logger.debug(`Preview Process error with ${error}`);
-  });
-  previewProcess.on('close', (code) => {
-    logger.debug(`Preview Process exited with code ${code}`);
+    logger.error(`Preview Process error with ${error}`);
   });
   logger.debug(`Launched Preview Process ${previewProcess.pid}`);
 
@@ -48,7 +46,6 @@ export async function printPdfsImpl(
 
         await writeFile(pdfOutputPath, pdfBuffer);
         logger.debug(`Printed ${pdfOutputFilename}`);
-        return;
       });
     // we try to print all the pdf in parallel, as this is at least 5 times faster
     await Promise.all(printJobs);
@@ -70,7 +67,19 @@ async function closePreviewAndBrowser(
 ) {
   await browser.close();
   logger.debug('Closed puppeteer Browser.');
-  previewProcess.kill();
+
+  await new Promise<void>((resolve, reject) => {
+    previewProcess.on('close', (code) => {
+      logger.debug(`Preview Process closed with code ${code}`);
+      resolve();
+    });
+    previewProcess.on('error', (error) => {
+      logger.error(`Preview Process errored while closing with ${error}`);
+      reject(error);
+    });
+    previewProcess.kill();
+  });
+
   logger.debug('Closed Preview Process.');
 }
 
