@@ -2,6 +2,8 @@ all:
   slug: hfk
   type: WEB
   url: https://sab.landtag.sachsen.de/download/SAB/IB-HFK-A4-8sprachig_01-2026.pdf
+  lastChecked: 2026-03-06
+  noCheckUntil: 2026-06-01
 ar:
   title: اللجنة السكسونية لحالات العسر الشديد
 bs:

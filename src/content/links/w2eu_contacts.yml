@@ -1,5 +1,7 @@
 all:
   type: WEB
+  lastChecked: 2026-03-06
+  noCheckUntil: 2026-06-01
 ar:
   slug: w2euar
   title: قائمة بالمنظمات الذاتية و استشارات الناشطين ومجالس اللاجئين في ألمانيا
