@@ -9,6 +9,8 @@ import { printHtmlToPdf } from '../util/print-html-to-pdf.ts';
 
 import { getPrintDistDir } from '../util/get-print-dist-dir.ts';
 
+const KILL_PREVIEW_PROCESS_TIMEOUT = 5000;
+
 export async function printPdfsImpl(
   distDirUrl: URL,
   logger: AstroIntegrationLogger,
@@ -69,6 +71,16 @@ async function closePreviewAndBrowser(
   logger.debug('Closed puppeteer Browser.');
 
   await new Promise<void>((resolve, reject) => {
+    setTimeout(() => {
+      // looks like this happens in the CI sometimes.
+      logger.error(
+        `
+        Preview Process closing timed out. Will just go ahead.
+        There might a rogue preview process with PID ${previewProcess.pid} running now, you might want to check and kill it manually.`,
+      );
+      resolve();
+    }, KILL_PREVIEW_PROCESS_TIMEOUT);
+
     previewProcess.on('close', (code) => {
       logger.debug(`Preview Process closed with code ${code}`);
       resolve();
