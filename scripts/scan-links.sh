@@ -24,7 +24,7 @@ else
     echo "Please check them again from you network... as they might have blocked our little crawler."
     echo "If verified, please report the broken links to the team and we will fix them as soon as possible."
     echo "If you think this is a false positive then also report it to so we can exclude that link from the scan."
-    echo "Anyways please report it here: https://github.com/bringbackourneighbours/bringbackourneighbours/issues/new"
+    echo "Anyways please report it here: https://github.com/bringbackourneighbours/bringbackourneighbours/issues/new?template=broken-link.yml"
 
     exit 1
 fi

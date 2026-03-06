@@ -67,16 +67,17 @@ describe('printPdfs Integration', () => {
         { pathname: 'internal-print/page2' },
         { pathname: 'public/page3' }, // should be ignored
       ];
-      await printPdfsImpl(
-        new URL('file://myMaschine/dist'),
-        mockLogger as unknown as AstroIntegrationLogger,
-        pages,
-      );
       const { mkdir, writeFile } = await import('node:fs/promises');
       const puppeteer = (await import('puppeteer')).default;
       const { printHtmlToPdf } = await import('../util/print-html-to-pdf.ts');
       const { getPrintDistDir } = await import('../util/get-print-dist-dir.ts');
       const { exec } = await import('node:child_process');
+
+      await printPdfsImpl(
+        new URL('file://myMaschine/dist'),
+        mockLogger as unknown as AstroIntegrationLogger,
+        pages,
+      );
 
       expect(getPrintDistDir).toHaveBeenCalledWith('/dist');
       expect(mkdir).toHaveBeenCalledWith('/dist/print', {
@@ -98,6 +99,25 @@ describe('printPdfs Integration', () => {
         expect.stringContaining('/dist/print/page'),
         Buffer.from('PDF'),
       );
+      expect(mockBrowser.close).toHaveBeenCalledTimes(1);
+      expect(mockChildProcess.kill).toHaveBeenCalledTimes(1);
+    });
+
+    it('should close down on errors', async () => {
+      const pages = [{ pathname: 'internal-print/page1' }];
+      const { printHtmlToPdf } = await import('../util/print-html-to-pdf.ts');
+      vi.mocked(printHtmlToPdf).mockRejectedValue(
+        new Error('PDF generation failed'),
+      );
+
+      await expect(
+        printPdfsImpl(
+          new URL('file://myMaschine/dist'),
+          mockLogger as unknown as AstroIntegrationLogger,
+          pages,
+        ),
+      ).rejects.toThrow('PDF generation failed');
+
       expect(mockBrowser.close).toHaveBeenCalledTimes(1);
       expect(mockChildProcess.kill).toHaveBeenCalledTimes(1);
     });
