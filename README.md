@@ -52,11 +52,11 @@ All commands are run from the root of the project, from a terminal:
 
 ## Linters and Formatters
 
-| Command                                                                     | Action                                                          |
-| :-------------------------------------------------------------------------- | :-------------------------------------------------------------- |
-| `npx stylelint --fix src/*.css **/*.astro`                                  | Automatically fix CSS and Astro file styling issues             |
-| `npx prettier --write "**/*.astro" "**/*.ts" "**/*.css" "**/*.md"`          | Format Astro, TypeScript, CSS, and Markdown files               |
-| `npx eslint . --ignore-pattern ".astro/**" --ignore-pattern "src/env.d.ts"` | Run ESLint on all files, ignoring .astro files and src/env.d.ts |
+| Command                                        | Action                                            |
+| :--------------------------------------------- | :------------------------------------------------ |
+| `npm run stylelint` or `npm run stylelint:fix` | Report or fix CSS styling issues                  |
+| `npm run  prettier` or `npm run  prettier:fix` | Format Astro, TypeScript, CSS, and Markdown files |
+| `npm run  eslint ` or `npm run  eslint:fix`    | Run ESLint on all files                           |
 
 ## Requirements
 
@@ -103,8 +103,12 @@ See: https://github.com/bringbackourneighbours/docs/tree/main/architecture for m
 
 ```text
 /
-├── public/
-├── src/
+├── .devcontainer/      # configuration for developing in a container, see https://code.visualstudio.com/docs/remote/containers
+├── .github/            # automated CI/CD workflows and all things related to github
+├── docs/               # documentation, architecture and (early) design decisions
+├── scripts/            # scripts for regular tasks, like checking the links
+├── public/             # static assets, like images and pdfs, that we provide for direct download
+├── src/                # all the source code, including the actual content
 │   ├── assets/
 │   ├── components/
 │   │    ├── design/
@@ -117,6 +121,7 @@ See: https://github.com/bringbackourneighbours/docs/tree/main/architecture for m
 │   ├── pages/
 │   ├── testing/
 │   └── util/
+├── astro.config.mjs    # the main configuration file for this project
 └── package.json
 ```
 
@@ -214,7 +219,8 @@ lang="tr"
 #### Standalone Content: Flyers, Kits and Pages
 
 To actually show the content we need to put in one of the standalone content collections. They all behave in the same
-way and are super-sets of the normal 'blocks', but additionally you need to provide a `title` and a `seo`-text. For flyers only we also need a `index` to have a sorted all flyer landing page.
+way and are super-sets of the normal 'blocks', but additionally you need to provide a `title` and a `seo`-text. For
+flyers only we also need a `index` to have a sorted all flyer landing page.
 
 Example Block: `/src/content/flyers/example/de.mdx`:
 
