@@ -1,0 +1,34 @@
+name: Broken Link Report
+description: Tell us about an external link that is broken on our site and we will investigate it as soon as possible.
+title: '[LINK]: '
+labels: ['scope:content']
+projects: ['bringbackourneighbours/1']
+assignees: []
+type: task
+body:
+  - type: markdown
+    attributes:
+      value: |
+        Thanks for taking the time to fill out this report!
+        If you have found a broken link on our site, we want to fix it as soon as possible.
+
+        Please checkout the data from https://bringbackourneighbours.de/internal-check-links/.
+
+        There you will find a list of all the links we have on our site and their id and filePath.
+  - type: input
+    id: link
+    attributes:
+      label: External link
+      description: Please provide the URL of the broken link.
+      placeholder: https://example.com/broken-link
+    validations:
+      required: true
+  - type: textarea
+    id: identifier
+    attributes:
+      label: Where do we use this link?
+      description: Can you tell us where you found this link? For example, on which page or in which flyer? if possible, provide the identifier to it.
+      placeholder: Tell us what you see!
+      value: 'In Flyer about detention there is a link to Kontaktgruppe Abschiebehaft that is not working.'
+    validations:
+      required: false
