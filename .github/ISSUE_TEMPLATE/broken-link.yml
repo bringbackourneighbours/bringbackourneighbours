@@ -9,12 +9,11 @@ body:
   - type: markdown
     attributes:
       value: |
-        Thanks for taking the time to fill out this report!
+        **Thanks for taking the time to fill out this report!**
         If you have found a broken link on our site, we want to fix it as soon as possible.
 
         Please checkout the data from https://bringbackourneighbours.de/internal-check-links/.
-
-        There you will find a list of all the links we have on our site and their id and filePath.
+        There you will find a list of all the links we have on our site and their id and filePath
   - type: input
     id: link
     attributes:
@@ -27,8 +26,15 @@ body:
     id: identifier
     attributes:
       label: Where do we use this link?
-      description: Can you tell us where you found this link? For example, on which page or in which flyer? if possible, provide the identifier to it.
-      placeholder: Tell us what you see!
-      value: 'In Flyer about detention there is a link to Kontaktgruppe Abschiebehaft that is not working.'
+      description: Can you tell us where you found this link? For example, on which page or in which flyer? if possible, provide the identifier to it. Is it an ShortLink or an Address?
+      placeholder: In Flyer about detention there is a link to Kontaktgruppe Abschiebehaft that is not working.
+    validations:
+      required: false
+  - type: textarea
+    id: more-info
+    attributes:
+      label: Anything else you want to tell us about this link?
+      description: Do you have any more information about this link and why it is broken?
+      placeholder: Im the owner of the website and I know that the link is broken because I changed the URL...
     validations:
       required: false
