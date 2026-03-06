@@ -2,6 +2,8 @@ all:
   slug: tapping
   type: VIDEO
   url: https://www.selfhelpfortrauma.org/
+  lastChecked: 2026-03-06
+  noCheckUntil: 2026-06-01
 ar:
   slug: tappingar
   title: المساعدة الذاتية للصدمات النفسية باستخدام تقنية النقر على الصدمات النفسية

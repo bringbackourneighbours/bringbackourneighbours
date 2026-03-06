@@ -1,7 +1,8 @@
 identifier: w2eu
 url: https://w2eu.info
 name: Welcome to Europe!
-lastChecked: 2025-07-08
+lastChecked: 2026-03-06
+noCheckUntil: 2026-06-01
 translatedNotes:
   de: 'Unabhängige Informationen für Flüchtlinge und Migranten, die nach Europa kommen'
   fr: 'Informations indépendantes pour réfugiés et migrants arrivant en Europe'

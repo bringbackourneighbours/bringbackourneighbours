@@ -5,7 +5,8 @@ zip: '01099'
 city: Dresden
 mail: refugees@gerede-dresden.de
 url: https://gerede-dresden.de/beratung/queer-refugees/
-lastChecked: 2025-07-08
+lastChecked: 2026-03-06
+noCheckUntil: 2026-06-01
 translatedNotes:
   de: 'queer refugees - Rechtsberatung'
   en: 'queer refugees - legal advice'
