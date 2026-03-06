@@ -1,5 +1,7 @@
 all:
   type: PDF
+  lastChecked: 2026-03-06
+  noCheckUntil: 2026-06-01
 ar:
   slug: whoar
   title: 'التعامل الجيد مع التوتر والإجهاد: كتاب عمل مصور'
