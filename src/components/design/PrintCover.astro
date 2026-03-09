@@ -1,14 +1,14 @@
 ---
 import type { CollectionEntry } from 'astro:content';
+import type { StandaloneCollections } from '../../model/standalone-collections';
 
-import { useUiTranslation } from '../../content/use-ui-translation.ts';
+import { useUiTranslation } from '../../content/use-ui-translation';
 
 import LanguageChip from './LanguageChip.astro';
 import Logo from './Logo.astro';
 import NoteMachineTranslation from './NoteMachineTranslation.astro';
 import H1 from './H1.astro';
 import H2 from './H2.astro';
-import type { StandaloneCollections } from '../../model/standalone-collections.ts';
 
 interface Props {
   germanTitle: string;
@@ -50,13 +50,12 @@ const { germanTitle, entry, pagewidth, pagemargin } = Astro.props;
 
       .logo-line {
         display: flex;
-        align-items: stretch;
-        gap: var(--bbon-size-gap);
+        align-items: center;
+        gap: var(--bbon-size-spacing);
 
         .logo-line-icon {
-          margin-block-start: calc(
-            var(--bbon-size-gap) - var(--bbon-size-spacing)
-          );
+          /* the logo is not optical centered so we shift it a little */
+          margin-block-start: calc(var(--bbon-print-title-size) / 3);
         }
 
         .logo-line-titles {
@@ -64,13 +63,16 @@ const { germanTitle, entry, pagewidth, pagemargin } = Astro.props;
 
           .title {
             font-variant: small-caps;
-            font-size: 16pt; /* with the flex-grow we need to have a good baseline  */
+
+            /* with the flex-grow we need to have a good baseline  */
+            font-size: var(--bbon-print-title-size);
             margin: 0;
           }
 
           .sub-title {
             margin-block-start: var(--bbon-size-spacing);
             font-size: 2px; /* the text-fit will only make it grow  */
+            padding-inline-start: var(--bbon-size-spacing);
           }
         }
       }

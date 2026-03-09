@@ -30,13 +30,16 @@
     --bbon-size-heading-spacing: 0.7em;
     --bbon-size-gap: 2em;
     --bbon-size-spacing: 0.5em;
+    --bbon-print-title-size: 35pt;
   }
 
   .a6 {
     /* no special styles */
+    --bbon-print-title-size: 18pt;
   }
 
   .a7 {
+    --bbon-print-title-size: 12pt;
     --bbon-size-h1: 24pt;
   }
 }
