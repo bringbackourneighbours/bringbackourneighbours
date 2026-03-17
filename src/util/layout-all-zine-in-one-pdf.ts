@@ -110,7 +110,7 @@ const placeZineOnPage = async (
 
 export async function layoutAllZineInOnePdf(
   zinesPaths: string[],
-): Promise<Uint8Array> {
+): Promise<PDFDocument> {
   const newPdf = await PDFDocument.create();
 
   for (const zinePath of zinesPaths) {
@@ -126,5 +126,6 @@ export async function layoutAllZineInOnePdf(
     await placeZineOnPage(newPdf, frontPage, zinePath);
   }
 
-  return await newPdf.save();
+  // TODO: maybe add some metadata here, like title, author, subject, keywords, etc.
+  return newPdf;
 }

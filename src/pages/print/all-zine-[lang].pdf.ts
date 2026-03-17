@@ -42,9 +42,9 @@ export const GET: APIRoute<LangProp> = async ({ params }) => {
     })
     .map((fileName) => `${pdfDir}/${fileName}`);
 
-  const newPdfBytes = await layoutAllZineInOnePdf(allZinePathsInLang);
+  const newPdfDoc = await layoutAllZineInOnePdf(allZinePathsInLang);
 
-  return new Response(newPdfBytes as BodyInit, {
+  return new Response((await newPdfDoc.save()) as BodyInit, {
     status: 200,
     headers: {
       'Content-Type': 'application/pdf',
