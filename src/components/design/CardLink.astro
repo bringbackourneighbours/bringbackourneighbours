@@ -6,6 +6,7 @@ interface Props {
   href?: string;
   direction?: 'rtl' | 'ltr';
   lang?: LanguagesValue;
+  hreflang?: LanguagesValue;
   variant?: 'primary' | 'secondary';
   size?: 'small' | 'medium' | 'big';
 }
@@ -15,6 +16,7 @@ const {
   lang = Astro.locals.lang,
   variant = 'primary',
   size,
+  hreflang = lang,
 } = Astro.props;
 ---
 
@@ -36,7 +38,7 @@ const {
 </style>
 <a
   href={href}
-  hreflang={lang}
+  hreflang={hreflang}
 >
   <Card
     variant={variant}

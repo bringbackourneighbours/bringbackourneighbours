@@ -1,9 +1,5 @@
 import { describe, it, expect, vi, beforeEach } from 'vitest';
-import {
-  getBasedUrl,
-  getAllFlyerPrintUrl,
-  getPrintUrl,
-} from './get-based-url.ts';
+import { getBasedUrl, getPrintUrl } from './get-based-url';
 
 vi.mock('../../astro.config.mjs', () => ({
   default: {
@@ -44,16 +40,15 @@ describe('get-based-url', () => {
       const result = getPrintUrl('kits', 'en', 'kitid', true);
       expect(result).toBe('https://example.com/example/print/kit-en-kitid.pdf');
     });
-  });
 
-  describe('getAllFlyerPrintUrl', () => {
     it('returns correct url for all flyers in a language', () => {
-      const result = getAllFlyerPrintUrl('de');
+      const result = getPrintUrl('flyers', 'de', 'all');
       expect(result).toBe('/example/print/all-flyer-de.pdf');
     });
+
     it('returns correct url for all flyers for all languages', () => {
-      const result = getAllFlyerPrintUrl('all');
-      expect(result).toBe('/example/print/all-flyer-all.pdf');
+      const result = getPrintUrl('zines', 'all', 'all');
+      expect(result).toBe('/example/print/all-zine-all.pdf');
     });
   });
 });

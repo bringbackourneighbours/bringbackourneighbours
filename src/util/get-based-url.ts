@@ -9,18 +9,16 @@ export const getBasedUrl = (path: string, absolute = false): string => {
 
 // TODO: move to own file
 export function getPrintUrl(
-  collection: StandaloneCollections,
-  lang: string,
+  collection: StandaloneCollections | 'zines',
+  lang: LanguagesValue | 'all',
   identifier: string,
   absolute = false,
 ) {
+  if (identifier === 'all') {
+    return getBasedUrl(`print/all-${collection.slice(0, -1)}-${lang}.pdf`);
+  }
   return getBasedUrl(
     `print/${collection.slice(0, -1)}-${lang}-${identifier}.pdf`,
     absolute,
   );
-}
-
-// TODO: move to own file
-export function getAllFlyerPrintUrl(lang: LanguagesValue | 'all') {
-  return getBasedUrl(`print/all-flyer-${lang}.pdf`);
 }
