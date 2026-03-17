@@ -32,10 +32,10 @@ export default function layoutZines(): AstroIntegration {
             .map((fileName) => `${pdfDir}/${fileName}`);
 
           logger.debug(`For language ${lang} found ${allZinePathsInLang}`);
-          const pdfBuffer = await layoutAllZineInOnePdf(allZinePathsInLang);
+          const pdfDocument = await layoutAllZineInOnePdf(allZinePathsInLang);
 
           const outputPath = `${pdfDir}/all-zine-${lang}.pdf`;
-          await writeFile(outputPath, pdfBuffer);
+          await writeFile(outputPath, await pdfDocument.save());
           logger.info(`Saved a layouted PDF under ${outputPath}`);
         }
       },
