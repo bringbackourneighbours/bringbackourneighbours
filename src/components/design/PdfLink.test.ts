@@ -105,7 +105,7 @@ describe('PdfLink', () => {
     });
 
     expect(
-      getByRole('link', { name: 'de-downloadAllPdf (de-es)' }),
+      getByRole('link', { name: 'de-downloadAllFlyerPdf (de-es)' }),
     ).toBeInTheDocument();
     expect(getByRole('link')).toHaveAttribute(
       'href',
@@ -127,11 +127,50 @@ describe('PdfLink', () => {
     });
 
     expect(
-      getByRole('link', { name: 'de-downloadAllPdf' }),
+      getByRole('link', { name: 'de-downloadAllFlyerPdf' }),
     ).toBeInTheDocument();
     expect(getByRole('link')).toHaveAttribute(
       'href',
       '/print/all-flyer-all.pdf',
+    );
+  });
+
+  it('should show link to all zines', async () => {
+    const { getByRole } = await render(PdfLink, {
+      props: {
+        lang: 'es',
+        collection: 'zines',
+        identifier: 'all',
+      },
+      locals: {
+        lang: 'fr',
+      } as App.Locals,
+    });
+
+    expect(
+      getByRole('link', { name: 'fr-downloadAllZinePdf (fr-es)' }),
+    ).toBeInTheDocument();
+    expect(getByRole('link')).toHaveAttribute('href', '/print/all-zine-es.pdf');
+    expect(getByRole('link')).toHaveAttribute('hreflang', 'es');
+  });
+  it('should show link to all zines in all langs', async () => {
+    const { getByRole } = await render(PdfLink, {
+      props: {
+        lang: 'all',
+        collection: 'zines',
+        identifier: 'all',
+      },
+      locals: {
+        lang: 'de',
+      } as App.Locals,
+    });
+
+    expect(
+      getByRole('link', { name: 'de-downloadAllZinePdf' }),
+    ).toBeInTheDocument();
+    expect(getByRole('link')).toHaveAttribute(
+      'href',
+      '/print/all-zine-all.pdf',
     );
   });
 });

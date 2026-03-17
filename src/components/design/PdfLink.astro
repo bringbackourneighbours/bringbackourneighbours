@@ -3,7 +3,7 @@ import type { LanguagesValue } from '../../model/languages';
 import type { StandaloneCollections } from '../../model/standalone-collections';
 
 import { useUiTranslation } from '../../content/use-ui-translation';
-import { getAllFlyerPrintUrl, getPrintUrl } from '../../util/get-based-url';
+import { getPrintUrl } from '../../util/get-based-url';
 
 import CardLink from './CardLink.astro';
 
@@ -16,7 +16,7 @@ import CardLink from './CardLink.astro';
  */
 interface Props {
   lang?: LanguagesValue | 'all';
-  collection: StandaloneCollections;
+  collection: StandaloneCollections | 'zines';
   identifier: string;
 }
 
@@ -27,13 +27,12 @@ const showLangLabel = lang !== undefined && lang !== 'all';
 
 const targetLang = lang ?? currentLang;
 
-const printUrl =
-  identifier === 'all'
-    ? getAllFlyerPrintUrl(targetLang)
-    : getPrintUrl(collection, targetLang, identifier);
+const printUrl = getPrintUrl(collection, targetLang, identifier);
 
 const label = await (identifier === 'all'
-  ? useUiTranslation('meta.downloadAllPdf', currentLang)
+  ? collection === 'flyers'
+    ? useUiTranslation('meta.downloadAllFlyerPdf', currentLang)
+    : useUiTranslation('meta.downloadAllZinePdf', currentLang)
   : useUiTranslation('meta.downloadPdf', currentLang));
 
 const hrefLang = (!showLangLabel ? currentLang : targetLang) as LanguagesValue;
@@ -42,7 +41,8 @@ const hrefLang = (!showLangLabel ? currentLang : targetLang) as LanguagesValue;
 <CardLink
   size="small"
   href={printUrl}
-  lang={hrefLang}
+  lang={currentLang}
+  hreflang={hrefLang}
 >
   {!Astro.slots.has('default') && label}
   <slot />
