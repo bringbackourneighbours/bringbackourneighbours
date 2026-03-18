@@ -7,8 +7,12 @@ on:
 
 jobs:
   scan:
-    name: Check with linkinator
+    name: Check for broken links
     runs-on: ubuntu-latest
+    defaults:
+      run:
+        shell: bash
     steps:
-      # status: 0 means that we have been blocked by their firewall/cloudflare etc
-      - run: npx linkinator --format=json --redirects=error https://bringbackourneighbours.de/internal-check-links/ |  jq '.links[] | select(.state =="BROKEN" and .status != 0)'
+      - uses: actions/checkout@v6
+      - name: Run scan script
+        run: ./scripts/scan-links.sh

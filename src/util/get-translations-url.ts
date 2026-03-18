@@ -1,5 +1,6 @@
 import { type CollectionEntry } from 'astro:content';
 import {
+  type CanonicalUrlFn,
   getCanonicalUrlFn,
   getCanonicalUrlForPath,
 } from './get-canonical-url.ts';
@@ -11,10 +12,8 @@ export async function getTranslationsUrls<T extends StandaloneCollections>(
   allEntries: CollectionEntry<T>[],
   lang: LanguagesValue,
   identifier: string,
-  getCanonicalUrlFn: (
-    lang: LanguagesValue,
-    identifier: string,
-  ) => Promise<string | undefined>,
+  getCanonicalUrlFn: CanonicalUrlFn<T>,
+  absolute = false,
 ): Promise<
   {
     lang: LanguagesValue;
@@ -35,7 +34,7 @@ export async function getTranslationsUrls<T extends StandaloneCollections>(
       .map(async (entry: CollectionEntry<T>) => {
         return {
           lang: entry.data.lang,
-          url: await getCanonicalUrlFn(entry.data.lang, entry.data.identifier),
+          url: await getCanonicalUrlFn(entry, entry.data.lang, absolute),
         };
       }),
   );
@@ -104,6 +103,7 @@ export const getTranslationsUrlsForPages = async (
 export const getTranslationsUrlsForPath = (
   lang: LanguagesValue,
   path: string,
+  absolute = false,
 ): Promise<
   {
     lang: LanguagesValue;
@@ -117,7 +117,7 @@ export const getTranslationsUrlsForPath = (
       .filter((possibleLang) => possibleLang !== lang)
       .map((lang) => ({
         lang,
-        url: getCanonicalUrlForPath(lang, path),
+        url: getCanonicalUrlForPath(lang, path, absolute),
       })),
   );
 };

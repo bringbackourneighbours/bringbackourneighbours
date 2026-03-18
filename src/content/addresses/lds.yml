@@ -1,5 +1,6 @@
 identifier: lds_ref63
-lastChecked: 2025-07-08
+lastChecked: 2026-03-06
+noCheckUntil: 2026-06-01
 name: Landesdirektion Sachsen - Abteilung 6, Asyl und Ausländerrecht
 city: Chemnitz
 url: https://www.lds.sachsen.de/index.asp?ID=10328&art_param=366
@@ -7,7 +8,7 @@ phones:
   - 'Tel: +49 371 4599 - 2910'
   - 'Fax: +49 371 4599 - 3333'
 translatedNotes:
-  # TODO: look like additinal. note should explain what this is
+  # TODO: look like additional. note should explain what this is
   de: Landesdirektion Sachsen - Referat 63 Aufenthaltsbeendende Maßnahmen
   fr: Landesdirektion Sachsen - Unité 63 Mesures de fin de séjour
   ar: Landesdirektion Sachsen - القسم 63 تدابير إنهاء الإقامة

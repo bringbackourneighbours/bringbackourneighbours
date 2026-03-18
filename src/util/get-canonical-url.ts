@@ -1,70 +1,83 @@
-import type { LanguagesValue } from '../model/languages.ts';
+import type { LanguagesValue } from '../model/languages';
+import type { CollectionEntry } from 'astro:content';
+import type {
+  StandaloneCollectionEntry,
+  StandaloneCollections,
+} from '../model/standalone-collections';
 
-import AstroConfig from '../../astro.config.mjs';
+import { getBasedUrl } from './get-based-url';
 
-import { getAbsoluteUrl } from './get-absolute-url.ts';
-import { getEntry } from 'astro:content';
-import type { StandaloneCollections } from '../model/standalone-collections.ts';
+export type CanonicalUrlFn<T extends StandaloneCollections> = (
+  entry: StandaloneCollectionEntry<T>,
+  lang: LanguagesValue, // FIXME: the lang here is redundant, as it has to be the same as entry.data.lang
+  absolute?: boolean,
+) => Promise<string>;
 
-export async function getCanonicalUrl<T extends StandaloneCollections>(
-  collection: T,
+async function getCanonicalUrl<T extends StandaloneCollections>(
+  entry: CollectionEntry<T> | undefined,
   collectionSlug: string,
   lang: LanguagesValue,
-  identifier: string,
-): Promise<string | undefined> {
-  // TODO: refactor so avoid dependency to astro:content
-  const entry = await getEntry(collection, `${identifier}/${lang}`);
-
-  return entry
-    ? getAbsoluteUrl(
-        `${lang}/${collectionSlug}/${identifier}/${encodeURIComponent(entry.data.title)}`,
-      )
-    : undefined;
+  absolute = false,
+): Promise<string> {
+  if (entry) {
+    return getBasedUrl(
+      `${lang}/${collectionSlug}/${entry.data.identifier}/${encodeURIComponent(entry.data.title)}`,
+      absolute,
+    );
+  } else {
+    throw new Error(
+      `And Link to a ${collectionSlug} in ${lang} requires an entry. See in log above what might be missing.`,
+    );
+  }
 }
 
-export const getCanonicalUrlToFlyer = async (
+export const getCanonicalUrlToFlyer: CanonicalUrlFn<'flyers'> = async (
+  entry: CollectionEntry<'flyers'>,
   lang: LanguagesValue,
-  identifier: string,
-): Promise<string | undefined> => {
-  return getCanonicalUrl('flyers', 'flyer', lang, identifier);
+  absolute = false,
+): Promise<string> => {
+  return getCanonicalUrl(entry, 'flyer', lang, absolute);
 };
 
-export const getCanonicalUrlToKit = async (
+export const getCanonicalUrlToKit: CanonicalUrlFn<'kits'> = async (
+  entry: CollectionEntry<'kits'> | undefined,
   lang: LanguagesValue,
-  identifier: string,
-): Promise<string | undefined> => {
-  return getCanonicalUrl('kits', 'kit', lang, identifier);
+  absolute = false,
+): Promise<string> => {
+  return getCanonicalUrl(entry, 'kit', lang, absolute);
 };
 
-export const getCanonicalUrlToPage = async (
+export const getCanonicalUrlToPage: CanonicalUrlFn<'pages'> = async (
+  entry: CollectionEntry<'pages'> | undefined,
   lang: LanguagesValue,
-  identifier: string,
-): Promise<string | undefined> => {
-  return getCanonicalUrl('pages', 'page', lang, identifier);
+  absolute = false,
+): Promise<string> => {
+  return getCanonicalUrl(entry, 'page', lang, absolute);
 };
 
-export const getCanonicalUrlFn = (
-  collection: StandaloneCollections,
-): ((
-  lang: LanguagesValue,
-  identifier: string,
-) => Promise<string | undefined>) => {
+export function getCanonicalUrlFn<T extends StandaloneCollections>(
+  collection: T,
+): CanonicalUrlFn<T> {
   if (collection === 'flyers') {
-    return getCanonicalUrlToFlyer;
+    return getCanonicalUrlToFlyer as CanonicalUrlFn<T>;
   }
   if (collection === 'kits') {
-    return getCanonicalUrlToKit;
+    return getCanonicalUrlToKit as CanonicalUrlFn<T>;
   }
   if (collection === 'pages') {
-    return getCanonicalUrlToPage;
+    return getCanonicalUrlToPage as CanonicalUrlFn<T>;
   }
-  return () => Promise.resolve(`${AstroConfig.site}`);
-};
+  throw new Error(`Cannot calculate getCanonicalUrl to a ${collection}.`);
+}
 
-export function getCanonicalUrlForPath(lang: LanguagesValue, path: string) {
+export function getCanonicalUrlForPath(
+  lang: LanguagesValue,
+  path: string,
+  absolute = false,
+) {
   if (path === '') {
     // avoid trailing slash
-    return getAbsoluteUrl(lang);
+    return getBasedUrl(lang, absolute);
   }
-  return getAbsoluteUrl(`${[lang, path].join('/')}`);
+  return getBasedUrl(`${[lang, path].join('/')}`, absolute);
 }

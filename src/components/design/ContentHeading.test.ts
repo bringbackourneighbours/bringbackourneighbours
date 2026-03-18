@@ -1,11 +1,12 @@
-import { describe, expect, it } from 'vitest';
-import { render } from '../testing/render.ts';
+import type { CollectionEntry } from 'astro:content';
 
-import '../testing/with-mocked-translation.ts';
+import { describe, expect, it } from 'vitest';
+import { render } from '../../testing/render.ts';
+import { Languages } from '../../model/languages.ts';
+
+import '../../testing/with-mocked-translation.ts';
 
 import ContentHeading from './ContentHeading.astro';
-import { Languages } from '../model/languages.ts';
-import type { CollectionEntry } from 'astro:content';
 
 describe('ContentHeading', () => {
   it('should show heading for english flyer', async () => {
@@ -44,7 +45,7 @@ describe('ContentHeading', () => {
     expect(getByRole('button', { name: 'en-copy' })).toBeInTheDocument();
     expect(getByRole('link', { name: 'en-downloadPdf' })).toHaveAttribute(
       'href',
-      'http://localhost:4321/print/flyer-en-mock.pdf',
+      '/print/flyer-en-mock.pdf',
     );
   });
 
@@ -84,7 +85,7 @@ describe('ContentHeading', () => {
     expect(getByRole('button', { name: 'de-copy' })).toBeInTheDocument();
     expect(getByRole('link', { name: 'de-downloadPdf' })).toHaveAttribute(
       'href',
-      'http://localhost:4321/print/kit-de-mock.pdf',
+      '/print/kit-de-mock.pdf',
     );
   });
 

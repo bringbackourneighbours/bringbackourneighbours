@@ -19,12 +19,12 @@ const checkableSchema = {
 /**
  * for flyer, kits and pages
  */
-const standaloneContentSchema = z.object({
+const standaloneContentSchema = {
   ...translatableSchema,
   ...checkableSchema,
   title: z.string(),
   seo: z.string(),
-});
+};
 
 const addressesCollection = defineCollection({
   type: 'data',
@@ -67,12 +67,15 @@ const blocksCollection = defineCollection({
 
 const flyersCollection = defineCollection({
   type: 'content',
-  schema: standaloneContentSchema,
+  schema: z.object({
+    ...standaloneContentSchema,
+    index: z.number().optional(),
+  }),
 });
 
 const kitsCollection = defineCollection({
   type: 'content',
-  schema: standaloneContentSchema,
+  schema: z.object(standaloneContentSchema),
 });
 
 const linksCollection = defineCollection({
@@ -96,7 +99,7 @@ const linksCollection = defineCollection({
 
 const pagesCollection = defineCollection({
   type: 'content',
-  schema: standaloneContentSchema,
+  schema: z.object(standaloneContentSchema),
 });
 
 const uiCollection = defineCollection({
@@ -110,7 +113,8 @@ const uiCollection = defineCollection({
         contacts: z.string(),
         copiedContentToClipboard: z.string(),
         copy: z.string(),
-        downloadAllPdf: z.string(),
+        downloadAllFlyerPdf: z.string(),
+        downloadAllZinePdf: z.string(),
         downloadPdf: z.string(),
         emergencyKit: z.string(),
         findAlsoAsPage: z.string(),

@@ -4,7 +4,7 @@ import {
   type LanguagesValue,
 } from '../../../model/languages';
 import { getCollection } from 'astro:content';
-import { useUiTranslation } from '../../../util/use-ui-translation';
+import { useUiTranslation } from '../../../content/use-ui-translation.ts';
 import { getTranslationsUrlsForPath } from '../../../util/get-translations-url';
 import { getCanonicalUrlToFlyer } from '../../../util/get-canonical-url';
 
@@ -15,6 +15,7 @@ import MoreInfoStack from '../../../components/MoreInfoStack.astro';
 import LanguageSwitcher from '../../../components/design/LanguageSwitcher.astro';
 import H2 from '../../../components/design/H2.astro';
 import { mapStaticPathsForStandalone } from '../../../util/map-static-paths-for-standalone';
+import type { StandaloneContentProps } from '../../../model/standalone-collections';
 
 interface Props {
   lang: LanguagesValue;
@@ -31,7 +32,11 @@ export async function getStaticPaths() {
 
 const { lang } = Astro.props;
 
-const allFlyers = mapStaticPathsForStandalone(await getCollection('flyers'));
+const sortedFlyers: StandaloneContentProps<'flyers'>[] =
+  mapStaticPathsForStandalone<'flyers'>(await getCollection('flyers')).sort(
+    (a, b) =>
+      (a.props.entry.data?.index || 0) - (b.props.entry.data?.index || 0),
+  );
 
 const translationSlugs = await getTranslationsUrlsForPath(lang, 'flyer');
 ---
@@ -48,15 +53,12 @@ const translationSlugs = await getTranslationsUrlsForPath(lang, 'flyer');
   <H2>{useUiTranslation('meta.allFlyers', lang)}:</H2>
   <Stack>
     {
-      allFlyers
+      sortedFlyers
         .filter((flyer) => flyer.params.lang === lang)
         .map(async (flyer) => (
           <CardLink
             lang={lang}
-            href={await getCanonicalUrlToFlyer(
-              lang,
-              flyer.props.entry.data.identifier,
-            )}
+            href={await getCanonicalUrlToFlyer(flyer.props.entry, lang)}
           >
             {flyer.props.entry.data.title}
           </CardLink>

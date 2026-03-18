@@ -11,8 +11,8 @@ async function getSiteMapUrls(path: string): Promise<SiteMapUrl[]> {
     pages.map(async (entry): Promise<SiteMapUrl> => {
       const lang = entry.params.lang;
 
-      const url = getCanonicalUrlForPath(lang, path);
-      const translations = await getTranslationsUrlsForPath(lang, path);
+      const url = getCanonicalUrlForPath(lang, path, true);
+      const translations = await getTranslationsUrlsForPath(lang, path, true);
 
       return {
         loc: new URL(url),

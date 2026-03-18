@@ -16,7 +16,16 @@ export const onRequest = defineMiddleware((context, next) => {
       `${AstroConfig.base}/${context.params['lang']}/kit/`,
     );
 
+  context.locals.isZine =
+    context.url.pathname.startsWith(
+      `${AstroConfig.base}/internal-print/zine`,
+    ) ||
+    context.url.pathname.startsWith(
+      `${AstroConfig.base}/${context.params['lang']}/zine/`,
+    );
+
   context.locals.isFlyer =
+    context.locals.isZine ||
     context.url.pathname.startsWith(
       `${AstroConfig.base}/internal-print/flyer`,
     ) ||

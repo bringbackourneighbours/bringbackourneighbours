@@ -1,6 +1,10 @@
 identifier: vg_leipzig
-lastChecked: 2025-07-08
+lastChecked: 2026-03-06
+noCheckUntil: 2026-06-01
 name: Verwaltungsgericht Leipzig
+streetLine: Kohlgartenstraße 13
+zip: '04315'
+city: Leipzig
 phones:
   - 'Tel: +49 341 446 010'
   - 'Fax: +49 341 44601-100'
