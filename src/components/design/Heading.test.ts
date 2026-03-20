@@ -28,7 +28,7 @@ describe('Heading', () => {
   it('should shift the level', async () => {
     const { getByRole } = await render(Heading, {
       props: {
-        level: 1,
+        level: 2,
         id: 'mock',
       },
       locals: {
@@ -36,10 +36,11 @@ describe('Heading', () => {
         isPrint: false,
         isKit: false,
         isFlyer: false,
+        isZine: false,
         lang: 'ar',
       },
     });
 
-    expect(getByRole('heading', { level: 3 })).toHaveAttribute('id', 'mock');
+    expect(getByRole('heading', { level: 4 })).toHaveAttribute('id', 'mock');
   });
 });
