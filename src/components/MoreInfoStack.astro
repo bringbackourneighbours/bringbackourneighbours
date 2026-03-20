@@ -9,6 +9,7 @@ import {
 } from '../util/get-canonical-url';
 
 import Stack from './design/Stack.astro';
+import H2 from './design/H2.astro';
 import MenuLink from './design/MenuLink.astro';
 
 interface Props {
@@ -55,15 +56,8 @@ const professionalsLabel = await useUiTranslation('meta.professionals', lang);
 const materialLabel = await useUiTranslation('meta.material', lang);
 ---
 
-<style>
-  h2 {
-    text-align: center;
-  }
-</style>
-
-<h2>{useUiTranslation('meta.moreInfo', lang)}:</h2>
-
 <Stack>
+  <H2 slot="heading">{useUiTranslation('meta.moreInfo', lang)}</H2>
   {
     showKit && (
       <MenuLink

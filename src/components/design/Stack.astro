@@ -2,25 +2,32 @@
 
 ---
 
-<style>
+<style is:global>
+  /* we are styling the elements in the slots so we need to have this global */
   .stack {
     display: flex;
     flex-wrap: wrap;
     gap: var(--bbon-size-gap);
     justify-content: center;
-    padding-top: var(--bbon-size-gap);
 
-    > * {
-      width: 40%;
+    --threshold: var(--bbon-size-max-text-span);
+
+    & > * {
+      flex-grow: 1;
+      flex-basis: calc((var(--threshold) - 100%) * 999);
+      min-inline-size: calc(0.5 * var(--bbon-size-max-text-span));
+      max-inline-size: var(--bbon-size-max-text-span);
     }
 
-    @media screen and (width <= 768px) {
-      & > * {
-        width: 100%;
-      }
+    .heading {
+      min-inline-size: 100%;
+      justify-items: center;
     }
   }
 </style>
 <div class="stack">
+  <div class="heading">
+    <slot name="heading" />
+  </div>
   <slot />
 </div>
