@@ -1,19 +1,21 @@
 ---
-import { mapStaticPathsForStandalone } from '../../../util/map-static-paths-for-standalone';
+import type { StandaloneContentProps } from '../../../model/standalone-collections.ts';
 import {
   SupportedLanguages,
   type LanguagesValue,
 } from '../../../model/languages';
+import { mapStaticPathsForStandalone } from '../../../util/map-static-paths-for-standalone';
 import { useUiTranslation } from '../../../content/use-ui-translation.ts';
+import { getCanonicalUrlToKit } from '../../../util/get-canonical-url';
+import { getTranslationsUrlsForPath } from '../../../util/get-translations-url';
+import { getCollection } from 'astro:content';
+
+import CardLink from '../../../components/design/CardLink.astro';
+import H1 from '../../../components/design/H1.astro';
+import LanguageSwitcher from '../../../components/design/LanguageSwitcher.astro';
+import MoreInfoStack from '../../../components/MoreInfoStack.astro';
 import OverviewLayout from '../../../layouts/OverviewLayout.astro';
 import Stack from '../../../components/design/Stack.astro';
-import CardLink from '../../../components/design/CardLink.astro';
-import { getCanonicalUrlToKit } from '../../../util/get-canonical-url';
-import MoreInfoStack from '../../../components/MoreInfoStack.astro';
-import { getTranslationsUrlsForPath } from '../../../util/get-translations-url';
-import LanguageSwitcher from '../../../components/design/LanguageSwitcher.astro';
-import { getCollection } from 'astro:content';
-import type { StandaloneContentProps } from '../../../model/standalone-collections.ts';
 
 interface Props {
   lang: LanguagesValue;
@@ -46,8 +48,8 @@ const translationSlugs = await getTranslationsUrlsForPath(lang, 'kit');
     lang={lang}
     translationSlugs={translationSlugs}
   />
-  <h2>{useUiTranslation('meta.allKits', lang)}:</h2>
   <Stack>
+    <H1 slot="heading">{useUiTranslation('meta.allKits', lang)}</H1>
     {
       allKits
         .filter((kit) => kit.params.lang === lang)
