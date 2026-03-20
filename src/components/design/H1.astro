@@ -1,5 +1,8 @@
 ---
 import Heading from './Heading.astro';
+
+// H1 should always be h1, as it only we be present once
+Astro.locals.levelShift = 0;
 ---
 
 <Heading
