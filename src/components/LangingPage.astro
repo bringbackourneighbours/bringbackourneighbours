@@ -1,12 +1,12 @@
 ---
 import { type LanguagesValue } from '../model/languages';
-
 import { SupportedLanguages } from '../model/languages';
 import { getTranslationsUrlsForPath } from '../util/get-translations-url';
 import { useUiTranslation } from '../content/use-ui-translation.ts';
 import { getCanonicalUrlForPath } from '../util/get-canonical-url';
 
 import CardLink from './design/CardLink.astro';
+import H1 from './design/H1.astro';
 import LanguageSwitcher from './design/LanguageSwitcher.astro';
 import MoreInfoStack from './MoreInfoStack.astro';
 import OverviewLayout from '../layouts/OverviewLayout.astro';
@@ -33,6 +33,9 @@ const translationSlugs = await getTranslationsUrlsForPath(lang, '');
     translationSlugs={translationSlugs}
   />
   <Stack>
+    <H1 slot="heading">
+      {useUiTranslation('meta.infosAgainstDeportation', lang)}</H1
+    >
     {
       allLanguages.map(async (langs) => (
         <CardLink

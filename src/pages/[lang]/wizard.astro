@@ -7,14 +7,15 @@ import {
 import { useUiTranslation } from '../../content/use-ui-translation.ts';
 import { getCanonicalUrlToKit } from '../../util/get-canonical-url';
 import { getTranslationsUrlsForPath } from '../../util/get-translations-url';
+import { mapStaticPathsForPaths } from '../../util/map-static-paths-for-paths';
+import { getEntry } from 'astro:content';
 
 import CardLink from '../../components/design/CardLink.astro';
+import H1 from '../../components/design/H1.astro';
 import LanguageSwitcher from '../../components/design/LanguageSwitcher.astro';
 import MoreInfoStack from '../../components/MoreInfoStack.astro';
 import OverviewLayout from '../../layouts/OverviewLayout.astro';
 import Stack from '../../components/design/Stack.astro';
-import { mapStaticPathsForPaths } from '../../util/map-static-paths-for-paths';
-import { getEntry } from 'astro:content';
 
 interface Props {
   lang: LanguagesValue;
@@ -47,6 +48,7 @@ const kitSupportCanonicalUrl = await getCanonicalUrlToKit(
     translationSlugs={translationSlugs}
   />
   <Stack>
+    <H1 slot="heading">{useUiTranslation('meta.emergencyKit', lang)}</H1>
     <CardLink
       lang={lang}
       href={kitAffectedCanonicalUrl}
