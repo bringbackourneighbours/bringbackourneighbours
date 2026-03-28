@@ -32,6 +32,7 @@ twitter: twitter
 
 # you can add   a note on the adress. providing some contecxt, explaining what this organisation is doing. only the one in the current language will be shown
 translatedNotes:
-  de: 'Nur ein Beispiel'
-  en: 'Just an Example'
+  de: Nur ein Beispiel
+  en: Just an Example
   ku: Tenê nimûneyek
+  ka: მხოლოდ ერთი მაგალითი
