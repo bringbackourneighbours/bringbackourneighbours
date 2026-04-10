@@ -1,0 +1,28 @@
+---
+import type { StandaloneCollections } from '../../model/standalone-collections';
+
+import {
+  type LanguagesValue,
+  SupportedLanguages,
+} from '../../model/languages.ts';
+import PdfLink from './PdfLink.astro';
+
+interface Props {
+  collection: StandaloneCollections | 'zines';
+  identifier?: string;
+}
+
+const { collection, identifier = 'all' } = Astro.props;
+
+const langs: Array<LanguagesValue | 'all'> = ['all', ...SupportedLanguages];
+---
+
+{
+  langs.map((lang) => (
+    <PdfLink
+      collection={collection}
+      identifier={identifier}
+      lang={lang}
+    />
+  ))
+}

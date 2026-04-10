@@ -20,6 +20,7 @@ import NoopInternalShortLink from './NoopInternalShortLink.astro';
 import NoopLink from './NoopLink.astro';
 import NoopSupportBox from './NoopSupportBox.astro';
 import PdfLink from '../design/PdfLink.astro';
+import PdfLinks from '../design/PdfLinks.astro';
 import SupportBox from './SupportBox.astro';
 
 /**
@@ -60,6 +61,7 @@ const componentsMap = recursive
       InternalShortLink,
       SupportBox,
       PdfLink,
+      PdfLinks,
     }
   : {
       a: NoopLink,
@@ -70,6 +72,7 @@ const componentsMap = recursive
       InternalShortLink: NoopInternalShortLink,
       SupportBox: NoopSupportBox,
       PdfLink: NoopLink,
+      PdfLinks: NoopLink,
     };
 ---
 
