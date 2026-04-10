@@ -50,7 +50,7 @@ const germanTitle =
     * calc would need to consider the page margins
     */
     inset-block-start: 0;
-    margin-block-start: 524mm;
+    margin-block-start: calc(524mm + var(--bbon-size-print-end-footer-offset));
   }
 
   .overprint-protector {
@@ -60,7 +60,7 @@ const germanTitle =
     * on the next page... so we will get a warning per astro integration
     * as we then would have 5 page
     */
-    height: 29mm;
+    height: calc(29mm - var(--bbon-size-print-end-footer-offset));
   }
 </style>
 <PrintLayout
