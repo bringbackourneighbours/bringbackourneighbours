@@ -8,6 +8,8 @@ describe('TranslationTableRow', () => {
     const { getByText } = await render(TranslationTableRow, {
       slots: {
         id: '<span>id</span>',
+        fromDate: '<span>fromDate</span>',
+        toDate: '<span>toDate</span>',
         from: '<span>from</span>',
         to: '<span>to</span>',
       },
@@ -16,5 +18,8 @@ describe('TranslationTableRow', () => {
     expect(getByText('id')).toBeInTheDocument();
     expect(getByText('from')).toBeInTheDocument();
     expect(getByText('to')).toBeInTheDocument();
+    expect(getByText('fromDate')).toBeInTheDocument();
+    expect(getByText('toDate')).toBeInTheDocument();
+
   });
 });

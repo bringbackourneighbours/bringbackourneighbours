@@ -62,6 +62,7 @@ const blocksCollection = defineCollection({
   type: 'content',
   schema: z.object({
     ...translatableSchema,
+    ...checkableSchema,
   }),
 });
 

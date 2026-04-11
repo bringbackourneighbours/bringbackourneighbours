@@ -2,14 +2,14 @@ import { getEntry, type InferEntrySchema } from 'astro:content';
 
 import { Languages, type LanguagesValue } from '../model/languages.ts';
 
-import type { StandaloneCollections } from '../model/standalone-collections.ts';
+import type { MarkdownCollections } from '../model/standalone-collections.ts';
 
-export const useContentData = async (
-  collection: StandaloneCollections,
+export const useContentData = async <T extends MarkdownCollections>(
+  collection: T,
   identifier: string,
   language: LanguagesValue | Languages,
-): Promise<InferEntrySchema<StandaloneCollections> | undefined> => {
+): Promise<InferEntrySchema<T> | undefined> => {
   const foundEntry = await getEntry(collection, `${identifier}/${language}`);
 
-  return foundEntry?.data;
+  return foundEntry?.data as InferEntrySchema<T> | undefined;
 };
