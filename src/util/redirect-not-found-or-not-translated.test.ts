@@ -11,7 +11,7 @@ describe('redirectNotTranslated', () => {
     const result = await redirectNotTranslatedForFlyer({
       data: {
         identifier: 'test',
-        fallback: undefined,
+        fallbackToLang: undefined,
         lastChecked: new Date(),
         lang: Languages.ARABIC,
         title: '',
@@ -33,11 +33,11 @@ describe('redirectNotTranslated', () => {
     const result = await redirectNotTranslatedForKit({
       data: {
         identifier: 'test',
-        fallback: Languages.KURDISH,
+        fallbackToLang: Languages.KURDISH,
         lastChecked: new Date(),
         lang: Languages.ARABIC,
-        title: '',
-        seo: '',
+        title: 'اختبار',
+        seo: 'هذا مجرد اختبار',
       },
       id: '',
       render: function (): Render['.md'] {
@@ -50,7 +50,7 @@ describe('redirectNotTranslated', () => {
 
     expect(result).toEqual({
       status: 302,
-      url: '/ar/kit/test/',
+      url: '/ku/kit/test',
     });
   });
 });

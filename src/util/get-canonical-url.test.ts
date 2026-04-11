@@ -53,8 +53,8 @@ describe('getCanonicalUrlFn', () => {
         collection: 'kits',
         data: {
           identifier: 'kit1',
-          lang: Languages.GERMAN,
-          title: 'kit',
+          lang: Languages.KURDISH,
+          title: 'kitTitle',
           lastChecked: new Date('2012-12-12'),
           seo: '',
         },
@@ -67,7 +67,7 @@ describe('getCanonicalUrlFn', () => {
       Languages.KURDISH,
       true,
     );
-    expect(result).toEqual('https://example.com/ku/kit/kit1/kit');
+    expect(result).toEqual('https://example.com/ku/kit/kit1/kitTitle');
   });
 
   it('should calculate based url of kits', async () => {
@@ -78,8 +78,8 @@ describe('getCanonicalUrlFn', () => {
         collection: 'kits',
         data: {
           identifier: 'kit1',
-          lang: Languages.GERMAN,
-          title: 'kit',
+          lang: Languages.GEORGIAN,
+          title: 'kitTitle',
           lastChecked: new Date('2012-12-12'),
           seo: '',
         },
@@ -89,9 +89,33 @@ describe('getCanonicalUrlFn', () => {
         slug: '',
         body: '',
       },
-      Languages.KURDISH,
+      Languages.GEORGIAN,
     );
-    expect(result).toEqual('/ku/kit/kit1/kit');
+    expect(result).toEqual('/ka/kit/kit1/kitTitle');
+  });
+
+  it('should calculate the short url of kits when langs mismatch', async () => {
+    const result = await getCanonicalUrlFn('kits')(
+      {
+        id: 'kit1',
+        filePath: 'kitPath.mdx',
+        collection: 'kits',
+        data: {
+          identifier: 'kit1',
+          lang: Languages.FRENCH,
+          title: 'kitTitle',
+          lastChecked: new Date('2012-12-12'),
+          seo: '',
+        },
+        render: function (): Render['.md'] {
+          throw new Error('Function not implemented.');
+        },
+        slug: '',
+        body: '',
+      },
+      Languages.SPANISH,
+    );
+    expect(result).toEqual('/es/kit/kit1');
   });
 
   it('should calculate url of flyers', async () => {
@@ -102,7 +126,7 @@ describe('getCanonicalUrlFn', () => {
         collection: 'flyers',
         data: {
           identifier: 'flyer1',
-          lang: Languages.FRENCH,
+          lang: Languages.TURKISH,
           title: 'flyer',
           lastChecked: new Date('2012-12-12'),
           seo: '',

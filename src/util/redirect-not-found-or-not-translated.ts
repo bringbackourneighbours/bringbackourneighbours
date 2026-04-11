@@ -18,8 +18,11 @@ async function redirectNotTranslated<T extends StandaloneCollections>(
     }
   | false
 > {
-  if (entry?.data?.fallback) {
-    const fallbackUrl = await getCanonicalUrlFn(entry, entry.data.lang);
+  if (entry?.data?.fallbackToLang) {
+    const fallbackUrl = await getCanonicalUrlFn(
+      entry,
+      entry.data.fallbackToLang,
+    );
 
     if (fallbackUrl) {
       return {

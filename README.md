@@ -195,8 +195,9 @@ Example Block: `/src/content/blocks/example/de.mdx`:
 identifier: example       # identifier to embed the block
 lang: de                  # language of tme block
 lastChecked: 2025-07-08   # the day this content was last checked. use to spot outdated translations
-fallback: en              # (optional) another language, it will be shown as fallback. use if no translation is available but content is necessary
+fallbackToLang: en        # (optional) another language, it will be shown as fallback. use if no translation is available but content is necessary
 machineTranslation: false # (optional) mark that the content was not translated by a human and may contain errors.
+notToBeTranslated: false  # (optional) mark that the content was does not need to be translated as it will not be important for its target group, use for things like imprint
 ---
 
 # h1
@@ -232,7 +233,7 @@ lang: de # language of tme block
 lastChecked: 2025-07-30 # the day this content was last checked. use to spot outdated translations
 title: How to stop a deportation # will also be used as
 seo: Around 150 Characters # will be set a meta description for search engines
-fallback: en # (optional) another language, it will be shown as fallback. use if no vvtranslation available but content is necessary
+fallbackToLang: en # (optional) another language, it will be shown as fallback. use if no translation is available but content is necessary
 machineTranslation: false # (optional) mark that the content was not translated by a human and may contain errors.
 ---
 Random Text in the **markdown** format

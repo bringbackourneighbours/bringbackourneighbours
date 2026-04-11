@@ -8,7 +8,8 @@ import { LinkTypes } from '../model/link-types.ts';
 const translatableSchema = {
   identifier: z.string(),
   lang: z.enum(SupportedLanguages).or(z.enum(UnSupportedLanguages)),
-  fallback: z.enum(SupportedLanguages).optional(),
+  fallbackToLang: z.enum(SupportedLanguages).optional(),
+  notToBeTranslated: z.boolean().optional(),
   machineTranslation: z.boolean().optional(),
 };
 
