@@ -3,11 +3,21 @@
 ---
 
 <tr>
-  <th colspan="2">
-    <slot name="id" />
-  </th>
+  <th colspan="2"><slot name="id" /></th>
 </tr>
+{
+  Astro.slots.has('fromDate') && Astro.slots.has('toDate') && (
+    <tr>
+      <th colspan="1">
+        <slot name="fromDate" />
+      </th>
+      <th colspan="1">
+        <slot name="toDate" />
+      </th>
+    </tr>
+  )
+}
 <tr>
-  <td><slot name="from" /></td>
-  <td><slot name="to" /></td>
+  <td colspan="1"><slot name="from" /></td>
+  <td colspan="1"><slot name="to" /></td>
 </tr>

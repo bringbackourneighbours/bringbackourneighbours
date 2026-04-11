@@ -1,5 +1,10 @@
 ---
-import { type CollectionEntry, getCollection, getEntry } from 'astro:content';
+import {
+  type CollectionEntry,
+  getCollection,
+  getEntry,
+  type InferEntrySchema,
+} from 'astro:content';
 
 import { type LanguagesValue } from '../model/languages';
 import { useUiTranslation } from '../content/use-ui-translation.ts';
@@ -7,6 +12,7 @@ import { useContentData } from '../content/use-content-data.ts';
 
 import TranslationTableRow from './design/TranslationTableRow.astro';
 import Block from './markdown/Block.astro';
+import Timestamp from './design/Timestamp.astro';
 
 interface Props {
   fromLang: LanguagesValue;
@@ -63,12 +69,18 @@ const pagesEntries = pagesCollection?.filter(
     return pages.data.lang === fromLang;
   },
 );
+
+console.log("???", blockEntries?.map((e)=>`${e.data.identifier}, ${e.data.lang}`,))
 ---
 
 <h1>
   BBON Übersetzung {useUiTranslation(`languages.${fromLang}`, 'de')}
   =&gt; {useUiTranslation(`languages.${toLang}`, 'de')}
-  {new Date().toLocaleDateString()}
+  <br />
+  <Timestamp
+    lang={fromLang}
+    lastChecked={new Date()}
+  />
 </h1>
 <ul>
   <li>
@@ -84,10 +96,10 @@ const pagesEntries = pagesCollection?.filter(
     Überschriften und Listen
   </li>
   <li>
-    Bitte nicht die
-    <pre>&lt;markierten&#x2F;&gt;</pre>
-    Stellen übersetzen Text-Stellen übersetzen. Einfach an der selben Stellen stehen
-    lassen.
+    Bitte nicht die als
+    <pre>&lt;Code&#x2F;&gt;</pre>
+    markierten Elemente direkt übersetzen übersetzen. Bitte kopiere diese Zeilenh
+    an die selben Stellen in die Übersetzung.
   </li>
   <li>
     Bitte nutze eine gut verständliche gender-neutrale Sprache oder wechsle mit
@@ -102,7 +114,7 @@ const pagesEntries = pagesCollection?.filter(
   </li>
 </ul>
 
-<table>
+<table style="table-layout: fixed; width: 100%;">
   <thead>
     <tr>
       <th>From {fromLang}</th>
@@ -124,11 +136,11 @@ const pagesEntries = pagesCollection?.filter(
         <TranslationTableRow>
           <div slot="id">addresses/{entry.key}.translatedNotes</div>
           <div slot="from">
-            <pre> {fromLang}:</pre>
+            <div>{fromLang}:</div>
             {entry.from}
           </div>
           <div slot="to">
-            <pre> {toLang}:</pre>
+            <div> {toLang}:</div>
             {entry.to}
           </div>
         </TranslationTableRow>
@@ -142,7 +154,7 @@ const pagesEntries = pagesCollection?.filter(
             <div slot="from">{entry.data.title}</div>
             <div slot="to">
               {useContentData('kits', entry.data.identifier, toLang).then(
-                (toData) => toData?.title,
+                (toData) => (toData as InferEntrySchema<'kits'>)?.title,
               )}
             </div>
           </TranslationTableRow>
@@ -157,6 +169,21 @@ const pagesEntries = pagesCollection?.filter(
           </TranslationTableRow>
           <TranslationTableRow>
             <div slot="id">kits/{entry.data.identifier}</div>
+            <div slot="fromDate">
+              <Timestamp
+                lastChecked={entry.data.lastChecked}
+                lang={fromLang}
+              />
+            </div>
+            <div slot="toDate">
+              <Timestamp
+                lang={toLang}
+                lastChecked={
+                  (await useContentData('kits', entry.data.identifier, toLang))
+                    ?.lastChecked ?? entry.data.lastChecked
+                }
+              />
+            </div>
             <div slot="from">
               <Block
                 collection="kits"
@@ -181,6 +208,21 @@ const pagesEntries = pagesCollection?.filter(
       blockEntries.map(async (entry) => (
         <TranslationTableRow>
           <div slot="id">blocks/{entry.data.identifier}</div>
+          <div slot="fromDate">
+            <Timestamp
+              lastChecked={entry.data.lastChecked}
+              lang={fromLang}
+            />
+          </div>
+          <div slot="toDate">
+            <Timestamp
+              lang={toLang}
+              lastChecked={
+                (await useContentData('blocks', entry.data.identifier, toLang))
+                  ?.lastChecked ?? entry.data.lastChecked
+              }
+            />
+          </div>
           <div slot="from">
             <Block
               identifier={entry.data.identifier}
@@ -221,6 +263,26 @@ const pagesEntries = pagesCollection?.filter(
           </TranslationTableRow>
           <TranslationTableRow>
             <div slot="id">flyers/{entry.data.identifier}</div>
+            <div slot="fromDate">
+              <Timestamp
+                lastChecked={entry.data.lastChecked}
+                lang={fromLang}
+              />
+            </div>
+            <div slot="toDate">
+              <Timestamp
+                lang={toLang}
+                lastChecked={
+                  (
+                    await useContentData(
+                      'flyers',
+                      entry.data.identifier,
+                      toLang,
+                    )
+                  )?.lastChecked ?? entry.data.lastChecked
+                }
+              />
+            </div>
             <div slot="from">
               <Block
                 identifier={entry.data.identifier}
@@ -264,6 +326,21 @@ const pagesEntries = pagesCollection?.filter(
           </TranslationTableRow>
           <TranslationTableRow>
             <div slot="id">pages/{entry.data.identifier}</div>
+            <div slot="fromDate">
+              <Timestamp
+                lastChecked={entry.data.lastChecked}
+                lang={fromLang}
+              />
+            </div>
+            <div slot="toDate">
+              <Timestamp
+                lang={toLang}
+                lastChecked={
+                  (await useContentData('pages', entry.data.identifier, toLang))
+                    ?.lastChecked ?? entry.data.lastChecked
+                }
+              />
+            </div>
             <div slot="from">
               <Block
                 identifier={entry.data.identifier}
