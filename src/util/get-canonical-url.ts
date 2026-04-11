@@ -9,7 +9,8 @@ import { getBasedUrl } from './get-based-url';
 
 export type CanonicalUrlFn<T extends StandaloneCollections> = (
   entry: StandaloneCollectionEntry<T>,
-  lang: LanguagesValue, // FIXME: the lang here is redundant, as it has to be the same as entry.data.lang
+  // the lang here is not redundant, as it we could use it for a fallback as entry.data.lang
+  lang: LanguagesValue,
   absolute?: boolean,
 ) => Promise<string>;
 
@@ -20,8 +21,12 @@ async function getCanonicalUrl<T extends StandaloneCollections>(
   absolute = false,
 ): Promise<string> {
   if (entry) {
+    const langMismatch: boolean = lang !== entry.data.lang;
+    const seoTitle = !langMismatch
+      ? `/${encodeURIComponent(entry.data.title)}`
+      : '';
     return getBasedUrl(
-      `${lang}/${collectionSlug}/${entry.data.identifier}/${encodeURIComponent(entry.data.title)}`,
+      `${lang}/${collectionSlug}/${entry.data.identifier}${seoTitle}`,
       absolute,
     );
   } else {

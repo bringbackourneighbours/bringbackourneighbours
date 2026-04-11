@@ -85,12 +85,14 @@ const isDev = import.meta.env.DEV;
 
   {
     isDev && (
-      <hr>
-      <h2>Vorschau (nur im dev-mode)</h2>
-      <PreviewTranslation
-        fromLang={fromLang}
-        toLang={toLang}
-      />
+      <>
+        <hr />
+        <h2>Vorschau (nur im dev-mode)</h2>
+        <PreviewTranslation
+          fromLang={fromLang}
+          toLang={toLang}
+        />
+      </>
     )
   }
 </BaseLayout>

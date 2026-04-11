@@ -20,6 +20,5 @@ describe('TranslationTableRow', () => {
     expect(getByText('to')).toBeInTheDocument();
     expect(getByText('fromDate')).toBeInTheDocument();
     expect(getByText('toDate')).toBeInTheDocument();
-
   });
 });

@@ -16,5 +16,5 @@ const url = await getCanonicalUrlToFlyer(
   Astro.props.entry.data.lang,
 );
 
-return Astro.redirect(url);
+return Astro.redirect(url, 301);
 ---

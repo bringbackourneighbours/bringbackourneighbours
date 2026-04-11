@@ -15,5 +15,5 @@ const { entry } = Astro.props;
 
 const url = await getCanonicalUrlToPage(entry, entry.data.lang);
 
-return Astro.redirect(url);
+return Astro.redirect(url, 301);
 ---
