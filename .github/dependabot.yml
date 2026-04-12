@@ -5,13 +5,37 @@
 version: 2
 updates:
   - package-ecosystem: 'github-actions'
-    directories:
-      - '/'
-      - '.github/actions/setup-install/action.yml'
-    cooldown:
-      default-days: 3
+    directory: '/'
     schedule:
       interval: 'daily'
+    cooldown:
+      default-days: 3
+    labels:
+      - 'scope:dependencies'
+    milestone: 4
+  - package-ecosystem: 'github-actions'
+    directory: '.github/actions/setup-install'
+    schedule:
+      interval: 'daily'
+    cooldown:
+      default-days: 3
+    labels:
+      - 'scope:dependencies'
+  - package-ecosystem: 'devcontainers'
+    directory: '/'
+    schedule:
+      interval: 'daily'
+    cooldown:
+      default-days: 3
+    labels:
+      - 'scope:dependencies'
+    milestone: 4
+  - package-ecosystem: 'docker'
+    directory: '.devcontainer/Dockerfile'
+    schedule:
+      interval: 'daily'
+    cooldown:
+      default-days: 3
     labels:
       - 'scope:dependencies'
     milestone: 4
