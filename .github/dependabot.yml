@@ -5,7 +5,9 @@
 version: 2
 updates:
   - package-ecosystem: 'github-actions'
-    directory: '/'
+    directories:
+      - '/'
+      - '.github/actions/setup-install/action.yml'
     cooldown:
       default-days: 3
     schedule:
