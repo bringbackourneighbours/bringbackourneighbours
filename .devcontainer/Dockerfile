@@ -6,7 +6,7 @@ ARG NODE_VERSION=22
 # install puppeteer deps
 # see: https://pptr.dev/troubleshooting#running-puppeteer-in-docker
 RUN apt-get update \
-    && apt-get install -y curl wget gnupg \
+    && apt-get install -y curl wget gnupg openssh-client\
     && wget -q -O - https://dl-ssl.google.com/linux/linux_signing_key.pub | apt-key add - \
     && sh -c 'echo "deb [arch=amd64] http://dl.google.com/linux/chrome/deb/ stable main" >> /etc/apt/sources.list.d/google.list' \
     && apt-get update \
@@ -16,6 +16,7 @@ RUN apt-get update \
 
 # install nvm and node with it
 # See: https://github.com/nvm-sh/nvm?tab=readme-ov-file#installing-in-docker-for-cicd-jobs
+# possible alternative: https://github.com/devcontainers/features/tree/main/src/node
 RUN curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.40.3/install.sh | bash
 ENV NVM_DIR=/root/.nvm
 RUN bash -c "source $NVM_DIR/nvm.sh && nvm install $NODE_VERSION"
