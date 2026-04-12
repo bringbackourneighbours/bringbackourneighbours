@@ -10,7 +10,7 @@ interface Props {
   title: string;
   seo: string;
   lang: LanguagesValue;
-  canonicalSlug?: string;
+  canonicalUrl?: string;
   translationSlugs?: Array<{
     lang: LanguagesValue;
     url: string;
@@ -23,7 +23,7 @@ const {
   title,
   seo,
   lang = DEFAULT_LANG,
-  canonicalSlug,
+  canonicalUrl,
   translationSlugs,
   format,
   allowIndexing,
@@ -34,7 +34,7 @@ const {
   <BaseHead
     title={title}
     lang={lang}
-    canonicalSlug={canonicalSlug}
+    canonicalUrl={canonicalUrl}
     translationSlugs={translationSlugs}
     seo={seo}
     allowIndexing={allowIndexing}

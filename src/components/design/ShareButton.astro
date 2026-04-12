@@ -13,7 +13,7 @@ interface Props {
   url: string;
 }
 
-const { lang = Astro.locals.lang, url = Astro.site } = Astro.props;
+const { lang = Astro.locals.lang, url} = Astro.props;
 
 const title = Astro.props.title || (await useUiTranslation('meta.title', lang));
 const text =

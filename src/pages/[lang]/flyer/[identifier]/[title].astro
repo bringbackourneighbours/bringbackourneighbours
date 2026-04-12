@@ -34,8 +34,7 @@ const translationSlugs = await getTranslationsUrlsForFlyer(
   entry.data.identifier,
 );
 
-const canonicalUrl =
-  (await getCanonicalUrlToFlyer(entry, entry.data.lang)) || '';
+const canonicalUrl = await getCanonicalUrlToFlyer(entry, entry.data.lang, true);
 
 const germanTitle =
   (await useContentData('flyers', entry.data.identifier, Languages.GERMAN))
@@ -46,7 +45,7 @@ const germanTitle =
   lang={entry.data.lang}
   title={entry.data.title}
   seo={entry.data.seo}
-  canonicalSlug={canonicalUrl}
+  canonicalUrl={canonicalUrl}
   translationSlugs={translationSlugs}
 >
   <LanguageSwitcher

@@ -7,7 +7,7 @@ interface Props {
   title: string;
   seo?: string;
   lang: LanguagesValue;
-  canonicalSlug?: string;
+  canonicalUrl?: string;
   translationSlugs?: Array<{
     lang: LanguagesValue;
     url: string;
@@ -18,7 +18,7 @@ interface Props {
 const {
   title,
   lang,
-  canonicalSlug,
+  canonicalUrl,
   translationSlugs,
   seo = await useUiTranslation('meta.infosAgainstDeportation', lang),
   allowIndexing = true,
@@ -50,7 +50,7 @@ import './typography.css';
   <link
     rel="canonical"
     hreflang={lang}
-    href={canonicalSlug}
+    href={canonicalUrl}
   />
   {
     translationSlugs?.map((translation) => (

@@ -7,7 +7,7 @@ interface Props {
   title: string;
   seo: string;
   lang: LanguagesValue;
-  canonicalSlug?: string;
+  canonicalUrl?: string;
   translationSlugs?: Array<{
     lang: LanguagesValue;
     url: string;
@@ -18,7 +18,7 @@ const {
   title,
   seo,
   lang = DEFAULT_LANG,
-  canonicalSlug,
+  canonicalUrl,
   translationSlugs,
 } = Astro.props;
 ---
@@ -48,7 +48,7 @@ const {
   title={title}
   lang={lang}
   seo={seo}
-  canonicalSlug={canonicalSlug}
+  canonicalUrl={canonicalUrl}
   translationSlugs={translationSlugs}
 >
   <div class="content-wrapper">

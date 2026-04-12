@@ -36,8 +36,7 @@ const translationSlugs = await getTranslationsUrlsForPages(
   entry.data.identifier,
 );
 
-const canonicalUrl =
-  (await getCanonicalUrlToPage(entry, entry.data.lang)) || '';
+const canonicalUrl = await getCanonicalUrlToPage(entry, entry.data.lang, true);
 
 const germanTitle =
   (await useContentData('pages', entry.data.identifier, Languages.GERMAN))
@@ -48,7 +47,7 @@ const germanTitle =
   lang={entry.data.lang}
   title={entry.data.title}
   seo={entry.data.seo}
-  canonicalSlug={canonicalUrl}
+  canonicalUrl={canonicalUrl}
   translationSlugs={translationSlugs}
 >
   <LanguageSwitcher

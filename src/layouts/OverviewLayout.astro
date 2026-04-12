@@ -8,14 +8,14 @@ import { useUiTranslation } from '../content/use-ui-translation.ts';
 interface Props {
   title: string;
   lang: LanguagesValue;
-  canonicalSlug?: string;
+  canonicalUrl?: string;
   translationSlugs?: Array<{
     lang: LanguagesValue;
     url: string;
   }>;
 }
 
-const { title, lang, canonicalSlug, translationSlugs = [] } = Astro.props;
+const { title, lang, canonicalUrl, translationSlugs = [] } = Astro.props;
 
 import './theme-web.css';
 ---
@@ -44,7 +44,7 @@ import './theme-web.css';
   title={title}
   lang={lang}
   seo={await useUiTranslation('meta.infosAgainstDeportation', lang)}
-  canonicalSlug={canonicalSlug}
+  canonicalUrl={canonicalUrl}
   translationSlugs={translationSlugs}
 >
   <div class="content-wrapper">
