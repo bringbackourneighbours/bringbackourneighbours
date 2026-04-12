@@ -1,10 +1,10 @@
 import { describe, expect, it } from 'vitest';
 import { render } from '../../testing/render.ts';
+import { within } from '@testing-library/dom';
 
 import '../../testing/with-mocked-translation.ts';
 
 import Toast from './Toast.astro';
-import { within } from '@testing-library/dom';
 
 describe('Toast', () => {
   it('should show a status with provided id', async () => {

@@ -21,7 +21,9 @@ type ComponentContainerRenderOptions<T extends AstroComponentFactory> = Omit<
  * Clean up the DOM before each test to avoid test interference
  */
 export const cleanupDom = () => {
+  document.head.innerHTML = '';
   document.body.innerHTML = '';
+
 };
 
 /**
@@ -29,14 +31,29 @@ export const cleanupDom = () => {
  *
  * @param Component The Astro component to render
  * @param options   The options to pass to the renderer
- * @returns         The rendered component's HTML
+ * @returns         testing-library's screen with the rendered Element in the body
  */
 export async function render<T extends AstroComponentFactory>(
   Component: T,
   options?: ComponentContainerRenderOptions<T>,
 ) {
   const container = await AstroContainer.create();
-  // FIXME: do we need a wrapper?
   document.body.innerHTML = await container.renderToString(Component, options);
   return screen;
 }
+
+/**
+ * Render an Astro component for testing purposes
+ *
+ * @param Component The Astro component to render
+ * @param options   The options to pass to the renderer
+ * @returns         The rendered component's HTML as strin
+ */
+export async function renderToString<T extends AstroComponentFactory>(
+  Component: T,
+  options?: ComponentContainerRenderOptions<T>,
+): Promise<string> {
+  const container = await AstroContainer.create();
+  return await container.renderToString(Component, options);
+}
+
