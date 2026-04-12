@@ -4,7 +4,10 @@
     "dockerfile": "./Dockerfile",
     "context": "."
   },
-  "forwardPorts": [4321],
+  "forwardPorts": [
+    4321, // astro dev-server
+    51204, // vitest-ui
+  ],
   "postCreateCommand": "npm ci",
   "customizations": {
     // Configure JetBrains IDE-specific properties
@@ -19,7 +22,8 @@
         // A complete list of supported settings is also available through auto-completion
       },
       "plugins": [
-        "org.jetbrains.plugins.astro"
+        "org.jetbrains.plugins.astro",
+        "mdx.js"
         // A set of plugin IDs.
         // Plugin ID can be found on the corresponding plugin’s page at https://plugins.jetbrains.com.
       ]
@@ -29,9 +33,7 @@
     }
   },
   "features": {
-    "ghcr.io/devcontainers/features/git": {}
+    "ghcr.io/devcontainers/features/git:1.3.4": {}
     // Add additional features to your project using auto-completion.
   },
-  // Comment out to connect as the root user.
-  "remoteUser": "root"
 }
