@@ -18,7 +18,7 @@ jobs:
       - run: npm run stylelint
 
   prettier:
-    name: Lint with prettier
+    name: Format with prettier
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v6
