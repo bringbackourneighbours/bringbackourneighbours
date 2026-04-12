@@ -14,15 +14,6 @@ RUN apt-get update \
       --no-install-recommends \
     && rm -rf /var/lib/apt/lists/*
 
-# install nvm and node with it
-# See: https://github.com/nvm-sh/nvm?tab=readme-ov-file#installing-in-docker-for-cicd-jobs
-# possible alternative: https://github.com/devcontainers/features/tree/main/src/node
-RUN curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.40.3/install.sh | bash
-ENV NVM_DIR=/root/.nvm
-RUN bash -c "source $NVM_DIR/nvm.sh && nvm install $NODE_VERSION"
-# set ENTRYPOINT for reloading nvm-environment
-ENTRYPOINT ["bash", "-c", "source $NVM_DIR/nvm.sh && exec \"$@\"", "--"]
-
 ENV ASTRO_TELEMETRY_DISABLED=1
 
 # set cmd to bash

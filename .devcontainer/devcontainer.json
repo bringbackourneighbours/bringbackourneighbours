@@ -33,7 +33,9 @@
     }
   },
   "features": {
-    "ghcr.io/devcontainers/features/git:1.3.4": {}
-    // Add additional features to your project using auto-completion.
+    "ghcr.io/devcontainers/features/git:1.3.4": {},
+    "ghcr.io/devcontainers/features/node:1.7.0": {
+      "version": 22
+    },
   },
 }
