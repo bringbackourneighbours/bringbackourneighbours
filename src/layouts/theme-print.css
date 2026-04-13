@@ -47,8 +47,23 @@
 /* Fixes for languages */
 html[lang='ka'] {
   /**
-    georgian is a very verbose language, so we need to scale it down a little
-     */
-  --bbon-size-print-end-footer-offset: -2mm;
-  --bbon-size-p: 8pt;
+      georgian is a very verbose language, so we need to scale it down a little
+       */
+  .a6 {
+    --bbon-size-print-end-footer-offset: -2mm;
+    --bbon-size-p: 7.2pt;
+  }
+
+  .a7 {
+    --bbon-size-p: 8pt;
+  }
+}
+
+html[lang='fa'] {
+  /**
+      the footer in farsi is bigger
+       */
+  .a7 {
+    --bbon-size-print-end-footer-offset: -8mm;
+  }
 }
