@@ -16,7 +16,7 @@ describe('PdfLinks', () => {
       } as App.Locals,
     });
 
-    expect(getAllByRole('link').length).toBe(7);
+    expect(getAllByRole('link').length).toBe(8);
     expect(
       getByRole('link', { name: 'de-downloadAllFlyerPdf' }),
     ).toBeInTheDocument();
@@ -51,7 +51,7 @@ describe('PdfLinks', () => {
       } as App.Locals,
     });
 
-    expect(getAllByRole('link').length).toBe(7);
+    expect(getAllByRole('link').length).toBe(8);
     expect(getByRole('link', { name: 'en-downloadPdf' })).toBeInTheDocument();
     expect(
       getByRole('link', { name: 'en-downloadPdf (en-ar)' }),
