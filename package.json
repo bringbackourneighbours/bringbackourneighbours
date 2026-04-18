@@ -13,6 +13,7 @@
     "vitest": "vitest",
     "vitest:ui": "vitest --ui --api.host '127.0.0.1'",
     "cucumber": "DEBUG=cucumber cucumber-js",
+    "cucumber:dev": "DEBUG=cucumber cucumber-js -p dev",
     "eslint": "eslint",
     "eslint:fix": "eslint --fix",
     "prettier": "prettier --check --ignore-path .gitignore .",
