@@ -1,21 +1,14 @@
-import { After, AfterAll, Before, BeforeAll } from '@cucumber/cucumber';
+import { After, Before, setWorldConstructor } from '@cucumber/cucumber';
+import { PlaywrightWorld } from './world.ts';
 
-BeforeAll({ name: 'Example BeforeAll' }, function () {
-  console.log('BeforeAll');
+setWorldConstructor(PlaywrightWorld);
+
+Before(async function (this: PlaywrightWorld) {
+  // TODO: this is not very effectiv: we now reinit the woulp browser and dev server on every scenario
+  // better uses BeforeAll
+  return await this.init();
 });
 
-Before({ name: 'Example Before' }, function () {
-  console.log('Before');
-});
-
-After({ name: 'Example After' }, function () {
-  console.log('After');
-});
-
-After({ name: 'Example After' }, function () {
-  console.log('After');
-});
-
-AfterAll({ name: 'Example AfterAll' }, function () {
-  console.log('AfterAll');
+After(async function (this: PlaywrightWorld) {
+  return await this.close();
 });
