@@ -36,6 +36,7 @@ jobs:
         uses: actions/deploy-pages@v5
 
   validate:
+    needs: deploy
     name: Test prod with cucumber
     runs-on: ubuntu-latest
     steps:
