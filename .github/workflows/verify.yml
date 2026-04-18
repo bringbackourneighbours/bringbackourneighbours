@@ -41,7 +41,7 @@ jobs:
       - uses: ./.github/actions/setup-install
       - run: npm run check
 
-  test:
+  vitest:
     name: Test with vitest
     runs-on: ubuntu-latest
     steps:
@@ -49,14 +49,13 @@ jobs:
       - uses: ./.github/actions/setup-install
       - run: npm run vitest
 
-  e2e:
-    name: E2E dev with cucumber
+  cucumber:
+    name: Test dev with cucumber
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v6
       - uses: ./.github/actions/setup-install
-      - name: Install Playwright Browsers
-        run: npx playwright install --with-deps chromium
+      - run: npx playwright install --with-deps chromium
       - run: npm run cucumber:dev
 
   build:
