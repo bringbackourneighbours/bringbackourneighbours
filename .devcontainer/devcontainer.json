@@ -8,7 +8,7 @@
     4321, // astro dev-server
     51204 // vitest-ui
   ],
-  "postCreateCommand": "npm ci",
+  "postCreateCommand": "npm ci && npx playwright install --with-deps chromium",
   "customizations": {
     // Configure JetBrains IDE-specific properties
     "jetbrains": {
