@@ -68,6 +68,9 @@ This projects needs to have the following software installed:
 - [node.js](https://nodejs.org/en/download) LTS with npm
 - all [dependencies](https://pptr.dev/guides/system-requirements) of puppeteer with chromium.
 
+New with playwright
+sudo npx playwright install-deps
+
 ## Contributing
 
 As part of the ‘Bring Back Our Neighbours’ campaign, we, a group of full-time and volunteer activists in the field of
