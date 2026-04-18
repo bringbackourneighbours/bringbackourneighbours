@@ -49,6 +49,16 @@ jobs:
       - uses: ./.github/actions/setup-install
       - run: npm run vitest
 
+  e2e:
+    name: E2E dev with cucumber
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v6
+      - uses: ./.github/actions/setup-install
+      - name: Install Playwright Browsers
+        run: npx playwright install --with-deps chromium
+      - run: npm run cucumber:dev
+
   build:
     name: Build with astro
     runs-on: ubuntu-latest
