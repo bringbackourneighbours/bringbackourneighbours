@@ -38,7 +38,7 @@ AfterAll(async function (this) {
 });
 const newBrowser = async (): Promise<Browser> => {
   return await chromium.launch({
-    headless: false,
+    headless: true,
   });
 };
 
