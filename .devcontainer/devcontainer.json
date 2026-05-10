@@ -1,18 +1,18 @@
 {
-  "name": "bbon",
   "build": {
-    "dockerfile": "./Dockerfile",
-    "context": "."
+    "context": ".",
+    "dockerfile": "./Dockerfile"
   },
-  "forwardPorts": [
-    4321, // astro dev-server
-    51204 // vitest-ui
-  ],
-  "postCreateCommand": "npm ci && npx playwright install --with-deps chromium",
   "customizations": {
     // Configure JetBrains IDE-specific properties
     "jetbrains": {
       "backend": "IntelliJ",
+      "plugins": [
+        "org.jetbrains.plugins.astro",
+        "mdx.js"
+        // A set of plugin IDs.
+        // Plugin ID can be found on the corresponding plugin’s page at https://plugins.jetbrains.com.
+      ],
       "settings": {
         "com.intellij:app:BuiltInServerOptions.builtInServerPort": 54437,
         "com.intellij:app:EditorSettings.is_ensure_newline_at_eof": true,
@@ -20,18 +20,12 @@
         "org.jetbrains.plugins.terminal:app:TerminalOptionsProvider.myShellPath": "/bin/zsh"
         // IDE settings can be added via “Show context actions”|“Add currently modified settings from IDE”.
         // A complete list of supported settings is also available through auto-completion
-      },
-      "plugins": [
-        "org.jetbrains.plugins.astro",
-        "mdx.js"
-        // A set of plugin IDs.
-        // Plugin ID can be found on the corresponding plugin’s page at https://plugins.jetbrains.com.
-      ]
+      }
     },
     "vscode": {
       "extensions": [
         "astro-build.astro-vscode",
-        "CucumberOpen.cucumber-official",
+        "cucumberopen.cucumber-official",
         "esbenp.prettier-vscode",
         "ms-azuretools.vscode-containers",
         "ms-playwright.playwright",
@@ -45,5 +39,11 @@
     "ghcr.io/devcontainers/features/node:2.0.0": {
       "version": 22
     }
-  }
+  },
+  "forwardPorts": [
+    4321, // astro dev-server
+    51204 // vitest-ui
+  ],
+  "name": "bbon",
+  "postCreateCommand": "npm ci && npx playwright install --with-deps chromium"
 }
