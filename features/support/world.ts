@@ -4,11 +4,12 @@ import { type IWorldOptions, World } from '@cucumber/cucumber';
 // @ts-expect-error think there is an export missing in astro
 import type { DevServer } from 'astro/dist/core/dev/dev';
 
-// TODO: inspired by https://github.com/tzero86/cucumber-typescript-playwright/blob/4f0f0dc3f6d77dbdf6fa42cd7f993940e64caa18/e2e/src/step-definitions/setup/world.ts#L12
+// inspired by https://github.com/tzero86/cucumber-typescript-playwright/blob/4f0f0dc3f6d77dbdf6fa42cd7f993940e64caa18/e2e/src/step-definitions/setup/world.ts#L12
 
 type PlaywrightWorldParameters = {
   baseUrl: string;
   useDevServer: boolean;
+  headless: boolean;
 };
 
 export type Screen = {
