@@ -16,7 +16,7 @@ import type { DevServer } from 'astro/dist/core/dev/dev';
 setWorldConstructor(PlaywrightWorld);
 
 BeforeAll(async function (this) {
-  PlaywrightWorld.browser = await newBrowser();
+  PlaywrightWorld.browser = await newBrowser(!!this.parameters?.headless);
   if (this.parameters.useDevServer) {
     PlaywrightWorld.devServer = await newAstroDevServer();
   }
@@ -36,13 +36,12 @@ AfterAll(async function (this) {
     await closeAstroDevServer(PlaywrightWorld.devServer);
   }
 });
-const newBrowser = async (): Promise<Browser> => {
-  return await chromium.launch({
-    headless: true,
-  });
-};
 
 // those helper might be needed again if we also use playwright for pdf generation!
+const newBrowser = async (headless: boolean): Promise<Browser> => {
+  return await chromium.launch({ headless });
+};
+
 const closeBrowser = async (browser: Browser): Promise<void> => {
   await browser.close();
 };
