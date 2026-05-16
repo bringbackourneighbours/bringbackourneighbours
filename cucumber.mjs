@@ -23,6 +23,7 @@ export const prod = {
 export const dev = {
   ...common,
   worldParameters: {
+    baseUrl: 'http://localhost:4321/',
     useDevServer: true,
     headless: true,
   },
