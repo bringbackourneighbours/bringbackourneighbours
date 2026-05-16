@@ -11,6 +11,8 @@
     "emergencyKit": "Kit d'urgence contre les expulsions",
     "findAlsoAsPage": "Vous pouvez également trouver cette section individuellement en tant que page",
     "findAlsoInFlyer": "Vous pouvez également trouver cette section individuellement dans le flyer",
+    "findAlsoAsPageInFallbackLang": "Cette section n'est pas encore traduite ; vous pouvez la consulter séparément sur la page",
+    "findAlsoAsFlyerInFallbackLang": "Cette section n'est pas encore traduite ; vous pouvez la consulter séparément dans le dépliant",
     "forms": "Modèles et formulaires à imprimer",
     "home": "home",
     "imprint": "Imprint",

@@ -4,22 +4,25 @@ import type { CollectionEntry } from 'astro:content';
 import LanguageChip from './LanguageChip.astro';
 import Timestamp from './Timestamp.astro';
 import type { StandaloneCollections } from '../../model/standalone-collections.ts';
+import { DEFAULT_LANG, type LanguagesValue } from '../../model/languages.ts';
 
 interface Props {
   entry: CollectionEntry<StandaloneCollections>;
+  lang?: LanguagesValue;
+  isFallback?: boolean;
 }
 
-const { entry } = Astro.props;
+const { entry, lang = entry.data.lang, isFallback = false } = Astro.props;
 ---
 
 <p>
   <LanguageChip
     lang={entry.data.lang}
-    currentLang="de"
+    currentLang={isFallback ? lang : DEFAULT_LANG}
   />
   –
   <Timestamp
-    lang={entry.data.lang}
+    lang={lang}
     lastChecked={entry.data.lastChecked}
   />
 </p>

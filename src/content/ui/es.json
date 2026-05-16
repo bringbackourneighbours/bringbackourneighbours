@@ -11,6 +11,8 @@
     "emergencyKit": "Botiquín de emergencia contra deportaciones",
     "findAlsoAsPage": "También puede encontrar esta sección individualmente como una página",
     "findAlsoInFlyer": "También puede encontrar esta sección individualmente en el folleto",
+    "findAlsoAsPageInFallbackLang": "Esta sección aún no está traducida; puede consultarla por separado en la página",
+    "findAlsoAsFlyerInFallbackLang": "Esta sección aún no está traducida; puede consultarla por separado en el folleto",
     "forms": "Plantillas y formularios para imprimir",
     "home": "home",
     "imprint": "Impresión",

@@ -11,6 +11,8 @@
     "emergencyKit": "Notfallkoffer gegen Abschiebungen",
     "findAlsoAsPage": "Diesen Abschnitt findest du auch einzeln auf der Seite",
     "findAlsoInFlyer": "Diesen Abschnitt findest du auch einzeln im Flyer",
+    "findAlsoAsPageInFallbackLang": "Diesen Abschnitt ist noch nicht übersetzt, du findest ihn einzeln auf der Seite",
+    "findAlsoAsFlyerInFallbackLang": "Diesen Abschnitt ist noch nicht übersetzt, du findest ihn einzeln im Flyer",
     "forms": "Vorlagen und Formulare zum Ausdrucken",
     "home": "Übersicht",
     "imprint": "Impressum",

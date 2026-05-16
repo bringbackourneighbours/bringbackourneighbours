@@ -11,6 +11,8 @@
     "emergencyKit": "Sınır dışı edilmelere karşı “acil durum kiti”",
     "findAlsoAsPage": "Bu bölümü ayrı ayrı sayfada da bulabilirsiniz",
     "findAlsoInFlyer": "Bu bölümü ayrıca broşürde ayrı ayrı bulabilirsiniz",
+    "findAlsoAsPageInFallbackLang": "Bu bölüm henüz çevrilmemiştir; sayfada ayrı olarak bulabilirsiniz",
+    "findAlsoAsFlyerInFallbackLang": "Bu bölüm henüz çevrilmemiştir; broşürde ayrı olarak bulabilirsiniz",
     "forms": "Çıktı almak için şablonlar ve formlar",
     "home": "Ana Sayfa",
     "imprint": "Künye",

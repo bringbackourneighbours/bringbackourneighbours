@@ -11,6 +11,8 @@
     "emergencyKit": "Emergency Kit against deportations",
     "findAlsoAsPage": "You can also find this section individually as a page",
     "findAlsoInFlyer": "You can also find this section individually in the flyer",
+    "findAlsoAsPageInFallbackLang": "This section is not yet translated, you can find it individually on the page",
+    "findAlsoAsFlyerInFallbackLang": "This section is not yet translated, you can find it individually in the flyer",
     "forms": "Templates and forms to print out",
     "home": "home",
     "imprint": "Imprint",

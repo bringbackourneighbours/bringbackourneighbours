@@ -15,16 +15,25 @@ interface Props {
   entry: CollectionEntry<StandaloneCollections>;
   lang?: LanguagesValue;
   collection?: StandaloneCollections;
+  isFallback?: boolean;
 }
 
-const { entry, lang = Astro.locals.lang, collection = 'flyers' } = Astro.props;
+const {
+  entry,
+  lang = Astro.locals.lang,
+  collection = 'flyers',
+  isFallback = false,
+} = Astro.props;
 
 const isPrint = Astro.locals.isPrint;
 
 const canonicalUrl = await getCanonicalUrlFn(collection)(entry, lang);
 
-const collectionLabel =
-  collection === 'flyers'
+const collectionLabel = isFallback
+  ? collection === 'flyers'
+    ? await useUiTranslation('meta.findAlsoInFlyerInFallbackLang', lang)
+    : await useUiTranslation('meta.findAlsoAsPageInFallbackLang', lang)
+  : collection === 'flyers'
     ? await useUiTranslation('meta.findAlsoInFlyer', lang)
     : await useUiTranslation('meta.findAlsoAsPage', lang);
 
@@ -68,7 +77,11 @@ const showOnlyLink = !isPrint && collection === 'pages';
           {collectionLabel}&nbsp;<strong>{entry.data.title}</strong>
         </p>
         <InternalShortLink identifier={entry.data.identifier} />
-        <ContentMeta entry={entry} />
+        <ContentMeta
+          entry={entry}
+          lang={lang}
+          isFallback={isFallback}
+        />
       </div>
     </div>
   )
@@ -81,8 +94,15 @@ const showOnlyLink = !isPrint && collection === 'pages';
     <div class={`meta-section ${showOnlyLink ? '-show-only-link' : ''}`}>
       <div>
         {collectionLabel}
-        <InternalShortLink identifier={entry.data.identifier} />
-        <ContentMeta entry={entry} />
+        <InternalShortLink
+          identifier={entry.data.identifier}
+          lang={entry.data.lang}
+        />
+        <ContentMeta
+          entry={entry}
+          lang={lang}
+          isFallback={isFallback}
+        />
       </div>
     </div>
   )
