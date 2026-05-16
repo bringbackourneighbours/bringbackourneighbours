@@ -92,18 +92,16 @@ const showOnlyLink = !isPrint && collection === 'pages';
 {
   !isPrint && (
     <div class={`meta-section ${showOnlyLink ? '-show-only-link' : ''}`}>
-      <div>
-        {collectionLabel}
-        <InternalShortLink
-          identifier={entry.data.identifier}
-          lang={entry.data.lang}
-        />
-        <ContentMeta
-          entry={entry}
-          lang={lang}
-          isFallback={isFallback}
-        />
-      </div>
+      {collectionLabel}
+      <InternalShortLink
+        identifier={entry.data.identifier}
+        lang={entry.data.lang}
+      />
+      <ContentMeta
+        entry={entry}
+        lang={lang}
+        isFallback={isFallback}
+      />
     </div>
   )
 }

@@ -1,14 +1,13 @@
 ---
 import { type LanguagesValue } from '../../model/languages';
+import type { StandaloneCollections } from '../../model/standalone-collections';
 
 import { type CollectionEntry, getCollection } from 'astro:content';
 import { useUiTranslation } from '../../content/use-ui-translation.ts';
 
 import Accordion from '../design/Accordion.astro';
-
 import NotFoundError from '../design/NotFoundError.astro';
 import ContentMetaSection from '../design/ContentMetaSection.astro';
-import type { StandaloneCollections } from '../../model/standalone-collections';
 
 export interface Props {
   identifier: string;
@@ -24,14 +23,24 @@ const {
   level = 2,
 } = Astro.props;
 
+const isPrint = Astro.locals.isPrint;
+const showOnlyLink = !isPrint && collection === 'pages';
+
 let blockEntry: CollectionEntry<StandaloneCollections> = (
   await getCollection(collection, (block) => {
     return block.slug === `${identifier}/${lang}`;
   })
 )[0];
 
-let isFallback = false;
+const title = isPrint
+  ? collection !== 'pages'
+    ? blockEntry?.data.title
+    : undefined
+  : collection !== 'pages'
+    ? `${await useUiTranslation('meta.moreInfoAbout', lang)}: "${blockEntry?.data.title}"`
+    : blockEntry?.data.title;
 
+let isFallback = false;
 const fallbackToLang = blockEntry.data.fallbackToLang;
 
 if (fallbackToLang !== lang) {
@@ -47,45 +56,37 @@ if (fallbackToLang !== lang) {
   }
 }
 
-const isPrint = Astro.locals.isPrint;
-
-const title = isPrint
-  ? collection !== 'pages'
-    ? blockEntry?.data.title
-    : undefined
-  : `${await useUiTranslation('meta.moreInfoAbout', lang)}: "${blockEntry?.data.title}"`;
-
-const showOnlyLink = !isPrint && collection === 'pages';
-
 // With in a blockbox we shift all the level of the headings up
 // to match the whole docs structure.
 Astro.locals.levelShift = level;
 ---
 
-{
-  blockEntry ? (
-    showOnlyLink ? (
-      <ContentMetaSection
-        collection={collection}
-        entry={blockEntry}
-        isFallback={isFallback}
-        lang={lang}
-      />
-    ) : (
-      <Accordion
-        title={title}
-        level={1}
-      >
+<article aria-label={title}>
+  {
+    blockEntry ? (
+      showOnlyLink ? (
         <ContentMetaSection
           collection={collection}
           entry={blockEntry}
           isFallback={isFallback}
+          lang={lang}
+        />
+      ) : (
+        <Accordion
+          title={title}
+          level={1}
         >
-          <slot />
-        </ContentMetaSection>
-      </Accordion>
+          <ContentMetaSection
+            collection={collection}
+            entry={blockEntry}
+            isFallback={isFallback}
+          >
+            <slot />
+          </ContentMetaSection>
+        </Accordion>
+      )
+    ) : (
+      <NotFoundError context={`BlockBox/${identifier}/${lang}`} />
     )
-  ) : (
-    <NotFoundError context={`BlockBox/${identifier}/${lang}`} />
-  )
-}
+  }
+</article>

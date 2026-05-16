@@ -27,3 +27,30 @@ Then(
     expect(this.screen.page.url()).toMatch(new RegExp(expectedUrl));
   },
 );
+
+Then(
+  'i see a heading {string}',
+  async function (this: PlaywrightWorld, expectedHeading: string) {
+    await expect(
+      this.screen.page.getByRole('heading', { name: expectedHeading }),
+    ).toBeVisible();
+  },
+);
+
+Then(
+  'i see an article {string} with a link {string} to {string}',
+  async function (
+    this: PlaywrightWorld,
+    articleLabel: string,
+    expectedLinkLabel: string,
+    expectedLinkHref: string,
+  ) {
+    const article = this.screen.page.getByRole('article', {
+      name: articleLabel,
+    });
+    await expect(article).toBeVisible();
+    await expect(
+      article.getByRole('link', { name: expectedLinkLabel }),
+    ).toHaveAttribute('href', expectedLinkHref);
+  },
+);
