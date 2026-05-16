@@ -30,6 +30,7 @@ describe('ContentHeading', () => {
         isPrint: false,
         isKit: false,
         isFlyer: true,
+        isZine: false,
       },
     });
 
@@ -68,6 +69,7 @@ describe('ContentHeading', () => {
       locals: {
         lang: 'de',
         isPrint: false,
+        isZine: false,
         isKit: true,
         isFlyer: false,
       },
@@ -109,6 +111,7 @@ describe('ContentHeading', () => {
         lang: 'ar',
         isPrint: false,
         isKit: false,
+        isZine: false,
         isFlyer: false,
       },
     });

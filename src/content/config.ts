@@ -121,6 +121,8 @@ const uiCollection = defineCollection({
         emergencyKit: z.string(),
         findAlsoAsPage: z.string(),
         findAlsoInFlyer: z.string(),
+        findAlsoAsPageInFallbackLang: z.string(),
+        findAlsoAsFlyerInFallbackLang: z.string(),
         forms: z.string(),
         home: z.string(),
         imprint: z.string(),
