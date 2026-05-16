@@ -27,7 +27,7 @@ const {
 
 const isPrint = Astro.locals.isPrint;
 
-const canonicalUrl = await getCanonicalUrlFn(collection)(entry, lang);
+const canonicalUrl = await getCanonicalUrlFn(collection)(entry, lang, true);
 
 const collectionLabel = isFallback
   ? collection === 'flyers'
