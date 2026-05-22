@@ -44,10 +44,12 @@
     "es": "Îspanyolî",
     "fa": "Farisi",
     "fr": "Fransî",
+    "it": "Îtalyayî",
     "ka": "Gurcî",
     "ku": "Kurdî",
     "mk": "Makedonî",
     "ps": "Peştûyî",
+    "rom": "Romanî",
     "ru": "Rûsî",
     "so": "Somalîkî",
     "sq": "Albanî",
@@ -55,8 +57,8 @@
     "ti": "Tigrinya",
     "tr": "Tirkî",
     "uk": "Ûkraynî",
-    "vi": "Vîetnamî",
     "ur": "Ûrdûyî",
+    "vi": "Vîetnamî",
     "findTranslation": "Wergera bi Kurdî heye"
   },
   "wizard": {

@@ -8,10 +8,12 @@
     "es": "Isbaanish",
     "fa": "Farsi",
     "fr": "Faransiis",
+    "it": "talyaani",
     "ka": "Joorjiyaan",
     "ku": "Kurdish",
     "mk": "Masedooniyaan",
     "ps": "Pashto",
+    "rom": "romani",
     "ru": "Ruush",
     "so": "Soomaali",
     "sq": "Albaaniyaan",
@@ -19,8 +21,8 @@
     "ti": "Tigrinya",
     "tr": "Turki",
     "uk": "Yukreeniyaan",
-    "vi": "Vietnamese",
     "ur": "Urduu",
+    "vi": "Vietnamese",
     "findTranslation": "Turjumaada ayaa lagu heli karaa Soomaali",
     "machineTranslation": "Nasiib darro, waxaa lagu turjumay kaliya caqli macmal ah. Fadlan naga caawi hagaajinta macluumaadka oo noogu soo dir email"
   }

@@ -1,0 +1,28 @@
+{
+  "languages": {
+    "ar": "arabi",
+    "bs": "bosniyako",
+    "ckb": "kurdi (sorani)",
+    "de": "germani",
+    "en": "angliko",
+    "es": "espanyol",
+    "fa": "farsi",
+    "fr": "francez",
+    "it": "italyano",
+    "ka": "georgiko",
+    "ku": "kurdi",
+    "mk": "makedonsko",
+    "ps": "pashto",
+    "rom": "Romani",
+    "ru": "rusiko",
+    "so": "somaliko",
+    "sq": "albanyano",
+    "sr": "serviko",
+    "ti": "tigrinyako",
+    "tr": "turkiko",
+    "uk": "ukrayinako",
+    "ur": "urdu",
+    "vi": "vietnamiko",
+    "findTranslation": "Tradukimo andi Romani chib rai"
+  }
+}
