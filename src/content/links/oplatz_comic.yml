@@ -2,37 +2,46 @@ all:
   type: PDF
   lastChecked: 2026-05-22
 de:
+  slug: comicde
   title: 'Comic: »Stop Deportation – oder: Wege, eine Abschiebung zu verhindern«'
   url: https://oplatz.net/wp-content/uploads/2016/07/GeflInfCmc_16p_A5_DE.pdf
 en:
+  slug: comic
   title: 'Comic: »Stop Deportation – or: Ways to Prevent a Deportation«'
   url: https://oplatz.net/wp-content/uploads/2016/07/GeflInfCmc_16p_A5_EN.pdf
 fr:
+  slug: comicfr
   title: 'Comic : »Stop à la déportation – ou : Les moyens d’empêcher une déportation«'
   url: https://oplatz.net/wp-content/uploads/2016/07/GeflInfCmc_16p_A5_FR_060616.pdf
 es:
+  slug: comices
   title: 'Cómic: »Detener la deportación – o: Formas de prevenir una deportación«'
   url: https://oplatz.net/wp-content/uploads/2016/07/GeflInfCmc_16p_A5_SP_230516.pdf
 sr:
+  slug: comicsr
   title: 'Стрип: »Стоп депортацији – или: Начини да се спречи депортација«'
   url: https://oplatz.net/wp-content/uploads/2016/07/GeflInfCmc_16p_A5_SC.pdf
 ru:
+  slug: comicru
   title: 'Комикс: «Остановить депортацию – или Как предотвратить депортацию»'
   url: https://oplatz.net/wp-content/uploads/2017/03/ru_stop_dep.pdf
 tr:
+  slug: comictr
   title: 'Çizgi Roman: »Sürgün Etmeyi Durdurun – veya: Sürgünü Önlemenin Yolları«'
   url: https://oplatz.net/wp-content/uploads/2016/07/stop_dep_tr2.pdf
 ar:
+  slug: comicar
   title: 'كوميدي: وقف الترحيل – أو: طرق منع الترحيل'
   url: https://oplatz.net/wp-content/uploads/2016/07/stop_dep_ar.pdf
 fa:
+  slug: comicfa
   title: 'کمیک: توقف اخراج – یا: راه هایی برای جلوگیری از اخراج'
   url: https://oplatz.net/wp-content/uploads/2016/07/stop_dep_fa.pdf
-# todo: italian is not yet available
-# it:
-#   title: "Fumetto: »Ferma la deportazione – o: Modi per prevenire una deportazione«"
-#   url: https://oplatz.net/wp-content/uploads/2016/08/GeflInfCmc_16p_A5_ITAL.pdf
-# TODO: romanes is not yet available
-# rom:
-#   title: "Comic: »Stop Deportation – Sar te Achavolpe o Abschiebung«"
-#   url: http://fluechtlingscafe-goettingen.com/wp-content/uploads/2019/05/wege_eine_abschiebung_zu_verhindern_romanes.pdf
+it:
+  slug: fumetto
+  title: 'Fumetto: »Ferma la deportazione – o: Modi per prevenire una deportazione«'
+  url: https://oplatz.net/wp-content/uploads/2016/08/GeflInfCmc_16p_A5_ITAL.pdf
+rom:
+  slug: comicrom
+  title: 'Comic: »Stop Deportation – Sar te Achavolpe o Abschiebung«'
+  url: http://fluechtlingscafe-goettingen.com/wp-content/uploads/2019/05/wege_eine_abschiebung_zu_verhindern_romanes.pdf

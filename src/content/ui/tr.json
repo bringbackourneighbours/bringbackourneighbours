@@ -44,10 +44,12 @@
     "es": "İspanyol",
     "fa": "Farsça",
     "fr": "Fransızca",
+    "it": "İtalyanca",
     "ka": "Gürcü",
     "ku": "Kürt",
     "mk": "Makedonca",
     "ps": "Peştuca",
+    "rom": "Romanca",
     "ru": "Rusça",
     "so": "Somali",
     "sq": "Arnavut",
@@ -55,8 +57,8 @@
     "ti": "Tigrinya",
     "tr": "Türkçe",
     "uk": "Ukrayna",
-    "vi": "Vietnam",
     "ur": "Urdu",
+    "vi": "Vietnam",
     "findTranslation": "Türkçe çevirisi mevcuttur"
   },
   "wizard": {

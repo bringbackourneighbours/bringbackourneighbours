@@ -8,10 +8,12 @@
     "es": "spanjisht",
     "fa": "persisht",
     "fr": "frëngjisht",
+    "it": "italian",
     "ka": "gjeorgjiane",
     "ku": "kurde",
     "mk": "maqedonase",
     "ps": "Pashto",
+    "rom": "romani",
     "ru": "ruse",
     "so": "somalez",
     "sq": "shqiptare",
@@ -19,8 +21,8 @@
     "ti": "Tigrinja",
     "tr": "turqisht",
     "uk": "ukrainase",
-    "vi": "vietnameze",
     "ur": "urdu",
+    "vi": "vietnameze",
     "findTranslation": "Përkthimi në dispozicion në shqip",
     "machineTranslation": "Për fat të keq është përkthyer vetëm nga inteligjenca artificiale. Ju lutemi na ndihmoni të përmirësojmë informacionin dhe na dërgoni një email"
   }
