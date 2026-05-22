@@ -29,7 +29,11 @@
       ]
     },
     "vscode": {
-      "extensions": ["astro-build.astro-vscode", "vitest.explorer"]
+      "extensions": [
+        "astro-build.astro-vscode",
+        "vitest.explorer",
+        "ms-azuretools.vscode-containers"
+      ]
     }
   },
   "features": {
