@@ -1,0 +1,45 @@
+all:
+  type: PDF
+  lastChecked: 2026-05-22
+en:
+  slug: resistance
+  title: Resistance against Deportations
+  url: https://web.archive.org/web/20250608173345/https://noborderassembly.blackblogs.org/wp-content/uploads/sites/1214/2022/01/final_eng-Resistance-against-Deportation-LEAFLET.pdf
+ps:
+  slug: resistanceps
+  title: وړاندی مقاومت د ډيپورتیشن پر
+  url: https://web.archive.org/web/20250608173341/https://noborderassembly.blackblogs.org/wp-content/uploads/sites/1214/2022/01/final_pash-Resistance-against-Deportation-LEAFLET.pdf
+# the page is gone
+# see: https://github.com/bringbackourneighbours/bringbackourneighbours/issues/878
+# ar:
+#   slug: resistancear
+#   title: المقاومة ضد الترحيل
+#   url: https://noborderassembly.blackblogs.org/wp-content/uploads/sites/1214/2022/01/final_ar-Resistance-against-Deportation-LEAFLET.pdf
+# de:
+#   slug: widerstand
+#   title: Widerstand gegen Abschiebungen
+#   url: https://noborderassembly.blackblogs.org/wp-content/uploads/sites/1214/2022/01/final_de-Widerstand-gegen-Abschiebungen-LEAFLET.pdf
+# fa:
+#   slug: resistancefa
+#   title: ایستادگی و مقاومتدر برابر دیپورت شدن
+#   url: https://noborderassembly.blackblogs.org/wp-content/uploads/sites/1214/2022/01/final_far-Resistance-against-Deportation-LEAFLET.pdf
+# fr:
+#   slug: resistancefr
+#   title: Resistance contre les Déportations
+#   url: https://noborderassembly.blackblogs.org/wp-content/uploads/sites/1214/2022/01/final_fra-Resistance-against-Deportation-LEAFLET.pdf
+# ru:
+#   slug: resistanceru
+#   title: Сопротивление Депортациям
+#   url: https://noborderassembly.blackblogs.org/wp-content/uploads/sites/1214/2022/01/final_rus-Resistance-against-Deportation-LEAFLET.pdf
+# sr:
+#   slug: resistancesr
+#   title: Otpor Proterivanjima
+#   url: https://noborderassembly.blackblogs.org/wp-content/uploads/sites/1214/2022/01/final_serb-Resistance-against-Deportation-LEAFLET.pdf
+# ti:
+#   slug: resistanceti
+#   title: ምቅዋም ምስጓግ
+#   url: https://noborderassembly.blackblogs.org/wp-content/uploads/sites/1214/2022/01/final_tigr-Resistance-against-Deportation-LEAFLET2.pdf
+# ur:
+#   slug: resistanceur
+#   title: جلاوطنی کے خلافمزاحمت
+#   url: https://noborderassembly.blackblogs.org/wp-content/uploads/sites/1214/2022/01/final_urd-Resistance-against-Deportation-LEAFLET.pdf

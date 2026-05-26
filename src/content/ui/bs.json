@@ -8,10 +8,12 @@
     "es": "španjolski",
     "fa": "farsi",
     "fr": "francuski",
+    "it": "talijanski",
     "ka": "Gruzijski",
     "ku": "Kurdski",
     "mk": "makedonski",
     "ps": "Pashto",
+    "rom": "romani",
     "ru": "ruski",
     "so": "somalijski",
     "sq": "Albanac",
@@ -19,8 +21,8 @@
     "ti": "Tigrinya",
     "tr": "turski",
     "uk": "ukrajinski",
-    "vi": "Vijetnamski",
     "ur": "Urdu",
+    "vi": "Vijetnamski",
     "findTranslation": "Dostupan prevod na bosanski jezik"
   }
 }

@@ -1,0 +1,28 @@
+{
+  "languages": {
+    "ar": "arabo",
+    "bs": "bosniaco",
+    "ckb": "curdo (sorani)",
+    "de": "tedesco",
+    "en": "inglese",
+    "es": "spagnolo",
+    "fa": "farsi",
+    "fr": "francese",
+    "it": "italiano",
+    "ka": "georgiano",
+    "ku": "curdo",
+    "mk": "macedone",
+    "ps": "pashto",
+    "rom": "romanì",
+    "ru": "russo",
+    "so": "somalo",
+    "sq": "albanese",
+    "sr": "serbo",
+    "ti": "tigrino",
+    "tr": "turco",
+    "uk": "ucraino",
+    "ur": "urdu",
+    "vi": "vietnamita",
+    "findTranslation": "La traduzione in italiano è disponibile"
+  }
+}

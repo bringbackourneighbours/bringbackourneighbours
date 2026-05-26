@@ -2,26 +2,28 @@
  * we are using the codes of https://en.wikipedia.org/wiki/IETF_language_tag
  */
 export enum Languages {
+  ALBANIAN = 'sq',
   ARABIC = 'ar',
+  BOSNIAN = 'bs',
   ENGLISH = 'en',
   FARSI = 'fa',
   FRENCH = 'fr',
   GEORGIAN = 'ka',
   GERMAN = 'de',
+  ITALIAN = 'it',
+  KURDISH = 'ku',
+  KURDISH_SORANI = 'ckb',
+  MACEDONIAN = 'mk',
   PASHTO = 'ps',
+  ROMANES = 'rom', // not in IEFT included
   RUSSIAN = 'ru',
   SERBIAN = 'sr',
+  SOMALI = 'so',
   SPANISH = 'es',
   TIGRINYA = 'ti', // not in IEFT included
   TURKISH = 'tr',
   UKRAINIAN = 'uk',
   URDU = 'ur',
-  KURDISH = 'ku',
-  KURDISH_SORANI = 'ckb',
-  ALBANIAN = 'sq',
-  MACEDONIAN = 'mk',
-  BOSNIAN = 'bs',
-  SOMALI = 'so',
   VIETNAMESE = 'vi',
 }
 
@@ -39,9 +41,11 @@ export const UnSupportedLanguages = [
   Languages.ALBANIAN,
   Languages.BOSNIAN,
   Languages.FARSI,
+  Languages.ITALIAN,
   Languages.KURDISH_SORANI,
   Languages.MACEDONIAN,
   Languages.PASHTO,
+  Languages.ROMANES,
   Languages.RUSSIAN,
   Languages.SERBIAN,
   Languages.SOMALI,
