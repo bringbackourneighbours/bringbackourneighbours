@@ -29,7 +29,15 @@
       ]
     },
     "vscode": {
-      "extensions": ["astro-build.astro-vscode", "vitest.explorer"]
+      "extensions": [
+        "astro-build.astro-vscode",
+        "CucumberOpen.cucumber-official",
+        "esbenp.prettier-vscode",
+        "ms-azuretools.vscode-containers",
+        "ms-playwright.playwright",
+        "unifiedjs.vscode-mdx",
+        "vitest.explorer"
+      ]
     }
   },
   "features": {

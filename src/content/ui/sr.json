@@ -8,10 +8,12 @@
     "es": "шпански",
     "fa": "фарси",
     "fr": "француски",
+    "it": "italijanski",
     "ka": "грузијски",
     "ku": "курдски",
     "mk": "македонски",
     "ps": "пашто",
+    "rom": "romani",
     "ru": "руски",
     "so": "сомалијски",
     "sq": "Албанац",
@@ -19,8 +21,8 @@
     "ti": "Тигриња",
     "tr": "турски",
     "uk": "украјински",
-    "vi": "вијетнамски",
     "ur": "Урду",
+    "vi": "вијетнамски",
     "findTranslation": "Превод доступан на српском језику",
     "machineTranslation": "Nažalost, prevedeno je samo pomoću veštačke inteligencije. Molimo te da nam pomogneš da poboljšamo informacije i pošalješ nam mejl"
   }

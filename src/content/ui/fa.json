@@ -6,7 +6,7 @@
     "copiedContentToClipboard": "محتوا در کلیپ بورد کپی شد",
     "copy": "کپی کنید",
     "downloadAllFlyerPdf": "تمام بروشورها به‌صورت یک فایل PDF",
-    "downloadAllZinePdf": "تمام زین\u200Cها در یک فایل PDF",
+    "downloadAllZinePdf": "تمام زین‌ها در یک فایل PDF",
     "downloadPdf": "PDF دانلود به صورت",
     "emergencyKit": "کیت اضطراری علیه اخراج",
     "findAlsoAsPage": "همچنین می توانید این بخش را به صورت جداگانه در صفحه پیدا کنید",
@@ -33,8 +33,8 @@
   "shortLink": {
     "availableInOtherLanguages": "این اطلاعات به زبان های دیگر نیز موجود است",
     "notAvailableInCurrentLanguage": "این محتوا به این زبان موجود نیست",
-    "onlyAvailableInOtherLanguages": "این محتوا فقط به زبان\u200Cهای دیگر موجود است.",
-    "onlyAvailableOnlineInOtherLanguages": "شما می\u200Cتوانید این اطلاعات را در نسخه وب پیدا کنید."
+    "onlyAvailableInOtherLanguages": "این محتوا فقط به زبان‌های دیگر موجود است.",
+    "onlyAvailableOnlineInOtherLanguages": "شما می‌توانید این اطلاعات را در نسخه وب پیدا کنید."
   },
   "languages": {
     "ar": "عربی",
@@ -45,10 +45,12 @@
     "es": "اسپانیایی",
     "fa": "فارسی",
     "fr": "فرانسوی",
+    "it": "ایتالیایی",
     "ka": "گرجی",
     "ku": "کردی",
     "mk": "مقدونی",
     "ps": "پشتو",
+    "rom": "رومانی",
     "ru": "روسی",
     "so": "سومالی",
     "sq": "آلبانیایی",
@@ -56,8 +58,8 @@
     "ti": "تیگرینیا",
     "tr": "ترکی",
     "uk": "اوکراینی",
-    "vi": "ویتنامی",
     "ur": "اردو",
+    "vi": "ویتنامی",
     "findTranslation": "ترجمه فارسی موجود است"
   },
   "wizard": {

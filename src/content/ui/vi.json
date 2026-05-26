@@ -8,10 +8,12 @@
     "es": "Tiếng Tây Ban Nha",
     "fa": "Tiếng Ba Tư",
     "fr": "Tiếng Pháp",
+    "it": "Tiếng Ý",
     "ka": "Tiếng Gruzia",
     "ku": "Tiếng Kurd",
     "mk": "Tiếng Macedonia",
     "ps": "Tiếng Pashto",
+    "rom": "Tiếng Romani",
     "ru": "Tiếng Nga",
     "so": "Tiếng Somali",
     "sq": "Tiếng Albania",
@@ -19,8 +21,8 @@
     "ti": "Tiếng Tigrinya",
     "tr": "Thổ Nhĩ Kỳ",
     "uk": "Tiếng Ukraina",
-    "vi": "Tiếng Việt",
     "ur": "Tiếng Urdu",
+    "vi": "Tiếng Việt",
     "findTranslation": "Có bản dịch tiếng Việt",
     "machineTranslation": "Rất tiếc, bản dịch chỉ được thực hiện bằng trí tuệ nhân tạo. Vui lòng giúp chúng tôi cải thiện thông tin và gửi cho chúng tôi một email."
   }
