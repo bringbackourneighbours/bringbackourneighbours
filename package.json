@@ -11,7 +11,7 @@
     "pdf-lib": "^1.17.1",
     "puppeteer": "^24.42.0",
     "qrcode": "^1.5.4",
-    "typescript": "^5.9.3"
+    "typescript": "^6.0.3"
   },
   "devDependencies": {
     "@cucumber/cucumber": "^12.8.1",
