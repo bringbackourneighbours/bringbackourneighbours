@@ -8,6 +8,7 @@ import {
   getCanonicalUrlToPage,
 } from '../util/get-canonical-url';
 
+import Block from './markdown/Block.astro';
 import Stack from './design/Stack.astro';
 import H2 from './design/H2.astro';
 import MenuLink from './design/MenuLink.astro';
@@ -111,4 +112,8 @@ const materialLabel = await useUiTranslation('meta.material', lang);
     canonicalUrl={materialCanonicalUrl ?? ''}
     label={materialLabel}
   />
+</Stack>
+
+<Stack>
+  <Block identifier="feedback" />
 </Stack>
