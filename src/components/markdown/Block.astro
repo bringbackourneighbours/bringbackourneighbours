@@ -1,16 +1,17 @@
 ---
 import { type CollectionEntry, getCollection } from 'astro:content';
 import { type LanguagesValue } from '../../model/languages';
-import type { StandaloneCollections } from '../../model/standalone-collections';
+import type { MarkdownCollections } from '../../model/standalone-collections';
 
 import MarkdownEntry from './MarkdownEntry.astro';
 import NotFoundError from '../design/NotFoundError.astro';
 import NoteMachineTranslation from '../design/NoteMachineTranslation.astro';
+import NoteOnlyFallbackTranslation from '../design/NoteOnlyFallbackTranslation.astro';
 
 export interface Props {
   identifier: string;
   lang?: LanguagesValue;
-  collection?: StandaloneCollections;
+  collection?: MarkdownCollections;
   recursive?: boolean;
   isRootLevelContent?: boolean;
 }
@@ -27,12 +28,28 @@ const blockEntries = await getCollection(collection, (block) => {
   return block.slug === `${identifier}/${lang}`;
 });
 
-const blockEntry = blockEntries[0] as CollectionEntry<StandaloneCollections>;
+let blockEntry = blockEntries[0] as CollectionEntry<MarkdownCollections>;
 
 if (isRootLevelContent) {
   Astro.locals.levelShift = 0;
 }
+
+let isFallback = false;
+const fallbackToLang = blockEntry?.data?.fallbackToLang;
+
+if (fallbackToLang !== lang) {
+  const fallbackEntries = await getCollection(collection, (block) => {
+    return block.slug === `${identifier}/${fallbackToLang}`;
+  });
+
+  if (fallbackEntries.length > 0) {
+    blockEntry = fallbackEntries[0];
+    isFallback = true;
+  }
+}
 ---
+
+{isFallback && <NoteOnlyFallbackTranslation entry={blockEntry} />}
 
 {
   blockEntry ? (

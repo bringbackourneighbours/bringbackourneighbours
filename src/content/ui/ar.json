@@ -25,7 +25,8 @@
     "subtitle": "الوقوف معًا متضامنين ضد سياسة الترحيل في ساكسونيا",
     "supporters": "نصائح للداعمين المتطوعين",
     "title": "Bring Back Our Neighbours",
-    "updated": "آخر تحديث: "
+    "updated": "آخر تحديث: ",
+    "onlyInFallbackLanguage": "هذا المحتوى موجود فقط بلغة أخرى"
   },
   "wizard": {
     "isThereDangerQuestion": "هل أنت أو أي شخص آخر معرض لخطر الترحيل؟",

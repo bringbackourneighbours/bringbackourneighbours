@@ -2,10 +2,10 @@
 import type { CollectionEntry } from 'astro:content';
 
 import { useUiTranslation } from '../../content/use-ui-translation.ts';
-import type { StandaloneCollections } from '../../model/standalone-collections.ts';
+import type { MarkdownCollections } from '../../model/standalone-collections.ts';
 
 interface Props {
-  entry: CollectionEntry<StandaloneCollections>;
+  entry: CollectionEntry<MarkdownCollections>;
   isRootLevelContent?: boolean;
   isStrong?: boolean;
 }
