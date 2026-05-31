@@ -56,7 +56,7 @@ if (fallbackToLang !== lang) {
   }
 }
 
-// With in a blockbox we shift all the level of the headings up
+// With in a StandAloneBox we shift all the level of the headings up
 // to match the whole docs structure.
 Astro.locals.levelShift = level;
 ---
@@ -86,7 +86,7 @@ Astro.locals.levelShift = level;
         </Accordion>
       )
     ) : (
-      <NotFoundError context={`BlockBox/${identifier}/${lang}`} />
+      <NotFoundError context={`StandAloneBox/${identifier}/${lang}`} />
     )
   }
 </article>

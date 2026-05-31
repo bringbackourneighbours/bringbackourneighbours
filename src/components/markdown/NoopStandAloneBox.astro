@@ -1,10 +1,10 @@
 ---
-import type { Props } from './BlockBox.astro';
+import type { Props } from './StandAloneBox.astro';
 
 const props: Props = Astro.props;
 ---
 
-<pre>&lt;BlockBox
+<pre>&lt;StandAloneBox
   collection&#x3D;&quot;{props.collection}&quot;
   identifier&#x3D;&quot;{props.identifier}&quot;
 {!Astro.slots.has('default')  ? <>&#x2F;&gt;</> : <>&gt;</>}</pre>
@@ -14,7 +14,7 @@ const props: Props = Astro.props;
       <pre>
         <slot />
       </pre>
-      <pre>&lt;&#x2F;BlockBox&gt;</pre>
+      <pre>&lt;&#x2F;StandAloneBox&gt;</pre>
     </>
   )
 }
