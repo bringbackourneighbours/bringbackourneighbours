@@ -12,6 +12,7 @@ import {
   getCanonicalUrlToKit,
   getCanonicalUrlToPage,
 } from '../util/get-canonical-url';
+import { useContentData } from '../content/use-content-data.ts';
 import { useUiTranslation } from '../content/use-ui-translation.ts';
 import { mapStaticPathsForStandalone } from '../util/map-static-paths-for-standalone';
 import { getCollection, getEntry } from 'astro:content';
@@ -51,6 +52,10 @@ const materialCanonicalUrl = await getCanonicalUrlToPage(
 );
 const imprintCanonicalUrl = await getCanonicalUrlToPage(
   await getEntry('pages', `imprint/${lang}`)!,
+  lang,
+);
+const countriesCanonicalUrl = await getCanonicalUrlToPage(
+  await getEntry('pages', `countries/${lang}`)!,
   lang,
 );
 ---
@@ -186,9 +191,17 @@ const imprintCanonicalUrl = await getCanonicalUrlToPage(
         <li>
           <Link
             lang={lang}
+            href={countriesCanonicalUrl || ''}
+          >
+            {(await useContentData('pages', 'countries', lang))?.title}
+          </Link>
+        </li>
+        <li>
+          <Link
+            lang={lang}
             href={contactsCanonicalUrl || ''}
           >
-            {useUiTranslation('meta.contacts', lang)}
+            {(await useContentData('pages', 'contacts', lang))?.title}
           </Link>
         </li>
         <li>
@@ -196,7 +209,7 @@ const imprintCanonicalUrl = await getCanonicalUrlToPage(
             lang={lang}
             href={formsCanonicalUrl || ''}
           >
-            {useUiTranslation('meta.forms', lang)}
+            {(await useContentData('pages', 'forms', lang))?.title}
           </Link>
         </li>
         <li>
@@ -204,7 +217,7 @@ const imprintCanonicalUrl = await getCanonicalUrlToPage(
             lang={lang}
             href={publicityCanonicalUrl || ''}
           >
-            {useUiTranslation('meta.publicity', lang)}
+            {(await useContentData('pages', 'publicity', lang))?.title}
           </Link>
         </li>
         <li>
@@ -212,7 +225,7 @@ const imprintCanonicalUrl = await getCanonicalUrlToPage(
             lang={lang}
             href={professionalsCanonicalUrl || ''}
           >
-            {useUiTranslation('meta.professionals', lang)}
+            {(await useContentData('pages', 'professionals', lang))?.title}
           </Link>
         </li>
         <li>
@@ -220,7 +233,7 @@ const imprintCanonicalUrl = await getCanonicalUrlToPage(
             lang={lang}
             href={materialCanonicalUrl || ''}
           >
-            {useUiTranslation('meta.material', lang)}
+            {(await useContentData('pages', 'material', lang))?.title}
           </Link>
         </li>
         <li>
@@ -228,7 +241,7 @@ const imprintCanonicalUrl = await getCanonicalUrlToPage(
             lang={lang}
             href={imprintCanonicalUrl || ''}
           >
-            {useUiTranslation('meta.imprint', lang)}
+            {(await useContentData('pages', 'imprint', lang))?.title}
           </Link>
         </li>
       </ul>
