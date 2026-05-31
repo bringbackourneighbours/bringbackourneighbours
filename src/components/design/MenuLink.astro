@@ -7,7 +7,7 @@ import Link from './Link.astro';
 
 interface Props {
   lang?: LanguagesValue;
-  label: string;
+  label?: string;
   canonicalUrl: string;
 }
 
@@ -24,8 +24,8 @@ const { lang = Astro.locals.lang, label, canonicalUrl } = Astro.props;
   lang={lang}
   href={canonicalUrl}
 >
-  <p class="h3">
+  <div class="h3">
     {label}
     {getLanguageDirection(lang) === 'ltr' ? '→' : '←'}
-  </p>
+  </div>
 </Link>
