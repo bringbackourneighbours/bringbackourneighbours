@@ -1,0 +1,19 @@
+---
+import type { CollectionEntry } from 'astro:content';
+
+import { useUiTranslation } from '../../content/use-ui-translation.ts';
+import type { MarkdownCollections } from '../../model/standalone-collections.ts';
+import LanguageChip from './LanguageChip.astro';
+
+interface Props {
+  entry: CollectionEntry<MarkdownCollections>;
+}
+
+const { entry } = Astro.props;
+---
+
+<em>
+  {useUiTranslation('meta.onlyInFallbackLanguage', Astro.locals.lang)}:
+
+  <LanguageChip lang={entry.data.lang} />
+</em>
