@@ -65,11 +65,10 @@ should work on all kinds of machines.
 
 This projects needs to have the following software installed:
 
-- [node.js](https://nodejs.org/en/download) LTS with npm
+- [node.js](https://nodejs.org/en/download) LTS/24 with npm
 - all [dependencies](https://pptr.dev/guides/system-requirements) of puppeteer with chromium.
-
-New with playwright
-sudo npx playwright install-deps
+- all [dependencies](https://playwright.dev/docs/intro#system-requirements) of playwright with chromium.
+  - On most linux-system you can just use `sudo npx playwright install-deps`.
 
 ## Contributing
 

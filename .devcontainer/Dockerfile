@@ -1,10 +1,8 @@
 FROM ubuntu:24.04
 
-# TODO: use version from node-version
-ARG NODE_VERSION=22
-
+# install some basic tools
 # install puppeteer deps
-# see: https://pptr.dev/troubleshooting#running-puppeteer-in-docker
+# see: https://pptrev/troubleshooting#running-puppeteer-in-docker
 RUN apt-get update \
     && apt-get install -y curl wget gnupg openssh-client jq\
     && wget -q -O - https://dl-ssl.google.com/linux/linux_signing_key.pub | apt-key add - \
