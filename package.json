@@ -13,6 +13,9 @@
     "qrcode": "^1.5.4",
     "typescript": "^5.9.3"
   },
+  "engines": {
+    "node": ">=20"
+  },
   "devDependencies": {
     "@cucumber/cucumber": "^12.8.1",
     "@eslint/compat": "^2.0.5",
