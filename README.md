@@ -66,7 +66,6 @@ should work on all kinds of machines.
 This projects needs to have the following software installed:
 
 - [node.js](https://nodejs.org/en/download) LTS/24 with npm
-- all [dependencies](https://pptr.dev/guides/system-requirements) of puppeteer with chromium.
 - all [dependencies](https://playwright.dev/docs/intro#system-requirements) of playwright with chromium.
   - On most linux-system you can just use `sudo npx playwright install-deps`.
 
@@ -405,11 +404,11 @@ There you can copy the whole content into your clipboard and the paste it with i
 
 ### Creation of printable PDFs
 
-To generate uptodate pdf versions of the content, we use `puppeteer` within the ci-pipeline. This is hooked up as
+To generate uptodate pdf versions of the content, we use `playwrigth` within the ci-pipeline. This is hooked up as
 astro-intergration but works also locally in dev mode.
 
-In general puppeteer will open up a (headless) browers and visit one page per flyer and kit, when the page is fully
-puppeteer will use the browsers buildin "print" function and export the page as pdf.
+In general playwrigth will open up a (headless) browers and visit one page per flyer and kit, when the page is fully
+playwrigth will use the browsers buildin "print" function and export the page as pdf.
 
 We can use CSS and also a [Astro.local](https://docs.astro.build/en/reference/api-reference/#locals) `isPrint` to
 programmtically change the design and behavior of the compontents so the same content can be used for web and print.

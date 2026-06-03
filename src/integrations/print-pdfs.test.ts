@@ -7,13 +7,13 @@ vi.mock('node:fs/promises', () => ({
   mkdir: vi.fn().mockResolvedValue(undefined),
   writeFile: vi.fn().mockResolvedValue(undefined),
 }));
-// Mock for puppeteer
+// Mock for playwright
 const mockBrowser = {
   version: vi.fn().mockResolvedValue('MockBrowser'),
   close: vi.fn().mockResolvedValue(undefined),
 };
-vi.mock('puppeteer', () => ({
-  default: {
+vi.mock('playwright', () => ({
+  chromium: {
     launch: vi.fn(() => mockBrowser),
   },
 }));
@@ -68,7 +68,7 @@ describe('printPdfs Integration', () => {
         { pathname: 'public/page3' }, // should be ignored
       ];
       const { mkdir, writeFile } = await import('node:fs/promises');
-      const puppeteer = (await import('puppeteer')).default;
+      const { chromium } = await import('playwright');
       const { printHtmlToPdf } = await import('../util/print-html-to-pdf.ts');
       const { getPrintDistDir } = await import('../util/get-print-dist-dir.ts');
       const { exec } = await import('node:child_process');
@@ -84,7 +84,7 @@ describe('printPdfs Integration', () => {
         recursive: true,
       });
       expect(exec).toHaveBeenCalledWith('npm run preview');
-      expect(puppeteer.launch).toHaveBeenCalledTimes(1);
+      expect(chromium.launch).toHaveBeenCalledTimes(1);
       expect(printHtmlToPdf).toHaveBeenCalledTimes(2);
       expect(printHtmlToPdf).toHaveBeenCalledWith(
         'http://localhost:4321/internal-print/page1',
