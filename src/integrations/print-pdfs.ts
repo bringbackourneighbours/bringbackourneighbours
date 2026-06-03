@@ -1,13 +1,11 @@
 import { type AstroIntegration, type AstroIntegrationLogger } from 'astro';
 import { mkdir, writeFile } from 'node:fs/promises';
-import puppeteer, { Browser } from 'puppeteer';
 import { ChildProcess, exec } from 'node:child_process';
+import { type Browser, chromium } from 'playwright';
 
 import { previewUrl } from '../../astro.config.mjs';
-
-import { printHtmlToPdf } from '../util/print-html-to-pdf.ts';
-
-import { getPrintDistDir } from '../util/get-print-dist-dir.ts';
+import { printHtmlToPdf } from '../util/print-html-to-pdf';
+import { getPrintDistDir } from '../util/get-print-dist-dir';
 
 const KILL_PREVIEW_PROCESS_TIMEOUT = 5000;
 
@@ -31,10 +29,8 @@ export async function printPdfsImpl(
   });
   logger.debug(`Launched Preview Process ${previewProcess.pid}`);
 
-  const browser = await puppeteer.launch({
-    args: ['--no-sandbox', '--disable-setuid-sandbox'],
-  });
-  logger.debug(`Launched puppeteer Browser ${await browser.version()}`);
+  const browser = await chromium.launch({ headless: true });
+  logger.debug(`Launched chromium Browser ${await browser.version()}`);
 
   try {
     const printJobs = pages
@@ -68,7 +64,7 @@ async function closePreviewAndBrowser(
   previewProcess: ChildProcess,
 ) {
   await browser.close();
-  logger.debug('Closed puppeteer Browser.');
+  logger.debug('Closed chromium Browser.');
 
   await new Promise<void>((resolve, reject) => {
     setTimeout(() => {

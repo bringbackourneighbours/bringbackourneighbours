@@ -252,6 +252,8 @@ Dar macht man am besten nach dem deployment per z.b. puppeteer. Das Frontend ste
 Dabei könnte der "normale" Inhalt mit Print media query gestyled werde oder... Vielleicht ist es praktikabel eine extra "hidden" Seite dafür zu haben, das macht das debugging einfacher. Zumal es auf dem Print auch eigene inhalte gibt (z.b. visdp und Logo und so was)
 Im Anschluss an den Print könnte man noch mit ghostscript o.ä. noch ein bisschen post processing machen: Komprimierung und ggbf auch zusammen Mergen von allen flyern je Sprache+Layouts für den Massendruck.
 
+Später sind wir von puppeteer auf playwright gewechselt. Die beiden Tools sind in Hinblick auf Automatisierung nahezu identisch, aber playwright ist etwas komfortabler um damit zusätzlich tests zu fahren.
+
 ### Shortlinks
 
 Shortlink per API Route
@@ -437,21 +439,14 @@ TBD
 
 #### PDFs
 
-PDF fof the fyler and kits content are generated with the help of puppeteer. The process is a bit hachy but works
+PDFs for the flyer and kits content are generated with the help of playwright.
+We created a set of "hidden" pages that will be rendered static html for the flyers and kits. This html is styled to look good when printed.
 
-Currently, we provide a page that just renders static html for the flyers and kits. This html is styles to lok good when printed.
+Now, with in the same build process an we start an astro intergration.
 
-For those the build will produce static html and put it in the `dist/`-folder.
+This intergration then starts a astro preview (serving the freshly built html documents). Now we also launch a headless chromium that will visit those pages and then "print" them to pdf.
 
-Now, with in the same build process an endpoint-page `endpoint.pdf.ts` will provide a GET endpoint that return the pdf as body... but is also statically rendered, and therefor just produce a pdf file.
-
-to actually create the pdf the endpoints code will read the static html we just generate (work because the build is in order of the alphabet) and boot up a puppeteer and load the static html as content.
-
-With their approach we cannot load the linked stylesheet in the html document. To fix this we visit the production page just quickly and then load the static html. This means that changes in the global css will only be effective after being deployed one additionally time.
-
-Alternatively we could use a astro (or vite) integration, but this produces the same result, while making the debugging more difficult.
-
-In the future, we might add some postprocessing of the pdfs (via ghostscript or similar) to produce files that can be printed easier.
+Afterwards there is some postprocessing of the pdfs. First we check if the count of pages in the pdf documents is valid and then merge those pdfs together, to produce files that can be printed easier.
 
 ### Technology
 
