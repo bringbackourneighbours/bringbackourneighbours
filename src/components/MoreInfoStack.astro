@@ -1,6 +1,7 @@
 ---
 import { type LanguagesValue } from '../model/languages';
 import { getEntry } from 'astro:content';
+import { useContentData } from '../content/use-content-data.ts';
 import { useUiTranslation } from '../content/use-ui-translation.ts';
 import {
   getCanonicalUrlForPath,
@@ -8,6 +9,7 @@ import {
   getCanonicalUrlToPage,
 } from '../util/get-canonical-url';
 
+import Block from './markdown/Block.astro';
 import Stack from './design/Stack.astro';
 import H2 from './design/H2.astro';
 import MenuLink from './design/MenuLink.astro';
@@ -49,11 +51,6 @@ const materialCanonicalUrl = await getCanonicalUrlToPage(
 const kitAffectedLabel = await useUiTranslation('meta.emergencyKit', lang);
 const allFlyersLabel = await useUiTranslation('meta.allFlyers', lang);
 const allKitsLabel = await useUiTranslation('meta.allKits', lang);
-const contactsLabel = await useUiTranslation('meta.contacts', lang);
-const formsLabel = await useUiTranslation('meta.forms', lang);
-const publicityLabel = await useUiTranslation('meta.publicity', lang);
-const professionalsLabel = await useUiTranslation('meta.professionals', lang);
-const materialLabel = await useUiTranslation('meta.material', lang);
 ---
 
 <Stack>
@@ -89,26 +86,30 @@ const materialLabel = await useUiTranslation('meta.material', lang);
   <MenuLink
     lang={lang}
     canonicalUrl={contactsCanonicalUrl ?? ''}
-    label={contactsLabel}
+    label={(await useContentData('pages', 'contacts', lang))?.title}
   />
   <MenuLink
     lang={lang}
     canonicalUrl={publicityCanonicalUrl ?? ''}
-    label={publicityLabel}
+    label={(await useContentData('pages', 'publicity', lang))?.title}
   />
   <MenuLink
     lang={lang}
     canonicalUrl={professionalsCanonicalUrl ?? ''}
-    label={professionalsLabel}
+    label={(await useContentData('pages', 'professionals', lang))?.title}
   />
   <MenuLink
     lang={lang}
     canonicalUrl={formsCanonicalUrl ?? ''}
-    label={formsLabel}
+    label={(await useContentData('pages', 'forms', lang))?.title}
   />
   <MenuLink
     lang={lang}
     canonicalUrl={materialCanonicalUrl ?? ''}
-    label={materialLabel}
+    label={(await useContentData('pages', 'material', lang))?.title}
   />
+</Stack>
+
+<Stack>
+  <Block identifier="feedback" />
 </Stack>

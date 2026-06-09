@@ -32,7 +32,8 @@ const translationSlugs = await getTranslationsUrlsForKit(
 );
 
 // FIXME: this should be the SHORTURL and not the canonical
-const canonicalUrl = (await getCanonicalUrlToKit(entry, entry.data.lang)) || '';
+const canonicalUrl =
+  (await getCanonicalUrlToKit(entry, entry.data.lang, true)) || '';
 const germanTitle =
   (await useContentData('kits', entry.data.identifier, Languages.GERMAN))
     ?.title || '';

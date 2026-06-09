@@ -31,6 +31,9 @@ export async function getTranslationsUrls<T extends StandaloneCollections>(
       .filter((entry: CollectionEntry<T>) => {
         return entry.data.lang !== lang;
       })
+      .filter((entry: CollectionEntry<T>) => {
+        return !entry.data.fallbackToLang;
+      })
       .map(async (entry: CollectionEntry<T>) => {
         return {
           lang: entry.data.lang,

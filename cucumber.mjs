@@ -1,8 +1,9 @@
 const common = {
   import: ['tsx/esm', 'features/**/*.ts'],
   worldParameters: {
-    baseUrl: 'https://bringbackourneighbours.de/',
+    baseUrl: 'http://localhost:4321/',
     useDevServer: false,
+    headless: false,
   },
 };
 
@@ -10,10 +11,20 @@ export default {
   ...common,
 };
 
+export const prod = {
+  ...common,
+  worldParameters: {
+    baseUrl: 'https://bringbackourneighbours.de/',
+    useDevServer: false,
+    headless: true,
+  },
+};
+
 export const dev = {
   ...common,
   worldParameters: {
     baseUrl: 'http://localhost:4321/',
     useDevServer: true,
+    headless: true,
   },
 };

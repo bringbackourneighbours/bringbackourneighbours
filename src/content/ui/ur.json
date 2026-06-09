@@ -1,45 +1,4 @@
 {
-  "meta": {
-    "allFlyers": "تمام فلائیرز",
-    "allKits": "تمام ایمرجنسی کٹس",
-    "contacts": "ذمہ دار افراد اور مددگاروں سے رابطہ کریں۔",
-    "copiedContentToClipboard": "مواد کلپ بورڈ پر کاپی ہو گیا۔",
-    "copy": "متن کاپی کریں۔",
-    "downloadAllFlyerPdf": "تمام فلائرز ایک ہی PDF میں",
-    "downloadAllZinePdf": "تمام زینز ایک واحد پی ڈی ایف کے طور پر",
-    "downloadPdf": "ڈاؤن لوڈ کریں: پی ڈی ایف",
-    "emergencyKit": "ملک بدری کے خلاف ایمرجنسی کٹ",
-    "findAlsoAsPage": "صفحہ کے طور پر بھی تلاش کریں۔",
-    "findAlsoInFlyer": "فلائر میں بھی تلاش کریں۔",
-    "forms": "پرنٹنگ کے لیے ٹیمپلیٹس اور فارم",
-    "home": "ہوم پیج",
-    "imprint": "امپرنٹ",
-    "infosAgainstDeportation": "یہاں آپ مزید معلومات حاصل کر سکتے ہیں کہ آپ ملک بدری کو روکنے کے لیے کیا کر سکتے ہیں۔",
-    "machineTranslation": "بدقسمتی سے یہ ترجمہ صرف مصنوعی ذہانت کے ذریعے کیا گیا ہے۔ براہِ کرم ہماری مدد کریں کہ معلومات کو بہتر بنائیں اور ہمیں ای میل بھیجیں",
-    "material": "پرنٹنگ کے لیے مواد",
-    "moreInfo": "مزید معلومات",
-    "moreInfoAbout": "کے بارے میں مزید معلومات",
-    "notFound": "نہیں ملا",
-    "notFoundText": "مواد نہیں مل سکا۔ لنک شاید پرانا ہے یا اس میں ٹائپنگ کی غلطی ہے۔",
-    "professionals": "سماجی کام کے پیشہ ور افراد کے لیے معلومات",
-    "publicity": "تعلقات عامہ کے لیے نکات",
-    "share": "شیئر کریں",
-    "sharedLinkToClipboard": "کلپ بورڈ سے لنک کا اشتراک کیا۔",
-    "subtitle": "سیکسنی کی ملک بدری کی پالیسی کے خلاف یکجہتی کے لیے ایک ساتھ",
-    "supporters": "رضاکاروں کے حامیوں کے لیے معلومات",
-    "title": "ہمارے پڑوسیوں کو واپس لائیں۔",
-    "updated": "اپ ڈیٹ"
-  },
-  "shortLink": {
-    "availableInOtherLanguages": "یہ معلومات دوسری زبانوں میں بھی دستیاب ہے۔",
-    "onlyAvailableInOtherLanguages": "",
-    "onlyAvailableOnlineInOtherLanguages": ""
-  },
-  "wizard": {
-    "isThereDangerQuestion": "کیا آپ کو نکالنے کا خطرہ ہے؟",
-    "areYouInDangerQuestion": "کیا آپ کو خود ملک بدری کی دھمکی دی گئی ہے؟",
-    "someoneElseInDangerQuestion": "کیا آپ کسی ایسے شخص کی حمایت کرنا چاہتے ہیں جسے ملک بدری کا خطرہ ہے؟"
-  },
   "languages": {
     "ar": "عربی",
     "bs": "بوسنیائی",

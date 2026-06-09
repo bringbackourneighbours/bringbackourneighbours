@@ -30,6 +30,11 @@ describe('getTranslationsUrls', () => {
       lang: 'en',
     },
     {
+      identifier: 'notEn',
+      lang: 'en',
+      fallbackToLang: 'de',
+    },
+    {
       identifier: 'xxx',
       lang: 'fr',
     },
@@ -62,7 +67,18 @@ describe('getTranslationsUrls', () => {
     ).toEqual([{ lang: 'en', url: 'en-aaa' }]);
   });
 
-  it('return nothing', async () => {
+  it('should not return when fallback is set', async () => {
+    expect(
+      await getTranslationsUrls(
+        mockEntriesData.map((data) => ({ data }) as CollectionEntry<'flyers'>),
+        Languages.FRENCH,
+        'notEn',
+        (entry, lang) => Promise.resolve(`${lang}-${entry.data.identifier}`),
+      ),
+    ).toEqual([]);
+  });
+
+  it('should return nothing when no match', async () => {
     expect(
       await getTranslationsUrls(
         mockEntriesData.map((data) => ({ data }) as CollectionEntry<'flyers'>),

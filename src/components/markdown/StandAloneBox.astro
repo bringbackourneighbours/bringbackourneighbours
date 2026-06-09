@@ -1,0 +1,92 @@
+---
+import { type LanguagesValue } from '../../model/languages';
+import type { StandaloneCollections } from '../../model/standalone-collections';
+
+import { type CollectionEntry, getCollection } from 'astro:content';
+import { useUiTranslation } from '../../content/use-ui-translation.ts';
+
+import Accordion from '../design/Accordion.astro';
+import NotFoundError from '../design/NotFoundError.astro';
+import ContentMetaSection from '../design/ContentMetaSection.astro';
+
+export interface Props {
+  identifier: string;
+  lang: LanguagesValue;
+  collection?: StandaloneCollections;
+  level?: number;
+}
+
+const {
+  identifier,
+  lang = Astro.locals.lang,
+  collection = 'flyers',
+  level = 2,
+} = Astro.props;
+
+const isPrint = Astro.locals.isPrint;
+const showOnlyLink = !isPrint && collection === 'pages';
+
+let blockEntry: CollectionEntry<StandaloneCollections> = (
+  await getCollection(collection, (block) => {
+    return block.slug === `${identifier}/${lang}`;
+  })
+)[0];
+
+const title = isPrint
+  ? collection !== 'pages'
+    ? blockEntry?.data.title
+    : undefined
+  : collection !== 'pages'
+    ? `${await useUiTranslation('meta.moreInfoAbout', lang)}: "${blockEntry?.data.title}"`
+    : blockEntry?.data.title;
+
+let isFallback = false;
+const fallbackToLang = blockEntry.data.fallbackToLang;
+
+if (fallbackToLang !== lang) {
+  const fallbackEntry = (
+    await getCollection(collection, (block) => {
+      return block.slug === `${identifier}/${fallbackToLang}`;
+    })
+  )[0];
+
+  if (fallbackEntry) {
+    blockEntry = fallbackEntry;
+    isFallback = true;
+  }
+}
+
+// With in a StandAloneBox we shift all the level of the headings up
+// to match the whole docs structure.
+Astro.locals.levelShift = level;
+---
+
+<article aria-label={title}>
+  {
+    blockEntry ? (
+      showOnlyLink ? (
+        <ContentMetaSection
+          collection={collection}
+          entry={blockEntry}
+          isFallback={isFallback}
+          lang={lang}
+        />
+      ) : (
+        <Accordion
+          title={title}
+          level={1}
+        >
+          <ContentMetaSection
+            collection={collection}
+            entry={blockEntry}
+            isFallback={isFallback}
+          >
+            <slot />
+          </ContentMetaSection>
+        </Accordion>
+      )
+    ) : (
+      <NotFoundError context={`StandAloneBox/${identifier}/${lang}`} />
+    )
+  }
+</article>

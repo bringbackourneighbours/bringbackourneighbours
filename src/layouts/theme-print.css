@@ -47,8 +47,9 @@
 /* Fixes for languages */
 html[lang='ka'] {
   /**
-      georgian is a very verbose language, so we need to scale it down a little
-       */
+                georgian is a very verbose language, so we need to scale it down a little
+                 */
+
   .a6 {
     --bbon-size-print-end-footer-offset: -2mm;
     --bbon-size-p: 7.2pt;
@@ -59,11 +60,24 @@ html[lang='ka'] {
   }
 }
 
-html[lang='fa'] {
+html[lang='fa'],
+html[lang='tr'] {
   /**
-      the footer in farsi is bigger
-       */
+      the footer in farsi and turkish is bigger because they are both not supported yet,
+      so they will offer links to all the other languages.
+      when we set them active the same will happen to all other langs es well
+  */
+
   .a7 {
     --bbon-size-print-end-footer-offset: -8mm;
+  }
+}
+
+html[lang='tr'] {
+  /*
+        the fallbacks to german take up some space... so we need to set a smaller font for now */
+
+  .a6 {
+    --bbon-size-p: 8pt;
   }
 }
