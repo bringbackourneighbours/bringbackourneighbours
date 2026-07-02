@@ -1,6 +1,6 @@
 import { degrees, PageSizes, PDFDocument, PDFPage } from 'pdf-lib';
 import fs from 'fs';
-import { RTL_LANGUAGES } from '../model/languages.ts';
+import { RTL_LANGUAGES } from '../model/languages';
 
 const placeZineOnPage = async (
   pdfDoc: PDFDocument,

@@ -1,4 +1,4 @@
-import type { ColorVariants } from '../model/color-variants.ts';
+import type { ColorVariants } from '../model/color-variants';
 
 export const invertColorVariant = (input: ColorVariants): ColorVariants => {
   switch (input) {

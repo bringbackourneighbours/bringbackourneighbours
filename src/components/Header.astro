@@ -1,6 +1,6 @@
 ---
 import type { LanguagesValue } from '../model/languages';
-import type { StandaloneContentProps } from '../model/standalone-collections.ts';
+import type { StandaloneContentProps } from '../model/standalone-collections';
 
 import AnimatedCloseButton from './design/AnimatedCloseButton.astro';
 import Link from './design/Link.astro';
@@ -12,8 +12,8 @@ import {
   getCanonicalUrlToKit,
   getCanonicalUrlToPage,
 } from '../util/get-canonical-url';
-import { useContentData } from '../content/use-content-data.ts';
-import { useUiTranslation } from '../content/use-ui-translation.ts';
+import { useContentData } from '../content/use-content-data';
+import { useUiTranslation } from '../content/use-ui-translation';
 import { mapStaticPathsForStandalone } from '../util/map-static-paths-for-standalone';
 import { getCollection, getEntry } from 'astro:content';
 

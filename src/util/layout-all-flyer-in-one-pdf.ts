@@ -1,7 +1,7 @@
 import { PageSizes, PDFDocument, PDFPage } from 'pdf-lib';
 import fs from 'fs';
-import { chunks } from './list-helper.ts';
-import { RTL_LANGUAGES } from '../model/languages.ts';
+import { chunks } from './list-helper';
+import { RTL_LANGUAGES } from '../model/languages';
 
 const placeFlyerOnPages = async (
   pdfDoc: PDFDocument,

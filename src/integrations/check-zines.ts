@@ -2,7 +2,7 @@ import { type AstroIntegration } from 'astro';
 import fs from 'fs';
 import { PDFDocument } from 'pdf-lib';
 
-import { getPdfFileNames } from '../util/get-flyer-pdf-file-names.ts';
+import { getPdfFileNames } from '../util/get-flyer-pdf-file-names';
 
 const A7_ON_A4_PAGE_COUNT = 8;
 

@@ -1,7 +1,7 @@
 import { describe, expect, it } from 'vitest';
 
-import { render } from '../../testing/render.ts';
-import { Languages } from '../../model/languages.ts';
+import { render } from '../../testing/render';
+import { Languages } from '../../model/languages';
 
 import Accordion from './Accordion.astro';
 

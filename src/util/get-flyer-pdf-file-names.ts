@@ -1,6 +1,6 @@
 import { readdir } from 'node:fs/promises';
 
-import { getPrintDistDir } from './get-print-dist-dir.ts';
+import { getPrintDistDir } from './get-print-dist-dir';
 
 export const getFlyerPdfFileNames = async (
   distDir: string,

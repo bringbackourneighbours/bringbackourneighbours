@@ -1,5 +1,5 @@
 import { describe, expect, it } from 'vitest';
-import { getAllExternalLinksEntries } from './get-all-external-links-entries.ts';
+import { getAllExternalLinksEntries } from './get-all-external-links-entries';
 
 describe('getAllExternalLinksEntries', async () => {
   it('return on empty', async () => {

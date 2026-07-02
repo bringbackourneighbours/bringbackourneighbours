@@ -1,11 +1,8 @@
 import { describe, expect, it, vi } from 'vitest';
-import { Languages } from '../model/languages.ts';
+import { Languages } from '../model/languages';
 import type { CollectionEntry, Render } from 'astro:content';
-import {
-  getCanonicalUrlFn,
-  getCanonicalUrlForPath,
-} from './get-canonical-url.ts';
-import type { StandaloneCollections } from '../model/standalone-collections.ts';
+import { getCanonicalUrlFn, getCanonicalUrlForPath } from './get-canonical-url';
+import type { StandaloneCollections } from '../model/standalone-collections';
 
 vi.mock('../../astro.config.mjs', () => ({
   default: {

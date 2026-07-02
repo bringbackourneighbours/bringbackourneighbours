@@ -2,8 +2,8 @@ import type { CollectionEntry } from 'astro:content';
 import { describe, expect, it } from 'vitest';
 import { within } from '@testing-library/dom';
 
-import { render } from '../../testing/render.ts';
-import { Languages } from '../../model/languages.ts';
+import { render } from '../../testing/render';
+import { Languages } from '../../model/languages';
 
 import AddressDesign from './AddressDesign.astro';
 

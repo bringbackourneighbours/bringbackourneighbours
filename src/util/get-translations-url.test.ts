@@ -1,7 +1,7 @@
 import { describe, expect, it } from 'vitest';
-import { getTranslationsUrls } from './get-translations-url.ts';
+import { getTranslationsUrls } from './get-translations-url';
 import type { CollectionEntry } from 'astro:content';
-import { Languages } from '../model/languages.ts';
+import { Languages } from '../model/languages';
 
 describe('getTranslationsUrls', () => {
   const mockEntriesData: CollectionEntry<'flyers'>['data'][] = [

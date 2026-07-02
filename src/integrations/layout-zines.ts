@@ -1,10 +1,10 @@
 import { type AstroIntegration } from 'astro';
 import { writeFile } from 'node:fs/promises';
 
-import { layoutAllZineInOnePdf } from '../util/layout-all-zine-in-one-pdf.ts';
-import { SupportedLanguages } from '../model/languages.ts';
-import { getPrintDistDir } from '../util/get-print-dist-dir.ts';
-import { getPdfFileNames } from '../util/get-flyer-pdf-file-names.ts';
+import { layoutAllZineInOnePdf } from '../util/layout-all-zine-in-one-pdf';
+import { SupportedLanguages } from '../model/languages';
+import { getPrintDistDir } from '../util/get-print-dist-dir';
+import { getPdfFileNames } from '../util/get-flyer-pdf-file-names';
 
 export default function layoutZines(): AstroIntegration {
   return {

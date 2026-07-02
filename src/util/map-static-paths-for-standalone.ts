@@ -3,7 +3,7 @@ import type {
   StandaloneCollectionEntry,
   StandaloneCollections,
   StandaloneContentProps,
-} from '../model/standalone-collections.ts';
+} from '../model/standalone-collections';
 
 export function mapStaticPathsForStandalone<T extends StandaloneCollections>(
   entries: StandaloneCollectionEntry<T>[],

@@ -1,8 +1,8 @@
 import { getEntry, type InferEntrySchema } from 'astro:content';
 
-import { Languages, type LanguagesValue } from '../model/languages.ts';
+import { Languages, type LanguagesValue } from '../model/languages';
 
-import type { MarkdownCollections } from '../model/standalone-collections.ts';
+import type { MarkdownCollections } from '../model/standalone-collections';
 
 export const useContentData = async <T extends MarkdownCollections>(
   collection: T,

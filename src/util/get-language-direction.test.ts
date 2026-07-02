@@ -1,6 +1,6 @@
 import { describe, expect, it } from 'vitest';
 import { getLanguageDirection } from './get-language-direction';
-import type { LanguagesValue } from '../model/languages.ts';
+import type { LanguagesValue } from '../model/languages';
 
 describe('getLanguageDirection', () => {
   it('returns ltr as default', () => {

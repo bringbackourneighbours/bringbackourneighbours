@@ -1,6 +1,6 @@
 import { describe, expect, it } from 'vitest';
-import { mapStaticPathsForPaths } from './map-static-paths-for-paths.ts';
-import { Languages } from '../model/languages.ts';
+import { mapStaticPathsForPaths } from './map-static-paths-for-paths';
+import { Languages } from '../model/languages';
 
 describe('mapStaticPathsForPaths', () => {
   it('return all mapped', () => {

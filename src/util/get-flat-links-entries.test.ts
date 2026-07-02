@@ -1,6 +1,6 @@
 import { describe, expect, it } from 'vitest';
-import { getFlatLinksEntries } from './get-flat-links-entries.ts';
-import { Languages } from '../model/languages.ts';
+import { getFlatLinksEntries } from './get-flat-links-entries';
+import { Languages } from '../model/languages';
 import type { Render } from 'astro:content';
 
 describe('getFlatLinksEntries', async () => {

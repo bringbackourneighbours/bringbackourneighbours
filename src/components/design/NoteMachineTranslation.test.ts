@@ -1,9 +1,9 @@
 import { describe, expect, it } from 'vitest';
 import { within } from '@testing-library/dom';
-import { render } from '../../testing/render.ts';
-import { Languages } from '../../model/languages.ts';
+import { render } from '../../testing/render';
+import { Languages } from '../../model/languages';
 
-import '../../testing/with-mocked-translation.ts';
+import '../../testing/with-mocked-translation';
 
 import NoteMachineTranslation from './NoteMachineTranslation.astro';
 import type { CollectionEntry } from 'astro:content';

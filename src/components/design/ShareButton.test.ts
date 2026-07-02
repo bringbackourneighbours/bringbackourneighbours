@@ -1,8 +1,8 @@
 import { describe, expect, it } from 'vitest';
-import { Languages } from '../../model/languages.ts';
-import { render } from '../../testing/render.ts';
+import { Languages } from '../../model/languages';
+import { render } from '../../testing/render';
 
-import '../../testing/with-mocked-translation.ts';
+import '../../testing/with-mocked-translation';
 
 import ShareButton from './ShareButton.astro';
 

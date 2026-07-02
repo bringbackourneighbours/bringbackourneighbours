@@ -1,7 +1,7 @@
-import { mapStaticPathsForStandalone } from '../../util/map-static-paths-for-standalone.ts';
-import { printHtmlToPdf } from '../../util/print-html-to-pdf.ts';
+import { mapStaticPathsForStandalone } from '../../util/map-static-paths-for-standalone';
+import { printHtmlToPdf } from '../../util/print-html-to-pdf';
 import type { APIContext } from 'astro';
-import type { StandaloneContentProps } from '../../model/standalone-collections.ts';
+import type { StandaloneContentProps } from '../../model/standalone-collections';
 import { getCollection } from 'astro:content';
 
 export async function getStaticPaths() {

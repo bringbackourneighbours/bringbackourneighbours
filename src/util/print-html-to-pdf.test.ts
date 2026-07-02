@@ -1,5 +1,5 @@
 import { beforeEach, describe, expect, it, vi } from 'vitest';
-import { printHtmlToPdf } from './print-html-to-pdf.ts';
+import { printHtmlToPdf } from './print-html-to-pdf';
 import { type Browser, chromium } from 'playwright';
 
 // Mock for playwright

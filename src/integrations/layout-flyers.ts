@@ -1,10 +1,10 @@
 import { type AstroIntegration } from 'astro';
 import { writeFile } from 'node:fs/promises';
 
-import { layoutAllFlyerInOnePdf } from '../util/layout-all-flyer-in-one-pdf.ts';
-import { SupportedLanguages } from '../model/languages.ts';
-import { getFlyerPdfFileNames } from '../util/get-flyer-pdf-file-names.ts';
-import { getPrintDistDir } from '../util/get-print-dist-dir.ts';
+import { layoutAllFlyerInOnePdf } from '../util/layout-all-flyer-in-one-pdf';
+import { SupportedLanguages } from '../model/languages';
+import { getFlyerPdfFileNames } from '../util/get-flyer-pdf-file-names';
+import { getPrintDistDir } from '../util/get-print-dist-dir';
 
 export default function layoutFlyers(): AstroIntegration {
   return {

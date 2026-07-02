@@ -1,6 +1,6 @@
 import { describe, expect, it } from 'vitest';
-import { mapStaticPathsForStandalone } from './map-static-paths-for-standalone.ts';
-import type { StandaloneCollectionEntry } from '../model/standalone-collections.ts';
+import { mapStaticPathsForStandalone } from './map-static-paths-for-standalone';
+import type { StandaloneCollectionEntry } from '../model/standalone-collections';
 
 describe('mapStaticPathsForStandalone', () => {
   it('return all mapped', () => {

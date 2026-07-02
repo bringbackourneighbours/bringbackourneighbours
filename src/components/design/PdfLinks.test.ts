@@ -1,7 +1,7 @@
 import { describe, expect, it } from 'vitest';
-import { render } from '../../testing/render.ts';
+import { render } from '../../testing/render';
 
-import '../../testing/with-mocked-translation.ts';
+import '../../testing/with-mocked-translation';
 
 import PdfLinks from './PdfLinks.astro';
 

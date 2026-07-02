@@ -1,5 +1,5 @@
 import { describe, expect, it } from 'vitest';
-import { render } from '../../testing/render.ts';
+import { render } from '../../testing/render';
 
 import H1 from './H1.astro';
 import H2 from './H2.astro';

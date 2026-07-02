@@ -1,5 +1,5 @@
 import { describe, expect, it } from 'vitest';
-import { render } from '../../testing/render.ts';
+import { render } from '../../testing/render';
 
 import Stack from './Stack.astro';
 

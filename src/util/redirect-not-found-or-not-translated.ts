@@ -4,9 +4,9 @@ import {
   getCanonicalUrlToFlyer,
   getCanonicalUrlToKit,
   getCanonicalUrlToPage,
-} from './get-canonical-url.ts';
+} from './get-canonical-url';
 
-import type { StandaloneCollections } from '../model/standalone-collections.ts';
+import type { StandaloneCollections } from '../model/standalone-collections';
 
 async function redirectNotTranslated<T extends StandaloneCollections>(
   getCanonicalUrlFn: CanonicalUrlFn<T>,

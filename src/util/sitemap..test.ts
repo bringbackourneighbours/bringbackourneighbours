@@ -1,5 +1,5 @@
 import { describe, expect, it } from 'vitest';
-import { renderSitemapUrlset } from './sitemap.ts';
+import { renderSitemapUrlset } from './sitemap';
 
 describe('renderSitemapUrlset', () => {
   it('return xml without entries', () => {
