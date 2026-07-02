@@ -2,8 +2,8 @@ import { describe, expect, it } from 'vitest';
 import {
   redirectNotTranslatedForFlyer,
   redirectNotTranslatedForKit,
-} from './redirect-not-found-or-not-translated.ts';
-import { Languages } from '../model/languages.ts';
+} from './redirect-not-found-or-not-translated';
+import { Languages } from '../model/languages';
 import type { Render } from 'astro:content';
 
 describe('redirectNotTranslated', () => {

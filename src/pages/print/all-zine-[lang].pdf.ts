@@ -1,10 +1,10 @@
 import type { APIRoute } from 'astro';
 
-import { DEFAULT_LANG, SupportedLanguages } from '../../model/languages.ts';
+import { DEFAULT_LANG, SupportedLanguages } from '../../model/languages';
 import path from 'node:path';
-import { getPdfFileNames } from '../../util/get-flyer-pdf-file-names.ts';
-import { getPrintDistDir } from '../../util/get-print-dist-dir.ts';
-import { layoutAllZineInOnePdf } from '../../util/layout-all-zine-in-one-pdf.ts';
+import { getPdfFileNames } from '../../util/get-flyer-pdf-file-names';
+import { getPrintDistDir } from '../../util/get-print-dist-dir';
+import { layoutAllZineInOnePdf } from '../../util/layout-all-zine-in-one-pdf';
 
 export interface LangProp {
   params: {

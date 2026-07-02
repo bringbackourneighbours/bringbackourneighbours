@@ -1,5 +1,5 @@
 import type { CollectionEntry } from 'astro:content';
-import type { LinkTypes } from '../model/link-types.ts';
+import type { LinkTypes } from '../model/link-types';
 
 export interface LinkData {
   slug: string;

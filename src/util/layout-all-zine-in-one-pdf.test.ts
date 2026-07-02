@@ -1,7 +1,7 @@
 import { describe, expect, it } from 'vitest';
 import { PageSizes } from 'pdf-lib';
-import { layoutAllZineInOnePdf } from './layout-all-zine-in-one-pdf.ts';
-import { getPdfPageText } from '../testing/get-pdf-page-text.ts';
+import { layoutAllZineInOnePdf } from './layout-all-zine-in-one-pdf';
+import { getPdfPageText } from '../testing/get-pdf-page-text';
 
 describe('layoutAllZineInOnePdf', () => {
   it('should merge the rtl a7 pages in one pdf document', async () => {

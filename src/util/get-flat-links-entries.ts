@@ -1,13 +1,13 @@
 import type { CollectionEntry } from 'astro:content';
-import type { LinkTypes } from '../model/link-types.ts';
-import { mapStaticPathsForStandalone } from './map-static-paths-for-standalone.ts';
+import type { LinkTypes } from '../model/link-types';
+import { mapStaticPathsForStandalone } from './map-static-paths-for-standalone';
 import {
   getCanonicalUrlToFlyer,
   getCanonicalUrlToKit,
   getCanonicalUrlToPage,
-} from './get-canonical-url.ts';
-import { getAllExternalLinksEntries } from './get-all-external-links-entries.ts';
-import type { StandaloneContentProps } from '../model/standalone-collections.ts';
+} from './get-canonical-url';
+import { getAllExternalLinksEntries } from './get-all-external-links-entries';
+import type { StandaloneContentProps } from '../model/standalone-collections';
 
 export interface LinkData {
   slug: string;

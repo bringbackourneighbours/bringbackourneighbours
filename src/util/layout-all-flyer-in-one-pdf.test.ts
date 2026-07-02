@@ -1,7 +1,7 @@
 import { describe, expect, it } from 'vitest';
-import { layoutAllFlyerInOnePdf } from './layout-all-flyer-in-one-pdf.ts';
+import { layoutAllFlyerInOnePdf } from './layout-all-flyer-in-one-pdf';
 import { PageSizes } from 'pdf-lib';
-import { getPdfPageText } from '../testing/get-pdf-page-text.ts';
+import { getPdfPageText } from '../testing/get-pdf-page-text';
 
 describe('layoutAllFlyerInOnePdf', () => {
   it('should merge the ltr a6 pages in one pdf document', async () => {

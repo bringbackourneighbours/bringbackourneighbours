@@ -1,10 +1,10 @@
 import type { CollectionEntry } from 'astro:content';
-import type { MarkdownCollections } from '../../model/standalone-collections.ts';
-import { Languages } from '../../model/languages.ts';
+import type { MarkdownCollections } from '../../model/standalone-collections';
+import { Languages } from '../../model/languages';
 import { describe, expect, it } from 'vitest';
-import { render } from '../../testing/render.ts';
+import { render } from '../../testing/render';
 
-import '../../testing/with-mocked-translation.ts';
+import '../../testing/with-mocked-translation';
 
 import NoteOnlyFallbackTranslation from './NoteOnlyFallbackTranslation.astro';
 

@@ -1,9 +1,6 @@
 import { defineCollection, z } from 'astro:content';
-import {
-  SupportedLanguages,
-  UnSupportedLanguages,
-} from '../model/languages.ts';
-import { LinkTypes } from '../model/link-types.ts';
+import { SupportedLanguages, UnSupportedLanguages } from '../model/languages';
+import { LinkTypes } from '../model/link-types';
 
 const translatableSchema = {
   identifier: z.string(),

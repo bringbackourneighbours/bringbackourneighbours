@@ -3,8 +3,8 @@ import type { CollectionEntry } from 'astro:content';
 
 import LanguageChip from './LanguageChip.astro';
 import Timestamp from './Timestamp.astro';
-import type { StandaloneCollections } from '../../model/standalone-collections.ts';
-import { DEFAULT_LANG, type LanguagesValue } from '../../model/languages.ts';
+import type { StandaloneCollections } from '../../model/standalone-collections';
+import { DEFAULT_LANG, type LanguagesValue } from '../../model/languages';
 
 interface Props {
   entry: CollectionEntry<StandaloneCollections>;

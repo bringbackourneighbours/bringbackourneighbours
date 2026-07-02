@@ -1,4 +1,4 @@
-import type { Languages } from '../model/languages.ts';
+import type { Languages } from '../model/languages';
 
 export function mapStaticPathsForPaths(langs: Languages[]) {
   return Object.values(langs).map((lang) => {

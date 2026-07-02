@@ -1,6 +1,6 @@
 import AstroConfig from '../../astro.config.mjs';
-import type { LanguagesValue } from '../model/languages.ts';
-import type { StandaloneCollections } from '../model/standalone-collections.ts';
+import type { LanguagesValue } from '../model/languages';
+import type { StandaloneCollections } from '../model/standalone-collections';
 
 export const getBasedUrl = (path: string, absolute = false): string => {
   // TODO: could we use the native URL class here?

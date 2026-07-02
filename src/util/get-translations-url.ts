@@ -3,10 +3,10 @@ import {
   type CanonicalUrlFn,
   getCanonicalUrlFn,
   getCanonicalUrlForPath,
-} from './get-canonical-url.ts';
-import { type LanguagesValue, SupportedLanguages } from '../model/languages.ts';
+} from './get-canonical-url';
+import { type LanguagesValue, SupportedLanguages } from '../model/languages';
 
-import type { StandaloneCollections } from '../model/standalone-collections.ts';
+import type { StandaloneCollections } from '../model/standalone-collections';
 
 export async function getTranslationsUrls<T extends StandaloneCollections>(
   allEntries: CollectionEntry<T>[],
