@@ -60,10 +60,9 @@ html[lang='ka'] {
   }
 }
 
-html[lang='fa'],
 html[lang='tr'] {
   /**
-      the footer in farsi and turkish is bigger because they are both not supported yet,
+      the footer in turkish is bigger because they are both not supported yet,
       so they will offer links to all the other languages.
       when we set them active the same will happen to all other langs es well
   */
@@ -71,13 +70,31 @@ html[lang='tr'] {
   .a7 {
     --bbon-size-print-end-footer-offset: -8mm;
   }
-}
 
-html[lang='tr'] {
   /*
         the fallbacks to german take up some space... so we need to set a smaller font for now */
 
   .a6 {
     --bbon-size-p: 8pt;
+  }
+}
+
+html[lang='ku'] {
+  .a6 {
+    /** the imprint would be to big in kurdish */
+    --bbon-size-print-end-footer-offset: -2mm;
+  }
+
+  .a7 {
+    /** the imprint would be to big in kurdish */
+    --bbon-size-print-end-footer-offset: -6mm;
+  }
+}
+
+html[lang='ar'],
+html[lang='fa'] {
+  .a7 {
+    /** the imprint would be to big */
+    --bbon-size-print-end-footer-offset: -4mm;
   }
 }
