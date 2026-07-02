@@ -1,7 +1,7 @@
 {
-  "extends": "./tsconfig.base.json",
   "compilerOptions": {
-    "types": ["vitest", "vitest/jsdom", "@testing-library/jest-dom", "jsdom"]
+    "types": ["vitest", "vitest/jsdom", "@testing-library/jest-dom", "jsdom"],
+    "composite": true
   },
   "include": [
     ".astro/types.d.ts",
