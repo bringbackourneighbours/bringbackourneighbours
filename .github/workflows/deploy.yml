@@ -16,7 +16,7 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: Checkout the repository using git
-        uses: actions/checkout@v6
+        uses: actions/checkout@v7
       - id: get-node-version
         uses: ./.github/actions/get-node-version-file
       - name: Install, build the site and upload the artifact
@@ -41,7 +41,7 @@ jobs:
     name: Test prod with cucumber
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v6
+      - uses: actions/checkout@v7
       - uses: ./.github/actions/setup-install
       - run: npx playwright install --with-deps chromium
       - run: npm run cucumber
