@@ -10,7 +10,7 @@ import type { CollectionEntry } from 'astro:content';
 
 describe('NoteMachineTranslation', () => {
   it('should show a strong note when set in entry', async () => {
-    const { getByRole, getByText } = await render(NoteMachineTranslation, {
+    const { getByRole } = await render(NoteMachineTranslation, {
       props: {
         entry: {
           data: {
@@ -26,7 +26,6 @@ describe('NoteMachineTranslation', () => {
       locals: {
         lang: 'de',
       } as App.Locals,
-      slots: { default: 'my flyer' },
     });
 
     const noteEl = getByRole('note');
@@ -34,12 +33,10 @@ describe('NoteMachineTranslation', () => {
     expect(
       within(noteEl).getByText('ar-machineTranslation'),
     ).toBeInTheDocument();
-
-    expect(getByText('my flyer')).toBeInTheDocument();
   });
 
   it('should show emphasis note when set in entry', async () => {
-    const { getByRole, getByText } = await render(NoteMachineTranslation, {
+    const { getByRole } = await render(NoteMachineTranslation, {
       props: {
         isStrong: false,
         entry: {
@@ -56,7 +53,6 @@ describe('NoteMachineTranslation', () => {
       locals: {
         lang: 'de',
       } as App.Locals,
-      slots: { default: 'my kit' },
     });
 
     const noteEl = getByRole('note');
@@ -64,12 +60,10 @@ describe('NoteMachineTranslation', () => {
     expect(
       within(noteEl).getByText('de-machineTranslation'),
     ).toBeInTheDocument();
-
-    expect(getByText('my kit')).toBeInTheDocument();
   });
 
   it('should not show the note when not set in entry', async () => {
-    const { queryByRole, getByText } = await render(NoteMachineTranslation, {
+    const { queryByRole } = await render(NoteMachineTranslation, {
       props: {
         entry: {
           data: {
@@ -85,15 +79,13 @@ describe('NoteMachineTranslation', () => {
       locals: {
         lang: 'en',
       } as App.Locals,
-      slots: { default: 'my pages' },
     });
 
     expect(queryByRole('note')).not.toBeInTheDocument();
-    expect(getByText('my pages')).toBeInTheDocument();
   });
 
   it('should not show the note when set in entry but already show in local context', async () => {
-    const { queryByRole, getByText } = await render(NoteMachineTranslation, {
+    const { queryByRole } = await render(NoteMachineTranslation, {
       props: {
         entry: {
           data: {
@@ -110,10 +102,8 @@ describe('NoteMachineTranslation', () => {
         lang: 'en',
         machineTranslationNoteWasDisplayed: true,
       } as App.Locals,
-      slots: { default: 'my pages' },
     });
 
     expect(queryByRole('note')).not.toBeInTheDocument();
-    expect(getByText('my pages')).toBeInTheDocument();
   });
 });

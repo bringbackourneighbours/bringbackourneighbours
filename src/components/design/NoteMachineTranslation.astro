@@ -1,8 +1,8 @@
 ---
 import type { CollectionEntry } from 'astro:content';
+import type { MarkdownCollections } from '../../model/standalone-collections';
 
 import { useUiTranslation } from '../../content/use-ui-translation';
-import type { MarkdownCollections } from '../../model/standalone-collections';
 
 interface Props {
   entry: CollectionEntry<MarkdownCollections>;
@@ -25,15 +25,12 @@ if (isRootLevelContent) {
 const Strong = `${isStrong ? 'strong' : 'em'}`;
 ---
 
-<section>
-  {
-    showMachineTranslation && (
-      <p role="note">
-        <Strong>
-          {useUiTranslation('meta.machineTranslation', entry.data.lang)}
-        </Strong>
-      </p>
-    )
-  }
-  <slot />
-</section>
+{
+  showMachineTranslation && (
+    <p role="note">
+      <Strong>
+        {useUiTranslation('meta.machineTranslation', entry.data.lang)}
+      </Strong>
+    </p>
+  )
+}
