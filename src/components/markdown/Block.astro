@@ -3,6 +3,8 @@ import { type CollectionEntry, getCollection } from 'astro:content';
 import { type LanguagesValue } from '../../model/languages';
 import type { MarkdownCollections } from '../../model/standalone-collections';
 
+import { getLanguageDirection } from '../../util/get-language-direction';
+
 import MarkdownEntry from './MarkdownEntry.astro';
 import NotFoundError from '../design/NotFoundError.astro';
 import NoteMachineTranslation from '../design/NoteMachineTranslation.astro';
@@ -53,15 +55,16 @@ if (fallbackToLang !== lang) {
 
 {
   blockEntry ? (
-    <NoteMachineTranslation
-      entry={blockEntry}
-      isRootLevelContent={isRootLevelContent}
-    >
+    <section dir={getLanguageDirection(blockEntry.data.lang)}>
+      <NoteMachineTranslation
+        entry={blockEntry}
+        isRootLevelContent={isRootLevelContent}
+      />
       <MarkdownEntry
         rendered={blockEntry.render()}
         recursive={recursive}
       />
-    </NoteMachineTranslation>
+    </section>
   ) : (
     recursive && (
       <NotFoundError context={`${collection}/${identifier}/${lang}`} />
