@@ -15,17 +15,31 @@ if $PASSED; then
 else
     echo "Some links are broken."
 
-    # status 0 means that they blocked our crawler
+    # status 0 usually means that they blocked our crawler
     BROKEN="$(echo "$RAW_RESULT" | jq '.links[] | select(.state =="BROKEN" and .status != 0)')"
 
-    echo "The following links are broken:"
-    echo "-----------------------------"
-    echo "$BROKEN"
-    echo "-----------------------------"
-    echo "Please check them again from you network... as they might have blocked our little crawler."
-    echo "If verified, please report the broken links to the team and we will fix them as soon as possible."
-    echo "If you think this is a false positive then also report it to so we can exclude that link from the scan."
-    echo "Anyways please report it here: https://github.com/bringbackourneighbours/bringbackourneighbours/issues/new?template=broken-link.yml"
+    if [ -n "$BROKEN" ]; then
+        echo "The following links are broken:"
+        echo "-----------------------------"
+        echo "$BROKEN"
+        echo "-----------------------------"
+        echo "Please check them again from your network."
+        echo "If verified, please report the broken links to the team and we will fix them as soon as possible."
+        echo "If you think this is a false positive then also report it to so we can exclude that link from the scan."
+        echo "Anyways please report it here: https://github.com/bringbackourneighbours/bringbackourneighbours/issues/new?template=broken-link.yml"
 
-    exit 1
+        exit 1
+    else
+        BLOCKED="$(echo "$RAW_RESULT" | jq '.links[] | select(.state =="BROKEN")')"
+        echo "The following links could not be reached:"
+        echo "-----------------------------"
+        echo "$BLOCKED"
+        echo "-----------------------------"
+        echo "But the reason is probably that they have blocked our crawler."
+        echo "Please check them again from your network." 
+
+        exit 0
+    fi
+
+
 fi
