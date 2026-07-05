@@ -11,7 +11,6 @@ import {
 
 import Block from './markdown/Block.astro';
 import Stack from './design/Stack.astro';
-import H2 from './design/H2.astro';
 import MenuLink from './design/MenuLink.astro';
 
 interface Props {
@@ -48,13 +47,29 @@ const materialCanonicalUrl = await getCanonicalUrlToPage(
   lang,
 );
 
+const countriesCanonicalUrl = await getCanonicalUrlToPage(
+  await getEntry('pages', `countries/${lang}`)!,
+  lang,
+);
+
 const kitAffectedLabel = await useUiTranslation('meta.emergencyKit', lang);
 const allFlyersLabel = await useUiTranslation('meta.allFlyers', lang);
 const allKitsLabel = await useUiTranslation('meta.allKits', lang);
 ---
 
 <Stack>
-  <H2 slot="heading">{useUiTranslation('meta.moreInfo', lang)}</H2>
+  <div
+    style="padding-block-start: var(--bbon-size-gap); display: flex; justify-content: center;"
+  >
+    <MenuLink
+      lang={lang}
+      canonicalUrl={countriesCanonicalUrl ?? ''}
+      label={(await useContentData('pages', 'countries', lang))?.title}
+    />
+  </div>
+</Stack>
+
+<Stack>
   {
     showKit && (
       <MenuLink
