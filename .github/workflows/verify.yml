@@ -62,7 +62,14 @@ jobs:
     name: Build with astro
     runs-on: ubuntu-latest
     steps:
+      # - uses: actions/checkout@v6
+      # - uses: ./.github/actions/setup-install
+      # - run: npx playwright install --with-deps chromium
+      # - run: npm run build
       - uses: actions/checkout@v6
-      - uses: ./.github/actions/setup-install
-      - run: npx playwright install --with-deps chromium
-      - run: npm run build
+      - id: get-node-version
+        uses: ./.github/actions/get-node-version-file
+      - uses: withastro/action@v6.1.1
+        with:
+          node-version: ${{ steps.get-node-version.outputs.version }}
+          build-cmd: npx playwright install --with-deps chromium && npm run build
