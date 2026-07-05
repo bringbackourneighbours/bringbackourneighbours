@@ -1,23 +1,27 @@
 all:
   type: PDF
-  lastChecked: 2026-03-06
+  lastChecked: 2026-07-05
 ar:
   slug: w2eu-deportationar
-  title: وقف الترحيل
-  url: https://w2eu.info/media/pages/countries/germany/deportation/5780dd989d-1718118787/abschiebungen-arabisch-digital.pdf
+  title: أوقفوا عمليات الترحيل - معلومات ضد الخوف
+  url: https://w2eu.info/media/pages/countries/germany/deportation/8697ce9618-1779878871/stop-deportation-arabic-2026.pdf
 de:
   slug: w2eu-deportationde
-  title: Abschiebung verhindern
-  url: https://w2eu.info/media/pages/countries/germany/deportation/7969a0e502-1716037677/abschiebungen-deutsch-digital.pdf
+  title: 'Informationen gegen die Angst - Abschiebung stoppen!'
+  url: https://w2eu.info/media/pages/countries/germany/deportation/1a53aae796-1779878871/stop-deportation-german-2026.pdf
 en:
   slug: w2eu-deportationen
-  title: stop deportation
-  url: https://w2eu.info/media/pages/countries/germany/deportation/672393118c-1716037674/abschiebungen-englisch-digital.pdf
+  title: 'Information against the fear - Stop deportation!'
+  url: https://w2eu.info/media/pages/countries/germany/deportation/ef49e63d8b-1779878871/stop-deportation-english-2026.pdf
 fa:
   slug: w2eu-deportationfa
-  title: اخراج مردم را متوقف کنید
-  url: https://w2eu.info/media/pages/countries/germany/deportation/79ac447db2-1718118787/abschiebungen-farsi-digital.pdf
+  title: توقف اخراج - اطلاعات در برابر ترس!
+  url: https://w2eu.info/media/pages/countries/germany/deportation/934a3de58a-1779878871/stop-deportation-farsi-2026.pdf
 fr:
   slug: w2eu-deportationfr
-  title: stop l'epulsion
-  url: https://w2eu.info/media/pages/countries/germany/deportation/722917a9e6-1718118787/abschiebungen-franzosisch-digital.pdf
+  title: L’information contre la peur - Stop l’expulsion!
+  url: https://w2eu.info/media/pages/countries/germany/deportation/018fb58780-1779878871/stop-deportation-french-2026.pdf
+ckb:
+  slug: w2eu-deportationckb
+  title: زانیاری دژی ترس - ڕێگری لە دەرکردن بکە!
+  url: https://w2eu.info/media/pages/countries/germany/deportation/0c6bde3814-1779878871/stop-deportation-kurdish-sorani-2026.pdf
