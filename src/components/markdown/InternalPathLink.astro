@@ -1,0 +1,31 @@
+---
+import { type LanguagesValue } from '../../model/languages';
+
+import ShortLink from '../design/ShortLink.astro';
+import NotFoundError from '../design/NotFoundError.astro';
+
+import { getCanonicalUrlForPath } from '../../util/get-canonical-url';
+
+export interface Props {
+  path: string;
+  lang?: LanguagesValue;
+}
+
+const { path, lang = Astro.locals.lang } = Astro.props;
+
+const url = getCanonicalUrlForPath(lang, path);
+---
+
+{
+  url ? (
+    <ShortLink
+      lang={lang}
+      openInNewTab={false}
+      url={url}
+    >
+      <slot />
+    </ShortLink>
+  ) : (
+    <NotFoundError context={`InternalPathLink/${path}/${lang}`} />
+  )
+}
