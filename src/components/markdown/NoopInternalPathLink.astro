@@ -1,0 +1,15 @@
+---
+import type { Props } from './InternalPathLink.astro';
+
+const props: Props = Astro.props;
+---
+
+<pre>&lt;InternalPathLink path&#x3D;&quot;{props.path}&quot;{!Astro.slots.has('default') ? <>&#x2F;&gt;</> : <>&gt;</>}</pre>
+{
+  Astro.slots.has('default') && (
+    <>
+      <slot />
+      <pre>&lt;&#x2F;InternalPathLink &gt;</pre>
+    </>
+  )
+}

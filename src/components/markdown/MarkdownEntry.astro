@@ -5,6 +5,7 @@ import Address from './Address.astro';
 import Block from './Block.astro';
 import StandAloneBox from './StandAloneBox.astro';
 import ExternalShortLink from './ExternalShortLink.astro';
+import InternalPathLink from './InternalPathLink.astro';
 import H1 from '../design/H1.astro';
 import H2 from '../design/H2.astro';
 import H3 from '../design/H3.astro';
@@ -17,6 +18,7 @@ import NoopBlock from './NoopBlock.astro';
 import NoopStandAloneBox from './NoopStandAloneBox.astro';
 import NoopExternalShortLink from './NoopExternalShortLink.astro';
 import NoopInternalShortLink from './NoopInternalShortLink.astro';
+import NoopInternalPathLink from './NoopInternalPathLink.astro';
 import NoopLink from './NoopLink.astro';
 import NoopSupportBox from './NoopSupportBox.astro';
 import PdfLink from '../design/PdfLink.astro';
@@ -59,6 +61,7 @@ const componentsMap = recursive
       StandAloneBox: StandAloneBox,
       ExternalShortLink,
       InternalShortLink,
+      InternalPathLink,
       SupportBox,
       PdfLink,
       PdfLinks,
@@ -70,6 +73,7 @@ const componentsMap = recursive
       StandAloneBox: NoopStandAloneBox,
       ExternalShortLink: NoopExternalShortLink,
       InternalShortLink: NoopInternalShortLink,
+      InternalPathLink: NoopInternalPathLink,
       SupportBox: NoopSupportBox,
       PdfLink: NoopLink,
       PdfLinks: NoopLink,
