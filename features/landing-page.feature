@@ -22,7 +22,7 @@ Feature: A landing page
       | en       | Are you or someone else at risk of deportation?             | /en/wizard |
       | fr       | Êtes-vous ou quelqu'un d'autre menacé d'expulsion?          | /fr/wizard |
       | ku       | Hûn an jî kesekî din bi dersînorkirinê re tên tehdît kirin? | /ku/wizard |
-      | ka       | გემუქრება შენ ან ემუქრება სხვას დეპორტაცია?                | /ka/wizard |
-      | ar       | هل أنت أو أي شخص آخر معرض لخطر الترحيل؟                    | /ar/wizard |
+      | ka       | გემუქრება შენ ან ემუქრება სხვას დეპორტაცია?                 | /ka/wizard |
+      | ar       | هل أنت أو أي شخص آخر معرض لخطر الترحيل؟                     | /ar/wizard |
+      | fa       | آیا شما یا شخص دیگری تهدید به اخراج شده اید؟                | /fa/wizard |
       #| tr       | TODO | /tr/wizard |
-      #| fa       | TODO | /fa/wizard |
