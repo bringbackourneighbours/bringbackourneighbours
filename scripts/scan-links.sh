@@ -3,7 +3,7 @@
 URL="https://bringbackourneighbours.de/internal-check-links/"
 
 echo "Scanning all links on $URL"
-echo "This might that a minute or two."
+echo "This might take a minute or two."
 
 RAW_RESULT="$(npx --yes linkinator --format=json --redirects=warn $URL )"
 PASSED="$(echo "$RAW_RESULT" | jq '.passed')"
@@ -15,7 +15,8 @@ if $PASSED; then
 else
     echo "Some links are broken."
 
-    BROKEN="$(echo "$RAW_RESULT" | jq '.links[] | select(.state =="BROKEN")')"
+    # status 0 means that they blocked our crawler
+    BROKEN="$(echo "$RAW_RESULT" | jq '.links[] | select(.state =="BROKEN" and .status != 0)')"
 
     echo "The following links are broken:"
     echo "-----------------------------"
