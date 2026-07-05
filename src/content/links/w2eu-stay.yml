@@ -1,0 +1,27 @@
+all:
+  type: PDF
+  lastChecked: 2026-07-05
+# ar:
+#   slug: w2eu-stayar
+#   title: حق البقاء - معلومات لمكافحة الخوف
+#   url: Will come soon
+de:
+  slug: w2eu-stayde
+  title: Informationen gegen die Angst - Recht zu Bleiben
+  url: https://w2eu.info/media/pages/countries/germany/regularization-processes/a3e7662ff3-1779878999/right-to-stay-german-2026.pdf
+en:
+  slug: w2eu-stayen
+  title: Information against the fear - Right to stay
+  url: https://w2eu.info/media/pages/countries/germany/regularization-processes/e23d192b29-1779878971/right-to-stay-english-2026.pdf
+fa:
+  slug: w2eu-stayfa
+  title: حق ماندن - اطلاعات در برابر ترس
+  url: https://w2eu.info/media/pages/countries/germany/regularization-processes/d6e9878e91-1779878984/right-to-stay-farsi-2026.pdf
+fr:
+  slug: w2eu-stayfr
+  title: Droit de séjour - Information contre la peur
+  url: https://w2eu.info/media/pages/countries/germany/regularization-processes/dbc3681968-1779878958/right-to-stay-french-2026.pdf
+ckb:
+  slug: w2eu-stayckb
+  title: زانیاری بۆ بەرەنگاربوونەوەی ترس - مافی مانەوە
+  url: https://w2eu.info/media/pages/countries/germany/regularization-processes/dfeb20b0d8-1779879014/right-to-stay-kurdish-sorani-2026.pdf
