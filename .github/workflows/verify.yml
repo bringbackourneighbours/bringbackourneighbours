@@ -13,7 +13,7 @@ jobs:
     name: Lint with stylelint
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v6
+      - uses: actions/checkout@v7
       - uses: ./.github/actions/setup-install
       - run: npm run stylelint
 
@@ -21,7 +21,7 @@ jobs:
     name: Format with prettier
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v6
+      - uses: actions/checkout@v7
       - uses: ./.github/actions/setup-install
       - run: npm run prettier
 
@@ -29,7 +29,7 @@ jobs:
     name: Lint with eslint
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v6
+      - uses: actions/checkout@v7
       - uses: ./.github/actions/setup-install
       - run: npm run eslint
 
@@ -37,7 +37,7 @@ jobs:
     name: Check with astro
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v6
+      - uses: actions/checkout@v7
       - uses: ./.github/actions/setup-install
       - run: npm run check
 
@@ -45,7 +45,7 @@ jobs:
     name: Test with vitest
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v6
+      - uses: actions/checkout@v7
       - uses: ./.github/actions/setup-install
       - run: npm run vitest
 
@@ -53,7 +53,7 @@ jobs:
     name: Test dev with cucumber
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v6
+      - uses: actions/checkout@v7
       - uses: ./.github/actions/setup-install
       - run: npx playwright install --with-deps chromium
       - run: npm run cucumber:dev
@@ -62,11 +62,11 @@ jobs:
     name: Build with astro
     runs-on: ubuntu-latest
     steps:
-      # - uses: actions/checkout@v6
+      # - uses: actions/checkout@v7
       # - uses: ./.github/actions/setup-install
       # - run: npx playwright install --with-deps chromium
       # - run: npm run build
-      - uses: actions/checkout@v6
+      - uses: actions/checkout@v7
       - id: get-node-version
         uses: ./.github/actions/get-node-version-file
       - uses: withastro/action@v6.1.1
