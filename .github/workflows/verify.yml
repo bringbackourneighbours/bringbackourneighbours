@@ -69,7 +69,7 @@ jobs:
       - uses: actions/checkout@v7
       - id: get-node-version
         uses: ./.github/actions/get-node-version-file
-      - uses: withastro/action@v6.1.1
+      - uses: withastro/action@v6.1.2
         with:
           node-version: ${{ steps.get-node-version.outputs.version }}
           build-cmd: npx playwright install --with-deps chromium && npm run build
