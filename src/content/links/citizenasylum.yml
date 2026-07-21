@@ -1,0 +1,30 @@
+all:
+  type: WEB
+  slug: citizenasylum
+ar:
+  title: اللجوء التضامني من قبل المواطنين والمواطنات
+  url: https://citizenasylum.noblogs.org/%d8%a7%d9%84%d8%b9%d8%b1%d8%a8%d9%8a%d8%a9/
+de:
+  title: Soliasyl
+  url: https://citizenasylum.noblogs.org/deutsch/
+en:
+  title: Asylum based on solidarity, organised by citizens
+  url: https://citizenasylum.noblogs.org/english/
+fr:
+  title: Un droit d'asile solidaire grâce aux citoyennes
+  url: https://citizenasylum.noblogs.org/francais/
+ru:
+  title: Солидарное предоставление убежища силами граждан
+  url: https://citizenasylum.noblogs.org/%d1%80%d1%83%d1%81%d1%81%d0%ba%d0%b8%d0%b9/
+tr:
+  title: Vatandaşlar tarafından sağlanan dayanışmacı sığınma
+  url: https://citizenasylum.noblogs.org/turkce/
+ka:
+  title: ასილუმი სოლიდარობის საფუძველზე, მოქალაქეების მიერ ორგანიზებული
+  url: https://citizenasylum.noblogs.org/%e1%83%a5%e1%83%90%e1%83%a0%e1%83%97%e1%83%a3%e1%83%9a%e1%83%98/
+es:
+  title: Asilo solidario impulsado por las ciudadanas
+  url: https://citizenasylum.noblogs.org/espanol/
+ku:
+  title: Penageha li ser bingeha hevgirtinê, ji aliyê welatiyan ve organîzekirî
+  url: https://citizenasylum.noblogs.org/kurdi-kurmanci/
