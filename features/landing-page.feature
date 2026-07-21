@@ -25,4 +25,4 @@ Feature: A landing page
       | ka       | გემუქრება შენ ან ემუქრება სხვას დეპორტაცია?                 | /ka/wizard |
       | ar       | هل أنت أو أي شخص آخر معرض لخطر الترحيل؟                     | /ar/wizard |
       | fa       | آیا شما یا شخص دیگری تهدید به اخراج شده اید؟                | /fa/wizard |
-      #| tr       | TODO | /tr/wizard |
+      | tr       | Siz veya bir başkası sınır dışı edilme riski altında mısınız? | /tr/wizard |
