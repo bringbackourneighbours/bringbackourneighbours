@@ -17,12 +17,23 @@ Feature: A landing page
     Then i see a link "<label>" to "<url>" in language "<language>"
 
     Examples:
-      | language | label                                                       | url        |
-      | de       | Bist du oder wer anders von einer Abschiebung bedroht?      | /de/wizard |
-      | en       | Are you or someone else at risk of deportation?             | /en/wizard |
-      | fr       | Êtes-vous ou quelqu'un d'autre menacé d'expulsion?          | /fr/wizard |
-      | ku       | Hûn an jî kesekî din bi dersînorkirinê re tên tehdît kirin? | /ku/wizard |
-      | ka       | გემუქრება შენ ან ემუქრება სხვას დეპორტაცია?                 | /ka/wizard |
-      | ar       | هل أنت أو أي شخص آخر معرض لخطر الترحيل؟                     | /ar/wizard |
-      | fa       | آیا شما یا شخص دیگری تهدید به اخراج شده اید؟                | /fa/wizard |
+      | language | label                                                         | url        |
+      | de       | Bist du oder wer anders von einer Abschiebung bedroht?        | /de/wizard |
+      | en       | Are you or someone else at risk of deportation?               | /en/wizard |
+      | fr       | Êtes-vous ou quelqu'un d'autre menacé d'expulsion?            | /fr/wizard |
+      | ku       | Hûn an jî kesekî din bi dersînorkirinê re tên tehdît kirin?   | /ku/wizard |
+      | ka       | გემუქრება შენ ან ემუქრება სხვას დეპორტაცია?                   | /ka/wizard |
+      | ar       | هل أنت أو أي شخص آخر معرض لخطر الترحيل؟                       | /ar/wizard |
+      | fa       | آیا شما یا شخص دیگری تهدید به اخراج شده اید؟                  | /fa/wizard |
       | tr       | Siz veya bir başkası sınır dışı edilme riski altında mısınız? | /tr/wizard |
+
+  Scenario: Links to pages
+    When i open the page "/de"
+    Then i see a link "Länder" to "countries" in language "de"
+    Then i see a link "Kontakte" to "contacts" in language "de"
+    Then i see a link "Flyer" to "flyer" in language "de"
+    Then i see a link "Öffentlichkeit" to "publicity" in language "de"
+    Then i see a link "Fachkräfte" to "professionals" in language "de"
+    Then i see a link "Vorlagen" to "forms" in language "de"
+    Then i see a link "Materialien" to "material" in language "de"
+    Then i see a link "Über" to "about" in language "de"

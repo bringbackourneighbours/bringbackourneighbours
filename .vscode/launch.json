@@ -2,8 +2,14 @@
   "version": "0.2.0",
   "configurations": [
     {
-      "command": "./node_modules/.bin/astro dev",
+      "command": "npm run dev",
       "name": "Development server",
+      "request": "launch",
+      "type": "node-terminal"
+    },
+    {
+      "command": "npm run cucumber:dev",
+      "name": "Cucumber dev",
       "request": "launch",
       "type": "node-terminal"
     }

@@ -58,6 +58,10 @@ const countriesCanonicalUrl = await getCanonicalUrlToPage(
   await getEntry('pages', `countries/${lang}`)!,
   lang,
 );
+const aboutCanonicalUrl = await getCanonicalUrlToPage(
+  await getEntry('pages', `about/${lang}`)!,
+  lang,
+);
 ---
 
 <style>
@@ -234,6 +238,14 @@ const countriesCanonicalUrl = await getCanonicalUrlToPage(
             href={materialCanonicalUrl || ''}
           >
             {(await useContentData('pages', 'material', lang))?.title}
+          </Link>
+        </li>
+        <li>
+          <Link
+            lang={lang}
+            href={aboutCanonicalUrl || ''}
+          >
+            {(await useContentData('pages', 'about', lang))?.title}
           </Link>
         </li>
         <li>
