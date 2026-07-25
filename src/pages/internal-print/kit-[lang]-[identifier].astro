@@ -7,6 +7,7 @@ import { getCanonicalUrlToKit } from '../../util/get-canonical-url';
 import { useUiTranslation } from '../../content/use-ui-translation';
 import { useContentData } from '../../content/use-content-data';
 import { Languages } from '../../model/languages';
+import { getLanguageDirection } from '../../util/get-language-direction';
 
 import PrintLayout from '../../layouts/PrintLayout.astro';
 import PrinterPage from '../../components/design/PrinterPage.astro';
@@ -89,3 +90,13 @@ const germanTitle =
     />
   </PrinterPage>
 </PrintLayout>
+
+<template id="footerTemplate">
+  <div
+    style="width: 100%; text-align: end; margin-inline-end: 15mm; font-size: var(--bbon-size-p); color: var(--bbon-color-primary);"
+    dir={getLanguageDirection(entry.data.lang)}
+  >
+    <span class="pageNumber"></span> |
+    <span class="totalPages"></span>
+  </div>
+</template>

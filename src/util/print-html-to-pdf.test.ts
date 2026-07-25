@@ -3,8 +3,21 @@ import { printHtmlToPdf } from './print-html-to-pdf';
 import { type Browser, chromium } from 'playwright';
 
 // Mock for playwright
+const mockLocator = {
+  count: vi.fn(),
+  evaluate: vi.fn().mockResolvedValue({
+    '--bbon-size-p': '1cm',
+    '--bbon-color-primary': 'blue',
+  }),
+  innerHTML: vi
+    .fn()
+    .mockResolvedValue(
+      '<span style="font-size: var(--bbon-size-p); color: var(--bbon-color-primary);"/>',
+    ),
+};
 const mockPage = {
   goto: vi.fn(),
+  locator: vi.fn(() => mockLocator),
   pdf: vi.fn().mockResolvedValue(Buffer.from('PDF Buffer')),
 };
 const mockBrowser = {
@@ -16,6 +29,7 @@ vi.mock('playwright', () => ({
     launch: vi.fn(() => mockBrowser),
   },
 }));
+
 describe('printHtmlToPdf', () => {
   beforeEach(() => {
     vi.clearAllMocks();
@@ -32,6 +46,30 @@ describe('printHtmlToPdf', () => {
     expect(mockPage.pdf).toHaveBeenCalledWith({
       printBackground: true,
       preferCSSPageSize: true,
+      displayHeaderFooter: true,
+      footerTemplate: '<span></span>',
+      headerTemplate: '<span></span>',
+    });
+    expect(pdfBuffer).toBeInstanceOf(Uint8Array);
+    expect(pdfBuffer.length).toBeGreaterThan(0);
+  });
+
+  it('should query for the footer and replace the css vars', async () => {
+    mockLocator.count.mockResolvedValue(1);
+
+    const pdfBuffer = await printHtmlToPdf(
+      'http://localhost:4321/internal-print/flyer1',
+    );
+    expect(mockBrowser.newPage).toHaveBeenCalledTimes(1);
+    expect(mockPage.goto).toHaveBeenCalledWith(
+      'http://localhost:4321/internal-print/flyer1',
+    );
+    expect(mockPage.pdf).toHaveBeenCalledWith({
+      printBackground: true,
+      preferCSSPageSize: true,
+      displayHeaderFooter: true,
+      footerTemplate: '<span style="font-size: 1cm; color: blue;"/>',
+      headerTemplate: '<span></span>',
     });
     expect(pdfBuffer).toBeInstanceOf(Uint8Array);
     expect(pdfBuffer.length).toBeGreaterThan(0);
