@@ -5,10 +5,10 @@ interface Props {
 
 const { size = 'medium' } = Astro.props;
 
-const sizeFactor = size === 'big' ? 1 : size === 'medium' ? 0.5 : 0.25;
+const sizefactor = size === 'big' ? 1 : size === 'medium' ? 0.5 : 0.25;
 ---
 
-<style is:global define:vars={{ sizeFactor }}>
+<style is:global define:vars={{ sizefactor }}>
   /* we are styling the elements in the slots so we need to have this global */
   .stack {
     display: flex;
@@ -21,7 +21,7 @@ const sizeFactor = size === 'big' ? 1 : size === 'medium' ? 0.5 : 0.25;
     & > * {
       flex-grow: 1;
       flex-basis: calc((var(--threshold) - 100%) * 999);
-      min-inline-size: calc(var(--sizeFactor) * var(--bbon-size-max-text-span));
+      min-inline-size: calc(var(--sizefactor) * var(--bbon-size-max-text-span));
       max-inline-size: var(--bbon-size-max-text-span);
     }
 

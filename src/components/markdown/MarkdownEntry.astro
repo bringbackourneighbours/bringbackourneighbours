@@ -20,10 +20,12 @@ import NoopExternalShortLink from './NoopExternalShortLink.astro';
 import NoopInternalShortLink from './NoopInternalShortLink.astro';
 import NoopInternalPathLink from './NoopInternalPathLink.astro';
 import NoopLink from './NoopLink.astro';
+import NoopPicture from './NoopPicture.astro';
 import NoopSupportBox from './NoopSupportBox.astro';
 import PdfLink from '../design/PdfLink.astro';
 import PdfLinks from '../design/PdfLinks.astro';
 import SupportBox from './SupportBox.astro';
+import { Picture } from 'astro:assets';
 
 /**
  * Renders a CollectionEntry's Markdown to HTML... while using our custom components for it
@@ -65,6 +67,7 @@ const componentsMap = recursive
       SupportBox,
       PdfLink,
       PdfLinks,
+      Picture,
     }
   : {
       a: NoopLink,
@@ -77,6 +80,7 @@ const componentsMap = recursive
       SupportBox: NoopSupportBox,
       PdfLink: NoopLink,
       PdfLinks: NoopLink,
+      Picture: NoopPicture,
     };
 ---
 
