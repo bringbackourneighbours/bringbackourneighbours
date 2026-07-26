@@ -4,6 +4,7 @@ import { type Render } from 'astro:content';
 import TableOfContentsHeading from './TableOfContentsHeading.astro';
 
 import { buildToc } from '../../util/table-of-contents';
+import { useUiTranslation } from '../../content/use-ui-translation';
 
 interface Props {
   rendered: Render['.mdx'] | Render['.md'];
@@ -11,11 +12,12 @@ interface Props {
 
 const { rendered } = Astro.props;
 
+const lang = Astro.locals.lang;
 const { headings } = await rendered;
 const toc = buildToc(headings);
 ---
 
-<nav class="toc">
+<nav aria-label={await useUiTranslation('meta.tableOfContents', lang)}>
   <ul>
     {toc.map((heading) => <TableOfContentsHeading heading={heading} />)}
   </ul>

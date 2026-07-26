@@ -1,43 +1,4 @@
 {
-  "meta": {
-    "allFlyers": "جميع النشرات الإعلانية",
-    "allKits": "جميع أطقم الطوارئ لدينا",
-    "copiedContentToClipboard": "المحتوى المنسوخ إلى الحافظة",
-    "copy": "نسخ النص",
-    "downloadAllFlyerPdf": "جميع الكتيبات في ملف PDF واحد",
-    "downloadAllZinePdf": "جميع المجلات في ملف PDF واحد",
-    "downloadPdf": "التنزيل بصيغة PDF",
-    "emergencyKit": "مجموعة أدوات الطوارئ ضد الترحيلات",
-    "findAlsoAsPage": "يمكنك أيضًا العثور على هذا القسم بشكل منفرد على الصفحة",
-    "findAlsoInFlyer": "يمكنك أيضًا العثور على هذا القسم بشكل منفرد في النشرة الإعلانية",
-    "findAlsoAsPageInFallbackLang": "لم تتم ترجمة هذا القسم بعد، يمكنك العثور عليه بشكل منفصل في الصفحة",
-    "findAlsoAsFlyerInFallbackLang": "لم تتم ترجمة هذا القسم بعد، يمكنك العثور عليه بشكل منفصل في النشرة الإعلانية",
-    "home": "العودة إلى نقطة البداية",
-    "imprint": "إمبريسوم",
-    "infosAgainstDeportation": "هنا يمكنك العثور على مزيد من المعلومات حول ما يمكنك القيام به لمنع الترحيل",
-    "machineTranslation": "للأسف تمت الترجمة بواسطة الذكاء الاصطناعي فقط. نرجو مساعدتنا في تحسين المعلومات وأرسل لنا بريداً إلكترونياً",
-    "moreInfo": "مزيد من المعلومات",
-    "moreInfoAbout": "مزيد من المعلومات عن",
-    "notFound": "غير موجود",
-    "notFoundText": "تعذر العثور على المحتوى. من المحتمل أن يكون الرابط قديم أو به خطأ مطبعي.",
-    "share": "مشاركة",
-    "sharedLinkToClipboard": "تم نسخ الرابط إلى الحافظة",
-    "subtitle": "الوقوف معًا متضامنين ضد سياسة الترحيل في ساكسونيا",
-    "supporters": "نصائح للداعمين المتطوعين",
-    "title": "Bring Back Our Neighbours",
-    "updated": "آخر تحديث: ",
-    "onlyInFallbackLanguage": "هذا المحتوى موجود فقط بلغة أخرى"
-  },
-  "wizard": {
-    "isThereDangerQuestion": "هل أنت أو أي شخص آخر معرض لخطر الترحيل؟",
-    "areYouInDangerQuestion": "هل أنت نفسك معرض لخطر الترحيل؟",
-    "someoneElseInDangerQuestion": "هل ترغب في دعم شخص معرض لخطر الترحيل؟"
-  },
-  "shortLink": {
-    "availableInOtherLanguages": "هذه المعلومات متوفرة أيضًا بلغات أخرى",
-    "onlyAvailableInOtherLanguages": "هذا المحتوى متوفر بلغات أخرى فقط",
-    "onlyAvailableOnlineInOtherLanguages": "يمكنك العثور على هذه المعلومات في نسخة الويب"
-  },
   "languages": {
     "ar": "العربية",
     "bs": "البوسنية",
@@ -46,6 +7,7 @@
     "en": "الإنجليزية",
     "es": "الإسبانية",
     "fa": "الفارسية",
+    "findTranslation": "الترجمة إلى العربية",
     "fr": "الفرنسية",
     "it": "الإيطالية",
     "ka": "الجورجية",
@@ -61,7 +23,47 @@
     "tr": "التركية",
     "uk": "الأوكرانية",
     "ur": "الأردية",
-    "vi": "الفيتنامية",
-    "findTranslation": "الترجمة إلى العربية"
+    "vi": "الفيتنامية"
+  },
+  "meta": {
+    "allFlyers": "جميع النشرات الإعلانية",
+    "allKits": "جميع أطقم الطوارئ لدينا",
+    "copiedContentToClipboard": "المحتوى المنسوخ إلى الحافظة",
+    "copy": "نسخ النص",
+    "downloadAllFlyerPdf": "جميع الكتيبات في ملف PDF واحد",
+    "downloadAllZinePdf": "جميع المجلات في ملف PDF واحد",
+    "downloadPdf": "التنزيل بصيغة PDF",
+    "emergencyKit": "مجموعة أدوات الطوارئ ضد الترحيلات",
+    "findAlsoAsFlyerInFallbackLang": "لم تتم ترجمة هذا القسم بعد، يمكنك العثور عليه بشكل منفصل في النشرة الإعلانية",
+    "findAlsoAsPage": "يمكنك أيضًا العثور على هذا القسم بشكل منفرد على الصفحة",
+    "findAlsoAsPageInFallbackLang": "لم تتم ترجمة هذا القسم بعد، يمكنك العثور عليه بشكل منفصل في الصفحة",
+    "findAlsoInFlyer": "يمكنك أيضًا العثور على هذا القسم بشكل منفرد في النشرة الإعلانية",
+    "home": "العودة إلى نقطة البداية",
+    "imprint": "إمبريسوم",
+    "infosAgainstDeportation": "هنا يمكنك العثور على مزيد من المعلومات حول ما يمكنك القيام به لمنع الترحيل",
+    "machineTranslation": "للأسف تمت الترجمة بواسطة الذكاء الاصطناعي فقط. نرجو مساعدتنا في تحسين المعلومات وأرسل لنا بريداً إلكترونياً",
+    "mainNavigation": "التنقل الرئيسي",
+    "moreInfo": "مزيد من المعلومات",
+    "moreInfoAbout": "مزيد من المعلومات عن",
+    "notFound": "غير موجود",
+    "notFoundText": "تعذر العثور على المحتوى. من المحتمل أن يكون الرابط قديم أو به خطأ مطبعي.",
+    "onlyInFallbackLanguage": "هذا المحتوى موجود فقط بلغة أخرى",
+    "share": "مشاركة",
+    "sharedLinkToClipboard": "تم نسخ الرابط إلى الحافظة",
+    "subtitle": "الوقوف معًا متضامنين ضد سياسة الترحيل في ساكسونيا",
+    "supporters": "نصائح للداعمين المتطوعين",
+    "tableOfContents": "فهرس المحتويات",
+    "title": "Bring Back Our Neighbours",
+    "updated": "آخر تحديث: "
+  },
+  "shortLink": {
+    "availableInOtherLanguages": "هذه المعلومات متوفرة أيضًا بلغات أخرى",
+    "onlyAvailableInOtherLanguages": "هذا المحتوى متوفر بلغات أخرى فقط",
+    "onlyAvailableOnlineInOtherLanguages": "يمكنك العثور على هذه المعلومات في نسخة الويب"
+  },
+  "wizard": {
+    "areYouInDangerQuestion": "هل أنت نفسك معرض لخطر الترحيل؟",
+    "isThereDangerQuestion": "هل أنت أو أي شخص آخر معرض لخطر الترحيل؟",
+    "someoneElseInDangerQuestion": "هل ترغب في دعم شخص معرض لخطر الترحيل؟"
   }
 }

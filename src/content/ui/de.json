@@ -1,38 +1,4 @@
 {
-  "meta": {
-    "allFlyers": "Alle Flyer",
-    "allKits": "Alle Notfallkoffer",
-    "copiedContentToClipboard": "Inhalt in Zwischenablage kopiert",
-    "copy": "Text kopieren",
-    "downloadAllFlyerPdf": "Alle Flyer als ein PDF",
-    "downloadAllZinePdf": "Alle Zines als ein PDF",
-    "downloadPdf": "Download PDF",
-    "emergencyKit": "Notfallkoffer gegen Abschiebungen",
-    "findAlsoAsPage": "Diesen Abschnitt findest du auch einzeln auf der Seite",
-    "findAlsoInFlyer": "Diesen Abschnitt findest du auch einzeln im Flyer",
-    "findAlsoAsPageInFallbackLang": "Diesen Abschnitt ist noch nicht übersetzt, du findest ihn einzeln auf der Seite",
-    "findAlsoAsFlyerInFallbackLang": "Diesen Abschnitt ist noch nicht übersetzt, du findest ihn einzeln im Flyer",
-    "home": "Übersicht",
-    "imprint": "Impressum",
-    "infosAgainstDeportation": "Hier gibt es mehr Infos, was du gegen eine Abschiebung tun kannst",
-    "machineTranslation": "Leider nur mit KI übersetzt. Bitte hilf uns, die Infos zu verbessern und schreib uns eine Email: info@bringbackourneighbours.de",
-    "moreInfo": "Weitere Informationen",
-    "moreInfoAbout": "Weitere Informationen zu",
-    "notFound": "Nicht gefunden",
-    "notFoundText": "Der Inhalt konnte nicht gefunden werden. Vermutlich ist der Link veraltet oder hatte einen Tippfehler.",
-    "share": "Teilen",
-    "sharedLinkToClipboard": "Link in Zwischenablage kopiert",
-    "subtitle": "Gemeinsam solidarisch gegen die sächsische Abschiebepolitik",
-    "supporters": "Hinweise für ehrenamtliche Unterstützer*innen",
-    "title": "Bring Back Our Neighbours",
-    "updated": "Zuletzt aktualisiert: ",
-    "onlyInFallbackLanguage": "Diesen Inhalt gibt es nur in einer anderen Sprache"
-  },
-  "shortLink": {
-    "availableInOtherLanguages": "Diese Info gibt es auch in anderen Sprachen",
-    "onlyAvailableInOtherLanguages": "Diesen Inhalt gibt es nur in anderen Sprachen",
-    "onlyAvailableOnlineInOtherLanguages": "Du findest diese Info in der Web-Version"
-  },
   "languages": {
     "ar": "Arabisch",
     "bs": "Bosnisch",
@@ -41,6 +7,7 @@
     "en": "Englisch",
     "es": "Spanisch",
     "fa": "Farsi",
+    "findTranslation": "Deutsche Übersetzung verfügbar",
     "fr": "Französisch",
     "it": "Italienisch",
     "ka": "Georgisch",
@@ -56,12 +23,47 @@
     "tr": "Türkisch",
     "uk": "Ukrainisch",
     "ur": "Urdu",
-    "vi": "Vietnamesisch",
-    "findTranslation": "Deutsche Übersetzung verfügbar"
+    "vi": "Vietnamesisch"
+  },
+  "meta": {
+    "allFlyers": "Alle Flyer",
+    "allKits": "Alle Notfallkoffer",
+    "copiedContentToClipboard": "Inhalt in Zwischenablage kopiert",
+    "copy": "Text kopieren",
+    "downloadAllFlyerPdf": "Alle Flyer als ein PDF",
+    "downloadAllZinePdf": "Alle Zines als ein PDF",
+    "downloadPdf": "Download PDF",
+    "emergencyKit": "Notfallkoffer gegen Abschiebungen",
+    "findAlsoAsFlyerInFallbackLang": "Diesen Abschnitt ist noch nicht übersetzt, du findest ihn einzeln im Flyer",
+    "findAlsoAsPage": "Diesen Abschnitt findest du auch einzeln auf der Seite",
+    "findAlsoAsPageInFallbackLang": "Diesen Abschnitt ist noch nicht übersetzt, du findest ihn einzeln auf der Seite",
+    "findAlsoInFlyer": "Diesen Abschnitt findest du auch einzeln im Flyer",
+    "home": "Übersicht",
+    "imprint": "Impressum",
+    "infosAgainstDeportation": "Hier gibt es mehr Infos, was du gegen eine Abschiebung tun kannst",
+    "machineTranslation": "Leider nur mit KI übersetzt. Bitte hilf uns, die Infos zu verbessern und schreib uns eine Email: info@bringbackourneighbours.de",
+    "mainNavigation": "Hauptnavigation",
+    "moreInfo": "Weitere Informationen",
+    "moreInfoAbout": "Weitere Informationen zu",
+    "notFound": "Nicht gefunden",
+    "notFoundText": "Der Inhalt konnte nicht gefunden werden. Vermutlich ist der Link veraltet oder hatte einen Tippfehler.",
+    "onlyInFallbackLanguage": "Diesen Inhalt gibt es nur in einer anderen Sprache",
+    "share": "Teilen",
+    "sharedLinkToClipboard": "Link in Zwischenablage kopiert",
+    "subtitle": "Gemeinsam solidarisch gegen die sächsische Abschiebepolitik",
+    "supporters": "Hinweise für ehrenamtliche Unterstützer*innen",
+    "tableOfContents": "Inhaltverzeichnis",
+    "title": "Bring Back Our Neighbours",
+    "updated": "Zuletzt aktualisiert: "
+  },
+  "shortLink": {
+    "availableInOtherLanguages": "Diese Info gibt es auch in anderen Sprachen",
+    "onlyAvailableInOtherLanguages": "Diesen Inhalt gibt es nur in anderen Sprachen",
+    "onlyAvailableOnlineInOtherLanguages": "Du findest diese Info in der Web-Version"
   },
   "wizard": {
-    "isThereDangerQuestion": "Bist du oder wer anders von einer Abschiebung bedroht?",
     "areYouInDangerQuestion": "Du bist selber von einer Abschiebung bedroht?",
+    "isThereDangerQuestion": "Bist du oder wer anders von einer Abschiebung bedroht?",
     "someoneElseInDangerQuestion": "Du möchtest eine Person unterstützen, die von Abschiebung bedroht ist?"
   }
 }

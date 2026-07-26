@@ -1,33 +1,4 @@
 {
-  "meta": {
-    "allFlyers": "Tous les flyers",
-    "allKits": "Toutes les trousses d'urgence",
-    "copiedContentToClipboard": "Contenu copié dans le presse-papiers",
-    "copy": "copier le texte",
-    "downloadAllFlyerPdf": "Tous les flyers en un seul PDF",
-    "downloadAllZinePdf": "Tous les zines en un seul fichier PDF",
-    "downloadPdf": "télécharger en PDF",
-    "emergencyKit": "Kit d'urgence contre les expulsions",
-    "findAlsoAsPage": "Vous pouvez également trouver cette section individuellement en tant que page",
-    "findAlsoInFlyer": "Vous pouvez également trouver cette section individuellement dans le flyer",
-    "findAlsoAsPageInFallbackLang": "Cette section n'est pas encore traduite ; vous pouvez la consulter séparément sur la page",
-    "findAlsoAsFlyerInFallbackLang": "Cette section n'est pas encore traduite ; vous pouvez la consulter séparément dans le dépliant",
-    "home": "home",
-    "imprint": "Imprint",
-    "infosAgainstDeportation": "Vous trouverez ici plus d'informations sur ce que vous pouvez faire pour éviter une expulsion.",
-    "machineTranslation": "Malheureusement, cette traduction a été faite uniquement par une IA. Merci de nous aider à améliorer les informations et de nous envoyer un e-mail",
-    "moreInfo": "Plus d'informations",
-    "moreInfoAbout": "Plus d'informations sur",
-    "notFound": "Non trouvé",
-    "notFoundText": "Le contenu n'a pas pu être trouvé. Le lien est probablement obsolète ou comportait une faute de frappe",
-    "share": "share",
-    "sharedLinkToClipboard": "Lien copié dans le presse-papiers",
-    "subtitle": "Contre la politique de déportation de la Saxe",
-    "supporters": "Notes à l'attention des bénévoles",
-    "title": "Bring Back Our Neighbours",
-    "updated": "Dernière mise à jour: ",
-    "onlyInFallbackLanguage": "Ce contenu n'existe que dans une autre langue"
-  },
   "languages": {
     "ar": "arabe",
     "bs": "bosniaque",
@@ -36,6 +7,7 @@
     "en": "anglais",
     "es": "espagnol",
     "fa": "farsi",
+    "findTranslation": "Traduction en français disponible",
     "fr": "français",
     "it": "italien",
     "ka": "géorgien",
@@ -51,8 +23,38 @@
     "tr": "turc",
     "uk": "ukrainien",
     "ur": "ourdou",
-    "vi": "vietnamien",
-    "findTranslation": "Traduction en français disponible"
+    "vi": "vietnamien"
+  },
+  "meta": {
+    "allFlyers": "Tous les flyers",
+    "allKits": "Toutes les trousses d'urgence",
+    "copiedContentToClipboard": "Contenu copié dans le presse-papiers",
+    "copy": "copier le texte",
+    "downloadAllFlyerPdf": "Tous les flyers en un seul PDF",
+    "downloadAllZinePdf": "Tous les zines en un seul fichier PDF",
+    "downloadPdf": "télécharger en PDF",
+    "emergencyKit": "Kit d'urgence contre les expulsions",
+    "findAlsoAsFlyerInFallbackLang": "Cette section n'est pas encore traduite ; vous pouvez la consulter séparément dans le dépliant",
+    "findAlsoAsPage": "Vous pouvez également trouver cette section individuellement en tant que page",
+    "findAlsoAsPageInFallbackLang": "Cette section n'est pas encore traduite ; vous pouvez la consulter séparément sur la page",
+    "findAlsoInFlyer": "Vous pouvez également trouver cette section individuellement dans le flyer",
+    "home": "home",
+    "imprint": "Imprint",
+    "infosAgainstDeportation": "Vous trouverez ici plus d'informations sur ce que vous pouvez faire pour éviter une expulsion.",
+    "machineTranslation": "Malheureusement, cette traduction a été faite uniquement par une IA. Merci de nous aider à améliorer les informations et de nous envoyer un e-mail",
+    "mainNavigation": "Navigation principale",
+    "moreInfo": "Plus d'informations",
+    "moreInfoAbout": "Plus d'informations sur",
+    "notFound": "Non trouvé",
+    "notFoundText": "Le contenu n'a pas pu être trouvé. Le lien est probablement obsolète ou comportait une faute de frappe",
+    "onlyInFallbackLanguage": "Ce contenu n'existe que dans une autre langue",
+    "share": "share",
+    "sharedLinkToClipboard": "Lien copié dans le presse-papiers",
+    "subtitle": "Contre la politique de déportation de la Saxe",
+    "supporters": "Notes à l'attention des bénévoles",
+    "tableOfContents": "Table des matières",
+    "title": "Bring Back Our Neighbours",
+    "updated": "Dernière mise à jour: "
   },
   "shortLink": {
     "availableInOtherLanguages": "Cette info existe aussi dans d'autres langues",
@@ -60,8 +62,8 @@
     "onlyAvailableOnlineInOtherLanguages": "Tu trouveras cette info dans la version web"
   },
   "wizard": {
-    "isThereDangerQuestion": "Êtes-vous ou quelqu'un d'autre menacé d'expulsion?",
     "areYouInDangerQuestion": "Êtes-vous vous-même menacé d'expulsion?",
+    "isThereDangerQuestion": "Êtes-vous ou quelqu'un d'autre menacé d'expulsion?",
     "someoneElseInDangerQuestion": "Vous souhaitez soutenir une personne menacée d'expulsion?"
   }
 }

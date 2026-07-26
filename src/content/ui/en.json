@@ -1,33 +1,4 @@
 {
-  "meta": {
-    "allFlyers": "All flyers",
-    "allKits": "All emergency kits",
-    "copiedContentToClipboard": "Content copied to clipboard",
-    "copy": "copy text",
-    "downloadAllFlyerPdf": "All flyers as a single PDF",
-    "downloadAllZinePdf": "All zines in one PDF",
-    "downloadPdf": "download as PDF",
-    "emergencyKit": "Emergency Kit against deportations",
-    "findAlsoAsPage": "You can also find this section individually as a page",
-    "findAlsoInFlyer": "You can also find this section individually in the flyer",
-    "findAlsoAsPageInFallbackLang": "This section is not yet translated, you can find it individually on the page",
-    "findAlsoAsFlyerInFallbackLang": "This section is not yet translated, you can find it individually in the flyer",
-    "home": "home",
-    "imprint": "Imprint",
-    "infosAgainstDeportation": "Here you can find more information on what you can do to prevent a deportation",
-    "machineTranslation": "Unfortunately, this was only translated using AI. Please help us improve the information and send us an email: info@bringbackourneighbours.de",
-    "moreInfo": "More Information",
-    "moreInfoAbout": "Further information on",
-    "notFound": "Not found",
-    "notFoundText": "The content could not be found. The link is probably out of date or had a typo.",
-    "share": "share",
-    "sharedLinkToClipboard": "Link copied to clipboard",
-    "subtitle": "Against the Saxonian deportation policy",
-    "supporters": "Notes for voluntary supporters",
-    "title": "Bring Back Our Neighbours",
-    "updated": "Last updated: ",
-    "onlyInFallbackLanguage": "This content only exists in another language"
-  },
   "languages": {
     "ar": "arabic",
     "bs": "bosnian",
@@ -36,6 +7,7 @@
     "en": "english",
     "es": "spanish",
     "fa": "farsi",
+    "findTranslation": "Translation to English available",
     "fr": "french",
     "it": "italian",
     "ka": "georgian",
@@ -51,8 +23,38 @@
     "tr": "turkish",
     "uk": "ukrainian",
     "ur": "urdu",
-    "vi": "vietnamese",
-    "findTranslation": "Translation to English available"
+    "vi": "vietnamese"
+  },
+  "meta": {
+    "allFlyers": "All flyers",
+    "allKits": "All emergency kits",
+    "copiedContentToClipboard": "Content copied to clipboard",
+    "copy": "copy text",
+    "downloadAllFlyerPdf": "All flyers as a single PDF",
+    "downloadAllZinePdf": "All zines in one PDF",
+    "downloadPdf": "download as PDF",
+    "emergencyKit": "Emergency Kit against deportations",
+    "findAlsoAsFlyerInFallbackLang": "This section is not yet translated, you can find it individually in the flyer",
+    "findAlsoAsPage": "You can also find this section individually as a page",
+    "findAlsoAsPageInFallbackLang": "This section is not yet translated, you can find it individually on the page",
+    "findAlsoInFlyer": "You can also find this section individually in the flyer",
+    "home": "home",
+    "imprint": "Imprint",
+    "infosAgainstDeportation": "Here you can find more information on what you can do to prevent a deportation",
+    "machineTranslation": "Unfortunately, this was only translated using AI. Please help us improve the information and send us an email: info@bringbackourneighbours.de",
+    "mainNavigation": "Main navigation",
+    "moreInfo": "More Information",
+    "moreInfoAbout": "Further information on",
+    "notFound": "Not found",
+    "notFoundText": "The content could not be found. The link is probably out of date or had a typo.",
+    "onlyInFallbackLanguage": "This content only exists in another language",
+    "share": "share",
+    "sharedLinkToClipboard": "Link copied to clipboard",
+    "subtitle": "Against the Saxonian deportation policy",
+    "supporters": "Notes for voluntary supporters",
+    "tableOfContents": "Table of contents",
+    "title": "Bring Back Our Neighbours",
+    "updated": "Last updated: "
   },
   "shortLink": {
     "availableInOtherLanguages": "This information is also available in other languages",
@@ -60,8 +62,8 @@
     "onlyAvailableOnlineInOtherLanguages": "You can find this information in the web version"
   },
   "wizard": {
-    "isThereDangerQuestion": "Are you or someone else at risk of deportation?",
     "areYouInDangerQuestion": "Are you yourself at risk of deportation?",
+    "isThereDangerQuestion": "Are you or someone else at risk of deportation?",
     "someoneElseInDangerQuestion": "Would you like to support a person who is at risk of deportation?"
   }
 }
