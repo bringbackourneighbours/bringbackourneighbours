@@ -17,6 +17,7 @@ describe('PdfLinks', () => {
       } as App.Locals,
     });
 
+    // all languages + 'All'
     expect(getAllByRole('link').length).toBe(SupportedLanguages.length + 1);
     expect(
       getByRole('link', { name: 'de-downloadAllFlyerPdf' }),
@@ -52,8 +53,8 @@ describe('PdfLinks', () => {
       } as App.Locals,
     });
 
-    expect(getAllByRole('link').length).toBe(SupportedLanguages.length + 1);
-    expect(getByRole('link', { name: 'en-downloadPdf' })).toBeInTheDocument();
+    // for kits we dont show 'All'
+    expect(getAllByRole('link').length).toBe(SupportedLanguages.length);
     expect(
       getByRole('link', { name: 'en-downloadPdf (en-ar)' }),
     ).toBeInTheDocument();
