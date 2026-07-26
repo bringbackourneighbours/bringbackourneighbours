@@ -2,7 +2,9 @@
 import type { StandaloneCollections } from '../../model/standalone-collections';
 
 import { type LanguagesValue, SupportedLanguages } from '../../model/languages';
+
 import PdfLink from './PdfLink.astro';
+import Stack from './Stack.astro';
 
 interface Props {
   collection: StandaloneCollections | 'zines';
@@ -11,15 +13,27 @@ interface Props {
 
 const { collection, identifier = 'all' } = Astro.props;
 
-const langs: Array<LanguagesValue | 'all'> = ['all', ...SupportedLanguages];
+const showAllLangs = ['zines', 'flyers'].includes(collection);
 ---
 
-{
-  langs.map((lang) => (
-    <PdfLink
-      collection={collection}
-      identifier={identifier}
-      lang={lang}
-    />
-  ))
-}
+<Stack size="small">
+  {
+    showAllLangs && (
+      <PdfLink
+        slot="heading"
+        collection={collection}
+        identifier={identifier}
+        lang="all"
+      />
+    )
+  }
+  {
+    SupportedLanguages.map((lang) => (
+      <PdfLink
+        collection={collection}
+        identifier={identifier}
+        lang={lang}
+      />
+    ))
+  }
+</Stack>
