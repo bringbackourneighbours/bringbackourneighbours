@@ -85,6 +85,26 @@ li {
 }
 
 /**
+* Astro images
+* 
+* See: https://docs.astro.build/en/reference/modules/astro-assets/#layout
+*/
+:where([data-astro-image]) {
+  object-fit: var(--fit);
+  object-position: var(--pos);
+}
+
+:where([data-astro-image='full-width']) {
+  width: 100%;
+  height: auto;
+}
+
+:where([data-astro-image='constrained']) {
+  max-width: 100%;
+  height: auto;
+}
+
+/**
 * Utility
 */
 
