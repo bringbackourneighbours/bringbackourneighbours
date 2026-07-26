@@ -1,33 +1,4 @@
 {
-  "meta": {
-    "allFlyers": "Todos los folletos",
-    "allKits": "Todos los kits de emergencia",
-    "copiedContentToClipboard": "Contenido copiado en el portapapeles",
-    "copy": "copiar texto",
-    "downloadAllFlyerPdf": "Todos los folletos en un solo PDF",
-    "downloadAllZinePdf": "Todos los fanzines en un solo PDF",
-    "downloadPdf": "descargar en PDF",
-    "emergencyKit": "Botiquín de emergencia contra deportaciones",
-    "findAlsoAsPage": "También puede encontrar esta sección individualmente como una página",
-    "findAlsoInFlyer": "También puede encontrar esta sección individualmente en el folleto",
-    "findAlsoAsPageInFallbackLang": "Esta sección aún no está traducida; puede consultarla por separado en la página",
-    "findAlsoAsFlyerInFallbackLang": "Esta sección aún no está traducida; puede consultarla por separado en el folleto",
-    "home": "home",
-    "imprint": "Impresión",
-    "infosAgainstDeportation": "Aquí puede encontrar más información sobre lo que puede hacer para evitar una deportación",
-    "machineTranslation": "Desafortunadamente, solo ha sido traducido con inteligencia artificial. Por favor, ayúdanos a mejorar la información y mándanos un correo electrónico.",
-    "moreInfo": "Más información",
-    "moreInfoAbout": "Más información sobre",
-    "notFound": "No encontrado",
-    "notFoundText": "No se ha podido encontrar el contenido. Es probable que el enlace no esté actualizado o contenga un error tipográfico",
-    "share": "share",
-    "sharedLinkToClipboard": "Enlace copiado al portapapeles",
-    "subtitle": "Contra la política de deportación de Sajonia",
-    "supporters": "Notas para los partidarios voluntarios",
-    "title": "Bring Back Our Neighbours",
-    "updated": "Last updated: ",
-    "onlyInFallbackLanguage": "Este contenido solo existe en otro idioma"
-  },
   "languages": {
     "ar": "árabe",
     "bs": "bosnio",
@@ -36,6 +7,7 @@
     "en": "inglés",
     "es": "español",
     "fa": "farsi",
+    "findTranslation": "Traducción al español disponible",
     "fr": "francés",
     "it": "italiano",
     "ka": "georgiano",
@@ -51,8 +23,38 @@
     "tr": "turco",
     "uk": "ucraniano",
     "ur": "urdu",
-    "vi": "vietnamita",
-    "findTranslation": "Traducción al español disponible"
+    "vi": "vietnamita"
+  },
+  "meta": {
+    "allFlyers": "Todos los folletos",
+    "allKits": "Todos los kits de emergencia",
+    "copiedContentToClipboard": "Contenido copiado en el portapapeles",
+    "copy": "copiar texto",
+    "downloadAllFlyerPdf": "Todos los folletos en un solo PDF",
+    "downloadAllZinePdf": "Todos los fanzines en un solo PDF",
+    "downloadPdf": "descargar en PDF",
+    "emergencyKit": "Botiquín de emergencia contra deportaciones",
+    "findAlsoAsFlyerInFallbackLang": "Esta sección aún no está traducida; puede consultarla por separado en el folleto",
+    "findAlsoAsPage": "También puede encontrar esta sección individualmente como una página",
+    "findAlsoAsPageInFallbackLang": "Esta sección aún no está traducida; puede consultarla por separado en la página",
+    "findAlsoInFlyer": "También puede encontrar esta sección individualmente en el folleto",
+    "home": "home",
+    "imprint": "Impresión",
+    "infosAgainstDeportation": "Aquí puede encontrar más información sobre lo que puede hacer para evitar una deportación",
+    "machineTranslation": "Desafortunadamente, solo ha sido traducido con inteligencia artificial. Por favor, ayúdanos a mejorar la información y mándanos un correo electrónico.",
+    "mainNavigation": "Navegación principal",
+    "moreInfo": "Más información",
+    "moreInfoAbout": "Más información sobre",
+    "notFound": "No encontrado",
+    "notFoundText": "No se ha podido encontrar el contenido. Es probable que el enlace no esté actualizado o contenga un error tipográfico",
+    "onlyInFallbackLanguage": "Este contenido solo existe en otro idioma",
+    "share": "share",
+    "sharedLinkToClipboard": "Enlace copiado al portapapeles",
+    "subtitle": "Contra la política de deportación de Sajonia",
+    "supporters": "Notas para los partidarios voluntarios",
+    "tableOfContents": "Índice",
+    "title": "Bring Back Our Neighbours",
+    "updated": "Last updated: "
   },
   "shortLink": {
     "availableInOtherLanguages": "Esta información también está disponible en otros idiomas",
@@ -60,8 +62,8 @@
     "onlyAvailableOnlineInOtherLanguages": "Puede encontrar esta información en la versión web"
   },
   "wizard": {
-    "isThereDangerQuestion": "¿Está usted o alguien más en riesgo de deportación?",
     "areYouInDangerQuestion": "¿Está usted en riesgo de deportación?",
+    "isThereDangerQuestion": "¿Está usted o alguien más en riesgo de deportación?",
     "someoneElseInDangerQuestion": "¿Le gustaría apoyar a una persona que está en riesgo de deportación?"
   }
 }

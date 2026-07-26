@@ -1,38 +1,4 @@
 {
-  "meta": {
-    "allFlyers": "Tüm broşürler",
-    "allKits": "Tüm acil durum kitleri",
-    "copiedContentToClipboard": "Panoya kopyalanan içerik",
-    "copy": "Metni kopyala",
-    "downloadAllFlyerPdf": "Tüm broşürler tek bir PDF olarak",
-    "downloadAllZinePdf": "Tüm dergiler tek bir PDF dosyasında",
-    "downloadPdf": "PDF olarak indir",
-    "emergencyKit": "Sınır dışı edilmelere karşı “acil durum kiti”",
-    "findAlsoAsPage": "Bu bölümü ayrı ayrı sayfada da bulabilirsiniz",
-    "findAlsoInFlyer": "Bu bölümü ayrıca broşürde ayrı ayrı bulabilirsiniz",
-    "findAlsoAsPageInFallbackLang": "Bu bölüm henüz çevrilmemiştir; sayfada ayrı olarak bulabilirsiniz",
-    "findAlsoAsFlyerInFallbackLang": "Bu bölüm henüz çevrilmemiştir; broşürde ayrı olarak bulabilirsiniz",
-    "home": "Ana Sayfa",
-    "imprint": "Künye",
-    "infosAgainstDeportation": "Burada sınır dışı edilmeyi önlemek için neler yapabileceğiniz hakkında daha fazla bilgi bulabilirsiniz",
-    "machineTranslation": "Ne yazık ki yalnızca yapay zekayla çevrilmiştir. Lütfen bilgileri geliştirmemize yardım et ve bize bir e-posta gönder",
-    "moreInfo": "Daha fazla bilgi",
-    "moreInfoAbout": "Hakkında daha fazla bilgi",
-    "notFound": "Bulunamadı",
-    "notFoundText": "İçerik bulunamadı. Bağlantı muhtemelen güncel değil veya bir yazım hatası var.",
-    "share": "Paylaş",
-    "sharedLinkToClipboard": "Panoya kopyalanan bağlantı",
-    "subtitle": "Saksonya'nın sınır dışı politikasına karşı dayanışma içinde bir arada durmak",
-    "supporters": "Gönüllü destekçiler için bilgiler",
-    "title": "Komşularımızı Geri Getirin",
-    "updated": "Güncelleme: ",
-    "onlyInFallbackLanguage": "Bu içerik yalnızca başka bir dilde mevcuttur"
-  },
-  "shortLink": {
-    "availableInOtherLanguages": "Bu bilgiler diğer dillerde de mevcuttur",
-    "onlyAvailableInOtherLanguages": "Bu içerik yalnızca diğer dillerde mevcuttur\n",
-    "onlyAvailableOnlineInOtherLanguages": "Bu bilgileri web sürümünde bulabilirsiniz"
-  },
   "languages": {
     "ar": "Arapça",
     "bs": "Boşnakça",
@@ -41,6 +7,7 @@
     "en": "İngilizce",
     "es": "İspanyol",
     "fa": "Farsça",
+    "findTranslation": "Türkçe çevirisi mevcuttur",
     "fr": "Fransızca",
     "it": "İtalyanca",
     "ka": "Gürcü",
@@ -56,12 +23,47 @@
     "tr": "Türkçe",
     "uk": "Ukrayna",
     "ur": "Urdu",
-    "vi": "Vietnam",
-    "findTranslation": "Türkçe çevirisi mevcuttur"
+    "vi": "Vietnam"
+  },
+  "meta": {
+    "allFlyers": "Tüm broşürler",
+    "allKits": "Tüm acil durum kitleri",
+    "copiedContentToClipboard": "Panoya kopyalanan içerik",
+    "copy": "Metni kopyala",
+    "downloadAllFlyerPdf": "Tüm broşürler tek bir PDF olarak",
+    "downloadAllZinePdf": "Tüm dergiler tek bir PDF dosyasında",
+    "downloadPdf": "PDF olarak indir",
+    "emergencyKit": "Sınır dışı edilmelere karşı “acil durum kiti”",
+    "findAlsoAsFlyerInFallbackLang": "Bu bölüm henüz çevrilmemiştir; broşürde ayrı olarak bulabilirsiniz",
+    "findAlsoAsPage": "Bu bölümü ayrı ayrı sayfada da bulabilirsiniz",
+    "findAlsoAsPageInFallbackLang": "Bu bölüm henüz çevrilmemiştir; sayfada ayrı olarak bulabilirsiniz",
+    "findAlsoInFlyer": "Bu bölümü ayrıca broşürde ayrı ayrı bulabilirsiniz",
+    "home": "Ana Sayfa",
+    "imprint": "Künye",
+    "infosAgainstDeportation": "Burada sınır dışı edilmeyi önlemek için neler yapabileceğiniz hakkında daha fazla bilgi bulabilirsiniz",
+    "machineTranslation": "Ne yazık ki yalnızca yapay zekayla çevrilmiştir. Lütfen bilgileri geliştirmemize yardım et ve bize bir e-posta gönder",
+    "mainNavigation": "Ana menü",
+    "moreInfo": "Daha fazla bilgi",
+    "moreInfoAbout": "Hakkında daha fazl a bilgi",
+    "notFound": "Bulunamadı",
+    "notFoundText": "İçerik bulunamadı. Bağlantı muhtemelen güncel değil veya bir yazım hatası var.",
+    "onlyInFallbackLanguage": "Bu içerik yalnızca başka bir dilde mevcuttur",
+    "share": "Paylaş",
+    "sharedLinkToClipboard": "Panoya kopyalanan bağlantı",
+    "subtitle": "Saksonya'nın sınır dışı politikasına karşı dayanışma içinde bir arada durmak",
+    "supporters": "Gönüllü destekçiler için bilgiler",
+    "tableOfContents": "İçindekiler",
+    "title": "Komşularımızı Geri Getirin",
+    "updated": "Güncelleme: "
+  },
+  "shortLink": {
+    "availableInOtherLanguages": "Bu bilgiler diğer dillerde de mevcuttur",
+    "onlyAvailableInOtherLanguages": "Bu içerik yalnızca diğer dillerde mevcuttur\n",
+    "onlyAvailableOnlineInOtherLanguages": "Bu bilgileri web sürümünde bulabilirsiniz"
   },
   "wizard": {
-    "isThereDangerQuestion": "Siz veya bir başkası sınır dışı edilme riski altında mısınız?",
     "areYouInDangerQuestion": "Siz de sınır dışı edilme riski altında mısınız?",
+    "isThereDangerQuestion": "Siz veya bir başkası sınır dışı edilme riski altında mısınız?",
     "someoneElseInDangerQuestion": "Sınır dışı edilme riski altında olan bir kişiye destek olmak ister misiniz?"
   }
 }

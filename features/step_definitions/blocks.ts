@@ -30,6 +30,16 @@ Then(
 );
 
 Then(
+  'i see a table of contents labeled {string} with {int} items',
+  async function (this: PlaywrightWorld, label: string, count: number) {
+    const tocNav = this.screen.page.getByRole('navigation', { name: label });
+
+    await expect(tocNav).toBeVisible();
+    expect(await tocNav.getByRole('listitem').count()).toBe(count);
+  },
+);
+
+Then(
   'i see a role {string} with name {string}',
   async function (
     this: PlaywrightWorld,

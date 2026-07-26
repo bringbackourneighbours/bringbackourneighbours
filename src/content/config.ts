@@ -132,6 +132,8 @@ const uiCollection = defineCollection({
         sharedLinkToClipboard: z.string(),
         subtitle: z.string(),
         supporters: z.string(),
+        tableOfContents: z.string(),
+        mainNavigation: z.string(),
         title: z.string(),
         updated: z.string(),
       })
