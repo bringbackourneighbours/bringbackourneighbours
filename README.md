@@ -261,6 +261,17 @@ streetLine: Am Ende 123
 zip: '12345'
 city: Dresden
 
+# when an organizasion has multiple locations, the you can list them instead as "locations:"
+locations:
+  - location: Main Office
+    streetLine: Am Ende 123
+    zip: '12345'
+    city: Dresden
+  - location: Branch Office
+    streetLine: Drüeb
+    zip: '23456'
+    city: Berlin
+
 # mail ahd phone can be plural or singular, or even both
 mail: mail@hallo.de
 mails:

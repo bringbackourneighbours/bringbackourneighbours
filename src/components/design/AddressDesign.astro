@@ -1,6 +1,6 @@
 ---
 import { type LanguagesValue } from '../../model/languages';
-import { type CollectionEntry } from 'astro:content';
+import { type CollectionEntry, type InferEntrySchema } from 'astro:content';
 import { getLanguageDirection } from '../../util/get-language-direction';
 
 import Link from '../design/Link.astro';
@@ -14,10 +14,23 @@ const isPrintedFlyer = Astro.locals.isPrint && Astro.locals.isFlyer;
 
 const { entry, lang = Astro.locals.lang } = Astro.props;
 
-const address = entry.data;
+const address: InferEntrySchema<'addresses'> = entry.data!;
 
 const hasLocation =
   address?.additional || address?.streetLine || address?.zip || address?.city;
+
+const locations = address.locations ?? [];
+
+if (hasLocation) {
+  locations?.push({
+    additional: address?.additional,
+    streetLine: address?.streetLine,
+    zip: address?.zip,
+    city: address?.city,
+  });
+}
+
+console.log(locations);
 
 const hasContact =
   address?.phone || address?.phones || address?.mail || address?.mails;
@@ -50,29 +63,37 @@ const showNotes = !isPrintedFlyer;
     <strong>{address?.name}</strong>
     <br />
     {
-      showLocation && hasLocation && (
-        <>
-          {address?.additional && (
-            <>
-              {address?.additional}
-              <br />
-            </>
-          )}
-          {address?.streetLine && (
-            <>
-              {address?.streetLine}
-              <br />
-            </>
-          )}
-          {address?.zip && <>{address?.zip + ' '}</>}
-          {address?.city && <>{address?.city}</>}
-          {(address?.zip || address?.city) && (
-            <>
-              <br />
-            </>
-          )}
-        </>
-      )
+      showLocation &&
+        locations.map((location) => (
+          <>
+            {location?.location && (
+              <>
+                {location?.location}
+                <br />
+              </>
+            )}
+            {location?.additional && (
+              <>
+                {location?.additional}
+                <br />
+              </>
+            )}
+            {location?.streetLine && (
+              <>
+                {location?.streetLine}
+                <br />
+              </>
+            )}
+            {location?.zip && <>{location?.zip + ' '}</>}
+            {location?.city && <>{location?.city}</>}
+            {(location?.zip || location?.city) && (
+              <>
+                <br />
+              </>
+            )}
+            {locations.length >= 2 && <br />}
+          </>
+        ))
     }
     {
       showContact && hasContact && (
