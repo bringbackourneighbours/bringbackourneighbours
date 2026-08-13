@@ -24,16 +24,28 @@ const standaloneContentSchema = {
   seo: z.string(),
 };
 
+const locationSchema = {
+  streetLine: z.string().optional(),
+  additional: z.string().optional(),
+  zip: z.string().optional(),
+  city: z.string().optional(),
+};
+
 const addressesCollection = defineCollection({
   type: 'data',
   schema: z.object({
     ...checkableSchema,
     identifier: z.string(),
-    name: z.string(), // location
-    streetLine: z.string().optional(),
-    additional: z.string().optional(),
-    zip: z.string().optional(),
-    city: z.string().optional(), // contact
+    name: z.string(),
+    locations: z
+      .array(
+        z.object({
+          location: z.string().optional(),
+          ...locationSchema,
+        }),
+      )
+      .optional(),
+    ...locationSchema,
     mail: z.string().optional(),
     mails: z.array(z.string()).optional(),
     phone: z.string().optional(),

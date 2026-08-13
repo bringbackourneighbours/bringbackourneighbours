@@ -24,6 +24,15 @@ describe('AddressDesign', () => {
                 streetLine: 'Am Ende 123',
                 zip: '12345',
                 city: 'Dresden',
+                locations: [
+                  {
+                    location: 'Main Office',
+                    streetLine: 'Hauptstraße 1',
+                    zip: '00000',
+                    city: 'Hamburg',
+                  },
+                  { location: 'Postfach', zip: '23456', city: 'Berlin' },
+                ],
                 mail: 'mail@hallo.de',
                 mails: ['mail1@web.de', 'mail2@web.de'],
                 phone: '+4917333444550',
@@ -58,6 +67,13 @@ describe('AddressDesign', () => {
       expect(getByText(/c\/o Namhaft e\.V\./)).toBeInTheDocument();
       expect(getByText(/Am Ende 123/)).toBeInTheDocument();
       expect(getByText(/12345 Dresden/)).toBeInTheDocument();
+
+      expect(getByText(/Office/)).toBeInTheDocument();
+      expect(getByText(/Hauptstraße 1/)).toBeInTheDocument();
+      expect(getByText(/00000 Hamburg/)).toBeInTheDocument();
+
+      expect(getByText(/Postfach/)).toBeInTheDocument();
+      expect(getByText(/23456 Berlin/)).toBeInTheDocument();
 
       // contact
       expect(getByRole('link', { name: '+4917333444550' })).toHaveAttribute(

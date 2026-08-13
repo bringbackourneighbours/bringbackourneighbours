@@ -1,20 +1,21 @@
 identifier: equalrightsgreece
-name: Büros von Equal rights in Griechenland
-streetLine: Akadimias 84
-zip: '10678'
-city: Athens
-mail: athens@equal-rights.org
-
-streetLine: Mitropolitou Polikarpou 1
-zip: '82100'
-city: Chios
-mail: chios@equal-rights.org
-
-streetLine: Pyli
-zip: '85300'
-city: Kos
-mail: kos@equal-rights.org
-
+name: Equal rights in Griechenland
+locations:
+  - location: Büro in Athen
+    streetLine: Akadimias 84
+    zip: '10678'
+    city: Athens
+    mail: athens@equal-rights.org
+  - location: Büro in Chios
+    streetLine: Mitropolitou Polikarpou 1
+    zip: '82100'
+    city: Chios
+    mail: chios@equal-rights.org
+  - location: Büro in Kos
+    streetLine: Pyli
+    zip: '85300'
+    city: Kos
+    mail: kos@equal-rights.org
 url: https://equal-rights.org/contact
 lastChecked: 2026-08-05
 translatedNotes:
