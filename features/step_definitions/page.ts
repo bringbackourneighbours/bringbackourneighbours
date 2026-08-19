@@ -37,6 +37,10 @@ Then(
         .sort();
     }
 
+    // some pages will do a redirect to their cannonical page first...
+    // so we wait until everything is settled
+    await this.screen.page.waitForLoadState('networkidle');
+
     const accessibilityScanResults = await new AxeBuilder({
       page: this.screen.page,
     }).analyze();
