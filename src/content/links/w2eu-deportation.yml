@@ -1,10 +1,10 @@
 all:
   type: PDF
-  lastChecked: 2026-07-05
+  lastChecked: 2026-08-27
 ar:
   slug: w2eu-deportationar
   title: أوقفوا عمليات الترحيل - معلومات ضد الخوف
-  url: https://w2eu.info/media/pages/countries/germany/deportation/8697ce9618-1779878871/stop-deportation-arabic-2026.pdf
+  url: https://w2eu.info/media/pages/countries/germany/deportation/6701276782-1785003992/stop-deportation-arabic-2026_final.pdf
 de:
   slug: w2eu-deportationde
   title: 'Informationen gegen die Angst - Abschiebung stoppen!'
@@ -12,16 +12,16 @@ de:
 en:
   slug: w2eu-deportationen
   title: 'Information against the fear - Stop deportation!'
-  url: https://w2eu.info/media/pages/countries/germany/deportation/ef49e63d8b-1779878871/stop-deportation-english-2026.pdf
+  url: https://w2eu.info/media/pages/countries/germany/deportation/66a45288ba-1785003995/stop-deportation-english-2026_final.pdf
 fa:
   slug: w2eu-deportationfa
   title: توقف اخراج - اطلاعات در برابر ترس!
-  url: https://w2eu.info/media/pages/countries/germany/deportation/934a3de58a-1779878871/stop-deportation-farsi-2026.pdf
+  url: https://w2eu.info/media/pages/countries/germany/deportation/30ad09f528-1785003995/stop-deportation-farsi-2026_final.pdf
 fr:
   slug: w2eu-deportationfr
   title: L’information contre la peur - Stop l’expulsion!
-  url: https://w2eu.info/media/pages/countries/germany/deportation/018fb58780-1779878871/stop-deportation-french-2026.pdf
+  url: https://w2eu.info/media/pages/countries/germany/deportation/56aca8440d-1785003995/stop-deportation-french-2026_final.pdf
 ckb:
   slug: w2eu-deportationckb
   title: زانیاری دژی ترس - ڕێگری لە دەرکردن بکە!
-  url: https://w2eu.info/media/pages/countries/germany/deportation/0c6bde3814-1779878871/stop-deportation-kurdish-sorani-2026.pdf
+  url: https://w2eu.info/media/pages/countries/germany/deportation/13c4f6316c-1785003995/stop-deportation-kurdish-sorani-2026_final.pdf
