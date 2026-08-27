@@ -1,47 +1,50 @@
 all:
   type: PDF
-  lastChecked: 2026-05-22
+  lastChecked: 2026-08-31
+# old site: https://www.oplatz.net/stop-deportation/
+# backup: https://fluechtlingscafe-goettingen.com/informationcomic-stop-deportation/
 de:
   slug: comicde
   title: 'Comic: »Stop Deportation – oder: Wege, eine Abschiebung zu verhindern«'
-  url: https://oplatz.net/wp-content/uploads/2016/07/GeflInfCmc_16p_A5_DE.pdf
+  url: https://fluechtlingscafe-goettingen.com/wp-content/uploads/2019/05/wege_eine_abschiebung_zu_verhindern_deutsch.pdf
 en:
   slug: comic
   title: 'Comic: »Stop Deportation – or: Ways to Prevent a Deportation«'
-  url: https://oplatz.net/wp-content/uploads/2016/07/GeflInfCmc_16p_A5_EN.pdf
+  url: https://fluechtlingscafe-goettingen.com/wp-content/uploads/2019/05/wege_eine_abschiebung_zu_verhindern_englisch.pdf
 fr:
   slug: comicfr
   title: 'Comic : »Stop à la déportation – ou : Les moyens d’empêcher une déportation«'
-  url: https://oplatz.net/wp-content/uploads/2016/07/GeflInfCmc_16p_A5_FR_060616.pdf
+  url: https://fluechtlingscafe-goettingen.com/wp-content/uploads/2019/05/wege_eine_abschiebung_zu_verhindern_franz%C3%B6sisch.pdf
 es:
   slug: comices
   title: 'Cómic: »Detener la deportación – o: Formas de prevenir una deportación«'
-  url: https://oplatz.net/wp-content/uploads/2016/07/GeflInfCmc_16p_A5_SP_230516.pdf
+  url: https://fluechtlingscafe-goettingen.com/wp-content/uploads/2019/05/wege_eine_abschiebung_zu_verhindern_spanisch.pdf
 sr:
   slug: comicsr
   title: 'Стрип: »Стоп депортацији – или: Начини да се спречи депортација«'
-  url: https://oplatz.net/wp-content/uploads/2016/07/GeflInfCmc_16p_A5_SC.pdf
+  url: https://fluechtlingscafe-goettingen.com/wp-content/uploads/2019/05/wege_eine_abschiebung_zu_verhindern_serbisch.pdf
 ru:
   slug: comicru
   title: 'Комикс: «Остановить депортацию – или Как предотвратить депортацию»'
-  url: https://oplatz.net/wp-content/uploads/2017/03/ru_stop_dep.pdf
+  url: https://fluechtlingscafe-goettingen.com/wp-content/uploads/2019/05/wege_eine_abschiebung_zu_verhindern_russisch.pdf
 tr:
   slug: comictr
   title: 'Çizgi Roman: »Sürgün Etmeyi Durdurun – veya: Sürgünü Önlemenin Yolları«'
-  url: https://oplatz.net/wp-content/uploads/2016/07/stop_dep_tr2.pdf
+  url: https://web.archive.org/web/20251007083742/https://oplatz.net/wp-content/uploads/2016/07/stop_dep_tr2.pdf
+  # url: https://oplatz.net/wp-content/uploads/2016/07/stop_dep_tr2.pdf
 ar:
   slug: comicar
   title: 'كوميدي: وقف الترحيل – أو: طرق منع الترحيل'
-  url: https://oplatz.net/wp-content/uploads/2016/07/stop_dep_ar.pdf
+  url: https://fluechtlingscafe-goettingen.com/wp-content/uploads/2019/05/wege_eine_abschiebung_zu_verhindern_arabisch.pdf
 fa:
   slug: comicfa
   title: 'کمیک: توقف اخراج – یا: راه هایی برای جلوگیری از اخراج'
-  url: https://oplatz.net/wp-content/uploads/2016/07/stop_dep_fa.pdf
+  url: https://fluechtlingscafe-goettingen.com/wp-content/uploads/2019/05/wege_eine_abschiebung_zu_verhindern_farsi.pdf
 it:
   slug: fumetto
   title: 'Fumetto: »Ferma la deportazione – o: Modi per prevenire una deportazione«'
-  url: https://oplatz.net/wp-content/uploads/2016/08/GeflInfCmc_16p_A5_ITAL.pdf
+  url: https://fluechtlingscafe-goettingen.com/wp-content/uploads/2019/05/wege_eine_abschiebung_zu_verhindern_italienisch.pdf
 rom:
   slug: comicrom
   title: 'Comic: »Stop Deportation – Sar te Achavolpe o Abschiebung«'
-  url: http://fluechtlingscafe-goettingen.com/wp-content/uploads/2019/05/wege_eine_abschiebung_zu_verhindern_romanes.pdf
+  url: https://fluechtlingscafe-goettingen.com/wp-content/uploads/2019/05/wege_eine_abschiebung_zu_verhindern_romanes.pdf
