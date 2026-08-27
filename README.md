@@ -1,6 +1,6 @@
 # Bring Back Our Neighbours
 
-[![Deploy](https://github.com/bringbackourneighbours/bringbackourneighbours/actions/workflows/deploy.yml/badge.svg)](https://bringbackourneighbours.github.io/bringbackourneighbours/)
+[![Deploy to GitHub Pages](https://github.com/bringbackourneighbours/bringbackourneighbours/actions/workflows/deploy.yml/badge.svg?branch=main)](https://bringbackourneighbours.de)
 [![Scan Links](https://github.com/bringbackourneighbours/bringbackourneighbours/actions/workflows/scan-links.yml/badge.svg)](https://github.com/bringbackourneighbours/bringbackourneighbours/actions/workflows/scan-links.yml)
 
 ![License: MIT (Non-Commercial)](https://img.shields.io/badge/license-MIT--NC-blue.svg)
