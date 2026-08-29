@@ -1,7 +1,0 @@
-{
-  "compilerOptions": {
-    "composite": true
-  },
-  "include": [".astro/types.d.ts", "src/**/*.ts"],
-  "exclude": ["vitest.setup.ts", "vitest.config.ts", "src/**/*.test.ts"]
-}

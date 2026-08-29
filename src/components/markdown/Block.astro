@@ -1,5 +1,5 @@
 ---
-import { type CollectionEntry, getCollection } from 'astro:content';
+import { type CollectionEntry, getCollection, render } from 'astro:content';
 import { type LanguagesValue } from '../../model/languages';
 import type { MarkdownCollections } from '../../model/standalone-collections';
 
@@ -27,7 +27,7 @@ const {
 } = Astro.props;
 
 const blockEntries = await getCollection(collection, (block) => {
-  return block.slug === `${identifier}/${lang}`;
+  return block.id === `${identifier}/${lang}`;
 });
 
 let blockEntry = blockEntries[0] as CollectionEntry<MarkdownCollections>;
@@ -41,7 +41,7 @@ const fallbackToLang = blockEntry?.data?.fallbackToLang;
 
 if (fallbackToLang !== lang) {
   const fallbackEntries = await getCollection(collection, (block) => {
-    return block.slug === `${identifier}/${fallbackToLang}`;
+    return block.id === `${identifier}/${fallbackToLang}`;
   });
 
   if (fallbackEntries.length > 0) {
@@ -61,7 +61,7 @@ if (fallbackToLang !== lang) {
         isRootLevelContent={isRootLevelContent}
       />
       <MarkdownEntry
-        rendered={blockEntry.render()}
+        rendered={render(blockEntry)}
         recursive={recursive}
       />
     </section>

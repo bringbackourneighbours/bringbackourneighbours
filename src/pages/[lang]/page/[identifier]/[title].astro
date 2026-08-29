@@ -1,5 +1,5 @@
 ---
-import { type CollectionEntry, getCollection } from 'astro:content';
+import { type CollectionEntry, getCollection, render } from 'astro:content';
 
 import Block from '../../../../components/markdown/Block.astro';
 import ContentHeading from '../../../../components/design/ContentHeading.astro';
@@ -61,7 +61,7 @@ const germanTitle =
     germanTitle={germanTitle}
     canonicalUrl={canonicalUrl}
   />
-  <TableOfContents rendered={entry.render()} />
+  <TableOfContents rendered={render(entry)} />
 
   <Block
     identifier={entry.data.identifier}

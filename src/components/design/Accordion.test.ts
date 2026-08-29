@@ -17,7 +17,7 @@ describe('Accordion', () => {
           isFlyer: false,
           isKit: false,
           lang: Languages.GERMAN,
-        },
+        } as App.Locals,
         slots: { default: 'content' },
       });
 
@@ -53,7 +53,7 @@ describe('Accordion', () => {
           isFlyer: false,
           isKit: false,
           lang: Languages.GERMAN,
-        },
+        } as App.Locals,
         slots: { default: 'content' },
       });
 
@@ -84,7 +84,7 @@ describe('Accordion', () => {
           isFlyer: false,
           isKit: false,
           lang: Languages.GERMAN,
-        },
+        } as App.Locals,
         slots: { default: 'content', summary: 'mySummary' },
       });
 
@@ -108,7 +108,7 @@ describe('Accordion', () => {
           isFlyer: false,
           isKit: false,
           lang: Languages.GERMAN,
-        },
+        } as App.Locals,
         slots: { default: 'content' },
       });
 

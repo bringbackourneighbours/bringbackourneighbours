@@ -23,7 +23,7 @@ describe('Card', () => {
         isFlyer: false,
         isKit: false,
         isPrint: false,
-      },
+      } as App.Locals,
       slots: {
         default: 'Cardcontent',
       },

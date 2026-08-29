@@ -54,7 +54,7 @@ describe('AddressDesign', () => {
             isPrint: false,
             isKit: false,
             isFlyer: true,
-          },
+          } as App.Locals,
         },
       );
 
@@ -146,7 +146,7 @@ describe('AddressDesign', () => {
           isPrint: false,
           isKit: false,
           isFlyer: true,
-        },
+        } as App.Locals,
       });
       expect(queryByText('Nur ein Beispiel')).not.toBeInTheDocument();
       expect(getByText('Just an Example')).toBeInTheDocument();
@@ -190,7 +190,7 @@ describe('AddressDesign', () => {
             isPrint: true,
             isKit: false,
             isFlyer: true,
-          },
+          } as App.Locals,
         },
       );
 
