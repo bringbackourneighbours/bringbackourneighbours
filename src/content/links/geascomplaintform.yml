@@ -1,0 +1,31 @@
+all:
+  slug: geascomplaintform
+  type: WEB
+  url: https://www.institut-fuer-menschenrechte.de/en/topics/asylum-and-migration/complaints
+  lastChecked: 2026-08-29
+ar:
+  title: هل تخضع لفحص أولي أو لإجراءات اللجوء على الحدود في ألمانيا؟ يمكنك تقديم شكوى هنا بلغتك الأم إذا كنت ترى أن حقوقك قد انتهكت
+bs:
+  title: Prolazite li skrining ili preliminarni azilni postupak u Njemačkoj? Ovdje možete podnijeti žalbu na svom maternjem jeziku ako smatrate da su vaša prava povrijeđena.
+de:
+  title: Sie werden in Deutschland einem Screening oder dem Asylgrenzverfahren unterzogen? Sie können hier in Ihrer Muttersprache eine Beschwerde einreichen, wenn Sie der Meinung sind, dass Ihre Rechte verletzt wurden
+en:
+  title: Are you undergoing a screening or the initial asylum procedure in Germany? You can lodge a complaint here in your native language if you believe your rights have been infringed
+es:
+  title: ¿Te están sometiendo a un proceso de selección o al procedimiento de asilo en Alemania? Aquí puedes presentar una queja en tu idioma nativo si crees que se han violado tus derechos
+fa:
+  title: آیا در آلمان تحت غربالگری یا روند اولیهٔ پناهندگی هستید؟ اگر معتقدید حقوق شما نقض شده است، می‌توانید اینجا به زبان مادری خود شکایت ثبت کنید
+fr:
+  title: Tu fais l'objet d'un examen préliminaire ou d'une procédure d'asile à la frontière en Allemagne ? Tu peux déposer une réclamation ici, dans ta langue maternelle, si tu estimes que tes droits ont été bafoués.
+ka:
+  title: გადის თუ არა სკრინინგის ან თავშესაფრის საწყის პროცედურას გერმანიაში? შეგიძლიათ, აქ, თქვენს მშობლიურ ენაზე შეიტანოთ საჩივარი, თუ მიიჩნევთ, რომ თქვენი უფლებები დაირღვა
+ru:
+  title: Тебя в Германии проверяют в рамках скрининга или процедуры рассмотрения ходатайства о предоставлении убежища? Если ты считаешь, что твои права были нарушены, ты можешь подать жалобу здесь на своём родном языке
+ku:
+  title: Ma hûn li Almanyayê di bin lêkolîna destpêkê an prosedûra penaberiya destpêkê de ne? Heke hûn bawer dikin ku mafên we hatine binpêkirin, hûn dikarin li vir bi zimanê xwe yê zikmakî gilî bikin.
+tr:
+  title: Almanya’da bir tarama sürecinden mi geçiyorsunuz yoksa sınırda sığınma prosedürüne mi tabi tutuluyorsunuz? Haklarınızın ihlal edildiğini düşünüyorsanız, burada ana dilinizde şikayette bulunabilirsiniz. 
+ur:
+  title: کیا آپ جرمنی میں اسکریننگ یا ابتدائی پناہ کے عمل سے گزر رہے ہیں؟ اگر آپ کو یقین ہے کہ آپ کے حقوق کی خلاف ورزی ہوئی ہے تو آپ یہاں اپنی مادری زبان میں شکایت درج کروا سکتے ہیں۔
+vi:
+  title: Bạn đang phải trải qua thủ tục sàng lọc hoặc thủ tục xin tị nạn tại biên giới ở Đức à? Nếu bạn cho rằng quyền lợi của mình bị vi phạm, bạn có thể nộp đơn khiếu nại bằng tiếng mẹ đẻ của mình ngay tại đây
