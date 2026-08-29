@@ -28,7 +28,7 @@ const showOnlyLink = !isPrint && collection === 'pages';
 
 let blockEntry: CollectionEntry<StandaloneCollections> = (
   await getCollection(collection, (block) => {
-    return block.slug === `${identifier}/${lang}`;
+    return block.id === `${identifier}/${lang}`;
   })
 )[0];
 
@@ -46,7 +46,7 @@ const fallbackToLang = blockEntry.data.fallbackToLang;
 if (fallbackToLang !== lang) {
   const fallbackEntry = (
     await getCollection(collection, (block) => {
-      return block.slug === `${identifier}/${fallbackToLang}`;
+      return block.id === `${identifier}/${fallbackToLang}`;
     })
   )[0];
 
