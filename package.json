@@ -23,7 +23,7 @@
     "@playwright/test": "^1.60.0",
     "@testing-library/dom": "^10.4.0",
     "@testing-library/jest-dom": "^6.9.1",
-    "@types/node": "^25.6.0",
+    "@types/node": "^26.3.0",
     "@typescript-eslint/parser": "^8.56.1",
     "@vitest/coverage-v8": "^4.1.0",
     "@vitest/ui": "^4.1.5",
