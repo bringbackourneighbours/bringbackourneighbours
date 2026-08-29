@@ -1,5 +1,5 @@
 ---
-import { type CollectionEntry, getCollection } from 'astro:content';
+import { type CollectionEntry, getCollection, render } from 'astro:content';
 import { Languages } from '../../../../model/languages';
 import { getCanonicalUrlToKit } from '../../../../util/get-canonical-url';
 import { mapStaticPathsForStandalone } from '../../../../util/map-static-paths-for-standalone';
@@ -58,7 +58,7 @@ const germanTitle =
     germanTitle={germanTitle}
     canonicalUrl={canonicalUrl}
   >
-    <TableOfContents rendered={entry.render()} />
+    <TableOfContents rendered={render(entry)} />
     <Block
       identifier={entry.data.identifier}
       collection="kits"

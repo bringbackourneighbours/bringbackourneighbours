@@ -1,5 +1,6 @@
 ---
-import { type CollectionEntry, getCollection } from 'astro:content';
+import { type CollectionEntry, getCollection, render } from 'astro:content';
+
 
 import { mapStaticPathsForStandalone } from '../../util/map-static-paths-for-standalone';
 import { getTranslationsUrlsForKit } from '../../util/get-translations-url';
@@ -79,7 +80,7 @@ const germanTitle =
       </div>
       <Block identifier="kit-outro" />
       <h2>{useUiTranslation('meta.home', entry.data.lang)}</h2>
-      <TableOfContents rendered={entry.render()} />
+      <TableOfContents rendered={render(entry)} />
     </div>
   </PrinterPage>
   <PrinterPage breakBefore={true}>
