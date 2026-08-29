@@ -1,6 +1,6 @@
 import { defineCollection } from 'astro:content';
 import { z } from 'astro/zod';
-import { glob, file } from 'astro/loaders';
+import { glob } from 'astro/loaders';
 import { SupportedLanguages, UnSupportedLanguages } from './model/languages';
 import { LinkTypes } from './model/link-types';
 
@@ -34,7 +34,7 @@ const locationSchema = {
 };
 
 const addressesCollection = defineCollection({
-  loader: glob({ base: './src/content/addresses', pattern: '**/*.{yml,yaml}'}),
+  loader: glob({ base: './src/content/addresses', pattern: '**/*.{yml,yaml}' }),
   schema: z.object({
     ...checkableSchema,
     identifier: z.string(),
@@ -72,7 +72,7 @@ const addressesCollection = defineCollection({
 });
 
 const blocksCollection = defineCollection({
-  loader: glob({ base: './src/content/blocks', pattern: '**/*.{md,mdx}'}),
+  loader: glob({ base: './src/content/blocks', pattern: '**/*.{md,mdx}' }),
   schema: z.object({
     ...translatableSchema,
     ...checkableSchema,
@@ -80,7 +80,7 @@ const blocksCollection = defineCollection({
 });
 
 const flyersCollection = defineCollection({
-  loader: glob({ base: './src/content/flyers', pattern: '**/*.{md,mdx}'}),
+  loader: glob({ base: './src/content/flyers', pattern: '**/*.{md,mdx}' }),
   schema: z.object({
     ...standaloneContentSchema,
     index: z.number().optional(),
@@ -88,12 +88,12 @@ const flyersCollection = defineCollection({
 });
 
 const kitsCollection = defineCollection({
-  loader: glob({ base: './src/content/kits', pattern: '**/*.{md,mdx}'}),
+  loader: glob({ base: './src/content/kits', pattern: '**/*.{md,mdx}' }),
   schema: z.object(standaloneContentSchema),
 });
 
 const linksCollection = defineCollection({
-  loader: glob({ base: './src/content/links', pattern: '**/*.{yml,yaml}'}),
+  loader: glob({ base: './src/content/links', pattern: '**/*.{yml,yaml}' }),
   schema: z.partialRecord(
     z
       .enum(SupportedLanguages)
@@ -112,12 +112,12 @@ const linksCollection = defineCollection({
 });
 
 const pagesCollection = defineCollection({
-  loader: glob({ base: './src/content/pages', pattern: '**/*.{md,mdx}'}),
+  loader: glob({ base: './src/content/pages', pattern: '**/*.{md,mdx}' }),
   schema: z.object(standaloneContentSchema),
 });
 
 const uiCollection = defineCollection({
-  loader: glob({ base: './src/content/ui', pattern: '**/*.json'}),
+  loader: glob({ base: './src/content/ui', pattern: '**/*.json' }),
   schema: z.object({
     fallback: z.enum(SupportedLanguages).optional(),
     meta: z

@@ -1,12 +1,14 @@
 {
   "compilerOptions": {
     "types": ["vitest", "vitest/jsdom", "@testing-library/jest-dom", "jsdom"],
-    "composite": true
+    "composite": true,
+    "moduleResolution": "bundler"
   },
   "include": [
     ".astro/types.d.ts",
     "vitest.config.ts",
     "src/**/*.ts",
+    "src/**/*.astro",
     "src/**/*.test.ts"
   ],
   "files": ["vitest-setup.ts"]

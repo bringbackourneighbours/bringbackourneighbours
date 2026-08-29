@@ -4,7 +4,6 @@ import {
   redirectNotTranslatedForKit,
 } from './redirect-not-found-or-not-translated';
 import { Languages } from '../model/languages';
-import type { Render } from 'astro:content';
 
 describe('redirectNotTranslated', () => {
   it('return false when no fallback ', async () => {
@@ -18,10 +17,6 @@ describe('redirectNotTranslated', () => {
         seo: '',
       },
       id: '',
-      render: function (): Render['.md'] {
-        throw new Error('Function not implemented.');
-      },
-      slug: '',
       body: '',
       collection: 'flyers',
     });
@@ -40,10 +35,6 @@ describe('redirectNotTranslated', () => {
         seo: 'هذا مجرد اختبار',
       },
       id: '',
-      render: function (): Render['.md'] {
-        throw new Error('Function not implemented.');
-      },
-      slug: '',
       body: '',
       collection: 'kits',
     });

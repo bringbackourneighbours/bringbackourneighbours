@@ -1,7 +1,6 @@
 import { describe, expect, it } from 'vitest';
 import { getFlatLinksEntries } from './get-flat-links-entries';
 import { Languages } from '../model/languages';
-import type { Render } from 'astro:content';
 
 describe('getFlatLinksEntries', async () => {
   it('return on empty', async () => {
@@ -43,10 +42,6 @@ describe('getFlatLinksEntries', async () => {
             lastChecked: new Date('2012-12-12'),
             seo: '',
           },
-          render: function (): Render['.md'] {
-            throw new Error('Function not implemented.');
-          },
-          slug: '',
           body: '',
         },
       ],
@@ -62,10 +57,6 @@ describe('getFlatLinksEntries', async () => {
             lastChecked: new Date('2012-12-12'),
             seo: '',
           },
-          render: function (): Render['.md'] {
-            throw new Error('Function not implemented.');
-          },
-          slug: '',
           body: '',
         },
       ],
@@ -81,10 +72,6 @@ describe('getFlatLinksEntries', async () => {
             lastChecked: new Date('2012-12-12'),
             seo: '',
           },
-          render: function (): Render['.md'] {
-            throw new Error('Function not implemented.');
-          },
-          slug: '',
           body: '',
         },
       ],

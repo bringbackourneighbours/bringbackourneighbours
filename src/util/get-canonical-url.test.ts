@@ -1,6 +1,6 @@
 import { describe, expect, it, vi } from 'vitest';
 import { Languages } from '../model/languages';
-import type { CollectionEntry, Render } from 'astro:content';
+import type { CollectionEntry } from 'astro:content';
 import { getCanonicalUrlFn, getCanonicalUrlForPath } from './get-canonical-url';
 import type { StandaloneCollections } from '../model/standalone-collections';
 
@@ -55,10 +55,6 @@ describe('getCanonicalUrlFn', () => {
           lastChecked: new Date('2012-12-12'),
           seo: '',
         },
-        render: function (): Render['.md'] {
-          throw new Error('Function not implemented.');
-        },
-        slug: '',
         body: '',
       },
       Languages.KURDISH,
@@ -80,10 +76,6 @@ describe('getCanonicalUrlFn', () => {
           lastChecked: new Date('2012-12-12'),
           seo: '',
         },
-        render: function (): Render['.md'] {
-          throw new Error('Function not implemented.');
-        },
-        slug: '',
         body: '',
       },
       Languages.GEORGIAN,
@@ -104,10 +96,6 @@ describe('getCanonicalUrlFn', () => {
           lastChecked: new Date('2012-12-12'),
           seo: '',
         },
-        render: function (): Render['.md'] {
-          throw new Error('Function not implemented.');
-        },
-        slug: '',
         body: '',
       },
       Languages.SPANISH,
@@ -128,10 +116,6 @@ describe('getCanonicalUrlFn', () => {
           lastChecked: new Date('2012-12-12'),
           seo: '',
         },
-        render: function (): Render['.md'] {
-          throw new Error('Function not implemented.');
-        },
-        slug: '',
         body: '',
       },
       Languages.TURKISH,
@@ -153,10 +137,6 @@ describe('getCanonicalUrlFn', () => {
           lastChecked: new Date('2012-12-12'),
           seo: '',
         },
-        render: function (): Render['.md'] {
-          throw new Error('Function not implemented.');
-        },
-        slug: '',
         body: '',
       },
       Languages.ENGLISH,

@@ -1,6 +1,7 @@
 {
   "compilerOptions": {
-    "composite": true
+    "composite": true,
+    "moduleResolution": "bundler"
   },
   "include": [".astro/types.d.ts", "src/**/*.ts"],
   "exclude": ["vitest.setup.ts", "vitest.config.ts", "src/**/*.test.ts"]
