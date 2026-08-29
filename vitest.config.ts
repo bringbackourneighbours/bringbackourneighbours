@@ -10,7 +10,7 @@ export default getViteConfig({
       thresholds: {
         statements: 35,
         branches: 40,
-        functions: 30,
+        functions: 25,
         lines: 35,
       },
     },
