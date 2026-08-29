@@ -5,13 +5,12 @@ streetLine: Demmeringstraße 32
 zip: '04177'
 city: Leipzig
 mails:
-  - refugees@rosalinde-leipzig.de
   - rechtsberatung-asyl@rosalinde-leipzig.de
-phones:
-  - '+49 341 392946722'
-  - '+49 0178 8130371'
+  - tatiana.kulbakina@rosalinde-leipzig.de 
+  - refugees@rosalinde-leipzig.de
+
 url: https://www.rosalinde-leipzig.de/beratung/queer-refugees-network/
-lastChecked: 2026-03-06
+lastChecked: 2026-08-29
 translatedNotes:
   de: Das Queer Refugees Network begleitet LSBTIAQ* (Lesbisch, Schwule, Bisexuelle, Transgeschlechtliche, Intergeschlechtliche, Asexuelle, Queere,*) Geflüchtete im Asylprozess.
   en: The Queer Refugees Network supports LGBTQI* (Lesbian, Gay, Bisexual, Transgender, Intersex, Asexual, Queer*) refugees in the asylum process.
