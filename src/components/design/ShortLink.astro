@@ -21,7 +21,7 @@ interface Props {
   url: string;
 }
 
-export const getIconForType = (type?: LinkTypes) => {
+const getIconForType = (type?: LinkTypes) => {
   switch (type) {
     case 'PDF':
       return pdfIcon;
