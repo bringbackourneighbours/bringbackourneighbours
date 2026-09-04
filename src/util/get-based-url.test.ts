@@ -1,11 +1,9 @@
 import { describe, it, expect, vi, beforeEach } from 'vitest';
 import { getBasedUrl, getPrintUrl } from './get-based-url';
 
-vi.mock('../../astro.config.mjs', () => ({
-  default: {
-    base: 'example',
-    site: 'https://example.com/',
-  },
+vi.mock('astro:config/server', () => ({
+  base: '/example/',
+  site: 'https://example.com',
 }));
 
 describe('get-based-url', () => {

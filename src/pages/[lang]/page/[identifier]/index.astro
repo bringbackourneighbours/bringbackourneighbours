@@ -13,7 +13,5 @@ export async function getStaticPaths() {
 
 const { entry } = Astro.props;
 
-const url = await getCanonicalUrlToPage(entry, entry.data.lang);
-
-return Astro.redirect(url, 301);
+return Astro.redirect(await getCanonicalUrlToPage(entry, entry.data.lang), 301);
 ---

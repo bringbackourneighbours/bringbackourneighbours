@@ -1,6 +1,8 @@
 ---
 import { type CollectionEntry, getCollection } from 'astro:content';
-import { linkUrl } from '../../../astro.config.mjs';
+import { site } from 'astro:config/server';
+
+import { linkUrl } from '../../model/site';
 import { getAllExternalLinksEntries } from '../../util/get-all-external-links-entries';
 
 import BaseLayout from '../../layouts/BaseLayout.astro';
@@ -30,7 +32,7 @@ const adresses: CollectionEntry<'addresses'>[] = (
   > nutzen:
 
   <pre>
-  ❯ npx linkinator --redirects=error {Astro.site}internal-check-links
+  ❯ npx linkinator --redirects=error {site}internal-check-links
   </pre>
 
   <h2>Externe Links</h2>

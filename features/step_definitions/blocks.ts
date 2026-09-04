@@ -23,9 +23,7 @@ Then(
 Then(
   'there is a hidden footer template',
   async function (this: PlaywrightWorld) {
-    await expect(
-      this.screen.page.locator('template#footerTemplate'),
-    ).toBeTruthy();
+    expect(this.screen.page.locator('template#footerTemplate')).toBeTruthy();
   },
 );
 

@@ -1,13 +1,15 @@
-import { type AstroIntegration, type AstroIntegrationLogger } from 'astro';
+import {
+  type AstroIntegration,
+  type AstroIntegrationLogger,
+  preview,
+  type PreviewServer,
+} from 'astro';
 import { mkdir, writeFile } from 'node:fs/promises';
-import { ChildProcess, exec } from 'node:child_process';
 import { type Browser, chromium } from 'playwright';
 
-import { previewUrl } from '../../astro.config.mjs';
+import { previewUrl } from '../model/site';
 import { printHtmlToPdf } from '../util/print-html-to-pdf';
 import { getPrintDistDir } from '../util/get-print-dist-dir';
-
-const KILL_PREVIEW_PROCESS_TIMEOUT = 5000;
 
 export async function printPdfsImpl(
   distDirUrl: URL,
@@ -23,14 +25,13 @@ export async function printPdfsImpl(
 
   // TODO: there is a new api for it https://docs.astro.build/en/reference/programmatic-reference/#preview
   // weirdly it doesnt work. something with the adapter i guess.
-  const previewProcess = exec('npm run preview');
-  previewProcess.on('error', (error) => {
-    logger.error(`Preview Process error with ${error}`);
-  });
-  logger.debug(`Launched Preview Process ${previewProcess.pid}`);
+  const previewServer = await preview({});
+  logger.debug(
+    `Launched Preview Process ${previewServer.host}:${previewServer.port}`,
+  );
 
   const browser = await chromium.launch({ headless: true });
-  logger.debug(`Launched chromium Browser ${await browser.version()}`);
+  logger.debug(`Launched chromium Browser ${browser.version()}`);
 
   try {
     const printJobs = pages
@@ -38,7 +39,7 @@ export async function printPdfsImpl(
       .map(async (htmlPage) => {
         const pdfOutputFilename = `${htmlPage.pathname.replace('internal-print/', '').replace('/', '.pdf')}`;
         const pdfOutputPath = `${pdfDistDir}/${pdfOutputFilename}`;
-        const pageUrl = `${previewUrl}${htmlPage.pathname}`;
+        const pageUrl = `${previewUrl}/${htmlPage.pathname}`;
         logger.debug(`Printing ${pageUrl}`);
         const pdfBuffer = await printHtmlToPdf(pageUrl, browser);
 
@@ -51,44 +52,23 @@ export async function printPdfsImpl(
     logger.info(`Printed ${printJobs.length} PDFs to ${pdfDistDir}`);
   } catch (error) {
     logger.error(`Failed to print PDFs with error ${error}`);
-    await closePreviewAndBrowser(logger, browser, previewProcess);
+    await closePreviewAndBrowser(logger, browser, previewServer);
     throw error;
   }
 
-  await closePreviewAndBrowser(logger, browser, previewProcess);
+  await closePreviewAndBrowser(logger, browser, previewServer);
 }
 
 async function closePreviewAndBrowser(
   logger: AstroIntegrationLogger,
   browser: Browser,
-  previewProcess: ChildProcess,
+  previewServer: PreviewServer,
 ) {
   await browser.close();
   logger.debug('Closed chromium Browser.');
 
-  await new Promise<void>((resolve, reject) => {
-    setTimeout(() => {
-      // looks like this happens in the CI sometimes.
-      logger.error(
-        `
-        Preview Process closing timed out. Will just go ahead.
-        There might a rogue preview process with PID ${previewProcess.pid} running now, you might want to check and kill it manually.`,
-      );
-      resolve();
-    }, KILL_PREVIEW_PROCESS_TIMEOUT);
-
-    previewProcess.on('close', (code) => {
-      logger.debug(`Preview Process closed with code ${code}`);
-      resolve();
-    });
-    previewProcess.on('error', (error) => {
-      logger.error(`Preview Process errored while closing with ${error}`);
-      reject(error);
-    });
-    previewProcess.kill();
-  });
-
-  logger.debug('Closed Preview Process.');
+  await previewServer.stop();
+  logger.debug('Closed Preview Server.');
 }
 
 /**

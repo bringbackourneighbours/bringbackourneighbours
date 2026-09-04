@@ -42,6 +42,9 @@ describe('printHtmlToPdf', () => {
     expect(mockBrowser.newPage).toHaveBeenCalledTimes(1);
     expect(mockPage.goto).toHaveBeenCalledWith(
       'http://localhost:4321/internal-print/flyer1',
+      {
+        waitUntil: 'networkidle',
+      },
     );
     expect(mockPage.pdf).toHaveBeenCalledWith({
       printBackground: true,
@@ -63,6 +66,9 @@ describe('printHtmlToPdf', () => {
     expect(mockBrowser.newPage).toHaveBeenCalledTimes(1);
     expect(mockPage.goto).toHaveBeenCalledWith(
       'http://localhost:4321/internal-print/flyer1',
+      {
+        waitUntil: 'networkidle',
+      },
     );
     expect(mockPage.pdf).toHaveBeenCalledWith({
       printBackground: true,
