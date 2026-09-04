@@ -10,8 +10,10 @@ import type { Browser } from 'playwright';
 import { chromium } from 'playwright';
 import { dev } from 'astro';
 
-// @ts-expect-error think there is an export missing in astro
-import type { DevServer } from 'astro/dist/core/dev/dev';
+interface DevServer {
+  //  think there is an export missing in astro, so we define it ourselves
+  stop(): Promise<void>;
+}
 
 setWorldConstructor(PlaywrightWorld);
 

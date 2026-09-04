@@ -16,7 +16,8 @@ export const printHtmlToPdf = async (
   const browser = browserToReuse ?? (await chromium.launch({ headless: true }));
   const page = await browser.newPage();
 
-  await page.goto(pageUrl);
+  // using networkidle migth slow things down... but will make it more reliable
+  await page.goto(pageUrl, { waitUntil: 'networkidle' });
 
   let footerTemplate = EMPTY_TEMPLATE;
 

@@ -1,10 +1,10 @@
-import AstroConfig from '../../astro.config.mjs';
+import { base, site } from 'astro:config/server';
 import type { LanguagesValue } from '../model/languages';
 import type { StandaloneCollections } from '../model/standalone-collections';
 
 export const getBasedUrl = (path: string, absolute = false): string => {
   // TODO: could we use the native URL class here?
-  return `${absolute ? `${AstroConfig.site}` : '/'}${AstroConfig.base && AstroConfig.base != '' ? `${AstroConfig.base}/` : ''}${path}`;
+  return `${absolute ? `${site}` : ''}${base && base != '' ? `${base}` : ''}${path}`;
 };
 
 // TODO: move to own file

@@ -11,10 +11,8 @@ export async function getStaticPaths() {
   return mapStaticPathsForStandalone(await getCollection('flyers'));
 }
 
-const url = await getCanonicalUrlToFlyer(
-  Astro.props.entry,
-  Astro.props.entry.data.lang,
+return Astro.redirect(
+  await getCanonicalUrlToFlyer(Astro.props.entry, Astro.props.entry.data.lang),
+  301,
 );
-
-return Astro.redirect(url, 301);
 ---
