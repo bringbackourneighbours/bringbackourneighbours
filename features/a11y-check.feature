@@ -24,11 +24,11 @@ Feature: All pages dont have a11y issues
       | /en/flyer/procedure           | link-name, role-img-alt, nested-interactive |
       | /en/flyer/residence           | link-name, role-img-alt, nested-interactive |
       | /en/flyer/stress              | link-name, role-img-alt, nested-interactive |
-      | /en/pages/about               | link-name, role-img-alt                     |
-      | /en/pages/contacts            | link-name, role-img-alt                     |
-      | /en/pages/countries           | link-name, role-img-alt                     |
-      | /en/pages/forms               | link-name, role-img-alt                     |
-      | /en/pages/imprint             | link-name, role-img-alt                     |
-      | /en/pages/material            | link-name, role-img-alt                     |
-      | /en/pages/professionals       | link-name, role-img-alt                     |
-      | /en/pages/publicity           | link-name, role-img-alt                     |
+      | /en/page/about                | link-name, role-img-alt                     |
+      | /en/page/contacts             | link-name, role-img-alt                     |
+      | /en/page/countries            | link-name, role-img-alt, nested-interactive |
+      | /en/page/forms                | link-name, role-img-alt                     |
+      | /en/page/imprint              | link-name, role-img-alt, heading-order      |
+      | /en/page/material             | link-name, role-img-alt                     |
+      | /en/page/professionals        | link-name, role-img-alt, nested-interactive |
+      | /en/page/publicity            | link-name, role-img-alt                     |

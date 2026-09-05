@@ -177,6 +177,8 @@ Then(
         name: articleLabel,
       })
       .first();
+
+    console.log('ARTICEL', await article.ariaSnapshot());
     await expect(article).toBeVisible();
     await expect(
       article.getByRole('link', { name: expectedLinkLabel }),
