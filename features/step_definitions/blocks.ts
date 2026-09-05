@@ -23,9 +23,7 @@ Then(
 Then(
   'there is a hidden footer template',
   async function (this: PlaywrightWorld) {
-    await expect(
-      this.screen.page.locator('template#footerTemplate'),
-    ).toBeTruthy();
+    expect(this.screen.page.locator('template#footerTemplate')).toBeTruthy();
   },
 );
 
@@ -179,6 +177,8 @@ Then(
         name: articleLabel,
       })
       .first();
+
+    console.log('ARTICEL', await article.ariaSnapshot());
     await expect(article).toBeVisible();
     await expect(
       article.getByRole('link', { name: expectedLinkLabel }),

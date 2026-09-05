@@ -10,7 +10,7 @@ import bbonLogo from '../../assets/logo.svg?raw';
 
 import type { LinkTypes } from '../../model/link-types';
 import type { LanguagesValue } from '../../model/languages';
-import { linkUrl } from '../../../astro.config.mjs';
+import { linkUrl } from '../../model/site';
 
 interface Props {
   lang: LanguagesValue;
@@ -21,7 +21,7 @@ interface Props {
   url: string;
 }
 
-export const getIconForType = (type?: LinkTypes) => {
+const getIconForType = (type?: LinkTypes) => {
   switch (type) {
     case 'PDF':
       return pdfIcon;

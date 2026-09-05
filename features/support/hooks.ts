@@ -3,6 +3,7 @@ import {
   AfterAll,
   Before,
   BeforeAll,
+  setDefaultTimeout,
   setWorldConstructor,
 } from '@cucumber/cucumber';
 import { PlaywrightWorld } from './world.ts';
@@ -10,8 +11,10 @@ import type { Browser } from 'playwright';
 import { chromium } from 'playwright';
 import { dev } from 'astro';
 
-// @ts-expect-error think there is an export missing in astro
-import type { DevServer } from 'astro/dist/core/dev/dev';
+interface DevServer {
+  //  think there is an export missing in astro, so we define it ourselves
+  stop(): Promise<void>;
+}
 
 setWorldConstructor(PlaywrightWorld);
 
@@ -19,6 +22,10 @@ BeforeAll(async function (this) {
   PlaywrightWorld.browser = await newBrowser(!!this.parameters?.headless);
   if (this.parameters.useDevServer) {
     PlaywrightWorld.devServer = await newAstroDevServer();
+  }
+
+  if (this.parameters.timeout) {
+    setDefaultTimeout(this.parameters.timeout as number);
   }
 });
 

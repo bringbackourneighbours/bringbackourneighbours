@@ -1,23 +1,11 @@
 import { defineConfig } from 'astro/config';
+import { siteUrl, basePath } from './src/model/site';
 import mdx from '@astrojs/mdx';
 import printPdfs from './src/integrations/print-pdfs';
 import checkFlyers from './src/integrations/check-flyers';
 import checkZines from './src/integrations/check-zines';
 import layoutFlyers from './src/integrations/layout-flyers';
 import layoutZines from './src/integrations/layout-zines';
-
-const isDev = import.meta.env.DEV;
-
-const localhostUrl = 'http://localhost:4321/';
-const prodUrl = 'https://bringbackourneighbours.de/';
-const prodLinkUrl = 'bbonlink.de';
-const basePath = '';
-// TODO: i think the basepath should be '/' so we could omit it above
-
-const siteUrl = isDev ? localhostUrl : prodUrl;
-
-export const previewUrl = localhostUrl;
-export const linkUrl = isDev ? `${localhostUrl}link` : prodLinkUrl;
 
 // https://astro.build/config
 export default defineConfig({

@@ -18,23 +18,13 @@ vi.mock('playwright', () => ({
   },
 }));
 
-// Mock for child_process
-const mockChildProcess = {
-  on: vi.fn((event, cb) => {
-    if (event === 'close') cb(0);
-  }),
-  pid: 1234,
-  kill: vi.fn(),
+const mockPreviewServer = {
+  stop: vi.fn(),
 };
-vi.mock('node:child_process', () => ({
-  exec: vi.fn(() => {
-    return mockChildProcess;
+vi.mock('astro', () => ({
+  preview: vi.fn(() => {
+    return Promise.resolve(mockPreviewServer);
   }),
-}));
-// Mock for AstroConfig
-vi.mock('../../astro.config.mjs', () => ({
-  default: { site: 'http://localhost:4321/' },
-  previewUrl: 'http://localhost:4321/',
 }));
 // Mock for printHtmlToPdf
 vi.mock('../util/print-html-to-pdf.ts', () => ({
@@ -71,7 +61,7 @@ describe('printPdfs Integration', () => {
       const { chromium } = await import('playwright');
       const { printHtmlToPdf } = await import('../util/print-html-to-pdf.ts');
       const { getPrintDistDir } = await import('../util/get-print-dist-dir.ts');
-      const { exec } = await import('node:child_process');
+      const { preview } = await import('astro');
 
       await printPdfsImpl(
         new URL('file://myMaschine/dist'),
@@ -83,7 +73,7 @@ describe('printPdfs Integration', () => {
       expect(mkdir).toHaveBeenCalledWith('/dist/print', {
         recursive: true,
       });
-      expect(exec).toHaveBeenCalledWith('npm run preview');
+      expect(preview).toHaveBeenCalled();
       expect(chromium.launch).toHaveBeenCalledTimes(1);
       expect(printHtmlToPdf).toHaveBeenCalledTimes(2);
       expect(printHtmlToPdf).toHaveBeenCalledWith(
@@ -100,7 +90,7 @@ describe('printPdfs Integration', () => {
         Buffer.from('PDF'),
       );
       expect(mockBrowser.close).toHaveBeenCalledTimes(1);
-      expect(mockChildProcess.kill).toHaveBeenCalledTimes(1);
+      expect(mockPreviewServer.stop).toHaveBeenCalledTimes(1);
     });
 
     it('should close down on errors', async () => {
@@ -119,7 +109,7 @@ describe('printPdfs Integration', () => {
       ).rejects.toThrow('PDF generation failed');
 
       expect(mockBrowser.close).toHaveBeenCalledTimes(1);
-      expect(mockChildProcess.kill).toHaveBeenCalledTimes(1);
+      expect(mockPreviewServer.stop).toHaveBeenCalledTimes(1);
     });
   });
 });
