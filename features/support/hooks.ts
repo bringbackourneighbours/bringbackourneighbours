@@ -3,6 +3,7 @@ import {
   AfterAll,
   Before,
   BeforeAll,
+  setDefaultTimeout,
   setWorldConstructor,
 } from '@cucumber/cucumber';
 import { PlaywrightWorld } from './world.ts';
@@ -21,6 +22,10 @@ BeforeAll(async function (this) {
   PlaywrightWorld.browser = await newBrowser(!!this.parameters?.headless);
   if (this.parameters.useDevServer) {
     PlaywrightWorld.devServer = await newAstroDevServer();
+  }
+
+  if (this.parameters.timeout) {
+    setDefaultTimeout(this.parameters.timeout as number);
   }
 });
 
