@@ -14,7 +14,7 @@
   "devDependencies": {
     "@astrojs/check": "^0.9.10",
     "@axe-core/playwright": "^4.13.0",
-    "@cucumber/cucumber": "^12.8.1",
+    "@cucumber/cucumber": "^13.2.1",
     "@eslint/compat": "^2.0.5",
     "@eslint/js": "^10.0.1",
     "@testing-library/dom": "^10.4.0",
