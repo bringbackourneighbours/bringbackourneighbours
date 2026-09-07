@@ -6,7 +6,7 @@ import { DEFAULT_LANG, type LanguagesValue } from './model/languages';
 export const onRequest = defineMiddleware((context, next) => {
   // Components can check if isPrint and show things differently
   context.locals.isPrint = context.url.pathname.startsWith(
-    `${base}/internal-print/`,
+    `${base}internal-print/`,
   );
 
   context.locals.isKit =
