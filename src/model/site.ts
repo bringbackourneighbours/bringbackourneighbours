@@ -7,5 +7,4 @@ export const basePath = '/';
 
 export const siteUrl = isDev ? localhostUrl : prodUrl;
 
-export const previewUrl = localhostUrl;
 export const linkUrl = isDev ? `${localhostUrl}/link` : prodLinkUrl;

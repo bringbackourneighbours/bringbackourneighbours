@@ -20,6 +20,8 @@ vi.mock('playwright', () => ({
 
 const mockPreviewServer = {
   stop: vi.fn(),
+  host: 'localhost',
+  port: 4321,
 };
 vi.mock('astro', () => ({
   preview: vi.fn(() => {
