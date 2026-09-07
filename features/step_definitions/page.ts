@@ -48,6 +48,18 @@ Then(
     const expectedViolationList = extractExpectedViolations(violations);
     const actualViolations = violationRulesNames(accessibilityScanResults);
 
-    expect(actualViolations).toEqual(expectedViolationList);
+    expect(
+      actualViolations,
+      `New Violations:
+${JSON.stringify(
+  accessibilityScanResults.violations?.filter(
+    (violation) =>
+      actualViolations.includes(violation.id) &&
+      !expectedViolationList.includes(violation.id),
+  ),
+  null,
+  2,
+)}`,
+    ).toEqual(expectedViolationList);
   },
 );
