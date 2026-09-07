@@ -1,6 +1,8 @@
 import { beforeEach } from 'vitest';
-import '@testing-library/jest-dom/vitest';
+// the order of import is important
+// jest-dom needs a global-jsdom
 import 'global-jsdom/register';
+import '@testing-library/jest-dom/vitest';
 
 import { cleanupDom } from './src/testing/render';
 
