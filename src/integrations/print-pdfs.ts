@@ -7,7 +7,6 @@ import {
 import { mkdir, writeFile } from 'node:fs/promises';
 import { type Browser, chromium } from 'playwright';
 
-import { previewUrl } from '../model/site';
 import { printHtmlToPdf } from '../util/print-html-to-pdf';
 import { getPrintDistDir } from '../util/get-print-dist-dir';
 
@@ -39,7 +38,7 @@ export async function printPdfsImpl(
       .map(async (htmlPage) => {
         const pdfOutputFilename = `${htmlPage.pathname.replace('internal-print/', '').replace('/', '.pdf')}`;
         const pdfOutputPath = `${pdfDistDir}/${pdfOutputFilename}`;
-        const pageUrl = `${previewUrl}/${htmlPage.pathname}`;
+        const pageUrl = `http://${previewServer.host}:${previewServer.port}/${htmlPage.pathname}`;
         logger.debug(`Printing ${pageUrl}`);
         const pdfBuffer = await printHtmlToPdf(pageUrl, browser);
 
