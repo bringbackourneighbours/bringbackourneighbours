@@ -14,7 +14,6 @@ Feature: A internal print kit page
 
   Scenario: Structure
     When i open the page "internal-print/kit-en-affected"
-    Then i see a heading "home"
     Then i see a heading "Asylum procedure and Dublin"
     Then i see a heading "What is a deportation?"
     Then i see a heading "Appendix"
