@@ -25,10 +25,10 @@ Feature: All pages dont have a11y issues
       | /en/flyer/residence           | link-name, role-img-alt, nested-interactive |
       | /en/flyer/stress              | link-name, role-img-alt, nested-interactive |
       | /en/page/about                | link-name, role-img-alt                     |
-      | /en/page/contacts             | link-name, role-img-alt                     |
       | /en/page/countries            | link-name, role-img-alt, nested-interactive |
       | /en/page/forms                | link-name, role-img-alt                     |
-      | /en/page/imprint              | link-name, role-img-alt, heading-order      |
-      | /en/page/material             | link-name, role-img-alt                     |
-      | /en/page/professionals        | link-name, role-img-alt, nested-interactive |
       | /en/page/publicity            | link-name, role-img-alt                     |
+      | /de/page/imprint              | link-name, role-img-alt, heading-order      |
+      | /en/page/material             | link-name, role-img-alt                     |
+      | /de/page/professionals        | link-name, role-img-alt, nested-interactive |
+      | /de/page/contacts             | link-name, role-img-alt, nested-interactive |
