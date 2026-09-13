@@ -126,7 +126,7 @@ Then(
       | 'treeitem',
     name: string,
   ) {
-    await expect(this.screen.page.getByRole(role, { name })).toBeVisible();
+    await expect(this.screen.page.getByRole(role, { name ,exact: true })).toBeVisible();
   },
 );
 
