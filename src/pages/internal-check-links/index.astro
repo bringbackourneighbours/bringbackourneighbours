@@ -1,6 +1,6 @@
 ---
 import { type CollectionEntry, getCollection } from 'astro:content';
-import { site } from 'astro:config/server';
+import { site, base } from 'astro:config/server';
 
 import { linkUrl } from '../../model/site';
 import { getAllExternalLinksEntries } from '../../util/get-all-external-links-entries';
@@ -32,7 +32,7 @@ const adresses: CollectionEntry<'addresses'>[] = (
   > nutzen:
 
   <pre>
-  ❯ npx linkinator --redirects=error {site}internal-check-links
+  ❯ npx linkinator --redirects=error {site}{base}internal-check-links
   </pre>
 
   <h2>Externe Links</h2>
@@ -51,8 +51,11 @@ const adresses: CollectionEntry<'addresses'>[] = (
           <tr>
             <td>{entry.slug}</td>
             <td>{entry.filePath}</td>
-            <td>
-              <Link href={entry.url}> {entry.url}</Link>
+            <td> {entry.url}</td>
+            <td class="visually-hidden">
+              <Link href={entry.url}>
+                link in file: {entry.filePath}; slug: {entry.slug}
+              </Link>
             </td>
           </tr>
         ))
@@ -77,8 +80,12 @@ const adresses: CollectionEntry<'addresses'>[] = (
             <tr>
               <td>{entry.id}</td>
               <td>{entry.filePath}</td>
-              <td>
-                <Link href={entry.data.url}> {entry.data.url}</Link>
+              <td>{entry.data.url}</td>
+              <td class="visually-hidden">
+                <Link href={entry.data.url}>
+                  address in file: {entry.filePath}; identifier:{' '}
+                  {entry.data.identifier}
+                </Link>
               </td>
             </tr>
           ))

@@ -1,4 +1,3 @@
-@broken
 Feature: A internal print kit page
 
   Scenario: Cover page
