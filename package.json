@@ -1,6 +1,6 @@
 {
   "dependencies": {
-    "@astrojs/mdx": "^8.0.0",
+    "@astrojs/mdx": "^8.0.1",
     "@fontsource/firago": "^5.2.5",
     "@playwright/test": "^1.60.0",
     "astro": "^7.3.2",
