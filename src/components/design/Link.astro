@@ -72,22 +72,18 @@ const rel = openInNewTab ? 'noopener noreferrer' : '';
   rel={rel}
 >
   <slot />
-  {
-    !Astro.slots.has('default') &&
-      (Astro.locals.isPrint ? (
-        <span> {pretty_print} </span>
-      ) : (
-        <span> {pretty_screen} </span>
-      ))
-  }
-  {
-    openInNewTab && !Astro.locals.isPrint && (
-      <span class="new-tab">
-        <Icon
-          html={openIcon}
-          size="1em"
-        />
-      </span>
-    )
-  }
+  {!Astro.slots.has('default') &&
+    (Astro.locals.isPrint ? (
+      <span> {pretty_print} </span>
+    ) : (
+      <span> {pretty_screen} </span>
+    ))}
+  {openInNewTab && !Astro.locals.isPrint && (
+    <span class="new-tab">
+      <Icon
+        html={openIcon}
+        size="1em"
+      />
+    </span>
+  )}
 </a>

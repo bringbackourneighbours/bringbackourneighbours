@@ -55,25 +55,21 @@ const label = slotText ?? title;
   lang={lang}
   openInNewTab={openInNewTab}
 >
-  {
-    !slotText && (
-      <span class="type">
-        <Icon
-          html={iconHtml}
-          size="0.9em"
-        />
-      </span>
-    )
-  }
+  {!slotText && (
+    <span class="type">
+      <Icon
+        html={iconHtml}
+        size="0.9em"
+      />
+    </span>
+  )}
 
-  {
-    Astro.locals.isPrint && (
-      <>
-        {slotText}
-        {` ${linkUrl}/${slug} `}
-      </>
-    )
-  }
+  {Astro.locals.isPrint && (
+    <>
+      {slotText}
+      {` ${linkUrl}/${slug} `}
+    </>
+  )}
 
   {!Astro.locals.isPrint && <>{label}</>}
 </Link>

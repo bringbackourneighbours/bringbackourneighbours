@@ -27,16 +27,12 @@ const adresses: CollectionEntry<'addresses'>[] = (
 >
   <h1>BBON Short Links</h1>
   Auf all diese Links verweisen wir mit der Kurz-Url <code>{linkUrl}</code>. Um
-  sie alle zu checken kann man das tool <a
-    href="https://github.com/JustinBeckwith/linkinator">linkinator</a
-  > nutzen:
-
+  sie alle zu checken kann man das tool{' '}
+  <a href="https://github.com/JustinBeckwith/linkinator">linkinator</a> nutzen:
   <pre>
   ❯ npx linkinator --redirects=error --format=json {site}{base}internal-check-links
   </pre>
-
   <h2>Externe Links</h2>
-
   <table>
     <thead>
       <tr>
@@ -46,24 +42,21 @@ const adresses: CollectionEntry<'addresses'>[] = (
       </tr>
     </thead>
     <tbody>
-      {
-        linkEntries.map((entry) => (
-          <tr>
-            <td>{entry.slug}</td>
-            <td>{entry.filePath}</td>
-            <td> {entry.url}</td>
-            <td class="visually-hidden">
-              <Link href={entry.url}>
-                link in file: {entry.filePath}; slug: {entry.slug}
-              </Link>
-            </td>
-          </tr>
-        ))
-      }
+      {linkEntries.map((entry) => (
+        <tr>
+          <td>{entry.slug}</td>
+          <td>{entry.filePath}</td>
+          <td> {entry.url}</td>
+          <td class="visually-hidden">
+            <Link href={entry.url}>
+              link in file: {entry.filePath}; slug: {entry.slug}
+            </Link>
+          </td>
+        </tr>
+      ))}
     </tbody>
   </table>
   <h2>Address Links</h2>
-
   <table>
     <thead>
       <tr>
@@ -73,23 +66,21 @@ const adresses: CollectionEntry<'addresses'>[] = (
       </tr>
     </thead>
     <tbody>
-      {
-        adresses
-          .filter((address) => address.data.url)
-          .map((entry) => (
-            <tr>
-              <td>{entry.id}</td>
-              <td>{entry.filePath}</td>
-              <td>{entry.data.url}</td>
-              <td class="visually-hidden">
-                <Link href={entry.data.url}>
-                  address in file: {entry.filePath}; identifier:{' '}
-                  {entry.data.identifier}
-                </Link>
-              </td>
-            </tr>
-          ))
-      }
+      {adresses
+        .filter((address) => address.data.url)
+        .map((entry) => (
+          <tr>
+            <td>{entry.id}</td>
+            <td>{entry.filePath}</td>
+            <td>{entry.data.url}</td>
+            <td class="visually-hidden">
+              <Link href={entry.data.url}>
+                address in file: {entry.filePath}; identifier:{' '}
+                {entry.data.identifier}
+              </Link>
+            </td>
+          </tr>
+        ))}
     </tbody>
   </table>
 </BaseLayout>

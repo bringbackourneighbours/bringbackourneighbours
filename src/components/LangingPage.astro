@@ -34,18 +34,16 @@ const translationSlugs = await getTranslationsUrlsForPath(lang, '');
   />
   <Stack>
     <H1 slot="heading">
-      {useUiTranslation('meta.infosAgainstDeportation', lang)}</H1
-    >
-    {
-      allLanguages.map(async (langs) => (
-        <CardLink
-          href={getCanonicalUrlForPath(langs, 'wizard')}
-          lang={langs}
-        >
-          {useUiTranslation('wizard.isThereDangerQuestion', langs)}
-        </CardLink>
-      ))
-    }
+      {useUiTranslation('meta.infosAgainstDeportation', lang)}
+    </H1>
+    {allLanguages.map(async (langs) => (
+      <CardLink
+        href={getCanonicalUrlForPath(langs, 'wizard')}
+        lang={langs}
+      >
+        {useUiTranslation('wizard.isThereDangerQuestion', langs)}
+      </CardLink>
+    ))}
   </Stack>
 
   <MoreInfoStack

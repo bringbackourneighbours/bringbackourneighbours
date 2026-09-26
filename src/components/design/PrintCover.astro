@@ -107,22 +107,20 @@ const { germanTitle, entry, pagewidth, pagemargin } = Astro.props;
 
       <div class="logo-line-titles">
         <H2 class="title text-fit ltr">
-          <span
-            ><span>{useUiTranslation('meta.title', entry.data.lang)}</span
-            ></span
-          >
-          <span aria-hidden="true"
-            >{useUiTranslation('meta.title', entry.data.lang)}</span
-          >
+          <span>
+            <span>{useUiTranslation('meta.title', entry.data.lang)}</span>
+          </span>
+          <span aria-hidden="true">
+            {useUiTranslation('meta.title', entry.data.lang)}
+          </span>
         </H2>
         <p class="sub-title text-fit">
-          <span
-            ><span>{useUiTranslation('meta.subtitle', entry.data.lang)}</span
-            ></span
-          >
-          <span aria-hidden="true"
-            >{useUiTranslation('meta.subtitle', entry.data.lang)}</span
-          >
+          <span>
+            <span>{useUiTranslation('meta.subtitle', entry.data.lang)}</span>
+          </span>
+          <span aria-hidden="true">
+            {useUiTranslation('meta.subtitle', entry.data.lang)}
+          </span>
         </p>
       </div>
     </div>

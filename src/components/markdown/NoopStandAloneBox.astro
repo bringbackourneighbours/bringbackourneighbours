@@ -8,13 +8,11 @@ const props: Props = Astro.props;
   collection&#x3D;&quot;{props.collection}&quot;
   identifier&#x3D;&quot;{props.identifier}&quot;
 {!Astro.slots.has('default')  ? <>&#x2F;&gt;</> : <>&gt;</>}</pre>
-{
-  Astro.slots.has('default') && (
-    <>
-      <pre>
+{Astro.slots.has('default') && (
+  <>
+    <pre>
         <slot />
       </pre>
-      <pre>&lt;&#x2F;StandAloneBox&gt;</pre>
-    </>
-  )
-}
+    <pre>&lt;&#x2F;StandAloneBox&gt;</pre>
+  </>
+)}

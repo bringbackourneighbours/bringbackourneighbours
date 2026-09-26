@@ -65,43 +65,39 @@ const showOnlyLink = !isPrint && collection === 'pages';
   }
 </style>
 
-{
-  isPrint && (
-    <div class={`meta-section ${isPrint ? ' -is-print' : ''}`}>
-      <QrImage
-        size="100"
-        url={canonicalUrl!}
-      />
-      <div>
-        <p>
-          {collectionLabel}&nbsp;<strong>{entry.data.title}</strong>
-        </p>
-        <InternalShortLink identifier={entry.data.identifier} />
-        <ContentMeta
-          entry={entry}
-          lang={lang}
-          isFallback={isFallback}
-        />
-      </div>
-    </div>
-  )
-}
-
-<slot />
-
-{
-  !isPrint && (
-    <div class={`meta-section ${showOnlyLink ? '-show-only-link' : ''}`}>
-      {collectionLabel}
-      <InternalShortLink
-        identifier={entry.data.identifier}
-        lang={entry.data.lang}
-      />
+{isPrint && (
+  <div class={`meta-section ${isPrint ? ' -is-print' : ''}`}>
+    <QrImage
+      size="100"
+      url={canonicalUrl!}
+    />
+    <div>
+      <p>
+        {collectionLabel}&nbsp;<strong>{entry.data.title}</strong>
+      </p>
+      <InternalShortLink identifier={entry.data.identifier} />
       <ContentMeta
         entry={entry}
         lang={lang}
         isFallback={isFallback}
       />
     </div>
-  )
-}
+  </div>
+)}
+
+<slot />
+
+{!isPrint && (
+  <div class={`meta-section ${showOnlyLink ? '-show-only-link' : ''}`}>
+    {collectionLabel}
+    <InternalShortLink
+      identifier={entry.data.identifier}
+      lang={entry.data.lang}
+    />
+    <ContentMeta
+      entry={entry}
+      lang={lang}
+      isFallback={isFallback}
+    />
+  </div>
+)}

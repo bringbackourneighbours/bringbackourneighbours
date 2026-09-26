@@ -25,12 +25,10 @@ if (isRootLevelContent) {
 const Strong = `${isStrong ? 'strong' : 'em'}`;
 ---
 
-{
-  showMachineTranslation && (
-    <p role="note">
-      <Strong>
-        {useUiTranslation('meta.machineTranslation', entry.data.lang)}
-      </Strong>
-    </p>
-  )
-}
+{showMachineTranslation && (
+  <p role="note">
+    <Strong>
+      {useUiTranslation('meta.machineTranslation', entry.data.lang)}
+    </Strong>
+  </p>
+)}

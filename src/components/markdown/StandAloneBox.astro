@@ -62,31 +62,29 @@ Astro.locals.levelShift = level;
 ---
 
 <article aria-label={title}>
-  {
-    blockEntry ? (
-      showOnlyLink ? (
+  {blockEntry ? (
+    showOnlyLink ? (
+      <ContentMetaSection
+        collection={collection}
+        entry={blockEntry}
+        isFallback={isFallback}
+        lang={lang}
+      />
+    ) : (
+      <Accordion
+        title={title}
+        level={1}
+      >
         <ContentMetaSection
           collection={collection}
           entry={blockEntry}
           isFallback={isFallback}
-          lang={lang}
-        />
-      ) : (
-        <Accordion
-          title={title}
-          level={1}
         >
-          <ContentMetaSection
-            collection={collection}
-            entry={blockEntry}
-            isFallback={isFallback}
-          >
-            <slot />
-          </ContentMetaSection>
-        </Accordion>
-      )
-    ) : (
-      <NotFoundError context={`StandAloneBox/${identifier}/${lang}`} />
+          <slot />
+        </ContentMetaSection>
+      </Accordion>
     )
-  }
+  ) : (
+    <NotFoundError context={`StandAloneBox/${identifier}/${lang}`} />
+  )}
 </article>

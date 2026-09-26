@@ -8,7 +8,10 @@ const { size = 'medium' } = Astro.props;
 const sizefactor = size === 'big' ? 1 : size === 'medium' ? 0.5 : 0.25;
 ---
 
-<style is:global define:vars={{ sizefactor }}>
+<style
+  is:global
+  define:vars={{ sizefactor }}
+>
   /* we are styling the elements in the slots so we need to have this global */
   .stack {
     display: flex;

@@ -16,16 +16,14 @@ const { path, lang = Astro.locals.lang } = Astro.props;
 const url = getCanonicalUrlForPath(lang, path);
 ---
 
-{
-  url ? (
-    <ShortLink
-      lang={lang}
-      openInNewTab={false}
-      url={url}
-    >
-      <slot />
-    </ShortLink>
-  ) : (
-    <NotFoundError context={`InternalPathLink/${path}/${lang}`} />
-  )
-}
+{url ? (
+  <ShortLink
+    lang={lang}
+    openInNewTab={false}
+    url={url}
+  >
+    <slot />
+  </ShortLink>
+) : (
+  <NotFoundError context={`InternalPathLink/${path}/${lang}`} />
+)}

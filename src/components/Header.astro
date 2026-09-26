@@ -125,9 +125,7 @@ const aboutCanonicalUrl = await getCanonicalUrlToPage(
     <!--this could use the text to width like in the pdf-->
     <span class="h2">{useUiTranslation('meta.title', lang)}</span>
   </a>
-  <AnimatedCloseButton
-    onclick="document.getElementById('main-nav').classList.toggle('hidden');"
-  />
+  <AnimatedCloseButton onclick="document.getElementById('main-nav').classList.toggle('hidden');" />
 
   <nav
     id="main-nav"
@@ -146,22 +144,18 @@ const aboutCanonicalUrl = await getCanonicalUrlToPage(
           </Link>
         </li>
 
-        {
-          allKits
-            .filter((kit) => kit.params.lang === lang)
-            .map(async (kit) => (
-              <li>
-                <Link
-                  lang={lang}
-                  href={
-                    (await getCanonicalUrlToKit(kit.props.entry, lang)) || ''
-                  }
-                >
-                  {kit.props.entry.data.title}
-                </Link>
-              </li>
-            ))
-        }
+        {allKits
+          .filter((kit) => kit.params.lang === lang)
+          .map(async (kit) => (
+            <li>
+              <Link
+                lang={lang}
+                href={(await getCanonicalUrlToKit(kit.props.entry, lang)) || ''}
+              >
+                {kit.props.entry.data.title}
+              </Link>
+            </li>
+          ))}
 
         <li>
           <Link
@@ -172,25 +166,21 @@ const aboutCanonicalUrl = await getCanonicalUrlToPage(
           </Link>
 
           <ul>
-            {
-              allFlyers
-                .filter((flyer) => flyer.params.lang === lang)
-                .map(async (flyer) => (
-                  <li>
-                    <Link
-                      lang={lang}
-                      href={
-                        (await getCanonicalUrlToFlyer(
-                          flyer.props.entry,
-                          lang,
-                        )) || ''
-                      }
-                    >
-                      {flyer.props.entry.data.title}
-                    </Link>
-                  </li>
-                ))
-            }
+            {allFlyers
+              .filter((flyer) => flyer.params.lang === lang)
+              .map(async (flyer) => (
+                <li>
+                  <Link
+                    lang={lang}
+                    href={
+                      (await getCanonicalUrlToFlyer(flyer.props.entry, lang)) ||
+                      ''
+                    }
+                  >
+                    {flyer.props.entry.data.title}
+                  </Link>
+                </li>
+              ))}
           </ul>
         </li>
         <li>

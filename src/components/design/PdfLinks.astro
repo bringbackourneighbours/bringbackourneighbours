@@ -17,23 +17,19 @@ const showAllLangs = ['zines', 'flyers'].includes(collection);
 ---
 
 <Stack size="small">
-  {
-    showAllLangs && (
-      <PdfLink
-        slot="heading"
-        collection={collection}
-        identifier={identifier}
-        lang="all"
-      />
-    )
-  }
-  {
-    SupportedLanguages.map((lang) => (
-      <PdfLink
-        collection={collection}
-        identifier={identifier}
-        lang={lang}
-      />
-    ))
-  }
+  {showAllLangs && (
+    <PdfLink
+      slot="heading"
+      collection={collection}
+      identifier={identifier}
+      lang="all"
+    />
+  )}
+  {SupportedLanguages.map((lang) => (
+    <PdfLink
+      collection={collection}
+      identifier={identifier}
+      lang={lang}
+    />
+  ))}
 </Stack>

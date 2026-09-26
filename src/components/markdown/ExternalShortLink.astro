@@ -55,51 +55,46 @@ const onlyInOtherLangs = !(localizedLinkData?.url && localizedLinkData?.title);
     }
   }
 </style>
-{
-  link ? (
-    <>
-      {hasNoAlternatives ? (
-        <ExternalShortLinkAnchor
-          lang={lang}
-          identifier={identifier}
-        />
-      ) : (
-        <Accordion variant="inverted-primary">
-          <div slot="summary">
-            <ExternalShortLinkAnchor
-              lang={lang}
-              identifier={identifier}
-            />
+{link ? (
+  <>
+    {hasNoAlternatives ? (
+      <ExternalShortLinkAnchor
+        lang={lang}
+        identifier={identifier}
+      />
+    ) : (
+      <Accordion variant="inverted-primary">
+        <div slot="summary">
+          <ExternalShortLinkAnchor
+            lang={lang}
+            identifier={identifier}
+          />
+        </div>
+        <div slot="extra-icon">
+          <Icon html={languageIcon} />
+        </div>
+        {showAlternatives && (
+          <div class="alternatives">
+            {!onlyInOtherLangs && (
+              <em>
+                {useUiTranslation('shortLink.availableInOtherLanguages', lang)}
+              </em>
+            )}
+            <ul>
+              {alternativeLanguages.map((l) => (
+                <li>
+                  <ExternalShortLinkAnchor
+                    identifier={identifier}
+                    lang={l}
+                  />
+                </li>
+              ))}
+            </ul>
           </div>
-          <div slot="extra-icon">
-            <Icon html={languageIcon} />
-          </div>
-          {showAlternatives && (
-            <div class="alternatives">
-              {!onlyInOtherLangs && (
-                <em>
-                  {useUiTranslation(
-                    'shortLink.availableInOtherLanguages',
-                    lang,
-                  )}
-                </em>
-              )}
-              <ul>
-                {alternativeLanguages.map((l) => (
-                  <li>
-                    <ExternalShortLinkAnchor
-                      identifier={identifier}
-                      lang={l}
-                    />
-                  </li>
-                ))}
-              </ul>
-            </div>
-          )}
-        </Accordion>
-      )}
-    </>
-  ) : (
-    <NotFoundError context={`ExternalShortLink/${identifier}/${lang}`} />
-  )
-}
+        )}
+      </Accordion>
+    )}
+  </>
+) : (
+  <NotFoundError context={`ExternalShortLink/${identifier}/${lang}`} />
+)}

@@ -36,29 +36,27 @@ const showGoOnline = Astro.locals.isPrint && Astro.locals.isFlyer;
     display: block;
   }
 </style>
-{
-  hasLinkInCurrentLang ? (
-    <>
-      <ShortLink
+{hasLinkInCurrentLang ? (
+  <>
+    <ShortLink
+      lang={lang}
+      openInNewTab={true}
+      slug={localizedLinkData.slug}
+      title={localizedLinkData.title}
+      type={localizedLinkData.type}
+      url={localizedLinkData.url!}
+    />
+    {Astro.locals.isPrint && Astro.locals.isKit && (
+      <LanguageChip
         lang={lang}
-        openInNewTab={true}
-        slug={localizedLinkData.slug}
-        title={localizedLinkData.title}
-        type={localizedLinkData.type}
-        url={localizedLinkData.url!}
+        currentLang={Astro.locals.lang}
       />
-      {Astro.locals.isPrint && Astro.locals.isKit && (
-        <LanguageChip
-          lang={lang}
-          currentLang={Astro.locals.lang}
-        />
-      )}
-    </>
-  ) : showGoOnline ? (
-    <em>
-      {useUiTranslation('shortLink.onlyAvailableOnlineInOtherLanguages', lang)}
-    </em>
-  ) : (
-    <em>{useUiTranslation('shortLink.onlyAvailableInOtherLanguages', lang)}</em>
-  )
-}
+    )}
+  </>
+) : showGoOnline ? (
+  <em>
+    {useUiTranslation('shortLink.onlyAvailableOnlineInOtherLanguages', lang)}
+  </em>
+) : (
+  <em>{useUiTranslation('shortLink.onlyAvailableInOtherLanguages', lang)}</em>
+)}

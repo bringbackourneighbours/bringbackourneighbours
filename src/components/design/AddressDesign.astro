@@ -60,133 +60,123 @@ const showNotes = !isPrintedFlyer;
   <div dir="ltr">
     <strong>{address?.name}</strong>
     <br />
-    {
-      showLocation &&
-        locations.map((location) => (
+    {showLocation &&
+      locations.map((location) => (
+        <>
+          {location?.location && (
+            <>
+              {location?.location}
+              <br />
+            </>
+          )}
+          {location?.additional && (
+            <>
+              {location?.additional}
+              <br />
+            </>
+          )}
+          {location?.streetLine && (
+            <>
+              {location?.streetLine}
+              <br />
+            </>
+          )}
+          {location?.zip && <>{location?.zip + ' '}</>}
+          {location?.city && <>{location?.city}</>}
+          {(location?.zip || location?.city) && (
+            <>
+              <br />
+            </>
+          )}
+          {locations.length >= 2 && <br />}
+        </>
+      ))}
+    {showContact && hasContact && (
+      <>
+        {[address?.phone, ...(address?.phones ?? [])].map(
+          (phone) =>
+            phone && (
+              <>
+                <Link href={`tel:${phone}`}>{phone}</Link>
+                <br />
+              </>
+            ),
+        )}
+
+        {[address?.mail, ...(address?.mails ?? [])].map((mail) => (
           <>
-            {location?.location && (
-              <>
-                {location?.location}
-                <br />
-              </>
-            )}
-            {location?.additional && (
-              <>
-                {location?.additional}
-                <br />
-              </>
-            )}
-            {location?.streetLine && (
-              <>
-                {location?.streetLine}
-                <br />
-              </>
-            )}
-            {location?.zip && <>{location?.zip + ' '}</>}
-            {location?.city && <>{location?.city}</>}
-            {(location?.zip || location?.city) && (
-              <>
-                <br />
-              </>
-            )}
-            {locations.length >= 2 && <br />}
+            <Link href={`mailto:${mail}`}>{mail}</Link>
+            <br />
           </>
-        ))
-    }
-    {
-      showContact && hasContact && (
-        <>
-          {[address?.phone, ...(address?.phones ?? [])].map(
-            (phone) =>
-              phone && (
-                <>
-                  <Link href={`tel:${phone}`}>{phone}</Link>
-                  <br />
-                </>
-              ),
-          )}
+        ))}
+      </>
+    )}
+    {showWeb && hasWeb && (
+      <>
+        {address?.url && (
+          <>
+            <Link
+              href={address?.url}
+              openInNewTab={true}
+            />
+            <br />
+          </>
+        )}
 
-          {[address?.mail, ...(address?.mails ?? [])].map((mail) => (
-            <>
-              <Link href={`mailto:${mail}`}>{mail}</Link>
-              <br />
-            </>
-          ))}
-        </>
-      )
-    }
-    {
-      showWeb && hasWeb && (
-        <>
-          {address?.url && (
-            <>
-              <Link
-                href={address?.url}
-                openInNewTab={true}
-              />
-              <br />
-            </>
-          )}
-
-          {address?.facebook && (
-            <>
-              Facebook:
-              <Link
-                href={`https://www.facebook.com/${address?.facebook}`}
-                openInNewTab={true}
-              >
-                @{address?.facebook}
-              </Link>
-              <br />
-            </>
-          )}
-          {address?.instagram && (
-            <>
-              Instagram:
-              <Link
-                href={`https://instagram.com/${address?.instagram}`}
-                openInNewTab={true}
-              >
-                @{address?.instagram}
-              </Link>
-              <br />
-            </>
-          )}
-          {address?.telegram && (
-            <>
-              Telegram:
-              <Link
-                href={`https://t.me/${address?.telegram}`}
-                openInNewTab={true}
-              >
-                @{address?.telegram}
-              </Link>
-              <br />
-            </>
-          )}
-        </>
-      )
-    }
-    {
-      address?.twitter && (
-        <>
-          twitter/X:
-          <Link
-            href={`https://twitter.com/${address?.twitter}`}
-            openInNewTab={true}
-          >
-            @{address?.twitter}
-          </Link>
-          <br />
-        </>
-      )
-    }
+        {address?.facebook && (
+          <>
+            Facebook:
+            <Link
+              href={`https://www.facebook.com/${address?.facebook}`}
+              openInNewTab={true}
+            >
+              @{address?.facebook}
+            </Link>
+            <br />
+          </>
+        )}
+        {address?.instagram && (
+          <>
+            Instagram:
+            <Link
+              href={`https://instagram.com/${address?.instagram}`}
+              openInNewTab={true}
+            >
+              @{address?.instagram}
+            </Link>
+            <br />
+          </>
+        )}
+        {address?.telegram && (
+          <>
+            Telegram:
+            <Link
+              href={`https://t.me/${address?.telegram}`}
+              openInNewTab={true}
+            >
+              @{address?.telegram}
+            </Link>
+            <br />
+          </>
+        )}
+      </>
+    )}
+    {address?.twitter && (
+      <>
+        twitter/X:
+        <Link
+          href={`https://twitter.com/${address?.twitter}`}
+          openInNewTab={true}
+        >
+          @{address?.twitter}
+        </Link>
+        <br />
+      </>
+    )}
   </div>
-  {
-    showNotes && address?.translatedNotes?.[lang] && (
-      <div dir={getLanguageDirection(lang)}>
-        {address?.translatedNotes?.[lang]}
-      </div>
-    )
-  }
+  {showNotes && address?.translatedNotes?.[lang] && (
+    <div dir={getLanguageDirection(lang)}>
+      {address?.translatedNotes?.[lang]}
+    </div>
+  )}
 </address>
