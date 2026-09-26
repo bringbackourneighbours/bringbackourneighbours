@@ -6,7 +6,7 @@ import {
   type InferEntrySchema,
 } from 'astro:content';
 
-import { type LanguagesValue } from '../model/languages';
+import { SupportedLanguages, type LanguagesValue } from '../model/languages';
 import { useUiTranslation } from '../content/use-ui-translation';
 import { useContentData } from '../content/use-content-data';
 
@@ -23,6 +23,12 @@ const { fromLang, toLang } = Astro.props;
 
 // we dont want the notes to appear anywhere
 Astro.locals.machineTranslationNoteWasDisplayed = true;
+
+const isSupportedLang = (lang: LanguagesValue): boolean => {
+  return Object.values(SupportedLanguages)
+    .map((l) => `${l}`)
+    .includes(lang);
+};
 
 const uiEntry = await getEntry('ui', fromLang);
 const addressesCollection = await getCollection('addresses');
@@ -165,6 +171,7 @@ const pagesEntries = pagesCollection?.filter(
                         'blocks',
                         entry.data.identifier,
                         toLang,
+                        !isSupportedLang(toLang),
                       )
                     )?.lastChecked ?? entry.data.lastChecked
                   }
@@ -178,8 +185,14 @@ const pagesEntries = pagesCollection?.filter(
                 />
               </div>
               <div slot="to">
-                {(await useContentData('blocks', entry.data.identifier, toLang))
-                  ?.fallbackToLang === fromLang && (
+                {(
+                  await useContentData(
+                    'blocks',
+                    entry.data.identifier,
+                    toLang,
+                    !isSupportedLang(toLang),
+                  )
+                )?.fallbackToLang === fromLang && (
                   <pre>
                     Hinweis an die Übersetzer*in: Dieser Abschnitt ist optional.
                   </pre>
@@ -201,18 +214,24 @@ const pagesEntries = pagesCollection?.filter(
             <div slot="id">flyers/{entry.data.identifier}.title</div>
             <div slot="from">{entry.data.title}</div>
             <div slot="to">
-              {useContentData('flyers', entry.data.identifier, toLang).then(
-                (toData) => toData?.title,
-              )}
+              {useContentData(
+                'flyers',
+                entry.data.identifier,
+                toLang,
+                !isSupportedLang(toLang),
+              ).then((toData) => toData?.title)}
             </div>
           </TranslationTableRow>
           <TranslationTableRow>
             <div slot="id">flyers/{entry.data.identifier}.seo</div>
             <div slot="from">{entry.data.seo}</div>
             <div slot="to">
-              {useContentData('flyers', entry.data.identifier, toLang).then(
-                (toData) => toData?.seo,
-              )}
+              {useContentData(
+                'flyers',
+                entry.data.identifier,
+                toLang,
+                !isSupportedLang(toLang),
+              ).then((toData) => toData?.seo)}
             </div>
           </TranslationTableRow>
           {!entry.data.notToBeTranslated && (
@@ -233,6 +252,7 @@ const pagesEntries = pagesCollection?.filter(
                         'flyers',
                         entry.data.identifier,
                         toLang,
+                        !isSupportedLang(toLang),
                       )
                     )?.lastChecked ?? entry.data.lastChecked
                   }
@@ -248,8 +268,14 @@ const pagesEntries = pagesCollection?.filter(
                 />
               </div>
               <div slot="to">
-                {(await useContentData('flyers', entry.data.identifier, toLang))
-                  ?.fallbackToLang === fromLang && (
+                {(
+                  await useContentData(
+                    'flyers',
+                    entry.data.identifier,
+                    toLang,
+                    !isSupportedLang(toLang),
+                  )
+                )?.fallbackToLang === fromLang && (
                   <pre>
                     Hinweis an die Übersetzer*in: Dieser Abschnitt ist optional.
                   </pre>
@@ -273,18 +299,24 @@ const pagesEntries = pagesCollection?.filter(
             <div slot="id">pages/{entry.data.identifier}.title</div>
             <div slot="from">{entry.data.title}</div>
             <div slot="to">
-              {useContentData('pages', entry.data.identifier, toLang).then(
-                (toData) => toData?.title,
-              )}
+              {useContentData(
+                'pages',
+                entry.data.identifier,
+                toLang,
+                !isSupportedLang(toLang),
+              ).then((toData) => toData?.title)}
             </div>
           </TranslationTableRow>
           <TranslationTableRow>
             <div slot="id">pages/{entry.data.identifier}.seo</div>
             <div slot="from">{entry.data.seo}</div>
             <div slot="to">
-              {useContentData('pages', entry.data.identifier, toLang).then(
-                (toData) => toData?.seo,
-              )}
+              {useContentData(
+                'pages',
+                entry.data.identifier,
+                toLang,
+                !isSupportedLang(toLang),
+              ).then((toData) => toData?.seo)}
             </div>
           </TranslationTableRow>
           {!entry.data.notToBeTranslated && (
@@ -305,6 +337,7 @@ const pagesEntries = pagesCollection?.filter(
                         'pages',
                         entry.data.identifier,
                         toLang,
+                        !isSupportedLang(toLang),
                       )
                     )?.lastChecked ?? entry.data.lastChecked
                   }
@@ -319,8 +352,14 @@ const pagesEntries = pagesCollection?.filter(
                 />
               </div>
               <div slot="to">
-                {(await useContentData('pages', entry.data.identifier, toLang))
-                  ?.fallbackToLang === fromLang && (
+                {(
+                  await useContentData(
+                    'pages',
+                    entry.data.identifier,
+                    toLang,
+                    !isSupportedLang(toLang),
+                  )
+                )?.fallbackToLang === fromLang && (
                   <pre>
                     Hinweis an die Übersetzer*in: Dieser Abschnitt ist optional.
                   </pre>
@@ -344,18 +383,24 @@ const pagesEntries = pagesCollection?.filter(
             <div slot="id">kits/{entry.data.identifier}.title</div>
             <div slot="from">{entry.data.title}</div>
             <div slot="to">
-              {useContentData('kits', entry.data.identifier, toLang).then(
-                (toData) => (toData as InferEntrySchema<'kits'>)?.title,
-              )}
+              {useContentData(
+                'kits',
+                entry.data.identifier,
+                toLang,
+                !isSupportedLang(toLang),
+              ).then((toData) => (toData as InferEntrySchema<'kits'>)?.title)}
             </div>
           </TranslationTableRow>
           <TranslationTableRow>
             <div slot="id">kits/{entry.data.identifier}.seo</div>
             <div slot="from">{entry.data.seo}</div>
             <div slot="to">
-              {useContentData('kits', entry.data.identifier, toLang).then(
-                (toData) => toData?.seo,
-              )}
+              {useContentData(
+                'kits',
+                entry.data.identifier,
+                toLang,
+                !isSupportedLang(toLang),
+              ).then((toData) => toData?.seo)}
             </div>
           </TranslationTableRow>
           {!entry.data.notToBeTranslated && (
@@ -376,6 +421,7 @@ const pagesEntries = pagesCollection?.filter(
                         'kits',
                         entry.data.identifier,
                         toLang,
+                        !isSupportedLang(toLang),
                       )
                     )?.lastChecked ?? entry.data.lastChecked
                   }
@@ -390,8 +436,14 @@ const pagesEntries = pagesCollection?.filter(
                 />
               </div>
               <div slot="to">
-                {(await useContentData('kits', entry.data.identifier, toLang))
-                  ?.fallbackToLang === fromLang && (
+                {(
+                  await useContentData(
+                    'kits',
+                    entry.data.identifier,
+                    toLang,
+                    !isSupportedLang(toLang),
+                  )
+                )?.fallbackToLang === fromLang && (
                   <pre>
                     Hinweis an die Übersetzer*in: Dieser Abschnitt ist optional.
                   </pre>
