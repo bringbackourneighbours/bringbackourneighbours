@@ -47,9 +47,7 @@ const hrefLang = (!showLangLabel ? currentLang : targetLang) as LanguagesValue;
   {!Astro.slots.has('default') && label}
   <slot />
 
-  {
-    showLangLabel && (
-      <> ({useUiTranslation(`languages.${lang}`, currentLang)})</>
-    )
-  }
+  {showLangLabel && (
+    <> ({useUiTranslation(`languages.${lang}`, currentLang)})</>
+  )}
 </CardLink>

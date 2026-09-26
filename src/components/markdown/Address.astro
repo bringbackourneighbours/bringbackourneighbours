@@ -13,15 +13,13 @@ export interface Props {
 const addressEntry = await getEntry('addresses', Astro.props.identifier);
 ---
 
-{
-  addressEntry ? (
-    <AddressDesign
-      entry={addressEntry}
-      lang={Astro.props.lang}
-    />
-  ) : (
-    <NotFoundError
-      context={`addresses/${Astro.props.identifier}/${Astro.props.lang}`}
-    />
-  )
-}
+{addressEntry ? (
+  <AddressDesign
+    entry={addressEntry}
+    lang={Astro.props.lang}
+  />
+) : (
+  <NotFoundError
+    context={`addresses/${Astro.props.identifier}/${Astro.props.lang}`}
+  />
+)}

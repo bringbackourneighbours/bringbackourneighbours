@@ -77,33 +77,27 @@ const allKitsLabel = await useUiTranslation('meta.allKits', lang);
 </Stack>
 
 <Stack>
-  {
-    showKit && (
-      <MenuLink
-        lang={lang}
-        canonicalUrl={kitAffectedCanonicalUrl ?? ''}
-        label={kitAffectedLabel}
-      />
-    )
-  }
-  {
-    showFlyers && (
-      <MenuLink
-        lang={lang}
-        canonicalUrl={getCanonicalUrlForPath(lang, 'flyer')}
-        label={allFlyersLabel}
-      />
-    )
-  }
-  {
-    showKits && (
-      <MenuLink
-        lang={lang}
-        canonicalUrl={getCanonicalUrlForPath(lang, 'kit')}
-        label={allKitsLabel}
-      />
-    )
-  }
+  {showKit && (
+    <MenuLink
+      lang={lang}
+      canonicalUrl={kitAffectedCanonicalUrl ?? ''}
+      label={kitAffectedLabel}
+    />
+  )}
+  {showFlyers && (
+    <MenuLink
+      lang={lang}
+      canonicalUrl={getCanonicalUrlForPath(lang, 'flyer')}
+      label={allFlyersLabel}
+    />
+  )}
+  {showKits && (
+    <MenuLink
+      lang={lang}
+      canonicalUrl={getCanonicalUrlForPath(lang, 'kit')}
+      label={allKitsLabel}
+    />
+  )}
   <MenuLink
     lang={lang}
     canonicalUrl={publicityCanonicalUrl ?? ''}

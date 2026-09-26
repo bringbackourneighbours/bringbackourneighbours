@@ -53,21 +53,17 @@ if (fallbackToLang !== lang) {
 
 {isFallback && <NoteOnlyFallbackTranslation entry={blockEntry} />}
 
-{
-  blockEntry ? (
-    <section dir={getLanguageDirection(blockEntry.data.lang)}>
-      <NoteMachineTranslation
-        entry={blockEntry}
-        isRootLevelContent={isRootLevelContent}
-      />
-      <MarkdownEntry
-        rendered={render(blockEntry)}
-        recursive={recursive}
-      />
-    </section>
-  ) : (
-    recursive && (
-      <NotFoundError context={`${collection}/${identifier}/${lang}`} />
-    )
-  )
-}
+{blockEntry ? (
+  <section dir={getLanguageDirection(blockEntry.data.lang)}>
+    <NoteMachineTranslation
+      entry={blockEntry}
+      isRootLevelContent={isRootLevelContent}
+    />
+    <MarkdownEntry
+      rendered={render(blockEntry)}
+      recursive={recursive}
+    />
+  </section>
+) : (
+  recursive && <NotFoundError context={`${collection}/${identifier}/${lang}`} />
+)}

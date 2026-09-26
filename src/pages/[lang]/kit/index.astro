@@ -50,18 +50,16 @@ const translationSlugs = await getTranslationsUrlsForPath(lang, 'kit');
   />
   <Stack>
     <H1 slot="heading">{useUiTranslation('meta.allKits', lang)}</H1>
-    {
-      allKits
-        .filter((kit) => kit.params.lang === lang)
-        .map(async (kit) => (
-          <CardLink
-            lang={lang}
-            href={await getCanonicalUrlToKit(kit.props.entry, lang)}
-          >
-            {kit.props.entry.data.title}
-          </CardLink>
-        ))
-    }
+    {allKits
+      .filter((kit) => kit.params.lang === lang)
+      .map(async (kit) => (
+        <CardLink
+          lang={lang}
+          href={await getCanonicalUrlToKit(kit.props.entry, lang)}
+        >
+          {kit.props.entry.data.title}
+        </CardLink>
+      ))}
   </Stack>
 
   <MoreInfoStack

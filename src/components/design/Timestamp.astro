@@ -12,6 +12,6 @@ const { lastChecked, lang } = Astro.props;
 ---
 
 {useUiTranslation('meta.updated', lang)}
-<time datetime={lastChecked.toISOString()}
-  >{lastChecked.toLocaleDateString(lang)}</time
->
+<time datetime={lastChecked.toISOString()}>
+  {lastChecked.toLocaleDateString(lang)}
+</time>

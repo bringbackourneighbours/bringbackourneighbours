@@ -47,11 +47,9 @@ const {
 </style>
 
 <hgroup>
-  {
-    entry.data.lang !== `${Languages.GERMAN}` && (
-      <span class="german-title ltr">{germanTitle}</span>
-    )
-  }
+  {entry.data.lang !== `${Languages.GERMAN}` && (
+    <span class="german-title ltr">{germanTitle}</span>
+  )}
   <H1>{entry.data.title}</H1>
   <ContentMeta entry={entry} />
 </hgroup>
@@ -61,24 +59,20 @@ const {
     title={entry.data.title}
     url={canonicalUrl}
   />
-  {
-    showCopyButton && (
-      <CopyButton>
-        <h1>{entry.data.title}</h1>
-        <br />
-        <br />
-        <slot />
-      </CopyButton>
-    )
-  }
-  {
-    showDownloadButton && (
-      <PdfLink
-        collection={collection}
-        identifier={entry.data.identifier}
-      />
-    )
-  }
+  {showCopyButton && (
+    <CopyButton>
+      <h1>{entry.data.title}</h1>
+      <br />
+      <br />
+      <slot />
+    </CopyButton>
+  )}
+  {showDownloadButton && (
+    <PdfLink
+      collection={collection}
+      identifier={entry.data.identifier}
+    />
+  )}
 </div>
 
 <slot />

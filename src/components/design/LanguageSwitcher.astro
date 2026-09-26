@@ -86,19 +86,17 @@ const { lang = Astro.locals.lang, translationSlugs } = Astro.props;
           />
         </div>
         <div class="language-switcher-alternatives">
-          {
-            translationSlugs?.map((translation) => (
-              <Link
+          {translationSlugs?.map((translation) => (
+            <Link
+              lang={translation.lang}
+              href={translation.url}
+            >
+              <LanguageChip
+                currentLang={lang}
                 lang={translation.lang}
-                href={translation.url}
-              >
-                <LanguageChip
-                  currentLang={lang}
-                  lang={translation.lang}
-                />
-              </Link>
-            ))
-          }
+              />
+            </Link>
+          ))}
         </div>
       </div>
     </Card>

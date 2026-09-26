@@ -36,10 +36,9 @@ import Block from '../components/markdown/Block.astro';
     lang={Languages.ENGLISH}
   >
     <h1>Showcase</h1>
-    This page is for testing new feature... it will be removed when we are going live
-
+    This page is for testing new feature... it will be removed when we are going
+    live
     <h2>elements</h2>
-
     <h3>CardButton</h3>
     <CardButton>CardButton</CardButton>
     <h3>Toast</h3>
@@ -66,7 +65,6 @@ import Block from '../components/markdown/Block.astro';
         </ul>
       </div>
     </Toast>
-
     <h3>Accordion</h3>
     <Accordion>
       <CardButton slot="summary">summary as slot</CardButton>
@@ -74,43 +72,39 @@ import Block from '../components/markdown/Block.astro';
       <Accordion
         variant="inverted-primary"
         title="summary as input"
-        >CONTENTS</Accordion
       >
+        CONTENTS
+      </Accordion>
     </Accordion>
-
     <Accordion
       variant="secondary"
       title="summary as input"
-      >CONTENTS</Accordion
     >
+      CONTENTS
+    </Accordion>
     <br />
-
     <Accordion
       variant="inverted-primary"
       title="summary as input"
-      >CONTENTS</Accordion
     >
+      CONTENTS
+    </Accordion>
     <br />
     <Accordion
       variant="inverted-secondary"
       title="summary as input"
-      >CONTENTS</Accordion
     >
+      CONTENTS
+    </Accordion>
     <br />
-
     <h2>QrCodes</h2>
-
-    <QrImage
-      url="https://www.npmjs.com/package/qrcode#todataurltext-options-cberror-url-1"
-    />
-
+    <QrImage url="https://www.npmjs.com/package/qrcode#todataurltext-options-cberror-url-1" />
     <h2>Blocks</h2>
     <Block identifier="counseling_addresses" />
     <Block
       identifier="counseling_addresses"
       lang="ku"
     />
-
     <h2>Addresses</h2>
     <Address identifier="test" />
     <Address
@@ -123,26 +117,21 @@ import Block from '../components/markdown/Block.astro';
     />
     <h2>UI translation</h2>
     <p>
-      useUiTranslation('meta.subtitle', 'de') == {
-        useUiTranslation('meta.subtitle', Languages.GERMAN)
-      }
+      useUiTranslation('meta.subtitle', 'de') =={' '}
+      {useUiTranslation('meta.subtitle', Languages.GERMAN)}
     </p>
     <p>
-      useUiTranslation('meta.subtitle', 'en') == {
-        useUiTranslation('meta.subtitle', Languages.ENGLISH)
-      }
+      useUiTranslation('meta.subtitle', 'en') =={' '}
+      {useUiTranslation('meta.subtitle', Languages.ENGLISH)}
     </p>
     <p>
-      useUiTranslation('meta.subtitle', 'es') == {
-        useUiTranslation('meta.subtitle', Languages.SPANISH)
-      }
+      useUiTranslation('meta.subtitle', 'es') =={' '}
+      {useUiTranslation('meta.subtitle', Languages.SPANISH)}
     </p>
     <p>
-      useUiTranslation('FOOFOO', 'en') == {
-        useUiTranslation('FOOFOO', Languages.ENGLISH)
-      }
+      useUiTranslation('FOOFOO', 'en') =={' '}
+      {useUiTranslation('FOOFOO', Languages.ENGLISH)}
     </p>
-
     <h2>ShortLinks</h2>
     <p>
       we resolve calls to ${Astro.site}/link/[slug] to the links in the content
@@ -166,13 +155,15 @@ import Block from '../components/markdown/Block.astro';
         />
       </li>
       <li>
-        <Link href={`${Astro.site}link/asyldt`} /> or <ExternalShortLink
+        <Link href={`${Astro.site}link/asyldt`} /> or{' '}
+        <ExternalShortLink
           identifier="asylnet_interview"
           lang="de"
         />
       </li>
       <li>
-        <Link href={`${Astro.site}link/asyleng`} /> or <ExternalShortLink
+        <Link href={`${Astro.site}link/asyleng`} /> or{' '}
+        <ExternalShortLink
           identifier="asylnet_interview"
           lang={Languages.ENGLISH}
         />
@@ -196,9 +187,7 @@ import Block from '../components/markdown/Block.astro';
         <Link href={`${Astro.site}link/kit-ar-affected`} />
       </li>
     </ul>
-
     <h2>Printing</h2>
-
     We can print the flyers and kit automatically from the same data we use to
     generate the pages. You can preview the output by visiting
     <ul>
@@ -221,10 +210,8 @@ import Block from '../components/markdown/Block.astro';
         <Link href={`${Astro.site}print/flyer-en-detention.pdf`} />
       </li>
     </ul>
-
     On the page hit [CTRL + P] so preview the print dialog of your browser....
     beware that we apply some more magic to this.
-
     <h1 class="">heading 1</h1>
     <h2 class="themed">heading 2</h2>
     <h3 class="themed">heading 3</h3>

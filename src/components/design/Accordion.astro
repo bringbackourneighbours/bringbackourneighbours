@@ -148,30 +148,26 @@ const { title, variant = 'primary', open = isPrint, level = 3 } = Astro.props;
   aria-labelledby="summary"
 >
   <summary id="summary">
-    {
-      Astro.slots.has('summary') ? (
-        <slot name="summary" />
-      ) : (
-        <Heading level={level}>{title}</Heading>
-      )
-    }
-    {
-      !isPrint && (
-        <span class="icons">
-          {Astro.slots.has('extra-icon') && (
-            <span class="extra-icon">
-              <slot name="extra-icon" />
-            </span>
-          )}
-          <span class="chevron-icon">
-            <Icon
-              variant={invertColorVariant(variant)}
-              html={chevronDown}
-            />
+    {Astro.slots.has('summary') ? (
+      <slot name="summary" />
+    ) : (
+      <Heading level={level}>{title}</Heading>
+    )}
+    {!isPrint && (
+      <span class="icons">
+        {Astro.slots.has('extra-icon') && (
+          <span class="extra-icon">
+            <slot name="extra-icon" />
           </span>
+        )}
+        <span class="chevron-icon">
+          <Icon
+            variant={invertColorVariant(variant)}
+            html={chevronDown}
+          />
         </span>
-      )
-    }
+      </span>
+    )}
   </summary>
   <article aria-labelledby="summary">
     <slot />

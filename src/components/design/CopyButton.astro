@@ -24,13 +24,11 @@ const toastId = `toast-copy-${crypto.randomUUID()}`;
   <slot />
 </template>
 
-<CardButton id="copy-button">
-  {useUiTranslation('meta.copy', lang)}
-</CardButton>
+<CardButton id="copy-button">{useUiTranslation('meta.copy', lang)}</CardButton>
 
 <Toast id={toastId}>
-  {useUiTranslation('meta.copiedContentToClipboard', lang)}</Toast
->
+  {useUiTranslation('meta.copiedContentToClipboard', lang)}
+</Toast>
 <script>
   const copyContent: HTMLTemplateElement =
     document.querySelector('#copy-content')!;

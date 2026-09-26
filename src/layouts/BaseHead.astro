@@ -30,14 +30,12 @@ import './typography.css';
 
 <head>
   <meta charset="utf-8" />
-  {
-    !allowIndexing && (
-      <meta
-        name="robots"
-        content="noindex"
-      />
-    )
-  }
+  {!allowIndexing && (
+    <meta
+      name="robots"
+      content="noindex"
+    />
+  )}
   <link
     rel="icon"
     type="image/svg+xml"
@@ -52,15 +50,13 @@ import './typography.css';
     hreflang={lang}
     href={canonicalSlug}
   />
-  {
-    translationSlugs?.map((translation) => (
-      <link
-        rel="alternate"
-        hreflang={translation.lang}
-        href={translation.url}
-      />
-    ))
-  }
+  {translationSlugs?.map((translation) => (
+    <link
+      rel="alternate"
+      hreflang={translation.lang}
+      href={translation.url}
+    />
+  ))}
   <meta
     name="viewport"
     content="width=device-width"

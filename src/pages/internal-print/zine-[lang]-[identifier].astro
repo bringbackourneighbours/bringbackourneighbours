@@ -44,21 +44,13 @@ const germanTitle =
   .end-footer {
     position: absolute;
 
-    /**
-    * every zine has 8 pages, so the footer needs to be somewhere on the bottom of page 4...
-    * calc would need to consider the page margins
-    */
+    /** every zine has 8 pages, so the footer needs to be somewhere on the bottom of page 8... calc would need to consider the page margins */
     inset-block-start: 0;
     margin-block-start: calc(722mm + var(--bbon-size-print-end-footer-offset));
   }
 
   .overprint-protector {
-    /**
-    * to make sure nothing fo the content it printed over tke footer we add this protector
-    * if they content and thes footer would overlap this invisible div will be pushed
-    * on the next page... so we will get a warning per astro integration
-    * as we then would have 9 page
-    */
+    /** to make sure nothing fo the content it printed over tke footer we add this protector if they content and thes footer would overlap this invisible div will be pushed on the next page... so we will get a warning per astro integration as we then would have 9 page */
     height: calc(35mm - var(--bbon-size-print-end-footer-offset));
   }
 </style>

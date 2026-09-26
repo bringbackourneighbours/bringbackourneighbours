@@ -16,14 +16,12 @@ const { lang, currentLang = Astro.locals.lang } = Astro.props;
   <span dir={getLanguageDirection(lang)}>
     {useUiTranslation(`languages.${lang}`, lang)}
   </span>
-  {
-    currentLang != lang && (
-      <>
-        <span> | </span>
-        <span dir={getLanguageDirection(currentLang)}>
-          {useUiTranslation(`languages.${lang}`, currentLang)}
-        </span>
-      </>
-    )
-  }
+  {currentLang != lang && (
+    <>
+      <span> | </span>
+      <span dir={getLanguageDirection(currentLang)}>
+        {useUiTranslation(`languages.${lang}`, currentLang)}
+      </span>
+    </>
+  )}
 </span>

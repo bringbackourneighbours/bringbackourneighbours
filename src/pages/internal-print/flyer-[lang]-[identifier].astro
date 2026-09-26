@@ -45,21 +45,13 @@ const germanTitle =
   .end-footer {
     position: absolute;
 
-    /**
-    * every flyer has 4 pages, so the footer needs to be somewhere on the bottom of page 4...
-    * calc would need to consider the page margins
-    */
+    /* every flyer has 4 pages, so the footer needs to be somewhere on the bottom of page 4... calc would need to consider the page margins */
     inset-block-start: 0;
     margin-block-start: calc(524mm + var(--bbon-size-print-end-footer-offset));
   }
 
   .overprint-protector {
-    /**
-    * to make sure nothing fo the content it printed over tke footer we add this protector
-    * if they content and thes footer would overlap this invisible div will be pushed
-    * on the next page... so we will get a warning per astro integration
-    * as we then would have 5 page
-    */
+    /* to make sure nothing fo the content it printed over tke footer we add this protector. if they content and thes footer would overlap this invisible div will be pushed on the next page... so we will get a warning per astro integration as we then would have 5 page */
     height: calc(29mm - var(--bbon-size-print-end-footer-offset));
   }
 </style>

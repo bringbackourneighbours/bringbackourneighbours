@@ -102,8 +102,8 @@ const pagesEntries = pagesCollection?.filter(
   <li>
     Bitte nicht die als
     <pre>&lt;Code&#x2F;&gt;</pre>
-    markierten Elemente direkt übersetzen übersetzen. Bitte kopiere diese Zeilenh
-    an die selben Stellen in die Übersetzung.
+    markierten Elemente direkt übersetzen übersetzen. Bitte kopiere diese
+    Zeilenh an die selben Stellen in die Übersetzung.
   </li>
   <li>
     Bitte nutze eine gut verständliche gender-neutrale Sprache oder wechsle mit
@@ -126,339 +126,319 @@ const pagesEntries = pagesCollection?.filter(
     </tr>
   </thead>
   <tbody>
-    {
-      uiEntriesKeys.map((key) => (
+    {uiEntriesKeys.map((key) => (
+      <TranslationTableRow>
+        <div slot="id">ui/{key}</div>
+        <div slot="from">{useUiTranslation(key, fromLang, false, false)}</div>
+        <div slot="to">{useUiTranslation(key, toLang, false, false)}</div>
+      </TranslationTableRow>
+    ))}
+    {addressesNotesEntries.map((entry) => (
+      <TranslationTableRow>
+        <div slot="id">addresses/{entry.key}.translatedNotes</div>
+        <div slot="from">
+          <div>{fromLang}:</div>
+          {entry.from}
+        </div>
+        <div slot="to">
+          <div> {toLang}:</div>
+          {entry.to}
+        </div>
+      </TranslationTableRow>
+    ))}
+    {blockEntries.map(
+      async (entry) =>
+        !entry.data.notToBeTranslated && (
+          <TranslationTableRow>
+            <div slot="id">blocks/{entry.data.identifier}</div>
+            <div slot="fromDate">
+              <Timestamp
+                lastChecked={entry.data.lastChecked}
+                lang={fromLang}
+              />
+            </div>
+            <div slot="toDate">
+              <Timestamp
+                lang={toLang}
+                lastChecked={
+                  (
+                    await useContentData(
+                      'blocks',
+                      entry.data.identifier,
+                      toLang,
+                      !isSupportedLang(toLang),
+                    )
+                  )?.lastChecked ?? entry.data.lastChecked
+                }
+              />
+            </div>
+            <div slot="from">
+              <Block
+                identifier={entry.data.identifier}
+                lang={fromLang}
+                recursive={false}
+              />
+            </div>
+            <div slot="to">
+              {(
+                await useContentData(
+                  'blocks',
+                  entry.data.identifier,
+                  toLang,
+                  !isSupportedLang(toLang),
+                )
+              )?.fallbackToLang === fromLang && <pre>
+                    Hinweis an die Übersetzer*in: Dieser Abschnitt ist optional.
+                  </pre>}
+              <Block
+                identifier={entry.data.identifier}
+                lang={toLang}
+                recursive={false}
+              />
+            </div>
+          </TranslationTableRow>
+        ),
+    )}
+    {flyersEntries.map(async (entry) => (
+      <>
         <TranslationTableRow>
-          <div slot="id">ui/{key}</div>
-          <div slot="from">{useUiTranslation(key, fromLang, false, false)}</div>
-          <div slot="to">{useUiTranslation(key, toLang, false, false)}</div>
-        </TranslationTableRow>
-      ))
-    }
-    {
-      addressesNotesEntries.map((entry) => (
-        <TranslationTableRow>
-          <div slot="id">addresses/{entry.key}.translatedNotes</div>
-          <div slot="from">
-            <div>{fromLang}:</div>
-            {entry.from}
-          </div>
+          <div slot="id">flyers/{entry.data.identifier}.title</div>
+          <div slot="from">{entry.data.title}</div>
           <div slot="to">
-            <div> {toLang}:</div>
-            {entry.to}
+            {useContentData(
+              'flyers',
+              entry.data.identifier,
+              toLang,
+              !isSupportedLang(toLang),
+            ).then((toData) => toData?.title)}
           </div>
         </TranslationTableRow>
-      ))
-    }
-    {
-      blockEntries.map(
-        async (entry) =>
-          !entry.data.notToBeTranslated && (
-            <TranslationTableRow>
-              <div slot="id">blocks/{entry.data.identifier}</div>
-              <div slot="fromDate">
-                <Timestamp
-                  lastChecked={entry.data.lastChecked}
-                  lang={fromLang}
-                />
-              </div>
-              <div slot="toDate">
-                <Timestamp
-                  lang={toLang}
-                  lastChecked={
-                    (
-                      await useContentData(
-                        'blocks',
-                        entry.data.identifier,
-                        toLang,
-                        !isSupportedLang(toLang),
-                      )
-                    )?.lastChecked ?? entry.data.lastChecked
-                  }
-                />
-              </div>
-              <div slot="from">
-                <Block
-                  identifier={entry.data.identifier}
-                  lang={fromLang}
-                  recursive={false}
-                />
-              </div>
-              <div slot="to">
-                {(
-                  await useContentData(
-                    'blocks',
-                    entry.data.identifier,
-                    toLang,
-                    !isSupportedLang(toLang),
-                  )
-                )?.fallbackToLang === fromLang && (
-                  <pre>
-                    Hinweis an die Übersetzer*in: Dieser Abschnitt ist optional.
-                  </pre>
-                )}
-                <Block
-                  identifier={entry.data.identifier}
-                  lang={toLang}
-                  recursive={false}
-                />
-              </div>
-            </TranslationTableRow>
-          ),
-      )
-    }
-    {
-      flyersEntries.map(async (entry) => (
-        <>
+        <TranslationTableRow>
+          <div slot="id">flyers/{entry.data.identifier}.seo</div>
+          <div slot="from">{entry.data.seo}</div>
+          <div slot="to">
+            {useContentData(
+              'flyers',
+              entry.data.identifier,
+              toLang,
+              !isSupportedLang(toLang),
+            ).then((toData) => toData?.seo)}
+          </div>
+        </TranslationTableRow>
+        {!entry.data.notToBeTranslated && (
           <TranslationTableRow>
-            <div slot="id">flyers/{entry.data.identifier}.title</div>
-            <div slot="from">{entry.data.title}</div>
-            <div slot="to">
-              {useContentData(
-                'flyers',
-                entry.data.identifier,
-                toLang,
-                !isSupportedLang(toLang),
-              ).then((toData) => toData?.title)}
+            <div slot="id">flyers/{entry.data.identifier}</div>
+            <div slot="fromDate">
+              <Timestamp
+                lastChecked={entry.data.lastChecked}
+                lang={fromLang}
+              />
             </div>
-          </TranslationTableRow>
-          <TranslationTableRow>
-            <div slot="id">flyers/{entry.data.identifier}.seo</div>
-            <div slot="from">{entry.data.seo}</div>
-            <div slot="to">
-              {useContentData(
-                'flyers',
-                entry.data.identifier,
-                toLang,
-                !isSupportedLang(toLang),
-              ).then((toData) => toData?.seo)}
+            <div slot="toDate">
+              <Timestamp
+                lang={toLang}
+                lastChecked={
+                  (
+                    await useContentData(
+                      'flyers',
+                      entry.data.identifier,
+                      toLang,
+                      !isSupportedLang(toLang),
+                    )
+                  )?.lastChecked ?? entry.data.lastChecked
+                }
+              />
             </div>
-          </TranslationTableRow>
-          {!entry.data.notToBeTranslated && (
-            <TranslationTableRow>
-              <div slot="id">flyers/{entry.data.identifier}</div>
-              <div slot="fromDate">
-                <Timestamp
-                  lastChecked={entry.data.lastChecked}
-                  lang={fromLang}
-                />
-              </div>
-              <div slot="toDate">
-                <Timestamp
-                  lang={toLang}
-                  lastChecked={
-                    (
-                      await useContentData(
-                        'flyers',
-                        entry.data.identifier,
-                        toLang,
-                        !isSupportedLang(toLang),
-                      )
-                    )?.lastChecked ?? entry.data.lastChecked
-                  }
-                />
-              </div>
 
-              <div slot="from">
-                <Block
-                  identifier={entry.data.identifier}
-                  lang={fromLang}
-                  recursive={false}
-                  collection="flyers"
-                />
-              </div>
-              <div slot="to">
-                {(
-                  await useContentData(
-                    'flyers',
-                    entry.data.identifier,
-                    toLang,
-                    !isSupportedLang(toLang),
-                  )
-                )?.fallbackToLang === fromLang && (
-                  <pre>
+            <div slot="from">
+              <Block
+                identifier={entry.data.identifier}
+                lang={fromLang}
+                recursive={false}
+                collection="flyers"
+              />
+            </div>
+            <div slot="to">
+              {(
+                await useContentData(
+                  'flyers',
+                  entry.data.identifier,
+                  toLang,
+                  !isSupportedLang(toLang),
+                )
+              )?.fallbackToLang === fromLang && <pre>
                     Hinweis an die Übersetzer*in: Dieser Abschnitt ist optional.
-                  </pre>
-                )}
-                <Block
-                  identifier={entry.data.identifier}
-                  lang={toLang}
-                  recursive={false}
-                  collection="flyers"
-                />
-              </div>
-            </TranslationTableRow>
-          )}
-        </>
-      ))
-    }
-    {
-      pagesEntries.map(async (entry) => (
-        <>
-          <TranslationTableRow>
-            <div slot="id">pages/{entry.data.identifier}.title</div>
-            <div slot="from">{entry.data.title}</div>
-            <div slot="to">
-              {useContentData(
-                'pages',
-                entry.data.identifier,
-                toLang,
-                !isSupportedLang(toLang),
-              ).then((toData) => toData?.title)}
+                  </pre>}
+              <Block
+                identifier={entry.data.identifier}
+                lang={toLang}
+                recursive={false}
+                collection="flyers"
+              />
             </div>
           </TranslationTableRow>
+        )}
+      </>
+    ))}
+    {pagesEntries.map(async (entry) => (
+      <>
+        <TranslationTableRow>
+          <div slot="id">pages/{entry.data.identifier}.title</div>
+          <div slot="from">{entry.data.title}</div>
+          <div slot="to">
+            {useContentData(
+              'pages',
+              entry.data.identifier,
+              toLang,
+              !isSupportedLang(toLang),
+            ).then((toData) => toData?.title)}
+          </div>
+        </TranslationTableRow>
+        <TranslationTableRow>
+          <div slot="id">pages/{entry.data.identifier}.seo</div>
+          <div slot="from">{entry.data.seo}</div>
+          <div slot="to">
+            {useContentData(
+              'pages',
+              entry.data.identifier,
+              toLang,
+              !isSupportedLang(toLang),
+            ).then((toData) => toData?.seo)}
+          </div>
+        </TranslationTableRow>
+        {!entry.data.notToBeTranslated && (
           <TranslationTableRow>
-            <div slot="id">pages/{entry.data.identifier}.seo</div>
-            <div slot="from">{entry.data.seo}</div>
-            <div slot="to">
-              {useContentData(
-                'pages',
-                entry.data.identifier,
-                toLang,
-                !isSupportedLang(toLang),
-              ).then((toData) => toData?.seo)}
+            <div slot="id">pages/{entry.data.identifier}</div>
+            <div slot="fromDate">
+              <Timestamp
+                lastChecked={entry.data.lastChecked}
+                lang={fromLang}
+              />
             </div>
-          </TranslationTableRow>
-          {!entry.data.notToBeTranslated && (
-            <TranslationTableRow>
-              <div slot="id">pages/{entry.data.identifier}</div>
-              <div slot="fromDate">
-                <Timestamp
-                  lastChecked={entry.data.lastChecked}
-                  lang={fromLang}
-                />
-              </div>
-              <div slot="toDate">
-                <Timestamp
-                  lang={toLang}
-                  lastChecked={
-                    (
-                      await useContentData(
-                        'pages',
-                        entry.data.identifier,
-                        toLang,
-                        !isSupportedLang(toLang),
-                      )
-                    )?.lastChecked ?? entry.data.lastChecked
-                  }
-                />
-              </div>
-              <div slot="from">
-                <Block
-                  identifier={entry.data.identifier}
-                  lang={fromLang}
-                  recursive={false}
-                  collection="pages"
-                />
-              </div>
-              <div slot="to">
-                {(
-                  await useContentData(
-                    'pages',
-                    entry.data.identifier,
-                    toLang,
-                    !isSupportedLang(toLang),
-                  )
-                )?.fallbackToLang === fromLang && (
-                  <pre>
+            <div slot="toDate">
+              <Timestamp
+                lang={toLang}
+                lastChecked={
+                  (
+                    await useContentData(
+                      'pages',
+                      entry.data.identifier,
+                      toLang,
+                      !isSupportedLang(toLang),
+                    )
+                  )?.lastChecked ?? entry.data.lastChecked
+                }
+              />
+            </div>
+            <div slot="from">
+              <Block
+                identifier={entry.data.identifier}
+                lang={fromLang}
+                recursive={false}
+                collection="pages"
+              />
+            </div>
+            <div slot="to">
+              {(
+                await useContentData(
+                  'pages',
+                  entry.data.identifier,
+                  toLang,
+                  !isSupportedLang(toLang),
+                )
+              )?.fallbackToLang === fromLang && <pre>
                     Hinweis an die Übersetzer*in: Dieser Abschnitt ist optional.
-                  </pre>
-                )}
-                <Block
-                  identifier={entry.data.identifier}
-                  lang={toLang}
-                  recursive={false}
-                  collection="pages"
-                />
-              </div>
-            </TranslationTableRow>
-          )}
-        </>
-      ))
-    }
-    {
-      kitsEntries.map(async (entry) => (
-        <>
-          <TranslationTableRow>
-            <div slot="id">kits/{entry.data.identifier}.title</div>
-            <div slot="from">{entry.data.title}</div>
-            <div slot="to">
-              {useContentData(
-                'kits',
-                entry.data.identifier,
-                toLang,
-                !isSupportedLang(toLang),
-              ).then((toData) => (toData as InferEntrySchema<'kits'>)?.title)}
+                  </pre>}
+              <Block
+                identifier={entry.data.identifier}
+                lang={toLang}
+                recursive={false}
+                collection="pages"
+              />
             </div>
           </TranslationTableRow>
+        )}
+      </>
+    ))}
+    {kitsEntries.map(async (entry) => (
+      <>
+        <TranslationTableRow>
+          <div slot="id">kits/{entry.data.identifier}.title</div>
+          <div slot="from">{entry.data.title}</div>
+          <div slot="to">
+            {useContentData(
+              'kits',
+              entry.data.identifier,
+              toLang,
+              !isSupportedLang(toLang),
+            ).then((toData) => (toData as InferEntrySchema<'kits'>)?.title)}
+          </div>
+        </TranslationTableRow>
+        <TranslationTableRow>
+          <div slot="id">kits/{entry.data.identifier}.seo</div>
+          <div slot="from">{entry.data.seo}</div>
+          <div slot="to">
+            {useContentData(
+              'kits',
+              entry.data.identifier,
+              toLang,
+              !isSupportedLang(toLang),
+            ).then((toData) => toData?.seo)}
+          </div>
+        </TranslationTableRow>
+        {!entry.data.notToBeTranslated && (
           <TranslationTableRow>
-            <div slot="id">kits/{entry.data.identifier}.seo</div>
-            <div slot="from">{entry.data.seo}</div>
-            <div slot="to">
-              {useContentData(
-                'kits',
-                entry.data.identifier,
-                toLang,
-                !isSupportedLang(toLang),
-              ).then((toData) => toData?.seo)}
+            <div slot="id">kits/{entry.data.identifier}</div>
+            <div slot="fromDate">
+              <Timestamp
+                lastChecked={entry.data.lastChecked}
+                lang={fromLang}
+              />
             </div>
-          </TranslationTableRow>
-          {!entry.data.notToBeTranslated && (
-            <TranslationTableRow>
-              <div slot="id">kits/{entry.data.identifier}</div>
-              <div slot="fromDate">
-                <Timestamp
-                  lastChecked={entry.data.lastChecked}
-                  lang={fromLang}
-                />
-              </div>
-              <div slot="toDate">
-                <Timestamp
-                  lang={toLang}
-                  lastChecked={
-                    (
-                      await useContentData(
-                        'kits',
-                        entry.data.identifier,
-                        toLang,
-                        !isSupportedLang(toLang),
-                      )
-                    )?.lastChecked ?? entry.data.lastChecked
-                  }
-                />
-              </div>
-              <div slot="from">
-                <Block
-                  collection="kits"
-                  identifier={entry.data.identifier}
-                  lang={fromLang}
-                  recursive={false}
-                />
-              </div>
-              <div slot="to">
-                {(
-                  await useContentData(
-                    'kits',
-                    entry.data.identifier,
-                    toLang,
-                    !isSupportedLang(toLang),
-                  )
-                )?.fallbackToLang === fromLang && (
-                  <pre>
+            <div slot="toDate">
+              <Timestamp
+                lang={toLang}
+                lastChecked={
+                  (
+                    await useContentData(
+                      'kits',
+                      entry.data.identifier,
+                      toLang,
+                      !isSupportedLang(toLang),
+                    )
+                  )?.lastChecked ?? entry.data.lastChecked
+                }
+              />
+            </div>
+            <div slot="from">
+              <Block
+                collection="kits"
+                identifier={entry.data.identifier}
+                lang={fromLang}
+                recursive={false}
+              />
+            </div>
+            <div slot="to">
+              {(
+                await useContentData(
+                  'kits',
+                  entry.data.identifier,
+                  toLang,
+                  !isSupportedLang(toLang),
+                )
+              )?.fallbackToLang === fromLang && <pre>
                     Hinweis an die Übersetzer*in: Dieser Abschnitt ist optional.
-                  </pre>
-                )}
-                <Block
-                  collection="kits"
-                  identifier={entry.data.identifier}
-                  lang={toLang}
-                  recursive={false}
-                />
-              </div>
-            </TranslationTableRow>
-          )}
-        </>
-      ))
-    }
+                  </pre>}
+              <Block
+                collection="kits"
+                identifier={entry.data.identifier}
+                lang={toLang}
+                recursive={false}
+              />
+            </div>
+          </TranslationTableRow>
+        )}
+      </>
+    ))}
   </tbody>
 </table>

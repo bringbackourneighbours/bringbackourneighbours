@@ -69,30 +69,26 @@ const isDev = import.meta.env.DEV;
 
   <h2>Alle Sprachen</h2>
   <ul>
-    {
-      allPaths.map((path) => (
-        <li>
-          <Link
-            href={`${Astro.site}internal-translate/${path.params.fromLang}-${path.params.toLang}`}
-          >
-            {useUiTranslation(`languages.${path.params.fromLang}`, 'de')}
-            =&gt; {useUiTranslation(`languages.${path.params.toLang}`, 'de')}
-          </Link>
-        </li>
-      ))
-    }
+    {allPaths.map((path) => (
+      <li>
+        <Link
+          href={`${Astro.site}internal-translate/${path.params.fromLang}-${path.params.toLang}`}
+        >
+          {useUiTranslation(`languages.${path.params.fromLang}`, 'de')}
+          =&gt; {useUiTranslation(`languages.${path.params.toLang}`, 'de')}
+        </Link>
+      </li>
+    ))}
   </ul>
 
-  {
-    isDev && (
-      <>
-        <hr />
-        <h2>Vorschau (nur im dev-mode)</h2>
-        <PreviewTranslation
-          fromLang={fromLang}
-          toLang={toLang}
-        />
-      </>
-    )
-  }
+  {isDev && (
+    <>
+      <hr />
+      <h2>Vorschau (nur im dev-mode)</h2>
+      <PreviewTranslation
+        fromLang={fromLang}
+        toLang={toLang}
+      />
+    </>
+  )}
 </BaseLayout>

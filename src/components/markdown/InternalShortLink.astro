@@ -26,19 +26,17 @@ const link = (
 });
 ---
 
-{
-  link?.url ? (
-    <ShortLink
-      lang={lang}
-      openInNewTab={false}
-      slug={link.slug}
-      title={link.title}
-      type={link.type}
-      url={link.url}
-    >
-      <slot />
-    </ShortLink>
-  ) : (
-    <NotFoundError context={`InternalShortLink/${identifier}/${lang}`} />
-  )
-}
+{link?.url ? (
+  <ShortLink
+    lang={lang}
+    openInNewTab={false}
+    slug={link.slug}
+    title={link.title}
+    type={link.type}
+    url={link.url}
+  >
+    <slot />
+  </ShortLink>
+) : (
+  <NotFoundError context={`InternalShortLink/${identifier}/${lang}`} />
+)}

@@ -19,6 +19,8 @@ const toc = buildToc(headings);
 
 <nav aria-label={await useUiTranslation('meta.tableOfContents', lang)}>
   <ul>
-    {toc.map((heading) => <TableOfContentsHeading heading={heading} />)}
+    {toc.map((heading) => (
+      <TableOfContentsHeading heading={heading} />
+    ))}
   </ul>
 </nav>

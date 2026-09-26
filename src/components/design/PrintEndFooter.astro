@@ -59,16 +59,11 @@ const { entry, translationSlugs, canonicalUrl, qrSize = 60 } = Astro.props;
       url={canonicalUrl}
     />
     <div class="translation-links">
-      {
-        translationSlugs.map((translationSlug) => (
-          <Link href={translationSlug.url}>
-            {useUiTranslation(
-              `languages.findTranslation`,
-              translationSlug.lang,
-            )}
-          </Link>
-        ))
-      }
+      {translationSlugs.map((translationSlug) => (
+        <Link href={translationSlug.url}>
+          {useUiTranslation(`languages.findTranslation`, translationSlug.lang)}
+        </Link>
+      ))}
     </div>
   </div>
   <p class="home-link">

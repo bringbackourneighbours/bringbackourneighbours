@@ -52,18 +52,16 @@ const translationSlugs = await getTranslationsUrlsForPath(lang, 'flyer');
   />
   <Stack>
     <H1 slot="heading">{useUiTranslation('meta.allFlyers', lang)}</H1>
-    {
-      sortedFlyers
-        .filter((flyer) => flyer.params.lang === lang)
-        .map(async (flyer) => (
-          <CardLink
-            lang={lang}
-            href={await getCanonicalUrlToFlyer(flyer.props.entry, lang)}
-          >
-            {flyer.props.entry.data.title}
-          </CardLink>
-        ))
-    }
+    {sortedFlyers
+      .filter((flyer) => flyer.params.lang === lang)
+      .map(async (flyer) => (
+        <CardLink
+          lang={lang}
+          href={await getCanonicalUrlToFlyer(flyer.props.entry, lang)}
+        >
+          {flyer.props.entry.data.title}
+        </CardLink>
+      ))}
   </Stack>
 
   <MoreInfoStack

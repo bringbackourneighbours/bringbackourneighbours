@@ -17,25 +17,21 @@ const supportedLanguages = Object.values(SupportedLanguages);
   title=`${await useUiTranslation('meta.notFound', lang)} | ${await useUiTranslation('meta.title', lang)}`
 >
   <Stack>
-    {
-      supportedLanguages.map(async (supportedLang) => (
-        <div>
-          <h1>{await useUiTranslation('meta.notFound', supportedLang)}</h1>
-          <p>{await useUiTranslation('meta.notFoundText', supportedLang)}</p>
-        </div>
-      ))
-    }
+    {supportedLanguages.map(async (supportedLang) => (
+      <div>
+        <h1>{await useUiTranslation('meta.notFound', supportedLang)}</h1>
+        <p>{await useUiTranslation('meta.notFoundText', supportedLang)}</p>
+      </div>
+    ))}
   </Stack>
   <Stack>
-    {
-      supportedLanguages.map(async (supportedLang) => (
-        <CardLink
-          href={getCanonicalUrlForPath(supportedLang, 'wizard')}
-          lang={supportedLang}
-        >
-          {useUiTranslation('wizard.isThereDangerQuestion', supportedLang)}
-        </CardLink>
-      ))
-    }
+    {supportedLanguages.map(async (supportedLang) => (
+      <CardLink
+        href={getCanonicalUrlForPath(supportedLang, 'wizard')}
+        lang={supportedLang}
+      >
+        {useUiTranslation('wizard.isThereDangerQuestion', supportedLang)}
+      </CardLink>
+    ))}
   </Stack>
 </OverviewLayout>
