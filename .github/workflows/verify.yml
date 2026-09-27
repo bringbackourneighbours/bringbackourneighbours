@@ -6,6 +6,7 @@ on:
     branches:
       - '**'
       - '!main'
+  workflow_dispatch:
 
 # it's faster to check out and install again and again, as it will run in parallel
 jobs:
