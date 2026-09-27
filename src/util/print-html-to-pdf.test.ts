@@ -19,6 +19,7 @@ const mockPage = {
   goto: vi.fn(),
   locator: vi.fn(() => mockLocator),
   pdf: vi.fn().mockResolvedValue(Buffer.from('PDF Buffer')),
+  close: vi.fn(),
 };
 const mockBrowser = {
   newPage: vi.fn().mockResolvedValue(mockPage),
@@ -39,6 +40,7 @@ describe('printHtmlToPdf', () => {
     const pdfBuffer = await printHtmlToPdf(
       'http://localhost:4321/internal-print/flyer1',
     );
+    expect(chromium.launch).toHaveBeenCalledTimes(1);
     expect(mockBrowser.newPage).toHaveBeenCalledTimes(1);
     expect(mockPage.goto).toHaveBeenCalledWith(
       'http://localhost:4321/internal-print/flyer1',
@@ -55,6 +57,8 @@ describe('printHtmlToPdf', () => {
     });
     expect(pdfBuffer).toBeInstanceOf(Uint8Array);
     expect(pdfBuffer.length).toBeGreaterThan(0);
+    expect(mockPage.close).toHaveBeenCalledTimes(1);
+    expect(mockBrowser.close).toHaveBeenCalledTimes(1);
   });
 
   it('should query for the footer and replace the css vars', async () => {
@@ -77,17 +81,12 @@ describe('printHtmlToPdf', () => {
       footerTemplate: '<span style="font-size: 1cm; color: blue;"/>',
       headerTemplate: '<span></span>',
     });
+    expect(mockPage.close).toHaveBeenCalled();
     expect(pdfBuffer).toBeInstanceOf(Uint8Array);
     expect(pdfBuffer.length).toBeGreaterThan(0);
   });
 
-  it('should open and close a browse', async () => {
-    await printHtmlToPdf('http://localhost:4321/internal-print/flyer1');
-    expect(chromium.launch).toHaveBeenCalledTimes(1);
-    expect(mockBrowser.close).toHaveBeenCalledTimes(1);
-  });
-
-  it('should goto the page add turn pdf as buffer', async () => {
+  it('should reuse and not close a browser', async () => {
     await printHtmlToPdf(
       'http://localhost:4321/internal-print/flyer1',
       mockBrowser as unknown as Browser,

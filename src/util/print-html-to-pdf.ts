@@ -52,6 +52,8 @@ export const printHtmlToPdf = async (
     footerTemplate: footerTemplate,
   });
 
+  await page.close();
+
   if (!browserToReuse) {
     await browser.close();
   }
