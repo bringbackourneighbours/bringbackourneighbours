@@ -44,6 +44,7 @@ jobs:
   vitest:
     name: Test with vitest
     runs-on: ubuntu-latest
+    needs: [stylelint, prettier, eslint, check]
     steps:
       - uses: actions/checkout@v7
       - uses: ./.github/actions/setup-install
@@ -52,6 +53,7 @@ jobs:
   cucumber:
     name: Test dev with cucumber
     runs-on: ubuntu-latest
+    needs: [stylelint, prettier, eslint, check]
     steps:
       - uses: actions/checkout@v7
       - uses: ./.github/actions/setup-install
@@ -61,6 +63,7 @@ jobs:
   build:
     name: Build with astro
     runs-on: ubuntu-latest
+    needs: [vitest, cucumber]
     steps:
       - uses: actions/checkout@v7
       - id: get-node-version
