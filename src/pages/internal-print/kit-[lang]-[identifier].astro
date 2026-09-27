@@ -7,7 +7,6 @@ import { getCanonicalUrlToKit } from '../../util/get-canonical-url';
 import { useUiTranslation } from '../../content/use-ui-translation';
 import { useContentData } from '../../content/use-content-data';
 import { Languages } from '../../model/languages';
-import { getLanguageDirection } from '../../util/get-language-direction';
 
 import PrintLayout from '../../layouts/PrintLayout.astro';
 import PrinterPage from '../../components/design/PrinterPage.astro';
@@ -15,6 +14,7 @@ import PrintCover from '../../components/design/PrintCover.astro';
 import PrintEndFooter from '../../components/design/PrintEndFooter.astro';
 import Block from '../../components/markdown/Block.astro';
 import TableOfContents from '../../components/design/TableOfContents.astro';
+import FooterTemplate from '../../components/design/FooterTemplate.astro';
 
 interface Props {
   entry: CollectionEntry<'kits'>;
@@ -91,11 +91,8 @@ const germanTitle =
   </PrinterPage>
 </PrintLayout>
 
-<template id="footerTemplate">
-  <div
-    style="width: 100%; text-align: end; margin-inline-end: 15mm; font-size: var(--bbon-size-p); color: var(--bbon-color-primary);"
-    dir={getLanguageDirection(entry.data.lang)}
-  >
-    <span class="pageNumber"></span> |<span class="totalPages"></span>
-  </div>
-</template>
+<FooterTemplate
+  lang={entry.data.lang}
+  marginInline="15mm"
+  marginBlock="5mm"
+/>

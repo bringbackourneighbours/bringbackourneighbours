@@ -6,13 +6,13 @@ import { type Browser, chromium } from 'playwright';
 const mockLocator = {
   count: vi.fn(),
   evaluate: vi.fn().mockResolvedValue({
-    '--bbon-size-p': '1cm',
+    '--bbon-size-mini': '1cm',
     '--bbon-color-primary': 'blue',
   }),
   innerHTML: vi
     .fn()
     .mockResolvedValue(
-      '<span style="font-size: var(--bbon-size-p); color: var(--bbon-color-primary);"/>',
+      '<span style="font-size: var(--bbon-size-mini); color: var(--bbon-color-primary);"/>',
     ),
 };
 const mockPage = {

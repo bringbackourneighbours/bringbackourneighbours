@@ -1,0 +1,33 @@
+---
+import type { LanguagesValue } from '../../model/languages';
+import { getLanguageDirection } from '../../util/get-language-direction';
+
+export interface Props {
+  lang?: LanguagesValue;
+  showTotal?: boolean;
+  marginInline: string;
+  marginBlock: string;
+}
+
+const {
+  lang = Astro.locals.lang,
+  marginInline,
+  marginBlock,
+  showTotal = true,
+} = Astro.props;
+---
+
+<template id="footerTemplate">
+  <div
+    style={`width: 100%; text-align: end; margin-inline-end: ${marginInline}; margin-block-end: ${marginBlock}; font-size: var(--bbon-size-mini); color: var(--bbon-color-primary);`}
+    dir={getLanguageDirection(lang)}
+  >
+    <span class="pageNumber"></span>
+    {showTotal && (
+      <>
+        <span> | </span>
+        <span class="totalPages"></span>
+      </>
+    )}
+  </div>
+</template>

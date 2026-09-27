@@ -12,6 +12,7 @@ import PrintLayout from '../../layouts/PrintLayout.astro';
 import PrinterPage from '../../components/design/PrinterPage.astro';
 import PrintCover from '../../components/design/PrintCover.astro';
 import PrintEndFooter from '../../components/design/PrintEndFooter.astro';
+import FooterTemplate from '../../components/design/FooterTemplate.astro';
 
 interface Props {
   entry: CollectionEntry<'flyers'>;
@@ -38,7 +39,7 @@ const germanTitle =
 
 <style>
   @page {
-    margin: 5mm;
+    margin: 5mm 6mm;
     size: 105mm 148mm;
   }
 
@@ -83,3 +84,10 @@ const germanTitle =
     />
   </div>
 </PrintLayout>
+
+<FooterTemplate
+  lang={entry.data.lang}
+  marginInline="4mm"
+  marginBlock="0mm"
+  showTotal={false}
+/>
