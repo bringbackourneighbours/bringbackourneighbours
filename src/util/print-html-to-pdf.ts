@@ -28,7 +28,7 @@ export const printHtmlToPdf = async (
       const computedStyles = window.getComputedStyle(body);
 
       return {
-        '--bbon-size-p': computedStyles.getPropertyValue('--bbon-size-p'),
+        '--bbon-size-mini': computedStyles.getPropertyValue('--bbon-size-mini'),
         '--bbon-color-primary': computedStyles.getPropertyValue(
           '--bbon-color-primary',
         ),
@@ -37,7 +37,7 @@ export const printHtmlToPdf = async (
 
     // we cannot use any real css with the footer template, as it will only be evaluated as string, so we have to replace css var with the right values.
     footerTemplate = (await footerLocator.innerHTML())
-      .replace('var(--bbon-size-p)', computedStylesVars['--bbon-size-p'])
+      .replace('var(--bbon-size-mini)', computedStylesVars['--bbon-size-mini'])
       .replace(
         'var(--bbon-color-primary)',
         computedStylesVars['--bbon-color-primary'],
