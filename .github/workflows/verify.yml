@@ -59,8 +59,9 @@ jobs:
       - run: npm run cucumber:dev
 
   build:
-    name: Build with astro
+    name: Build with astro!
     runs-on: ubuntu-latest
+    needs: [stylelint, prettier, eslint, check, vitest, cucumber]
     steps:
       - uses: actions/checkout@v7
       - id: get-node-version
