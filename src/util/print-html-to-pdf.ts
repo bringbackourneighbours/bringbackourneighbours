@@ -1,6 +1,7 @@
 import { type Browser, chromium } from 'playwright';
 
 const EMPTY_TEMPLATE = '<span></span>';
+export const FOOTERTEMPLATEMARKER = 'footerTemplate';
 
 /**
  * Prints the given HTML page to a PDF buffer.
@@ -22,7 +23,7 @@ export const printHtmlToPdf = async (
   let footerTemplate = EMPTY_TEMPLATE;
 
   // the page migth contain a template for the footer
-  const footerLocator = page.locator('template#footerTemplate');
+  const footerLocator = page.locator(`template#${FOOTERTEMPLATEMARKER}`);
   if ((await footerLocator.count()) > 0) {
     const computedStylesVars = await page.locator('body').evaluate((body) => {
       const computedStyles = window.getComputedStyle(body);

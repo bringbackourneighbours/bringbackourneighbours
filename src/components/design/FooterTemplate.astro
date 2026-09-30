@@ -1,6 +1,7 @@
 ---
 import type { LanguagesValue } from '../../model/languages';
 import { getLanguageDirection } from '../../util/get-language-direction';
+import { FOOTERTEMPLATEMARKER } from '../../util/print-html-to-pdf';
 
 export interface Props {
   lang?: LanguagesValue;
@@ -17,7 +18,7 @@ const {
 } = Astro.props;
 ---
 
-<template id="footerTemplate">
+<template id={FOOTERTEMPLATEMARKER}>
   <div
     style={`width: 100%; text-align: end; margin-inline-end: ${marginInline}; margin-block-end: ${marginBlock}; font-size: var(--bbon-size-mini); color: var(--bbon-color-primary);`}
     dir={getLanguageDirection(lang)}
