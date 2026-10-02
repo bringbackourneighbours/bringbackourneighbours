@@ -1,12 +1,15 @@
 ---
-import { type CollectionEntry, getCollection } from 'astro:content';
+import { type CollectionEntry, getCollection, getEntry } from 'astro:content';
 
 import Block from '../../../../components/markdown/Block.astro';
 import ContentHeading from '../../../../components/design/ContentHeading.astro';
 import ContentLayout from '../../../../layouts/ContentLayout.astro';
 import LanguageSwitcher from '../../../../components/design/LanguageSwitcher.astro';
 
-import { getCanonicalUrlToFlyer } from '../../../../util/get-canonical-url';
+import {
+  getCanonicalUrlToFlyer,
+  getCanonicalUrlToPage,
+} from '../../../../util/get-canonical-url';
 import { mapStaticPathsForStandalone } from '../../../../util/map-static-paths-for-standalone';
 import { getTranslationsUrlsForFlyer } from '../../../../util/get-translations-url';
 import { redirectNotTranslatedForFlyer } from '../../../../util/redirect-not-found-or-not-translated';
@@ -37,6 +40,10 @@ const translationSlugs = await getTranslationsUrlsForFlyer(
 const canonicalUrl =
   (await getCanonicalUrlToFlyer(entry, entry.data.lang)) || '';
 
+const materialCanonicalUrl = await getCanonicalUrlToPage(
+  await getEntry('pages', `material/${entry.data.lang}`)!,
+  entry.data.lang,
+);
 const germanTitle =
   (await useContentData('flyers', entry.data.identifier, Languages.GERMAN))
     ?.title || '';
@@ -59,6 +66,7 @@ const germanTitle =
     collection="flyers"
     germanTitle={germanTitle}
     canonicalUrl={canonicalUrl}
+    printAllcanonicalUrl={materialCanonicalUrl}
   >
     <Block
       identifier={entry.data.identifier}

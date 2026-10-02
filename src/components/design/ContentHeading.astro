@@ -1,14 +1,15 @@
 ---
 import type { CollectionEntry } from 'astro:content';
+import type { StandaloneCollections } from '../../model/standalone-collections';
 import { Languages } from '../../model/languages';
+import { useContentData } from '../../content/use-content-data';
 
 import ContentMeta from './ContentMeta.astro';
 import CopyButton from './CopyButton.astro';
 import ShareButton from './ShareButton.astro';
 import PdfLink from './PdfLink.astro';
 import H1 from './H1.astro';
-
-import type { StandaloneCollections } from '../../model/standalone-collections';
+import CardLink from './CardLink.astro';
 
 interface Props<T extends StandaloneCollections> {
   collection: T;
@@ -17,6 +18,7 @@ interface Props<T extends StandaloneCollections> {
   showDownloadButton?: boolean;
   germanTitle: string;
   canonicalUrl: string;
+  printAllcanonicalUrl?: string;
 }
 
 const {
@@ -26,6 +28,7 @@ const {
   showDownloadButton = collection !== 'pages',
   germanTitle,
   canonicalUrl,
+  printAllcanonicalUrl,
 } = Astro.props;
 ---
 
@@ -52,27 +55,44 @@ const {
   )}
   <H1>{entry.data.title}</H1>
   <ContentMeta entry={entry} />
-</hgroup>
 
-<div class="header-meta">
-  <ShareButton
-    title={entry.data.title}
-    url={canonicalUrl}
-  />
-  {showCopyButton && (
-    <CopyButton>
-      <h1>{entry.data.title}</h1>
-      <br />
-      <br />
-      <slot />
-    </CopyButton>
-  )}
-  {showDownloadButton && (
-    <PdfLink
-      collection={collection}
-      identifier={entry.data.identifier}
+  <div class="header-meta">
+    <ShareButton
+      title={entry.data.title}
+      url={canonicalUrl}
     />
-  )}
-</div>
+    {showCopyButton && (
+      <CopyButton>
+        <h1>{entry.data.title}</h1>
+        <br />
+        <br />
+        <slot />
+      </CopyButton>
+    )}
+    {showDownloadButton && (
+      <>
+        <PdfLink
+          collection={collection}
+          identifier={entry.data.identifier}
+        />
+        {printAllcanonicalUrl && (
+          <>
+            <CardLink
+              size="small"
+              href={printAllcanonicalUrl}
+              lang={entry.data.lang}
+              hreflang={entry.data.lang}
+            >
+              {
+                (await useContentData('pages', 'material', entry.data.lang))
+                  ?.title
+              }
+            </CardLink>
+          </>
+        )}
+      </>
+    )}
+  </div>
+</hgroup>
 
 <slot />
