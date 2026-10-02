@@ -36,7 +36,8 @@ export async function printPdfsImpl(
     const printJobs = pages
       .filter((page) => page.pathname.startsWith('internal-print'))
       .map(async (htmlPage) => {
-        const pdfOutputFilename = `${htmlPage.pathname.replace('internal-print/', '').replace('/', '.pdf')}`;
+        const pdfOutputFilename = `${htmlPage.pathname.replace('internal-print/', '').replace(/-a\d/, '').replace('/', '.pdf')}`;
+        logger.info(`pdfOutputFilename ${pdfOutputFilename}`);
         const pdfOutputPath = `${pdfDistDir}/${pdfOutputFilename}`;
         const pageUrl = `http://${previewServer.host}:${previewServer.port}/${htmlPage.pathname}`;
         logger.debug(`Printing ${pageUrl}`);
@@ -78,6 +79,7 @@ export default function printPdfs(): AstroIntegration {
     name: 'print-pdfs',
     hooks: {
       'astro:build:done': async ({ dir, pages, logger }): Promise<void> => {
+        pages.forEach((p) => logger.info(`page: ${p.pathname}`));
         await printPdfsImpl(dir, logger, pages);
       },
     },

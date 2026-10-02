@@ -68,10 +68,20 @@ const {
     </CopyButton>
   )}
   {showDownloadButton && (
-    <PdfLink
-      collection={collection}
-      identifier={entry.data.identifier}
-    />
+    <>
+      <PdfLink
+        collection={collection}
+        identifier={entry.data.identifier}
+      />
+      {collection === 'flyers' && (
+        <PdfLink
+          collection="zines"
+          identifier={entry.data.identifier}
+        >
+          ZINE!!!
+        </PdfLink>
+      )}
+    </>
   )}
 </div>
 
