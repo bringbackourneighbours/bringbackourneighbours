@@ -4,6 +4,7 @@ import { describe, expect, it } from 'vitest';
 import { render } from '../../testing/render';
 import { Languages } from '../../model/languages';
 
+import '../../testing/with-mocked-content-data';
 import '../../testing/with-mocked-translation';
 
 import ContentHeading from './ContentHeading.astro';
@@ -24,6 +25,7 @@ describe('ContentHeading', () => {
           },
         } as CollectionEntry<'kits'>,
         germanTitle: 'germanTitle',
+        printAllcanonicalUrl: 'https://example.con/material',
       },
       locals: {
         lang: 'en',
@@ -48,6 +50,9 @@ describe('ContentHeading', () => {
       'href',
       '/print/flyer-en-mock.pdf',
     );
+    expect(
+      getByRole('link', { name: 'pages-material-en-title' }),
+    ).toHaveAttribute('href', 'https://example.con/material');
   });
 
   it('should show heading for german kit', async () => {
