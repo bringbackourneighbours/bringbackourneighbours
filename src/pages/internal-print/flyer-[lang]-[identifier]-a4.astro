@@ -1,0 +1,89 @@
+---
+import { type CollectionEntry, getCollection } from 'astro:content';
+
+import { mapStaticPathsForStandalone } from '../../util/map-static-paths-for-standalone';
+import { getTranslationsUrlsForFlyer } from '../../util/get-translations-url';
+import { getCanonicalUrlToFlyer } from '../../util/get-canonical-url';
+import { useContentData } from '../../content/use-content-data';
+import { Languages } from '../../model/languages';
+
+import Block from '../../components/markdown/Block.astro';
+import PrintLayout from '../../layouts/PrintLayout.astro';
+import PrinterPage from '../../components/design/PrinterPage.astro';
+import PrintCover from '../../components/design/PrintCover.astro';
+import PrintEndFooter from '../../components/design/PrintEndFooter.astro';
+import PrintPageHeader from '../../components/design/PrintPageHeader.astro';
+
+interface Props {
+  entry: CollectionEntry<'flyers'>;
+}
+
+export async function getStaticPaths() {
+  return mapStaticPathsForStandalone(await getCollection('flyers'));
+}
+
+const { entry } = Astro.props;
+
+const translationSlugs = await getTranslationsUrlsForFlyer(
+  await getCollection('flyers'),
+  entry.data.lang,
+  entry.data.identifier,
+);
+const canonicalUrl =
+  (await getCanonicalUrlToFlyer(entry, entry.data.lang, true)) || '';
+
+const germanTitle =
+  (await useContentData('flyers', entry.data.identifier, Languages.GERMAN))
+    ?.title ?? '';
+---
+
+<style>
+  @page {
+    size: a4;
+    margin: 10mm;
+  }
+
+  .columns {
+    column-count: 2;
+  }
+  .end-footer {
+    width: 100%;
+
+    position: absolute;
+    inset-block-start: 0;
+    margin-block-start: calc(257mm + var(--bbon-size-print-end-footer-offset));
+  }
+
+  .overprint-protector {
+    height: calc(27mm - var(--bbon-size-print-end-footer-offset));
+  }
+</style>
+<PrintLayout
+  lang={entry.data.lang}
+  title={'A4 Flyer ' + entry.data.title + ' | BringBackOurNeighbours'}
+>
+  <PrinterPage breakBefore={true}>
+    <PrintPageHeader
+      germanTitle={germanTitle}
+      entry={entry}
+      pagewidth="210mm"
+      pagemargin="10mm"
+    />
+    <div class="columns">
+      <Block
+        class:list={'foo'}
+        identifier={entry.data.identifier}
+        collection="flyers"
+        isRootLevelContent={true}
+      />
+    </div>
+  </PrinterPage>
+  <div class="overprint-protector"></div>
+  <div class="end-footer">
+    <PrintEndFooter
+      entry={entry}
+      translationSlugs={translationSlugs}
+      canonicalUrl={canonicalUrl}
+    />
+  </div>
+</PrintLayout>

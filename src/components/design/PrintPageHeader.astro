@@ -1,0 +1,120 @@
+---
+import type { CollectionEntry } from 'astro:content';
+import type { StandaloneCollections } from '../../model/standalone-collections';
+
+import { useUiTranslation } from '../../content/use-ui-translation';
+
+import LanguageChip from './LanguageChip.astro';
+import Logo from './Logo.astro';
+import NoteMachineTranslation from './NoteMachineTranslation.astro';
+import H1 from './H1.astro';
+import H2 from './H2.astro';
+
+interface Props {
+  germanTitle: string;
+  entry: CollectionEntry<StandaloneCollections>;
+  pagewidth: string;
+  pagemargin: string;
+}
+
+const { germanTitle, entry, pagewidth, pagemargin } = Astro.props;
+---
+
+<style define:vars={{ pagewidth, pagemargin }}>
+  .meta-title {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: var(--bbon-size-gap);
+    padding-block: var(--bbon-size-gap);
+
+    .language {
+      align-self: flex-start;
+      color: white;
+      background: var(--bbon-color-primary);
+      display: block;
+      font-variant: small-caps;
+      padding: 0.5em;
+      font-size: 1.2em;
+      font-weight: var(--bbon-font-weight-bold, bold);
+      flex: none;
+    }
+  }
+
+  .logo-line {
+    display: flex;
+    width: calc(var(--pagewidth) - 2 * var(--pagemargin));
+
+    /* this is for the bbonLogo: it needs to be primary */
+    --bbon-color-surface: var(--bbon-color-primary);
+    align-items: center;
+    gap: var(--bbon-size-spacing);
+
+    .logo-line-icon {
+      /* the logo is not optical centered so we shift it a little */
+      margin-block-start: calc(var(--bbon-print-title-size) / 3);
+    }
+
+    .logo-line-titles {
+      flex-grow: 1;
+
+      .title {
+        font-variant: small-caps;
+
+        /* with the flex-grow we need to have a good baseline  */
+        font-size: var(--bbon-print-title-size);
+        margin: 0;
+      }
+
+      .sub-title {
+        margin-block-start: var(--bbon-size-spacing);
+        font-size: 2px; /* the text-fit will only make it grow  */
+        padding-inline-start: var(--bbon-size-spacing);
+      }
+    }
+  }
+</style>
+
+<div class="logo-line">
+  <div class="logo-line-icon">
+    <Logo size="12mm" />
+  </div>
+
+  <div class="logo-line-titles">
+    <H2 class="title text-fit ltr">
+      <span>
+        <span>{useUiTranslation('meta.title', entry.data.lang)}</span>
+      </span>
+      <span aria-hidden="true">
+        {useUiTranslation('meta.title', entry.data.lang)}
+      </span>
+    </H2>
+    <p class="sub-title text-fit">
+      <span>
+        <span>{useUiTranslation('meta.subtitle', entry.data.lang)}</span>
+      </span>
+      <span aria-hidden="true">
+        {useUiTranslation('meta.subtitle', entry.data.lang)}
+      </span>
+    </p>
+  </div>
+</div>
+
+<div class="meta-title">
+  <hgroup>
+    {entry.data.lang != 'de' && <h6 class="ltr">{germanTitle}</h6>}
+    <H1>{entry.data.title}</H1>
+  </hgroup>
+  <div class="language">
+    <LanguageChip
+      lang={entry.data.lang}
+      currentLang="de"
+    />
+  </div>
+</div>
+
+<NoteMachineTranslation
+  entry={entry}
+  isRootLevelContent={true}
+  isStrong={false}
+/>

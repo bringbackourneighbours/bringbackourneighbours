@@ -50,6 +50,10 @@ const germanTitle =
     margin-block-start: 29cm;
   }
 
+  .columns {
+    column-count: 2;
+  }
+
   .link {
     margin-block-end: 2em;
   }
@@ -83,11 +87,13 @@ const germanTitle =
     </div>
   </PrinterPage>
   <PrinterPage breakBefore={true}>
-    <Block
-      identifier={entry.data.identifier}
-      collection="kits"
-      isRootLevelContent={true}
-    />
+    <div class="columns">
+      <Block
+        identifier={entry.data.identifier}
+        collection="kits"
+        isRootLevelContent={true}
+      />
+    </div>
   </PrinterPage>
 </PrintLayout>
 

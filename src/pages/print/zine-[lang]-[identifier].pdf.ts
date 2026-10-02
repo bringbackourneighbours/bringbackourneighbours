@@ -19,7 +19,7 @@ export async function GET({
   site,
   params,
 }: APIContext<StandaloneContentProps<'flyers'>>) {
-  const pageUrl = `${site?.origin}/internal-print/zine-${params.lang}-${params.identifier}`;
+  const pageUrl = `${site?.origin}/internal-print/zine-${params.lang}-${params.identifier}-a7`;
   return new Response((await printHtmlToPdf(pageUrl)) as BodyInit, {
     status: 200,
     headers: {

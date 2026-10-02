@@ -19,7 +19,7 @@ export async function GET({
   site,
   params,
 }: APIContext<StandaloneContentProps<'kits'>>) {
-  const pageUrl = `${site?.origin}/internal-print/kit-${params.lang}-${params.identifier}`;
+  const pageUrl = `${site?.origin}/internal-print/kit-${params.lang}-${params.identifier}-a4`;
 
   return new Response((await printHtmlToPdf(pageUrl)) as BodyInit, {
     status: 200,
