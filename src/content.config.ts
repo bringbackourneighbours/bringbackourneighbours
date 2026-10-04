@@ -151,6 +151,7 @@ const uiCollection = defineCollection({
         mainNavigation: z.string(),
         title: z.string(),
         updated: z.string(),
+        switchLanguage: z.string(),
       })
       .optional(),
     languages: z.object({

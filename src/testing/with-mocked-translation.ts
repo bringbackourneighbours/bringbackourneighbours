@@ -30,6 +30,7 @@ const uiTranslationMock = (lang: string): { data: InferEntrySchema<'ui'> } => ({
       sharedLinkToClipboard: `${lang}-sharedLinkToClipboard`,
       subtitle: `${lang}-subtitle`,
       supporters: `${lang}-supporters`,
+      switchLanguage: `${lang}-switchLanguage`,
       tableOfContents: `${lang}-tableOfContents`,
       title: `${lang}-title`,
       updated: `${lang}-updated`,

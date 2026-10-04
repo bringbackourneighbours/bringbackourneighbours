@@ -6,6 +6,7 @@ import languageIcon from '../../assets/icons/ion--language.svg?raw';
 import LanguageChip from './LanguageChip.astro';
 
 import { type LanguagesValue } from '../../model/languages';
+import { useUiTranslation } from '../../content/use-ui-translation';
 
 interface Props {
   lang: LanguagesValue;
@@ -63,6 +64,7 @@ const { lang = Astro.locals.lang, translationSlugs } = Astro.props;
 </style>
 
 <nav
+  aria-label={await useUiTranslation('meta.switchLanguage', lang)}
   class="language-switcher"
   id="language-switcher"
 >

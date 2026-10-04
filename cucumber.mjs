@@ -26,6 +26,5 @@ export const dev = {
     baseUrl: 'http://localhost:4321/',
     useDevServer: true,
     headless: true,
-    timeout: 60 * 1000,
   },
 };
