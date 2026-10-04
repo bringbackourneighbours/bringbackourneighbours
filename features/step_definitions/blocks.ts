@@ -21,6 +21,29 @@ Then(
 );
 
 Then(
+  'i the language-Switcher labeled {string} with a language {string} selected',
+  async function (
+    this: PlaywrightWorld,
+    switchLabel: string,
+    languageLabel: string,
+  ) {
+    await expect(
+      this.screen.page
+        .getByRole('main')
+        .getByRole('navigation', { name: switchLabel })
+        .getByRole('button', { name: languageLabel }),
+    ).toBeVisible();
+  },
+);
+
+Then(
+  'i see a {string} as text',
+  async function (this: PlaywrightWorld, text: string) {
+    await expect(this.screen.page.getByText(text)).toBeVisible();
+  },
+);
+
+Then(
   'there is a hidden footer template',
   async function (this: PlaywrightWorld) {
     expect(this.screen.page.locator('template#footerTemplate')).toBeTruthy();
@@ -34,6 +57,16 @@ Then(
 
     await expect(tocNav).toBeVisible();
     expect(await tocNav.getByRole('listitem').count()).toBe(count);
+  },
+);
+
+Then(
+  'i see a timestamp with value {string}',
+  async function (this: PlaywrightWorld, value: string) {
+    console.log(await this.screen.page.ariaSnapshot());
+    await expect(
+      this.screen.page.getByRole('time').getByText(value),
+    ).toBeVisible();
   },
 );
 

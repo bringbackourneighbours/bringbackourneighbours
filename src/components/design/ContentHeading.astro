@@ -49,50 +49,52 @@ const {
   }
 </style>
 
-<hgroup>
-  {entry.data.lang !== `${Languages.GERMAN}` && (
-    <span class="german-title ltr">{germanTitle}</span>
-  )}
-  <H1>{entry.data.title}</H1>
-  <ContentMeta entry={entry} />
-
-  <div class="header-meta">
-    <ShareButton
-      title={entry.data.title}
-      url={canonicalUrl}
-    />
-    {showCopyButton && (
-      <CopyButton>
-        <h1>{entry.data.title}</h1>
-        <br />
-        <br />
-        <slot />
-      </CopyButton>
+<article aria-labelledby="content-header-heading">
+  <header>
+    {entry.data.lang !== `${Languages.GERMAN}` && (
+      <span class="german-title ltr">{germanTitle}</span>
     )}
-    {showDownloadButton && (
-      <>
-        <PdfLink
-          collection={collection}
-          identifier={entry.data.identifier}
-        />
-        {printAllcanonicalUrl && (
-          <>
-            <CardLink
-              size="small"
-              href={printAllcanonicalUrl}
-              lang={entry.data.lang}
-              hreflang={entry.data.lang}
-            >
-              {
-                (await useContentData('pages', 'material', entry.data.lang))
-                  ?.title
-              }
-            </CardLink>
-          </>
-        )}
-      </>
-    )}
-  </div>
-</hgroup>
+    <H1 id="content-header-heading">{entry.data.title}</H1>
+    <ContentMeta entry={entry} />
 
-<slot />
+    <div class="header-meta">
+      <ShareButton
+        title={entry.data.title}
+        url={canonicalUrl}
+      />
+      {showCopyButton && (
+        <CopyButton>
+          <h1>{entry.data.title}</h1>
+          <br />
+          <br />
+          <slot />
+        </CopyButton>
+      )}
+      {showDownloadButton && (
+        <>
+          <PdfLink
+            collection={collection}
+            identifier={entry.data.identifier}
+          />
+          {printAllcanonicalUrl && (
+            <>
+              <CardLink
+                size="small"
+                href={printAllcanonicalUrl}
+                lang={entry.data.lang}
+                hreflang={entry.data.lang}
+              >
+                {
+                  (await useContentData('pages', 'material', entry.data.lang))
+                    ?.title
+                }
+              </CardLink>
+            </>
+          )}
+        </>
+      )}
+    </div>
+  </header>
+
+  <slot />
+</article>

@@ -20,7 +20,7 @@ const { entry, lang = entry.data.lang, isFallback = false } = Astro.props;
     lang={entry.data.lang}
     currentLang={isFallback ? lang : DEFAULT_LANG}
   />
-  –
+  <span> – </span>
   <Timestamp
     lang={lang}
     lastChecked={entry.data.lastChecked}

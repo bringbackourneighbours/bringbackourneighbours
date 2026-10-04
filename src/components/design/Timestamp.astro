@@ -9,9 +9,13 @@ export interface Props {
 }
 
 const { lastChecked, lang } = Astro.props;
+const timestampId = `timestamp-label-${crypto.randomUUID()}`;
 ---
 
-{useUiTranslation('meta.updated', lang)}
-<time datetime={lastChecked.toISOString()}>
+<span id={timestampId}>{useUiTranslation('meta.updated', lang)}</span>
+<time
+  datetime={lastChecked.toISOString()}
+  aria-describedby={timestampId}
+>
   {lastChecked.toLocaleDateString(lang)}
 </time>

@@ -2,7 +2,7 @@ import eslintPluginAstro from 'eslint-plugin-astro';
 import eslint from '@eslint/js';
 import tseslint from 'typescript-eslint';
 import eslintConfigPrettier from 'eslint-config-prettier';
-import { includeIgnoreFile } from '@eslint/compat';
+import { includeIgnoreFile } from '@eslint/config-helpers';
 import { fileURLToPath } from 'node:url';
 
 // eslint-disable-next-line no-undef
