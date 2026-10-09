@@ -1,24 +1,19 @@
 identifier: gerede_dresden
-name: Gerede e.V.
+name: Rechtsberatung zu Asyl für queere Schutzsuchende in Dresden
+additional: Gerede e.V.
 streetLine: Prießnitzstraße 18
 zip: '01099'
 city: Dresden
-mails:
-  - asyl@gerede-dresden.de
-  - kontakt@gerede-dresden.de
-url: https://gerede-dresden.de/beratung/queer-refugees/
-lastChecked: 2026-03-06
+mail: asyl@gerede-dresden.de
+url: https://gerede-dresden.de/queer-refugees-rechtsberatung-legal-advice/
+lastChecked: 2026-10-09
 translatedNotes:
-  de: queer refugees - Rechtsberatung
-  en: queer refugees - legal advice
-  fr: queer refugees - Conseil juridique
-  ar: اللاجئون المثليون - المشورة القانونية
-  ka: სხვადასხვა სექსუალური ორიენტაციის(Queer) დევნილები – იურიდიული კონსულტაცია
-  fa: پناهندگان کوئیر – مشاوره حقوقی
-  ur: queer refugees - legal advice
-  es: Refugiados queer - asesoramiento legal
-  tr: Queer mülteciler – hukuki danışmanlık
-  ku: Penaberên Queer - şêwirmendiya qanûnî
-  ti: ስደተኛታት - ሕጋዊ ምኽሪ
-  vi: người tị nạn đồng tính - Tư vấn pháp lý
-  ru: беженцы-педики - Юридическая консультация
+  ar: مشروع تابع لمنظمة «Gerede e.V.» مخصص للأشخاص من مجتمع المثليين والمثليات ومزدوجي الميل الجنسي ومغايري الهوية الجنسانية وحاملي صفات الجنسين (LGBTIQ*) الذين يخضعون لإجراءات اللجوء. يقدم المشروع استشارات قانونية بشأن إجراءات اللجوء.
+  de: Ein Projekt des Gerede e.V. für lsbtiq* (queere) Personen im Asylverfahren. Das Projekt bietet eine rechtliche Beratung zum Asylverfahren an.
+  en: A project run by Gerede e.V. for LGBTIQ* (queer) people going through the asylum process. The project offers legal advice on the asylum process.
+  es: Un proyecto de Gerede e.V. dirigido a personas lsbtiq* (queer) que se encuentran en proceso de asilo. El proyecto ofrece asesoramiento jurídico sobre el procedimiento de asilo.
+  fa: پروژه‌ای که توسط Gerede e.V. برای افراد LGBTIQ* (کوئیر) در حال طی فرایند پناهندگی اجرا می‌شود. این پروژه مشاوره حقوقی در مورد فرایند پناهندگی ارائه می‌دهد.
+  fr: Un projet de l'association Gerede e.V. destiné aux personnes LGBTIQ* (queer) engagées dans une procédure d'asile. Ce projet propose des conseils juridiques concernant la procédure d'asile.
+  ka: Gerede e.V.-ის მიერ მართული პროექტი ლგბტქ* (ქვირი) პირებისთვის, რომლებიც თავშესაფრის მიღების პროცესს გადიან. პროექტი უზრუნველყოფს იურიდიულ კონსულტაციას თავშესაფრის მიღების პროცესთან დაკავშირებით.
+  ku: Projeyek ku ji aliyê Gerede e.V. ve ji bo kesên LGBTIQ* (queer) ên di pêvajoya penaberiyê de ye. Proje di derbarê pêvajoya penaberiyê de şêwirmendiya yasayî pêşkêş dike.
+  tr: Gerede e.V. tarafından sığınma sürecindeki lsbtiq* (queer) bireyler için yürütülen bir proje. Proje, sığınma süreciyle ilgili hukuki danışmanlık hizmeti sunmaktadır.
