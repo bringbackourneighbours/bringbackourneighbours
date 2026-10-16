@@ -1,17 +1,15 @@
 identifier: geko_dd
 name: Gesundheitskollektiv Dresden
 url: https://www.geko-dresden.de/offer/3kIzsQcfjYzCSMwKLWFed2/
-streetLine: Amalie-Dietrich-Platz 8 
+streetLine: Amalie-Dietrich-Platz 8
 zip: '01169'
 city: Dresden
 mail: beratung@geko-dresden.de
 phone: '015207878126'
-
 lastChecked: 2026-10-13
 translatedNotes:
   ar: يتم تنظيم عيادة استشارية صحية يوم الاثنين من الساعة 15:00 إلى 17:00 ويوم الخميس من الساعة 09:00 إلى 11:00، لتلقي جميع الاستفسارات المتعلقة بالأمراض الجسدية أو النفسية أو الرسائل الطبية غير المفهومة. ولا يلزم وجود تأمين صحي
   bs: Ponedjeljkom od 15:00 do 17:00 i četvrtkom od 9:00 do 11:00 održava se savjetovanje o zdravlju za sva pitanja koja imate o fizičkim ili mentalnim zdravstvenim problemima ili o pismima vašeg ljekara koja ne razumijete. Ne trebate zdravstveno osiguranje.
-  ckb: ڕۆژانی دووشەممە لە کاتژمێر ٣:٠٠ بۆ ٥:٠٠ی پاشنیوەڕۆ و پێنجشەممە لە کاتژمێر ٩:٠٠ بۆ ١١:٠٠ی بەیانی، دانیشتنێکی ڕاوێژکاریی تەندروستی هەیە بۆ هەر پرسیارێک کە هەتبێت سەبارەت بە کێشەکانی تەندروستیی جەستەیی یان دەروونی، یان ئەگەر نامەیەکت لە پزیشکەکەتەوە پێگەیشتبێت و لێی تێناگەیت. پێویستت بە بیمەی تەندروستی نییە
   de: Montag 15:00 bis 17:00 Uhr und Donnerstag 09:00 bis 11:00 Uhr gibt es eine Gesundheitssprechstunde für alle Fragen um eine körperliche oder psychische Krankheit oder unverständliche Briefe vom Arzt. Man braucht keine Krankenversicherung.
   en: On Mondays from 3.00 pm to 5.00 pm and on Thursdays from 9.00 am to 11.00 am, there is a health advice session for any questions you may have about physical or mental health issues, or if you’ve received a letter from your doctor that you don’t understand. You don’t need health insurance.
   es: Los lunes de 15:00 a 17:00 y los jueves de 09:00 a 11:00 hay una consulta de salud para cualquier duda sobre una enfermedad física o mental, o si no entiendes las cartas del doctor. No necesitas seguro médico
@@ -19,12 +17,4 @@ translatedNotes:
   fr: Le lundi de 15 h à 17 h et le jeudi de 9 h à 11 h, il y a une permanence santé pour toutes les questions concernant une maladie physique ou mentale, ou encore les courriers du médecin que tu ne comprends pas. Pas besoin d'assurance maladie.
   ka: ორშაბათობით, 15:00-დან 17:00 საათამდე და ხუთშაბათობით, 09:00-დან 11:00 საათამდე, ტარდება ჯანმრთელობის საკითხებზე კონსულტაცია. შეგიძლიათ დაისვათ ნებისმიერი კითხვა ფიზიკურ ან ფსიქიკურ ჯანმრთელობასთან დაკავშირებით, ან გაარკვიოთ თქვენი ექიმის მიერ გამოწერილი გაუგებარი წერილობითი დანიშნულებები. ჯანმრთელობის დაზღვევა არ არის საჭირო.
   ku: Roja Duşemê ji saet 3:00 heta 5:00 êvarê û roja Pêncşemê ji saet 9:00 heta 11:00 serê sibê, danişîna şêwirmendiya tenduristiyê heye ji bo pirsên we yên derbarê pirsgirêkên tenduristiya fizîkî an derûnî, an jî nameyên ji doktorê we yên ku hûn fêm nakin. Pêdiviya we bi sîgorteya tenduristiyê nîne.
-  mk: Во понеделник од 15:00 до 17:00 часот и во четврток од 9:00 до 11:00 часот се одржува сесија за здравствени совети за сите прашања што може да ги имате во врска со физички или ментални здравствени проблеми, или ако сте добиле писмо од вашиот лекар што не го разбирате. Не ви е потребно здравствено осигурување.
-  ps: د دوشنبې په ورځو د ماسپښین له ۳:۰۰ بجو څخه تر ۵:۰۰ بجو پورې او د پنجشنبې په ورځو د سهار له ۹:۰۰ بجو څخه تر ۱۱:۰۰ بجو پورې، د فزیکي یا رواني روغتیايي ستونزو په اړه ستاسو د هر ډول پوښتنو، یا د خپل ډاکټر د هغو لیکونو د نه پوهیدو لپاره چې تاسو یې نه درک کوئ، د روغتیايي مشورې ناسته جوړیږي. تاسو روغتیايي بیمې ته اړتیا نلرئ
-  ru: По понедельникам с 15:00 до 17:00 и по четвергам с 09:00 до 11:00 работает консультация по вопросам здоровья, где можно задать любые вопросы о физических или психических заболеваниях или о непонятных письмах от врача. Медицинская страховка не требуется
-  sq: Të hënave nga ora 15:00 deri në 17:00 dhe të enjteve nga ora 09:00 deri në 11:00 zhvillohet një seancë këshillimi shëndetësor për çdo pyetje që mund të keni rreth problemeve të shëndetit fizik ose mendor, ose për letra nga mjeku juaj që nuk i kuptoni. Nuk keni nevojë për sigurim shëndetësor.
-  sr: Понедељком од 15:00 до 17:00 и четвртком од 9:00 до 11:00 одржава се састанак за здравствене савете за сва питања која имате у вези са физичким или менталним здрављем, или ако сте добили писмо од свог лекара које не разумете. Није потребно здравствено осигурање.
   tr: Pazartesi günleri 15:00 ile 17:00 arasında ve Perşembe günleri 09:00 ile 11:00 arasında, fiziksel veya ruhsal hastalıklarla ilgili tüm sorularınız ya da doktorunuzdan gelen anlaşılmaz mektuplar için bir sağlık danışma hizmeti sunulmaktadır. Sağlık sigortası gerekmez.
-  uk: У понеділок з 15:00 до 17:00 та у четвер з 09:00 до 11:00 працює медична консультація, де можна отримати відповіді на всі питання щодо фізичних або психічних захворювань, а також незрозумілих листів від лікаря. Медична страховка не потрібна
-  ur: پیر کو دوپہر 3 بجے سے 5 بجے تک اور جمعرات کو صبح 9 بجے سے 11 بجے تک صحت کے مشورے کا سیشن ہوتا ہے، جس میں آپ جسمانی یا ذہنی صحت کے مسائل کے بارے میں یا اپنے ڈاکٹر کے خطوط سمجھنے میں دشواری ہو تو پوچھ سکتے ہیں۔ آپ کو صحت انشورنس کی ضرورت نہیں ہے۔
-  vi: Thứ Hai từ 15:00 đến 17:00 và Thứ Năm từ 09:00 đến 11:00 có buổi tư vấn sức khỏe dành cho mọi thắc mắc liên quan đến bệnh lý thể chất hay tâm lý, hoặc những lá thư của bác sĩ mà bạn không hiểu. Bạn không cần phải có bảo hiểm y tế đâu
