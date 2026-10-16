@@ -1,31 +1,20 @@
 identifier: poliklinik_le
 name: Poliklinik Leipzig
-additional: Solidarisches Gesundheitszentrum Leipzig e.V. 
+additional: Solidarisches Gesundheitszentrum Leipzig e.V.
 url: https://poliklinik-leipzig.org/
 streetLine: Taubestraße 2
 zip: '04347'
 city: Leipzig
 mail: info@poliklinik-leipzig.org
 phone: '034158142471'
-
 lastChecked: 2026-10-13
 translatedNotes:
-  ar: ستجد هنا مجموعة من الخدمات المتعلقة بالصحة ومجالات أخرى: المشورة، والمساعدة الذاتية، ومكان للتلاقي في الحي. هذه الخدمات مجانية، ويمكنك الاستفادة منها بشكل مجهول إذا رغبت في ذلك، مع توفير خدمات الترجمة الفورية عند الحاجة
-  bs: Ovdje ćete pronaći niz usluga vezanih za zdravlje i još mnogo toga: savjetovanje, samopomoć, susjedsko mjesto za druženje. Besplatno, anonimno ako želite i uz jezično posredovanje po potrebi.
-  ckb: لێرەدا کۆمەڵێک خزمەتگوزاریی پەیوەست بە تەندروستی و زیاتریش دەدۆزیتەوە: ڕاوێژ، خۆیارمەتی، شوێنی کۆبوونەوەی گەڕەک. بەخۆڕاییە، بە ئارەزووی خۆت بە شێوەی نەناسراو و لە کاتی پێویستیشدا بە وەرگێڕی زمانەوە
-  de: Hier findet Ihr verschiedene Angebote rund um Gesundheit und darüber hinaus. Beratung, Selbsthilfe, Nachbarschaftstreff - alles unter einem Dach. Kostenlos, auf Wunsch anonym und bei Bedarf mit Sprachmittlung.
-  en: Here you will find a range of services relating to health and beyond. Advice, self-help, neighbourhood meeting place - all under one roof. Free of charge, anonymous if you wish and with language mediation if required.
-  es: Aquí encontrará toda una serie de servicios relacionados con la salud y más allá. Asesoramiento, autoayuda, punto de encuentro vecinal: todo bajo el mismo techo. Gratuito, anónimo si lo desea y con mediación lingüística si lo necesita.
-  fa: در اینجا مجموعه‌ای از خدمات مرتبط با سلامت و فراتر از آن را خواهید یافت: مشاوره، خودیاری، محل گردهمایی محله. رایگان، ناشناس در صورت تمایل و با میانجیگری زبانی در صورت نیاز
-  fr: Vous trouverez ici différentes offres autour de la santé et au-delà. Conseil, entraide, rencontre de quartier - le tout sous un même toit. Gratuit, anonyme si vous le souhaitez et avec une médiation linguistique si nécessaire.
-  ka: აქ თქვენ იპოვით ჯანმრთელობასა და სხვა სფეროებთან დაკავშირებული სერვისების ფართო სპექტრს: კონსულტაცია, თვითდახმარება, სამეზობლო შეხვედრის ადგილი. უფასოდ, სურვილის შემთხვევაში ანონიმურად და, საჭიროებისამებრ, ენობრივი მედიაციით.
-  ku: Li vir hûn ê cûrbecûr xizmetên têkildarî tenduristiyê û derveyî wê bibînin: Şêwirmendî, xwe-alîkarî, cihê hevdîtinê yê taxê. Belaş e, heke hûn bixwazin nenas dimîne û heke pêwîst be bi navbeynkariya zimanî.
-  mk: Тука ќе најдете широк спектар на услуги поврзани со здравјето и пошироко: Совети, самопомош, место за средби во соседството. Бесплатно, анонимно ако сакате и со јазична посредност доколку е потребно.
-  ps: دلته به تاسو د روغتیا او نورو اړوندو خدمتونو یوه لړۍ ومومئ: مشوره، ځان-مرسته، د ګاونډیانو د لیدنې ځای. وړیا، که وغواړئ په پټه، او د اړتیا په صورت کې د ژبې ترجماني سره
-  ru: Здесь вы найдете широкий спектр услуг, связанных со здоровьем и не только. Консультации, самопомощь, место встречи с соседями - все под одной крышей. Бесплатно, анонимно, по желанию и с языковым посредничеством, если потребуется.
-  sq: Këtu do të gjeni një gamë shërbimesh që lidhen me shëndetin dhe më gjerë: Këshilla, vetëndihmë, vendtakim në lagje. Falas, anonim nëse dëshironi dhe me ndërmjetësim gjuhësor nëse është e nevojshme.
-  sr: Овде ћете наћи низ услуга везаних за здравље и још много тога: савете, самопомоћ, сусретиште у заједници. Бесплатно, анонимно по жељи и уз језичку посреду ако је потребно.
-  tr: Burada sağlık ve bunun ötesindeki konularda çeşitli hizmetler bulabilirsiniz: Danışmanlık, kendi kendine yardım, mahalle buluşma mekanı. Ücretsizdir; dilerseniz isimsiz olarak yararlanabilirsiniz ve gerekirse dil desteği de sağlanır.
-  uk: Тут ви знайдете широкий спектр послуг, пов’язаних зі здоров’ям та іншими сферами: консультації, ресурси для самодопомоги, місце для зустрічей мешканців району. Послуги надаються безкоштовно, за бажанням — анонімно, а за потреби — із мовним посередництвом.
-  ur: یہاں آپ کو صحت اور اس سے آگے کے مختلف شعبوں میں خدمات فراہم کی جائیں گی: مشورہ، خود مدد، محلے کی ملاقات کی جگہ۔ بلا معاوضہ، اگر آپ چاہیں تو گمنامی کے ساتھ اور ضرورت پڑنے پر زبان کے ترجمے کے ساتھ۔
-  vi: Tại đây, cậu sẽ tìm thấy nhiều dịch vụ liên quan đến sức khỏe và các lĩnh vực khác: Tư vấn, hướng dẫn tự giúp đỡ, nơi gặp gỡ trong khu phố. Hoàn toàn miễn phí, có thể giữ kín danh tính nếu cậu muốn và có hỗ trợ phiên dịch nếu cần
+  ar: 'ستجد هنا مجموعة من الخدمات المتعلقة بالصحة ومجالات أخرى: المشورة، والمساعدة الذاتية، ومكان للتلاقي في الحي. هذه الخدمات مجانية، ويمكنك الاستفادة منها بشكل مجهول إذا رغبت في ذلك، مع توفير خدمات الترجمة الفورية عند الحاجة'
+  de: 'Hier findet Ihr verschiedene Angebote rund um Gesundheit und darüber hinaus. Beratung, Selbsthilfe, Nachbarschaftstreff - alles unter einem Dach. Kostenlos, auf Wunsch anonym und bei Bedarf mit Sprachmittlung.'
+  en: 'Here you will find a range of services relating to health and beyond. Advice, self-help, neighbourhood meeting place - all under one roof. Free of charge, anonymous if you wish and with language mediation if required.'
+  es: 'Aquí encontrará toda una serie de servicios relacionados con la salud y más allá. Asesoramiento, autoayuda, punto de encuentro vecinal: todo bajo el mismo techo. Gratuito, anónimo si lo desea y con mediación lingüística si lo necesita.'
+  fa: ' در اینجا مجموعه‌ای از خدمات مرتبط با سلامت و فراتر از آن را خواهید یافت: مشاوره، خودیاری، محل گردهمایی محله. رایگان، ناشناس در صورت تمایل و با میانجیگری زبانی در صورت نیاز'
+  fr: 'Vous trouverez ici différentes offres autour de la santé et au-delà. Conseil, entraide, rencontre de quartier - le tout sous un même toit. Gratuit, anonyme si vous le souhaitez et avec une médiation linguistique si nécessaire.'
+  ka: 'აქ თქვენ იპოვით ჯანმრთელობასა და სხვა სფეროებთან დაკავშირებული სერვისების ფართო სპექტრს: კონსულტაცია, თვითდახმარება, სამეზობლო შეხვედრის ადგილი. უფასოდ, სურვილის შემთხვევაში ანონიმურად და, საჭიროებისამებრ, ენობრივი მედიაციით.'
+  ku: 'Li vir hûn ê cûrbecûr xizmetên têkildarî tenduristiyê û derveyî wê bibînin: Şêwirmendî, xwe-alîkarî, cihê hevdîtinê yê taxê. Belaş e, heke hûn bixwazin nenas dimîne û heke pêwîst be bi navbeynkariya zimanî.'
+  tr: 'Burada sağlık ve bunun ötesindeki konularda çeşitli hizmetler bulabilirsiniz: Danışmanlık, kendi kendine yardım, mahalle buluşma mekanı. Ücretsizdir; dilerseniz isimsiz olarak yararlanabilirsiniz ve gerekirse dil desteği de sağlanır.'
