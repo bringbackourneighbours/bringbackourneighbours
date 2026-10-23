@@ -1,0 +1,10 @@
+all:
+  slug: syria
+  type: PDF
+  url: https://www.frsh.de/fileadmin/Publikationen/2026-Informationen-fuer-Gefluechtete-aus-Syrien.pdf
+ar:
+  title: معلومات لالجئني السوريني
+de:
+  title: Informationen für Geflüchtete aus Syrien
+ku:
+  title: Agahdarî ji bo penaberên Sûrî
