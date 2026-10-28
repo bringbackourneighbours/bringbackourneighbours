@@ -4,6 +4,8 @@ import ExternalShortLink from '../../components/markdown/ExternalShortLink.astro
 import BaseLayout from '../../layouts/BaseLayout.astro';
 import { getAllExternalLinksEntries } from '../../util/get-all-external-links-entries';
 import { SupportedLanguages, type LanguagesValue } from '../../model/languages';
+import { useUiTranslation } from '../../content/use-ui-translation';
+import Link from '../../components/design/Link.astro';
 
 export interface InternalTranslateProps {
   params: {
@@ -33,38 +35,59 @@ const links = (
   allowIndexing={false}
 >
   <h1>BBON Material {lang}</h1>
-
-  <h2>WEB</h2>
+  Hier ist eine übersicht zu allen Externen Material das wir irgendwo verlinkt
+  haben.
+  <h2>Alle Sprachen</h2>
+  <ul>
+    {SupportedLanguages.map((lang) => (
+      <li>
+        <Link href={`${Astro.site}internal-material/${lang}`}>
+          {useUiTranslation(`languages.${lang}`, lang)}
+        </Link>
+      </li>
+    ))}
+  </ul>
+  <h2>Alle Webseiten auf {useUiTranslation(`languages.${lang}`, 'de')}</h2>
   {links
     .filter((link) => link.type === 'WEB')
-    .map(({ id }) => (
-      <ExternalShortLink identifier={id} />
+    .map(({ id, slug }) => (
+      <div>
+        {slug}
+        <ExternalShortLink identifier={id} />
+      </div>
     ))}
-
-  <h2>PDF</h2>
+  <h2>Alle PDF auf {useUiTranslation(`languages.${lang}`, 'de')}</h2>
   {links
     .filter((link) => link.type === 'PDF')
     .map(({ id }) => (
-      <ExternalShortLink identifier={id} />
+      <div>
+        <ExternalShortLink identifier={id} />
+      </div>
     ))}
-
-  <h2>DOC</h2>
+  <h2>
+    Alle Office-Dokumente auf {useUiTranslation(`languages.${lang}`, 'de')}
+  </h2>
   {links
     .filter((link) => link.type === 'DOC')
     .map(({ id }) => (
-      <ExternalShortLink identifier={id} />
+      <div>
+        <ExternalShortLink identifier={id} />
+      </div>
     ))}
-
-  <h2>VIDEO</h2>
+  <h2>Alle Videos auf {useUiTranslation(`languages.${lang}`, 'de')}</h2>
   {links
     .filter((link) => link.type === 'VIDEO')
     .map(({ id }) => (
-      <ExternalShortLink identifier={id} />
+      <div>
+        <ExternalShortLink identifier={id} />
+      </div>
     ))}
-  <h2>AUDIO</h2>
+  <h2>Alle Audios auf {useUiTranslation(`languages.${lang}`, 'de')}</h2>
   {links
     .filter((link) => link.type === 'AUDIO')
     .map(({ id }) => (
-      <ExternalShortLink identifier={id} />
+      <div>
+        <ExternalShortLink identifier={id} />
+      </div>
     ))}
 </BaseLayout>
