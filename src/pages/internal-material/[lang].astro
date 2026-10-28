@@ -1,0 +1,70 @@
+---
+import { getCollection } from 'astro:content';
+import ExternalShortLink from '../../components/markdown/ExternalShortLink.astro';
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import { getAllExternalLinksEntries } from '../../util/get-all-external-links-entries';
+import { SupportedLanguages, type LanguagesValue } from '../../model/languages';
+
+export interface InternalTranslateProps {
+  params: {
+    lang: LanguagesValue;
+  };
+}
+
+export async function getStaticPaths(): Promise<InternalTranslateProps[]> {
+  return SupportedLanguages.map((lang) => ({
+    params: {
+      lang,
+    },
+  }));
+}
+
+const { lang } = Astro.params;
+
+const links = (
+  await getAllExternalLinksEntries(await getCollection('links'))
+).filter((link) => link.lang === lang || link.lang === 'all');
+---
+
+<BaseLayout
+  title="INTERNAL MATERIAL"
+  seo=""
+  lang="de"
+  allowIndexing={false}
+>
+  <h1>BBON Material {lang}</h1>
+
+  <h2>WEB</h2>
+  {links
+    .filter((link) => link.type === 'WEB')
+    .map(({ id }) => (
+      <ExternalShortLink identifier={id} />
+    ))}
+
+  <h2>PDF</h2>
+  {links
+    .filter((link) => link.type === 'PDF')
+    .map(({ id }) => (
+      <ExternalShortLink identifier={id} />
+    ))}
+
+  <h2>DOC</h2>
+  {links
+    .filter((link) => link.type === 'DOC')
+    .map(({ id }) => (
+      <ExternalShortLink identifier={id} />
+    ))}
+
+  <h2>VIDEO</h2>
+  {links
+    .filter((link) => link.type === 'VIDEO')
+    .map(({ id }) => (
+      <ExternalShortLink identifier={id} />
+    ))}
+  <h2>AUDIO</h2>
+  {links
+    .filter((link) => link.type === 'AUDIO')
+    .map(({ id }) => (
+      <ExternalShortLink identifier={id} />
+    ))}
+</BaseLayout>
