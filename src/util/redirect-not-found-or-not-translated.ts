@@ -1,4 +1,6 @@
 import type { CollectionEntry } from 'astro:content';
+import type { StandaloneCollections } from '../model/standalone-collections';
+import type { ValidRedirectStatus } from 'astro';
 import {
   type CanonicalUrlFn,
   getCanonicalUrlToFlyer,
@@ -6,15 +8,13 @@ import {
   getCanonicalUrlToPage,
 } from './get-canonical-url';
 
-import type { StandaloneCollections } from '../model/standalone-collections';
-
 async function redirectNotTranslated<T extends StandaloneCollections>(
   getCanonicalUrlFn: CanonicalUrlFn<T>,
   entry?: CollectionEntry<T>,
 ): Promise<
   | {
       url: string;
-      status: number;
+      status: ValidRedirectStatus;
     }
   | false
 > {
