@@ -1,0 +1,111 @@
+---
+import { getCollection } from 'astro:content';
+import { getAllExternalLinksEntries } from '../../util/get-all-external-links-entries';
+import { SupportedLanguages, type LanguagesValue } from '../../model/languages';
+import { useUiTranslation } from '../../content/use-ui-translation';
+
+import ExternalShortLink from '../../components/markdown/ExternalShortLink.astro';
+import Link from '../../components/design/Link.astro';
+import ContentLayout from '../../layouts/ContentLayout.astro';
+
+export interface InternalTranslateProps {
+  params: {
+    lang: LanguagesValue;
+  };
+}
+
+export async function getStaticPaths(): Promise<InternalTranslateProps[]> {
+  return SupportedLanguages.map((lang) => ({
+    params: {
+      lang,
+    },
+  }));
+}
+
+const { lang } = Astro.params;
+
+const links = (
+  await getAllExternalLinksEntries(await getCollection('links'))
+).filter((link) => link.lang === lang || link.lang === 'all');
+---
+
+<style is:global>
+  ul li details {
+    display: inline-block;
+  }
+</style>
+
+<ContentLayout
+  title="INTERNAL EXTERNAL LINKS"
+  seo=""
+  lang="de"
+  allowIndexing={false}
+>
+  <h1>BBON Externes {lang}</h1>
+  Hier ist eine Übersicht zu allen externen Links, die wir irgendwo verlinkt
+  haben.
+  <h2>Alle Sprachen</h2>
+  <ul>
+    {SupportedLanguages.map((lang) => (
+      <li>
+        <Link href={`${Astro.site}internal-material/${lang}`}>
+          {useUiTranslation(`languages.${lang}`, lang)}
+        </Link>
+      </li>
+    ))}
+  </ul>
+  <h2>
+    Alle externen Webseiten auf {useUiTranslation(`languages.${lang}`, 'de')}
+  </h2>
+  <ul>
+    {links
+      .filter((link) => link.type === 'WEB')
+      .map(({ id }) => (
+        <li>
+          <ExternalShortLink identifier={id} />
+        </li>
+      ))}
+  </ul>
+  <h2>Alle PDFs auf {useUiTranslation(`languages.${lang}`, 'de')}</h2>
+  <ul>
+    {links
+      .filter((link) => link.type === 'PDF')
+      .map(({ id }) => (
+        <li>
+          <ExternalShortLink identifier={id} />
+        </li>
+      ))}
+  </ul>
+  <h2>
+    Alle Office-Dokumente auf {useUiTranslation(`languages.${lang}`, 'de')}
+  </h2>
+  <ul>
+    {links
+      .filter((link) => link.type === 'DOC')
+      .map(({ id }) => (
+        <li>
+          <ExternalShortLink identifier={id} />
+        </li>
+      ))}
+  </ul>
+  <h2>Alle Videos auf {useUiTranslation(`languages.${lang}`, 'de')}</h2>
+  <ul>
+    {links
+      .filter((link) => link.type === 'VIDEO')
+      .map(({ id }) => (
+        <li>
+          <ExternalShortLink identifier={id} />
+        </li>
+      ))}
+  </ul>
+  <h2>Alle Audios auf {useUiTranslation(`languages.${lang}`, 'de')}</h2>
+  <ul>
+    {links
+      .filter((link) => link.type === 'AUDIO')
+      .map(({ id }) => (
+        <li>
+          <ExternalShortLink identifier={id} />
+        </li>
+      ))}
+  </ul>
+</ContentLayout>

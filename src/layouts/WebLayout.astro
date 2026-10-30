@@ -13,6 +13,7 @@ interface Props {
     lang: LanguagesValue;
     url: string;
   }>;
+  allowIndexing?: boolean;
 }
 
 const {
@@ -21,6 +22,7 @@ const {
   lang = DEFAULT_LANG,
   canonicalSlug,
   translationSlugs,
+  allowIndexing = true,
 } = Astro.props;
 import './theme-web.css';
 ---
@@ -31,7 +33,7 @@ import './theme-web.css';
   seo={seo}
   canonicalSlug={canonicalSlug}
   translationSlugs={translationSlugs}
-  allowIndexing={true}
+  allowIndexing={allowIndexing}
 >
   <Header lang={lang} />
   <slot />
