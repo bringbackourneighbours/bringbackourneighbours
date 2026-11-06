@@ -115,8 +115,11 @@ const aboutCanonicalUrl = await getCanonicalUrlToPage(
   }
 </style>
 <header>
-  <a href={homeUrl}>
-    <Logo />
+  <a
+    href={homeUrl}
+    hreflang={lang}
+  >
+    <Logo label={await useUiTranslation('meta.home', lang)} />
   </a>
   <a
     class="mainline"
