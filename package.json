@@ -42,7 +42,7 @@
     "stylelint-config-standard": "^40.0.0",
     "tsx": "^4.23.15",
     "typescript-eslint": "^8.72.1",
-    "vitest": "^5.0.0"
+    "vitest": "^5.1.0"
   },
   "name": "bringbackourneighbours",
   "scripts": {
