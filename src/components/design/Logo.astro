@@ -4,13 +4,15 @@ import Icon from './Icon.astro';
 
 interface Props {
   size?: string;
+  label?: string;
 }
 
-const { size = '1.5em' } = Astro.props;
+const { size = '1.5em', label } = Astro.props;
 ---
 
 <Icon
   html={logo}
+  label={label}
   size={size}
   variant="inverted-primary"
 />
