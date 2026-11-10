@@ -3,6 +3,7 @@ import type { LinkTypes } from '../model/link-types';
 
 export interface LinkData {
   slug: string;
+  id: string;
   title?: string;
   url?: string;
   type?: LinkTypes;
@@ -19,14 +20,19 @@ export const getAllExternalLinksEntries = async (
   return linkEntries.reduce((accumulator, currentValue) => {
     return [
       ...accumulator,
-      ...(Object.values(currentValue.data)
-        .filter((value) => value.slug && value.url)
-        .map((value) => ({
+      ...(Object.entries(currentValue.data)
+        .map((entry) => {
+          return { value: entry[1], lang: entry[0] };
+        })
+        .filter(({ value }) => value.slug && value.url)
+        .map(({ value, lang }) => ({
           ...value,
-          lastChecked:
-            value.lastChecked || currentValue.data['all']?.lastChecked,
+          lang,
+          lastChecked: value.lastChecked || currentValue.data.all?.lastChecked,
           noCheckUntil:
-            value.noCheckUntil || currentValue.data['all']?.noCheckUntil,
+            value.noCheckUntil || currentValue.data.all?.noCheckUntil,
+          type: value.type || currentValue.data.all?.type,
+          id: currentValue.id,
           filePath: currentValue.filePath,
         }))
         .flat() as LinkData[]),

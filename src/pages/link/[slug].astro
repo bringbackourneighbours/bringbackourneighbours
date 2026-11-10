@@ -29,7 +29,7 @@ return Astro.redirect(
     )
   ).find((entry) => {
     return entry.slug === Astro.props.slug;
-  })?.url,
+  })?.url || '',
   307,
 );
 ---

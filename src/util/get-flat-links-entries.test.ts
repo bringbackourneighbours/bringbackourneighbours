@@ -78,18 +78,24 @@ describe('getFlatLinksEntries', async () => {
     );
     expect(result).toEqual([
       {
+        id: 'id1',
         filePath: 'filePath1.yml',
         lastChecked: undefined,
         noCheckUntil: undefined,
+        type: 'AUDIO',
         slug: 'slugde',
         url: 'example.de',
+        lang: 'de',
       },
       {
+        id: 'id1',
         filePath: 'filePath1.yml',
         lastChecked: undefined,
         noCheckUntil: undefined,
+        type: 'AUDIO',
         slug: 'slugen',
         url: 'example.com',
+        lang: 'en',
       },
       {
         identifier: 'flyer1',
