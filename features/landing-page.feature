@@ -36,4 +36,4 @@ Feature: A landing page
     Then i see a link "Fachkräfte" to "professionals" in language "de"
     Then i see a link "Vorlagen" to "forms" in language "de"
     Then i see a link "Materialien" to "material" in language "de"
-    Then i see a link "Über" to "about" in language "de"
+    Then i see a link "Über Bring Back Our Neighbours" to "about" in language "de"
