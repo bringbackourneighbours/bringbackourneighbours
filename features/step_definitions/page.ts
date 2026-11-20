@@ -31,6 +31,9 @@ Then(
         .sort();
     }
     function extractExpectedViolations(violations: string) {
+      if (!violations.trim()) {
+        return [];
+      }
       return violations
         .split(',')
         .map((v) => v.trim())

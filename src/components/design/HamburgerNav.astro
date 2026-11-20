@@ -1,0 +1,99 @@
+---
+import AnimatedHamburger from '../../assets/icons/animated-hamburger.svg';
+
+interface Props {
+  label?: string;
+}
+
+const { label = 'Main menu' } = Astro.props;
+---
+
+<style>
+  #menu-toggle {
+    align-items: center;
+    background: transparent;
+    border: 0;
+    color: inherit;
+    cursor: pointer;
+    display: flex;
+    font-size: var(--bbon-size-h3);
+    padding: var(--bbon-size-spacing);
+    position: relative;
+    z-index: 101;
+  }
+
+  #menu-toggle svg {
+    height: 1.7em;
+    width: 1.7em;
+  }
+  #menu-toggle[aria-expanded='true'] {
+    color: var(--bbon-color-secondary);
+  }
+
+  #menu-pane {
+    box-sizing: border-box;
+    overflow: auto;
+    padding: var(--bbon-size-gap);
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    z-index: 100;
+    background-color: var(--bbon-color-surface);
+    color: var(--bbon-color-secondary);
+    --bbon-color-primary: var(--bbon-color-secondary);
+  }
+
+  #menu-pane[hidden] {
+    display: none;
+  }
+</style>
+
+<span
+  hidden
+  id="menu-label"
+>
+  {label}
+</span>
+
+<button
+  id="menu-toggle"
+  type="button"
+  aria-labelledby="menu-label"
+  aria-controls="menu-pane"
+  aria-expanded="false"
+>
+  <AnimatedHamburger />
+</button>
+
+<nav
+  id="menu-pane"
+  aria-labelledby="menu-label"
+  hidden
+>
+  <slot />
+</nav>
+
+<script>
+  const menuToggle = document.querySelector<HTMLButtonElement>('#menu-toggle');
+  const menuPane = document.querySelector('#menu-pane');
+  const menuIconExpand =
+    menuToggle?.querySelector<SVGAnimateElement>('#menu-icon-expand');
+  const menuIconCollapse = menuToggle?.querySelector<SVGAnimateElement>(
+    '#menu-icon-collapse',
+  );
+
+  if (menuToggle && menuPane) {
+    const toggleMenu = () => {
+      const menuWasOpen = menuToggle.getAttribute('aria-expanded') === 'true';
+
+      menuToggle.setAttribute('aria-expanded', `${!menuWasOpen}`);
+      menuPane.toggleAttribute('hidden', menuWasOpen);
+
+      (menuWasOpen ? menuIconCollapse : menuIconExpand)?.beginElement();
+    };
+
+    menuToggle.addEventListener('click', toggleMenu);
+  }
+</script>

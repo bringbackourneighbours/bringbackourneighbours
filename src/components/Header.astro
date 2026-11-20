@@ -2,7 +2,6 @@
 import type { LanguagesValue } from '../model/languages';
 import type { StandaloneContentProps } from '../model/standalone-collections';
 
-import AnimatedCloseButton from './design/AnimatedCloseButton.astro';
 import Link from './design/Link.astro';
 import Logo from './design/Logo.astro';
 
@@ -16,6 +15,7 @@ import { useContentData } from '../content/use-content-data';
 import { useUiTranslation } from '../content/use-ui-translation';
 import { mapStaticPathsForStandalone } from '../util/map-static-paths-for-standalone';
 import { getCollection, getEntry } from 'astro:content';
+import HamburgerNav from './design/HamburgerNav.astro';
 
 interface Props {
   lang: LanguagesValue;
@@ -73,13 +73,18 @@ const aboutCanonicalUrl = await getCanonicalUrlToPage(
     align-items: center;
     position: sticky;
     top: 0;
-    padding: var(--bbon-size-p);
+    padding: var(--bbon-size-spacing);
 
     /* FIXME: extract shadow */
     box-shadow:
       0 8px 0 0 var(--bbon-color-secondary-dark),
       var(--bbon-size-border) 0 var(--bbon-size-p)
         var(--bbon-size-shadow-spread) rgb(0 0 0 / 30%);
+  }
+
+  .nav-content {
+    display: flex;
+    justify-content: center;
   }
 
   a,
@@ -92,27 +97,6 @@ const aboutCanonicalUrl = await getCanonicalUrlToPage(
   }
 
   /* main_nav should be a modal fullscreen */
-  #main-nav {
-    display: block;
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100vw;
-    height: 100vh;
-    background-color: var(--bbon-color-surface);
-    color: var(--bbon-color-secondary);
-    z-index: 100;
-    box-sizing: border-box;
-    padding: var(--bbon-size-gap);
-    overflow: auto;
-
-    --bbon-color-primary: var(--bbon-color-secondary);
-
-    .nav-content {
-      display: flex;
-      justify-content: center;
-    }
-  }
 </style>
 <header>
   <a
@@ -128,13 +112,8 @@ const aboutCanonicalUrl = await getCanonicalUrlToPage(
     <!--this could use the text to width like in the pdf-->
     <span class="h2">{useUiTranslation('meta.title', lang)}</span>
   </a>
-  <AnimatedCloseButton onclick="document.getElementById('main-nav').classList.toggle('hidden');" />
 
-  <nav
-    id="main-nav"
-    class="hidden"
-    aria-label={await useUiTranslation('meta.mainNavigation', lang)}
-  >
+  <HamburgerNav>
     <div class="nav-content">
       <ul>
         <li>
@@ -252,5 +231,5 @@ const aboutCanonicalUrl = await getCanonicalUrlToPage(
         </li>
       </ul>
     </div>
-  </nav>
+  </HamburgerNav>
 </header>
