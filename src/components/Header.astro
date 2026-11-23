@@ -113,7 +113,7 @@ const aboutCanonicalUrl = await getCanonicalUrlToPage(
     <span class="h2">{useUiTranslation('meta.title', lang)}</span>
   </a>
 
-  <HamburgerNav>
+  <HamburgerNav label={await useUiTranslation('meta.mainNavigation', lang)}>
     <div class="nav-content">
       <ul>
         <li>

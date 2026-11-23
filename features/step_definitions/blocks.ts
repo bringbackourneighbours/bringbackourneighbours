@@ -46,7 +46,13 @@ Then(
 Then(
   'there is a hidden footer template',
   async function (this: PlaywrightWorld) {
-    expect(this.screen.page.locator('template#footerTemplate')).toBeTruthy();
+    // a `<template>` has no role and no accessible name – it is not part of
+    // the accessibility tree at all, so this stays a css locator (its id is
+    // `FOOTERTEMPLATEMARKER` in `src/util/print-html-to-pdf.ts:4`) and only
+    // the count can make the step fail: a `Locator` object is always truthy.
+    expect(
+      await this.screen.page.locator('template#footerTemplate').count(),
+    ).toBe(1);
   },
 );
 
@@ -63,7 +69,6 @@ Then(
 Then(
   'i see a timestamp with value {string}',
   async function (this: PlaywrightWorld, value: string) {
-    console.log(await this.screen.page.ariaSnapshot());
     await expect(
       this.screen.page.getByRole('time').getByText(value),
     ).toBeVisible();
@@ -194,6 +199,50 @@ Then(
     const link = this.screen.page.getByRole('link', {
       name: expectedLinkLabel,
     });
+    await expect(link).toHaveAttribute('href', new RegExp(expectedLinkHref));
+    await expect(link).toHaveAttribute('hreflang', expectedHrefLang);
+  },
+);
+
+// the `<nav>` of the language switcher (`meta.switchLanguage`) – its label
+// proves the switcher itself got translated into the page language
+Then(
+  'i see a navigation labeled {string}',
+  async function (this: PlaywrightWorld, expectedLabel: string) {
+    await expect(
+      this.screen.page.getByRole('navigation', { name: expectedLabel }),
+    ).toBeVisible();
+  },
+);
+
+Then(
+  'i see an open navigation menu labeled {string}',
+  async function (this: PlaywrightWorld, label: string) {
+    await expect(
+      this.screen.page.getByRole('button', { name: label, expanded: true }),
+    ).toBeVisible();
+
+    await expect(
+      this.screen.page.getByRole('navigation', { name: label }),
+    ).toBeVisible();
+  },
+);
+
+Then(
+  'i see a navigation menu labeled {string} with link {string} to {string} in language {string}',
+  async function (
+    this: PlaywrightWorld,
+    expectedNavLabel: string,
+    expectedLinkLabel: string,
+    expectedLinkHref: string,
+    expectedHrefLang: string,
+  ) {
+    const menuNav = this.screen.page.getByRole('navigation', {
+      name: expectedNavLabel,
+    });
+
+    const link = menuNav.getByRole('link', { name: expectedLinkLabel });
+
     await expect(link).toHaveAttribute('href', new RegExp(expectedLinkHref));
     await expect(link).toHaveAttribute('hreflang', expectedHrefLang);
   },

@@ -2,10 +2,10 @@
 import AnimatedHamburger from '../../assets/icons/animated-hamburger.svg';
 
 interface Props {
-  label?: string;
+  label: string;
 }
 
-const { label = 'Main menu' } = Astro.props;
+const { label } = Astro.props;
 ---
 
 <style>
@@ -26,6 +26,7 @@ const { label = 'Main menu' } = Astro.props;
     height: 1.7em;
     width: 1.7em;
   }
+
   #menu-toggle[aria-expanded='true'] {
     color: var(--bbon-color-secondary);
   }
@@ -42,6 +43,7 @@ const { label = 'Main menu' } = Astro.props;
     z-index: 100;
     background-color: var(--bbon-color-surface);
     color: var(--bbon-color-secondary);
+
     --bbon-color-primary: var(--bbon-color-secondary);
   }
 
