@@ -1,4 +1,3 @@
-@broken
 Feature: A Flyer page
 
   Scenario: Url without seo will redirect to canonical
