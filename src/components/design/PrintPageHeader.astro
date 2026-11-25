@@ -21,23 +21,28 @@ const { germanTitle, entry, pagewidth, pagemargin } = Astro.props;
 ---
 
 <style define:vars={{ pagewidth, pagemargin }}>
-  .meta-title {
+  .meta-line {
     display: flex;
-    align-items: center;
+    align-items: baseline;
     justify-content: space-between;
-    gap: var(--bbon-size-gap);
-    padding-block: var(--bbon-size-gap);
+    gap: var(--bbon-size-spacing);
+    padding-block-end: var(--bbon-size-spacing);
+
+    .meta-info {
+      flex-shrink: 0;
+      display: flex;
+      gap: var(--bbon-size-spacing);
+      align-items: flex-end;
+      flex-direction: column;
+    }
 
     .language {
-      align-self: flex-start;
-      color: white;
+      color: var(--bbon-color-surface);
       background: var(--bbon-color-primary);
-      display: block;
       font-variant: small-caps;
-      padding: 0.5em;
+      padding: calc(2 * var(--bbon-size-spacing));
       font-size: 1.2em;
       font-weight: var(--bbon-font-weight-bold, bold);
-      flex: none;
     }
   }
 
@@ -47,6 +52,7 @@ const { germanTitle, entry, pagewidth, pagemargin } = Astro.props;
 
     /* this is for the bbonLogo: it needs to be primary */
     --bbon-color-surface: var(--bbon-color-primary);
+
     align-items: center;
     gap: var(--bbon-size-spacing);
 
@@ -100,18 +106,18 @@ const { germanTitle, entry, pagewidth, pagemargin } = Astro.props;
   </div>
 </div>
 
-<div class="meta-title">
-  <hgroup>
+<hgroup class="meta-line">
+  <H1>{entry.data.title}</H1>
+  <div class="meta-info">
+    <div class="language">
+      <LanguageChip
+        lang={entry.data.lang}
+        currentLang="de"
+      />
+    </div>
     {entry.data.lang != 'de' && <h6 class="ltr">{germanTitle}</h6>}
-    <H1>{entry.data.title}</H1>
-  </hgroup>
-  <div class="language">
-    <LanguageChip
-      lang={entry.data.lang}
-      currentLang="de"
-    />
   </div>
-</div>
+</hgroup>
 
 <NoteMachineTranslation
   entry={entry}
