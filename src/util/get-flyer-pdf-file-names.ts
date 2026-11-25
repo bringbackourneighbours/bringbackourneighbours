@@ -8,7 +8,7 @@ export const getFlyerPdfFileNames = async (
 
 export const getPdfFileNames = async (
   distDir: string,
-  collection: 'flyer' | 'zine',
+  collection: 'flyer' | 'zine' | 'kit' | 'page',
 ): Promise<string[]> => {
   const pdfsFileNames = await readdir(getPrintDistDir(distDir));
 
