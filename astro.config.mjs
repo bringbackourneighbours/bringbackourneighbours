@@ -2,10 +2,8 @@ import { defineConfig } from 'astro/config';
 import { siteUrl, basePath } from './src/model/site';
 import mdx from '@astrojs/mdx';
 import printPdfs from './src/integrations/print-pdfs';
-import checkFlyers from './src/integrations/check-flyers';
-import checkZines from './src/integrations/check-zines';
-import layoutFlyers from './src/integrations/layout-flyers';
 import layoutZines from './src/integrations/layout-zines';
+import checkPdfPages from './src/integrations/check-pdf-pages';
 
 // https://astro.build/config
 export default defineConfig({
@@ -14,9 +12,9 @@ export default defineConfig({
   integrations: [
     mdx(),
     printPdfs(),
-    checkFlyers(),
-    checkZines(),
-    layoutFlyers(),
+    checkPdfPages('flyer', 1, 'exact'),
+    checkPdfPages('zine', 8),
+    checkPdfPages('kit', 25, 'min'),
     layoutZines(),
   ],
   build: {

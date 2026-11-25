@@ -36,10 +36,10 @@ export async function printPdfsImpl(
     const printJobs = pages
       .filter((page) => page.pathname.startsWith('internal-print'))
       .map(async (htmlPage) => {
-        const pdfOutputFilename = `${htmlPage.pathname.replace('internal-print/', '').replace('/', '.pdf')}`;
+        const pdfOutputFilename = `${htmlPage.pathname.replace('internal-print/', '').replace(/-a\d/, '').replace('/', '.pdf')}`;
         const pdfOutputPath = `${pdfDistDir}/${pdfOutputFilename}`;
         const pageUrl = `http://${previewServer.host}:${previewServer.port}/${htmlPage.pathname}`;
-        logger.debug(`Printing ${pageUrl}`);
+        logger.debug(`Printing ${pageUrl} to ${pdfOutputFilename}`);
         const pdfBuffer = await printHtmlToPdf(pageUrl, browser);
 
         await writeFile(pdfOutputPath, pdfBuffer);

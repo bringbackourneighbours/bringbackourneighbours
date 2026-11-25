@@ -10,9 +10,8 @@ import { Languages } from '../../model/languages';
 import Block from '../../components/markdown/Block.astro';
 import PrintLayout from '../../layouts/PrintLayout.astro';
 import PrinterPage from '../../components/design/PrinterPage.astro';
-import PrintCover from '../../components/design/PrintCover.astro';
 import PrintEndFooter from '../../components/design/PrintEndFooter.astro';
-import FooterTemplate from '../../components/design/FooterTemplate.astro';
+import PrintPageHeader from '../../components/design/PrintPageHeader.astro';
 
 interface Props {
   entry: CollectionEntry<'flyers'>;
@@ -39,41 +38,44 @@ const germanTitle =
 
 <style>
   @page {
-    margin: 5mm 6mm;
-    size: 105mm 148mm;
+    size: a4;
+    margin: 10mm;
+  }
+
+  .columns {
+    column-count: 2;
   }
 
   .end-footer {
+    width: 100%;
     position: absolute;
-
-    /* every flyer has 4 pages, so the footer needs to be somewhere on the bottom of page 4... calc would need to consider the page margins */
     inset-block-start: 0;
-    margin-block-start: calc(524mm + var(--bbon-size-print-end-footer-offset));
+    margin-block-start: calc(252mm + var(--bbon-size-print-end-footer-offset));
   }
 
   .overprint-protector {
-    /* to make sure nothing fo the content it printed over tke footer we add this protector. if they content and thes footer would overlap this invisible div will be pushed on the next page... so we will get a warning per astro integration as we then would have 5 page */
-    height: calc(29mm - var(--bbon-size-print-end-footer-offset));
+    height: calc(27mm - var(--bbon-size-print-end-footer-offset));
   }
 </style>
 <PrintLayout
   lang={entry.data.lang}
-  title={'Flyer ' + entry.data.title + ' | BringBackOurNeighbours'}
+  title={'A4 Flyer ' + entry.data.title + ' | BringBackOurNeighbours'}
 >
-  <PrinterPage>
-    <PrintCover
+  <PrinterPage breakBefore={true}>
+    <PrintPageHeader
       germanTitle={germanTitle}
       entry={entry}
-      pagewidth="105mm"
-      pagemargin="5mm"
+      pagewidth="210mm"
+      pagemargin="10mm"
     />
-  </PrinterPage>
-  <PrinterPage breakBefore={true}>
-    <Block
-      identifier={entry.data.identifier}
-      collection="flyers"
-      isRootLevelContent={true}
-    />
+    <div class="columns">
+      <Block
+        class:list={'foo'}
+        identifier={entry.data.identifier}
+        collection="flyers"
+        isRootLevelContent={true}
+      />
+    </div>
   </PrinterPage>
   <div class="overprint-protector"></div>
   <div class="end-footer">
@@ -84,10 +86,3 @@ const germanTitle =
     />
   </div>
 </PrintLayout>
-
-<FooterTemplate
-  lang={entry.data.lang}
-  marginInline="4mm"
-  marginBlock="0mm"
-  showTotal={false}
-/>
